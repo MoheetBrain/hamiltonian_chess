@@ -1,0 +1,59 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "hamiltonian-arena"
+version = "0.1.0"
+description = "Evidence-first search over machine-facing mathematical representations"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "Proprietary research prototype" }
+authors = [{ name = "Hamiltonian Arena" }]
+dependencies = [
+  "sympy>=1.14,<2",
+  "typer>=0.16,<1",
+  "rich>=14,<15",
+  "z3-solver>=4.15,<5",
+]
+
+[project.optional-dependencies]
+surrogate = ["scikit-learn>=1.7,<2"]
+dev = [
+  "hamiltonian-arena[surrogate]",
+  "hypothesis>=6.138,<7",
+  "mypy>=1.17,<2",
+  "pytest>=8.4,<10",
+  "pytest-cov>=6.2,<8",
+  "ruff>=0.12,<1",
+]
+
+[project.scripts]
+arena = "arena.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["arena"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --strict-markers"
+markers = [
+  "slow: exhaustive or model-backed tests",
+  "adversarial: soundness and Refuter cases",
+  "integration: cross-component tests",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.12"
+packages = ["arena"]
+ignore_missing_imports = true
+warn_unused_ignores = true
+strict_optional = true

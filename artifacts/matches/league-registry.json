@@ -1,0 +1,127 @@
+{
+  "candidates": [
+    {
+      "active": true,
+      "baseline": true,
+      "candidate_id": "L0_STRUCTURED_ENGLISH",
+      "display_name": "Structured English",
+      "domain_ratings": {},
+      "mechanism_ratings": {},
+      "objective_metrics": {
+        "composition": 1.0,
+        "semantic_fidelity": 1.0,
+        "tokens_proxy": 383.2233727810651
+      },
+      "parent_ids": [],
+      "pareto_status": "PARETO_RANK_1"
+    },
+    {
+      "active": true,
+      "baseline": true,
+      "candidate_id": "L1_CURRENT_HML",
+      "display_name": "Current HML",
+      "domain_ratings": {},
+      "mechanism_ratings": {},
+      "objective_metrics": {
+        "composition": 1.0,
+        "semantic_fidelity": 1.0,
+        "tokens_proxy": 395.05029585798815
+      },
+      "parent_ids": [],
+      "pareto_status": "PARETO_RANK_3"
+    },
+    {
+      "active": true,
+      "baseline": true,
+      "candidate_id": "L2_SEXPR",
+      "display_name": "S-expression",
+      "domain_ratings": {},
+      "mechanism_ratings": {},
+      "objective_metrics": {
+        "composition": 1.0,
+        "semantic_fidelity": 1.0,
+        "tokens_proxy": 470.2307692307692
+      },
+      "parent_ids": [],
+      "pareto_status": "PARETO_RANK_6"
+    },
+    {
+      "active": true,
+      "baseline": true,
+      "candidate_id": "L3_JSON_AST",
+      "display_name": "JSON AST",
+      "domain_ratings": {},
+      "mechanism_ratings": {},
+      "objective_metrics": {
+        "composition": 1.0,
+        "semantic_fidelity": 1.0,
+        "tokens_proxy": 388.05029585798815
+      },
+      "parent_ids": [],
+      "pareto_status": "PARETO_RANK_2"
+    },
+    {
+      "active": true,
+      "baseline": false,
+      "candidate_id": "L4_TYPED_PREFIX",
+      "display_name": "arena-typed-prefix-v0.1",
+      "domain_ratings": {},
+      "mechanism_ratings": {},
+      "objective_metrics": {
+        "composition": 1.0,
+        "semantic_fidelity": 1.0,
+        "tokens_proxy": 422.26257396449705
+      },
+      "parent_ids": [],
+      "pareto_status": "PARETO_RANK_4"
+    },
+    {
+      "active": true,
+      "baseline": false,
+      "candidate_id": "L5_COMPACT_SYMBOLIC",
+      "display_name": "arena-compact-symbolic-v0.1",
+      "domain_ratings": {},
+      "mechanism_ratings": {},
+      "objective_metrics": {
+        "composition": 1.0,
+        "semantic_fidelity": 1.0,
+        "tokens_proxy": 327.8350591715976
+      },
+      "parent_ids": [],
+      "pareto_status": "FRONTIER"
+    },
+    {
+      "active": true,
+      "baseline": false,
+      "candidate_id": "L6_GRAPH_TRIPLES",
+      "display_name": "arena-graph-triples-v0.1",
+      "domain_ratings": {},
+      "mechanism_ratings": {},
+      "objective_metrics": {
+        "composition": 1.0,
+        "semantic_fidelity": 1.0,
+        "tokens_proxy": 1021.4215976331361
+      },
+      "parent_ids": [],
+      "pareto_status": "PARETO_RANK_7"
+    },
+    {
+      "active": true,
+      "baseline": false,
+      "candidate_id": "L7_HYBRID_ROLE_LABELLED",
+      "display_name": "arena-hybrid-role-labelled-v0.1",
+      "domain_ratings": {},
+      "mechanism_ratings": {},
+      "objective_metrics": {
+        "composition": 1.0,
+        "semantic_fidelity": 1.0,
+        "tokens_proxy": 467.7943786982249
+      },
+      "parent_ids": [],
+      "pareto_status": "PARETO_RANK_5"
+    }
+  ],
+  "matches": [],
+  "observations": [],
+  "version": "arena-league-v0.1.0"
+}
