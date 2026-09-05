@@ -30,3 +30,18 @@
 These are infrastructure and bounded soundness results. No matched model adaptation has run,
 so no candidate has earned the R* name. The exact generated tournament values live under
 `artifacts/reports/` and in `artifacts/arena.db`.
+
+## Representation fitness v1 continuation
+
+- Created `codex/arena-v0-fitness` from `c1dd586` and pre-registered the scientific objects in
+  commit `f17bb0f73ac942d43b614704e54c019a64284368` before any model inference.
+- Audited all branches, tags, and history of HML_V3, hml-reasoning-corpus, hml-standard, and
+  hamiltonian-lang. Historical scores were retained only as priors/failure memory.
+- Materialized 120 deterministic one-gene executable phenotypes across all eight parents.
+  All 120 passed 124,800 Gold state/phenotype checks with zero critical failures or collisions.
+- Froze a group-aware 520-Gold split: 160 DEV, 120 SCOUT, 160 PROMOTION, 80 structural OOD.
+- Ran 64 cached calibration cells with local `gemma3:4b` at the frozen Q4_K_M blob digest.
+  The nominal strongest-control accuracy was 7/16, but both leading controls chose A on every
+  task and no control beat the 9/16 always-B baseline.
+- Marked the instrument `INSTRUMENT_INVALID_POSITION_ONLY` and stopped before Tier 2A. No
+  candidate model ranking, landscape model claim, matched adaptation, or R* decision was made.

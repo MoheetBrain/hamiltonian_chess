@@ -2,6 +2,7 @@ from pathlib import Path
 
 from arena.experiments import model_fitness
 from arena.experiments.fitness_v1 import correct_choice, frozen_task_split
+from arena.storage.artifacts import ArtifactStore
 from arena.tasks.generators.world_v0 import build_world_v0
 
 
@@ -51,3 +52,49 @@ def test_calibration_thresholds_are_frozen() -> None:
     assert model_fitness._calibration_verdict(scores(0.85)) == "BORDERLINE_CEILING"
     assert model_fitness._calibration_verdict(scores(0.2)) == "BORDERLINE_FLOOR"
     assert model_fitness._calibration_verdict(scores(0.5)) == "USEFUL_HEADROOM"
+
+
+def test_position_only_controls_invalidate_nominal_headroom(tmp_path: Path) -> None:
+    rows = []
+    scores = {}
+    for candidate_id in model_fitness.CONTROL_IDS:
+        candidate_rows = [
+            {
+                "candidate_id": candidate_id,
+                "task_id": "t-a",
+                "cache_key": f"{candidate_id}-t-a",
+                "parsed_choice": "A",
+                "correct_choice": "A",
+            },
+            {
+                "candidate_id": candidate_id,
+                "task_id": "t-b",
+                "cache_key": f"{candidate_id}-t-b",
+                "parsed_choice": "A",
+                "correct_choice": "B",
+            },
+        ]
+        rows.extend(candidate_rows)
+        scores[candidate_id] = {
+            "correct": 1,
+            "tasks": 2,
+            "accuracy": 0.5,
+            "malformed": 0,
+            "mean_prompt_tokens": 10.0,
+        }
+    result = {
+        "headroom_verdict": "USEFUL_HEADROOM",
+        "benchmark_valid": True,
+        "next_stage": "TIER2A",
+        "rungs": [{"slice": "CALIBRATION_DEV", "scores": scores, "rows": rows}],
+        "calls": 8,
+        "cache_hits": 0,
+        "raw_inspection_sample": [],
+    }
+    ArtifactStore(tmp_path / "artifacts").write_json("reports/fitness-calibration.json", result)
+    decision = model_fitness.audit_calibration(tmp_path)
+    assert decision["decision"] == "MODEL_FITNESS_BENCHMARK_INVALID"
+    assert decision["tier2a_run"] is False
+    status = model_fitness.experiment_status(tmp_path)
+    assert status["benchmark_valid"] is False
+    assert status["decision"] == "MODEL_FITNESS_BENCHMARK_INVALID"

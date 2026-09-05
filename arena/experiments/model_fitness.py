@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import math
 import time
 from collections import defaultdict
 from pathlib import Path
@@ -196,12 +197,14 @@ def _calibration_verdict(scores: dict[str, Any]) -> str:
 
 
 def _calibration_markdown(result: dict[str, Any]) -> str:
+    audit = result.get("instrument_audit")
+    display_verdict = audit["verdict"] if audit else result["headroom_verdict"]
     lines = [
         "# Fitness calibration",
         "",
         f"Experiment: `{EXPERIMENT_VERSION}`",
         f"Model: `{MODEL_CONFIG['model']}` / `{MODEL_CONFIG['model_blob_sha256']}`",
-        f"Verdict: **{result['headroom_verdict']}**",
+        f"Verdict: **{display_verdict}**",
         "",
         "| Rung | Control | Correct | Tasks | Accuracy | Malformed | Mean input tokens |",
         "|---|---|---:|---:|---:|---:|---:|",
@@ -216,7 +219,9 @@ def _calibration_markdown(result: dict[str, Any]) -> str:
     lines.extend(
         [
             "",
-            f"Calls: {result['calls']}; cache hits: {result['cache_hits']}.",
+            f"Task cells: {result['calls']}; unique cached model observations: "
+            f"{result.get('unique_model_observations', result['calls'])}; cache hits while "
+            f"rendering this report: {result['cache_hits']}.",
             "",
             "Raw-output inspection sample:",
             "",
@@ -226,7 +231,153 @@ def _calibration_markdown(result: dict[str, Any]) -> str:
             "",
         ]
     )
+    if audit:
+        lines.extend(
+            [
+                "## Raw-completion instrument audit",
+                "",
+                f"Nominal threshold verdict: **{audit['nominal_threshold_verdict']}**.",
+                f"Scientific instrument verdict: **{audit['verdict']}**.",
+                "",
+                f"Always-A accuracy: {audit['constant_position_baselines']['always_A']:.3f}; "
+                f"always-B accuracy: {audit['constant_position_baselines']['always_B']:.3f}.",
+                "",
+                "| Control | A | B | Malformed | Choice entropy (bits) |",
+                "|---|---:|---:|---:|---:|",
+            ]
+        )
+        for candidate_id, summary in audit["control_choice_behavior"].items():
+            lines.append(
+                f"| {candidate_id} | {summary['A']} | {summary['B']} | "
+                f"{summary['malformed']} | {summary['choice_entropy_bits']:.3f} |"
+            )
+        lines.extend(
+            [
+                "",
+                audit["reason"],
+                "",
+                "Tier 2A was not run. Calibration rows and the nominal heuristic result are "
+                "preserved; the audit adds an instrument-validity decision without relabelling "
+                "a model response.",
+                "",
+            ]
+        )
     return "\n".join(lines)
+
+
+def _binary_entropy(a: int, b: int) -> float:
+    total = a + b
+    if total == 0 or a == 0 or b == 0:
+        return 0.0
+    p = a / total
+    return -(p * math.log2(p) + (1 - p) * math.log2(1 - p))
+
+
+def audit_calibration(root: Path) -> dict[str, Any]:
+    """Apply the mandatory raw-output/position-baseline validity check.
+
+    The numerical 30--80% rule is a headroom heuristic, not permission to ignore a solver
+    that implements a constant answer-position policy. Raw inspection was pre-registered
+    precisely because earlier HML instruments passed automated thresholds while measuring the
+    wrong relation.
+    """
+
+    path = root / "artifacts" / "reports" / "fitness-calibration.json"
+    if not path.exists():
+        raise FileNotFoundError("run calibration before its instrument audit")
+    result = json.loads(path.read_text(encoding="utf-8"))
+    initial = result["rungs"][0]
+    rows = initial["rows"]
+    truth_a = sum(
+        row["correct_choice"] == "A" for row in rows if row["candidate_id"] == CONTROL_IDS[0]
+    )
+    tasks = sum(row["candidate_id"] == CONTROL_IDS[0] for row in rows)
+    baselines = {"always_A": truth_a / tasks, "always_B": (tasks - truth_a) / tasks}
+    behavior = {}
+    for candidate_id in CONTROL_IDS:
+        candidate_rows = [row for row in rows if row["candidate_id"] == candidate_id]
+        a = sum(row["parsed_choice"] == "A" for row in candidate_rows)
+        b = sum(row["parsed_choice"] == "B" for row in candidate_rows)
+        behavior[candidate_id] = {
+            "A": a,
+            "B": b,
+            "malformed": sum(row["parsed_choice"] is None for row in candidate_rows),
+            "choice_entropy_bits": _binary_entropy(a, b),
+            "accuracy": initial["scores"][candidate_id]["accuracy"],
+        }
+    strongest = max(float(score["accuracy"]) for score in initial["scores"].values())
+    best_constant = max(baselines.values())
+    constant_controls = [
+        candidate_id
+        for candidate_id, summary in behavior.items()
+        if summary["choice_entropy_bits"] == 0.0 and summary["malformed"] == 0
+    ]
+    paired = {
+        row["task_id"]: row["parsed_choice"]
+        for row in rows
+        if row["candidate_id"] == CONTROL_IDS[0]
+    }
+    hml_rows = [row for row in rows if row["candidate_id"] == CONTROL_IDS[1]]
+    se_hml_identical = sum(paired[row["task_id"]] == row["parsed_choice"] for row in hml_rows)
+    invalid = (
+        strongest <= best_constant
+        and len(constant_controls) >= 2
+        and se_hml_identical == len(hml_rows)
+    )
+    audit = {
+        "nominal_threshold_verdict": result["headroom_verdict"],
+        "verdict": "INSTRUMENT_INVALID_POSITION_ONLY" if invalid else "INSTRUMENT_VALID",
+        "constant_position_baselines": baselines,
+        "strongest_control_accuracy": strongest,
+        "all_controls_at_or_below_best_constant": strongest <= best_constant,
+        "constant_choice_controls": constant_controls,
+        "structured_english_current_hml_identical_choices": {
+            "numerator": se_hml_identical,
+            "denominator": len(hml_rows),
+        },
+        "control_choice_behavior": behavior,
+        "reason": (
+            "The strongest controls implemented an always-A policy and no control beat the "
+            "best constant answer-position policy. The nominal accuracy therefore does not "
+            "demonstrate that the solver read the mathematical state or alternatives."
+            if invalid
+            else "Controls varied choices and exceeded the best constant-position policy."
+        ),
+    }
+    result["threshold_headroom_verdict"] = result["headroom_verdict"]
+    result["unique_model_observations"] = len(
+        {row["cache_key"] for rung in result["rungs"] for row in rung["rows"]}
+    )
+    result["instrument_audit"] = audit
+    result["benchmark_valid"] = not invalid and bool(result["benchmark_valid"])
+    result["next_stage"] = (
+        "TIER2A" if result["benchmark_valid"] else "STOP_MODEL_FITNESS_BENCHMARK_INVALID"
+    )
+    store = ArtifactStore(root / "artifacts")
+    store.write_json("reports/fitness-calibration.json", result)
+    store.write_text("reports/fitness-calibration.md", _calibration_markdown(result))
+    decision = {
+        "schema_version": "arena-fitness-decision-v1",
+        "experiment_version": EXPERIMENT_VERSION,
+        "decision": (
+            "PROCEED_TIER2A" if result["benchmark_valid"] else "MODEL_FITNESS_BENCHMARK_INVALID"
+        ),
+        "tier2a_run": False,
+        "tier2b_run": False,
+        "matched_adaptation_run": False,
+        "evidence": audit,
+        "uncertainty": (
+            "This invalidates this model/task interface; it does not show that all "
+            "representations or all solvers have no fitness landscape."
+        ),
+        "highest_ev_next_action": (
+            "Build a new versioned acquisition instrument with a demonstrated positive "
+            "mathematical-reading control and a relation-destroyed negative control, then "
+            "recalibrate without reusing these responses."
+        ),
+    }
+    store.write_json("reports/experiment-decision.json", decision)
+    return decision
 
 
 def run_calibration(root: Path) -> dict[str, Any]:
@@ -281,7 +432,10 @@ def run_calibration(root: Path) -> dict[str, Any]:
     store = ArtifactStore(root / "artifacts")
     store.write_json("reports/fitness-calibration.json", result)
     store.write_text("reports/fitness-calibration.md", _calibration_markdown(result))
-    return result
+    audit_calibration(root)
+    return json.loads(
+        (root / "artifacts" / "reports" / "fitness-calibration.json").read_text(encoding="utf-8")
+    )
 
 
 def experiment_status(root: Path) -> dict[str, Any]:
@@ -293,11 +447,18 @@ def experiment_status(root: Path) -> dict[str, Any]:
             "next_command": "arena fitness calibrate",
         }
     result = json.loads(calibration.read_text(encoding="utf-8"))
+    decision_path = root / "artifacts" / "reports" / "experiment-decision.json"
+    decision = (
+        json.loads(decision_path.read_text(encoding="utf-8"))["decision"]
+        if decision_path.exists()
+        else None
+    )
     return {
         "experiment": EXPERIMENT_VERSION,
         "stage": "CALIBRATION_COMPLETE",
         "headroom_verdict": result["headroom_verdict"],
         "benchmark_valid": result["benchmark_valid"],
+        "decision": decision,
         "next_command": (
             "arena fitness scout --tier 2a"
             if result["benchmark_valid"]
@@ -310,6 +471,7 @@ __all__ = [
     "CONTROL_IDS",
     "MODEL_CONFIG",
     "MODEL_CONFIG_HASH",
+    "audit_calibration",
     "evaluate_cell",
     "experiment_status",
     "run_calibration",

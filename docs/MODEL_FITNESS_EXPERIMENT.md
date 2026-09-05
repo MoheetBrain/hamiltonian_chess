@@ -1,10 +1,29 @@
 # Model fitness experiment: representation landscape v1
 
-Status: **PRE-REGISTERED — NO SCIENTIFIC MODEL RESPONSE OBSERVED**  
+Status: **CALIBRATION COMPLETE — BENCHMARK INVALID, STOPPED BEFORE TIER 2A**
 Experiment version: `arena-representation-fitness-v1`  
 Start date: 2026-09-05  
 Start branch: `codex/arena-v0-fitness`  
 Start SHA: `c1dd586db6abb9bd4e72f0048122eb4ddca98739`
+
+## Outcome (recorded after the frozen calibration)
+
+The 64-cell first calibration rung completed under the configuration below. Its nominal
+accuracy heuristic said `USEFUL_HEADROOM`: Structured English 7/16, current HML 7/16,
+S-expression 5/16, and JSON AST 3/16 (six malformed).
+
+The mandatory raw-output inspection invalidated that reading. Structured English and current
+HML emitted choice `A` on all 16 tasks and agreed on all 16 task-level choices. Their 7/16
+score exactly equals the always-A baseline; the stronger always-B baseline is 9/16. No control
+beat that constant-position baseline. S-expression chose A on 14/16; JSON AST produced ten As
+and six malformed responses. Thus the solver did not demonstrate that it read the represented
+mathematics or alternatives.
+
+Scientific verdict: **`MODEL_FITNESS_BENCHMARK_INVALID`**. Tier 2A, Tier 2B, landscape model
+metrics, and matched adaptation were not run. This invalidates the frozen Gemma-3-4B/task
+interface, not the general possibility of representation fitness. The task-level evidence is
+preserved in `artifacts/reports/fitness-calibration.json`; the decision is in
+`artifacts/reports/experiment-decision.json`.
 
 ## Question and stopping discipline
 

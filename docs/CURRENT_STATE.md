@@ -81,3 +81,13 @@ The local machine is adequate for deterministic canonical generation, thousands 
 candidates, fuzzing, SymPy/Z3 differential checks, small Ollama scouts, and a lightweight
 surrogate. It cannot by itself establish cross-model representation-level superiority or run
 a credible 1M-trajectory training programme. Arena must be allowed to finish with no R*.
+
+## Representation-fitness continuation
+
+- Branch: `codex/arena-v0-fitness`; pre-evaluation specification commit: `f17bb0f`.
+- Executable mutation population: 120/120 Gate-0 survivors, zero dead semantic candidates.
+- Calibration: 64 task/control cells on frozen local Gemma 3 4B; task-level cache retained.
+- Instrument verdict: `INSTRUMENT_INVALID_POSITION_ONLY`. Structured English and current HML
+  were identical always-A policies; no control beat the best constant option-position policy.
+- Tier 2A/Tier 2B/matched adaptation: not run by the frozen stop rule.
+- Current scientific sentinel: `MODEL_FITNESS_BENCHMARK_INVALID`.
