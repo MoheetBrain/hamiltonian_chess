@@ -1,0 +1,26 @@
+PROVENANCE {"torch": "2.9.1+cu129", "transformers": "5.15.0", "cuda": "12.9", "gpu": "NVIDIA A100-SXM4-80GB", "gpu_count": 1, "bf16_supported": true, "peft": "0.20.0"}
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+loading base model Qwen/Qwen2.5-7B-Instruct (7s)
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files:  25%|██▌       | 1/4 [01:28<04:24, 88.20s/it]Fetching 4 files:  50%|█████     | 2/4 [01:31<01:16, 38.25s/it]Fetching 4 files:  75%|███████▌  | 3/4 [01:33<00:21, 21.50s/it]Fetching 4 files: 100%|██████████| 4/4 [01:34<00:00, 13.64s/it]Fetching 4 files: 100%|██████████| 4/4 [01:34<00:00, 23.66s/it]
+Loading weights:   0%|          | 0/339 [00:00<?, ?it/s]Loading weights:   0%|          | 1/339 [00:00<01:37,  3.48it/s]Loading weights:   1%|          | 2/339 [00:00<01:38,  3.41it/s]Loading weights:   5%|▍         | 16/339 [00:00<00:10, 31.79it/s]Loading weights:   8%|▊         | 28/339 [00:00<00:06, 45.32it/s]Loading weights:  12%|█▏        | 41/339 [00:01<00:04, 60.26it/s]Loading weights:  16%|█▌        | 53/339 [00:01<00:04, 69.53it/s]Loading weights:  19%|█▉        | 65/339 [00:01<00:03, 76.20it/s]Loading weights:  23%|██▎       | 77/339 [00:01<00:03, 81.14it/s]Loading weights:  26%|██▌       | 87/339 [00:01<00:03, 80.24it/s]Loading weights:  30%|██▉       | 101/339 [00:01<00:02, 88.42it/s]Loading weights:  33%|███▎      | 113/339 [00:01<00:02, 89.90it/s]Loading weights:  37%|███▋      | 125/339 [00:01<00:02, 91.04it/s]Loading weights:  40%|████      | 137/339 [00:02<00:02, 91.77it/s]Loading weights:  44%|████▍     | 149/339 [00:02<00:02, 92.09it/s]Loading weights:  47%|████▋     | 161/339 [00:02<00:01, 92.35it/s]Loading weights:  51%|█████     | 173/339 [00:02<00:01, 92.55it/s]Loading weights:  55%|█████▍    | 185/339 [00:02<00:01, 92.71it/s]Loading weights:  58%|█████▊    | 197/339 [00:02<00:01, 92.73it/s]Loading weights:  62%|██████▏   | 209/339 [00:02<00:01, 92.46it/s]Loading weights:  65%|██████▌   | 221/339 [00:02<00:01, 92.43it/s]Loading weights:  69%|██████▊   | 233/339 [00:03<00:01, 92.70it/s]Loading weights:  72%|███████▏  | 245/339 [00:03<00:01, 92.58it/s]Loading weights:  76%|███████▌  | 256/339 [00:03<00:00, 90.01it/s]Loading weights:  79%|███████▉  | 268/339 [00:03<00:00, 90.64it/s]Loading weights:  83%|████████▎ | 281/339 [00:03<00:00, 93.55it/s]Loading weights:  86%|████████▋ | 293/339 [00:03<00:00, 93.28it/s]Loading weights:  90%|████████▉ | 304/339 [00:03<00:00, 90.57it/s]Loading weights:  94%|█████████▎| 317/339 [00:03<00:00, 93.60it/s]Loading weights:  97%|█████████▋| 329/339 [00:04<00:00, 93.30it/s]Loading weights: 100%|██████████| 339/339 [00:04<00:00, 81.40it/s]
+base model ready (107s), revision a09a35458c702b33eeacc393d103063234e8bc28
+
+=== STAGE A: 5 arms x 224 examples
+[stage_a] L0_STRUCTURED_ENGLISH   exact 0.938  schema 1.000  verified 1.000  tokens 101850  loss 0.0047  (171s)
+[stage_a] L1_CURRENT_HML          exact 0.896  schema 1.000  verified 1.000  tokens 103642  loss 0.0072  (234s)
+[stage_a] L2_SEXPR                exact 0.833  schema 1.000  verified 1.000  tokens 130507  loss 0.0115  (304s)
+[stage_a] L3_JSON_AST             exact 0.979  schema 1.000  verified 1.000  tokens 101920  loss 0.0042  (366s)
+[stage_a] L5_COMPACT_SYMBOLIC     exact 0.958  schema 1.000  verified 1.000  tokens 94080  loss 0.0065  (427s)
+
+Stage A leader 0.979; survivors ['L3_JSON_AST', 'L5_COMPACT_SYMBOLIC', 'L0_STRUCTURED_ENGLISH']
+
+=== STAGE B: 3 arms x 576 examples
+[stage_b] L3_JSON_AST             exact 1.000  schema 1.000  verified 1.000  tokens 262516  loss 0.0002  (529s)
+[stage_b] L5_COMPACT_SYMBOLIC     exact 1.000  schema 1.000  verified 1.000  tokens 242356  loss 0.0002  (627s)
+[stage_b] L0_STRUCTURED_ENGLISH   exact 0.958  schema 1.000  verified 1.000  tokens 262339  loss 0.0002  (729s)
+
+=== STAGE C: ['L3_JSON_AST', 'L5_COMPACT_SYMBOLIC'] on the fresh slice
+[stage_c] L3_JSON_AST             exact 1.000  schema 1.000  verified 1.000  tokens 262516  loss 0.0002  (832s)
+[stage_c] L5_COMPACT_SYMBOLIC     exact 1.000  schema 1.000  verified 1.000  tokens 242356  loss 0.0002  (930s)
+
+wrote gpu_sprint_results.json after 930s
