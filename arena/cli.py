@@ -11,6 +11,8 @@ from rich.console import Console
 from rich.table import Table
 
 from arena.compiler.projection import ObservationKind, project_state_for_observation
+from arena.experiments.fitness_v1 import materialize_artifacts, materialize_population
+from arena.experiments.model_fitness import experiment_status, run_calibration
 from arena.languages.registry import get_language, seed_languages
 from arena.pipeline import ArenaRuntime
 from arena.players.solver import SolverRequest
@@ -22,6 +24,11 @@ app = typer.Typer(no_args_is_help=True, help="Evidence-first mathematical-langua
 worlds_app = typer.Typer(no_args_is_help=True, help="Build and validate canonical worlds.")
 languages_app = typer.Typer(no_args_is_help=True, help="Manage executable seed languages.")
 candidate_app = typer.Typer(no_args_is_help=True, help="Create and inspect candidates.")
+candidates_app = typer.Typer(no_args_is_help=True, help="Inspect fitness-v1 candidates.")
+mutations_app = typer.Typer(no_args_is_help=True, help="Materialize executable mutations.")
+fitness_app = typer.Typer(no_args_is_help=True, help="Run frozen-model fitness experiments.")
+landscape_app = typer.Typer(no_args_is_help=True, help="Inspect representation landscapes.")
+experiment_app = typer.Typer(no_args_is_help=True, help="Inspect the frozen experiment.")
 league_app = typer.Typer(no_args_is_help=True, help="Run the multi-objective candidate league.")
 curriculum_app = typer.Typer(no_args_is_help=True, help="Control information acquisition.")
 training_app = typer.Typer(no_args_is_help=True, help="Run explicit model experiments.")
@@ -30,6 +37,11 @@ rstar_app = typer.Typer(no_args_is_help=True, help="Apply the fail-closed R*-V0 
 app.add_typer(worlds_app, name="worlds")
 app.add_typer(languages_app, name="languages")
 app.add_typer(candidate_app, name="candidate")
+app.add_typer(candidates_app, name="candidates")
+app.add_typer(mutations_app, name="mutations")
+app.add_typer(fitness_app, name="fitness")
+app.add_typer(landscape_app, name="landscape")
+app.add_typer(experiment_app, name="experiment")
 app.add_typer(league_app, name="league")
 app.add_typer(curriculum_app, name="curriculum")
 app.add_typer(training_app, name="training")
@@ -95,6 +107,73 @@ def candidate_create(
     _json(_runtime().mutate(parent, count=1, seed=seed))
 
 
+@mutations_app.command("materialize")
+def mutations_materialize() -> None:
+    """Materialize the frozen one-gene population and run semantic Gate 0."""
+
+    _json(materialize_artifacts(Path.cwd()))
+
+
+@candidates_app.command("list")
+def candidates_list() -> None:
+    """List the executable fitness-v1 mutation population."""
+
+    _json([candidate.to_dict() for candidate in materialize_population()])
+
+
+@fitness_app.command("calibrate")
+def fitness_calibrate() -> None:
+    """Run the bounded permanent-control headroom calibration."""
+
+    _json(run_calibration(Path.cwd()))
+
+
+@fitness_app.command("scout")
+def fitness_scout(tier: str = typer.Option("2a", help="2a or 2b.")) -> None:
+    """Run a scout only when the preceding frozen gate authorizes it."""
+
+    if tier not in {"2a", "2b"}:
+        raise typer.BadParameter("tier must be 2a or 2b")
+    current = experiment_status(Path.cwd())
+    if not current.get("benchmark_valid", False):
+        _json({**current, "requested_tier": tier, "run": False})
+        raise typer.Exit(2)
+    _json(
+        {
+            **current,
+            "requested_tier": tier,
+            "run": False,
+            "reason": "scout runner is reached only after calibration authorization",
+        }
+    )
+    raise typer.Exit(2)
+
+
+@fitness_app.command("decision")
+def fitness_decision() -> None:
+    """Show the current frozen decision gate."""
+
+    _json(experiment_status(Path.cwd()))
+
+
+@landscape_app.command("report")
+def landscape_report() -> None:
+    """Open or report the landscape artifact only if Tier 2 produced one."""
+
+    path = Path.cwd() / "artifacts" / "reports" / "representation-landscape.json"
+    if not path.exists():
+        _json({"status": "NOT_REACHED", "reason": "Tier 2 landscape evidence does not exist"})
+        raise typer.Exit(2)
+    _json(json.loads(path.read_text(encoding="utf-8")))
+
+
+@experiment_app.command("status")
+def experiment_status_command() -> None:
+    """Show the representation-fitness experiment state and next legal action."""
+
+    _json(experiment_status(Path.cwd()))
+
+
 @app.command("mutate")
 def mutate(
     parent: str = typer.Option(..., "--parent", help="Parent candidate ID."),
@@ -157,12 +236,27 @@ def curriculum_evolve() -> None:
 
 @training_app.command("scout")
 def training_scout(
-    model: str = typer.Option(..., help="Exact local Ollama model name."),
+    model: str | None = typer.Option(None, help="Exact local Ollama model name."),
     candidate_id: str = typer.Option("L5_COMPACT_SYMBOLIC", "--candidate"),
     count: int = typer.Option(4, min=1, max=64),
     seed: int = typer.Option(0),
+    examples: int | None = typer.Option(None, min=1, help="Matched-adaptation example budget."),
 ) -> None:
     """Run an explicitly labelled frozen-model acquisition scout."""
+
+    if examples is not None:
+        current = experiment_status(Path.cwd())
+        _json(
+            {
+                **current,
+                "requested_examples": examples,
+                "run": False,
+                "reason": "matched adaptation requires a passed representation-signal gate",
+            }
+        )
+        raise typer.Exit(2)
+    if model is None:
+        raise typer.BadParameter("--model is required for the legacy acquisition scout")
 
     language = get_language(candidate_id)
     world = build_world_v0(total=max(13, count), seed=seed)
@@ -192,6 +286,38 @@ def training_scout(
         f"reports/scout-{candidate_id}-{seed}.json", result
     )
     _json({**result, "artifact": str(artifact.path)})
+
+
+@training_app.command("prepare")
+def training_prepare() -> None:
+    """Prepare matched data only after the representation-signal gate passes."""
+
+    current = experiment_status(Path.cwd())
+    _json(
+        {
+            **current,
+            "run": False,
+            "reason": "matched data preparation is gated on reproducible Tier 2 signal",
+        }
+    )
+    raise typer.Exit(2)
+
+
+@training_app.command("promote")
+def training_promote(
+    examples: int = typer.Option(5000, min=1, help="Matched promotion example budget."),
+) -> None:
+    """Promote matched arms only after a competitive 1K result."""
+
+    _json(
+        {
+            **experiment_status(Path.cwd()),
+            "requested_examples": examples,
+            "run": False,
+            "reason": "5K promotion requires an ambiguous competitive matched-1K result",
+        }
+    )
+    raise typer.Exit(2)
 
 
 @app.command("finalists")
