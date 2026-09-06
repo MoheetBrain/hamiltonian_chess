@@ -2,179 +2,188 @@
 
 ## Project Objective
 
-`GOAL.md` is the permanent objective and outranks this document: discover whether a reversible
-mathematical representation can make a matched solver policy materially better than strong
-controls without weakening semantic fidelity. The optimisation is lexicographic — soundness,
-then coverage, then model learnability and verified-action quality, then efficiency. Current
-HML is one seed, not the objective, and zero-shot familiarity is not evidence.
+`GOAL.md` (SHA-256 `43d8fcdb5db39b1841b9f620d939e13c47014d98ecba0d09fdd84f699d20117b`, unmodified)
+is the permanent objective. Hamiltonian Arena tests whether the representation of mathematics
+shown to an AI is a causal determinant of its verified mathematical capability, holding
+canonical truth, projection policy, tokenizer, solver, controller, tasks, tools, verifier and
+budget fixed. The first controlled game is **Game R**: vary only the representation `R`.
+Neither HML nor any custom language is assumed to win; "strong generic representations remain
+unbeatable" is a valid outcome.
 
 ## Current Stage
 
-`TIER2_MATCHED_ADAPTATION_FIRST_RUN`. The first genuinely matched Tier-2 adaptation has been
-executed on real GPU hardware across five representation surfaces. Before this run the arena
-had contracts for matched adaptation (`arena/training/matched_adaptation.py`) but **no
-executable runner**, so Day 3 of `docs/FOUR_DAY_SPRINT.md` could not be evidenced.
+`FITNESS_V4_PREREGISTERED`. Fitness V3 is `EXPERIMENT_INVALID` and its invalidation has been
+diagnosed to a specific instrument defect (input truncation at `num_ctx=8192`). Fitness V4 — a
+Game-R structural-ladder instrument with per-mechanism qualification and a context guard — is
+implemented, tested, and preregistered in `docs/FITNESS_V4_SPEC.md`. No V4 model call has been
+made at this commit.
 
 ## Current Branch
 
-`codex/arena-v0-fitness`, which descends from `codex/arena-v0`. The sprint was requested
-against `codex/arena-v0`; work was committed on the fitness branch instead because it carried
-pre-existing uncommitted `fitness_v2` changes that a checkout would have disturbed. This is a
-deliberate deviation and is recorded here rather than silently resolved.
+Work is on the worktree branch `claude/hamiltonian-arena-takeover-caa2eb`, created from
+`codex/arena-v0-fitness` at `39952276a24462be8d0c8bce58bc3d106fd1dd2c` (the GOAL freeze
+commit, identical to `origin/codex/arena-v0-fitness`). The intent is a fast-forward push to
+`codex/arena-v0-fitness` at the end of the takeover; no force push.
 
 ## Current System Architecture
 
-Unchanged by this work. Canonical truth is the frozen 676-task Arena World v0 with a typed
-term schema and stable hashes; eight executable seed languages implement a strict
-`render(CanonicalState) -> str` / `parse(str) -> CanonicalState` pair; verifiers are physics
-rather than players. This session added a training layer only:
+| Variable | Implementation |
+|---|---|
+| Σ canonical truth | `arena/canonical/schema.py` (`arena-canonical-v0.1.0`); Gold world v0 `arena/tasks/generators/world_v0.py`, 676 tasks / 13 domains, frozen |
+| P projection | `arena/model_view/genome.py` (`ContentGenome`, six Track-C genes) and `projection.py`; fixed at default / Track E during Game R |
+| R representation | `arena/genome/schema.py` (14 genes), `arena/genome/seeds.py` (8 seeds), lossless codec `arena/languages/phenotype.py`, `ModelViewCompiler` in `arena/model_view/compiler.py` |
+| τ tokenizer | Gemma 4 via Ollama, implicit |
+| π solver | `gemma4:12b` digest `4eb23ef1…` (qualified in V2) |
+| C controller | single greedy JSON A/B response, no search |
+| D tasks | V2 counterfactual probes over Gold; V3 and V4 synthetic mechanism families (not Gold) |
+| U tools | none |
+| V verifier | `arena/verifier/native.py` plus SymPy/Z3/numeric adapters; generator oracles per probe |
+| B budget | Ollama runtime config; V4 raises `num_ctx` to 32768 with a prompt-token guard |
 
-- `arena/training/prepare_matched_data.py` — renders matched NEXT_ACTION datasets and builds a
-  disjoint, domain-stratified train/dev/fresh split.
-- `arena/training/gpu_matched_runner.py` — the explicit Tier-2 runner. Reloads one identical
-  base checkpoint per arm, trains LoRA under a fixed configuration, evaluates by generation,
-  and enforces a wall-clock deadline.
-- `arena/training/analyse_sprint.py` — paired bootstrap and Wilson intervals over per-item
-  outcomes.
+Experiments: `arena/experiments/fitness_v1.py` (invalid, position policy), `fitness_v2.py`
+(qualified, insufficient headroom), `fitness_v3.py` (invalid, truncation + ceiling),
+`fitness_v4.py` (preregistered). Training: `arena/training/` (matched LoRA runner, A100
+sprint). League, curriculum, refuter, architect, assurance and storage packages are unchanged
+since v0.
 
 ## Capabilities Implemented
 
-Everything previously implemented, plus: executable matched short adaptation with recorded
-model provenance, successive halving with a pre-declared rule, and paired per-item statistics
-over the results.
+Everything from Arena v0 through Phase 3 (see `docs/FINAL_GPT_HANDOFF.md`), plus this
+takeover's V4 instrument:
+
+- five structural mechanisms with five-level difficulty ladders, each with an independent
+  truth re-derivation (tree walk, ancestor closure, lexical scope resolver, subset check,
+  content-hash set difference);
+- six-probe families (original, counterfactual, two byte-identical destroyed twins with
+  opposite targets, two position swaps) with balanced answer targets;
+- preregistered DEV-only frontier selection and per-mechanism qualification with explicit
+  void codes; aggregate pooling is never used to qualify;
+- a representation-neutral pre-inference shortcut audit (adapted from HML_V3
+  `micromath/shortcut_v2.py`), symmetric so a rule at 0% is treated as the same leak as 100%;
+- a context guard that refuses to send over-budget prompts, detects the truncation signature
+  on returned token counts, and voids an over-budget probe for every candidate;
+- Game-R enforcement: any Track-C or non-default content genome is rejected at prompt time;
+  information parity (identical recovered canonical hash, distinct bytes) is asserted for every
+  SCOUT probe across all eight founders at freeze;
+- paired founder statistics: exact sign test, Holm correction, clustered (family) paired
+  bootstrap, per-mechanism win/loss/tie, practical-effect and equivalence flags.
+
+## Work Completed to Date
+
+- Arena v0 (`c1dd586`): canonical world, eight seeds, assurance, league, CLI.
+- V1 (`f17bb0f`…`22cab97`): invalidated, solver chose by position.
+- V2 (`99c877f`, `9832982`): qualified `gemma4:12b`; 12.5-point control range below the 15-point
+  headroom rule; stopped.
+- A100 matched sprint (`bf8838b`): five-arm LoRA; `WEAK_CONTINUE`; task saturated; S-expression
+  penalty only.
+- `assert_matched_semantics` fail-closed fix (`a4f7d7f`).
+- Phase 3 (`9616654`, `b85f98f`): dual-layer model view, six content genes, V3 instrument,
+  12-founder/432-call tournament, `EXPERIMENT_INVALID`.
+- GOAL freeze (`3995227`).
+- This takeover: V3 diagnosis from committed rows and Ollama logs; V4 instrument, tests, and
+  preregistration; status/state/ledger reconciliation.
+
+## Important Files and Artifacts
+
+- `GOAL.md` — frozen objective.
+- `docs/FITNESS_V4_SPEC.md` — preregistration (this commit).
+- `docs/GAME_R_STATUS.md` — Game-R gate tracker.
+- `docs/CURRENT_STATE.md` — reconciled state.
+- `docs/FINAL_GPT_HANDOFF.md` — Phase 3 handoff (historical, accurate for V3).
+- `artifacts/experiments/fitness_v3/` — frozen V3 manifest, DEV result, founder result,
+  `invalidity.json`; immutable.
+- `artifacts/experiments/fitness_v4/` — will hold `development/result.json`,
+  `frozen_manifest.json`, `founders/result.json`; absent at this commit.
+- `artifacts/cache/fitness_v4/` — ignored model-call cache keyed by experiment, instrument,
+  model digest, runtime hash, genome hash, probe hash and prompt hash.
+
+## Data Sources and Provenance
+
+- Gold world v0: deterministic generator, seed 0, unchanged.
+- V4 DEV pool: 5 mechanisms × 5 levels × 6 families × 6 probes = 900 probes, hash
+  `0a45154c532a1a61ef77cf107d4d6bc957cb0be46f4719912b784605043dba05`, generated from
+  `EXPERIMENT_SEED=20260907`; no model involvement in any truth.
+- `expression_depth_recurrence` adapts HML_V3 `src/hml_v3/projection/dense.py`
+  (`MoheetBrain/HML_V3`, `codex/open-ended-search-v2`, local HEAD
+  `95e8a26f6519f226a149f4d7507d47f90bea9932`): hashed per-level association, pinned runner-up,
+  truth by walk. The code was reimplemented over Arena `CanonicalExpression`; no HML_V3 data
+  or score is imported.
+- Shortcut audit adapts HML_V3 `src/hml_v3/micromath/shortcut_v2.py` rules.
+- No historical hidden data, prior score or trained adapter enters V4.
+
+## Decisions and Rationale
+
+- **V3 is not repaired in place.** Its artifacts are immutable; V4 is a new version with new
+  salts, a new runtime hash and new artifact paths.
+- **`num_ctx` is raised to 32768.** The V3 floor was input truncation; the budget variable `B`
+  must be large enough for every founder to be read in full, otherwise the instrument measures
+  token cost, not reading. Token cost is still reported separately.
+- **Difficulty comes from structure, not clutter.** HML_V3's 32-cell factorial found external
+  clutter null and identity recurrence causal; V4 ladders vary depth/recurrence, hops, rebinds,
+  premise count and delta size, with distractor objects held at four.
+- **Per-mechanism qualification with an explicit-positive level.** This is the exact defect
+  that invalidated V3 (aggregate pooling of ceilings and a floor).
+- **Track-C genes are excluded from Game R.** They remain implemented for Game P.
+- **Route A before Route B.** Zero-shot structural headroom is testable locally now; learning
+  curves need GPU and must be earned by a founder signal.
+- **Practical effect (≥ 0.10 paired delta) is a promotion requirement**, in addition to Holm
+  significance and minimum net wins, so statistical significance alone cannot promote.
 
 ## Verification and Test Results
 
-**Matching, verified before any GPU time was purchased.**
+Executed in this worktree at this commit:
 
-- `assert_matched_semantics` PASS over 5 arms x 676 canonical trajectories.
-- Target hashes identical across all five arms on every split.
-- Input hashes distinct across all five arms — no two surfaces produced the same bytes.
-- Split 580 train / 48 dev / 48 fresh, disjoint and domain-stratified across 13 domains.
-
-**Hardware and software provenance, recorded by the runner itself.**
-
-| Field | Value |
-|---|---|
-| GPU | NVIDIA A100-SXM4-80GB |
-| Driver / CUDA | 580.173.02 / 13.0 (torch reports 12.9) |
-| torch | 2.9.1+cu129 |
-| transformers | 5.15.0 |
-| peft | 0.20.0 |
-| Base model | `Qwen/Qwen2.5-7B-Instruct` |
-| Base revision | `a09a35458c702b33eeacc393d103063234e8bc28` |
-| Tokenizer | `Qwen/Qwen2.5-7B-Instruct` |
-
-**Adaptation configuration, identical for every arm.** LoRA r=16, alpha=32, dropout 0.0,
-targets `q_proj,k_proj,v_proj,o_proj`; AdamW at 1e-4; seed 0; batch 4; context 1536; bf16;
-`BudgetMode.EXAMPLE_MATCHED`. The base `state_dict` is cloned once and restored before each
-arm, so no arm starts from another arm's weights.
-
-**Stage A — all five arms, 224 matched training examples, 48 dev items.**
-
-| Arm | Exact | Schema valid | Verified | Train tokens | Final loss |
-|---|---|---|---|---|---|
-| L3_JSON_AST | 0.979 | 1.000 | 1.000 | 101,920 | 0.0042 |
-| L5_COMPACT_SYMBOLIC | 0.958 | 1.000 | 1.000 | **94,080** | 0.0065 |
-| L0_STRUCTURED_ENGLISH | 0.938 | 1.000 | 1.000 | 101,850 | 0.0047 |
-| L1_CURRENT_HML | 0.896 | 1.000 | 1.000 | 103,642 | 0.0072 |
-| L2_SEXPR | 0.833 | 1.000 | 1.000 | **130,507** | 0.0115 |
-
-Survivors under the pre-declared rule: L3_JSON_AST, L5_COMPACT_SYMBOLIC, L0_STRUCTURED_ENGLISH.
-
-**Stage B — top three, 576 matched training examples, same 48 dev items.**
-
-| Arm | Exact | 95% CI | Train tokens | Final loss |
-|---|---|---|---|---|
-| L3_JSON_AST | 1.000 | [0.926, 1.000] | 262,516 | 0.0002 |
-| L5_COMPACT_SYMBOLIC | 1.000 | [0.926, 1.000] | 242,356 | 0.0002 |
-| L0_STRUCTURED_ENGLISH | 0.958 | [0.860, 0.988] | 262,339 | 0.0002 |
-
-**Stage C — top two, 576 examples, the 48-item fresh slice never used for selection.**
-Both L3_JSON_AST and L5_COMPACT_SYMBOLIC scored **1.000**, paired delta exactly +0.0000
-with a 95% interval of [+0.0000, +0.0000].
-
-**Paired comparisons against the strongest control (paired on identical canonical items).**
-
-Stage A, best control L3_JSON_AST at 0.979:
-
-| Arm | Delta | 95% CI | Verdict |
-|---|---|---|---|
-| L5_COMPACT_SYMBOLIC | -0.0208 | [-0.0625, +0.0000] | contains zero |
-| L0_STRUCTURED_ENGLISH | -0.0417 | [-0.1250, +0.0417] | contains zero |
-| L1_CURRENT_HML | -0.0833 | [-0.1875, +0.0000] | contains zero |
-| L2_SEXPR | **-0.1458** | **[-0.2500, -0.0625]** | **excludes zero** |
-
-**Learning curve at Stage A** (final training loss, spanning 2.7x): JSON_AST 0.0042,
-STRUCTURED_ENGLISH 0.0047, COMPACT_SYMBOLIC 0.0065, CURRENT_HML 0.0072, SEXPR 0.0115. The
-loss ordering reproduces the accuracy ordering except for one adjacent swap.
-
-**Output cost and latency are effectively identical across arms** — 99.4–100.1 mean output
-tokens and 0.766–0.779 s per item — so no arm wins or loses on inference cost here.
-
-### Verdict
-
-`FITNESS_LANDSCAPE: NON_FLAT`, `DECISION: WEAK_CONTINUE`.
-
-The landscape is not flat: the Stage A spread is 0.146, the learning curves separate by 2.7x
-and reproduce the accuracy ordering, and L2_SEXPR is decisively worse than the best control
-with an interval excluding zero. But the only decisive separation is a **penalty on
-S-expression, not an advantage for any candidate**. The four remaining arms are statistically
-indistinguishable, and the compactness frontier L5_COMPACT_SYMBOLIC never leads: it trails
-L3_JSON_AST by 0.021 at Stage A and ties it at ceiling in Stages B and C. What L5 does own is
-efficiency — the lowest token count in every stage (1.00x against 1.08x–1.39x) at
-indistinguishable accuracy.
-
-`STRONG_CONTINUE` is not available: no non-control representation shows a substantial paired
-advantage over the strongest control at any stage.
+- `.venv/bin/python -m pytest -q` — **185 passed** (144 pre-existing + 41 new V4 tests).
+- `.venv/bin/ruff check .` — All checks passed.
+- `.venv/bin/ruff format --check .` — 179 files already formatted.
+- `.venv/bin/mypy arena` — Success: no issues found in 111 source files.
+- `python -m arena.experiments.fitness_v4 materialize` — 150 families / 900 probes, hash
+  above, shortcut audit CLEAN (worst rule 0.567).
+- `python -m arena.experiments.fitness_v3 status` — `EXPERIMENT_INVALID` (unchanged).
+- Truncation diagnosis: one JSON-AST state-delta prompt re-sent at `num_ctx=8192` returned
+  prose with `prompt_eval_count=4099`; at `num_ctx=32768` it returned `{"choice":"A"}` with
+  `prompt_eval_count=15611`.
+- Canonical validation and the assurance suite were **not** re-run in this session; no
+  canonical, verifier or language-surface code was changed.
 
 ## Known Failures and Limitations
 
-- **The task saturates under adaptation, and this is the dominant limitation.** Every arm
-  exceeded 0.83 exact match at the small budget and the leader reached **1.000** at the larger
-  budget. An instrument at its ceiling cannot rank representations, so Stage B is
-  uninformative by construction and any real signal lives in sample efficiency at low budget,
-  not in ceiling accuracy. This is the same failure class `docs/CLAUDE_HANDOFF.md` records for
-  the V2 calibration headroom gate.
-- **48 evaluation items.** One item is 2.1 percentage points. Differences at the top of the
-  table are inside the noise band and the paired intervals say so.
-- **One model, one seed, one configuration, no replication.** Nothing here generalises to
-  another base model or another task without being re-measured.
-- **`assert_matched_semantics` was vacuously true on an empty mapping — FIXED.** It accepted
-  a zero-arm dataset during development. It now fails closed on fewer than two surfaces, an
-  empty arm, mismatched lengths, and two surfaces rendering byte-identical inputs. All six
-  degenerate cases were verified to raise, and the real five-arm pipeline still passes.
-- **"Verified transition rate" is a well-formedness check**, not oracle acceptance: it tests
-  that the emitted action carries `action_id`, `operation` and `arguments`. It must not be
-  read as a claim that the action is mathematically optimal.
-- The repository's own test suite was not run in this session.
+- V3's only favourable signal (Compact Symbolic on state delta) is a context-budget artifact;
+  it is not evidence for or against any representation.
+- V4 has made no model call yet; every ladder level may still turn out ceiling or floor for
+  `gemma4:12b`. That outcome is a valid instrument result and voids the mechanism.
+- One local model, one digest, one seed. Nothing generalises to another Solver family without
+  re-measurement; HML_V3's cross-reader replication failure (`PATH_TO_ROOT`) is the standing
+  warning.
+- SCOUT is a large-effect scout (≈ +0.20 paired advantage at 80 positives under Holm).
+- The Ollama server has no tokenizer endpoint; the context guard is character-based before the
+  call and token-count-based after it.
 
 ## Risks and Technical Debt
 
-- The runner keeps a full bf16 copy of the base `state_dict` in memory to guarantee identical
-  restarts. This is correct but costs roughly 15 GB and would not fit a smaller GPU.
-- Evaluation decodes with greedy generation and a 192-token cap; a target longer than that
-  would be scored wrong for a reason unrelated to representation.
-- No token/compute-matched confirmation was run, so every statement here is example-matched
-  only.
+- `arena/experiments/fitness_v3.py` keeps `num_ctx=8192` for reproducibility of the invalid
+  run; it must not be reused for new measurements.
+- V2's `RUNTIME_CONFIG` is imported by V3; V4 defines its own. The three runtimes differ only in
+  `num_ctx` and are distinguished by runtime hash.
+- Prompt length is dominated by the JSON/typed-AST rendering of `CanonicalExpression` trees;
+  L4 of `expression_depth_recurrence` and `state_delta` may approach 10–15K tokens for verbose
+  surfaces. They remain within the 32K budget but are slow (≈ 15 s per call).
+- The docs `PROJECT_STATUS.md` and `PROJECT_LEDGER.md` lagged three commits behind the code at
+  takeover (the Phase-3 commits were made outside the ledger protocol); this commit
+  re-synchronises them.
 
 ## Current Blockers
 
-`R*-V0` remains unfrozen. `docs/RSTAR_RELEASE.md` gates are unchanged by this work and were
-not re-run; nothing in this session licenses a freeze.
+None for running DEV. The founder tournament is blocked until DEV qualifies at least two
+mechanisms and the frozen manifest is committed.
 
 ## Exact Next Actions
 
-1. **Rebuild the instrument for headroom before running more adaptation.** A task the base
-   model solves at 1.000 after 576 examples cannot rank representations. Either evaluate at
-   much smaller budgets where the spread exists, or construct a harder NEXT_ACTION slice.
-2. **Replicate the Stage A ordering** at a second seed before treating it as real; the spread
-   is 0.146 across five arms on 48 items.
-3. **Run the token/compute-matched confirmation** for the top two arms. S-expression consumed
-   1.39x the tokens of the compact symbolic arm and still scored last; that asymmetry is worth
-   a direct test.
-4. **Do not build the evolutionary search engine on this evidence alone.** The decision rule
-   and the measured verdict are in the ledger entry for this session.
-5. **Leave the assurance and release gates alone.** No canonical schema, world, language
-   surface or verifier was touched by this work and none should be, to make a fitness number
-   move.
+1. `python -m arena.experiments.fitness_v4 develop` — control-only ladder and qualification
+   (≤ 800 calls). Record per-mechanism verdicts in `docs/GAME_R_STATUS.md`.
+2. If ≥ 2 mechanisms qualify: `freeze`, commit the manifest, then `founders` with the frozen
+   commit SHA (≤ 2,400 calls).
+3. If < 2 qualify: record `FITNESS_V4_NOT_QUALIFIED`, redesign ladders under a new instrument
+   version, do not run founders.
+4. After founders: `docs/GAME_R_FOUNDER_TOURNAMENT.md`, `docs/REPRESENTATION_LANDSCAPE.md`,
+   `docs/CLAUDE_FINAL_HANDOFF.md`; push.

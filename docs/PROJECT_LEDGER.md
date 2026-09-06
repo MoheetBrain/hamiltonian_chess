@@ -115,3 +115,69 @@ nothing. This does not change any measured result.
 
 **Next intended step.** Governed by the HML kill gate: the arena headroom rebuild proceeds
 only if `PATH_TO_ROOT` replicates across two readers.
+
+---
+
+## 2026-09-06 — Takeover: V3 invalidation diagnosed, Fitness V4 preregistered
+
+**Date and time.** 2026-09-06, evening, Europe/London. **Branch.**
+`claude/hamiltonian-arena-takeover-caa2eb` (worktree from `codex/arena-v0-fitness` at
+`3995227`). **Project stage.** `EXPERIMENT_INVALID` (V3) → `FITNESS_V4_PREREGISTERED`.
+
+**Objective of the change.** Build a valid, discriminating, versioned Game-R fitness instrument
+that fixes the exact failure of V3, and preregister it before any model call.
+
+**Files and systems changed.** New: `arena/experiments/fitness_v4.py`,
+`tests/experiments/test_fitness_v4.py`, `docs/FITNESS_V4_SPEC.md`, `docs/GAME_R_STATUS.md`.
+Rewritten: `docs/PROJECT_STATUS.md`, `docs/CURRENT_STATE.md`. Appended: this ledger. No
+canonical schema, world generator, verifier, language surface, V1/V2/V3 code or artifact was
+touched. `GOAL.md` hash verified equal to `43d8fcdb…20117b` and not modified.
+
+**What was completed.**
+
+- Full read of `GOAL.md`, every listed doc, and all source areas; reconciliation of docs against
+  code, artifacts and git history. Found `PROJECT_STATUS.md`/`PROJECT_LEDGER.md` three commits
+  stale (Phase-3 commits were made outside the ledger protocol).
+- Diagnosis of V3 from its committed rows: every malformed row has `prompt_eval_count=4099`;
+  `~/.ollama/logs/server-*.log` shows `truncating input prompt limit=4099 prompt=17072`. The
+  JSON-AST state-delta prompt is ≈15.6K tokens against `num_ctx=8192`. The state-delta "floor",
+  the complexity-2 "malformed" behaviour and Compact Symbolic's two wins were all context
+  truncation. Reproduced: same prompt at 8192 → prose; at 32768 → valid JSON.
+- Cross-repository check: HML_V3 local HEAD (`95e8a26`) has since closed its own static thesis
+  (`STATIC_REPRESENTATION_THESIS_V1: NOT SUPPORTED`): `PATH_TO_ROOT` failed a two-reader kill
+  gate and its original advantage was a bootstrap RNG defect (`FM-057`). Its replicated diagnostic
+  result (identity recurrence inside deep expressions causes reading collapse; external clutter
+  null) is adopted as V4's first mechanism. The previous Arena ledger entry conditioned the
+  headroom rebuild on `PATH_TO_ROOT` replicating; it did not replicate, but `GOAL.md` (frozen
+  later) makes Game R the binding first game, so V4 proceeds under GOAL rather than under HML_V3's
+  pivot, and this tension is recorded here rather than hidden.
+- V4 instrument: five mechanisms × five-level ladders, six-probe balanced families, independent
+  truth re-derivation per mechanism, DEV-only frontier selection, per-mechanism qualification with
+  void codes, symmetric shortcut audit, context guard, Game-R genome enforcement, information
+  parity assertion, paired founder statistics with Holm and clustered bootstrap.
+
+**Decisions made and why.** Recorded in `docs/PROJECT_STATUS.md` (Decisions and Rationale) and
+`docs/FITNESS_V4_SPEC.md` §3–§13. Key ones: new version rather than in-place V3 repair; `num_ctx`
+32768 because `B` must let every founder be read in full; structure not clutter as the difficulty
+axis; explicit-positive level per mechanism; Track-C excluded from Game R; Route A now, Route B
+deferred; practical effect required for promotion.
+
+**Tests and verification actually executed.**
+
+- `.venv/bin/python -m pytest -q` — 185 passed.
+- `.venv/bin/ruff check .` — All checks passed. `.venv/bin/ruff format --check .` — 179 files
+  already formatted. `.venv/bin/mypy arena` — no issues in 111 files.
+- `python -m arena.experiments.fitness_v4 materialize` — 150 families, 900 probes, hash
+  `0a45154c532a1a61ef77cf107d4d6bc957cb0be46f4719912b784605043dba05`, shortcut audit CLEAN.
+- Two diagnostic Ollama calls (above). No V4 DEV or founder call was made.
+- Canonical validation and assurance suite: not run (no relevant code changed).
+
+**Results.** Instrument built and preregistered. No fitness measurement exists yet under V4.
+
+**Failures or unresolved uncertainty.** Whether any V4 ladder level lands in the frontier band for
+`gemma4:12b` is unknown until DEV runs. Single model family throughout.
+
+**Effect on the overall project.** V3's invalidation now has a mechanistic explanation and a
+regression guard. The Game-R programme has a preregistered instrument with per-mechanism gates.
+
+**Next intended step.** Run `develop`; freeze and commit if ≥ 2 mechanisms qualify; then founders.
