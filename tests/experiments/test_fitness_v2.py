@@ -1,6 +1,9 @@
 from __future__ import annotations
 
 import json
+from pathlib import Path
+
+import pytest
 
 from arena.experiments.fitness_v2 import (
     ProbeSlice,
@@ -10,8 +13,10 @@ from arena.experiments.fitness_v2 import (
     build_probe_manifest,
     build_probe_prompt,
     derive_probe_family,
+    experiment_status_v2,
     parse_response,
     probes_for_slice,
+    run_tier2a,
     summarize_probe_rows,
     validate_probe_family,
 )
@@ -139,3 +144,24 @@ def test_metrics_reject_constant_policy_and_reward_semantic_reader() -> None:
     # Negative siblings have incompatible targets but a synthetic oracle row follows those
     # targets.  Qualification's Q1-Q2 test correctly rejects that non-natural construction.
     assert oracle["qualified"] is False
+
+
+def test_status_preserves_instrument_qualification_when_headroom_blocks_tier2(
+    tmp_path: Path,
+) -> None:
+    calibration = tmp_path / "artifacts/experiments/fitness_v2/calibration/result.json"
+    calibration.parent.mkdir(parents=True)
+    calibration.write_text(
+        json.dumps(
+            {
+                "instrument_valid": True,
+                "tier2a_authorized": False,
+                "verdict": "FITNESS_V2_CALIBRATION_INSUFFICIENT_HEADROOM",
+            }
+        )
+    )
+    status = experiment_status_v2(tmp_path)
+    assert status["sentinel"] == "FITNESS_V2_INSTRUMENT_QUALIFIED"
+    assert status["next_action"] == "redesign DEV calibration"
+    with pytest.raises(RuntimeError, match="not authorized"):
+        run_tier2a(tmp_path)

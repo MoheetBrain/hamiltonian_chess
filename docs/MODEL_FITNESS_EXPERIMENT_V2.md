@@ -141,6 +141,31 @@ Tier 2B uses only fresh PROMOTION probes. A Scout-to-Promotion Spearman correlat
 0.60 is required before matched 1K adaptation. Matched adaptation remains unimplemented and
 must not run without this gate.
 
+## Actual calibration outcome
+
+The post-freeze calibration made 192 fresh model calls (48 per control). All responses parsed.
+The negative-control target score was exactly 50% for every control, as required by the
+information-identical construction.
+
+| Control | Q1 | Q1-Q2 | Flip consistency | Position invariance | Qualified |
+|---|---:|---:|---:|---:|---|
+| Structured English | 87.5% | +37.5 pp | 75% | 75% | yes |
+| current HML | 75% | +25 pp | 50% | 75% | no |
+| S-expression | 81.25% | +31.25 pp | 62.5% | 81.25% | yes |
+| JSON AST | 87.5% | +37.5 pp | 75% | 75% | yes |
+
+This establishes a valid semantic-reading instrument: three permanent controls pass all
+qualification checks and every positive arm materially exceeds its destroyed control. It does
+not establish representation superiority. The Q1 range is 12.5 points, below the frozen
+15-point headroom requirement. The exact verdict is
+`FITNESS_V2_CALIBRATION_INSUFFICIENT_HEADROOM`. Consequently Tier 2A, Tier 2B, matched 1K, and
+R* were not run. No mutant result or hidden PROMOTION/OOD outcome was observed.
+
+The current project sentinel remains `FITNESS_V2_INSTRUMENT_QUALIFIED`; the immediate blocker is
+calibration difficulty, not solver semantic validity. The cheapest next experiment is a
+versioned harder DEV-only calibration slice, built and frozen without touching SCOUT,
+PROMOTION, or OOD.
+
 ## Commands
 
 ```bash

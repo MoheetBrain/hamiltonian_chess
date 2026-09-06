@@ -1632,7 +1632,7 @@ def experiment_status_v2(root: Path) -> dict[str, Any]:
     elif loaded["calibration"]:
         sentinel = (
             "FITNESS_V2_INSTRUMENT_QUALIFIED"
-            if loaded["calibration"]["tier2a_authorized"]
+            if loaded["calibration"]["instrument_valid"]
             else loaded["calibration"]["verdict"]
         )
         next_action = (

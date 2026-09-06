@@ -1,0 +1,5 @@
+candidate_id,q1_accuracy,q2_target_accuracy,gap,semantic_flip_consistency,position_invariance,max_position_preference,malformed_rate,mean_prompt_tokens,mean_latency_seconds,qualified
+L0_STRUCTURED_ENGLISH,0.875,0.5,0.375,0.75,0.75,0.75,0.0,961.9166666666666,2.3539592464583334,True
+L1_CURRENT_HML,0.75,0.5,0.25,0.5,0.75,0.75,0.0,778.3333333333334,1.9049953767499999,False
+L2_SEXPR,0.8125,0.5,0.3125,0.625,0.8125,0.6875,0.0,717.6666666666666,2.2128852829166665,True
+L3_JSON_AST,0.875,0.5,0.375,0.75,0.75,0.7083333333333334,0.0,1109.9166666666667,2.0118737647708334,True
