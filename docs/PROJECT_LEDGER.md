@@ -181,3 +181,60 @@ deferred; practical effect required for promotion.
 regression guard. The Game-R programme has a preregistered instrument with per-mechanism gates.
 
 **Next intended step.** Run `develop`; freeze and commit if ≥ 2 mechanisms qualify; then founders.
+
+---
+
+## 2026-09-06 — Fitness V4 DEV complete: 0 of 5 mechanisms qualify; stopping condition recorded
+
+**Date and time.** 2026-09-06, 21:52–22:26 BST run window, entry written afterwards.
+**Branch.** `claude/hamiltonian-arena-takeover-caa2eb` → fast-forward to
+`codex/arena-v0-fitness`. **Project stage.** `FITNESS_V4_PREREGISTERED` →
+`FITNESS_V4_NOT_QUALIFIED`.
+
+**Objective of the change.** Execute the preregistered V4 DEV ladder, apply the frozen gates
+exactly, record the outcome, and leave a complete handoff.
+
+**Files and systems changed.** New: `arena/experiments/fitness_v4_forensics.py`,
+`arena/experiments/fitness_v4_preflight.py`, `arena/experiments/game_r_mutant_audit.py`,
+`tests/experiments/test_fitness_v4_forensics.py`, `tests/experiments/test_game_r_mutant_audit.py`,
+`docs/FITNESS_V4_FAILURE_ANALYSIS.md`, `docs/V4_1_PROTOCOL_CALIBRATION_PROPOSAL.md`,
+`docs/ROUTE_B_HISTORICAL_AUDIT.md`, `docs/GAME_R_MUTATION_CAMPAIGN_PLAN.md`,
+`docs/CANONICAL_VNEXT_GAP_REPORT.md`, `docs/CLAUDE_FINAL_HANDOFF.md`,
+`artifacts/experiments/fitness_v4/{development/result.json,frozen_manifest.json,not_qualified.json}`,
+`artifacts/reports/{fitness-v4-forensics,game-r-mutant-audit,route-b-loss-curve-audit}.json`.
+Rewritten: `docs/PROJECT_STATUS.md`, `docs/CURRENT_STATE.md`, `docs/GAME_R_STATUS.md`. No
+change to `arena/experiments/fitness_v4.py` after the preregistration commit `88bacc8`; no
+canonical, verifier, language-surface, V1/V2/V3 code or artifact touched; `GOAL.md` unmodified.
+
+**What was completed.** The DEV run (356 calls, Q0 1.000) finished without interruption using
+the cache. Per-mechanism verdicts: depth VOID_INSTRUMENT_LIMIT (L0 .833), transitive
+dependency VOID_VALIDITY (.528 valid at L2), binder scope VOID_INSTRUMENT_LIMIT (L0 .750),
+precondition VOID_FLIP (choice flip .333 at L1), state delta VOID_INSTRUMENT_LIMIT (L0 .500).
+`freeze` wrote a manifest with `qualified=false` and `not_qualified.json`. Founders were not
+run. Forensics classified all 348 rows; the mutant audit classified all 120 mutants as
+`GAME_R_COMPATIBLE`; Route B loss curves were reconstructed at 16/32/64/128/224 examples.
+
+**Decisions made and why.** No gate was relaxed after results. The dominant cause (59 rows of
+prose reasoning cut at 64 tokens; constant-"A" at hard levels) is a controller/budget limit,
+so the next instrument changes `C`/`B` under a new version (V4.1 calibration, then V5) rather
+than adjusting V4. Two V4 instrument defects (character-based context guard; level 0 not a
+relation-stated positive) are recorded for V5, not patched in V4.
+
+**Tests and verification actually executed.**
+- `.venv/bin/python -m pytest -q` — 188 passed.
+- `.venv/bin/ruff check .` — All checks passed. `.venv/bin/ruff format --check .` — 193 files
+  already formatted. `.venv/bin/mypy arena` — no issues in 114 files.
+- `python -m arena.experiments.fitness_v4 develop` / `freeze` / `status` — as above.
+- `python -m arena.experiments.fitness_v4_forensics`, `game_r_mutant_audit` — as above.
+- Canonical validation and assurance suite: not run (no relevant code changed).
+
+**Results.** `FITNESS_V4_NOT_QUALIFIED`. No representation evidence exists.
+
+**Failures or unresolved uncertainty.** Whether a non-sabotaging output budget exists for
+`gemma4:12b` is unknown until the calibration runs. Single model family throughout.
+
+**Effect on the overall project.** Game R still lacks a valid instrument, but the reasons are
+now mechanistic and versioned: input truncation (V3), then output-budget/controller limit and
+a position policy under uncertainty (V4). The next instrument's requirements are specified.
+
+**Next intended step.** Authorise the DEV-only budget calibration; then V5 preregistration.
