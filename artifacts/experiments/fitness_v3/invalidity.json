@@ -1,0 +1,32 @@
+{
+  "schema_version": "arena-fitness-v3-invalidity-v1",
+  "experiment_version": "arena-representation-fitness-v3",
+  "frozen_instrument_commit": "96166546ab5f0add41f7cf3b6ef58657c1f97747",
+  "frozen_manifest_hash": "6f1f6c4244d675863402d40536d67270fd8789b050e524bc1fdaa99b6aa09138",
+  "founder_result_hash": "6b1eb4fa2dacd4f027208a2854985de4b3af9ed5c0929f6002293513300d4b09",
+  "formal_aggregate_gate_passed": true,
+  "substantive_instrument_valid": false,
+  "reason": "aggregate calibration pooled five ceiling mechanisms with one floor mechanism",
+  "equal_information_mechanism_pattern": {
+    "dependency_chain": "ceiling",
+    "action_goal_assignment": "ceiling",
+    "premise_attribution": "ceiling",
+    "obligation_ownership": "ceiling",
+    "evidence_provenance": "ceiling",
+    "state_delta": "floor_for_7_of_8_founders"
+  },
+  "compact_symbolic_vs_json": {
+    "paired_wins": 2,
+    "paired_losses": 0,
+    "one_sided_exact_sign_p": 0.25,
+    "holm_reject": false,
+    "promoted": false
+  },
+  "authorized": {
+    "tier2a_mutation_campaign": false,
+    "promotion": false,
+    "matched_1k": false,
+    "rstar_release": false
+  },
+  "sentinel": "EXPERIMENT_INVALID"
+}

@@ -41,9 +41,20 @@ permanent JSON/typed-AST control achieved:
 - semantic flip consistency 83.33%;
 - position invariance 83.33%.
 
-All predeclared V3 qualification checks passed. The frozen independent SCOUT manifest has 36
-probes and hash `6f1f6c4244d675863402d40536d67270fd8789b050e524bc1fdaa99b6aa09138`.
+All predeclared aggregate V3 qualification checks passed. The frozen independent SCOUT
+manifest has 36 probes and hash
+`6f1f6c4244d675863402d40536d67270fd8789b050e524bc1fdaa99b6aa09138`.
 No founder or evolved candidate had been observed when this manifest was frozen.
+
+The subsequent 12-founder / 432-call tournament invalidated the instrument. Five mechanisms
+were ceiling tasks for every equal-information founder; state delta was a floor task for seven
+of eight. Aggregate pooling concealed this bimodality. Compact symbolic beat JSON on the two
+delta positives only (2 wins, 0 losses, exact one-sided p=.25), so it failed the frozen net-win
+and Holm gates. No founder was promoted. The content mini-family tied or harmed JSON.
+
+Current scientific status: `EXPERIMENT_INVALID`. Tier 2A mutation search, matched 1K, and R*
+release are not authorized. Next work must create a new DEV instrument with per-mechanism
+frontier/validity gates and a compact model-facing projection separated from its audit ledger.
 
 ## Model and runtime
 

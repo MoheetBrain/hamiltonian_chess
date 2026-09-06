@@ -53,3 +53,10 @@ signal replicates beyond SCOUT.
 DEV selected complexity 1 for every mechanism and passed every gate: Q0 100%, positive 83.33%,
 destroyed 41.67%, flip 83.33%, position invariance 83.33%. Frozen SCOUT manifest:
 `6f1f6c4244d675863402d40536d67270fd8789b050e524bc1fdaa99b6aa09138`.
+
+## Post-run validity decision
+
+The formal gate above passed, but the founder mechanism audit showed that it pooled five
+100%-ceiling mechanisms with one 0%-floor mechanism. This violates V3's governing design
+requirements even though the aggregate arithmetic passed. The freeze is therefore invalidated
+for promotion; the preregistration and raw results are retained unchanged for audit.

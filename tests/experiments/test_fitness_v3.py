@@ -1,14 +1,19 @@
 from __future__ import annotations
 
+import json
+
+from arena.canonical.schema import stable_hash
 from arena.experiments.fitness_v3 import (
     MECHANISMS,
     V3Slice,
     V3Variant,
+    _cached_call,
     build_pool,
     build_prompt,
     derive_probe_family,
     equal_information_genome,
     exact_sign_pvalue,
+    founder_genomes,
     parse_response,
     validate_probe_family,
 )
@@ -54,3 +59,30 @@ def test_exact_sign_test_rule() -> None:
     assert exact_sign_pvalue(5, 0) == 0.03125
     assert exact_sign_pvalue(4, 1) > 0.05
     assert exact_sign_pvalue(0, 0) == 1.0
+
+
+def test_founder_roster_is_broad_and_content_children_are_one_gene_mutations() -> None:
+    founders = founder_genomes()
+    assert len(founders) == 12
+    assert sum(founder.track.value.startswith("TRACK_E") for founder in founders) == 8
+    base = next(founder for founder in founders if founder.candidate_id == "V3C_JSON_BASE")
+    children = [founder for founder in founders if founder.parent_ids == (base.candidate_id,)]
+    assert len(children) == 3
+    for child in children:
+        changes = {
+            name
+            for name, value in child.content.to_dict().items()
+            if value != base.content.to_dict()[name]
+        }
+        assert len(changes) == 1
+
+
+def test_v3_cache_resume_unwraps_and_validates_record(tmp_path) -> None:
+    identity = {"probe": "p1", "prompt_hash": "h1"}
+    path = tmp_path / "artifacts/cache/fitness_v3" / f"{stable_hash(identity)}.json"
+    path.parent.mkdir(parents=True)
+    result = {"response": '{"choice":"A"}', "prompt_eval_count": 1}
+    path.write_text(json.dumps({"identity": identity, "result": result}))
+    observed, hit = _cached_call(tmp_path, identity, "unused")
+    assert hit
+    assert observed == result

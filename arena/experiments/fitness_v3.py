@@ -597,7 +597,10 @@ def _call_ollama(model: str, prompt: str) -> dict[str, Any]:
 def _cached_call(root: Path, identity: dict[str, Any], prompt: str) -> tuple[dict[str, Any], bool]:
     path = root / "artifacts/cache/fitness_v3" / f"{stable_hash(identity)}.json"
     if path.exists():
-        return json.loads(path.read_text()), True
+        cached = json.loads(path.read_text())
+        if cached.get("identity") != identity or not isinstance(cached.get("result"), dict):
+            raise ValueError(f"invalid V3 cache record: {path}")
+        return cached["result"], True
     started = time.monotonic()
     try:
         raw = _call_ollama(str(QUALIFIED_MODEL["name"]), prompt)
@@ -882,9 +885,188 @@ def exact_sign_pvalue(wins: int, losses: int) -> float:
     )
 
 
+def founder_genomes() -> tuple[ModelViewGenome, ...]:
+    """Eight broad Track-E founders and a small one-gene Track-C mini-family."""
+
+    equal = tuple(equal_information_genome(candidate_id) for candidate_id in SEED_GENOME_BY_ID)
+    base_content = ContentGenome()
+    content_specs = (
+        ("V3C_JSON_BASE", (), base_content),
+        (
+            "V3C_JSON_DEP_EDGE",
+            ("V3C_JSON_BASE",),
+            base_content.with_gene("dependency_projection", "EXPLICIT_EDGE"),
+        ),
+        (
+            "V3C_JSON_TARGET_BLOCK",
+            ("V3C_JSON_BASE",),
+            base_content.with_gene("action_goal_projection", "TARGET_BLOCK"),
+        ),
+        (
+            "V3C_JSON_DELTA_CONTEXT",
+            ("V3C_JSON_BASE",),
+            base_content.with_gene("state_delta_projection", "DELTA_PLUS_CONTEXT"),
+        ),
+    )
+    content = tuple(
+        ModelViewGenome(
+            candidate_id,
+            parents,
+            SearchTrack.CONTENT_PROJECTION,
+            SEED_GENOME_BY_ID["L3_JSON_AST"],
+            genome,
+        )
+        for candidate_id, parents, genome in content_specs
+    )
+    return (*equal, *content)
+
+
+def _positive_rows(result: dict[str, Any]) -> list[dict[str, Any]]:
+    return [
+        row
+        for row in result["rows"]
+        if row["variant"] in {V3Variant.ORIGINAL.value, V3Variant.COUNTERFACTUAL.value}
+    ]
+
+
+def _paired_against(candidate: dict[str, Any], baseline: dict[str, Any]) -> dict[str, Any]:
+    baseline_by_probe = {row["probe_id"]: row for row in _positive_rows(baseline)}
+    candidate_rows = sorted(_positive_rows(candidate), key=lambda row: row["probe_id"])
+    wins = sum(
+        row["correct"] and not baseline_by_probe[row["probe_id"]]["correct"]
+        for row in candidate_rows
+    )
+    losses = sum(
+        not row["correct"] and baseline_by_probe[row["probe_id"]]["correct"]
+        for row in candidate_rows
+    )
+    return {
+        "wins": wins,
+        "losses": losses,
+        "ties": len(candidate_rows) - wins - losses,
+        "net_wins": wins - losses,
+        "exact_sign_pvalue_one_sided": exact_sign_pvalue(wins, losses),
+        "candidate_accuracy": candidate["summary"]["positive_accuracy"],
+        "baseline_accuracy": baseline["summary"]["positive_accuracy"],
+        "accuracy_delta": candidate["summary"]["positive_accuracy"]
+        - baseline["summary"]["positive_accuracy"],
+    }
+
+
+def _holm_decisions(comparisons: dict[str, dict[str, Any]]) -> None:
+    ordered = sorted(comparisons.items(), key=lambda item: item[1]["exact_sign_pvalue_one_sided"])
+    family_size = len(ordered)
+    rejected_so_far = True
+    for index, (candidate_id, comparison) in enumerate(ordered):
+        threshold = 0.05 / (family_size - index)
+        rejected = bool(rejected_so_far and comparison["exact_sign_pvalue_one_sided"] <= threshold)
+        comparisons[candidate_id]["holm_threshold"] = threshold
+        comparisons[candidate_id]["holm_reject"] = rejected
+        rejected_so_far = rejected
+
+
+def run_founder_tournament(root: Path) -> dict[str, Any]:
+    manifest, probes = load_frozen(root)
+    frozen_commit = "96166546ab5f0add41f7cf3b6ef58657c1f97747"
+    results = [evaluate(root, genome, probes) for genome in founder_genomes()]
+    baseline_id = "V3E_L3_JSON_AST"
+    by_id = {result["candidate_id"]: result for result in results}
+    comparisons = {
+        candidate_id: _paired_against(result, by_id[baseline_id])
+        for candidate_id, result in by_id.items()
+        if candidate_id != baseline_id
+    }
+    _holm_decisions(comparisons)
+    baseline_flip = float(by_id[baseline_id]["summary"]["semantic_flip_consistency"])
+    promoted = []
+    for candidate_id, comparison in comparisons.items():
+        summary = by_id[candidate_id]["summary"]
+        checks = {
+            "valid_response": float(summary["valid_response_rate"])
+            >= cast(float, PROMOTION_RULE["valid_response_rate_min"]),
+            "minimum_net_wins": int(comparison["net_wins"])
+            >= cast(int, PROMOTION_RULE["minimum_net_wins"]),
+            "holm_significant": bool(comparison["holm_reject"]),
+            "semantic_flip_noninferior": float(summary["semantic_flip_consistency"]) - baseline_flip
+            >= cast(float, PROMOTION_RULE["semantic_flip_noninferiority"]),
+        }
+        comparison["promotion_checks"] = checks
+        comparison["promoted"] = all(checks.values())
+        if comparison["promoted"]:
+            promoted.append(candidate_id)
+    accuracies = {
+        candidate_id: float(result["summary"]["positive_accuracy"])
+        for candidate_id, result in by_id.items()
+    }
+    payload = {
+        "schema_version": "arena-fitness-v3-founder-tournament-v1",
+        "experiment_version": EXPERIMENT_VERSION,
+        "instrument_version": INSTRUMENT_VERSION,
+        "frozen_instrument_commit": frozen_commit,
+        "frozen_manifest_hash": manifest["manifest_hash"],
+        "model": QUALIFIED_MODEL,
+        "runtime": RUNTIME_CONFIG,
+        "runtime_config_hash": RUNTIME_CONFIG_HASH,
+        "roster": [genome.to_dict() for genome in founder_genomes()],
+        "summaries": {candidate_id: result["summary"] for candidate_id, result in by_id.items()},
+        "paired_vs_json_control": comparisons,
+        "promotion_rule": PROMOTION_RULE,
+        "promoted": sorted(promoted),
+        "accuracy_range": max(accuracies.values()) - min(accuracies.values()),
+        "best_accuracy": max(accuracies.values()),
+        "worst_accuracy": min(accuracies.values()),
+        "calls": sum(result["calls"] for result in results),
+        "cache_hits": sum(result["cache_hits"] for result in results),
+        "candidate_results": results,
+    }
+    payload["result_hash"] = stable_hash(payload)
+    ArtifactStore(root / "artifacts").write_json(
+        "experiments/fitness_v3/founders/result.json", payload
+    )
+    return payload
+
+
+def experiment_status_v3(root: Path) -> dict[str, Any]:
+    invalidity_path = root / "artifacts/experiments/fitness_v3/invalidity.json"
+    founder_path = root / "artifacts/experiments/fitness_v3/founders/result.json"
+    manifest_path = root / "artifacts/experiments/fitness_v3/frozen_manifest.json"
+    if invalidity_path.exists():
+        invalidity = json.loads(invalidity_path.read_text())
+        return {
+            "experiment_version": EXPERIMENT_VERSION,
+            "sentinel": invalidity["sentinel"],
+            "reason": invalidity["reason"],
+            "tier2a_authorized": False,
+            "matched_1k_authorized": False,
+        }
+    if founder_path.exists():
+        founder = json.loads(founder_path.read_text())
+        return {
+            "experiment_version": EXPERIMENT_VERSION,
+            "sentinel": "FITNESS_V3_QUALIFIED_READY_FOR_TIER2A",
+            "promoted": founder["promoted"],
+        }
+    if manifest_path.exists():
+        manifest = json.loads(manifest_path.read_text())
+        return {
+            "experiment_version": EXPERIMENT_VERSION,
+            "sentinel": (
+                "FITNESS_V3_QUALIFIED_READY_FOR_TIER2A"
+                if manifest["qualified"]
+                else "FITNESS_V3_NOT_YET_QUALIFIED"
+            ),
+        }
+    return {
+        "experiment_version": EXPERIMENT_VERSION,
+        "sentinel": "FITNESS_V3_NOT_YET_QUALIFIED",
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("command", choices=("materialize", "develop", "freeze", "status"))
+    parser.add_argument(
+        "command", choices=("materialize", "develop", "freeze", "founders", "status")
+    )
     parser.add_argument("--root", type=Path, default=Path.cwd())
     args = parser.parse_args()
     if args.command == "materialize":
@@ -902,9 +1084,20 @@ def main() -> int:
         print(canonical_json(run_development(args.root)))
     elif args.command == "freeze":
         print(canonical_json(freeze_from_development(args.root)))
+    elif args.command == "founders":
+        result = run_founder_tournament(args.root)
+        print(
+            canonical_json(
+                {
+                    "result_hash": result["result_hash"],
+                    "promoted": result["promoted"],
+                    "accuracy_range": result["accuracy_range"],
+                    "calls": result["calls"],
+                }
+            )
+        )
     else:
-        path = args.root / "artifacts/experiments/fitness_v3/frozen_manifest.json"
-        print(path.read_text() if path.exists() else '{"sentinel":"FITNESS_V3_NOT_YET_QUALIFIED"}')
+        print(canonical_json(experiment_status_v3(args.root)))
     return 0
 
 
