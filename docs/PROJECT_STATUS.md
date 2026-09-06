@@ -140,9 +140,10 @@ advantage over the strongest control at any stage.
   table are inside the noise band and the paired intervals say so.
 - **One model, one seed, one configuration, no replication.** Nothing here generalises to
   another base model or another task without being re-measured.
-- **`assert_matched_semantics` is vacuously true on an empty mapping.** It accepted a
-  zero-arm dataset during development. The arm count is asserted separately in
-  `prepare_matched_data.py`; the guard itself has not been strengthened.
+- **`assert_matched_semantics` was vacuously true on an empty mapping — FIXED.** It accepted
+  a zero-arm dataset during development. It now fails closed on fewer than two surfaces, an
+  empty arm, mismatched lengths, and two surfaces rendering byte-identical inputs. All six
+  degenerate cases were verified to raise, and the real five-arm pipeline still passes.
 - **"Verified transition rate" is a well-formedness check**, not oracle acceptance: it tests
   that the emitted action carries `action_id`, `operation` and `arguments`. It must not be
   read as a claim that the action is mathematically optimal.

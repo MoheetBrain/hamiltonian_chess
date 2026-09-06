@@ -77,3 +77,41 @@ to build the evolutionary search engine rests on measured paired comparisons ins
 static compactness. `R*-V0` remains unfrozen.
 
 **Next intended step.** Recorded in `docs/PROJECT_STATUS.md` under Exact Next Actions.
+
+---
+
+## 2026-09-06 — Harden assert_matched_semantics so empty candidate sets fail closed
+
+**Date and time.** 2026-09-06. **Branch.** `codex/arena-v0-fitness`.
+**Project stage.** `TIER2_MATCHED_ADAPTATION_FIRST_RUN`.
+
+**Objective of the change.** Close the guard defect recorded in the previous entry before it
+can invalidate another matched run.
+
+**Files and systems changed.** `arena/training/render_dataset.py`, `docs/PROJECT_STATUS.md`,
+`docs/PROJECT_LEDGER.md`. No canonical schema, world, language surface or verifier touched.
+
+**What was completed.** `assert_matched_semantics` now rejects: fewer than two candidate
+surfaces, any empty arm, arms of differing length, and two arms whose rendered inputs are
+byte-identical. The original checks on identical canonical trajectories and identical target
+hashes are unchanged.
+
+**Decisions made and why.** The byte-identical-inputs check was added beyond the reported
+defect because two surfaces that render the same bytes are the same experiment run twice, and
+a difference between them could only be noise — the same class of error as the
+`DEPTH_ADAPTIVE`/`DUAL_VIEW` duplicate found in the HML hard-regime comparison.
+
+**Tests and verification actually executed.**
+- Six degenerate cases (empty mapping, one arm, empty arm, identical inputs, length mismatch,
+  target mismatch) — **all six raise**; a valid matched pair is still accepted.
+- `python -m arena.training.prepare_matched_data` — the real five-arm pipeline still passes.
+- `.venv/bin/python -m pytest` — **122 passed**.
+
+**Failures and unresolved uncertainty.** None introduced. The saturation limitation on the
+NEXT_ACTION task is unchanged and remains the blocking issue for ranking representations.
+
+**Effect on the overall project.** A matched-adaptation run can no longer report PASS over
+nothing. This does not change any measured result.
+
+**Next intended step.** Governed by the HML kill gate: the arena headroom rebuild proceeds
+only if `PATH_TO_ROOT` replicates across two readers.

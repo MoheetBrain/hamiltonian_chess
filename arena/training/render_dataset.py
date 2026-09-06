@@ -85,6 +85,35 @@ def render_matched_datasets(
 
 
 def assert_matched_semantics(datasets: dict[str, tuple[RenderedExample, ...]]) -> None:
+    """Fail closed. A matched comparison needs at least two non-empty candidate datasets.
+
+    The first version was vacuously true on an empty mapping: a set of zero sequences and a
+    set of one both satisfy ``len(...) > 1`` being false, so zero arms passed. During the
+    Tier-2 sprint it reported PASS over a dataset dict built from mis-spelled candidate ids,
+    which contained nothing at all. A guard that cannot fail on the empty case is not a
+    guard, and the case it missed is the one that would make an entire GPU run meaningless.
+
+    Two surfaces that render byte-identical inputs are also refused: they are the same
+    experiment run twice, and any difference between them could only be noise.
+    """
+
+    if len(datasets) < 2:
+        raise ValueError(
+            f"matched comparison requires at least two candidate surfaces, got "
+            f"{len(datasets)}: {sorted(datasets)}"
+        )
+    empty = sorted(candidate for candidate, examples in datasets.items() if not examples)
+    if empty:
+        raise ValueError(f"candidate datasets are empty for {empty}")
+    lengths = {len(examples) for examples in datasets.values()}
+    if len(lengths) > 1:
+        raise ValueError(f"candidate datasets differ in length: {sorted(lengths)}")
+    input_sequences = {
+        candidate: tuple(item.input_hash for item in examples)
+        for candidate, examples in datasets.items()
+    }
+    if len(set(input_sequences.values())) != len(input_sequences):
+        raise ValueError("two candidate surfaces rendered byte-identical inputs")
     canonical_sequences = {
         candidate: tuple(item.canonical_id for item in examples)
         for candidate, examples in datasets.items()
