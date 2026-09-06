@@ -6,6 +6,7 @@ from arena.training.matched_adaptation import (
     BudgetMode,
     validate_matched_configs,
 )
+from arena.training.render_dataset import RenderedExample, assert_matched_semantics
 
 
 def config(candidate_tokens: int = 1000, *, seed: int = 0) -> AdaptationConfig:
@@ -43,3 +44,33 @@ def test_example_matched_configs_may_have_different_token_counts() -> None:
 def test_mismatched_seed_is_rejected() -> None:
     with pytest.raises(ValueError, match="not matched"):
         validate_matched_configs({"a": config(seed=0), "b": config(seed=1)})
+
+
+def rendered(candidate: str, input_hash: str = "input") -> RenderedExample:
+    return RenderedExample(
+        example_id=f"example:{candidate}",
+        canonical_id="trajectory:1",
+        candidate_id=candidate,
+        task_kind="NEXT_ACTION",
+        input_text=candidate,
+        target_text="target",
+        input_hash=input_hash,
+        target_hash="target-hash",
+    )
+
+
+@pytest.mark.parametrize("datasets", [{}, {"only": ()}, {"a": (), "b": ()}])
+def test_matched_semantics_rejects_missing_or_empty_arms(
+    datasets: dict[str, tuple[RenderedExample, ...]],
+) -> None:
+    with pytest.raises(ValueError):
+        assert_matched_semantics(datasets)
+
+
+def test_matched_semantics_rejects_identical_surfaces() -> None:
+    with pytest.raises(ValueError, match="byte-identical"):
+        assert_matched_semantics({"a": (rendered("a"),), "b": (rendered("b"),)})
+
+
+def test_matched_semantics_accepts_distinct_matched_surfaces() -> None:
+    assert_matched_semantics({"a": (rendered("a", "input-a"),), "b": (rendered("b", "input-b"),)})

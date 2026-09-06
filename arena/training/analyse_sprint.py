@@ -36,20 +36,25 @@ def main() -> int:
         present = {arm: record[stage] for arm, record in results.items() if stage in record}
         if not present:
             continue
-        print(f"\n=== {stage.upper()} "
-              f"({next(iter(present.values()))['train_examples']} train examples, "
-              f"eval split {next(iter(present.values()))['eval_split']})")
-        print(f"  {'arm':<24}{'exact':>7}{'95% CI':>18}{'schema':>8}{'verified':>10}"
-              f"{'tok/train':>11}{'out tok':>9}{'lat s':>8}{'loss':>9}")
+        print(
+            f"\n=== {stage.upper()} "
+            f"({next(iter(present.values()))['train_examples']} train examples, "
+            f"eval split {next(iter(present.values()))['eval_split']})"
+        )
+        print(
+            f"  {'arm':<24}{'exact':>7}{'95% CI':>18}{'schema':>8}{'verified':>10}"
+            f"{'tok/train':>11}{'out tok':>9}{'lat s':>8}{'loss':>9}"
+        )
         for arm, record in sorted(present.items(), key=lambda kv: -kv[1]["exact"]):
-            interval = wilson_interval(
-                round(record["exact"] * record["n"]), record["n"])
-            print(f"  {arm:<24}{record['exact']:>7.3f}"
-                  f"{f'[{interval.lower:.3f},{interval.upper:.3f}]':>18}"
-                  f"{record['schema_valid']:>8.3f}{record['verified']:>10.3f}"
-                  f"{record['train_tokens']:>11}{record['mean_output_tokens']:>9.1f}"
-                  f"{record['mean_latency_s']:>8.3f}"
-                  f"{record['final_loss'] if record['final_loss'] is not None else 0:>9.4f}")
+            interval = wilson_interval(round(record["exact"] * record["n"]), record["n"])
+            print(
+                f"  {arm:<24}{record['exact']:>7.3f}"
+                f"{f'[{interval.lower:.3f},{interval.upper:.3f}]':>18}"
+                f"{record['schema_valid']:>8.3f}{record['verified']:>10.3f}"
+                f"{record['train_tokens']:>11}{record['mean_output_tokens']:>9.1f}"
+                f"{record['mean_latency_s']:>8.3f}"
+                f"{record['final_loss'] if record['final_loss'] is not None else 0:>9.4f}"
+            )
 
         # Paired comparisons against the strongest control present in this stage.
         controls = {a: r for a, r in present.items() if a in CONTROLS}
@@ -67,9 +72,11 @@ def main() -> int:
                 continue
             delta = paired_bootstrap_difference(challenger, reference, seed=0)
             crosses = delta.lower <= 0.0 <= delta.upper
-            print(f"    {arm:<24}delta {delta.estimate:+.4f}  "
-                  f"95% CI [{delta.lower:+.4f},{delta.upper:+.4f}]  "
-                  f"{'CONTAINS ZERO' if crosses else 'EXCLUDES ZERO'}")
+            print(
+                f"    {arm:<24}delta {delta.estimate:+.4f}  "
+                f"95% CI [{delta.lower:+.4f},{delta.upper:+.4f}]  "
+                f"{'CONTAINS ZERO' if crosses else 'EXCLUDES ZERO'}"
+            )
 
     # Learning-curve separation, reported as final training loss rather than accuracy.
     print("\n=== LEARNING CURVE (final training loss, lower is faster fitting)")
@@ -88,8 +95,10 @@ def main() -> int:
             continue
         low = min(r["train_tokens"] for r in present.values())
         for arm, record in sorted(present.items(), key=lambda kv: kv[1]["train_tokens"]):
-            print(f"  {stage} {arm:<24}{record['train_tokens']:>8} train tokens  "
-                  f"({record['train_tokens'] / low:.2f}x the cheapest arm)")
+            print(
+                f"  {stage} {arm:<24}{record['train_tokens']:>8} train tokens  "
+                f"({record['train_tokens'] / low:.2f}x the cheapest arm)"
+            )
     return 0
 
 

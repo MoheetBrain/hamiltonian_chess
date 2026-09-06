@@ -1,7 +1,15 @@
 # Goal
 
-Discover whether a reversible mathematical representation can make a matched solver policy
-materially better than strong controls without weakening semantic fidelity.
+The objective of Hamiltonian Arena is to discover and validate an AI-native universal
+mathematical representation and reasoning protocol, R*, that maximizes verified machine
+mathematical reasoning, search, learning, and generalization while preserving
+representation-independent mathematical truth.
+
+R* is selected experimentally through population search, adversarial verification,
+calibrated solver evaluation, and matched training against strong controls. The long-run
+programme combines R* with formal libraries, retrieval, proof search, conjecture generation,
+verified trajectory generation, and iterative model training toward increasingly general
+mathematical problem solving.
 
 The optimization is lexicographic:
 
@@ -10,6 +18,6 @@ The optimization is lexicographic:
 3. model learnability, verified-action quality, and out-of-distribution generalization;
 4. token, parser, compiler, and search efficiency on the surviving Pareto front.
 
-Current HML is one seed, not the objective. Zero-shot familiarity is not evidence of an
-intrinsically better representation. `R*-V0` is withheld until matched adaptation and the
-release suite justify it.
+Current HML, JSON AST, and every other founder are hypotheses, not objectives. Zero-shot
+familiarity is not evidence of an intrinsically better representation. `R*-0.1` remains
+withheld until hidden validation, matched adaptation, and release assurance earn it.

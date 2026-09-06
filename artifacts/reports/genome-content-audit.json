@@ -1,0 +1,28 @@
+{
+  "schema_version": "arena-genome-content-audit-v1",
+  "audited_schema": "arena-language-genome-v0.1.0",
+  "conclusion": "zero existing content-bearing or reasoning-protocol genes",
+  "v1_mutated_genes": ["grammar", "binders", "types", "state", "actions", "serialization", "morphology", "redundancy"],
+  "counts": {"SURFACE": 7, "STRUCTURAL": 7, "CONTENT_BEARING": 0, "REASONING_PROTOCOL": 0},
+  "genes": [
+    {"gene": "alphabet", "class": "SURFACE", "content_delta": false},
+    {"gene": "token_policy", "class": "SURFACE", "content_delta": false},
+    {"gene": "morphology", "class": "SURFACE", "content_delta": false},
+    {"gene": "grammar", "class": "SURFACE", "content_delta": false},
+    {"gene": "composition", "class": "STRUCTURAL", "content_delta": false},
+    {"gene": "types", "class": "STRUCTURAL", "content_delta": false},
+    {"gene": "binders", "class": "STRUCTURAL", "content_delta": false},
+    {"gene": "state", "class": "STRUCTURAL", "content_delta": false},
+    {"gene": "actions", "class": "STRUCTURAL", "content_delta": false},
+    {"gene": "obligations", "class": "STRUCTURAL", "content_delta": false},
+    {"gene": "evidence", "class": "STRUCTURAL", "content_delta": false},
+    {"gene": "serialization", "class": "SURFACE", "content_delta": false},
+    {"gene": "redundancy", "class": "SURFACE", "content_delta": false},
+    {"gene": "error_locality", "class": "SURFACE", "content_delta": false}
+  ],
+  "phase3_replacement": {
+    "schema": "arena-model-view-genome-v1.0.0",
+    "tracks": ["TRACK_E_EQUAL_INFORMATION", "TRACK_C_CONTENT_PROJECTION"],
+    "content_genes": ["dependency_projection", "action_goal_projection", "premise_projection", "obligation_projection", "state_delta_projection", "evidence_projection"]
+  }
+}

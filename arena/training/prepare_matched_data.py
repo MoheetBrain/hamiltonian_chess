@@ -18,10 +18,12 @@ import argparse
 import collections
 import json
 from pathlib import Path
+from typing import Any, cast
 
 from arena.languages.registry import SEED_LANGUAGES
 from arena.tasks.generators.world_v0 import generate_tasks
 from arena.training.render_dataset import (
+    StateRenderer,
     assert_matched_semantics,
     render_matched_datasets,
 )
@@ -84,13 +86,14 @@ def main() -> int:
     tasks = generate_tasks(total=args.world, seed=args.seed)
     trajectories = tuple(task.trajectory for task in tasks)
     train_ix, dev_ix, fresh_ix = stratified_split(
-        tasks, args.train, args.dev, args.fresh, args.seed)
+        tasks, args.train, args.dev, args.fresh, args.seed
+    )
 
     languages = {language.candidate_id: language for language in SEED_LANGUAGES}
     missing = [arm for arm in ARMS if arm not in languages]
     if missing:
         raise SystemExit(f"unknown candidate surfaces: {missing}")
-    selected = tuple(languages[arm] for arm in ARMS)
+    selected = tuple(cast(StateRenderer, languages[arm]) for arm in ARMS)
 
     datasets = render_matched_datasets(trajectories, selected)
     assert_matched_semantics(datasets)
@@ -99,7 +102,7 @@ def main() -> int:
     if len(datasets) != len(ARMS):
         raise SystemExit(f"expected {len(ARMS)} arms, rendered {len(datasets)}")
 
-    payload: dict[str, object] = {
+    payload: dict[str, Any] = {
         "world_size": args.world,
         "seed": args.seed,
         "arms": list(ARMS),
@@ -126,8 +129,7 @@ def main() -> int:
         target_sets = set(hashes(name, indices).values())
         if len(target_sets) != 1:
             raise SystemExit(f"{name}: arms do not share identical targets")
-        input_sets = {
-            arm: tuple(datasets[arm][i].input_hash for i in indices) for arm in ARMS}
+        input_sets = {arm: tuple(datasets[arm][i].input_hash for i in indices) for arm in ARMS}
         if len(set(input_sets.values())) != len(ARMS):
             raise SystemExit(f"{name}: two arms produced identical inputs")
 
@@ -141,8 +143,10 @@ def main() -> int:
     destination.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
     print(f"wrote {destination} ({destination.stat().st_size / 1e6:.1f} MB)")
     print(f"arms {list(ARMS)}")
-    print(f"split train {len(train_ix)}  dev {len(dev_ix)}  fresh {len(fresh_ix)}  "
-          f"(disjoint, domain-stratified)")
+    print(
+        f"split train {len(train_ix)}  dev {len(dev_ix)}  fresh {len(fresh_ix)}  "
+        f"(disjoint, domain-stratified)"
+    )
     print("identical targets across arms: YES; identical inputs across arms: NO (as required)")
     for arm, chars in payload["token_proxy_mean_input_chars"].items():
         print(f"  {arm:<24}mean train input {chars} chars")

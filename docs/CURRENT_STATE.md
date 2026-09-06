@@ -1,93 +1,56 @@
-# Current State Reconstruction
+# Current State
 
-Recorded: 2026-09-05 (Europe/London)
+Recorded: 2026-09-06, Europe/London.
 
-## Arena repository
+## Repository and evidence chain
 
-- Path: `/Users/moheet/Documents/ChatGPT/hamiltonian_chess`
-- Branch at reconstruction: unborn `main`; implementation branch: `codex/arena-v0`
-- Start SHA: `0000000000000000000000000000000000000000` (empty repository)
-- Remote: `https://github.com/MoheetBrain/hamiltonian_chess.git`
-- Remote state at reconstruction: no advertised refs (empty)
-- Isolation: dedicated repository; no HML or corpus worktree is modified
+- Repository: `/Users/moheet/Documents/ChatGPT/hamiltonian_chess`
+- Branch: `codex/arena-v0-fitness`
+- Arena v0: `c1dd586db6abb9bd4e72f0048122eb4ddca98739`
+- V1 preregistration: `f17bb0f73ac942d43b614704e54c019a64284368`
+- V1 runner: `11b73ae6756fa02984b3fecedab117d14ce0a26a`
+- V1 invalid stop: `22cab970862ee80cd30ce42b2d885ef52e73b47c`
+- V2 instrument freeze: `99c877f22e0c283be56b369af3101019625c215`
+- Independent Tier-2 sprint: `bf8838b20e35b1daa9052ab964495397db202506`
+- V2 final handoff: `983298279c058ec67a94b564e6d983423f624612`
 
-## Read-only source repositories
+V1 failed because the solver used option position. V2 fixed that failure and qualified local
+Gemma 4 12B, but its frozen control calibration had only 12.5 percentage points of headroom,
+below V2's preregistered 15-point rule. No V2 mutants were run and that rule remains intact.
 
-| Source | Path | Branch | SHA | State | Reuse decision |
-|---|---|---|---|---|---|
-| HML V3 experiments | `/Users/moheet/Documents/ChatGPT/HML_V3` | `codex/open-ended-search-v2` | `4395a8c717a334be58b29d53b43c0c842d0e03ac` | dirty | evidence only; no blind copy |
-| Hamiltonian Lang final-signal | `/Users/moheet/Documents/ChatGPT/hamiltonian-lang-final-signal` | `claude/model-language-representation-freeze` | `b011511e72572608eb7836d3b8a1a6bb794c890d` | clean | optional semantic reference only |
-| Reasoning corpus | `/Users/moheet/Documents/ChatGPT/hmlt-reasoning-corpus` | `claude/max-ev-representation-experiment-v1` | `bf2cd75a0676afdb73ab15fe5963cb6138e27060` | clean | provenance-preserving adapter candidate |
-| PRM800K | `/Users/moheet/Documents/ChatGPT/prm800k` | `main` | `7ecc794703b2877f63226f2477a49b34f9b25163` | clean | Silver/raw source only |
+The separate A100/Qwen2.5-7B matched sprint found a penalty for S-expression at Stage A and
+saturation of JSON AST and compact symbolic by Stage C. Its `WEAK_CONTINUE` result is useful
+historical evidence, not a V3 authorization or an R* result. Its formerly vacuous empty-arm
+matching assertion is now fail-closed and regression-tested.
 
-The HML V3 branch already contains canonical records, renderer candidates, genome search,
-failure memory, Pareto gates, and neural probes. Its canonical records explicitly warn that
-pretty-printed Lean expressions are source-specific rather than a universal AST. Arena v0
-therefore uses a new typed term schema and imports nothing until an adapter proves semantic
-accounting.
+## Phase 3 state
 
-## Existing corpus and experiments
+Canonical truth and evolvable model views are separate modules. Track E changes reversible
+surface/structure with equal recoverable information. Track C projects only deterministic,
+truth-derived relations and emits witness hashes, omissions, redundancy, and byte cost.
 
-- `hmlt-reasoning-corpus/data/vnext_10k`: 10,000 source records with 8,132 train, 952 dev,
-  and 916 test records; four rendered views (`AST`, `HML_LINEAR`, `HML_TREE`,
-  `STRUCTURED_NEUTRAL`); approximately 37 MB.
-- `hmlt-reasoning-corpus/data/gold_10`: 10 frozen Gold examples, approximately 92 KB.
-- `hmlt-reasoning-corpus/data/hml_structural_final`: audited structural artifacts,
-  approximately 108 KB.
-- HML V3 reports show prior representation-search and losslessness experiments. Those results
-  are priors, not Arena scores, because the canonical schema and test protocol differ.
+Fitness V3 is a new instrument. Its DEV pool contains 12 families / 72 probes across six
+mechanisms. The pool hash is
+`b26bf3d942ce57951428d2a4ca0c1fd4b62de4e90833e0bcae304d6525ffe4fe`.
+The DEV-only selector chose complexity 1 for all mechanisms. On the selected DEV set, the
+permanent JSON/typed-AST control achieved:
 
-## Legacy test state (observed, not repaired here)
+- format validity 100%;
+- positive accuracy 83.33%;
+- destroyed-control target accuracy 41.67%;
+- semantic flip consistency 83.33%;
+- position invariance 83.33%.
 
-- HML V3 local environment: 231 tests and 338 subtests passed before
-  `FailureMemoryTests.test_every_lesson_declares_its_evidence_status` failed because `FM-053`
-  carries `REASONING_ERROR` where the test permits only measured/asserted evidence statuses.
-- Hamiltonian Lang final-signal local environment: collection stopped in
-  `tests/arena/test_b2_audit.py`; `evaluation.arena.endpoints.common` is absent.
+All predeclared V3 qualification checks passed. The frozen independent SCOUT manifest has 36
+probes and hash `6f1f6c4244d675863402d40536d67270fd8789b050e524bc1fdaa99b6aa09138`.
+No founder or evolved candidate had been observed when this manifest was frozen.
 
-Neither legacy suite is green, so neither repository is a trusted dependency.
+## Model and runtime
 
-## Hardware and local models
+- model: `gemma4:12b`
+- digest: `4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c`
+- Ollama; context 8192; temperature 0; seed 20260905; `num_predict=64`;
+  `top_k=64`; `top_p=0.95`; thinking disabled.
 
-- Apple MacBook Pro `Mac17,6`, Apple M5 Max
-- CPU: 18 cores (6 Super, 12 Performance)
-- GPU: integrated 40-core Apple GPU, Metal 4
-- Unified memory: 48 GB
-- macOS 26.6.2, arm64
-- Ollama installed at `/opt/homebrew/bin/ollama`
-- Installed Ollama models at reconstruction:
-  `qwen36-huihui:latest` (29 GB), `qwen38-huihui:latest` (24 GB),
-  `qwen38-rvn:latest` (16 GB), `gemma4:e4b` (9.6 GB), `gemma3:4b` (3.3 GB),
-  `gemma4:12b` (7.6 GB), and `gemma4:31b` (19 GB).
-
-Model names are local labels, not scientific identities. Any result must also record the
-Ollama digest, tokenizer identity when available, prompt hash, generation settings, and seed.
-
-## Verifiers and Python tooling
-
-- Python 3.14.7 and `uv` are installed.
-- Lean 4.33.1 (`819816b2e0a3bf405af45ae5c7af2491d8f5bee6`) and Lake 5.0.0 are installed.
-- SQLite is provided by macOS.
-- SymPy, Z3, pytest, Hypothesis, NumPy, scikit-learn, and PyTorch were not importable from the
-  global Python at reconstruction. Arena declares isolated `uv` dependencies for SymPy, Z3,
-  pytest, Hypothesis, and scikit-learn; model training remains an optional external adapter.
-- No NVIDIA/CUDA device is present. Local matched training must use an Apple-compatible model
-  stack or an explicitly recorded remote runner; Ollama inference alone is not matched
-  adaptation.
-
-## Scientific consequence
-
-The local machine is adequate for deterministic canonical generation, thousands of static
-candidates, fuzzing, SymPy/Z3 differential checks, small Ollama scouts, and a lightweight
-surrogate. It cannot by itself establish cross-model representation-level superiority or run
-a credible 1M-trajectory training programme. Arena must be allowed to finish with no R*.
-
-## Representation-fitness continuation
-
-- Branch: `codex/arena-v0-fitness`; pre-evaluation specification commit: `f17bb0f`.
-- Executable mutation population: 120/120 Gate-0 survivors, zero dead semantic candidates.
-- Calibration: 64 task/control cells on frozen local Gemma 3 4B; task-level cache retained.
-- Instrument verdict: `INSTRUMENT_INVALID_POSITION_ONLY`. Structured English and current HML
-  were identical always-A policies; no control beat the best constant option-position policy.
-- Tier 2A/Tier 2B/matched adaptation: not run by the frozen stop rule.
-- Current scientific sentinel: `MODEL_FITNESS_BENCHMARK_INVALID`.
+The complexity-2 DEV cases frequently produced long, malformed responses within the frozen
+completion budget. This is a measured floor/protocol interaction, not candidate evidence.
