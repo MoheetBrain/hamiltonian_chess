@@ -1,0 +1,325 @@
+{
+  "risk_count": 22,
+  "risks": [
+    {
+      "affected_historical_result": "Prospective Phase 6 before the guard",
+      "cheapest_validation_or_fix": "Keep SOLVERS registry and verify_served_model as mandatory preflight; regression-test a mismatched digest.",
+      "description": "Model name and cache digest were previously independent inputs.",
+      "evidence": "fitness_v5.py now documents and guards the former collision path at lines 102-164 and keys evaluation identity at 737-745.",
+      "evidence_tags": [
+        "VERIFIED_BY_CODE"
+      ],
+      "id": "R-001",
+      "owner": "CLAUDE",
+      "scientific_consequence": "A solver swap could replay another solver's outputs under the wrong attribution.",
+      "severity": "CRITICAL",
+      "status": "FIXED"
+    },
+    {
+      "affected_historical_result": "Phase 6 design; Phase 5 remains within-condition valid",
+      "cheapest_validation_or_fix": "Retain bare-vs-bare and record exact prompt hashes plus runtime hash.",
+      "description": "Ollama renderer treatment differed between Gemma and Qwen.",
+      "evidence": "Recorded framed-vs-bare token delta is +12 for Gemma and 0 for Qwen; Phase 6 code defines raw=True for both.",
+      "evidence_tags": [
+        "VERIFIED_BY_ARTIFACT",
+        "VERIFIED_BY_CODE"
+      ],
+      "id": "R-002",
+      "owner": "CLAUDE",
+      "scientific_consequence": "A nominal solver comparison could instead compare prompt framing.",
+      "severity": "HIGH",
+      "status": "CONTAINED"
+    },
+    {
+      "affected_historical_result": "Phase 5 artifact integrity during Phase 6",
+      "cheapest_validation_or_fix": "Test development_artifact_path for every solver/condition and refuse overwrite of a frozen path.",
+      "description": "A hard-coded result.json path let Gemma bare overwrite the frozen Phase-5 artifact.",
+      "evidence": "PHASE6_IN_PROGRESS records the incident; restored Phase-5 SHA is 0c5b3271..., and separate Gemma-bare SHA is 6deead58....",
+      "evidence_tags": [
+        "VERIFIED_BY_ARTIFACT",
+        "VERIFIED_BY_CODE"
+      ],
+      "id": "R-003",
+      "owner": "CLAUDE",
+      "scientific_consequence": "The primary result could have been silently replaced by a different runtime condition.",
+      "severity": "CRITICAL",
+      "status": "FIXED"
+    },
+    {
+      "affected_historical_result": "Phase 6 confirmatory claim",
+      "cheapest_validation_or_fix": "Report Phase 6 invalid; in a future preregistration distinguish pre-existing foreign-cache contamination, same-identity resume, and within-run reuse.",
+      "description": "The alternate-solver artifact violates Phase 6's literal cache-hits > 0 invalidation rule.",
+      "evidence": "Qwen artifact contains 13 ladder cache hits from the restart and 48 full-family reuse hits, 61/432 row occurrences total.",
+      "evidence_tags": [
+        "VERIFIED_BY_ARTIFACT",
+        "VERIFIED_BY_CODE"
+      ],
+      "id": "R-004",
+      "owner": "CLAUDE",
+      "scientific_consequence": "The frozen decision rule requires PHASE6_INVALID even though identities attribute the observations to the same solver/runtime.",
+      "severity": "CRITICAL",
+      "status": "OPEN"
+    },
+    {
+      "affected_historical_result": "V5 and Phase 6 mechanism selection",
+      "cheapest_validation_or_fix": "Align selection with the feasible qualification interval or redesign the negative control in the next protocol only.",
+      "description": "Frontier selection targets accuracy 0.625 while the deterministic destroyed-twin control makes the gap gate require positive accuracy >=0.70.",
+      "evidence": "QUALIFICATION_RULE requires positive-negative >=0.20; destroyed twins force negative accuracy 0.50; selector targets 0.625.",
+      "evidence_tags": [
+        "VERIFIED_BY_CODE"
+      ],
+      "id": "R-005",
+      "owner": "FUTURE_RESEARCH",
+      "scientific_consequence": "The selected frontier can be mathematically incapable of qualifying.",
+      "severity": "HIGH",
+      "status": "OPEN"
+    },
+    {
+      "affected_historical_result": "V5 formal_expression_depth",
+      "cheapest_validation_or_fix": "Rebuild with jointly balanced traversal order, frequency, declaration order, and obfuscated identifiers; retire if balancing fails.",
+      "description": "Formal-expression depth has strong non-depth shortcuts.",
+      "evidence": "First-mentioned/target-preorder reaches 24/24 shallow and 22/24 deep; frequency reaches 21/24 in both.",
+      "evidence_tags": [
+        "VERIFIED_BY_CODE"
+      ],
+      "id": "R-006",
+      "owner": "FUTURE_RESEARCH",
+      "scientific_consequence": "Model accuracy cannot be attributed to recursive depth reading.",
+      "severity": "HIGH",
+      "status": "OPEN"
+    },
+    {
+      "affected_historical_result": "Matched A100 sprint",
+      "cheapest_validation_or_fix": "Shuffle within domain using a locally seeded RNG and freeze split hashes in a redesigned run.",
+      "description": "Route-B stratified_split accepts but never reads seed.",
+      "evidence": "prepare_matched_data.py lines 42-73; index hashes are identical for seeds 0, 1, and 17.",
+      "evidence_tags": [
+        "VERIFIED_BY_CODE"
+      ],
+      "id": "R-007",
+      "owner": "CLAUDE",
+      "scientific_consequence": "Reported seed variation did not randomize allocation membership.",
+      "severity": "MEDIUM",
+      "status": "HISTORICAL_ONLY"
+    },
+    {
+      "affected_historical_result": "Matched A100 sprint Stage B/C",
+      "cheapest_validation_or_fix": "Use GOLD-only data or preregister quality-stratified arms.",
+      "description": "Route-B later-stage training mixed GOLD, SILVER, and REJECT trajectories.",
+      "evidence": "First 576 training items contain 424 GOLD, 104 SILVER, and 48 REJECT.",
+      "evidence_tags": [
+        "VERIFIED_BY_SOURCE_DATA"
+      ],
+      "id": "R-008",
+      "owner": "CLAUDE",
+      "scientific_consequence": "Learning curves combine representation effects with label-quality and rejected-transition effects.",
+      "severity": "HIGH",
+      "status": "HISTORICAL_ONLY"
+    },
+    {
+      "affected_historical_result": "Matched A100 sprint",
+      "cheapest_validation_or_fix": "Group splits by normalized mathematical problem and template family; keep answer-overlap as a diagnostic rather than equating it with problem leakage.",
+      "description": "Route-B ID-disjoint splits still repeat answers and exact problem content.",
+      "evidence": "At budget 224, 21/48 DEV items repeat answer or problem; 5/48 repeat exact normalized problem, while IDs/actions remain disjoint.",
+      "evidence_tags": [
+        "VERIFIED_BY_CODE"
+      ],
+      "id": "R-009",
+      "owner": "CLAUDE",
+      "scientific_consequence": "Evaluation partly measures memorized templates/answers rather than transfer.",
+      "severity": "HIGH",
+      "status": "HISTORICAL_ONLY"
+    },
+    {
+      "affected_historical_result": "Matched A100 sprint",
+      "cheapest_validation_or_fix": "Invoke the canonical/native/domain verifier and report schema validity separately.",
+      "description": "Historical verified metric is a schema/key-presence proxy.",
+      "evidence": "gpu_matched_runner.py lines 71-82 gives verified=1 to an arbitrary wrong action with the three required keys.",
+      "evidence_tags": [
+        "VERIFIED_BY_CODE"
+      ],
+      "id": "R-010",
+      "owner": "CLAUDE",
+      "scientific_consequence": "A 1.0 verified score does not show mathematical or transition validity.",
+      "severity": "HIGH",
+      "status": "HISTORICAL_ONLY"
+    },
+    {
+      "affected_historical_result": "Matched A100 sprint",
+      "cheapest_validation_or_fix": "For causal gene claims, render all candidates through one phenotype interpreter and mutate one registered gene at a time.",
+      "description": "Route-B arms are five specialized fixed codecs, not a factorial genome intervention.",
+      "evidence": "SEED_LANGUAGES resolves five different concrete classes; each hard-codes _encode_payload.",
+      "evidence_tags": [
+        "VERIFIED_BY_CODE"
+      ],
+      "id": "R-011",
+      "owner": "FUTURE_RESEARCH",
+      "scientific_consequence": "The run compares concrete byte surfaces but cannot attribute effects to individual genes.",
+      "severity": "MEDIUM",
+      "status": "HISTORICAL_ONLY"
+    },
+    {
+      "affected_historical_result": "Matched A100 sprint",
+      "cheapest_validation_or_fix": "Token-match budgets or use example-level exact/verifier metrics on a no-truncation subset.",
+      "description": "Per-token losses are normalized over representation-dependent token sequences and tail-truncated at 1536.",
+      "evidence": "Stage-A train tokens range 94,080-130,507; encode keeps (prompt+target)[-max_len:].",
+      "evidence_tags": [
+        "VERIFIED_BY_CODE",
+        "VERIFIED_BY_ARTIFACT"
+      ],
+      "id": "R-012",
+      "owner": "CLAUDE",
+      "scientific_consequence": "Cross-arm loss and effective visible inputs are not comparable.",
+      "severity": "HIGH",
+      "status": "HISTORICAL_ONLY"
+    },
+    {
+      "affected_historical_result": "World-v0 and matched Route B",
+      "cheapest_validation_or_fix": "Use opaque randomized IDs, remove domain metadata, and hold out operation mappings before future training evidence.",
+      "description": "World-v0 action_id is a deterministic rewrite of state_id and operation is determined by domain.",
+      "evidence": "Zero-model baselines achieve 676/676 for both mappings; generator lines 440-475 share the same prefix.",
+      "evidence_tags": [
+        "VERIFIED_BY_CODE",
+        "VERIFIED_BY_ARTIFACT"
+      ],
+      "id": "R-013",
+      "owner": "CLAUDE",
+      "scientific_consequence": "A learner can solve the benchmark's labels from metadata without mathematical reasoning.",
+      "severity": "CRITICAL",
+      "status": "OPEN"
+    },
+    {
+      "affected_historical_result": "World-v0",
+      "cheapest_validation_or_fix": "Generate multiple plausible legal choices and assert projection boundaries end-to-end.",
+      "description": "Every World-v0 state has exactly one canonical legal action.",
+      "evidence": "Unique-legal-action and raw-first-action baselines are 676/676; NEXT_ACTION projection removes legal actions, so this leak applies if canonical state bypasses projection.",
+      "evidence_tags": [
+        "VERIFIED_BY_CODE"
+      ],
+      "id": "R-014",
+      "owner": "CLAUDE",
+      "scientific_consequence": "Certain consumers can recover gold by container position alone.",
+      "severity": "HIGH",
+      "status": "OPEN"
+    },
+    {
+      "affected_historical_result": "Fitness V1",
+      "cheapest_validation_or_fix": "Retain only the failure lesson and balanced counterfactual controls.",
+      "description": "Fitness V1 was dominated by option-position behavior.",
+      "evidence": "Committed V1 invalidation artifact reports MODEL_FITNESS_BENCHMARK_INVALID.",
+      "evidence_tags": [
+        "VERIFIED_BY_ARTIFACT"
+      ],
+      "id": "R-015",
+      "owner": "NONE",
+      "scientific_consequence": "V1 candidate scores cannot rank representations.",
+      "severity": "HIGH",
+      "status": "HISTORICAL_ONLY"
+    },
+    {
+      "affected_historical_result": "Fitness V3 and founder scores",
+      "cheapest_validation_or_fix": "Require mechanism-level qualification before aggregation.",
+      "description": "Fitness V3 pooled five ceiling mechanisms with a state-delta floor.",
+      "evidence": "Committed invalidity artifact marks substantive_instrument_valid=false.",
+      "evidence_tags": [
+        "VERIFIED_BY_ARTIFACT"
+      ],
+      "id": "R-016",
+      "owner": "NONE",
+      "scientific_consequence": "Aggregate validity hid mechanism-level failure; founder ranking is invalid.",
+      "severity": "HIGH",
+      "status": "HISTORICAL_ONLY"
+    },
+    {
+      "affected_historical_result": "Fitness V4",
+      "cheapest_validation_or_fix": "Use model-reported token counts and a representation-neutral preflight.",
+      "description": "Fitness V4 used a representation-specific character context heuristic.",
+      "evidence": "Forensics found 24 over-budget-unsent and 6 context-truncated rows although recorded tokens were far below the 32k context in affected examples.",
+      "evidence_tags": [
+        "VERIFIED_BY_ARTIFACT"
+      ],
+      "id": "R-017",
+      "owner": "NONE",
+      "scientific_consequence": "Some rows were voided by character length rather than true tokenizer capacity.",
+      "severity": "HIGH",
+      "status": "HISTORICAL_ONLY"
+    },
+    {
+      "affected_historical_result": "Fitness V4",
+      "cheapest_validation_or_fix": "Separate format validity from task accuracy or constrain decoding with verified schema handling.",
+      "description": "Fitness V4 malformed outputs often exhausted the 64-token answer budget while reasoning.",
+      "evidence": "59/89 malformed rows hit the completion budget and began with reasoning.",
+      "evidence_tags": [
+        "VERIFIED_BY_ARTIFACT"
+      ],
+      "id": "R-018",
+      "owner": "NONE",
+      "scientific_consequence": "Protocol-format failure was mixed with semantic inability.",
+      "severity": "MEDIUM",
+      "status": "HISTORICAL_ONLY"
+    },
+    {
+      "affected_historical_result": "Canonical-vNext planning",
+      "cheapest_validation_or_fix": "Run a build/replay preflight and record exact toolchain, checkout, target, and olean inventory before planning import work.",
+      "description": "Canonical-vNext gap report overstates the local mathlib build.",
+      "evidence": "It claims 5,680 .olean files; the pinned HML_V3 checkout currently contains 38 and a fresh 100-case replay gives 32 pass/68 nonpass.",
+      "evidence_tags": [
+        "VERIFIED_BY_SOURCE_DATA"
+      ],
+      "id": "R-019",
+      "owner": "CLAUDE",
+      "scientific_consequence": "Engineering estimates assume replay readiness that is not present in the audited checkout.",
+      "severity": "MEDIUM",
+      "status": "OPEN"
+    },
+    {
+      "affected_historical_result": "Any worktree-local test result",
+      "cheapest_validation_or_fix": "Make the import-path assertion the first test step and use an isolated environment or explicit PYTHONPATH.",
+      "description": "The shared virtualenv can import a different checkout via path configuration.",
+      "evidence": "Audit commands require PYTHONPATH=$PWD; import preflight resolves the isolated worktree only with that invocation.",
+      "evidence_tags": [
+        "VERIFIED_BY_CODE"
+      ],
+      "id": "R-020",
+      "owner": "CLAUDE",
+      "scientific_consequence": "Tests may silently execute another worktree's code.",
+      "severity": "HIGH",
+      "status": "CONTAINED"
+    },
+    {
+      "affected_historical_result": "Phase 6",
+      "cheapest_validation_or_fix": "Claude should freeze, hash, document, and commit the artifact without rerunning it.",
+      "description": "The Qwen Phase-6 artifact is uncommitted in Claude's worktree.",
+      "evidence": "SHA e753de98... exists only as an untracked file at audit time.",
+      "evidence_tags": [
+        "VERIFIED_BY_ARTIFACT"
+      ],
+      "id": "R-021",
+      "owner": "CLAUDE",
+      "scientific_consequence": "The observation is mutable and not recoverable from the audit base commit.",
+      "severity": "HIGH",
+      "status": "OPEN"
+    },
+    {
+      "affected_historical_result": "Phase 6 and any founder launch",
+      "cheapest_validation_or_fix": "Respect the frozen gate; use the one-mechanism result only as descriptive design evidence.",
+      "description": "Qwen qualifies exactly one mechanism, below the frozen >=2 Game-R gate.",
+      "evidence": "Artifact records only transitive_dependency as QUALIFIED; instrument_qualified=false.",
+      "evidence_tags": [
+        "VERIFIED_BY_ARTIFACT"
+      ],
+      "id": "R-022",
+      "owner": "CLAUDE",
+      "scientific_consequence": "Founder comparison and R search are unauthorized even aside from the cache invalidation.",
+      "severity": "CRITICAL",
+      "status": "CONTAINED"
+    }
+  ],
+  "schema_version": "codex-audit-risk-register-v1",
+  "severity_counts": {
+    "CRITICAL": 5,
+    "HIGH": 13,
+    "LOW": 0,
+    "MEDIUM": 4
+  }
+}
