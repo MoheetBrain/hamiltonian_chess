@@ -284,7 +284,23 @@ a pre-rendered string **fixes R**. These families measure *solver capability* on
 decisions — a different and valuable game — but only the canonical `formal_structural` probe bank
 can carry Game R today. Converting them to canonical form is a specified, separable task.
 
-**Fitness V7 running.** Launched 12:38:56 against `qwen38-rvn` bare after digest verification;
+**FITNESS V7 CONCLUDED — `V7_SHORTCUT_DOMINATED`, 0 of 3 mechanisms qualified.** 864 rows, all
+`FRESH` (zero cache hits, zero `CROSS_CONDITION`), Q0 1.000, every ladder value reproducing Phase 6
+exactly. `formal_expression_depth` L2: accuracy 0.7917 vs shortcut **0.8333** (margin −0.0417) —
+and it fails **V5's own frozen** `shortcut_rule_max = 0.75`, refuting Phase-6 §11's claim that a
+selector fix alone would have qualified it. `transitive_dependency` L3: accuracy 0.750 vs shortcut
+0.667, missing the preregistered 0.10 margin by **0.017** — the only mechanism ever to qualify does
+so under V5's rules but not under V7's stricter one. `precondition_conjunction`: `VOID_CEILING`,
+best shortcut at chance (0.500) — a ceiling problem, not a shortcut problem, and the one mechanism
+worth extending upward. **All other gates PASS: the instrument is sound; the mechanisms are not.**
+No founder tournament (gate needs 2, got 0). Full result: `docs/FITNESS_V7_RESULT.md`.
+
+**Astra canonical premise bridge merged research-only** (`docs/astra/`, `research/astra/`).
+Independently re-verified here: 37 tests pass; audit `GAME_R_SOURCE_PROJECTION_PARITY_PASS` over
+300 items × 5 representations. Parity holds at the **source-projection** layer only — its own scope
+states "not Lean kernel semantics" — so it is not yet a Game-R instrument.
+
+**Fitness V7 (superseded note).** Launched 12:38:56 against `qwen38-rvn` bare after digest verification;
 872 planned calls / 900 budget; Q0 1.000. Result unknown at time of writing.
 
 **Repository hygiene.** `research/environments/measurements/train_premise_citation_counts.json`

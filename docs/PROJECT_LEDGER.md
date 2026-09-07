@@ -1148,3 +1148,79 @@ mapping losslessly into `arena-canonical-v0.1.0`.
 **Effect on the overall project.** No representation scored. `RSTAR_NOT_IDENTIFIED` stands.
 
 **Next intended step.** Report V7's actual result against its preregistered sentinels.
+
+---
+
+## 2026-09-07 — V7 CONCLUDED: `V7_SHORTCUT_DOMINATED`, 0 of 3 mechanisms qualified
+
+**Branch.** `claude/phase-6-parallel-setup-9c6068`. **Stage.** 72-hour sprint, hours 9–13.
+
+**Objective of the change.** Report V7's actual result against its preregistered sentinels, and
+integrate the Astra canonical premise bridge research-only.
+
+**Files changed.** New: `docs/FITNESS_V7_RESULT.md`. Merged `astra/canonical-game-r-bridge`
+(`5811161`), confined to `docs/astra/` and `research/astra/` — verified by diff to touch no
+production file, no `GOAL.md`, no canonical schema, no V7 artifact.
+
+**THE RESULT.** Sentinel **`V7_SHORTCUT_DOMINATED`**; `instrument_qualified: false`;
+**0 of 3 mechanisms qualified**. 864 rows, **all `FRESH` — zero cache hits, zero
+`CROSS_CONDITION`** (the clean-run property Phase 6 could not claim). Q0 1.000. Every ladder value
+reproduced Phase 6 exactly, confirming solver determinism.
+
+| Mechanism | selected | accuracy | best shortcut | margin | verdict |
+|---|---|---|---|---|---|
+| `formal_expression_depth` | L2 | 0.7917 | **0.8333** `first_mentioned_in_state` | **−0.0417** | `VOID_SHORTCUT` |
+| `transitive_dependency` | L3 | 0.7500 | 0.6667 `first_mentioned_in_state` | **+0.0833** | `VOID_SHORTCUT` |
+| `precondition_conjunction` | — | ≥0.958 everywhere | 0.500 | — | `VOID_CEILING` |
+
+**The instrument is sound; the mechanisms are not.** `q0`, `valid_response`, `context`,
+`answer_share`, `position_invariance`, `negative_collapse` and `sample_size` all **PASS** on both
+selected cells. The derived target did exactly what it was registered to do — it moved
+`formal_expression_depth` from L3 (0.625) onto L2 (0.792), inside the window — and the per-level
+shortcut audit then killed it, because at L2 a one-line string rule **outscores the solver**.
+
+**Phase-6 §11 refuted by measurement.** `formal_expression_depth` at L2 fails
+`shortcut_absolute`: 0.8333 exceeds **V5's own frozen** `shortcut_rule_max = 0.75`
+(`fitness_v5.py:225`). L2 was already unqualifiable under V5's unmodified rules; V5 never saw it
+because it audits only the selected frontier and reported only `failures[0]`. At L1 the shortcut is
+**1.000**. Every in-window level of that mechanism is shortcut-dominated; it is not rescuable by
+selection.
+
+**The harder finding.** `transitive_dependency` — the only mechanism ever to qualify — passes
+`shortcut_absolute` (0.667 ≤ 0.75) and fails **only** the new margin, by 0.017. Stated two-sided:
+under V5's frozen rules it qualifies and Phase 6's finding stands on its own terms; under V7's
+stricter rule it does not, because beating a first-mention heuristic by 8.3 points on 24 items is
+≈1.0 SE and is not evidence of mechanism-specific reading. `SHORTCUT_MARGIN = 0.10` was frozen
+before any V7 number existed. Lowering it to 0.08 would qualify this mechanism; that would be
+protocol shopping and is refused.
+
+**Decisions made and why.** (1) No founder tournament: the frozen gate needs 2 qualified mechanisms
+and got 0. (2) No V8 on this probe bank — the preregistered stopping rule forbids it, and the
+evidence says the next move is a task family with a reachable frontier and audited shortcuts.
+(3) `precondition_conjunction` is a **ceiling** problem, not a shortcut problem (its best shortcut
+is chance, 0.500); it is the one mechanism worth extending upward. (4) The Astra bridge is merged
+**research-only**, per its own integration plan, and is not promoted to an instrument.
+
+**Tests and verification actually executed.** `python -m pytest` → **904 passed, 1 skipped**.
+`python -m ruff check .` → All checks passed. `python -m mypy arena` → Success, 129 files.
+Astra bridge independently re-verified in this worktree: `pytest research/astra/tests` → **37
+passed**; `python -m research.astra.game_r_premise.audit` →
+`GAME_R_SOURCE_PROJECTION_PARITY_PASS` over 300 items × 5 representations, 1,500 renderings, 1,800
+option permutations, 300 private-field noninterference checks, with alpha-rename and
+independent-context permutation reported **unsupported (300 each) rather than faked**.
+
+**Failures and unresolved uncertainty.** No representation has been scored at any point in the
+programme; V7 measured only the control surface. n = 24 per cell, and the qualifying window is
+≈1.76 SE wide — granularity, not the aim point, is now the binding constraint. The shortcut rules
+are V5's inherited set; a richer adversary would lower these margins further, not raise them. The
+Astra bridge achieves parity at the **source-projection** layer only — its own audit scope says
+"not Lean kernel semantics" — so it does not yet support claims about representation effects on
+mathematical semantics, and its held-out pool is 60 items drawn from historically exposed LeanDojo.
+
+**Effect on the overall project.** `RSTAR_NOT_IDENTIFIED`. `GAME_R_INSTRUMENT_NOT_QUALIFIED`. No
+founder tournament, no mutation campaign, no matched learning. Deliverable A
+(`TRAINING_LANGUAGE_V0`) is shipped and unaffected.
+
+**Next intended step.** Write the sprint handoff. The highest-value next experiment is
+`precondition_conjunction` with an extended upward ladder, or the premise-selection family once a
+canonical projection exists.

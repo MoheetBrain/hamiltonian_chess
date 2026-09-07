@@ -1,0 +1,45 @@
+{
+  "files": [
+    {
+      "inspection": "bytes hashed only; no semantic parsing or display",
+      "path": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo_raw/leandojo_benchmark_4/novel_premises/test.json",
+      "relpath": "novel_premises/test.json",
+      "sha256": "6c001d1cacd141a4301965fa03cb3c756c19aa09fb30daf9cb2ccb48396ff3fe",
+      "size_bytes": 11450088
+    },
+    {
+      "inspection": "bytes hashed only; no semantic parsing or display",
+      "path": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo_raw/leandojo_benchmark_4/novel_premises/val.json",
+      "relpath": "novel_premises/val.json",
+      "sha256": "ac1ea13995be17553e56bbf60d088c9e9ddf13c2045dade2c8474c1a44c983cf",
+      "size_bytes": 10314569
+    },
+    {
+      "inspection": "bytes hashed only; no semantic parsing or display",
+      "path": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo_raw/leandojo_benchmark_4/random/test.json",
+      "relpath": "random/test.json",
+      "sha256": "9f84ac4cbd5ea9031ab335d172e7a5b1873e4ac773721e60cb1a4cc5b4e2a0ae",
+      "size_bytes": 7129686
+    },
+    {
+      "inspection": "bytes hashed only; no semantic parsing or display",
+      "path": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo_raw/leandojo_benchmark_4/random/val.json",
+      "relpath": "random/val.json",
+      "sha256": "8ef9d5fbc1c6c8293e77a655fb888b687da804f1da9e02d6714569c49e905c70",
+      "size_bytes": 6456932
+    }
+  ],
+  "future_promotion_partition": "Fresh externally controlled, never-inspected source theorem/repository partition required; current partitions are not certified hidden.",
+  "historical_evidence": [
+    "research/environments/measurements/census_leandojo_heldout.json",
+    "research/environments/measurements/premise_selection_shortcuts.json"
+  ],
+  "historical_evidence_handling": "Existing exposure identified by repository audit; adapter never opens these reports.",
+  "historical_exposure": {
+    "novel_premises/test.json": "HISTORICALLY_EXPOSED",
+    "novel_premises/val.json": "HISTORICALLY_EXPOSED",
+    "random/test.json": "HISTORICALLY_EXPOSED",
+    "random/val.json": "HISTORICALLY_EXPOSED"
+  },
+  "seal_version": "astra-source-seal-v1"
+}

@@ -1,0 +1,49 @@
+{
+  "admission_limitations": [
+    "Single-goal source-text envelope only, not elaborated Lean semantics.",
+    "Source declaration headers omit ambient section variables, namespaces and notation context.",
+    "Recorded citation identifies the observed premise, not all mathematically valid next actions.",
+    "Bounded first-N source theorem pool; no population representativeness claim."
+  ],
+  "admitted_items": 300,
+  "all_candidates_have_full_source_headers": true,
+  "all_candidates_import_and_declaration_order_checked": true,
+  "all_raw_states_losslessly_preserved": true,
+  "answer_position_counts_zero_based": {
+    "0": 48,
+    "1": 58,
+    "2": 55,
+    "3": 40,
+    "4": 46,
+    "5": 53
+  },
+  "candidate_total": 1800,
+  "choices_per_item": 6,
+  "development_heldout_items": 60,
+  "development_train_items": 240,
+  "distractor_tiers": {
+    "a_same_proof": 750,
+    "b_same_module_freq_matched": 750
+  },
+  "elaborated_kernel_types": 0,
+  "kernel_replays": 0,
+  "requested_items": 300,
+  "source_header_statistics": {
+    "declarations_seen": 180907,
+    "excluded:nested assignment in header": 7964,
+    "excluded:requires balanced explicit theorem/lemma type": 49014,
+    "excluded:unsupported comment/string/quoted identifier in header": 2878,
+    "excluded:unsupported declaration visibility/syntax": 6986,
+    "explicit_source_headers": 114065
+  },
+  "source_statistics": {
+    "excluded_gold_signature_or_scope": 232,
+    "excluded_insufficient_matched_distractors": 165,
+    "excluded_production_not_usable": 2225,
+    "production_usable_steps": 2629,
+    "source_steps_scanned": 10720,
+    "source_theorems_scanned": 5000,
+    "theorems_attempted": 2146
+  },
+  "unique_theorem_groups": 300
+}
