@@ -144,6 +144,14 @@ attestation are possible offline with no download. Four local Solver families ar
 (`gemma4:12b`, `gemma4:31b`, `qwen38-rvn`, `qwen36-huihui`), which is what the next action
 needs.
 
+## Phase 6 in progress (2026-09-07)
+
+Frozen-V5 solver substitution. A pre-run audit found that Ollama applies gemma's built-in
+renderer on `/api/generate` (+12 framing tokens, and it can change the answer) while
+qwen38-rvn receives bare bytes, so Phase 6 runs **both** solvers under a `bare` condition that
+delivers exactly the instrument's bytes. Preregistered in `docs/PHASE6_PREREGISTRATION.md`
+before any experimental call. Phase-5 artifacts and sentinel are untouched.
+
 ## Current Blockers
 
 A new experiment version (V4.1 calibration or V5) requires explicit authorisation before any

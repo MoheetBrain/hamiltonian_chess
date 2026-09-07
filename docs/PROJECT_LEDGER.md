@@ -359,3 +359,68 @@ the installed toolchain is untested; the ~44% historical replay yield is the pla
 verified offline path to kernel-backed attestation.
 
 **Next intended step.** Unchanged: re-run the frozen V5 DEV against a second Solver family.
+
+---
+
+## 2026-09-07 — Phase 6 preregistration: frozen V5, substituted solver, prompt path equalised
+
+**Date and time.** 2026-09-07, early morning BST. **Branch.**
+`claude/hamiltonian-arena-takeover-caa2eb`. **Project stage.** unchanged
+(`CURRENT_SOLVER_OR_TASK_FAMILY_CANNOT_SUPPORT_GAME_R_MEASUREMENT`) pending the Phase-6 run.
+
+**Objective.** Distinguish "this Solver cannot expose the Game-R mechanisms" from "this task
+family has no measurable Game-R structure", by running the frozen V5 instrument against a
+materially different competent solver and changing nothing else.
+
+**Files and systems changed.** `arena/experiments/fitness_v5.py` (solver registry, solver and
+bare parameters threaded through, served-model verification, per-condition artifact paths),
+`docs/PHASE6_PREREGISTRATION.md` (new), `docs/PROJECT_STATUS.md`, this ledger. No probe, gate,
+prompt template, schema or scoring rule was touched. Phase-5 artifacts untouched
+(`result.json` still sha256 `0c5b3271…`).
+
+**What was completed.** Ten read-only subagents audited the freeze boundary, solver inventory,
+methodology, statistics, the Phase-5 collapse fingerprint, the adapter, template equivalence,
+gates, cross-programme reader priors, and a red-team pass. Two hazards were found and fixed
+before any experimental call, and one Phase-5 interpretation was corrected.
+
+**Decisions made and why.**
+- **Solver: `qwen38-rvn`.** Different family from gemma4, completion-only (so the 64-token cap
+  cannot be consumed by thinking tokens, which V5 would score as wrong rather than void),
+  Q4_K_M matched, and the most structurally sensitive reader in the programme's history.
+  Declared confounds: it is a fine-tune and it is 27.3B versus 11.9B, so family and scale move
+  together; a null is therefore weaker evidence than a positive.
+- **BUG_FOUND: the prompt path was not solver-neutral.** Ollama applies gemma's Modelfile
+  renderer on `/api/generate` (+12 tokens, and it changed the answer on a probe) while
+  qwen carries no renderer. `ollama show --template` returns `{{ .Prompt }}` for both, so it is
+  not a valid discriminator. Rather than repair silently, the defect was documented and the
+  design re-registered: both solvers now run under a `bare` condition delivering exactly the
+  instrument's bytes, in a separate cache namespace.
+- **Cache hazard closed.** The cache key contained the model digest while the call used the
+  model name, and nothing linked them; changing the name alone would have replayed all 392
+  Phase-5 rows as the new solver's at 100% cache hits. The digest now travels with the solver
+  and the served model is verified before any run.
+- **Analysis corrected.** Comparisons will be made at fixed levels, never at each solver's own
+  selected frontier, and the primary endpoint is a degeneracy statistic rather than per-cell
+  accuracy, which at n=24 cannot reach two-sided p<=0.05.
+
+**Tests and verification actually executed.**
+- `.venv/bin/python -m pytest` — 190 passed. `ruff check` / `ruff format --check` / `mypy arena`
+  — all clean.
+- Determinism: 24/24 information-identical destroyed twin pairs returned the same answer;
+  negative accuracy exactly 24/48 = 0.5000.
+- Framing magnitude: on the three collapsed cells, framed versus bare agreement 67/72 = 0.931;
+  bare still collapses (67/72 on one option). Framing does not explain the collapse.
+- Smoke test: 2 probes, qwen bare, both correct, `cache_hit=False`, clean stop.
+- Phase-5 artifact hash and sentinel re-verified unchanged.
+
+**Failures and unresolved uncertainty.** A Phase-5 interpretation was wrong and is corrected in
+the preregistration: at the only cell where swap arms ran, the Solver followed *content* 19/24
+and position only 5/24, so "constant-position collapse" was not established; the cells with
+answer share 1.000 never had swap arms evaluated. Also recorded: the destroyed-twin negative
+control is a mathematical constant at 0.500, which makes the effective qualifying window
+[0.70, 0.85] rather than the declared [0.35, 0.85].
+
+**Effect on the overall project.** Phase 6 can now run as a genuine controlled substitution.
+Phase 5 remains valid: all its comparisons were within one solver under one framing.
+
+**Next intended step.** Run gemma bare and qwen bare (392 calls each), then classify.

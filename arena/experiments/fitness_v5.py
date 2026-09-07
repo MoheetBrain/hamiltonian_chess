@@ -53,7 +53,6 @@ from arena.environments.formal_structural import (
     load_formal_states,
     relabel,
 )
-from arena.experiments.fitness_v2 import QUALIFIED_MODEL
 from arena.experiments.fitness_v4 import (
     _dependency_family,
     _premise_family,
@@ -89,6 +88,81 @@ RUNTIME_CONFIG: dict[str, Any] = {
     "format": "json_schema:choice_ab",
 }
 RUNTIME_CONFIG_HASH = stable_hash(RUNTIME_CONFIG)
+
+#: Phase-6 "bare prompt" condition.  Ollama's /api/generate applies a model's built-in
+#: RENDERER when one exists: gemma4 carries one and gains 12 framing tokens (and can change
+#: its answer), while qwen38-rvn carries none and receives the prompt verbatim.  Comparing a
+#: framed solver against a bare one is not a solver substitution, so Phase 6 sets ``raw`` for
+#: BOTH solvers, which delivers exactly the bytes ``build_prompt`` constructed.  This changes
+#: the runtime, hence the hash, hence the cache namespace: Phase-5 rows are preserved
+#: untouched and are never mixed with Phase-6 rows.
+RUNTIME_CONFIG_BARE: dict[str, Any] = {**RUNTIME_CONFIG, "raw": True}
+RUNTIME_CONFIG_BARE_HASH = stable_hash(RUNTIME_CONFIG_BARE)
+
+#: Solver registry for Phase 6 substitution.  The cache identity keys on the DIGEST, while the
+#: HTTP call uses the NAME, and nothing linked them: editing the name alone would have made
+#: every Phase-6 identity collide with a Phase-5 file and silently replay gemma's answers as
+#: the new solver's.  `verify_served_model` closes that hole by asserting the served digest
+#: before any run, so name and digest can no longer drift apart.
+SOLVERS: dict[str, dict[str, str]] = {
+    "gemma4:12b": {
+        "name": "gemma4:12b",
+        "digest": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c",
+        "family": "gemma4",
+        "parameter_size": "11.9B",
+        "quantization": "Q4_K_M",
+    },
+    "qwen38-rvn": {
+        "name": "qwen38-rvn:latest",
+        "digest": "25eb57cb8173332b43f8f07f6214e6b74f9e11afac5242392da751458fb024ae",
+        "family": "qwen35",
+        "parameter_size": "27.3B",
+        "quantization": "Q4_K_M",
+    },
+}
+DEFAULT_SOLVER = SOLVERS["gemma4:12b"]
+
+
+def verify_served_model(solver: dict[str, str]) -> dict[str, Any]:
+    """Assert the locally served model matches the solver's recorded digest and template.
+
+    Two things are checked because both can silently invalidate a substitution experiment:
+    the digest (so cached rows cannot be attributed to the wrong model) and the prompt
+    template (a model whose Modelfile wraps the prompt in chat markers is not receiving the
+    same bytes as one with a pass-through template, which would change the input, not just
+    the solver).
+    """
+
+    request = Request(
+        "http://127.0.0.1:11434/api/show",
+        data=json.dumps({"model": solver["name"]}).encode(),
+        headers={"Content-Type": "application/json"},
+        method="POST",
+    )
+    with urlopen(request, timeout=120) as response:  # noqa: S310 - fixed local service
+        shown = json.loads(response.read().decode())
+    tags_request = Request("http://127.0.0.1:11434/api/tags", method="GET")
+    with urlopen(tags_request, timeout=120) as response:  # noqa: S310 - fixed local service
+        tags = json.loads(response.read().decode())
+    served = next((m for m in tags["models"] if m["name"] == solver["name"]), None)
+    if served is None:
+        raise RuntimeError(f"solver {solver['name']} is not served by the local runtime")
+    if served["digest"] != solver["digest"]:
+        raise RuntimeError(
+            f"digest mismatch for {solver['name']}: served {served['digest']} != "
+            f"recorded {solver['digest']}. Refusing to run: cached rows key on the digest."
+        )
+    template = str(shown.get("template", ""))
+    return {
+        "name": solver["name"],
+        "digest": served["digest"],
+        "template": template,
+        "template_hash": stable_hash(template),
+        "template_is_passthrough": template.strip() == "{{ .Prompt }}",
+        "capabilities": shown.get("capabilities", []),
+        "details": served.get("details", {}),
+    }
+
 
 #: Context accounting.  V4's character heuristics were representation-specific and voided 30
 #: rows that measured token counts say would have fit.  V5 refuses only absurd prompts and
@@ -500,20 +574,26 @@ def parse_response(output: str) -> int | None:
     return 0 if value["choice"] == "A" else 1
 
 
-def _call_ollama(model: str, prompt: str) -> dict[str, Any]:
+def _call_ollama(model: str, prompt: str, *, bare: bool = False) -> dict[str, Any]:
+    config = RUNTIME_CONFIG_BARE if bare else RUNTIME_CONFIG
     options = {
         key: value
-        for key, value in RUNTIME_CONFIG.items()
-        if key not in {"engine", "think", "format"}
+        for key, value in config.items()
+        if key not in {"engine", "think", "format", "raw"}
     }
-    payload = {
+    payload: dict[str, Any] = {
         "model": model,
         "prompt": prompt,
         "stream": False,
-        "think": RUNTIME_CONFIG["think"],
         "format": RESPONSE_SCHEMA,
         "options": options,
     }
+    if bare:
+        # raw bypasses the model's renderer; `think` is a renderer-level control and is
+        # rejected alongside it, so it is omitted rather than set.
+        payload["raw"] = True
+    else:
+        payload["think"] = config["think"]
     request = Request(
         "http://127.0.0.1:11434/api/generate",
         data=json.dumps(payload).encode(),
@@ -549,7 +629,13 @@ def classify_row(raw: dict[str, Any], prompt: str, probe: V5Probe, parsed: int |
     return "CORRECT" if chosen == expected else "MODEL_SEMANTIC_ERROR"
 
 
-def _cached_call(root: Path, identity: dict[str, Any], prompt: str) -> tuple[dict[str, Any], bool]:
+def _cached_call(
+    root: Path,
+    identity: dict[str, Any],
+    prompt: str,
+    solver: dict[str, str] = DEFAULT_SOLVER,
+    bare: bool = False,
+) -> tuple[dict[str, Any], bool]:
     path = root / "artifacts/cache/fitness_v5" / f"{stable_hash(identity)}.json"
     if path.exists():
         cached = json.loads(path.read_text())
@@ -561,7 +647,7 @@ def _cached_call(root: Path, identity: dict[str, Any], prompt: str) -> tuple[dic
     # verified after the call from the model's own reported prompt_eval_count.
     started = time.monotonic()
     try:
-        raw: dict[str, Any] = _call_ollama(str(QUALIFIED_MODEL["name"]), prompt)
+        raw: dict[str, Any] = _call_ollama(str(solver["name"]), prompt, bare=bare)
     except Exception as error:  # pragma: no cover - network/runtime failure path
         raw = {
             "response": "",
@@ -641,6 +727,8 @@ def evaluate(
     probes: Sequence[V5Probe],
     *,
     progress: Callable[[int, int], None] | None = None,
+    solver: dict[str, str] = DEFAULT_SOLVER,
+    bare: bool = False,
 ) -> dict[str, Any]:
     assert_game_r_genome(genome)
     rows: list[dict[str, Any]] = []
@@ -649,13 +737,13 @@ def evaluate(
         identity = {
             "experiment": EXPERIMENT_VERSION,
             "instrument": INSTRUMENT_VERSION,
-            "model_digest": QUALIFIED_MODEL["digest"],
-            "runtime_hash": RUNTIME_CONFIG_HASH,
+            "model_digest": solver["digest"],
+            "runtime_hash": RUNTIME_CONFIG_BARE_HASH if bare else RUNTIME_CONFIG_HASH,
             "genome_hash": genome.genome_hash,
             "probe_hash": probe.derived_hash,
             "prompt_hash": stable_hash(prompt),
         }
-        raw, hit = _cached_call(root, identity, prompt)
+        raw, hit = _cached_call(root, identity, prompt, solver, bare)
         parsed = parse_response(raw["response"])
         cause = classify_row(raw, prompt, probe, parsed)
         selected_hash = (
@@ -897,7 +985,7 @@ def qualify_mechanism(
     }
 
 
-def _q0(root: Path) -> dict[str, Any]:
+def _q0(root: Path, solver: dict[str, str] = DEFAULT_SOLVER, bare: bool = False) -> dict[str, Any]:
     rows = []
     for index in range(8):
         expected = "A" if index % 2 == 0 else "B"
@@ -905,12 +993,12 @@ def _q0(root: Path) -> dict[str, Any]:
         identity = {
             "experiment": EXPERIMENT_VERSION,
             "kind": "Q0",
-            "model_digest": QUALIFIED_MODEL["digest"],
-            "runtime_hash": RUNTIME_CONFIG_HASH,
+            "model_digest": solver["digest"],
+            "runtime_hash": RUNTIME_CONFIG_BARE_HASH if bare else RUNTIME_CONFIG_HASH,
             "case": index,
             "prompt_hash": stable_hash(prompt),
         }
-        raw, _ = _cached_call(root, identity, prompt)
+        raw, _ = _cached_call(root, identity, prompt, solver, bare)
         parsed = parse_response(raw["response"])
         rows.append(
             {
@@ -928,9 +1016,25 @@ def _log(message: str) -> None:
     print(f"[fitness_v5 {time.strftime('%H:%M:%S')}] {message}", flush=True)
 
 
-def run_development(root: Path) -> dict[str, Any]:
+def development_artifact_path(solver: dict[str, str], bare: bool = False) -> str:
+    """Phase-5's artifact keeps its exact path; every other condition writes beside it."""
+
+    if solver["digest"] == DEFAULT_SOLVER["digest"] and not bare:
+        return "experiments/fitness_v5/development/result.json"
+    key = solver["name"].replace(":", "_").replace("/", "_")
+    suffix = "-bare" if bare else ""
+    return f"experiments/fitness_v5/development/result-{key}{suffix}.json"
+
+
+def run_development(
+    root: Path, solver: dict[str, str] = DEFAULT_SOLVER, bare: bool = False
+) -> dict[str, Any]:
+    served = verify_served_model(solver)
+    _log(
+        f"solver {solver['name']} digest verified; template passthrough={served['template_is_passthrough']}"
+    )
     control = equal_information_genome()
-    q0 = _q0(root)
+    q0 = _q0(root, solver, bare)
     _log(f"Q0 valid rate {q0['rate']:.3f}")
     all_probes = build_dev_pool(root)
     by_cell: dict[tuple[str, int], list[V5Probe]] = defaultdict(list)
@@ -946,7 +1050,7 @@ def run_development(root: Path) -> dict[str, Any]:
             cell = [p for p in by_cell[(mechanism, level)] if p.variant.value in POSITIVE_VARIANTS]
             if not cell:
                 continue
-            result = evaluate(root, control, cell)
+            result = evaluate(root, control, cell, solver=solver, bare=bare)
             ladder_rows.extend(result["rows"])
             accuracies[level] = result["summary"]["positive_accuracy"]
             _log(
@@ -966,7 +1070,7 @@ def run_development(root: Path) -> dict[str, Any]:
         if selection["selected_level"] is not None:
             level = int(selection["selected_level"])
             full = by_cell[(mechanism, level)]
-            result = evaluate(root, control, full)
+            result = evaluate(root, control, full, solver=solver, bare=bare)
             audit = shortcut_audit(tuple(full))
             qualification = qualify_mechanism(result["summary"], audit, q0["rate"])
             report.update(
@@ -997,8 +1101,10 @@ def run_development(root: Path) -> dict[str, Any]:
         "instrument_version": INSTRUMENT_VERSION,
         "environment_version": ENVIRONMENT_VERSION,
         "control_candidate": control.candidate_id,
-        "model": QUALIFIED_MODEL,
-        "runtime": RUNTIME_CONFIG,
+        "model": solver,
+        "served_model": served,
+        "runtime": RUNTIME_CONFIG_BARE if bare else RUNTIME_CONFIG,
+        "prompt_condition": "bare" if bare else "framed",
         "response_schema": RESPONSE_SCHEMA,
         "runtime_config_hash": RUNTIME_CONFIG_HASH,
         "context_guard": CONTEXT_GUARD,
@@ -1021,8 +1127,10 @@ def run_development(root: Path) -> dict[str, Any]:
     return payload
 
 
-def experiment_status_v5(root: Path) -> dict[str, Any]:
-    path = root / "artifacts/experiments/fitness_v5/development/result.json"
+def experiment_status_v5(
+    root: Path, solver: dict[str, str] = DEFAULT_SOLVER, bare: bool = False
+) -> dict[str, Any]:
+    path = root / "artifacts" / development_artifact_path(solver, bare)
     if not path.exists():
         return {"experiment_version": EXPERIMENT_VERSION, "sentinel": "FITNESS_V5_NOT_RUN"}
     development = json.loads(path.read_text())
@@ -1048,6 +1156,7 @@ def experiment_status_v5(root: Path) -> dict[str, Any]:
         sentinel = "FITNESS_V5_NOT_QUALIFIED"
     return {
         "experiment_version": EXPERIMENT_VERSION,
+        "solver": solver["name"],
         "sentinel": sentinel,
         "qualified_mechanisms": development["qualified_mechanisms"],
         "selected_levels": development["selected_levels"],
@@ -1059,8 +1168,12 @@ def experiment_status_v5(root: Path) -> dict[str, Any]:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("command", choices=("materialize", "develop", "status"))
+    parser.add_argument("command", choices=("materialize", "develop", "status", "verify"))
     parser.add_argument("--root", type=Path, default=Path.cwd())
+    parser.add_argument("--solver", choices=tuple(SOLVERS), default="gemma4:12b")
+    parser.add_argument(
+        "--bare", action="store_true", help="send the prompt verbatim (no model renderer)"
+    )
     args = parser.parse_args()
     if args.command == "materialize":
         probes = build_dev_pool(args.root)
@@ -1074,8 +1187,10 @@ def main() -> int:
                 }
             )
         )
+    elif args.command == "verify":
+        print(canonical_json(verify_served_model(SOLVERS[args.solver])))
     elif args.command == "develop":
-        result = run_development(args.root)
+        result = run_development(args.root, SOLVERS[args.solver], args.bare)
         print(
             canonical_json(
                 {
@@ -1085,7 +1200,7 @@ def main() -> int:
             )
         )
     else:
-        print(canonical_json(experiment_status_v5(args.root)))
+        print(canonical_json(experiment_status_v5(args.root, SOLVERS[args.solver], args.bare)))
     return 0
 
 
