@@ -414,6 +414,13 @@ Audit tree is complete and self-consistent: every reported number sits beside it
 Audit working files are under `research/audit/` (108 files, reproducible, zero model calls); three
 large regenerable intermediates are gitignored and named in `research/audit/README.md`.
 
+## Plain-language state
+
+`docs/WHAT_WORKS_WHAT_DOESNT.md` is the one-page answer to "what works, what doesn't", each line
+backed by a file or artifact. Summary: **the machinery is real and mostly sound; the scientific
+question the project exists to answer has never been asked**, because no experiment has ever scored
+two representations against a Solver.
+
 ## Current Blockers
 
 A new experiment version (V4.1 calibration or V5) requires explicit authorisation before any

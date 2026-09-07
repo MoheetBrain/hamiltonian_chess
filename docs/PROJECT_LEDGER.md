@@ -1526,3 +1526,56 @@ without also fixing the evaluation — sample size, not the decision rule, is th
 
 **Next intended step.** Unchanged: the single experiment in `docs/V7_TOTAL_FORENSIC_AUDIT.md` §22,
 pending the owner's decision.
+
+---
+
+## 2026-09-07 — Add a plain-language "what works, what doesn't" state document
+
+**Branch.** `claude/phase-6-parallel-setup-9c6068`. **Stage.** Post-audit close-out.
+No experiment run, no threshold changed, no result re-scored.
+
+**Objective.** The project's state is now spread across a preregistration, three result documents,
+a 388-line forensic audit, a sprint handoff and 110 audit working files. A reader cannot answer
+"what actually works?" without reading all of it. This adds one page that answers it directly, with
+every line traceable to a file or artifact.
+
+**Files changed.** New: `docs/WHAT_WORKS_WHAT_DOESNT.md`. Modified: `docs/PROJECT_STATUS.md`
+(pointer), `docs/PROJECT_LEDGER.md` (this entry). No code, no artifact, no sentinel.
+
+**What it records as WORKING.** Canonical world and verifier · representation machinery (pure,
+deterministic — AST-verified) · **V7's arithmetic, which recomputes exactly: 252 checks, 0
+mismatches** · cache and provenance discipline (864/864 FRESH, 0 orphans, `872 = 864 + 8 Q0`
+proved) · preregistration discipline, including the correct refusal to weaken `SHORTCUT_MARGIN` ·
+grammar-constrained output (0 malformed in 432) · `TRAINING_LANGUAGE_V0` · three shortcut-gated
+formal task families · the tournament harness · `precondition_conjunction`'s by-construction
+balance · 964 passing tests with ruff and mypy clean.
+
+**What it records as NOT WORKING.** The shortcut audit reads a string the Solver never receives ·
+`transitive_dependency`'s void is refuted at population scale · `formal_expression_depth` is
+representation-invariantly solvable at 1.000 · the 0.10 margin is unrepresentable at n=24 (executed
+gate is 0.125; power 0.069) · the shortcut family is two rules, not seven, with the ancestor's
+Bonferroni + Clopper–Pearson correction deleted · position-invariance is gated at chance while
+position anchoring is 56.5% of errors · `relabel()`'s counterfactual is blind · the sealed manifest
+under-declares exposure by 60% and the premise promotion pool is spent · the three new families and
+the Astra bridge cannot carry Game R · Route B's historical evidence is void.
+
+**What it records as NEVER TESTED.** No representation ever scored; no multi-seed run anywhere; no
+OOD claim available; no Lean-verified negatives.
+
+**Decisions and why.** Written as three explicit buckets — WORKS / DOESN'T / NEVER TESTED — because
+the audit showed the programme's recurring error is **granularity substitution**, and the specific
+form it took here was reporting *failure to demonstrate* as *demonstration of failure*. Keeping
+"never tested" as its own bucket, rather than folding it into "doesn't work", is the point of the
+document.
+
+**Tests actually executed.** `python -m pytest` → 964 passed, 1 skipped. `ruff check` and
+`mypy arena` clean. No model call, no GPU, no cloud — laptop only.
+
+**Failures and uncertainty.** This document is a summary; where it compresses, the audit and the
+result documents are authoritative. It creates no new evidence and resolves no open question.
+
+**Effect.** No scientific claim changes. `RSTAR_NOT_IDENTIFIED`,
+`V7_PARTIALLY_VALID_INSTRUMENT_CONFOUNDED` and `TRAINING_LANGUAGE_V0_BASELINE` all stand.
+
+**Next intended step.** Unchanged: the single experiment in
+`docs/V7_TOTAL_FORENSIC_AUDIT.md` §22, pending the owner's decision.
