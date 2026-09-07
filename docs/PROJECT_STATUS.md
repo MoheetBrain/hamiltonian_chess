@@ -347,6 +347,23 @@ REPORT_ONLY input.
 4,260 / test 4,506); 167,779 (64.6%) cite ≥1 premise; `rw` commonest head at 48,991. A built
 mathlib at that commit exists locally (18 GB, 5,680 `.olean`).
 
+## Sprint close-out (2026-09-07)
+
+`docs/72_HOUR_SPRINT_HANDOFF.md` is the zero-context handoff. `docs/CURRENT_STATE.md` was
+reconciled: a new head reflects the sprint sentinels and all prior content is preserved verbatim
+below a "Historical state (pre-sprint)" divider.
+
+**Final sentinels.** `GAME_R_INSTRUMENT_NOT_QUALIFIED` · `RSTAR_NOT_IDENTIFIED` ·
+`TRAINING_LANGUAGE_V0_BASELINE` (shipped, `package_hash` `443c8f7950147b82…`).
+
+**Compute.** Zero cloud spend, re-verified at close: `a100-40`, `h3` and `a100` all TERMINATED.
+V7 ran locally through Ollama (864 calls, ~1.7 h). Matched fine-tuning would require an A100 —
+no `torch` is installed locally and the machine is Apple Silicon.
+
+**The single most expensive successor mistake** would be running a founder tournament on the three
+new task families: they emit pre-rendered Lean strings, so eight representation arms would receive
+byte-identical inputs. The handoff leads with this.
+
 ## Current Blockers
 
 A new experiment version (V4.1 calibration or V5) requires explicit authorisation before any

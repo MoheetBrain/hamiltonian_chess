@@ -1,5 +1,57 @@
 # Current State
 
+**Updated 2026-09-07, end of the 72-hour sprint.** Reconciled against committed artifacts.
+
+## Sentinels
+
+- Game R: **`GAME_R_INSTRUMENT_NOT_QUALIFIED`** (Fitness V7: 0 of 3 mechanisms)
+- Representation: **`RSTAR_NOT_IDENTIFIED`** — no representation has ever been scored
+- Language: **`TRAINING_LANGUAGE_V0_BASELINE`** — shipped, `package_hash` `443c8f7950147b82…`
+- Phase 6: published `SOLVER_SPECIFIC_FAILURE_SUPPORTED`; **formally contested** (61 `cache_hit`
+  rows against its own "cache hits > 0" rule). This sprint used no Phase-6 number as confirmatory
+  input.
+
+## Fitness V7 — the current instrument result
+
+`V7_SHORTCUT_DOMINATED`. 864 rows, all `FRESH` (zero cache hits, zero `CROSS_CONDITION`), Q0 1.000.
+Every ladder value reproduced Phase 6 exactly.
+
+| Mechanism | selected | accuracy | best shortcut | margin | verdict |
+|---|---|---|---|---|---|
+| `formal_expression_depth` | L2 | 0.7917 | 0.8333 | −0.0417 | `VOID_SHORTCUT` |
+| `transitive_dependency` | L3 | 0.7500 | 0.6667 | +0.0833 | `VOID_SHORTCUT` |
+| `precondition_conjunction` | — | ≥0.958 | 0.500 | — | `VOID_CEILING` |
+
+All non-shortcut gates PASS. The instrument is sound; the mechanisms are shortcut-dominated.
+`precondition_conjunction` is the exception — its shortcut is at chance, so it is a *ceiling*
+problem and is the one mechanism worth extending upward.
+
+Full result: `docs/FITNESS_V7_RESULT.md`. Handoff: `docs/72_HOUR_SPRINT_HANDOFF.md`.
+
+## Assets built this sprint
+
+- Three shortcut-gated formal task families from 250,814 real Lean transitions
+  (`docs/GAME_R_FORMAL_ARENA_V1_SPEC.md`) — **built, gated, never run against a Solver**, and
+  **unable to carry Game R** because they emit pre-rendered strings that fix R.
+- `releases/TRAINING_LANGUAGE_V0/` — parser, renderer, canonical adapter, training schema,
+  conformance tests, version hashes.
+- Astra canonical premise bridge, research-only (`docs/astra/`, `research/astra/`); parity at the
+  source-projection layer, not Lean kernel semantics.
+
+## Verification at this state
+
+`python -m pytest` 904 passed, 1 skipped · `ruff check .` clean · `mypy arena` clean (129 files) ·
+`research/astra/tests` 37 passed. `GOAL.md` sha256 verified unmodified.
+
+## Compute
+
+Zero cloud spend. Three GCP instances exist, all TERMINATED. V7 ran locally through Ollama
+(864 calls, ~1.7 h). Matched fine-tuning would require an A100: no `torch` locally, Apple Silicon.
+
+---
+
+## Historical state (pre-sprint) follows
+
 Recorded: 2026-09-07, Europe/London, at the end of the Phase-5 session. Reconciled
 against code, committed artifacts, git history and the Ollama server logs.
 

@@ -1224,3 +1224,41 @@ founder tournament, no mutation campaign, no matched learning. Deliverable A
 **Next intended step.** Write the sprint handoff. The highest-value next experiment is
 `precondition_conjunction` with an extended upward ladder, or the premise-selection family once a
 canonical projection exists.
+
+---
+
+## 2026-09-07 — Sprint handoff written; state documents reconciled
+
+**Branch.** `claude/phase-6-parallel-setup-9c6068`. **Stage.** 72-hour sprint, close-out.
+
+**Objective.** Leave a zero-context handoff and reconcile the state documents with the V7 result.
+
+**Files changed.** New: `docs/72_HOUR_SPRINT_HANDOFF.md`. Rewritten head of
+`docs/CURRENT_STATE.md` (prior content preserved below a "Historical state (pre-sprint)" divider —
+nothing deleted).
+
+**What was completed.** The handoff records both deliverables, the V7 result and why the two
+corrections had to be registered together, the three task families with their measured shortcut
+numbers, the constraint that those families cannot carry Game R, the sealing regime, the compute
+ledger, the two incidents, and a six-item ordered next-action list.
+
+**Decisions and why.** The handoff leads with the *constraint* rather than the assets: the single
+most expensive mistake a successor could make is to run a founder tournament on the three new
+families, which would silently compare eight byte-identical inputs. It also states plainly that
+lowering `SHORTCUT_MARGIN` from 0.10 to 0.08 would qualify `transitive_dependency`, so that the
+temptation is on the record rather than latent.
+
+**Tests actually executed.** `python -m pytest` → 904 passed, 1 skipped. `ruff check .` clean.
+`mypy arena` clean, 129 files. `research/astra/tests` → 37 passed. `GOAL.md` sha256 re-verified
+`43d8fcdb…0117b`. `gcloud compute instances list` re-checked at close: all three instances
+**TERMINATED**; zero cloud spend for the sprint.
+
+**Failures and unresolved uncertainty.** Deliverable B is a negative result: no representation was
+scored, and none has been at any point in the programme. The three families are unrun. The Astra
+bridge is a source-projection prototype, not a semantic one.
+
+**Effect on the overall project.** `GAME_R_INSTRUMENT_NOT_QUALIFIED`, `RSTAR_NOT_IDENTIFIED`,
+`TRAINING_LANGUAGE_V0` shipped at `TRAINING_LANGUAGE_V0_BASELINE`.
+
+**Next intended step.** Extend `precondition_conjunction`'s ladder upward — its shortcut is at
+chance, so it is the cheapest credible route to a qualified mechanism.
