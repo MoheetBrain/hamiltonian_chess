@@ -408,6 +408,19 @@ of 23.7. Probes are restricted to states where every surface renders under 30,00
 bounding the ratio to ~4.6 and leaving 104 states over 95 mathlib files (75% with a one-level
 lead). Without that filter any accuracy comparison would measure token cost.
 
+**Local Lean capability, verified directly (decision-relevant).** Lean toolchains
+`v4.10.0-rc1` and `4.33.1` are installed under `~/.elan/toolchains`, and mathlib4 @
+`29dcec074de168ac2bf835a77ef68bbe069194c5` is **fully built** at
+`HML_V3/external/runtime_work/leanprover-community-mathlib4-29dcec07…/mathlib4` — 5,680
+`.olean` files, `.lake/` present, `lean-toolchain` pinned to the installed `v4.10.0-rc1`, and
+`Lean4Repl.olean` compiled, so LeanDojo-style interactive replay runs offline. One subagent
+reported mathlib absent; that was a search-depth artifact (it scanned to depth 4, the path is
+at depth 7) and is superseded by this direct check. Consequence: fresh state extraction and
+genuine Tier-A replay certificates are available with **no download**, via
+`HML_V3/scripts/extract/LeanRuntimeExtractV2.lean` and the pinned attestation bridge in
+`hmlt-reasoning-corpus-lean-attestation` (`b4e2d98`). Note the donor's own attestation gate
+reported `passed=false` at ~44% reproducible execution, so budget for that yield.
+
 **Do not reuse `formal_expression_depth` as-is**: `first_mentioned_in_state` reaches 0.833 in
 the selected stratum, because real Lean terms tend to mention the deeper identifier first. It
 needs an option-ordering control and an identifier-obfuscation arm (to quantify mathlib

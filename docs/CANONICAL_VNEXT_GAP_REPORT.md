@@ -74,6 +74,13 @@ D diversity and later curriculum/SFT material, not measurement truth.
    obligations, failed alternatives, counterexamples, repairs, subgoals, search decisions;
    the transition record holds action/verification only.
 
+## 4b. Local capability (verified 2026-09-07)
+
+Lean `v4.10.0-rc1` is installed and mathlib4 @ `29dcec07…` is fully built locally (5,680
+`.olean` files, `Lean4Repl.olean` compiled). Fresh extraction and real kernel-backed
+attestation are therefore possible offline, which is what would raise imported items from
+Tier B to Tier A. No download is required for the pilot.
+
 ## 5. Recommendation
 
 - vNext should be `arena-canonical-v1.0.0` with explicit migration and new hashes, adopted

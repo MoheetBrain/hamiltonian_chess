@@ -318,3 +318,44 @@ and V5 the Solver itself. The instrument is, for the first time, not the suspect
 **Next intended step.** Re-run the frozen V5 DEV against `gemma4:31b` and `qwen38-rvn`
 (~400 calls each). If no installed Solver shows a band, move to Route B matched learning
 curves under explicit GPU authorisation. Do not build V6.
+
+---
+
+## 2026-09-07 (later) — Correction: mathlib is built locally; Lean attestation is available offline
+
+**Date and time.** 2026-09-07, after the Phase-5 commit `2c61fdb`. **Branch.**
+`claude/hamiltonian-arena-takeover-caa2eb`. **Project stage.** unchanged
+(`CURRENT_SOLVER_OR_TASK_FAMILY_CANNOT_SUPPORT_GAME_R_MEASUREMENT`).
+
+**Objective.** Resolve a contradiction between two subagent reports about local Lean
+capability, because it changes what the next agent can do without a download.
+
+**Files and systems changed.** `docs/CLAUDE_FINAL_HANDOFF.md`,
+`docs/CANONICAL_VNEXT_GAP_REPORT.md`, `docs/PROJECT_STATUS.md`, this ledger. No code,
+experiment, artifact or frozen object touched.
+
+**What was completed.** Direct verification: mathlib4 @
+`29dcec074de168ac2bf835a77ef68bbe069194c5` is fully built at
+`HML_V3/external/runtime_work/…/mathlib4` with 5,680 `.olean` files, `.lake/` present,
+`lean-toolchain` pinned to `leanprover/lean4:v4.10.0-rc1` (installed), and `Lean4Repl.olean`
+compiled. One subagent had reported mathlib absent; its search used `-maxdepth 4` against a
+path at depth 7, so that negative was a search artifact. The other subagent was correct.
+
+**Decisions made and why.** Recorded in the handoff, gap report and status rather than left in
+a subagent transcript, because it is decision-relevant: fresh extraction and genuine Tier-A
+replay certificates are available offline, which is the route that would raise imported probe
+items from Tier B to Tier A. The donor's own attestation gate reported `passed=false` at about
+44% reproducible execution, so that yield is stated alongside the capability.
+
+**Tests and verification actually executed.** `ls`/`find` over the mathlib build directory and
+`~/.elan/toolchains`; `cat lean-toolchain`. `.venv/bin/ruff format --check .` — 199 files
+already formatted. No model call was made. The pytest/ruff/mypy suite was not re-run because
+no code changed since the previous entry, where it passed at 190 tests.
+
+**Failures or unresolved uncertainty.** Whether the attestation bridge's toolchain pin matches
+the installed toolchain is untested; the ~44% historical replay yield is the planning number.
+
+**Effect on the overall project.** No scientific result changes. The next agent gains a
+verified offline path to kernel-backed attestation.
+
+**Next intended step.** Unchanged: re-run the frozen V5 DEV against a second Solver family.

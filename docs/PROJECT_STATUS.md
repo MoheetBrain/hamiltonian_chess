@@ -136,6 +136,14 @@ score, hidden split or trained adapter imported.
   2.0 assumption; token-exact counting needs the model tokenizer, which Ollama 0.33.2 does not
   expose over its HTTP API.
 
+## Local compute capability (verified 2026-09-07)
+
+Lean `v4.10.0-rc1` installed and mathlib4 @ `29dcec07…` fully built (5,680 `.olean` files,
+`Lean4Repl.olean` compiled), so fresh Lean state extraction and kernel-backed replay
+attestation are possible offline with no download. Four local Solver families are installed
+(`gemma4:12b`, `gemma4:31b`, `qwen38-rvn`, `qwen36-huihui`), which is what the next action
+needs.
+
 ## Current Blockers
 
 A new experiment version (V4.1 calibration or V5) requires explicit authorisation before any
