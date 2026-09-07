@@ -514,3 +514,67 @@ recorded; the qwen run is in flight.
 
 **Next intended step.** On qwen completion, compare at fixed levels across three conditions
 (gemma framed, gemma bare, qwen bare) and write the Phase-6 result document.
+
+---
+
+## 2026-09-07 — Phase 6 complete: the Phase-5 blocker was the Solver
+
+**Date and time.** 2026-09-07, 05:42–07:07 BST. **Branch.**
+`claude/hamiltonian-arena-takeover-caa2eb`. **Project stage.**
+`CURRENT_SOLVER_OR_TASK_FAMILY_CANNOT_SUPPORT_GAME_R_MEASUREMENT` →
+`SOLVER_SPECIFIC_FAILURE_SUPPORTED`.
+
+**Objective.** Run the frozen V5 instrument against a materially different competent solver,
+changing nothing else, to separate "this Solver cannot expose the mechanisms" from "this task
+family has no measurable structure".
+
+**Files and systems changed.** New: `docs/FITNESS_V6_SOLVER_SUBSTITUTION_RESULT.md`,
+`artifacts/experiments/fitness_v5/development/result-qwen38-rvn_latest-bare.json`. Updated:
+`docs/GAME_R_STATUS.md`, `docs/PROJECT_STATUS.md`. Removed: `docs/PHASE6_IN_PROGRESS.md` (the
+run is over). Phase-5 artifact unchanged at `0c5b3271…`; no probe, gate, prompt or scoring rule
+altered.
+
+**What was completed.** Three conditions, 392 calls each for gemma-framed (Phase 5) and
+qwen-bare, 288 scored rows for gemma-bare: gemma with its renderer, gemma bare, and qwen bare.
+Ten read-only subagents audited the design beforehand; all writes were the integrator's.
+
+**Results.** On the preregistered primary endpoint — paired exact McNemar on the degeneracy
+indicator over the three cells where gemma reached answer share 1.000, n=72 — qwen goes from
+72/72 degenerate to 36/72, b=36, c=0, **p = 2.9e-11**. 36/72 is exactly chance against a fixed
+modal answer, so qwen shows no residual degeneracy. Answer entropy on those cells: gemma 0.00
+bits at all three, qwen 1.00 at all three. Accuracy there: gemma .500/.500/.500, qwen
+1.000/1.000/.750. Pooled positive accuracy over 288 rows: gemma-framed .7118, gemma-bare .6319,
+qwen .9062. `transitive_dependency` **QUALIFIED** for qwen at L3 — the first mechanism ever to
+qualify in this programme. All three explicit arms passed for qwen (gemma: two, then zero bare).
+
+**Decisions made and why.** Two defects were found and handled before or during the run rather
+than silently. First, `BUG_FOUND`: Ollama applies gemma's Modelfile renderer on
+`/api/generate` (+12 tokens, and it changed an answer) while qwen carries none, so the design
+was re-preregistered to run both solvers bare. Second, the artifact write path was still
+hardcoded because a formatter had defeated an earlier patch's string match; the gemma-bare run
+overwrote Phase 5's artifact, which was restored from git to its exact hash and regenerated
+from cache with zero model calls.
+
+**Tests and verification actually executed.** `pytest` 190 passed; `ruff check`,
+`ruff format --check` (201 files) and `mypy arena` (118 files) clean. Zero schema errors, parser
+errors or truncations across all 1,056 scored rows; Q0 1.000 in every condition; zero cache hits
+for the alternate solver; digest verified against the live model before the run.
+
+**Failures and unresolved uncertainty.** The frozen abort clause still labels qwen
+`CURRENT_SOLVER_OR_TASK_FAMILY_CANNOT_SUPPORT_GAME_R_MEASUREMENT`, which is wrong for this
+solver; it was written for a floor failure and cannot recognise a ceiling one. Reported as
+computed, and interpreted correctly alongside. Two instrument defects are now demonstrable: the
+destroyed-twin negative control is a mathematical constant at 0.500, making the effective
+qualifying window [0.70, 0.85] while the selector targets 0.625, so it prefers unqualifiable
+levels — this alone cost `formal_expression_depth` its qualification, since its L1 (.833) and
+L2 (.792) would both have passed. One alternate solver only; it is a fine-tune and larger than
+the baseline, so family and scale move together.
+
+**Effect on the overall project.** The central Phase-5 ambiguity is resolved: the failure was
+the Solver, not the task family. Two of three mechanisms are demonstrably measurable by a
+competent solver. Game R is still not authorised (the gate needs two qualified mechanisms and
+got one), so `GAME_R_NOT_RUN` and `RSTAR_NOT_IDENTIFIED` stand.
+
+**Next intended step.** Fix the frontier target into the achievable [0.70, 0.85] window, extend
+the ladder upward, and re-run qwen only (~400 calls). Under that correction alone two
+mechanisms would qualify and the founder tournament would be authorised.

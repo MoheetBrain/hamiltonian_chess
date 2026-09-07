@@ -10,7 +10,7 @@ first controlled game. No language is assumed to win; a negative result is valid
 
 ## Current Stage
 
-`CURRENT_SOLVER_OR_TASK_FAMILY_CANNOT_SUPPORT_GAME_R_MEASUREMENT`. Fitness V5 repaired the two
+`SOLVER_SPECIFIC_FAILURE_SUPPORTED` (Phase 6). Fitness V5 repaired the two
 instrument defects that invalidated V3 and V4 (input truncation, then a 64-token output cap
 plus a representation-specific character guard) using grammar-constrained decoding and real
 Lean-derived probe states. The repair is complete and measured: 0 malformed rows in 432,
@@ -144,28 +144,17 @@ attestation are possible offline with no download. Four local Solver families ar
 (`gemma4:12b`, `gemma4:31b`, `qwen38-rvn`, `qwen36-huihui`), which is what the next action
 needs.
 
-## Phase 6 in progress (2026-09-07) — LIVE RUN, see docs/PHASE6_IN_PROGRESS.md
+## Phase 6 complete (2026-09-07) — SOLVER_SPECIFIC_FAILURE_SUPPORTED
 
-**A background experiment is running as of this commit.** Any concurrent session must read
-`docs/PHASE6_IN_PROGRESS.md` before touching `arena/experiments/fitness_v5.py`,
-`arena/environments/`, `artifacts/`, or issuing any model call.
+Frozen-V5 solver substitution. `qwen38-rvn` escapes the Phase-5 degeneracy completely
+(paired exact McNemar p = 2.9e-11), qualifies `transitive_dependency` — the first mechanism
+ever to qualify — and passes all three explicit-positive arms. Its two non-qualifying
+mechanisms fail for the *opposite* reason to gemma's: one saturates at 1.000 at every level
+(`VOID_CEILING`), the other is voided by a frontier-selector miscalibration rather than a
+reading failure. The founder tournament is still not authorised (gate needs 2 qualified
+mechanisms, got 1), so `GAME_R_NOT_RUN` and `RSTAR_NOT_IDENTIFIED` stand.
 
-Status: **gemma4:12b bare is complete** (all three mechanisms `VOID_INSTRUMENT_LIMIT`; every
-explicit arm falls below 0.90 without gemma's renderer framing, so the bare condition
-handicaps it). **qwen38-rvn bare is in flight**, relaunched 06:16 BST, expected ~08:30 BST.
-
-A write-path defect fired during the run and was fixed: `run_development` was still hardcoded
-to `result.json` because a formatter had split the call across two lines and defeated an
-earlier patch's string match, so the gemma bare run overwrote Phase 5's frozen artifact. No
-data was lost — the artifact was restored from git to its exact hash and the gemma bare result
-regenerated from cache with zero model calls.
-
-
-Frozen-V5 solver substitution. A pre-run audit found that Ollama applies gemma's built-in
-renderer on `/api/generate` (+12 framing tokens, and it can change the answer) while
-qwen38-rvn receives bare bytes, so Phase 6 runs **both** solvers under a `bare` condition that
-delivers exactly the instrument's bytes. Preregistered in `docs/PHASE6_PREREGISTRATION.md`
-before any experimental call. Phase-5 artifacts and sentinel are untouched.
+Full result: `docs/FITNESS_V6_SOLVER_SUBSTITUTION_RESULT.md`.
 
 ## Current Blockers
 
