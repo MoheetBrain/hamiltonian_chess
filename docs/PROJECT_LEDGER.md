@@ -1262,3 +1262,55 @@ bridge is a source-projection prototype, not a semantic one.
 
 **Next intended step.** Extend `precondition_conjunction`'s ladder upward — its shortcut is at
 chance, so it is the cheapest credible route to a qualified mechanism.
+
+---
+
+## 2026-09-07 — Consolidate the Game-R tournament harness (recovered from the scratch worktree)
+
+**Branch.** `claude/phase-6-parallel-setup-9c6068`. **Stage.** 72-hour sprint close-out.
+
+**Objective.** Recover a real asset that was built during the sprint but left behind when work was
+consolidated out of the scratch worktree.
+
+**Files changed.** New: `arena/experiments/game_r_formal_v1.py` (1,773 lines) and
+`tests/experiments/test_game_r_formal_v1.py` (60 tests).
+
+**What happened.** The sprint originally ran agents in a second worktree
+(`.claude/worktrees/arena-72h-sprint`), then consolidated into this one because the
+commit-continuity hook resolves the repository from the session working directory, which cannot be
+moved. Each agent's output was copied across individually; the tournament harness was missed
+because its agent's report focused on a blocking scientific finding rather than on its files. A
+close-out check caught it.
+
+**What the harness provides.** An eight-component cache identity (experiment version · model
+digest · model revision/tokenizer · runtime condition · decoding hash including `RESPONSE_SCHEMA` ·
+qualified task id · candidate id · prompt-byte hash), each component covered by a parametrised test
+asserting that mutating it alone misses the cache; a per-row `cache_scope` of
+`FRESH`/`SAME_CONDITION_REUSE`/`CROSS_CONDITION`, with `CROSS_CONDITION` unreachable by
+construction — the distinction Phase 6 lacked when its artifact accumulated 61 cache hits against a
+"cache hits > 0" rule. Parity via `assert_arena_parity`, reusing `assert_game_r_genome`,
+`prompt_information_inventory` (which decodes through the **unbound** base codec so a renderer
+cannot hide content behind a filtering parser) and `assert_information_parity`; byte-identical arms
+are refused, and a single-arm run records the cross-arm checks as `NOT_APPLICABLE_SINGLE_ARM` so it
+cannot masquerade as parity-verified. A derived frontier target with a test asserting the literal
+`"0.625"` appears nowhere in the code. Fail-closed budget, resumability, and a `--dry-run` stub
+solver so every path is testable with no model call.
+
+**Decisions and why.** Commit it despite the tournament never running: it is the infrastructure a
+qualified mechanism would need, it is fully tested offline, and leaving it in an untracked scratch
+worktree would lose it silently.
+
+**Tests actually executed.** `python -m pytest tests/experiments/test_game_r_formal_v1.py` → 60
+passed. Full suite `python -m pytest` → **964 passed, 1 skipped**. `ruff check .` → All checks
+passed. `ruff format --check .` → 291 files already formatted. `mypy arena` → Success, **130**
+source files.
+
+**Failures and uncertainty.** The harness has never made a model call: `OllamaSolver` is written
+but untested against a live endpoint, and grammar-constrained decoding is passed through but
+unverified in practice. It also requires an exact token counter and **refuses to send** when one is
+unavailable, so a successor must supply one.
+
+**Effect.** No scientific claim changes. `GAME_R_INSTRUMENT_NOT_QUALIFIED` and
+`RSTAR_NOT_IDENTIFIED` stand.
+
+**Next intended step.** Unchanged: extend `precondition_conjunction`'s ladder upward.

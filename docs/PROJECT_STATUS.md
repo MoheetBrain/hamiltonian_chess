@@ -360,6 +360,12 @@ below a "Historical state (pre-sprint)" divider.
 V7 ran locally through Ollama (864 calls, ~1.7 h). Matched fine-tuning would require an A100 —
 no `torch` is installed locally and the machine is Apple Silicon.
 
+**Tournament harness consolidated.** `arena/experiments/game_r_formal_v1.py` (+60 tests) was
+recovered from the scratch worktree at close-out. It provides an eight-component cache identity
+with per-component tests, a `FRESH`/`SAME_CONDITION_REUSE`/`CROSS_CONDITION` scope (the distinction
+Phase 6 lacked), arena parity that refuses byte-identical arms, a derived frontier target, and a
+`--dry-run` stub solver. **It has never made a model call.**
+
 **The single most expensive successor mistake** would be running a founder tournament on the three
 new task families: they emit pre-rendered Lean strings, so eight representation arms would receive
 byte-identical inputs. The handoff leads with this.
