@@ -1,6 +1,6 @@
 # Current State
 
-Recorded: 2026-09-06, Europe/London, at the end of the Phase-4 takeover session. Reconciled
+Recorded: 2026-09-07, Europe/London, at the end of the Phase-5 session. Reconciled
 against code, committed artifacts, git history and the Ollama server logs.
 
 ## Repository and evidence chain
@@ -24,10 +24,27 @@ against code, committed artifacts, git history and the Ollama server logs.
 | V2 | `FITNESS_V2_CALIBRATION_INSUFFICIENT_HEADROOM` | 12.5-point control range < 15 |
 | A100 matched sprint | `WEAK_CONTINUE` then saturation | one seed, task at ceiling |
 | V3 | `EXPERIMENT_INVALID` | five lookup-ceiling mechanisms plus an input-truncation floor |
-| **V4** | **`FITNESS_V4_NOT_QUALIFIED`** | 0 of 5 mechanisms passed per-mechanism gates |
+| V4 | `FITNESS_V4_NOT_QUALIFIED` | 0 of 5 mechanisms; later shown to be two instrument defects |
+| **V5** | **`CURRENT_SOLVER_OR_TASK_FAMILY_CANNOT_SUPPORT_GAME_R_MEASUREMENT`** | instrument sound (0 malformed / 432 rows); Solver has no measurable band |
 
-No founder, mutant or candidate has been scored under V4. No representation claim exists.
-`RSTAR_NOT_IDENTIFIED`.
+No founder, mutant or candidate has been scored under V4 or V5. No representation claim
+exists. `RSTAR_NOT_IDENTIFIED`.
+
+## What V5 established
+
+The protocol repair is complete and measured: grammar-constrained decoding produced 0
+malformed rows in 432 (V4: 89 of 348), is answer-neutral on rows where V4 also answered
+(agreement 1.000), and V4's character-based context guard is confirmed an artifact (rows it
+voided truly used 7,396 / 9,498 / 23,215 tokens against a 32,448 limit).
+
+With that fixed, 0 of 3 mechanisms qualified while 2 of 3 explicit-positive arms passed
+(0.917 and 1.000). The Solver answers correctly when the relation is stated outright and
+otherwise collapses to a constant option: largest-answer share reaches 0.83, 1.00 and 1.00 at
+the harder levels. Every cell reading about 0.500 is constant answering, not partial reading.
+The preregistered abort clause therefore fired: the limit is the Solver or the task family,
+not the protocol, so V6 is not authorised and the indicated change is the Solver.
+
+Full analysis: `docs/FITNESS_V5_RESULT.md`.
 
 ## What V3 actually measured
 

@@ -1,10 +1,10 @@
-# Hamiltonian Arena — Claude Final Handoff (Phase 4 takeover, 2026-09-06)
+# Hamiltonian Arena — Claude Final Handoff (Phases 4-5, 2026-09-06/07)
 
 Read this first. It assumes no chat history, no knowledge of HML, and no knowledge of the
 Arena. Every number below is taken from a committed artifact named beside it. Where a claim
 could not be verified, it says so.
 
-Current sentinel: **`FITNESS_V4_NOT_QUALIFIED`**.
+Current sentinel: **`CURRENT_SOLVER_OR_TASK_FAMILY_CANNOT_SUPPORT_GAME_R_MEASUREMENT`**.
 
 ---
 
@@ -49,8 +49,9 @@ search does not work".
 | `a4f7d7f` | guard fix | `assert_matched_semantics` fails closed on empty/duplicate arms |
 | `9616654`, `b85f98f`, `997acaa` | Phase 3 / V3 | dual-layer model view, six Track-C content genes, V3 frozen, 12-founder/432-call tournament, `EXPERIMENT_INVALID` |
 | `3995227` | GOAL freeze | `GOAL.md` committed |
-| `88bacc8` | Phase 4 (this session) | V3 diagnosed; Fitness V4 preregistered |
-| final | Phase 4 (this session) | V4 DEV complete, `FITNESS_V4_NOT_QUALIFIED`, handoff |
+| `88bacc8` | Phase 4 | V3 diagnosed as input truncation; Fitness V4 preregistered |
+| `2f1cf89` | Phase 4 | V4 DEV complete, `FITNESS_V4_NOT_QUALIFIED`, forensics, mutant audit |
+| final | Phase 5 | protocol repaired and proven; formal probe bank; Fitness V5 run; abort clause fired |
 
 ## 4. Canonical world
 
@@ -330,4 +331,154 @@ nothing else automatically, so check `ollama show gemma4:12b` before any run.
 
 ---
 
-Final sentinel: **`FITNESS_V4_NOT_QUALIFIED`**.
+Final sentinel: **`CURRENT_SOLVER_OR_TASK_FAMILY_CANNOT_SUPPORT_GAME_R_MEASUREMENT`**.
+
+---
+
+# PHASE 5 ADDENDUM (2026-09-07)
+
+Everything above describes Phase 4 and remains accurate for V4. This addendum supersedes its
+"current sentinel", "open questions" and "next decision tree" sections.
+
+## 18. What Phase 5 did
+
+Ten subagents ran read-only investigations in parallel (state audit, protocol forensics,
+statistical design, two donor-repo miners, formal-data inventory, population audit, canonical
+schema audit, pilot design, red team). All writing and integration was central, which also
+eliminated file-conflict risk. Where two agents disagreed the disagreement was resolved from
+artifacts, not by majority: their claims about whether local Lean data is "independently
+verified" were both partly right, and the resolution is recorded in §21 below.
+
+## 19. The protocol was the artifact (measured, not argued)
+
+| | V4 | V5 |
+|---|---|---|
+| rows scored | 348 | 432 |
+| malformed / unusable | 89 (25.6%) | **0** |
+| valid-response rate | .53–1.00 by level | **1.000 everywhere** |
+
+Grammar-constrained decoding (`format` = JSON schema with `choice` enum) is supported by
+Ollama 0.33.2, recovers 9 of 9 rows that V4 lost to prose overflow, and is **answer-neutral**
+(agreement 1.000 wherever V4 also answered). Raising `num_predict` to 512 recovers 0 of 9.
+
+V4's character context guard was an artifact: rows it voided truly used 7,396 / 9,498 /
+23,215 tokens against a 32,448-token limit, and at binder-scope L3 it deleted precisely the
+counterfactual arm, so that mechanism's published `.500` was "originals correct, counterfactuals
+deleted by a rounding constant". V4's verdict stands as recorded — it applied its own frozen
+rule — but it measured its instrument, not any representation.
+
+## 20. Fitness V5: instrument sound, Solver insufficient
+
+Spec `docs/FITNESS_V5_SPEC.md` (committed before the run). Result
+`artifacts/experiments/fitness_v5/development/result.json`, sha256
+`0c5b3271c772bcaf304af65ae469d615572022d18ac81f3083b27a88b0097579`. 392 calls, Q0 1.000.
+
+| Mechanism | L0 explicit | L1 | L2 | L3 | Verdict |
+|---|---|---|---|---|---|
+| `formal_expression_depth` (real Lean) | **0.917** | 0.875 | 0.542 | 0.542 | `VOID_NEGATIVE_CONTROL` + `VOID_SHORTCUT` |
+| `transitive_dependency` | 0.875 | 0.917 | 0.667 | 0.500 | `VOID_INSTRUMENT_LIMIT` |
+| `precondition_conjunction` | **1.000** | 0.708 | 0.500 | 0.500 | `VOID_POSITION_SHARE` |
+
+**The finding: answer collapse, not partial reading.** Largest single-answer share rises to
+0.83, 1.00, 1.00 at the harder levels. Every cell reading ≈ 0.500 is the Solver answering one
+option every time while balanced targets disguise it as chance. The new
+`largest_answer_share ≤ 0.75` gate caught this; V4's choice-flip gate passes a coin-flipper
+65.6% of the time at six families and would not have.
+
+Two of three explicit-positive arms pass (0.917, 1.000) while zero mechanisms qualify, so the
+**preregistered abort clause** fired: the limit is the Solver or the task family, not the
+protocol. V6 is therefore not authorised — that would be protocol shopping. Full analysis:
+`docs/FITNESS_V5_RESULT.md`.
+
+## 21. Formal probe bank (new infrastructure)
+
+`arena/environments/formal_structural.py` + `arena/provenance.py`. 1,150 real elaborated
+Lean 4 transitions exist locally (donor `MoheetBrain/HML_V3` @ `95e8a26`,
+`data/corpus/lean_runtime_v2_full.canonical.part-*.jsonl.gz`); 461 pass structural
+eligibility. The donor's 126 sealed source files are excluded by name and never read.
+
+Trust tiering is explicit and enforced (`require_oracle_grade`): the **states** are Tier A
+(Lean's elaborator produced them); the **structural answers** are Tier B (Arena recomputes
+them by walking the transcribed tree). Nothing claims the tactic step was replayed — the
+donor's own attestation gate reports `passed=false` — and a depth question does not need that.
+
+**Length fairness is a first-class constraint and a real finding.** On unrestricted real
+states the eight surfaces differ in rendered length by a median factor of 6.5 and a maximum
+of 23.7. Probes are restricted to states where every surface renders under 30,000 characters,
+bounding the ratio to ~4.6 and leaving 104 states over 95 mathlib files (75% with a one-level
+lead). Without that filter any accuracy comparison would measure token cost.
+
+**Do not reuse `formal_expression_depth` as-is**: `first_mentioned_in_state` reaches 0.833 in
+the selected stratum, because real Lean terms tend to mention the deeper identifier first. It
+needs an option-ordering control and an identifier-obfuscation arm (to quantify mathlib
+memorisation) before any promotion.
+
+## 22. Corrections to Phase-4 work
+
+- **Mutant audit was partly vacuous.** Its recovered-state inventory is a strict coarsening
+  of `mathematical_hash`, so `GAME_P_ONLY` was unreachable and the option inventory was
+  constant across candidates. Replaced with an inventory of the **rendered surface** decoded
+  through the base codec (unbound, so a candidate cannot hide behind its own parser), with a
+  regression test proving it fires on a candidate that emits a derived relation and drops it
+  on parse. 120/120 `GAME_R_COMPATIBLE` still holds, now meaningfully.
+- **`alpha_normalize` mis-scopes dependent binder types** (a binder's type at `args[1]` is
+  scoped under its own binder, so two alpha-equivalent terms normalise differently). Not in
+  any measurement path; pinned by a regression test so no future generator adopts it as an
+  oracle for dependent types.
+- Three historical docs now carry supersession banners instead of advertising stale sentinels.
+
+## 23. Canonical vNext (parallel track, nothing implemented)
+
+`docs/CANONICAL_VNEXT_GAP_REPORT.md`. Measured gaps in `arena-canonical-v0.1.0`: single
+mandatory `goal` (no goal list, no metavariable assignment map), `Binding.type_name` is a
+string so dependent hypothesis types collapse, no universe levels, no implicit/instance
+argument kinds, no substitution map or distinct-variable conditions, no definitional-equality
+step kind. Rejected now, for lack of measured need: OMDoc/MMT, a typed e-graph core, and
+universal tactic microsteps. Deferred: Metamath as a cheap second Tier-A cross-check.
+Lean-first remains the only plausible Tier-A substrate and is the one to pilot. **No canonical
+schema change was made.**
+
+## 24. Exact next decision tree (supersedes §16)
+
+```text
+CURRENT: CURRENT_SOLVER_OR_TASK_FAMILY_CANNOT_SUPPORT_GAME_R_MEASUREMENT
+    |
+    v
+re-run the FROZEN V5 DEV against a second Solver family (~400 calls each)
+  installed locally: gemma4:31b, qwen38-rvn, qwen36-huihui, qwen38-huihui
+    |
+    +-- some Solver gives >=2 qualified mechanisms
+    |      -> freeze SCOUT, commit, run the 8-founder Game-R tournament
+    |      -> if founders discriminate: 40-mutant campaign
+    |         (docs/GAME_R_MUTATION_CAMPAIGN_PLAN.md), then landscape verdict
+    |
+    +-- no installed Solver gives a band
+           -> the task family cannot support this measurement with local models
+           -> Route B: low-budget matched learning curves at 16/32/64/128/224
+              examples, two seeds (docs/ROUTE_B_HISTORICAL_AUDIT.md section 4).
+              REQUIRES EXPLICIT GPU AUTHORISATION.
+           -> if Route B also flat: report GAME_R_NO_MEASURABLE_SIGNAL under the
+              declared universe and stop Game R. That is a valid GOAL.md outcome.
+```
+
+Do **not** build V6 unless a frozen variable class named in the failure analysis changes.
+Budget remaining under the preregistered cap: 2 versions, ~24,600 calls.
+
+## 25. Exact commands (Phase 5)
+
+```bash
+.venv/bin/python -m arena.experiments.fitness_v5 status
+.venv/bin/python -m arena.experiments.fitness_v5 materialize
+.venv/bin/python -m arena.experiments.game_r_mutant_audit
+shasum -a 256 artifacts/experiments/fitness_v5/development/result.json
+```
+
+To re-run the frozen V5 DEV against another Solver, change only `QUALIFIED_MODEL` in
+`arena/experiments/fitness_v2.py` (or parameterise it), which changes the cache identity and
+so forces fresh calls without touching probes, gates or prompts:
+
+```bash
+.venv/bin/python -m arena.experiments.fitness_v5 develop
+```
+
+Final sentinel: **`CURRENT_SOLVER_OR_TASK_FAMILY_CANNOT_SUPPORT_GAME_R_MEASUREMENT`**.

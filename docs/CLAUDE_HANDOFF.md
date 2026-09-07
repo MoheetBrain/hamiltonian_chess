@@ -1,5 +1,11 @@
 # FITNESS_V2_INSTRUMENT_QUALIFIED
 
+> **HISTORICAL DOCUMENT — SUPERSEDED.** This handoff records the Fitness V2 stopping point
+> (sentinel `FITNESS_V2_INSTRUMENT_QUALIFIED`) as it stood on 2026-09-05. It is retained as
+> evidence and must not be rewritten. The current project sentinel is
+> `FITNESS_V4_NOT_QUALIFIED`; read `docs/CLAUDE_FINAL_HANDOFF.md` and `docs/CURRENT_STATE.md`
+> for the live state.
+
 # Hamiltonian Arena — Authoritative Claude Handoff
 
 This document is the operational source of truth for a capable engineer/researcher arriving

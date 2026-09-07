@@ -1,5 +1,9 @@
 # Model Fitness Experiment V2
 
+> **HISTORICAL DOCUMENT — SUPERSEDED.** This is the Fitness V2 preregistration and result.
+> Its "current project sentinel" statement refers to V2 only. The current project sentinel is
+> `FITNESS_V4_NOT_QUALIFIED`; see `docs/CURRENT_STATE.md`.
+
 Status at the pre-candidate freeze: **FITNESS_V2_INSTRUMENT_QUALIFIED**.
 
 Experiment ID: `arena-representation-fitness-v2`. Instrument ID:

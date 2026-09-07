@@ -1,10 +1,23 @@
 """Game-R compatibility audit for candidate representations.
 
 A byte difference between two renderings proves nothing about causal purity.  A Game-R
-candidate must change only ``R``: it must recover the identical canonical mathematics, expose
-exactly the same visible information inventory, derive no relation that another candidate
-does not derive, and present options with the same argument content.  This module checks
-those four properties mechanically for every historical mutant and every seed.
+candidate must change only ``R``: it must recover the identical canonical mathematics and
+must not put information on the page that another candidate does not get.
+
+**Correction (Phase 5).**  The first version of this audit compared inventories of the
+*recovered* canonical state.  Two independent reviews showed that check is vacuous: the
+recovered-state inventory is a strict coarsening of ``mathematical_hash``, so it can differ
+only when semantic recovery has already failed, and the ``GAME_P_ONLY`` branch was therefore
+unreachable.  The option-inventory check was degenerate for the same reason plus a second
+one: restricting the comparison to expression records made it constant across every
+candidate, because free-text option policies emit no expression record at all.
+
+The audit now inventories **what is actually on the page**: the rendered prompt is decoded
+back through the candidate's own codec and its leaf multiset compared against the reference.
+A candidate that smuggles a derived relation into its rendering and silently drops it on
+parse now fails, which is exactly the Game-P violation the old check could not see.  Checks
+that remain constant by construction are reported as ``VACUOUS`` rather than counted as
+evidence.
 """
 
 from __future__ import annotations
@@ -26,7 +39,8 @@ from arena.experiments.fitness_v4 import (
 )
 from arena.genome.schema import LanguageGenome
 from arena.genome.seeds import SEED_GENOME_BY_ID
-from arena.languages.phenotype import GenomePhenotypeLanguage
+from arena.languages._wire import STATE_FIELD_ORDER  # noqa: F401  (schema anchor)
+from arena.languages.phenotype import GenomePhenotypeLanguage, _unwrap
 from arena.model_view.compiler import ModelViewCompiler
 from arena.model_view.genome import ContentGenome, ModelViewGenome, SearchTrack
 from arena.storage.artifacts import ArtifactStore
@@ -76,6 +90,23 @@ def _expressions(value: Any) -> list[str]:
     return []
 
 
+def prompt_information_inventory(language: GenomePhenotypeLanguage, state: CanonicalState) -> str:
+    """Inventory the information actually present in the rendered surface.
+
+    This is the independent check.  It decodes the candidate's own rendering back into a
+    payload and inventories that payload's leaves.  Unlike an inventory of the parsed
+    canonical state, it can see content a renderer emitted and a parser discarded.
+    """
+
+    rendered = language.render(state)
+    # Deliberately call the base codec unbound.  Using ``language``'s own bound methods would
+    # let a candidate that filters on parse hide what it emitted, which is precisely the
+    # violation this check exists to catch.
+    body = _unwrap(rendered, language.genome.serialization)
+    decoded = GenomePhenotypeLanguage._decode_value(language, body)
+    return stable_hash(sorted(_leaves(decoded).items()))
+
+
 def option_inventory(language: GenomePhenotypeLanguage, options: Sequence[CanonicalAction]) -> str:
     """Options must expose exactly the same mathematical argument content.
 
@@ -101,6 +132,7 @@ def audit_genome(
     inventories: list[str] = []
     derived: list[str] = []
     options: list[str] = []
+    surface: list[str] = []
     prompts: list[str] = []
     for probe in probes:
         for state in (probe.state, probe.previous_state):
@@ -122,6 +154,7 @@ def audit_genome(
                 )
             )
         options.append(option_inventory(language, probe.options))
+        surface.append(prompt_information_inventory(language, probe.state))
         prompts.append(build_prompt(view_genome, probe))
     return {
         "candidate_id": candidate_id,
@@ -129,6 +162,7 @@ def audit_genome(
         "information_inventory_hash": stable_hash(inventories),
         "derived_relation_hash": stable_hash(derived),
         "option_inventory_hash": stable_hash(options),
+        "surface_information_hash": stable_hash(surface),
         "render_signature": stable_hash(prompts),
         "prompt_chars": sum(len(item) for item in prompts),
     }
@@ -139,11 +173,14 @@ def classify(
 ) -> str:
     if not row["semantic_recovery"]:
         return "OBSOLETE"
-    same_information = row["information_inventory_hash"] == reference["information_inventory_hash"]
+    # The surface inventory is the only independent Game-P detector: it reads what the
+    # renderer actually put on the page, not what the parser handed back.
+    same_surface = row["surface_information_hash"] == reference["surface_information_hash"]
     same_derived = row["derived_relation_hash"] == reference["derived_relation_hash"]
-    same_options = row["option_inventory_hash"] == reference["option_inventory_hash"]
-    if not (same_information and same_derived and same_options):
-        return "MIXED_CONFOUNDED" if same_information else "GAME_P_ONLY"
+    if not same_surface:
+        return "GAME_P_ONLY"
+    if not same_derived:
+        return "MIXED_CONFOUNDED"
     if len(signatures[row["render_signature"]]) > 1:
         return "DUPLICATE_BEHAVIOUR"
     return "GAME_R_COMPATIBLE"

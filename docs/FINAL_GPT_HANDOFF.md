@@ -1,5 +1,9 @@
 # Hamiltonian Arena Phase 3 — Final GPT Handoff
 
+> **HISTORICAL DOCUMENT — SUPERSEDED.** This is the Phase 3 / Fitness V3 handoff; its
+> `EXPERIMENT_INVALID` verdict remains correct **for V3**. The current project sentinel is
+> `FITNESS_V4_NOT_QUALIFIED`; see `docs/CLAUDE_FINAL_HANDOFF.md`.
+
 Read this first if you have no conversation context. It is the operational and scientific
 handoff for the Phase 3 representation-fitness continuation completed on 2026-09-06.
 

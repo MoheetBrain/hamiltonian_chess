@@ -238,3 +238,83 @@ now mechanistic and versioned: input truncation (V3), then output-budget/control
 a position policy under uncertainty (V4). The next instrument's requirements are specified.
 
 **Next intended step.** Authorise the DEV-only budget calibration; then V5 preregistration.
+
+---
+
+## 2026-09-07 — Phase 5: the protocol was the artifact; Fitness V5 moves the blocker to the Solver
+
+**Date and time.** 2026-09-07, 00:31–02:30 BST. **Branch.**
+`claude/hamiltonian-arena-takeover-caa2eb` → fast-forward to `codex/arena-v0-fitness`.
+**Project stage.** `FITNESS_V4_NOT_QUALIFIED` →
+`CURRENT_SOLVER_OR_TASK_FAMILY_CANNOT_SUPPORT_GAME_R_MEASUREMENT`.
+
+**Objective.** Execute the Phase-5 directive: close V4, repair the response protocol, ground
+the probes in verified formal states, preregister and run Fitness V5, and stop honestly if the
+evidence does not earn a founder tournament.
+
+**Files and systems changed.** New: `arena/provenance.py`, `arena/environments/`
+(`formal_structural.py`), `arena/experiments/fitness_v5.py`, `docs/FITNESS_V5_SPEC.md`,
+`docs/FITNESS_V5_RESULT.md`, `artifacts/experiments/fitness_v5/development/result.json`.
+Modified: `arena/experiments/game_r_mutant_audit.py` (surface-inventory correction),
+`tests/experiments/test_game_r_mutant_audit.py`, `tests/canonical/test_schema.py`,
+`docs/{CURRENT_STATE,PROJECT_STATUS,GAME_R_STATUS}.md`, supersession banners on three
+historical docs. `GOAL.md`, Gold, and all V1–V4 artifacts untouched.
+
+**Ten subagents were used** for parallel read-only investigation (state audit, protocol
+forensics, statistical design, two donor-repo miners, formal-data inventory, population audit,
+schema audit, pilot design, red team). All writing and integration was done centrally, which
+also removed any file-conflict risk.
+
+**What was completed.**
+
+- **Protocol repair, measured.** Ollama's grammar-constrained `format` schema was verified to
+  work on this build. It recovers 9 of 9 previously-failed rows, takes parse rate from 15/24
+  to 24/24, and is answer-neutral (agreement 1.000). Raising `num_predict` to 512 recovers 0
+  of 9 and destabilises two rows. V4's character context guard was shown to be an artifact:
+  rows it voided truly used 7,396 / 9,498 / 23,215 tokens against a 32,448 limit, and at
+  binder L3 it deleted exactly the counterfactual arm.
+- **Formal probe bank.** 1,150 real elaborated Lean 4 transitions were located locally
+  (donor HML_V3 @ `95e8a26`); 461 pass structural eligibility; the donor's 126 sealed source
+  files are excluded by name and never read. Measured that unrestricted real states render
+  6.5x (median) to 23.7x (max) longer across the eight surfaces, so probes are restricted to
+  states where every surface fits 30,000 characters, leaving 104 states over 95 mathlib files.
+- **Fitness V5 preregistered and run.** 392 calls. 0 of 3 mechanisms qualified; 2 of 3
+  explicit-positive arms passed (0.917, 1.000); 0 malformed rows in 432. The preregistered
+  abort clause fired.
+- **Mutant-audit correction.** Two independent reviews found the earlier audit's
+  recovered-state inventory was a strict coarsening of `mathematical_hash`, making
+  `GAME_P_ONLY` unreachable. Replaced with an inventory of the rendered surface decoded
+  through the base codec, with a regression test proving it fires on a candidate that emits a
+  derived relation and drops it on parse. 120/120 still holds, now meaningfully.
+
+**Decisions made and why.** No gate was relaxed after results. The choice-flip gate was
+replaced by a largest-answer-share gate *before* the run, on simulation evidence that
+choice-flip passes a coin-flipper 65.6% of the time at six families; the new gate is what
+caught the constant-answer collapse. The practical-equivalence region was widened from ±0.05
+to ±0.125 because ±0.05 needs N>600 and could never fire. The abort clause was preregistered
+so that a Solver limit could not be mistaken for a reason to build another instrument.
+
+**Tests and verification actually executed.**
+- `.venv/bin/python -m pytest` — 190 passed.
+- `.venv/bin/ruff check .` — clean; `ruff format --check .` — 198 files; `mypy arena` — clean,
+  118 files.
+- `fitness_v5 materialize` — 864 probes / 144 families, hash `f804e0d998f1cfac…`, audit CLEAN.
+- `fitness_v5 develop` — 392 calls; `fitness_v5 status` —
+  `CURRENT_SOLVER_OR_TASK_FAMILY_CANNOT_SUPPORT_GAME_R_MEASUREMENT`.
+- `game_r_mutant_audit` — 120/120 under the corrected check.
+- Canonical validation and assurance suite: not re-run; no canonical, verifier or language
+  surface code was changed.
+
+**Failures and unresolved uncertainty.** `formal_expression_depth` leaks
+(`first_mentioned_in_state` 0.833 in the selected stratum) and needs an ordering control plus
+an identifier-obfuscation arm before reuse. `alpha_normalize` mis-scopes dependent binder
+types; not in any measurement path, now pinned by a regression test. Single Solver family
+throughout — which is precisely the next thing to change.
+
+**Effect on the overall project.** Three successive invalidations are now explained
+mechanistically and guarded by tests: V3 input truncation, V4 output cap plus character guard,
+and V5 the Solver itself. The instrument is, for the first time, not the suspect.
+
+**Next intended step.** Re-run the frozen V5 DEV against `gemma4:31b` and `qwen38-rvn`
+(~400 calls each). If no installed Solver shows a band, move to Route B matched learning
+curves under explicit GPU authorisation. Do not build V6.

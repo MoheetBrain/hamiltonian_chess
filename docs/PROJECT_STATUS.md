@@ -10,11 +10,14 @@ first controlled game. No language is assumed to win; a negative result is valid
 
 ## Current Stage
 
-`FITNESS_V4_NOT_QUALIFIED`. Fitness V4, preregistered at `88bacc8`, ran its control-only DEV
-ladder (356 calls) and qualified 0 of 5 mechanisms under its frozen per-mechanism gates. The
-stopping condition is recorded; no founder, mutant or candidate was scored. The next
-instrument requires a change of controller/output budget (`C`/`B`) and is documented as a
-proposal, not executed.
+`CURRENT_SOLVER_OR_TASK_FAMILY_CANNOT_SUPPORT_GAME_R_MEASUREMENT`. Fitness V5 repaired the two
+instrument defects that invalidated V3 and V4 (input truncation, then a 64-token output cap
+plus a representation-specific character guard) using grammar-constrained decoding and real
+Lean-derived probe states. The repair is complete and measured: 0 malformed rows in 432,
+against 89 of 348 in V4. With the instrument sound, 0 of 3 mechanisms qualified while 2 of 3
+explicit-positive arms passed at 0.917 and 1.000, so the preregistered abort clause fired.
+The blocker is the Solver, not the protocol; no founder, mutant or candidate has been scored
+and V6 is not authorised.
 
 ## Current Branch
 
@@ -96,11 +99,16 @@ score, hidden split or trained adapter imported.
 
 ## Verification and Test Results
 
-- `.venv/bin/python -m pytest -q` — 188 passed.
-- `.venv/bin/ruff check .` — clean. `.venv/bin/ruff format --check .` — 193 files already formatted.
-- `.venv/bin/mypy arena` — clean, 114 files.
-- `fitness_v4 develop` — 356 calls, Q0 1.000, 0 qualified. `fitness_v4 freeze` — manifest
-  `41efd033…` with `qualified=false`. `fitness_v4 status` — `FITNESS_V4_NOT_QUALIFIED`.
+- `.venv/bin/python -m pytest` — 190 passed.
+- `.venv/bin/ruff check .` — clean. `.venv/bin/ruff format --check .` — 198 files already formatted.
+- `.venv/bin/mypy arena` — clean, 118 files.
+- `fitness_v4 develop` — 356 calls, Q0 1.000, 0 qualified; `fitness_v4 status` —
+  `FITNESS_V4_NOT_QUALIFIED`.
+- `fitness_v5 develop` — 392 calls, Q0 1.000, 0 of 3 qualified, 2 of 3 explicit arms passing;
+  `fitness_v5 status` — `CURRENT_SOLVER_OR_TASK_FAMILY_CANNOT_SUPPORT_GAME_R_MEASUREMENT`.
+  Result sha256 `0c5b3271c772bcaf304af65ae469d615572022d18ac81f3083b27a88b0097579`.
+- 432 V5 rows: 264 correct, 120 semantic errors, 48 negative-control answers, and **zero**
+  schema errors, output truncations, input truncations or parser errors.
 - `fitness_v4_forensics` — 348 rows: 179 correct, 13 negative-control, 67 semantic error,
   59 reasoning overflow, 24 unsent (pre-guard), 6 flagged (post-guard).
 - `game_r_mutant_audit` — 120/120 `GAME_R_COMPATIBLE`.
@@ -108,8 +116,12 @@ score, hidden split or trained adapter imported.
 
 ## Known Failures and Limitations
 
-- V4 cannot measure any mechanism that needs more than one lookup under a 64-token,
-  no-reasoning contract; the Solver overflows into prose or answers "A".
+- Under a sound protocol the Solver still cannot measure any mechanism that needs more than
+  one lookup: it answers the same option every time (share 0.83 to 1.00 at hard levels).
+- `formal_expression_depth` leaks: `first_mentioned_in_state` reaches 0.833 in the selected
+  stratum because real Lean terms tend to mention the deeper identifier first.
+- `alpha_normalize` mis-scopes a binder's type if a caller puts it at `args[1]`; not in any
+  measurement path, pinned by a regression test.
 - Two V4 instrument defects: representation-specific context pre-guard; level 0 is not a
   relation-stated positive.
 - One model family, one seed; HML_V3's cross-reader failure is the standing warning.
@@ -131,9 +143,14 @@ model call. GPU spend for Route B requires explicit authorisation.
 
 ## Exact Next Actions
 
-1. Authorise and run the DEV-only output-budget calibration
-   (`docs/V4_1_PROTOCOL_CALIBRATION_PROPOSAL.md`).
-2. If a valid budget exists, preregister V5 per `docs/FITNESS_V4_FAILURE_ANALYSIS.md` §5,
-   run DEV, freeze, commit, founders, then the conditional mutation campaign.
-3. Otherwise, preregister Route B low-budget matched learning curves
-   (`docs/ROUTE_B_HISTORICAL_AUDIT.md` §4) or change Solver family.
+1. **Change the Solver, not the instrument.** Re-run the frozen V5 DEV against a second and
+   third installed model family (`gemma4:31b`, `qwen38-rvn`); ~400 calls each. This also
+   addresses the cross-reader replication failure that closed HML_V3's own thesis.
+2. If any Solver shows a usable band, resume the frozen pipeline at the founder tournament.
+3. If none does, preregister Route B low-budget matched learning curves
+   (`docs/ROUTE_B_HISTORICAL_AUDIT.md` §4). Requires GPU authorisation.
+4. Before `formal_expression_depth` is reused, add an option-ordering control and an
+   identifier-obfuscation arm; it leaked at 0.833 on `first_mentioned_in_state` in the
+   selected stratum.
+5. Do **not** build V6 on this evidence: the preregistered rule admits a new version only for
+   a change of frozen variable class, and the indicated change is the Solver.

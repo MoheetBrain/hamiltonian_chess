@@ -1,46 +1,65 @@
 # Game R Status
 
-Game R (`GOAL.md` §5): freeze Σ, P, τ, π, C, D, U, V, B; vary only R. This file tracks the
-gates. Each row is updated only from committed artifacts.
+Game R (`GOAL.md` §5): freeze Σ, P, τ, π, C, D, U, V, B; vary only R. Updated only from
+committed artifacts.
+
+## Current sentinel
+
+**`CURRENT_SOLVER_OR_TASK_FAMILY_CANNOT_SUPPORT_GAME_R_MEASUREMENT`**
+
+The response protocol is now proven sound. The blocker moved from the instrument to the
+Solver: `gemma4:12b` under one greedy constrained answer has no usable band between "told the
+answer outright" and "answers the same option every time".
 
 ## Gate tracker
 
 | Gate | Status | Evidence |
 |---|---|---|
-| Valid Game-R instrument preregistered (V4) | DONE | `docs/FITNESS_V4_SPEC.md`, commit `88bacc8` |
-| Solver requalified under V4 runtime | PARTIAL | Q0 1.000; explicit positives passed for transitive_dependency and precondition_conjunction only |
-| Per-mechanism DEV qualification | **FAILED (0 of 5)** | `artifacts/experiments/fitness_v4/development/result.json`; `docs/FITNESS_V4_FAILURE_ANALYSIS.md` |
-| Frozen SCOUT manifest | RECORDED AS NOT QUALIFIED | `artifacts/experiments/fitness_v4/frozen_manifest.json` (`qualified=false`, 0 probes), `not_qualified.json` |
-| Founder tournament | NOT RUN (gate not satisfied) | — |
-| R-only mutation campaign | NOT AUTHORISED | plan only: `docs/GAME_R_MUTATION_CAMPAIGN_PLAN.md` |
+| Valid Game-R instrument preregistered | DONE (V4, V5) | `docs/FITNESS_V4_SPEC.md`, `docs/FITNESS_V5_SPEC.md` |
+| Response protocol qualified | **DONE** | V5: 0 malformed / 432 rows; V4: 89 / 348 |
+| Context accounting sound | **DONE** | true token counts; V4's char guard shown to be an artifact |
+| Solver requalified | **PARTIAL / FAILED** | 2 of 3 explicit-positive arms pass ≥ .90; 0 of 3 mechanisms qualify |
+| Per-mechanism DEV qualification | **FAILED (0 of 3)** | `docs/FITNESS_V5_RESULT.md` |
+| Frozen SCOUT manifest | NOT REACHED | — |
+| Founder tournament | **NOT RUN** (gate not satisfied) | — |
+| R-only mutation campaign | NOT AUTHORISED | plan: `docs/GAME_R_MUTATION_CAMPAIGN_PLAN.md` |
 | Fresh PROMOTION / structural OOD | NOT AUTHORISED | — |
-| Matched short adaptation (Route B) | NOT AUTHORISED | audit only: `docs/ROUTE_B_HISTORICAL_AUDIT.md` |
-| Second seed / second Solver family | NOT AUTHORISED | — |
+| Matched short adaptation (Route B) | NOT AUTHORISED | audit: `docs/ROUTE_B_HISTORICAL_AUDIT.md` |
+| Second Solver family | **NEXT ACTION** | instrument frozen and reusable, ~400 calls per model |
 
-## Per-mechanism verdicts (V4 DEV, JSON control only)
+## Instrument history
 
-| Mechanism | L0..L4 positive accuracy | Verdict |
+| Version | Sentinel | Root cause |
 |---|---|---|
-| expression_depth_recurrence | .833 .583 .417 .667 .750 | VOID_INSTRUMENT_LIMIT |
-| transitive_dependency | 1.0 1.0 .583 .333 .417 | VOID_VALIDITY (reasoning overflow at 64 tokens) |
-| binder_scope_resolution | .750 .500 .500 .500 unsent | VOID_INSTRUMENT_LIMIT |
-| precondition_conjunction | 1.0 .667 .583 .500 .500 | VOID_FLIP (position-driven at k ≥ 2) |
-| state_delta | .500 .083 .083 .500 unsent | VOID_INSTRUMENT_LIMIT |
+| V1 | `MODEL_FITNESS_BENCHMARK_INVALID` | solver chose by option position |
+| V2 | `FITNESS_V2_CALIBRATION_INSUFFICIENT_HEADROOM` | 12.5-point control range (later shown to be a noise-floor reading) |
+| V3 | `EXPERIMENT_INVALID` | input truncation at `num_ctx=8192` + lookup-only mechanisms |
+| V4 | `FITNESS_V4_NOT_QUALIFIED` | 64-token output cap + representation-specific char guard |
+| **V5** | **`CURRENT_SOLVER_OR_TASK_FAMILY_CANNOT_SUPPORT_GAME_R_MEASUREMENT`** | **instrument sound; Solver has no measurable band** |
+
+Programme budget remaining: two instrument versions and ~24,600 model calls of the
+preregistered 25,000 cap. V6 is explicitly *not* authorised — a new version is admissible only
+if it changes a frozen variable class named in the failure analysis, and the indicated change
+is π (the Solver), which does not require a new instrument.
 
 ## Mutant audit
 
-`artifacts/reports/game-r-mutant-audit.json`: all 120 historical one-gene mutants are
-`GAME_R_COMPATIBLE` on five checks — semantic recovery, visible-information inventory,
-derived-relation inventory, option expression content, and behavioural duplication; zero
-behavioural duplicates; zero structural near-duplicates over the nine phenotype genes.
-Eight genes are actually mutated (`token_policy` has no mutants). They are eligible for a Game-R mutation
-campaign, which is not authorised.
+`artifacts/reports/game-r-mutant-audit.json`: 120 of 120 historical one-gene mutants are
+`GAME_R_COMPATIBLE`; 0 behavioural duplicates; 0 structural near-duplicates; 8 mutated genes
+(`token_policy` has none).
+
+**Correction applied in Phase 5.** The first version of this audit compared inventories of the
+*recovered* canonical state. Two independent reviews showed that check is a strict coarsening
+of `mathematical_hash` and therefore vacuous, making `GAME_P_ONLY` unreachable. The audit now
+inventories the rendered surface decoded through the base codec, and a regression test proves
+it fires on a candidate that emits a derived relation and drops it on parse. The 120/120
+result is a meaningful finding under the corrected check, not the old vacuous one.
 
 ## Candidate hierarchy
 
 | Level | Candidates |
 |---|---|
-| VALID_CANDIDATE (semantic assurance) | the eight seeds; the 120 mutants (Gate 0, V1) |
+| VALID_CANDIDATE | the eight seeds; the 120 one-gene mutants |
 | FITNESS_CANDIDATE | none |
 | LEARNABILITY_CANDIDATE | none |
 | ROBUST_CANDIDATE | none |
@@ -48,18 +67,12 @@ campaign, which is not authorised.
 
 ## Game P
 
-Not started. The six Track-C content genes remain implemented and are excluded from Game R
-by `assert_game_r_genome`.
-
-## Current sentinel
-
-`FITNESS_V4_NOT_QUALIFIED`.
+Not started. The six Track-C content genes remain excluded from Game R by
+`assert_game_r_genome`.
 
 ## Next decision
 
-1. Run the DEV-only output-budget calibration (`docs/V4_1_PROTOCOL_CALIBRATION_PROPOSAL.md`)
-   under a new version after explicit authorisation.
-2. If a non-sabotaging budget exists: preregister V5 (`docs/FITNESS_V4_FAILURE_ANALYSIS.md`
-   §5), then DEV, then freeze, then founders.
-3. If not: switch to Route B low-budget matched learning curves
-   (`docs/ROUTE_B_HISTORICAL_AUDIT.md` §4) or a second Solver family.
+1. Re-run the frozen V5 DEV against a second and third installed Solver family
+   (`gemma4:31b`, `qwen38-rvn`). If any shows a band, resume at the founder tournament.
+2. If none does, switch to Route B matched learning curves (GPU authorisation required).
+3. Do not build V6 on this evidence.
