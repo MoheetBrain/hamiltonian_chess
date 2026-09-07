@@ -1039,3 +1039,70 @@ made anywhere, and `RSTAR_NOT_IDENTIFIED` still stands.
 
 **Next intended step.** Await V7. Wire the selection seam to whichever surface the evidence
 supports, if any.
+
+---
+
+## 2026-09-07 — V7 implemented; a Phase-6 claim refuted; a live-cache incident recorded
+
+**Branch.** `claude/phase-6-parallel-setup-9c6068`. **Stage.** 72-hour sprint, hours 5–8.
+V7 is running; **this entry contains no V7 result.**
+
+**Objective of the change.** Land the preregistered V7 instrument and record two findings that
+arose while building it.
+
+**Files and systems changed.** `arena/experiments/fitness_v7.py` (committed earlier at `cf1b07f`,
+sha256 `83a2679646a16eab…`), `tests/experiments/test_fitness_v7.py`, and
+`research/v7/{predict_v7_from_frozen_ladders.py, v7_prediction.json, per_level_shortcut_scan.json}`.
+No frozen instrument was touched: `git diff` on `fitness_v5.py`, `fitness_v4.py`,
+`formal_structural.py` and `artifacts/` is empty.
+
+**FINDING 1 — `docs/FITNESS_V6_SOLVER_SUBSTITUTION_RESULT.md` §11 is refuted.** That document
+states that under a corrected frontier target `formal_expression_depth` "would have selected L2
+(.792) and passed, giving 2 qualified mechanisms and authorising the founder tournament."
+It would not have. Verified directly: V5's own frozen `QUALIFICATION_RULE["shortcut_rule_max"]` is
+**0.75** (`arena/experiments/fitness_v5.py:225`), and the per-level shortcut scan gives
+`first_mentioned_in_state` = **0.8333 at L2** and **1.0000 at L1** — the two in-window levels.
+**Both exceed V5's own threshold, so L2 was already unqualifiable under V5.** V5 never revealed
+this because it audits shortcuts only at the *selected* frontier, and because it reported only
+`failures[0]` — which is why Phase 6 displayed `VOID_NEGATIVE_CONTROL` and never showed that the
+shortcut gate failed too. V7 reports `all_failures`.
+
+**FINDING 2 — a live-cache incident, recorded in full.** While investigating unexpected files under
+`artifacts/cache/`, the implementing subagent deleted that directory **three times**, destroying
+approximately 55 cache entries belonging to the *running* V7 experiment (PID 3932, started 12:38),
+plus an 872-entry dry-run cache and a dry-run artifact. **Assessment: no scientific corruption.**
+Within a single run each cache identity is visited exactly once, so nothing was re-called from a
+stale entry and no in-flight row was altered; the loss is **resume capability only**. If the run is
+interrupted, roughly its first 55 rows plus Q0 must be re-called (≈10 minutes of Solver time). The
+run has the final module (module mtime 12:36:26 precedes process start 12:38:56) and was confirmed
+progressing. This also explains an earlier integrator observation of a near-empty cache, which was
+attributed at the time to model loading; that attribution was incomplete.
+
+**Decisions made and why.** (1) Let the run continue rather than restart: the loss is resumability,
+not validity, and restarting would cost the full elapsed Solver time for no scientific gain.
+(2) Record the incident rather than quietly regenerate the cache — an undocumented deletion of
+experimental state is exactly the kind of event that later makes an artifact unexplainable.
+(3) Keep `SHORTCUT_MARGIN = 0.10` untouched. It was frozen in the preregistration **before** the
+prediction table below was computed, and it will not be moved.
+
+**Tests and verification actually executed.** `python -m pytest tests/experiments` → 142 passed.
+`python -m pytest` → 625 passed at the time of the agent's run; 904 passed, 1 skipped after the
+release package landed. `ruff check` / `ruff format --check` / `mypy arena` all clean.
+The refutation was re-verified independently by the integrator by reading
+`fitness_v5.py:225` and the per-level scan.
+
+**Failures and unresolved uncertainty.** An exploratory prediction — labelled
+`EXPLORATORY_PREDICTION_NOT_A_RESULT` in `research/v7/v7_prediction.json`, with a disclaimer
+forbidding its use to re-score anything — applies V7's gates to the frozen qwen ladder and expects
+**zero mechanisms to qualify**: `formal_expression_depth` L2 margin **−0.042**,
+`transitive_dependency` L3 margin **+0.083** (missing the 0.10 gate by 0.017),
+`precondition_conjunction` `VOID_CEILING`. If that holds, the only mechanism ever to qualify does
+so under V5's rules and **not** under V7's stricter ones. The prediction also inherits the
+Phase-6 validity dispute: if Phase 6 is `PHASE6_INVALID`, those accuracies are descriptive only and
+the prediction is void. **The running V7 is the confirmatory measurement; the prediction is not.**
+
+**Effect on the overall project.** No representation has been scored. `RSTAR_NOT_IDENTIFIED`
+stands.
+
+**Next intended step.** Let V7 finish, report its actual result against the preregistered sentinels,
+and run the founder tournament only if it qualifies ≥ 2 mechanisms.

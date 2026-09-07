@@ -302,6 +302,18 @@ measured by AST scan, attribute-order rotation and `PYTHONHASHSEED` variation; r
 The `HONEST` profile is **rejected** by the frozen `NativeVerifier` with `UNBOUND_VARIABLE` /
 `UNKNOWN_ACTION_TARGET` / `UNKNOWN_SCOPE` — a property of the verifier, carried not fixed.
 
+**Phase-6 §11 refuted.** `docs/FITNESS_V6_SOLVER_SUBSTITUTION_RESULT.md` claims a corrected
+frontier target would have qualified `formal_expression_depth` at L2 and authorised a founder
+tournament. It would not: V5's own frozen `shortcut_rule_max` is **0.75**
+(`fitness_v5.py:225`), while `first_mentioned_in_state` scores **0.8333 at L2** and **1.0000 at
+L1** — both in-window levels already exceeded V5's own threshold. V5 never revealed this because it
+audits shortcuts only at the selected frontier and reports only `failures[0]`.
+
+**Live-cache incident (recorded, no scientific corruption).** A subagent deleted
+`artifacts/cache/` three times while V7 was running, destroying ~55 live rows. Each identity is
+visited once per run, so nothing was re-called from stale state; **resume capability only** was
+lost (~10 min of Solver time if interrupted). The run holds the final module and continued.
+
 **Sealed before any sprint work began.** `artifacts/manifests/SEALED_SPLITS.json` records sha256
 and byte counts for four held-out LeanDojo splits. Permitted development sources are only
 `random/train.json`, `corpus.jsonl`, and `steps.jsonl` filtered to `split == "train"`.
