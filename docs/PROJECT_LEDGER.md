@@ -1407,3 +1407,25 @@ mechanism, clean by construction. Preconditions, all at zero model cost: audit s
 rendered prompt, per representation**; enforce the ≥40-char cross-arm span check; score
 `always_first_option` against the model's answers rather than the key; separate selection and
 qualification pools; size n for the decision.
+
+---
+
+## 2026-09-07 — Add a straggler audit script left untracked
+
+**Branch.** `claude/phase-6-parallel-setup-9c6068`. **Stage.** Post-audit close-out.
+
+**Objective.** Commit `research/audit/a3_shortcuts/formal_pool_classifiers.py`, written by the
+shortcut auditor and missed by the audit commit because it landed after staging.
+
+**Files changed.** That one script. No document or result changes.
+
+**Tests actually executed.** `python -m pytest` → 964 passed, 1 skipped (unchanged; the script is
+standalone research code, imported by no production module).
+
+**Failures and uncertainty.** None. The script's outputs were already committed with the audit; only
+the generator was missing, which would have made that evidence non-reproducible.
+
+**Effect.** No scientific claim changes. `V7_PARTIALLY_VALID_INSTRUMENT_CONFOUNDED` stands.
+
+**Next intended step.** Unchanged: the single recommended experiment in
+`docs/V7_TOTAL_FORENSIC_AUDIT.md` §22, pending the owner's decision.

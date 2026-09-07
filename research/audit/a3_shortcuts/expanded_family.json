@@ -1,0 +1,535 @@
+{
+  "_disclaimer": "A3 DIAGNOSTIC. Stronger shortcut families are a probe of the INSTRUMENT, not a re-scoring of V7. No sentinel may be promoted or reinterpreted from these numbers.",
+  "cells": {
+    "formal_expression_depth|L0": {
+      "best_model_by_split": "decision_stump_d1",
+      "best_model_split_null_mean": 0.52953125,
+      "best_model_split_p": 0.085,
+      "best_model_split_value": 0.6618055555555554,
+      "expanded_threshold_family": {
+        "in_sample_best": 0.6666666666666667,
+        "in_sample_best_feature": "d_count_quoted",
+        "in_sample_null_mean": 0.59065,
+        "in_sample_null_q95": 0.75,
+        "in_sample_p": 0.2867,
+        "split_half_heldout": 0.564935064935065,
+        "split_half_null_mean": 0.5025,
+        "split_half_p": 0.225
+      },
+      "models": {
+        "decision_stump_d1": {
+          "in_sample": 0.7083333333333334,
+          "split_half": 0.6618055555555554
+        },
+        "decision_tree_d3": {
+          "in_sample": 0.75,
+          "split_half": 0.6243055555555556
+        },
+        "decision_tree_unbounded": {
+          "in_sample": 0.8333333333333334,
+          "split_half": 0.6236111111111111
+        },
+        "gradient_boosting_tuned": {
+          "in_sample": 0.8333333333333334,
+          "split_half": 0.6208333333333333
+        },
+        "logistic_regression": {
+          "in_sample": 0.6666666666666666,
+          "split_half": 0.6611111111111112
+        },
+        "random_forest_300": {
+          "in_sample": 0.8333333333333334,
+          "split_half": 0.6125
+        }
+      },
+      "n": 24,
+      "n_surface_threshold_rules": 33
+    },
+    "formal_expression_depth|L1": {
+      "best_model_by_split": "logistic_regression",
+      "best_model_split_null_mean": 0.5543055555555556,
+      "best_model_split_p": 0.0,
+      "best_model_split_value": 1.0,
+      "expanded_threshold_family": {
+        "in_sample_best": 1.0,
+        "in_sample_best_feature": "d_first_offset",
+        "in_sample_null_mean": 0.649275,
+        "in_sample_null_q95": 0.7916666666666666,
+        "in_sample_p": 0.0005,
+        "split_half_heldout": 1.0,
+        "split_half_null_mean": 0.5018344907407407,
+        "split_half_p": 0.0
+      },
+      "models": {
+        "decision_stump_d1": {
+          "in_sample": 1.0,
+          "split_half": 1.0
+        },
+        "decision_tree_d3": {
+          "in_sample": 1.0,
+          "split_half": 1.0
+        },
+        "decision_tree_unbounded": {
+          "in_sample": 1.0,
+          "split_half": 1.0
+        },
+        "gradient_boosting_tuned": {
+          "in_sample": 1.0,
+          "split_half": 1.0
+        },
+        "logistic_regression": {
+          "in_sample": 1.0,
+          "split_half": 1.0
+        },
+        "random_forest_300": {
+          "in_sample": 1.0,
+          "split_half": 1.0
+        }
+      },
+      "n": 24,
+      "n_surface_threshold_rules": 33
+    },
+    "formal_expression_depth|L2": {
+      "best_model_by_split": "random_forest_300",
+      "best_model_split_null_mean": 0.5509201388888889,
+      "best_model_split_p": 0.075,
+      "best_model_split_value": 0.7361111111111113,
+      "expanded_threshold_family": {
+        "in_sample_best": 0.8333333333333334,
+        "in_sample_best_feature": "d_first_offset",
+        "in_sample_null_mean": 0.653,
+        "in_sample_null_q95": 0.7916666666666666,
+        "in_sample_p": 0.04325,
+        "split_half_heldout": 0.7907647907647909,
+        "split_half_null_mean": 0.49492476851851847,
+        "split_half_p": 0.02
+      },
+      "models": {
+        "decision_stump_d1": {
+          "in_sample": 0.8333333333333334,
+          "split_half": 0.6923611111111112
+        },
+        "decision_tree_d3": {
+          "in_sample": 1.0,
+          "split_half": 0.6041666666666666
+        },
+        "decision_tree_unbounded": {
+          "in_sample": 1.0,
+          "split_half": 0.59375
+        },
+        "gradient_boosting_tuned": {
+          "in_sample": 1.0,
+          "split_half": 0.6659722222222222
+        },
+        "logistic_regression": {
+          "in_sample": 0.75,
+          "split_half": 0.7354166666666668
+        },
+        "random_forest_300": {
+          "in_sample": 1.0,
+          "split_half": 0.7361111111111113
+        }
+      },
+      "n": 24,
+      "n_surface_threshold_rules": 33
+    },
+    "formal_expression_depth|L3": {
+      "best_model_by_split": "logistic_regression",
+      "best_model_split_null_mean": 0.5463541666666667,
+      "best_model_split_p": 0.005,
+      "best_model_split_value": 0.9361111111111111,
+      "expanded_threshold_family": {
+        "in_sample_best": 0.9166666666666666,
+        "in_sample_best_feature": "d_first_offset",
+        "in_sample_null_mean": 0.6615333333333334,
+        "in_sample_null_q95": 0.7916666666666666,
+        "in_sample_p": 0.00625,
+        "split_half_heldout": 0.8636363636363636,
+        "split_half_null_mean": 0.50203125,
+        "split_half_p": 0.006666666666666667
+      },
+      "models": {
+        "decision_stump_d1": {
+          "in_sample": 0.9166666666666666,
+          "split_half": 0.8458333333333334
+        },
+        "decision_tree_d3": {
+          "in_sample": 1.0,
+          "split_half": 0.8569444444444445
+        },
+        "decision_tree_unbounded": {
+          "in_sample": 1.0,
+          "split_half": 0.8569444444444445
+        },
+        "gradient_boosting_tuned": {
+          "in_sample": 1.0,
+          "split_half": 0.8736111111111112
+        },
+        "logistic_regression": {
+          "in_sample": 1.0,
+          "split_half": 0.9361111111111111
+        },
+        "random_forest_300": {
+          "in_sample": 1.0,
+          "split_half": 0.8875
+        }
+      },
+      "n": 24,
+      "n_surface_threshold_rules": 33
+    },
+    "precondition_conjunction|L0": {
+      "best_model_by_split": "logistic_regression",
+      "best_model_split_null_mean": 0.5514756944444444,
+      "best_model_split_p": 0.015,
+      "best_model_split_value": 1.0,
+      "expanded_threshold_family": {
+        "in_sample_best": 1.0,
+        "in_sample_best_feature": "d_count_quoted",
+        "in_sample_null_mean": 0.633575,
+        "in_sample_null_q95": 0.7916666666666666,
+        "in_sample_p": 0.00045,
+        "split_half_heldout": 1.0,
+        "split_half_null_mean": 0.5024189814814816,
+        "split_half_p": 0.0016666666666666668
+      },
+      "models": {
+        "decision_stump_d1": {
+          "in_sample": 1.0,
+          "split_half": 1.0
+        },
+        "decision_tree_d3": {
+          "in_sample": 1.0,
+          "split_half": 1.0
+        },
+        "decision_tree_unbounded": {
+          "in_sample": 1.0,
+          "split_half": 1.0
+        },
+        "gradient_boosting_tuned": {
+          "in_sample": 1.0,
+          "split_half": 1.0
+        },
+        "logistic_regression": {
+          "in_sample": 1.0,
+          "split_half": 1.0
+        },
+        "random_forest_300": {
+          "in_sample": 1.0,
+          "split_half": 1.0
+        }
+      },
+      "n": 24,
+      "n_surface_threshold_rules": 33
+    },
+    "precondition_conjunction|L1": {
+      "best_model_by_split": "logistic_regression",
+      "best_model_split_null_mean": 0.5,
+      "best_model_split_p": 1.0,
+      "best_model_split_value": 0.5,
+      "expanded_threshold_family": {
+        "in_sample_best": 0.5,
+        "in_sample_best_feature": "d_count_quoted",
+        "in_sample_null_mean": 0.5,
+        "in_sample_null_q95": 0.5,
+        "in_sample_p": 1.0,
+        "split_half_heldout": 0.5,
+        "split_half_null_mean": 0.5,
+        "split_half_p": 1.0
+      },
+      "models": {
+        "decision_stump_d1": {
+          "in_sample": 0.5,
+          "split_half": 0.5
+        },
+        "decision_tree_d3": {
+          "in_sample": 0.5,
+          "split_half": 0.5
+        },
+        "decision_tree_unbounded": {
+          "in_sample": 0.5,
+          "split_half": 0.5
+        },
+        "gradient_boosting_tuned": {
+          "in_sample": 0.5,
+          "split_half": 0.5
+        },
+        "logistic_regression": {
+          "in_sample": 0.5,
+          "split_half": 0.5
+        },
+        "random_forest_300": {
+          "in_sample": 0.5,
+          "split_half": 0.5
+        }
+      },
+      "n": 24,
+      "n_surface_threshold_rules": 33
+    },
+    "precondition_conjunction|L2": {
+      "best_model_by_split": "logistic_regression",
+      "best_model_split_null_mean": 0.5,
+      "best_model_split_p": 1.0,
+      "best_model_split_value": 0.5,
+      "expanded_threshold_family": {
+        "in_sample_best": 0.5,
+        "in_sample_best_feature": "d_count_quoted",
+        "in_sample_null_mean": 0.5,
+        "in_sample_null_q95": 0.5,
+        "in_sample_p": 1.0,
+        "split_half_heldout": 0.5,
+        "split_half_null_mean": 0.5,
+        "split_half_p": 1.0
+      },
+      "models": {
+        "decision_stump_d1": {
+          "in_sample": 0.5,
+          "split_half": 0.5
+        },
+        "decision_tree_d3": {
+          "in_sample": 0.5,
+          "split_half": 0.5
+        },
+        "decision_tree_unbounded": {
+          "in_sample": 0.5,
+          "split_half": 0.5
+        },
+        "gradient_boosting_tuned": {
+          "in_sample": 0.5,
+          "split_half": 0.5
+        },
+        "logistic_regression": {
+          "in_sample": 0.5,
+          "split_half": 0.5
+        },
+        "random_forest_300": {
+          "in_sample": 0.5,
+          "split_half": 0.5
+        }
+      },
+      "n": 24,
+      "n_surface_threshold_rules": 33
+    },
+    "precondition_conjunction|L3": {
+      "best_model_by_split": "logistic_regression",
+      "best_model_split_null_mean": 0.5,
+      "best_model_split_p": 1.0,
+      "best_model_split_value": 0.5,
+      "expanded_threshold_family": {
+        "in_sample_best": 0.5,
+        "in_sample_best_feature": "d_count_quoted",
+        "in_sample_null_mean": 0.5,
+        "in_sample_null_q95": 0.5,
+        "in_sample_p": 1.0,
+        "split_half_heldout": 0.5,
+        "split_half_null_mean": 0.5,
+        "split_half_p": 1.0
+      },
+      "models": {
+        "decision_stump_d1": {
+          "in_sample": 0.5,
+          "split_half": 0.5
+        },
+        "decision_tree_d3": {
+          "in_sample": 0.5,
+          "split_half": 0.5
+        },
+        "decision_tree_unbounded": {
+          "in_sample": 0.5,
+          "split_half": 0.5
+        },
+        "gradient_boosting_tuned": {
+          "in_sample": 0.5,
+          "split_half": 0.5
+        },
+        "logistic_regression": {
+          "in_sample": 0.5,
+          "split_half": 0.5
+        },
+        "random_forest_300": {
+          "in_sample": 0.5,
+          "split_half": 0.5
+        }
+      },
+      "n": 24,
+      "n_surface_threshold_rules": 33
+    },
+    "transitive_dependency|L0": {
+      "best_model_by_split": "logistic_regression",
+      "best_model_split_null_mean": 0.56234375,
+      "best_model_split_p": 0.005,
+      "best_model_split_value": 1.0,
+      "expanded_threshold_family": {
+        "in_sample_best": 1.0,
+        "in_sample_best_feature": "d_count_quoted",
+        "in_sample_null_mean": 0.61215,
+        "in_sample_null_q95": 0.75,
+        "in_sample_p": 0.00045,
+        "split_half_heldout": 1.0,
+        "split_half_null_mean": 0.4950810185185185,
+        "split_half_p": 0.005
+      },
+      "models": {
+        "decision_stump_d1": {
+          "in_sample": 1.0,
+          "split_half": 1.0
+        },
+        "decision_tree_d3": {
+          "in_sample": 1.0,
+          "split_half": 1.0
+        },
+        "decision_tree_unbounded": {
+          "in_sample": 1.0,
+          "split_half": 1.0
+        },
+        "gradient_boosting_tuned": {
+          "in_sample": 1.0,
+          "split_half": 1.0
+        },
+        "logistic_regression": {
+          "in_sample": 1.0,
+          "split_half": 1.0
+        },
+        "random_forest_300": {
+          "in_sample": 1.0,
+          "split_half": 1.0
+        }
+      },
+      "n": 24,
+      "n_surface_threshold_rules": 33
+    },
+    "transitive_dependency|L1": {
+      "best_model_by_split": "decision_stump_d1",
+      "best_model_split_null_mean": 0.5572569444444444,
+      "best_model_split_p": 0.045,
+      "best_model_split_value": 0.7770833333333333,
+      "expanded_threshold_family": {
+        "in_sample_best": 0.8333333333333334,
+        "in_sample_best_feature": "d_count_quoted",
+        "in_sample_null_mean": 0.6650020833333334,
+        "in_sample_null_q95": 0.7916666666666666,
+        "in_sample_p": 0.0449,
+        "split_half_heldout": 0.8116883116883117,
+        "split_half_null_mean": 0.5087673611111111,
+        "split_half_p": 0.023333333333333334
+      },
+      "models": {
+        "decision_stump_d1": {
+          "in_sample": 0.8333333333333334,
+          "split_half": 0.7770833333333333
+        },
+        "decision_tree_d3": {
+          "in_sample": 0.9166666666666666,
+          "split_half": 0.7055555555555555
+        },
+        "decision_tree_unbounded": {
+          "in_sample": 1.0,
+          "split_half": 0.7201388888888888
+        },
+        "gradient_boosting_tuned": {
+          "in_sample": 1.0,
+          "split_half": 0.7736111111111111
+        },
+        "logistic_regression": {
+          "in_sample": 0.9166666666666666,
+          "split_half": 0.6916666666666667
+        },
+        "random_forest_300": {
+          "in_sample": 1.0,
+          "split_half": 0.7444444444444446
+        }
+      },
+      "n": 24,
+      "n_surface_threshold_rules": 33
+    },
+    "transitive_dependency|L2": {
+      "best_model_by_split": "random_forest_300",
+      "best_model_split_null_mean": 0.571232638888889,
+      "best_model_split_p": 0.39,
+      "best_model_split_value": 0.6020833333333333,
+      "expanded_threshold_family": {
+        "in_sample_best": 0.625,
+        "in_sample_best_feature": "d_count_quoted",
+        "in_sample_null_mean": 0.640275,
+        "in_sample_null_q95": 0.75,
+        "in_sample_p": 0.5626,
+        "split_half_heldout": 0.47546897546897543,
+        "split_half_null_mean": 0.4981365740740741,
+        "split_half_p": 0.5
+      },
+      "models": {
+        "decision_stump_d1": {
+          "in_sample": 0.625,
+          "split_half": 0.5125
+        },
+        "decision_tree_d3": {
+          "in_sample": 0.6666666666666666,
+          "split_half": 0.5215277777777777
+        },
+        "decision_tree_unbounded": {
+          "in_sample": 1.0,
+          "split_half": 0.5673611111111112
+        },
+        "gradient_boosting_tuned": {
+          "in_sample": 1.0,
+          "split_half": 0.5361111111111112
+        },
+        "logistic_regression": {
+          "in_sample": 0.5833333333333334,
+          "split_half": 0.5236111111111111
+        },
+        "random_forest_300": {
+          "in_sample": 1.0,
+          "split_half": 0.6020833333333333
+        }
+      },
+      "n": 24,
+      "n_surface_threshold_rules": 33
+    },
+    "transitive_dependency|L3": {
+      "best_model_by_split": "logistic_regression",
+      "best_model_split_null_mean": 0.5498958333333333,
+      "best_model_split_p": 0.385,
+      "best_model_split_value": 0.5666666666666667,
+      "expanded_threshold_family": {
+        "in_sample_best": 0.6666666666666667,
+        "in_sample_best_feature": "d_first_offset",
+        "in_sample_null_mean": 0.632675,
+        "in_sample_null_q95": 0.7916666666666666,
+        "in_sample_p": 0.38465,
+        "split_half_heldout": 0.5303030303030304,
+        "split_half_null_mean": 0.4978356481481482,
+        "split_half_p": 0.31333333333333335
+      },
+      "models": {
+        "decision_stump_d1": {
+          "in_sample": 0.6666666666666666,
+          "split_half": 0.46875
+        },
+        "decision_tree_d3": {
+          "in_sample": 0.9166666666666666,
+          "split_half": 0.4923611111111111
+        },
+        "decision_tree_unbounded": {
+          "in_sample": 1.0,
+          "split_half": 0.5166666666666667
+        },
+        "gradient_boosting_tuned": {
+          "in_sample": 1.0,
+          "split_half": 0.5284722222222221
+        },
+        "logistic_regression": {
+          "in_sample": 0.6666666666666666,
+          "split_half": 0.5666666666666667
+        },
+        "random_forest_300": {
+          "in_sample": 1.0,
+          "split_half": 0.42291666666666666
+        }
+      },
+      "n": 24,
+      "n_surface_threshold_rules": 33
+    }
+  },
+  "n_permutations_in_sample": 20000,
+  "seed": 20260907
+}
