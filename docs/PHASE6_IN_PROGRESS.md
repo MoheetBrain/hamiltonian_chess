@@ -11,18 +11,21 @@ and its result document exists.
 A background job is making real model calls right now:
 
 ```
-/tmp/phase6_run.sh                                   (shell wrapper)
-  -> arena.experiments.fitness_v5 develop --solver gemma4:12b  --bare
-  -> arena.experiments.fitness_v5 develop --solver qwen38-rvn  --bare
+/tmp/phase6_qwen.sh
+  -> arena.experiments.fitness_v5 develop --solver qwen38-rvn --bare
 ```
 
-Log: `artifacts/tmp/phase6.log`. Started 05:42 BST. Expected finish **~08:45 BST**
-(gemma bare ~50 min, then qwen bare ~2.2 h at roughly 20 s per call).
+Log: `artifacts/tmp/phase6_qwen.log`. Restarted 06:16 BST, expected finish **~08:30 BST**
+(392 calls at roughly 20 s each).
+
+**Gemma bare is already DONE** — `result-gemma4_12b-bare.json` exists, sentinel
+`FITNESS_V5_NOT_QUALIFIED`, all three mechanisms `VOID_INSTRUMENT_LIMIT`. Its earlier log is
+`artifacts/tmp/phase6.log`.
 
 Check whether it is still alive before doing anything:
 
 ```bash
-pgrep -fl 'fitness_v5|phase6_run'
+pgrep -fl 'fitness_v5|phase6_qwen'
 ```
 
 **If it is running:**
@@ -39,9 +42,10 @@ pgrep -fl 'fitness_v5|phase6_run'
 - Do **not** touch `artifacts/cache/fitness_v5/` or
   `artifacts/experiments/fitness_v5/`. The cache is being written continuously.
 
-**If it is NOT running**, check the log tail for `=== PHASE 6 DONE` and whether both result
-files exist (§4). If it died early, say so in your report rather than silently restarting; a
-partial run must not be analysed as a complete one.
+**If it is NOT running**, check the log tail for `=== QWEN BARE DONE` and whether the qwen
+result file exists (§4). If it died early, say so in your report rather than silently
+restarting; a partial run must not be analysed as a complete one. Note a restart is cheap:
+every completed row is cached, so re-running only makes the calls it still needs.
 
 ## 2. What is safe to work on concurrently
 
@@ -62,11 +66,9 @@ writes into `artifacts/`.
 
 ## 4. What Phase 6 will produce
 
-Two new artifacts, neither of which exists yet:
-
 ```
-artifacts/experiments/fitness_v5/development/result-gemma4_12b-bare.json
-artifacts/experiments/fitness_v5/development/result-qwen38-rvn_latest-bare.json
+artifacts/experiments/fitness_v5/development/result-gemma4_12b-bare.json        DONE
+artifacts/experiments/fitness_v5/development/result-qwen38-rvn_latest-bare.json PENDING
 ```
 
 Read status with:
@@ -84,6 +86,21 @@ Phase 6 substitutes the solver, holding the instrument frozen, to separate "this
 expose the mechanisms" from "this task family has no measurable structure". Alternate solver:
 `qwen38-rvn` (family `qwen35`, 27.3B, completion-only, Q4_K_M).
 
+## 5b. A THIRD hazard was found DURING the run — and it fired
+
+`ArtifactStore.write_json` overwrites unconditionally, and the write call in
+`run_development` was still hardcoded to `result.json`: a ruff reformat had split it across
+two lines, so an earlier patch's string match silently failed. **The gemma bare run therefore
+overwrote Phase 5's `result.json` on disk.**
+
+Nothing was lost. Phase 5's artifact was committed at `2c61fdb` and was restored with
+`git checkout --`, back to its exact hash `0c5b3271…`; every row was in the cache, so the gemma
+bare artifact regenerated in 5.7 s with zero model calls. The write path is now
+`development_artifact_path(solver, bare)` and was verified before the qwen run was relaunched.
+
+**Lesson to carry:** after any patch applied by string substitution, re-read the target line.
+A formatter can defeat the match and leave the edit silently unapplied.
+
 ## 6. Two hazards already found and closed — do not reintroduce them
 
 1. **Cache/model decoupling.** The cache key contained the model *digest* while the call used
@@ -97,17 +114,18 @@ expose the mechanisms" from "this task family has no measurable structure". Alte
    neutrality test; the authoritative check is the default-versus-`raw:true` prompt-token delta.
    Fixed by running both solvers under a `bare` condition in a separate cache namespace.
 
-## 7. Interim readings (gemma bare, partial — NOT a result)
+## 7. Gemma bare — COMPLETE (qwen still pending, so not yet a Phase-6 result)
 
-Do not cite these as findings; the run is incomplete and the artifact is unwritten.
-
-| mechanism | L0 | L1 | L2 | L3 | note |
+| mechanism | L0 explicit | L1 | L2 | L3 | verdict |
 |---|---|---|---|---|---|
 | formal_expression_depth | 0.625 | 0.667 | 0.542 | 0.542 | VOID_INSTRUMENT_LIMIT |
 | transitive_dependency | 0.667 | 1.000 | 0.667 | 0.500 | VOID_INSTRUMENT_LIMIT |
-| precondition_conjunction | 0.875 | 0.542 | — | — | in progress |
+| precondition_conjunction | 0.875 | 0.542 | 0.458 | 0.500 | VOID_INSTRUMENT_LIMIT |
 
-Emerging observation, to be confirmed: gemma's explicit arms are **worse** without its renderer
+Sentinel `FITNESS_V5_NOT_QUALIFIED` (**not** the abort sentinel: zero explicit arms pass under
+bare, versus two under framed, so the abort clause's precondition is not met).
+
+Observation, now confirmed for gemma: gemma's explicit arms are **worse** without its renderer
 framing (0.917 → 0.625, 0.875 → 0.667), so the bare condition handicaps gemma while being
 byte-identical to qwen's native handling. Because of this the write-up must report **three**
 conditions, not two: gemma framed (Phase 5), gemma bare, and qwen bare. The five-hop terminal

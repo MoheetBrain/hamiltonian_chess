@@ -150,6 +150,16 @@ needs.
 `docs/PHASE6_IN_PROGRESS.md` before touching `arena/experiments/fitness_v5.py`,
 `arena/environments/`, `artifacts/`, or issuing any model call.
 
+Status: **gemma4:12b bare is complete** (all three mechanisms `VOID_INSTRUMENT_LIMIT`; every
+explicit arm falls below 0.90 without gemma's renderer framing, so the bare condition
+handicaps it). **qwen38-rvn bare is in flight**, relaunched 06:16 BST, expected ~08:30 BST.
+
+A write-path defect fired during the run and was fixed: `run_development` was still hardcoded
+to `result.json` because a formatter had split the call across two lines and defeated an
+earlier patch's string match, so the gemma bare run overwrote Phase 5's frozen artifact. No
+data was lost — the artifact was restored from git to its exact hash and the gemma bare result
+regenerated from cache with zero model calls.
+
 
 Frozen-V5 solver substitution. A pre-run audit found that Ollama applies gemma's built-in
 renderer on `/api/generate` (+12 framing tokens, and it can change the answer) while

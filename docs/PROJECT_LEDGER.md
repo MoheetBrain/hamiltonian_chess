@@ -466,3 +466,51 @@ hazards are now on the remote ahead of the results.
 
 **Next intended step.** When the run finishes, compare at fixed levels, write
 `docs/FITNESS_V6_SOLVER_SUBSTITUTION_RESULT.md`, update the handoff, commit and push.
+
+---
+
+## 2026-09-07 — Phase 6 write-path defect: Phase 5's artifact was overwritten and restored
+
+**Date and time.** 2026-09-07, 06:14–06:16 BST. **Branch.**
+`claude/hamiltonian-arena-takeover-caa2eb`. **Project stage.** unchanged.
+
+**Objective.** Record a defect that fired during the Phase-6 run, the damage, and the recovery.
+
+**What happened.** `ArtifactStore.write_json` overwrites unconditionally, and
+`run_development`'s write call was still hardcoded to
+`experiments/fitness_v5/development/result.json`. The intended parameterisation had been
+applied by string substitution, but a `ruff format` pass had already split that call across two
+lines, so the match silently failed and the edit was never applied. The gemma-bare run
+therefore **overwrote Phase 5's frozen `result.json` on disk** (on-disk hash
+`c35a316f…`, `prompt_condition: "bare"`).
+
+**Damage and recovery.** No data was lost. Phase 5's artifact was committed at `2c61fdb`; it
+was restored with `git checkout --` and re-verified at its exact hash
+`0c5b3271c772bcaf304af65ae469d615572022d18ac81f3083b27a88b0097579`, with its sentinel
+`CURRENT_SOLVER_OR_TASK_FAMILY_CANNOT_SUPPORT_GAME_R_MEASUREMENT` intact. Every gemma-bare row
+was already in the model-call cache, so the correct artifact regenerated in 5.7 s with zero
+model calls. The in-flight qwen run was stopped three minutes in (a restart is nearly free
+because of the cache), the write path was fixed to
+`development_artifact_path(solver, bare)`, the fix was verified by reading the emitted line,
+and qwen was relaunched at 06:16.
+
+**Decisions made and why.** Stopping the qwen run was chosen over letting it finish, because it
+would otherwise have overwritten the restored Phase-5 artifact a second time, and because the
+cache made the restart cost negligible. This is recorded rather than quietly repaired, since a
+silently overwritten frozen artifact is exactly the class of error the project's protocol
+exists to prevent.
+
+**Tests and verification actually executed.** `ruff check` / `ruff format --check` / `mypy
+arena` clean after the fix; the emitted write line was re-read to confirm the substitution
+applied; Phase-5 hash and sentinel re-verified; gemma-bare artifact regenerated and its
+sentinel read (`FITNESS_V5_NOT_QUALIFIED`, zero explicit arms passing).
+
+**Failures and unresolved uncertainty.** The generalisable lesson: a patch applied by string
+substitution must be verified by re-reading the target line, because a formatter can defeat the
+match and leave the change unapplied while every other check still passes.
+
+**Effect on the overall project.** No scientific result changed. Gemma bare is complete and
+recorded; the qwen run is in flight.
+
+**Next intended step.** On qwen completion, compare at fixed levels across three conditions
+(gemma framed, gemma bare, qwen bare) and write the Phase-6 result document.
