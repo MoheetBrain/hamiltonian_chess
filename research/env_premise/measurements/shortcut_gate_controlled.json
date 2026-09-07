@@ -1,0 +1,442 @@
+{
+  "L0_explicit_positive": {
+    "level": "L0_explicit_positive",
+    "k_values": [
+      6
+    ],
+    "chance": 0.166667,
+    "n_dev_train_items": 39875,
+    "n_dev_holdout_items": 16972,
+    "ceiling": 0.45,
+    "shortcuts": {
+      "constant_majority_index": {
+        "dev_train": 0.16953,
+        "dev_holdout": 0.166451,
+        "chosen_index": 5.0
+      },
+      "option_position": {
+        "dev_train": 0.16953,
+        "dev_holdout": 0.166451,
+        "sign": 1.0
+      },
+      "option_string_length": {
+        "dev_train": 0.201956,
+        "dev_holdout": 0.201214,
+        "sign": 1.0
+      },
+      "lexical_overlap_name_vs_goal": {
+        "dev_train": 0.234257,
+        "dev_holdout": 0.232618,
+        "sign": 1.0
+      },
+      "token_multiset_overlap": {
+        "dev_train": 0.210884,
+        "dev_holdout": 0.208638,
+        "sign": 1.0
+      },
+      "premise_global_frequency_prior": {
+        "dev_train": 0.211812,
+        "dev_holdout": 0.212527,
+        "sign": 1.0
+      },
+      "same_file_indicator": {
+        "dev_train": 0.230846,
+        "dev_holdout": 0.223132,
+        "sign": 1.0
+      },
+      "same_module_indicator": {
+        "dev_train": 0.183524,
+        "dev_holdout": 0.17305,
+        "sign": 1.0
+      },
+      "declaration_order": {
+        "dev_train": 0.197417,
+        "dev_holdout": 0.195852,
+        "sign": 1.0
+      },
+      "combined_logistic_regression": {
+        "dev_train": 0.366395,
+        "dev_holdout": 0.359298
+      },
+      "combined_decision_tree_depth6": {
+        "dev_train": 0.357392,
+        "dev_holdout": 0.353229
+      }
+    },
+    "best_shortcut": "combined_logistic_regression",
+    "best_shortcut_accuracy": 0.359298,
+    "ceiling_breached": false,
+    "feature_importances_logistic": {
+      "position": 0.000512,
+      "name_length": 0.010537,
+      "name_goal_jaccard": 6.521546,
+      "name_goal_multiset_overlap": -0.11858,
+      "log_global_frequency": 0.427045,
+      "same_file": 0.993983,
+      "same_module": -0.723631,
+      "declaration_order": 1.450866
+    },
+    "feature_importances_tree": {
+      "position": 0.0,
+      "name_length": 0.004856,
+      "name_goal_jaccard": 0.055103,
+      "name_goal_multiset_overlap": 0.0,
+      "log_global_frequency": 0.408356,
+      "same_file": 0.190759,
+      "same_module": 0.04336,
+      "declaration_order": 0.297566
+    }
+  },
+  "L1_cross_module": {
+    "level": "L1_cross_module",
+    "k_values": [
+      4
+    ],
+    "chance": 0.25,
+    "n_dev_train_items": 41499,
+    "n_dev_holdout_items": 17732,
+    "ceiling": 0.45,
+    "shortcuts": {
+      "constant_majority_index": {
+        "dev_train": 0.251958,
+        "dev_holdout": 0.243515,
+        "chosen_index": 0.0
+      },
+      "option_position": {
+        "dev_train": 0.251958,
+        "dev_holdout": 0.243515,
+        "sign": -1.0
+      },
+      "option_string_length": {
+        "dev_train": 0.314176,
+        "dev_holdout": 0.304478,
+        "sign": 1.0
+      },
+      "lexical_overlap_name_vs_goal": {
+        "dev_train": 0.452011,
+        "dev_holdout": 0.444564,
+        "sign": 1.0
+      },
+      "token_multiset_overlap": {
+        "dev_train": 0.438926,
+        "dev_holdout": 0.429224,
+        "sign": 1.0
+      },
+      "premise_global_frequency_prior": {
+        "dev_train": 0.333598,
+        "dev_holdout": 0.339274,
+        "sign": 1.0
+      },
+      "same_file_indicator": {
+        "dev_train": 0.433215,
+        "dev_holdout": 0.424148,
+        "sign": 1.0
+      },
+      "same_module_indicator": {
+        "dev_train": 0.475409,
+        "dev_holdout": 0.464979,
+        "sign": 1.0
+      },
+      "declaration_order": {
+        "dev_train": 0.503217,
+        "dev_holdout": 0.495714,
+        "sign": 1.0
+      },
+      "combined_logistic_regression": {
+        "dev_train": 0.62416,
+        "dev_holdout": 0.623562
+      },
+      "combined_decision_tree_depth6": {
+        "dev_train": 0.65457,
+        "dev_holdout": 0.644372
+      }
+    },
+    "best_shortcut": "combined_decision_tree_depth6",
+    "best_shortcut_accuracy": 0.644372,
+    "ceiling_breached": true,
+    "feature_importances_logistic": {
+      "position": -0.000483,
+      "name_length": 0.007632,
+      "name_goal_jaccard": -8.049764,
+      "name_goal_multiset_overlap": 2.959154,
+      "log_global_frequency": 0.342533,
+      "same_file": 1.58361,
+      "same_module": 1.794971,
+      "declaration_order": -0.260691
+    },
+    "feature_importances_tree": {
+      "position": 0.0,
+      "name_length": 0.028753,
+      "name_goal_jaccard": 0.11242,
+      "name_goal_multiset_overlap": 0.102209,
+      "log_global_frequency": 0.076814,
+      "same_file": 0.038554,
+      "same_module": 0.548105,
+      "declaration_order": 0.093145
+    }
+  },
+  "L2_standard": {
+    "level": "L2_standard",
+    "k_values": [
+      6
+    ],
+    "chance": 0.166667,
+    "n_dev_train_items": 44727,
+    "n_dev_holdout_items": 19104,
+    "ceiling": 0.45,
+    "shortcuts": {
+      "constant_majority_index": {
+        "dev_train": 0.171038,
+        "dev_holdout": 0.165358,
+        "chosen_index": 0.0
+      },
+      "option_position": {
+        "dev_train": 0.171038,
+        "dev_holdout": 0.165358,
+        "sign": -1.0
+      },
+      "option_string_length": {
+        "dev_train": 0.195967,
+        "dev_holdout": 0.193049,
+        "sign": 1.0
+      },
+      "lexical_overlap_name_vs_goal": {
+        "dev_train": 0.226194,
+        "dev_holdout": 0.221734,
+        "sign": 1.0
+      },
+      "token_multiset_overlap": {
+        "dev_train": 0.204597,
+        "dev_holdout": 0.201005,
+        "sign": 1.0
+      },
+      "premise_global_frequency_prior": {
+        "dev_train": 0.219934,
+        "dev_holdout": 0.215452,
+        "sign": 1.0
+      },
+      "same_file_indicator": {
+        "dev_train": 0.22065,
+        "dev_holdout": 0.220216,
+        "sign": 1.0
+      },
+      "same_module_indicator": {
+        "dev_train": 0.175219,
+        "dev_holdout": 0.171273,
+        "sign": 1.0
+      },
+      "declaration_order": {
+        "dev_train": 0.173363,
+        "dev_holdout": 0.173314,
+        "sign": 1.0
+      },
+      "combined_logistic_regression": {
+        "dev_train": 0.330606,
+        "dev_holdout": 0.325377
+      },
+      "combined_decision_tree_depth6": {
+        "dev_train": 0.331299,
+        "dev_holdout": 0.326895
+      }
+    },
+    "best_shortcut": "combined_decision_tree_depth6",
+    "best_shortcut_accuracy": 0.326895,
+    "ceiling_breached": false,
+    "feature_importances_logistic": {
+      "position": -0.004481,
+      "name_length": 0.018248,
+      "name_goal_jaccard": 6.323798,
+      "name_goal_multiset_overlap": -0.121798,
+      "log_global_frequency": 0.36117,
+      "same_file": 1.044747,
+      "same_module": -0.507158,
+      "declaration_order": 0.211884
+    },
+    "feature_importances_tree": {
+      "position": 9.3e-05,
+      "name_length": 0.052326,
+      "name_goal_jaccard": 0.024188,
+      "name_goal_multiset_overlap": 0.073206,
+      "log_global_frequency": 0.524169,
+      "same_file": 0.258371,
+      "same_module": 0.053126,
+      "declaration_order": 0.014521
+    }
+  },
+  "L3_same_module_freq_matched": {
+    "level": "L3_same_module_freq_matched",
+    "k_values": [
+      6
+    ],
+    "chance": 0.166667,
+    "n_dev_train_items": 41173,
+    "n_dev_holdout_items": 17513,
+    "ceiling": 0.45,
+    "shortcuts": {
+      "constant_majority_index": {
+        "dev_train": 0.16931,
+        "dev_holdout": 0.169931,
+        "chosen_index": 2.0
+      },
+      "option_position": {
+        "dev_train": 0.166493,
+        "dev_holdout": 0.171073,
+        "sign": 1.0
+      },
+      "option_string_length": {
+        "dev_train": 0.195055,
+        "dev_holdout": 0.193228,
+        "sign": 1.0
+      },
+      "lexical_overlap_name_vs_goal": {
+        "dev_train": 0.24997,
+        "dev_holdout": 0.241992,
+        "sign": 1.0
+      },
+      "token_multiset_overlap": {
+        "dev_train": 0.229811,
+        "dev_holdout": 0.221378,
+        "sign": 1.0
+      },
+      "premise_global_frequency_prior": {
+        "dev_train": 0.150196,
+        "dev_holdout": 0.154,
+        "sign": 1.0
+      },
+      "same_file_indicator": {
+        "dev_train": 0.245234,
+        "dev_holdout": 0.243933,
+        "sign": 1.0
+      },
+      "same_module_indicator": {
+        "dev_train": 0.177179,
+        "dev_holdout": 0.175413,
+        "sign": 1.0
+      },
+      "declaration_order": {
+        "dev_train": 0.179997,
+        "dev_holdout": 0.178781,
+        "sign": 1.0
+      },
+      "combined_logistic_regression": {
+        "dev_train": 0.333058,
+        "dev_holdout": 0.32827
+      },
+      "combined_decision_tree_depth6": {
+        "dev_train": 0.327666,
+        "dev_holdout": 0.322104
+      }
+    },
+    "best_shortcut": "combined_logistic_regression",
+    "best_shortcut_accuracy": 0.32827,
+    "ceiling_breached": false,
+    "feature_importances_logistic": {
+      "position": 0.002961,
+      "name_length": 0.013219,
+      "name_goal_jaccard": 6.083212,
+      "name_goal_multiset_overlap": 0.06743,
+      "log_global_frequency": 0.256071,
+      "same_file": 1.430856,
+      "same_module": -0.711047,
+      "declaration_order": 0.140093
+    },
+    "feature_importances_tree": {
+      "position": 0.0,
+      "name_length": 0.026603,
+      "name_goal_jaccard": 0.1169,
+      "name_goal_multiset_overlap": 0.080312,
+      "log_global_frequency": 0.315223,
+      "same_file": 0.357191,
+      "same_module": 0.087108,
+      "declaration_order": 0.016663
+    }
+  },
+  "L4_high_similarity": {
+    "level": "L4_high_similarity",
+    "k_values": [
+      8
+    ],
+    "chance": 0.125,
+    "n_dev_train_items": 41318,
+    "n_dev_holdout_items": 17607,
+    "ceiling": 0.45,
+    "shortcuts": {
+      "constant_majority_index": {
+        "dev_train": 0.127523,
+        "dev_holdout": 0.126881,
+        "chosen_index": 3.0
+      },
+      "option_position": {
+        "dev_train": 0.125877,
+        "dev_holdout": 0.124496,
+        "sign": -1.0
+      },
+      "option_string_length": {
+        "dev_train": 0.136405,
+        "dev_holdout": 0.134151,
+        "sign": 1.0
+      },
+      "lexical_overlap_name_vs_goal": {
+        "dev_train": 0.190304,
+        "dev_holdout": 0.187709,
+        "sign": 1.0
+      },
+      "token_multiset_overlap": {
+        "dev_train": 0.173314,
+        "dev_holdout": 0.17192,
+        "sign": 1.0
+      },
+      "premise_global_frequency_prior": {
+        "dev_train": 0.108452,
+        "dev_holdout": 0.10865,
+        "sign": 1.0
+      },
+      "same_file_indicator": {
+        "dev_train": 0.205915,
+        "dev_holdout": 0.200204,
+        "sign": 1.0
+      },
+      "same_module_indicator": {
+        "dev_train": 0.136478,
+        "dev_holdout": 0.135003,
+        "sign": 1.0
+      },
+      "declaration_order": {
+        "dev_train": 0.120553,
+        "dev_holdout": 0.118192,
+        "sign": 1.0
+      },
+      "combined_logistic_regression": {
+        "dev_train": 0.267559,
+        "dev_holdout": 0.262225
+      },
+      "combined_decision_tree_depth6": {
+        "dev_train": 0.267051,
+        "dev_holdout": 0.257909
+      }
+    },
+    "best_shortcut": "combined_logistic_regression",
+    "best_shortcut_accuracy": 0.262225,
+    "ceiling_breached": false,
+    "feature_importances_logistic": {
+      "position": -0.003388,
+      "name_length": 0.010466,
+      "name_goal_jaccard": 2.077852,
+      "name_goal_multiset_overlap": 0.47638,
+      "log_global_frequency": 0.254308,
+      "same_file": 1.603641,
+      "same_module": -0.609415,
+      "declaration_order": 0.093955
+    },
+    "feature_importances_tree": {
+      "position": 0.0,
+      "name_length": 0.006029,
+      "name_goal_jaccard": 0.127906,
+      "name_goal_multiset_overlap": 0.015093,
+      "log_global_frequency": 0.302387,
+      "same_file": 0.439564,
+      "same_module": 0.076254,
+      "declaration_order": 0.032767
+    }
+  }
+}

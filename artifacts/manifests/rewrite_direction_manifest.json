@@ -1,0 +1,460 @@
+{
+ "schema": "arena-rewrite-direction-manifest-v1",
+ "family": "rewrite_direction",
+ "environment_version": "arena-rewrite-direction-v1.0.0",
+ "built_by": "claude/phase-6 rewrite-direction environment agent",
+ "dataset": {
+  "name": "LeanDojo Benchmark 4",
+  "version": "2.0.0",
+  "mathlib4_commit": "29dcec074de168ac2bf835a77ef68bbe069194c5",
+  "license": "mathlib4 is Apache-2.0; LeanDojo Benchmark 4 redistributes it under CC-BY-4.0",
+  "split_used": "train",
+  "train_only_filter": "Items are built exclusively from random/train.json. steps.jsonl covers all splits and is used only as a metadata index for the sealed-exclusion test, filtered on split == 'train'. The sealed pools (novel_premises/{val,test}.json, random/{val,test}.json) are never opened; arena.environments.rewrite_direction.assert_source_permitted raises on them.",
+  "sealed_pools_not_read": [
+   "novel_premises/test.json",
+   "novel_premises/val.json",
+   "random/test.json",
+   "random/val.json"
+  ],
+  "sealed_manifest": "artifacts/manifests/SEALED_SPLITS.json"
+ },
+ "sources": {
+  "development": {
+   "path": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo_raw/leandojo_benchmark_4/random/train.json",
+   "bytes": 373077058,
+   "sha256": "eef6fb1382095ab4c28d4a0b0e2b5999a96cbef454dcf2899776957e83a40c1a"
+  },
+  "premise_corpus": {
+   "path": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo_raw/leandojo_benchmark_4/corpus.jsonl",
+   "bytes": 60420959,
+   "sha256": "5d9f7d8321fc01380003860acc2a3ea5ffbe2f956c45a574aa29f7bb38d2ccd5"
+  },
+  "metadata_index": {
+   "path": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo/steps.jsonl",
+   "bytes": 271038884,
+   "sha256": "ddd90685d94ac1792b95d699a8d10e667bf30ada7d3150010402aedf7ac33120"
+  }
+ },
+ "generator": {
+  "environment_version": "arena-rewrite-direction-v1.0.0",
+  "generator_version": "arena-rewrite-direction-generator-v1.0.0",
+  "parser_version": "arena-rw-signature-parser-v1.0.0",
+  "seed": 20260907,
+  "determinism": "item_id = sha256(generator_version|proof_id|step_index|premise|arm); option order is drawn from Random(seed|item_id). The same seed reproduces byte-identical rendered items.",
+  "item_population_rule": "One item per rewrite tactic, built from the FIRST bracket element. Only the first element acts on the recorded state_before; later elements act on intermediate states LeanDojo does not record, so splitting them out would produce items whose question is not answerable from what is shown. Mixed-direction brackets are therefore neither excluded nor split: each contributes exactly one item, labelled by its first element.",
+  "heads_in_item_population": [
+   "erw",
+   "rewrite",
+   "rw",
+   "rw_mod_cast",
+   "rwa"
+  ],
+  "heads_censused_but_excluded": [
+   "nth_rewrite",
+   "nth_rw",
+   "simp_rw",
+   "transfer_rw"
+  ],
+  "state_after_withheld": "Items show state_before only. Showing state_after would make the task a diff and would reintroduce the 'the goal grew, so it was reversed' shortcut."
+ },
+ "direction_distribution": {
+  "measured_on": "random/train.json, all rewrite-family tactics",
+  "prior_claim_36_9_percent_reverse": false,
+  "prior_claim_note": "The 36.9% reverse estimate did NOT reproduce. Measured reverse rate is 19.42% per rewrite element and 25.12% per tactic (first element). The binary is therefore NOT naturally balanced and must be balanced explicitly.",
+  "per_element": {
+   "total": 135792,
+   "forward": 109417,
+   "reverse": 26375,
+   "reverse_rate": 0.194231
+  },
+  "per_element_by_head": {
+   "erw": {
+    "forward": 2216,
+    "reverse": 430,
+    "reverse_rate": 0.162509
+   },
+   "nth_rewrite": {
+    "forward": 11,
+    "reverse": 36,
+    "reverse_rate": 0.765957
+   },
+   "nth_rw": {
+    "forward": 131,
+    "reverse": 136,
+    "reverse_rate": 0.509363
+   },
+   "rewrite": {
+    "forward": 8,
+    "reverse": 5,
+    "reverse_rate": 0.384615
+   },
+   "rw": {
+    "forward": 89307,
+    "reverse": 22619,
+    "reverse_rate": 0.202089
+   },
+   "rw_mod_cast": {
+    "forward": 52,
+    "reverse": 12,
+    "reverse_rate": 0.1875
+   },
+   "rwa": {
+    "forward": 5467,
+    "reverse": 1301,
+    "reverse_rate": 0.192228
+   },
+   "simp_rw": {
+    "forward": 12225,
+    "reverse": 1836,
+    "reverse_rate": 0.130574
+   }
+  },
+  "per_tactic": {
+   "total": 56292,
+   "uniform_forward": 37012,
+   "uniform_reverse": 6237,
+   "mixed_direction_bracket": 13043,
+   "mixed_rate": 0.231703,
+   "first_element_forward": 42154,
+   "first_element_reverse": 14138,
+   "first_element_reverse_rate": 0.251155,
+   "with_at_location": 8163
+  },
+  "bracket_size_distribution": {
+   "1": 22636,
+   "2": 14698,
+   "3": 8470,
+   "4": 4601,
+   "5": 2395,
+   "6": 1320,
+   "7": 763,
+   "8": 456,
+   "9": 277,
+   "10": 207,
+   "11": 128,
+   "12": 94,
+   "13": 75,
+   "14": 37,
+   "15": 39,
+   "16": 21,
+   "17": 21,
+   "18": 13,
+   "19": 5,
+   "20": 8,
+   "21": 5,
+   "22": 4,
+   "23": 4,
+   "24": 3,
+   "25": 3,
+   "27": 3,
+   "28": 2,
+   "29": 1,
+   "32": 1,
+   "35": 1,
+   "38": 1
+  },
+  "head_counts": {
+   "rw": 47129,
+   "simp_rw": 4654,
+   "rwa": 3130,
+   "erw": 1110,
+   "nth_rw": 199,
+   "nth_rewrite": 37,
+   "rw_mod_cast": 26,
+   "rewrite": 7
+  },
+  "mixed_direction_brackets": 13043,
+  "mixed_direction_rate": 0.231703
+ },
+ "items": {
+  "train_steps_considered": 250814,
+  "rewrite_family_tactics_parsed": 56292,
+  "items_generated_core": 16414,
+  "items_generated_l0_arm": 1641,
+  "controlled_pool": 3466,
+  "controlled_pool_distinct_lemmas": 758,
+  "controlled_pool_forward": 1733,
+  "controlled_pool_reverse": 1733,
+  "l0_arm_within_controlled_pool": 339,
+  "control_applied": "balance_within_lemma",
+  "control_rationale": "Every lemma contributes equally many forward and reverse items, so every lemma-constant feature (name, name n-grams, name affixes, the two sides' lengths and their ratio, side similarity) is uninformative by construction."
+ },
+ "difficulty_ladder": {
+  "axes": [
+   "side similarity (how much vocabulary the two sides share)",
+   "decisiveness (how strongly one side's distinctive vocabulary dominates the target)",
+   "target nesting depth",
+   "number of plausible rewrite sites",
+   "distractor equalities in the local context"
+  ],
+  "scoring": "additive 0-2 per axis, total 0-10; bin edges L1<=2, L2<=4, L3>4",
+  "bin_edges": [
+   2,
+   4
+  ],
+  "counts": {
+   "L0_explicit_positive": 339,
+   "L1": 644,
+   "L2": 1739,
+   "L3": 1083
+  },
+  "direction_balance_per_level": {
+   "L1": {
+    "forward": 364,
+    "reverse": 280
+   },
+   "L2": {
+    "forward": 804,
+    "reverse": 935
+   },
+   "L3": {
+    "forward": 565,
+    "reverse": 518
+   }
+  },
+  "L0_arm": "Explicit-positive control: the item restates the decisive relation outright ('the rewritten subterm is an instance of Side A/B, the side that occurs in the goal'). Solvable by construction, so it is EXCLUDED from the shortcut gate and exists only as a floor check that a solver can read the format."
+ },
+ "discards": {
+  "counts": {
+   "not_a_rewrite_tactic": 194522,
+   "premise_signature_unavailable": 24693,
+   "premise_not_resolved": 8372,
+   "head_excluded_from_item_population": 4890,
+   "no_top_level_equation": 1670,
+   "leakage_guard_tripped": 200,
+   "arrow_token_in_rendered_text": 53,
+   "unparsable_bracket_or_trailer": 0,
+   "empty_state": 0,
+   "degenerate_equation_sides": 0
+  },
+  "total": 234400,
+  "rates_over_train_steps": {
+   "not_a_rewrite_tactic": 0.775563,
+   "premise_signature_unavailable": 0.098451,
+   "premise_not_resolved": 0.033379,
+   "head_excluded_from_item_population": 0.019497,
+   "no_top_level_equation": 0.006658,
+   "leakage_guard_tripped": 0.000797,
+   "arrow_token_in_rendered_text": 0.000211,
+   "unparsable_bracket_or_trailer": 0.0,
+   "empty_state": 0.0,
+   "degenerate_equation_sides": 0.0
+  },
+  "notes": {
+   "not_a_rewrite_tactic": "the step is not a rewrite at all; the dominant term",
+   "premise_signature_unavailable": "the tracer resolved a name that corpus.jsonl does not carry a signature for (mostly core Lean / Batteries declarations); without the equation the item cannot be posed",
+   "premise_not_resolved": "the first bracket element is a local hypothesis or an unannotated term, so no library equation identifies it",
+   "no_top_level_equation": "the premise's type does not end in a top-level = or IFF, or carries two top-level occurrences of the same non-associative relation",
+   "arrow_token_in_rendered_text": "the state or statement itself contains an arrow token; refused so that the no-arrow leakage invariant stays an exact assertion",
+   "leakage_guard_tripped": "the assembled item failed leakage_violations() and was dropped by the generator's last line of defence"
+  }
+ },
+ "shortcut_gate": {
+  "preregistered_ceiling": 0.65,
+  "chance": 0.5,
+  "protocol": {
+   "source": "LeanDojo random/train.json only (sealed pools never read)",
+   "split": "by source file, 70/30",
+   "control": "within_lemma",
+   "balancing": "every lemma contributes equally many forward and reverse items, applied independently on each side of the file split",
+   "chance": 0.5,
+   "preregistered_ceiling": 0.65,
+   "seed": 20260907,
+   "l0_explicit_positive_arm": "excluded from the gate (solvable by construction)"
+  },
+  "v1_0_no_control": {
+   "verdict": "FAMILY_AT_RISK",
+   "best_shortcut": [
+    "combined_gradient_boosted_depth3",
+    0.7085
+   ],
+   "held_out_items": 2340,
+   "ranked": [
+    [
+     "combined_gradient_boosted_depth3",
+     0.7085
+    ],
+    [
+     "combined_shallow_tree_depth4",
+     0.694
+    ],
+    [
+     "lemma_name_char_ngram_logistic",
+     0.6748
+    ],
+    [
+     "combined_shallow_logistic",
+     0.6534
+    ],
+    [
+     "lemma_name_frequency_prior",
+     0.6376
+    ],
+    [
+     "expression_length_ratio",
+     0.6261
+    ],
+    [
+     "lexical_overlap_margin",
+     0.5957
+    ],
+    [
+     "lemma_name_affixes",
+     0.5564
+    ],
+    [
+     "which_side_appears_in_goal",
+     0.5479
+    ],
+    [
+     "side_a_occurrence_count",
+     0.5479
+    ],
+    [
+     "lexical_overlap_side_a",
+     0.5449
+    ],
+    [
+     "number_of_plausible_sites",
+     0.5406
+    ],
+    [
+     "side_similarity",
+     0.5406
+    ],
+    [
+     "target_nesting_depth",
+     0.5244
+    ],
+    [
+     "lexical_overlap_side_b",
+     0.5235
+    ],
+    [
+     "side_b_occurrence_count",
+     0.5141
+    ],
+    [
+     "state_length",
+     0.5068
+    ],
+    [
+     "constant_majority_class",
+     0.5
+    ],
+    [
+     "option_position",
+     0.4936
+    ]
+   ],
+   "responsible_features": [
+    "lemma_name_char_ngram_logistic 0.6748 - pure name recall, no state read",
+    "lemma_name_frequency_prior 0.6376 - per-lemma majority direction",
+    "expression_length_ratio 0.6261 - a lemma constant, not a state fact"
+   ]
+  },
+  "v1_1_within_lemma_control": {
+   "verdict": "FAMILY_READY",
+   "best_shortcut": [
+    "combined_gradient_boosted_depth3",
+    0.6026
+   ],
+   "held_out_items": 702,
+   "ranked": [
+    [
+     "combined_gradient_boosted_depth3",
+     0.6026
+    ],
+    [
+     "lexical_overlap_margin",
+     0.5855
+    ],
+    [
+     "combined_shallow_logistic",
+     0.5783
+    ],
+    [
+     "lexical_overlap_side_a",
+     0.5627
+    ],
+    [
+     "side_a_occurrence_count",
+     0.5556
+    ],
+    [
+     "combined_shallow_tree_depth4",
+     0.5527
+    ],
+    [
+     "which_side_appears_in_goal",
+     0.537
+    ],
+    [
+     "number_of_plausible_sites",
+     0.5356
+    ],
+    [
+     "state_length",
+     0.5328
+    ],
+    [
+     "target_nesting_depth",
+     0.5271
+    ],
+    [
+     "side_b_occurrence_count",
+     0.5014
+    ],
+    [
+     "constant_majority_class",
+     0.5
+    ],
+    [
+     "lemma_name_frequency_prior",
+     0.5
+    ],
+    [
+     "lemma_name_affixes",
+     0.5
+    ],
+    [
+     "lemma_name_char_ngram_logistic",
+     0.5
+    ],
+    [
+     "expression_length_ratio",
+     0.5
+    ],
+    [
+     "side_similarity",
+     0.5
+    ],
+    [
+     "lexical_overlap_side_b",
+     0.4986
+    ],
+    [
+     "option_position",
+     0.4672
+    ]
+   ],
+   "lemma_constant_features_collapse_to_chance": [
+    "constant_majority_class",
+    "lemma_name_frequency_prior",
+    "lemma_name_affixes",
+    "lemma_name_char_ngram_logistic",
+    "expression_length_ratio",
+    "side_similarity"
+   ],
+   "which_side_appears_in_goal": {
+    "accuracy": 0.537,
+    "polarity": 1,
+    "dev_train_accuracy": 0.5336,
+    "held_out_items_with_nonzero_margin": 112,
+    "held_out_coverage": 0.1595,
+    "accuracy_on_decided_subset": 0.8571
+   }
+  }
+ },
+ "verdict": "FAMILY_READY"
+}

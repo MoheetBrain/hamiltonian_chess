@@ -1,0 +1,93 @@
+{
+  "pass1_seconds": 3.8,
+  "pass2_seconds": 137.0,
+  "filter_stats": {
+    "theorems": 118517,
+    "steps": 250814,
+    "steps_with_premise": 162262,
+    "steps_multi_premise": 91554,
+    "steps_single_premise": 70708,
+    "steps_usable": 63831,
+    "dropped_gold_name_in_state": 6877
+  },
+  "distinct_gold_premises": 24718,
+  "corpus_decls": 180907,
+  "corpus_files": 5674,
+  "levels": {
+    "L0_explicit_positive": {
+      "k": 6,
+      "attempted": 63831,
+      "emitted": 56847,
+      "items_with_fallback_tier": 23807,
+      "items_rejected_gold_in_prompt": 2,
+      "distractor_tier_counts": {
+        "a_same_proof": 205300,
+        "b_same_module_freq_matched": 78560,
+        "c_scope_valid_type_compatible": 371,
+        "d_lexical_overlap_matched": 4
+      }
+    },
+    "L1_cross_module": {
+      "k": 4,
+      "attempted": 63831,
+      "emitted": 59231,
+      "items_with_fallback_tier": 12958,
+      "items_rejected_gold_in_prompt": 0,
+      "distractor_tier_counts": {
+        "c_scope_valid_type_compatible": 143807,
+        "d_lexical_overlap_matched": 33886
+      }
+    },
+    "L2_standard": {
+      "k": 6,
+      "attempted": 63831,
+      "emitted": 63831,
+      "items_with_fallback_tier": 26282,
+      "items_rejected_gold_in_prompt": 0,
+      "distractor_tier_counts": {
+        "a_same_proof": 232080,
+        "b_same_module_freq_matched": 86658,
+        "d_lexical_overlap_matched": 43,
+        "c_scope_valid_type_compatible": 374
+      }
+    },
+    "L3_same_module_freq_matched": {
+      "k": 6,
+      "attempted": 63831,
+      "emitted": 58686,
+      "items_with_fallback_tier": 39928,
+      "items_rejected_gold_in_prompt": 0,
+      "distractor_tier_counts": {
+        "a_same_proof": 150464,
+        "b_same_module_freq_matched": 142966
+      }
+    },
+    "L4_high_similarity": {
+      "k": 8,
+      "attempted": 63831,
+      "emitted": 58925,
+      "items_with_fallback_tier": 47033,
+      "items_rejected_gold_in_prompt": 0,
+      "distractor_tier_counts": {
+        "a_same_proof": 166030,
+        "b_same_module_freq_matched": 228156,
+        "d_lexical_overlap_matched": 18289
+      }
+    }
+  },
+  "items_audited_for_leaks": 297520,
+  "leak_problems": {},
+  "seed": 20260907,
+  "generator_version": "premise_selection.generator.v1",
+  "spec_version": "premise-selection-v1",
+  "feature_names": [
+    "position",
+    "name_length",
+    "name_goal_jaccard",
+    "name_goal_multiset_overlap",
+    "log_global_frequency",
+    "same_file",
+    "same_module",
+    "declaration_order"
+  ]
+}

@@ -1,0 +1,128 @@
+{
+ "source": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo_raw/leandojo_benchmark_4/random/train.json",
+ "split": "train",
+ "seed": 20260907,
+ "explicit_positive_every": 10,
+ "environment_version": "arena-rewrite-direction-v1.0.0",
+ "generator_version": "arena-rewrite-direction-generator-v1.0.0",
+ "steps_total": 250814,
+ "rw_family_tactics_parsed": 56292,
+ "rw_family_tactics_rejected_trailer": 210,
+ "head_counts": {
+  "rw": 47129,
+  "simp_rw": 4654,
+  "rwa": 3130,
+  "erw": 1110,
+  "nth_rw": 199,
+  "nth_rewrite": 37,
+  "rw_mod_cast": 26,
+  "rewrite": 7
+ },
+ "bracket_size_distribution": {
+  "1": 22636,
+  "2": 14698,
+  "3": 8470,
+  "4": 4601,
+  "5": 2395,
+  "6": 1320,
+  "7": 763,
+  "8": 456,
+  "9": 277,
+  "10": 207,
+  "11": 128,
+  "12": 94,
+  "13": 75,
+  "14": 37,
+  "15": 39,
+  "16": 21,
+  "17": 21,
+  "18": 13,
+  "19": 5,
+  "20": 8,
+  "21": 5,
+  "22": 4,
+  "23": 4,
+  "24": 3,
+  "25": 3,
+  "27": 3,
+  "28": 2,
+  "29": 1,
+  "32": 1,
+  "35": 1,
+  "38": 1
+ },
+ "per_element": {
+  "total": 135792,
+  "forward": 109417,
+  "reverse": 26375,
+  "reverse_rate": 0.194231
+ },
+ "per_element_by_head": {
+  "erw": {
+   "forward": 2216,
+   "reverse": 430,
+   "reverse_rate": 0.162509
+  },
+  "nth_rewrite": {
+   "forward": 11,
+   "reverse": 36,
+   "reverse_rate": 0.765957
+  },
+  "nth_rw": {
+   "forward": 131,
+   "reverse": 136,
+   "reverse_rate": 0.509363
+  },
+  "rewrite": {
+   "forward": 8,
+   "reverse": 5,
+   "reverse_rate": 0.384615
+  },
+  "rw": {
+   "forward": 89307,
+   "reverse": 22619,
+   "reverse_rate": 0.202089
+  },
+  "rw_mod_cast": {
+   "forward": 52,
+   "reverse": 12,
+   "reverse_rate": 0.1875
+  },
+  "rwa": {
+   "forward": 5467,
+   "reverse": 1301,
+   "reverse_rate": 0.192228
+  },
+  "simp_rw": {
+   "forward": 12225,
+   "reverse": 1836,
+   "reverse_rate": 0.130574
+  }
+ },
+ "per_tactic": {
+  "total": 56292,
+  "uniform_forward": 37012,
+  "uniform_reverse": 6237,
+  "mixed_direction_bracket": 13043,
+  "mixed_rate": 0.231703,
+  "first_element_forward": 42154,
+  "first_element_reverse": 14138,
+  "first_element_reverse_rate": 0.251155,
+  "with_at_location": 8163
+ },
+ "items_written": 18055,
+ "discards": {
+  "not_a_rewrite_tactic": 194522,
+  "premise_signature_unavailable": 24693,
+  "premise_not_resolved": 8372,
+  "head_excluded_from_item_population": 4890,
+  "no_top_level_equation": 1670,
+  "leakage_guard_tripped": 200,
+  "arrow_token_in_rendered_text": 53,
+  "unparsable_bracket_or_trailer": 0,
+  "empty_state": 0,
+  "degenerate_equation_sides": 0
+ },
+ "items_path": "/private/tmp/claude-501/-Users-moheet-Documents-ChatGPT-hamiltonian-chess--claude-worktrees-phase-6-parallel-setup-9c6068/c625765c-0962-49c6-b99b-560f570581b8/scratchpad/rewrite_direction_items.jsonl",
+ "elapsed_seconds": 8.5
+}

@@ -1,0 +1,256 @@
+{
+ "protocol": {
+  "source": "LeanDojo random/train.json only (sealed pools never read)",
+  "split": "by source file, 70/30",
+  "control": "none",
+  "balancing": "majority direction downsampled independently on each side",
+  "chance": 0.5,
+  "preregistered_ceiling": 0.65,
+  "seed": 20260907,
+  "l0_explicit_positive_arm": "excluded from the gate (solvable by construction)"
+ },
+ "sizes": {
+  "items_available": 16414,
+  "dev_train_before_balance": 11731,
+  "dev_held_before_balance": 4683,
+  "dev_train_balanced": 6132,
+  "dev_held_balanced": 2340,
+  "dev_held_reverse_rate": 0.5,
+  "distinct_lemmas_dev_held": 1398
+ },
+ "shortcuts": {
+  "constant_majority_class": {
+   "accuracy": 0.5
+  },
+  "option_position": {
+   "accuracy": 0.4936
+  },
+  "lemma_name_frequency_prior": {
+   "accuracy": 0.6376,
+   "lemmas_with_dev_train_evidence": 2901,
+   "held_out_coverage": 0.5726,
+   "accuracy_on_covered": 0.741
+  },
+  "lemma_name_affixes": {
+   "accuracy": 0.5564,
+   "cues": [
+    "symm",
+    "comm",
+    "_eq_",
+    "_def",
+    "iff",
+    "assoc",
+    "succ",
+    "cast",
+    "_zero",
+    "_one"
+   ],
+   "max_depth": 4
+  },
+  "lemma_name_char_ngram_logistic": {
+   "accuracy": 0.6748,
+   "vectoriser": "char_wb 2-5grams",
+   "model": "logistic"
+  },
+  "which_side_appears_in_goal": {
+   "accuracy": 0.5479,
+   "polarity": 1,
+   "dev_train_accuracy": 0.5439,
+   "held_out_items_with_nonzero_margin": 681,
+   "held_out_coverage": 0.291,
+   "accuracy_on_decided_subset": 0.6946
+  },
+  "lexical_overlap_margin": {
+   "accuracy": 0.5957,
+   "feature": "overlap_margin",
+   "fitted_threshold": 0.0,
+   "polarity": 0,
+   "dev_train_accuracy": 0.6024
+  },
+  "lexical_overlap_side_a": {
+   "accuracy": 0.5449,
+   "feature": "lhs_token_overlap",
+   "fitted_threshold": 0.35714285714285715,
+   "polarity": 0,
+   "dev_train_accuracy": 0.5321
+  },
+  "lexical_overlap_side_b": {
+   "accuracy": 0.5235,
+   "feature": "rhs_token_overlap",
+   "fitted_threshold": 0.2222222222222222,
+   "polarity": 1,
+   "dev_train_accuracy": 0.5514
+  },
+  "expression_length_ratio": {
+   "accuracy": 0.6261,
+   "feature": "length_ratio",
+   "fitted_threshold": 1.1176,
+   "polarity": 1,
+   "dev_train_accuracy": 0.6256
+  },
+  "number_of_plausible_sites": {
+   "accuracy": 0.5406,
+   "feature": "plausible_sites",
+   "fitted_threshold": 0.0,
+   "polarity": 0,
+   "dev_train_accuracy": 0.5385
+  },
+  "side_a_occurrence_count": {
+   "accuracy": 0.5479,
+   "feature": "lhs_signature_hits",
+   "fitted_threshold": 1.0,
+   "polarity": 0,
+   "dev_train_accuracy": 0.5318
+  },
+  "side_b_occurrence_count": {
+   "accuracy": 0.5141,
+   "feature": "rhs_signature_hits",
+   "fitted_threshold": 0.0,
+   "polarity": 1,
+   "dev_train_accuracy": 0.5303
+  },
+  "side_similarity": {
+   "accuracy": 0.5406,
+   "feature": "side_similarity",
+   "fitted_threshold": 0.3125,
+   "polarity": 1,
+   "dev_train_accuracy": 0.5342
+  },
+  "state_length": {
+   "accuracy": 0.5068,
+   "feature": "state_len",
+   "fitted_threshold": 302.0,
+   "polarity": 0,
+   "dev_train_accuracy": 0.5318
+  },
+  "target_nesting_depth": {
+   "accuracy": 0.5244,
+   "feature": "target_depth",
+   "fitted_threshold": 0.0,
+   "polarity": 0,
+   "dev_train_accuracy": 0.5453
+  },
+  "combined_shallow_logistic": {
+   "accuracy": 0.6534,
+   "dev_train_accuracy": 0.675
+  },
+  "combined_shallow_tree_depth4": {
+   "accuracy": 0.694,
+   "dev_train_accuracy": 0.6962
+  },
+  "combined_gradient_boosted_depth3": {
+   "accuracy": 0.7085,
+   "dev_train_accuracy": 0.7808,
+   "top_features": [
+    [
+     "overlap_margin",
+     0.29
+    ],
+    [
+     "length_ratio",
+     0.2718
+    ],
+    [
+     "lhs_len",
+     0.0847
+    ],
+    [
+     "rhs_len",
+     0.0741
+    ],
+    [
+     "goal_len",
+     0.0628
+    ],
+    [
+     "side_similarity",
+     0.055
+    ]
+   ]
+  }
+ },
+ "ranked": [
+  [
+   "combined_gradient_boosted_depth3",
+   0.7085
+  ],
+  [
+   "combined_shallow_tree_depth4",
+   0.694
+  ],
+  [
+   "lemma_name_char_ngram_logistic",
+   0.6748
+  ],
+  [
+   "combined_shallow_logistic",
+   0.6534
+  ],
+  [
+   "lemma_name_frequency_prior",
+   0.6376
+  ],
+  [
+   "expression_length_ratio",
+   0.6261
+  ],
+  [
+   "lexical_overlap_margin",
+   0.5957
+  ],
+  [
+   "lemma_name_affixes",
+   0.5564
+  ],
+  [
+   "which_side_appears_in_goal",
+   0.5479
+  ],
+  [
+   "side_a_occurrence_count",
+   0.5479
+  ],
+  [
+   "lexical_overlap_side_a",
+   0.5449
+  ],
+  [
+   "number_of_plausible_sites",
+   0.5406
+  ],
+  [
+   "side_similarity",
+   0.5406
+  ],
+  [
+   "target_nesting_depth",
+   0.5244
+  ],
+  [
+   "lexical_overlap_side_b",
+   0.5235
+  ],
+  [
+   "side_b_occurrence_count",
+   0.5141
+  ],
+  [
+   "state_length",
+   0.5068
+  ],
+  [
+   "constant_majority_class",
+   0.5
+  ],
+  [
+   "option_position",
+   0.4936
+  ]
+ ],
+ "best_shortcut": [
+  "combined_gradient_boosted_depth3",
+  0.7085
+ ],
+ "ceiling": 0.65,
+ "verdict": "FAMILY_AT_RISK"
+}

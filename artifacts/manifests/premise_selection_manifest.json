@@ -1,0 +1,367 @@
+{
+  "schema": "arena-premise-selection-manifest-v1",
+  "spec_version": "premise-selection-v1",
+  "dataset_version": {
+    "name": "LeanDojo Benchmark 4",
+    "leandojo_version": "2.0.0",
+    "mathlib4_commit": "29dcec074de168ac2bf835a77ef68bbe069194c5",
+    "benchmark_root": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo_raw/leandojo_benchmark_4"
+  },
+  "sources": [
+    {
+      "path": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo_raw/leandojo_benchmark_4/random/train.json",
+      "role": "traced tactics (DEVELOPMENT, train split only)",
+      "bytes": 373077058,
+      "sha256": "eef6fb1382095ab4c28d4a0b0e2b5999a96cbef454dcf2899776957e83a40c1a"
+    },
+    {
+      "path": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo_raw/leandojo_benchmark_4/corpus.jsonl",
+      "role": "declaration text, per-file imports, scope relation",
+      "bytes": 60420959,
+      "sha256": "5d9f7d8321fc01380003860acc2a3ea5ffbe2f956c45a574aa29f7bb38d2ccd5"
+    }
+  ],
+  "sealed_splits_not_read": [
+    "novel_premises/test.json",
+    "novel_premises/val.json",
+    "random/test.json",
+    "random/val.json"
+  ],
+  "split_filter": {
+    "rule": "The split label is a property of the FILE, not of a row: random/train.json contains train rows only and carries no 'split' field. This family therefore excludes non-train rows by never opening any other split file. arena.environments.premise_selection.require_permitted_train() rejects any path whose trailing <dir>/<file> is not 'random/train.json', and guard_source_path() raises SealedSplitError on all four sealed pools before any read occurs.",
+    "permitted_source_relpath": "random/train.json",
+    "emitted_split_label": "train",
+    "cross_check": "Streaming random/train.json yielded 250,814 traced tactics, matching the independently reported train-split step count exactly; steps.jsonl (which mixes all splits) was never read by this family."
+  },
+  "generator": {
+    "version": "premise_selection.generator.v1",
+    "seed": 20260907,
+    "rng": "splitmix64 seeded per item by blake2b(seed|proof_id|step_index|level)",
+    "determinism": "Item bytes depend only on the item's own provenance and the seed, not on iteration order; asserted by tests/environments/test_premise_selection.py."
+  },
+  "usable_item_filter": {
+    "conditions": [
+      "exactly one cited premise in annotated_tactic (single unambiguous answer)",
+      "non-empty state_before",
+      "the cited premise's name does not already occur in state_before"
+    ],
+    "counters": {
+      "theorems": 118517,
+      "steps": 250814,
+      "steps_with_premise": 162262,
+      "steps_multi_premise": 91554,
+      "steps_single_premise": 70708,
+      "steps_usable": 63831,
+      "dropped_gold_name_in_state": 6877
+    },
+    "distinct_gold_premises": 24718
+  },
+  "corpus": {
+    "declarations": 180907,
+    "files": 5674
+  },
+  "difficulty_ladder": {
+    "L0_explicit_positive": {
+      "status": "SHIPPED",
+      "k": 6,
+      "explicit_positive": true,
+      "distractor_tiers_allowed": [
+        "a_same_proof",
+        "b_same_module_freq_matched",
+        "c_scope_valid_type_compatible",
+        "d_lexical_overlap_matched"
+      ],
+      "similarity_band_slack": 2,
+      "freq_bucket_slack": 8,
+      "context_lines": null,
+      "transitions_attempted": 63831,
+      "items_emitted": 56847,
+      "emission_rate": 0.890586,
+      "distractor_tier_counts": {
+        "a_same_proof": 205300,
+        "b_same_module_freq_matched": 78560,
+        "c_scope_valid_type_compatible": 371,
+        "d_lexical_overlap_matched": 4
+      },
+      "distractor_tier_proportions": {
+        "a_same_proof": 0.72229,
+        "b_same_module_freq_matched": 0.276391,
+        "c_scope_valid_type_compatible": 0.001305,
+        "d_lexical_overlap_matched": 1.4e-05
+      },
+      "tier_fallback_rate": 0.418791,
+      "items_rejected_gold_in_prompt": 2,
+      "shortcut_gate": {
+        "chance": 0.166667,
+        "n_dev_train_items": 39875,
+        "n_dev_holdout_items": 16972,
+        "best_shortcut": "combined_logistic_regression",
+        "best_shortcut_accuracy": 0.359298,
+        "ceiling_breached": false,
+        "per_shortcut_dev_holdout": {
+          "constant_majority_index": 0.166451,
+          "option_position": 0.166451,
+          "option_string_length": 0.201214,
+          "lexical_overlap_name_vs_goal": 0.232618,
+          "token_multiset_overlap": 0.208638,
+          "premise_global_frequency_prior": 0.212527,
+          "same_file_indicator": 0.223132,
+          "same_module_indicator": 0.17305,
+          "declaration_order": 0.195852,
+          "combined_logistic_regression": 0.359298,
+          "combined_decision_tree_depth6": 0.353229
+        }
+      }
+    },
+    "L2_standard": {
+      "status": "SHIPPED",
+      "k": 6,
+      "explicit_positive": false,
+      "distractor_tiers_allowed": [
+        "a_same_proof",
+        "b_same_module_freq_matched",
+        "c_scope_valid_type_compatible",
+        "d_lexical_overlap_matched"
+      ],
+      "similarity_band_slack": 2,
+      "freq_bucket_slack": 8,
+      "context_lines": null,
+      "transitions_attempted": 63831,
+      "items_emitted": 63831,
+      "emission_rate": 1.0,
+      "distractor_tier_counts": {
+        "a_same_proof": 232080,
+        "b_same_module_freq_matched": 86658,
+        "d_lexical_overlap_matched": 43,
+        "c_scope_valid_type_compatible": 374
+      },
+      "distractor_tier_proportions": {
+        "a_same_proof": 0.72717,
+        "b_same_module_freq_matched": 0.271523,
+        "c_scope_valid_type_compatible": 0.001172,
+        "d_lexical_overlap_matched": 0.000135
+      },
+      "tier_fallback_rate": 0.411744,
+      "items_rejected_gold_in_prompt": 0,
+      "shortcut_gate": {
+        "chance": 0.166667,
+        "n_dev_train_items": 44727,
+        "n_dev_holdout_items": 19104,
+        "best_shortcut": "combined_decision_tree_depth6",
+        "best_shortcut_accuracy": 0.326895,
+        "ceiling_breached": false,
+        "per_shortcut_dev_holdout": {
+          "constant_majority_index": 0.165358,
+          "option_position": 0.165358,
+          "option_string_length": 0.193049,
+          "lexical_overlap_name_vs_goal": 0.221734,
+          "token_multiset_overlap": 0.201005,
+          "premise_global_frequency_prior": 0.215452,
+          "same_file_indicator": 0.220216,
+          "same_module_indicator": 0.171273,
+          "declaration_order": 0.173314,
+          "combined_logistic_regression": 0.325377,
+          "combined_decision_tree_depth6": 0.326895
+        }
+      }
+    },
+    "L3_same_module_freq_matched": {
+      "status": "SHIPPED",
+      "k": 6,
+      "explicit_positive": false,
+      "distractor_tiers_allowed": [
+        "a_same_proof",
+        "b_same_module_freq_matched"
+      ],
+      "similarity_band_slack": 2,
+      "freq_bucket_slack": 1,
+      "context_lines": null,
+      "transitions_attempted": 63831,
+      "items_emitted": 58686,
+      "emission_rate": 0.919397,
+      "distractor_tier_counts": {
+        "a_same_proof": 150464,
+        "b_same_module_freq_matched": 142966
+      },
+      "distractor_tier_proportions": {
+        "a_same_proof": 0.512776,
+        "b_same_module_freq_matched": 0.487224
+      },
+      "tier_fallback_rate": 0.680367,
+      "items_rejected_gold_in_prompt": 0,
+      "shortcut_gate": {
+        "chance": 0.166667,
+        "n_dev_train_items": 41173,
+        "n_dev_holdout_items": 17513,
+        "best_shortcut": "combined_logistic_regression",
+        "best_shortcut_accuracy": 0.32827,
+        "ceiling_breached": false,
+        "per_shortcut_dev_holdout": {
+          "constant_majority_index": 0.169931,
+          "option_position": 0.171073,
+          "option_string_length": 0.193228,
+          "lexical_overlap_name_vs_goal": 0.241992,
+          "token_multiset_overlap": 0.221378,
+          "premise_global_frequency_prior": 0.154,
+          "same_file_indicator": 0.243933,
+          "same_module_indicator": 0.175413,
+          "declaration_order": 0.178781,
+          "combined_logistic_regression": 0.32827,
+          "combined_decision_tree_depth6": 0.322104
+        }
+      }
+    },
+    "L4_high_similarity": {
+      "status": "SHIPPED",
+      "k": 8,
+      "explicit_positive": false,
+      "distractor_tiers_allowed": [
+        "a_same_proof",
+        "b_same_module_freq_matched",
+        "d_lexical_overlap_matched"
+      ],
+      "similarity_band_slack": 0,
+      "freq_bucket_slack": 1,
+      "context_lines": 0,
+      "transitions_attempted": 63831,
+      "items_emitted": 58925,
+      "emission_rate": 0.923141,
+      "distractor_tier_counts": {
+        "a_same_proof": 166030,
+        "b_same_module_freq_matched": 228156,
+        "d_lexical_overlap_matched": 18289
+      },
+      "distractor_tier_proportions": {
+        "a_same_proof": 0.402521,
+        "b_same_module_freq_matched": 0.553139,
+        "d_lexical_overlap_matched": 0.04434
+      },
+      "tier_fallback_rate": 0.798184,
+      "items_rejected_gold_in_prompt": 0,
+      "shortcut_gate": {
+        "chance": 0.125,
+        "n_dev_train_items": 41318,
+        "n_dev_holdout_items": 17607,
+        "best_shortcut": "combined_logistic_regression",
+        "best_shortcut_accuracy": 0.262225,
+        "ceiling_breached": false,
+        "per_shortcut_dev_holdout": {
+          "constant_majority_index": 0.126881,
+          "option_position": 0.124496,
+          "option_string_length": 0.134151,
+          "lexical_overlap_name_vs_goal": 0.187709,
+          "token_multiset_overlap": 0.17192,
+          "premise_global_frequency_prior": 0.10865,
+          "same_file_indicator": 0.200204,
+          "same_module_indicator": 0.135003,
+          "declaration_order": 0.118192,
+          "combined_logistic_regression": 0.262225,
+          "combined_decision_tree_depth6": 0.257909
+        }
+      }
+    },
+    "L1_cross_module": {
+      "status": "REJECTED_SHORTCUT",
+      "k": 4,
+      "explicit_positive": false,
+      "distractor_tiers_allowed": [
+        "c_scope_valid_type_compatible",
+        "d_lexical_overlap_matched"
+      ],
+      "similarity_band_slack": 0,
+      "freq_bucket_slack": 1,
+      "context_lines": null,
+      "transitions_attempted": 63831,
+      "items_emitted": 59231,
+      "emission_rate": 0.927935,
+      "distractor_tier_counts": {
+        "c_scope_valid_type_compatible": 143807,
+        "d_lexical_overlap_matched": 33886
+      },
+      "distractor_tier_proportions": {
+        "c_scope_valid_type_compatible": 0.8093,
+        "d_lexical_overlap_matched": 0.1907
+      },
+      "tier_fallback_rate": 0.218771,
+      "items_rejected_gold_in_prompt": 0,
+      "shortcut_gate": {
+        "chance": 0.25,
+        "n_dev_train_items": 41499,
+        "n_dev_holdout_items": 17732,
+        "best_shortcut": "combined_decision_tree_depth6",
+        "best_shortcut_accuracy": 0.644372,
+        "ceiling_breached": true,
+        "per_shortcut_dev_holdout": {
+          "constant_majority_index": 0.243515,
+          "option_position": 0.243515,
+          "option_string_length": 0.304478,
+          "lexical_overlap_name_vs_goal": 0.444564,
+          "token_multiset_overlap": 0.429224,
+          "premise_global_frequency_prior": 0.339274,
+          "same_file_indicator": 0.424148,
+          "same_module_indicator": 0.464979,
+          "declaration_order": 0.495714,
+          "combined_logistic_regression": 0.623562,
+          "combined_decision_tree_depth6": 0.644372
+        }
+      }
+    }
+  },
+  "shortcut_gate": {
+    "ceiling": 0.45,
+    "headline_level": "L2_standard",
+    "headline_k": 6,
+    "headline_chance": 0.166667,
+    "headline_best_shortcut": "combined_decision_tree_depth6",
+    "headline_best_shortcut_accuracy": 0.326895,
+    "headline_ceiling_breached": false,
+    "dev_holdout_split": "by blake2b(proof_id) < 0.30; no proof appears in both slices",
+    "predictors": [
+      "combined_decision_tree_depth6",
+      "combined_logistic_regression",
+      "constant_majority_index",
+      "declaration_order",
+      "lexical_overlap_name_vs_goal",
+      "option_position",
+      "option_string_length",
+      "premise_global_frequency_prior",
+      "same_file_indicator",
+      "same_module_indicator",
+      "token_multiset_overlap"
+    ],
+    "breached_levels": [
+      "L1_cross_module"
+    ],
+    "shipped_levels_breached": []
+  },
+  "leak_audit": {
+    "items_audited": 297520,
+    "problems_found": {}
+  },
+  "verdict": "FAMILY_READY",
+  "verdict_note": "Every SHIPPED rung is below the 0.45 ceiling. One constructed rung, L1_cross_module, breached it twice (0.866, then 0.644 after the frequency-matched used-premise control) and is REJECTED rather than tuned: a rung whose gold is always local and whose distractors are always non-local makes locality decisive by construction. It is excluded from arena.environments.premise_selection.LADDER.",
+  "control_applied": {
+    "trigger": "First gate run: L1_cross_module drew tier (c) distractors uniformly from all 180,907 corpus declarations, so distractors were mostly declarations never used as a premise anywhere. Combined shallow model reached 0.866326 against a 0.45 ceiling.",
+    "carrying_features": {
+      "log_global_frequency": 0.334079,
+      "same_module": 0.431071,
+      "name_goal_jaccard": 12.557639
+    },
+    "control": "Tier (c) now samples only declarations that are actually used as a premise somewhere in train, and L1 was given the same frequency-bucket (slack 1) and similarity-band (slack 0) matching the other rungs already use.",
+    "re_measured_once": true,
+    "before": {
+      "L0_explicit_positive": 0.359769,
+      "L1_cross_module": 0.866326,
+      "L2_standard": 0.326895,
+      "L3_same_module_freq_matched": 0.32827,
+      "L4_high_similarity": 0.262225
+    },
+    "after": {
+      "L0_explicit_positive": 0.359298,
+      "L1_cross_module": 0.644372,
+      "L2_standard": 0.326895,
+      "L3_same_module_freq_matched": 0.32827,
+      "L4_high_similarity": 0.262225
+    }
+  }
+}

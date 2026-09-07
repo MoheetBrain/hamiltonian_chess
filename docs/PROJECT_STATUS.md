@@ -261,6 +261,32 @@ the gate arithmetic (0.775, inside the [0.70, 0.85] window) instead of a strande
 gate. V7 is **strictly stricter** than V5 and may qualify fewer mechanisms; the honest expectation
 is recorded in the spec. Compute ledger: `docs/SPRINT_COMPUTE_LEDGER.md`.
 
+**Three real formal task families built and shortcut-gated (hours 1–5).** Constructed from
+250,814 real Lean transitions in the LeanDojo train split, each gated on a model-free shortcut
+attack before any Solver call:
+
+| family | usable items | best shortcut | chance | ceiling | verdict |
+|---|---|---|---|---|---|
+| premise selection | 63,831 | 0.327 | 0.167 | 0.45 | READY |
+| rewrite direction | 3,466 controlled | 0.6026 | 0.50 | 0.65 | READY under within-lemma control |
+| legal transformation | 24,000 (12,000 pairs) | 0.5197 graded | 0.50 | 0.65 | READY (graded arm) |
+
+Kills and refutations: the "36.9% reverse rewrites" estimate is wrong (measured **19.4%** per
+element / 25.1% per tactic); rewrite direction breached at 0.7085 uncontrolled on lemma-name
+features alone; premise-selection rung `L1_cross_module` breached at 0.866 and was **rejected**
+after one control attempt reached 0.644; legal transformation killed `violated_precondition`
+(0.777) and `wrong_successor` (0.664).
+
+**BLOCKING FINDING — the new families cannot carry Game R.** All three emit **raw Lean
+pretty-printed strings** and contain zero `CanonicalState`/`CanonicalAction` references (verified
+by grep). Game R requires re-rendering identical canonical content through eight representations;
+a pre-rendered string **fixes R**. These families measure *solver capability* on real mathematical
+decisions — a different and valuable game — but only the canonical `formal_structural` probe bank
+can carry Game R today. Converting them to canonical form is a specified, separable task.
+
+**Fitness V7 running.** Launched 12:38:56 against `qwen38-rvn` bare after digest verification;
+872 planned calls / 900 budget; Q0 1.000. Result unknown at time of writing.
+
 **Sealed before any sprint work began.** `artifacts/manifests/SEALED_SPLITS.json` records sha256
 and byte counts for four held-out LeanDojo splits. Permitted development sources are only
 `random/train.json`, `corpus.jsonl`, and `steps.jsonl` filtered to `split == "train"`.

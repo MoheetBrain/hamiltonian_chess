@@ -1,0 +1,645 @@
+{
+ "schema": "arena-legal-transform-manifest-v1",
+ "environment_version": "arena-legal-transform-v1.0.0",
+ "adapter_version": "arena-leandojo-transition-adapter-v1.0.0",
+ "generator_seed": 20260907,
+ "generated_utc": "2026-09-07T11:39:05Z",
+ "generator_module": "arena/environments/legal_transform.py",
+ "build_script": "research/env_legal/build_family.py",
+ "audit_script": "research/env_legal/shortcut_gate.py",
+ "decision": "Given a proof state, a proposed action and a proposed result state, is this a transition that actually occurred?  Balanced binary, chance 0.50.",
+ "sources": {
+  "used": [
+   {
+    "path": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo_raw/leandojo_benchmark_4/random/train.json",
+    "bytes": 373077058,
+    "sha256": "eef6fb1382095ab4c28d4a0b0e2b5999a96cbef454dcf2899776957e83a40c1a",
+    "role": "transitions"
+   },
+   {
+    "path": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo_raw/leandojo_benchmark_4/corpus.jsonl",
+    "bytes": 60420959,
+    "sha256": "5d9f7d8321fc01380003860acc2a3ea5ffbe2f956c45a574aa29f7bb38d2ccd5",
+    "role": "donor premise index"
+   }
+  ],
+  "permitted_but_unused": [
+   {
+    "path": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo/steps.jsonl",
+    "reason": "carries derived step features but no state text; the citation prior and every eligibility check are computed from random/train.json directly, so it added nothing and was not opened"
+   },
+   {
+    "path": "/Users/moheet/Documents/ChatGPT/HML_V3/data/corpus/lean_runtime_v2_full.canonical.part-{000..004}.jsonl.gz",
+    "reason": "AST-shaped and only 1,150 transitions with no tactic text; this family needs the tactic and its premise annotations, which only LeanDojo carries.  Not opened by this environment"
+   }
+  ],
+  "sealed_never_read": {
+   "manifest": "artifacts/manifests/SEALED_SPLITS.json",
+   "paths": [
+    "novel_premises/val.json",
+    "novel_premises/test.json",
+    "random/val.json",
+    "random/test.json"
+   ],
+   "note": "not opened, not hashed here, not sampled"
+  }
+ },
+ "train_only_filter": {
+  "permitted_split": "train",
+  "enforcement": "arena.environments.legal_transform.build_family raises SealedSplitViolation on any step whose split is not 'train'; every emitted item's provenance.source_path is prefixed 'train:'",
+  "theorems_scanned_for_the_citation_prior": 118517,
+  "theorems_retained_for_construction": 118517,
+  "steps_considered": 250814
+ },
+ "counts": {
+  "items": 24000,
+  "item_stream_sha256": "b4dd58ec3001bd818eaa5b29676685cc59883c4989bd3f7e718d817ef311e517",
+  "item_stream_note": "sha256 of research/env_legal/items.jsonl.gz decompressed; the gzip container embeds an mtime so the compressed file's own hash is not stable",
+  "pairs": 12000,
+  "label_distribution": {
+   "valid": 12000,
+   "invalid": 12000
+  },
+  "tier_distribution": {
+   "TIER_B_CONSTRUCTED": 24000
+  },
+  "ladder": {
+   "L0_EXPLICIT_CONTROL": 9000,
+   "L1_COARSE": 0,
+   "L2_MODERATE": 6000,
+   "L3_SUBTLE": 9000
+  },
+  "per_axis_pairs": {
+   "type_incompatible_argument": 1500,
+   "violated_precondition": 1500,
+   "wrong_binder": 1500,
+   "wrong_premise_matched": 1500,
+   "wrong_premise_uniform": 1500,
+   "wrong_rewrite_direction": 1500,
+   "wrong_rewrite_target": 1500,
+   "wrong_successor": 1500
+  },
+  "per_axis_cap": 1500,
+  "dropped_for_polarity_balance": 2628
+ },
+ "discards": {
+  "definition": "attempts are counted per axis over every step; 'eligibility' means the step's shape does not match the axis at all, 'invalidity' means the recorded transition did not support an argument that the corruption is invalid and the item was thrown away rather than guessed at, 'surface' means no donor existed that keeps the surface statistics matched",
+  "headline_invalidity_discard_rate_over_shape_eligible_attempts": 0.07134,
+  "surface_discard_rate_over_shape_eligible_attempts": 0.626623,
+  "shape_eligible_attempts": 98809,
+  "invalidity_discards": 7049,
+  "surface_discards": 61916,
+  "per_axis_invalidity_discard_rate": {
+   "type_incompatible_argument": 0.386858,
+   "violated_precondition": 0.334479,
+   "wrong_binder": 0.194323,
+   "wrong_premise_matched": 0.0,
+   "wrong_premise_uniform": 0.0,
+   "wrong_rewrite_direction": 0.058774,
+   "wrong_rewrite_target": 0.015206,
+   "wrong_successor": 0.0
+  },
+  "per_axis_surface_discard_rate": {
+   "type_incompatible_argument": 0.300642,
+   "violated_precondition": 0.289447,
+   "wrong_binder": 0.444025,
+   "wrong_premise_matched": 0.920583,
+   "wrong_premise_uniform": 0.0,
+   "wrong_rewrite_direction": 0.0,
+   "wrong_rewrite_target": 0.279354,
+   "wrong_successor": 0.189627
+  },
+  "by_reason": {
+   "type_incompatible_argument|eligibility:fewer_than_two_context_arguments": 42489,
+   "type_incompatible_argument|eligibility:not_an_application_head": 201157,
+   "type_incompatible_argument|invalidity:no_argument_pair_with_disjoint_recorded_types": 2773,
+   "type_incompatible_argument|surface:no_length_matched_argument_pair": 2155,
+   "violated_precondition|eligibility:at_target_absent_from_a_parsed_context": 474,
+   "violated_precondition|eligibility:no_single_at_target": 241613,
+   "violated_precondition|invalidity:no_same_proof_name_absent_from_this_context": 2919,
+   "violated_precondition|surface:no_length_matched_absent_hypothesis": 2526,
+   "wrong_binder|eligibility:binder_pattern_not_simple_names": 7797,
+   "wrong_binder|eligibility:not_a_simple_intro": 237979,
+   "wrong_binder|invalidity:no_binder_pair_with_distinct_recorded_types": 979,
+   "wrong_binder|surface:no_length_matched_binder_pair": 2237,
+   "wrong_premise_matched|eligibility:annotation_surface_mismatch": 4,
+   "wrong_premise_matched|eligibility:multiline_tactic": 19059,
+   "wrong_premise_matched|eligibility:no_unambiguous_full_name_span": 37316,
+   "wrong_premise_matched|eligibility:premise_span_misalignment": 63019,
+   "wrong_premise_matched|surface:no_length_frequency_overlap_matched_donor": 52163,
+   "wrong_premise_uniform|eligibility:multiline_tactic": 1412,
+   "wrong_premise_uniform|eligibility:no_unambiguous_full_name_span": 3535,
+   "wrong_premise_uniform|eligibility:premise_span_misalignment": 5602,
+   "wrong_rewrite_direction|eligibility:not_a_single_lemma_rewrite": 67113,
+   "wrong_rewrite_direction|invalidity:symmetry_suspicious_lemma": 281,
+   "wrong_rewrite_target|eligibility:at_target_absent_from_a_parsed_context": 1850,
+   "wrong_rewrite_target|eligibility:no_single_at_target": 215241,
+   "wrong_rewrite_target|invalidity:at_target_text_unchanged_by_the_step": 89,
+   "wrong_rewrite_target|invalidity:no_provably_untouched_hypothesis": 8,
+   "wrong_rewrite_target|surface:no_length_matched_untouched_hypothesis": 1782,
+   "wrong_successor|eligibility:no_same_proof_successor_derangement": 2890,
+   "wrong_successor|surface:donor_equals_the_before_state": 1053
+  }
+ },
+ "shortcut_audit": {
+  "preregistered_ceiling": 0.65,
+  "chance": 0.5,
+  "protocol": "predictors fitted on dev-train and scored on dev-heldout; split by theorem so a matched pair cannot straddle it; train-only source data; no model call",
+  "predictors": [
+   "action_chars",
+   "action_tokens",
+   "before_chars",
+   "after_chars",
+   "before_tokens",
+   "after_tokens",
+   "delta_chars",
+   "abs_delta_chars",
+   "delta_tokens",
+   "abs_delta_tokens",
+   "multiset_diff_before_after",
+   "multiset_diff_action_before",
+   "jaccard_action_before",
+   "jaccard_before_after",
+   "jaccard_action_goal",
+   "edit_ratio_before_after",
+   "novel_identifier_count",
+   "novel_identifier_fraction",
+   "novel_dotted_count",
+   "premise_freq_max_log",
+   "premise_freq_mean_log",
+   "hypothesis_lines_before",
+   "arrow_in_action"
+  ],
+  "headline_graded_L1_L3": [
+   "train_fitted_lemma_orientation_prior",
+   0.5197
+  ],
+  "headline_graded_L1_L3_best_single_shortcut": [
+   "train_fitted_lemma_orientation_prior",
+   0.5197
+  ],
+  "pooled_all_levels_including_controls": [
+   "shallow_tree_depth8_all_features",
+   0.5779
+  ],
+  "per_level_best": {
+   "L0_EXPLICIT_CONTROL": [
+    "shallow_tree_depth8_all_features",
+    0.6783
+   ],
+   "L2_MODERATE": [
+    "train_fitted_lemma_orientation_prior",
+    0.5491
+   ],
+   "L3_SUBTLE": [
+    "shallow_tree_depth2_all_features",
+    0.5273
+   ]
+  },
+  "per_axis_best": {
+   "wrong_premise_uniform": [
+    "shallow_tree_depth4_all_features",
+    0.7745
+   ],
+   "wrong_premise_matched": [
+    "threshold:premise_freq_max_log",
+    0.5325
+   ],
+   "wrong_rewrite_direction": [
+    "shallow_tree_depth4_all_features",
+    0.6472
+   ],
+   "wrong_rewrite_target": [
+    "shallow_logistic_all_features",
+    0.5894
+   ],
+   "wrong_binder": [
+    "constant_majority",
+    0.5
+   ],
+   "violated_precondition": [
+    "shallow_tree_depth8_all_features",
+    0.7773
+   ],
+   "type_incompatible_argument": [
+    "shallow_logistic_all_features",
+    0.502
+   ],
+   "wrong_successor": [
+    "shallow_tree_depth4_all_features",
+    0.6643
+   ]
+  },
+  "graded_axes_breaching_ceiling": [],
+  "verdict": "FAMILY_READY",
+  "axes_demoted_to_the_L0_control_arm_after_measurement": {
+   "violated_precondition": "identifier-novelty separable at 0.777; the only textually checkable form of a precondition violation raises the action's novel-identifier count, which is structural rather than tunable",
+   "wrong_successor": "before/after token Jaccard separable at 0.644 after the one permitted repair (nearest-donor sampling replaced by a within-proof successor derangement, which removed a +80-character length tell and took the axis from 0.700 to 0.664); a state one tactic-step away simply resembles the goal state more than one two steps away, and no textual donor policy removes that",
+   "wrong_premise_uniform": "designed as a control from the outset; separable at 0.775, which is the point of a visible floor"
+  },
+  "closest_graded_axis_to_the_ceiling": {
+   "axis": "wrong_rewrite_direction",
+   "best": [
+    "shallow_tree_depth4_all_features",
+    0.6472
+   ],
+   "warning": "under the ceiling but by a small margin, and only a depth-4 tree reaches it while no single feature exceeds 0.53, which points to a lemma-identity by orientation interaction reached through premise frequency.  A sibling audit (research/environments/measurements/rewrite_direction_shortcuts.json) measured a train-fitted per-lemma direction prior at 0.793 on the same decision.  Here that adversary is weak because both orientations of the same lemma are emitted, so the prior sees mixed labels; that defence is a property of this construction and would not survive a different sampling policy.  Treat this axis as AT RISK and defer to the rewrite_direction family owner."
+  }
+ },
+ "ground_truth": {
+  "tiers_present": [
+   "TIER_B_CONSTRUCTED"
+  ],
+  "tier_a_items": 0,
+  "note": "no item is TIER_A_VERIFIED: Lean was not run.  Every negative is invalid by a construction argument recorded per axis, and every positive is a recorded LeanDojo transition that Arena has not itself replayed."
+ },
+ "axes": {
+  "wrong_premise_uniform": {
+   "difficulty_level": "L0_EXPLICIT_CONTROL",
+   "graded": false,
+   "pairs_emitted": 1500,
+   "items_emitted": 3000,
+   "attempts": 15049,
+   "shape_eligible_attempts": 4500,
+   "candidates_constructed": 4500,
+   "invalidity_discard_rate": 0.0,
+   "surface_discard_rate": 0.0,
+   "attempt_window_truncated_by_cap": true,
+   "ground_truth_tier": "TIER_B_CONSTRUCTED",
+   "constructed_invalidity_argument": "the cited declaration was replaced by an unrelated library declaration with a different full name; the recorded successor is the result of applying the original",
+   "residual_risk": "none material; the substitute is unrelated",
+   "surface_claims": {
+    "corrupts_action": true,
+    "preserves_token_multiset": false,
+    "preserves_length": false,
+    "balanced_by_design": false,
+    "permutes_within_axis": false
+   },
+   "shortcut_audit": {
+    "n_dev_heldout": 1468,
+    "best_overall": [
+     "shallow_tree_depth4_all_features",
+     0.7745
+    ],
+    "best_single_shortcut": [
+     "threshold:premise_freq_max_log",
+     0.6342
+    ],
+    "best_shallow_model": [
+     "shallow_tree_depth4_all_features",
+     0.7745
+    ],
+    "breaches_ceiling": true,
+    "top_predictors": {
+     "shallow_tree_depth4_all_features": 0.7745,
+     "shallow_tree_depth2_all_features": 0.765,
+     "shallow_logistic_all_features": 0.7575,
+     "shallow_tree_depth8_all_features": 0.7425,
+     "threshold:premise_freq_max_log": 0.6342
+    }
+   }
+  },
+  "wrong_premise_matched": {
+   "difficulty_level": "L2_MODERATE",
+   "graded": true,
+   "pairs_emitted": 1500,
+   "items_emitted": 3000,
+   "attempts": 176061,
+   "shape_eligible_attempts": 56663,
+   "candidates_constructed": 4500,
+   "invalidity_discard_rate": 0.0,
+   "surface_discard_rate": 0.920583,
+   "attempt_window_truncated_by_cap": true,
+   "ground_truth_tier": "TIER_B_CONSTRUCTED",
+   "constructed_invalidity_argument": "the cited declaration was replaced by a different real declaration (distinct full name and distinct final name component, so not a namespace alias); the recorded successor is the result of applying the original",
+   "residual_risk": "the substitute could be definitionally interchangeable at this site; the distinct final-name-component guard removes namespace aliases but not `simp`-equivalent lemmas",
+   "surface_claims": {
+    "corrupts_action": true,
+    "preserves_token_multiset": false,
+    "preserves_length": true,
+    "balanced_by_design": false,
+    "permutes_within_axis": false
+   },
+   "shortcut_audit": {
+    "n_dev_heldout": 1506,
+    "best_overall": [
+     "threshold:premise_freq_max_log",
+     0.5325
+    ],
+    "best_single_shortcut": [
+     "threshold:premise_freq_max_log",
+     0.5325
+    ],
+    "best_shallow_model": [
+     "shallow_logistic_all_features",
+     0.5319
+    ],
+    "breaches_ceiling": false,
+    "top_predictors": {
+     "threshold:premise_freq_max_log": 0.5325,
+     "threshold:premise_freq_mean_log": 0.5325,
+     "shallow_logistic_all_features": 0.5319,
+     "shallow_tree_depth8_all_features": 0.5305,
+     "threshold:novel_dotted_count": 0.5286
+    }
+   }
+  },
+  "wrong_rewrite_direction": {
+   "difficulty_level": "L2_MODERATE",
+   "graded": true,
+   "pairs_emitted": 1500,
+   "items_emitted": 3000,
+   "attempts": 71894,
+   "shape_eligible_attempts": 4781,
+   "candidates_constructed": 4500,
+   "invalidity_discard_rate": 0.058774,
+   "surface_discard_rate": 0.0,
+   "attempt_window_truncated_by_cap": true,
+   "ground_truth_tier": "TIER_B_CONSTRUCTED",
+   "constructed_invalidity_argument": "the recorded step rewrote the equation in one orientation, replacing occurrences of one side by the other; the opposite orientation replaces occurrences of the other side, so it cannot produce the recorded successor unless the two sides coincide",
+   "residual_risk": "if the equation's two sides are syntactically identical the flip is a no-op; guarded by requiring the successor to differ from the predecessor and by discarding lemmas whose final name component is a commutativity/symmetry marker, but not eliminated",
+   "surface_claims": {
+    "corrupts_action": true,
+    "preserves_token_multiset": false,
+    "preserves_length": false,
+    "balanced_by_design": true,
+    "permutes_within_axis": false
+   },
+   "shortcut_audit": {
+    "n_dev_heldout": 1488,
+    "best_overall": [
+     "shallow_tree_depth4_all_features",
+     0.6472
+    ],
+    "best_single_shortcut": [
+     "train_fitted_lemma_orientation_prior",
+     0.5948
+    ],
+    "best_shallow_model": [
+     "shallow_tree_depth4_all_features",
+     0.6472
+    ],
+    "breaches_ceiling": false,
+    "top_predictors": {
+     "shallow_tree_depth4_all_features": 0.6472,
+     "shallow_tree_depth8_all_features": 0.6438,
+     "train_fitted_lemma_orientation_prior": 0.5948,
+     "threshold:action_chars": 0.5222,
+     "shallow_tree_depth2_all_features": 0.5128
+    }
+   }
+  },
+  "wrong_rewrite_target": {
+   "difficulty_level": "L3_SUBTLE",
+   "graded": true,
+   "pairs_emitted": 1500,
+   "items_emitted": 3000,
+   "attempts": 223470,
+   "shape_eligible_attempts": 6379,
+   "candidates_constructed": 4500,
+   "invalidity_discard_rate": 0.015206,
+   "surface_discard_rate": 0.279354,
+   "attempt_window_truncated_by_cap": true,
+   "ground_truth_tier": "TIER_B_CONSTRUCTED",
+   "constructed_invalidity_argument": "in the recorded transition the original `at` target's hypothesis text changed and the substituted target's hypothesis text is byte-identical before and after; a tactic retargeted at an unchanged hypothesis cannot produce the recorded successor, and a rewrite that changes nothing is an error in Lean",
+   "residual_risk": "none identified beyond textual parsing error",
+   "surface_claims": {
+    "corrupts_action": true,
+    "preserves_token_multiset": false,
+    "preserves_length": true,
+    "balanced_by_design": false,
+    "permutes_within_axis": false
+   },
+   "shortcut_audit": {
+    "n_dev_heldout": 1432,
+    "best_overall": [
+     "shallow_logistic_all_features",
+     0.5894
+    ],
+    "best_single_shortcut": [
+     "threshold:jaccard_action_goal",
+     0.5775
+    ],
+    "best_shallow_model": [
+     "shallow_logistic_all_features",
+     0.5894
+    ],
+    "breaches_ceiling": false,
+    "top_predictors": {
+     "shallow_logistic_all_features": 0.5894,
+     "shallow_tree_depth2_all_features": 0.5866,
+     "shallow_tree_depth4_all_features": 0.5824,
+     "threshold:jaccard_action_goal": 0.5775,
+     "shallow_tree_depth8_all_features": 0.5768
+    }
+   }
+  },
+  "wrong_binder": {
+   "difficulty_level": "L3_SUBTLE",
+   "graded": true,
+   "pairs_emitted": 1500,
+   "items_emitted": 3000,
+   "attempts": 250814,
+   "shape_eligible_attempts": 5038,
+   "candidates_constructed": 1822,
+   "invalidity_discard_rate": 0.194323,
+   "surface_discard_rate": 0.444025,
+   "attempt_window_truncated_by_cap": false,
+   "ground_truth_tier": "TIER_B_CONSTRUCTED",
+   "constructed_invalidity_argument": "the recorded successor binds the introduced names to specific, textually distinct types in order; transposing two binder names would bind each to the other's type, which contradicts the recorded successor",
+   "residual_risk": "none identified beyond textual parsing error",
+   "surface_claims": {
+    "corrupts_action": true,
+    "preserves_token_multiset": true,
+    "preserves_length": true,
+    "balanced_by_design": false,
+    "permutes_within_axis": false
+   },
+   "shortcut_audit": {
+    "n_dev_heldout": 1514,
+    "best_overall": [
+     "constant_majority",
+     0.5
+    ],
+    "best_single_shortcut": [
+     "constant_majority",
+     0.5
+    ],
+    "best_shallow_model": [
+     "shallow_logistic_all_features",
+     0.5
+    ],
+    "breaches_ceiling": false,
+    "top_predictors": {
+     "constant_majority": 0.5,
+     "threshold:action_chars": 0.5,
+     "threshold:action_tokens": 0.5,
+     "threshold:before_chars": 0.5,
+     "threshold:after_chars": 0.5
+    }
+   }
+  },
+  "violated_precondition": {
+   "difficulty_level": "L0_EXPLICIT_CONTROL",
+   "graded": false,
+   "pairs_emitted": 1500,
+   "items_emitted": 3000,
+   "attempts": 250814,
+   "shape_eligible_attempts": 8727,
+   "candidates_constructed": 3282,
+   "invalidity_discard_rate": 0.334479,
+   "surface_discard_rate": 0.289447,
+   "attempt_window_truncated_by_cap": false,
+   "ground_truth_tier": "TIER_B_CONSTRUCTED",
+   "constructed_invalidity_argument": "the `at` clause names a hypothesis that does not occur in the recorded before-state's local context, so the tactic cannot elaborate",
+   "residual_risk": "none identified beyond textual parsing error",
+   "surface_claims": {
+    "corrupts_action": true,
+    "preserves_token_multiset": false,
+    "preserves_length": true,
+    "balanced_by_design": false,
+    "permutes_within_axis": false
+   },
+   "shortcut_audit": {
+    "n_dev_heldout": 1518,
+    "best_overall": [
+     "shallow_tree_depth8_all_features",
+     0.7773
+    ],
+    "best_single_shortcut": [
+     "threshold:novel_identifier_fraction",
+     0.7365
+    ],
+    "best_shallow_model": [
+     "shallow_tree_depth8_all_features",
+     0.7773
+    ],
+    "breaches_ceiling": true,
+    "top_predictors": {
+     "shallow_tree_depth8_all_features": 0.7773,
+     "shallow_logistic_all_features": 0.776,
+     "shallow_tree_depth4_all_features": 0.7615,
+     "threshold:novel_identifier_fraction": 0.7365,
+     "shallow_tree_depth2_all_features": 0.7227
+    }
+   }
+  },
+  "type_incompatible_argument": {
+   "difficulty_level": "L3_SUBTLE",
+   "graded": true,
+   "pairs_emitted": 1500,
+   "items_emitted": 3000,
+   "attempts": 250814,
+   "shape_eligible_attempts": 7168,
+   "candidates_constructed": 2240,
+   "invalidity_discard_rate": 0.386858,
+   "surface_discard_rate": 0.300642,
+   "attempt_window_truncated_by_cap": false,
+   "ground_truth_tier": "TIER_B_CONSTRUCTED",
+   "constructed_invalidity_argument": "two explicit arguments whose recorded local-context types are textually distinct and mention disjoint identifiers were transposed, so the application is ill-typed",
+   "residual_risk": "the two recorded types could be definitionally equal despite textual difference and disjoint identifiers; this cannot be excluded without Lean",
+   "surface_claims": {
+    "corrupts_action": true,
+    "preserves_token_multiset": true,
+    "preserves_length": true,
+    "balanced_by_design": false,
+    "permutes_within_axis": false
+   },
+   "shortcut_audit": {
+    "n_dev_heldout": 1524,
+    "best_overall": [
+     "shallow_logistic_all_features",
+     0.502
+    ],
+    "best_single_shortcut": [
+     "threshold:novel_dotted_count",
+     0.5013
+    ],
+    "best_shallow_model": [
+     "shallow_logistic_all_features",
+     0.502
+    ],
+    "breaches_ceiling": false,
+    "top_predictors": {
+     "shallow_logistic_all_features": 0.502,
+     "threshold:novel_dotted_count": 0.5013,
+     "constant_majority": 0.5,
+     "threshold:action_chars": 0.5,
+     "threshold:action_tokens": 0.5
+    }
+   }
+  },
+  "wrong_successor": {
+   "difficulty_level": "L0_EXPLICIT_CONTROL",
+   "graded": false,
+   "pairs_emitted": 1500,
+   "items_emitted": 3000,
+   "attempts": 8443,
+   "shape_eligible_attempts": 5553,
+   "candidates_constructed": 4500,
+   "invalidity_discard_rate": 0.0,
+   "surface_discard_rate": 0.189627,
+   "attempt_window_truncated_by_cap": true,
+   "ground_truth_tier": "TIER_B_CONSTRUCTED",
+   "constructed_invalidity_argument": "tactic application is deterministic for a fixed environment; the recorded successor of this action at this state is a specific state, and the substituted state differs from it, so the triple is not the transition that occurred",
+   "residual_risk": "assumes tactic determinism for a fixed environment, which holds for the tactics kept here but is an assumption rather than a check",
+   "surface_claims": {
+    "corrupts_action": false,
+    "preserves_token_multiset": false,
+    "preserves_length": false,
+    "balanced_by_design": false,
+    "permutes_within_axis": true
+   },
+   "shortcut_audit": {
+    "n_dev_heldout": 1546,
+    "best_overall": [
+     "shallow_tree_depth4_all_features",
+     0.6643
+    ],
+    "best_single_shortcut": [
+     "threshold:jaccard_before_after",
+     0.6442
+    ],
+    "best_shallow_model": [
+     "shallow_tree_depth4_all_features",
+     0.6643
+    ],
+    "breaches_ceiling": true,
+    "top_predictors": {
+     "shallow_tree_depth4_all_features": 0.6643,
+     "shallow_logistic_all_features": 0.6585,
+     "shallow_tree_depth8_all_features": 0.6507,
+     "shallow_tree_depth2_all_features": 0.6462,
+     "threshold:jaccard_before_after": 0.6442
+    }
+   }
+  }
+ },
+ "lean_tier_a_replay": {
+  "status": "DESIGNED_NOT_RUN",
+  "authorisation": "integrator-authorised job only; this module never invokes Lean",
+  "mathlib_root": "/Users/moheet/Documents/ChatGPT/HML_V3/external/runtime_work/leanprover-community-mathlib4-29dcec074de168ac2bf835a77ef68bbe069194c5/mathlib4",
+  "toolchain": "leanprover/lean4:v4.10.0-rc1",
+  "mathlib_commit": "29dcec074de168ac2bf835a77ef68bbe069194c5",
+  "harness": "LeanDojo Dojo replay, one Dojo per theorem, tactics fed in recorded order",
+  "command": "cd <mathlib_root> && CONTAINER=native LEAN_PATH=<mathlib_root>/.lake/build/lib:<mathlib_root>/.lake/packages/*/.lake/build/lib <venv>/bin/python -m arena.cli replay-legal-transform --manifest artifacts/manifests/legal_transform_manifest.json --mathlib-root <mathlib_root> --timeout-seconds 60 --max-theorems 300 --jobs 4 --out research/env_legal/tier_a_replay.jsonl",
+  "per_item_procedure": [
+   "open a Dojo at (file_path, full_name) from the item's provenance",
+   "replay steps 0..step_index-1 with their recorded tactics to reach state_before",
+   "assert the reached state's pretty-print equals the item's state_before verbatim; on mismatch record REPLAY_DESYNC and do not promote the item",
+   "for a POSITIVE: run the item's action; promote to TIER_A_VERIFIED iff the run succeeds and the resulting pretty-print equals the item's state_after verbatim",
+   "for a NEGATIVE: run the item's action; promote to TIER_A_VERIFIED iff the run raises a LeanError/TimeoutError, or succeeds with a pretty-print differing from the item's state_after; if it succeeds and matches, the constructed negative was WRONG -- record CONSTRUCTED_NEGATIVE_REFUTED and drop the item and audit its axis"
+  ],
+  "budget": {
+   "historical_replay_yield": "32/100 transitions replayed successfully",
+   "implication": "expect ~32% of attempted items to reach TIER_A; a 1,000-item Tier-A tier therefore needs ~3,100 attempted replays",
+   "wall_clock_estimate": "at ~20 s/theorem with 4 workers, ~3,100 items across ~900 theorems is roughly 1.3 h; this is why it is a separate job"
+  },
+  "what_tier_a_would_and_would_not_establish": "It would establish that the positive transition really replays and that the negative really fails or diverges.  It would NOT establish that the negative is mathematically meaningless, nor that the theorem is true, nor anything about a different Lean version."
+ },
+ "caveats": [
+  "LeanDojo annotates only premises named in the tactic SYNTAX; simp sets, typeclass instances and definitional unfolding are invisible, so premise lists are lower bounds",
+  "states are pretty-printed text, not elaborated terms; all parsing here is textual",
+  "no item in this family has been replayed in Lean; every negative is TIER_B_CONSTRUCTED"
+ ]
+}

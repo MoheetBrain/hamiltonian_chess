@@ -37,7 +37,9 @@ machines idle" cuts both ways. The A100 is started only if the sprint reaches ma
 
 | # | Instance | Start | Purpose | Workload | Stop | Approx hours |
 |---|---|---|---|---|---|---|
-| — | (none started) | — | — | — | — | 0 GPU-h, 0 cloud CPU-h |
+| — | (no cloud instance started) | — | — | — | — | **0 GPU-h, 0 cloud CPU-h** |
+| L1 | local Ollama (M5 Max) | 12:38:56 | Fitness V7 DEV | `fitness_v7 develop --solver qwen38-rvn`, 872 planned calls / 900 budget, bare condition, digest `25eb57cb8173…` verified before first call | running | ≈ 4.8 h wall-clock, single-threaded |
+| L2 | local CPU (M5 Max, 40 cores) | 11:2x | task-family construction + model-free shortcut gates | 6 concurrent agents streaming 373 MB LeanDojo JSON, no model call | rolling | concurrent with L1, no contention |
 
 **Local usage** is not billed and is not itemised here beyond the Solver run, which is the only
 serialised resource: V7 is 392 calls at ≈ 20 s ≈ **2.2 h wall-clock**, single-threaded through

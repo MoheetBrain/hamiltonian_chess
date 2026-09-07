@@ -861,3 +861,81 @@ granularity — not the aim point — is the binding constraint.
 
 **Next intended step.** Land `arena/experiments/fitness_v7.py` with its offline tests, verify it
 cannot touch any V5 or Phase-6 artifact, then run 392 calls against `qwen38-rvn` bare.
+
+---
+
+## 2026-09-07 — Three real formal task families built and shortcut-gated; V7 launched
+
+**Branch.** `claude/phase-6-parallel-setup-9c6068`. **Stage.** 72-hour sprint, hours 1–5.
+
+**Objective of the change.** Build Game-R-candidate task families from real verifier-backed formal
+data, gate each on a model-free shortcut attack *before* any Solver call, and launch the
+preregistered V7 instrument.
+
+**Files and systems changed.** New: `arena/environments/{premise_selection,rewrite_direction,
+legal_transform}.py` with tests; `arena/experiments/fitness_v7.py` with tests;
+`arena/experiments/game_r_formal_v1.py` (tournament harness) with tests;
+`research/env_{premise,rewrite,legal}/`; `artifacts/manifests/*_manifest.json`.
+
+**What was completed — all three families pass their preregistered shortcut ceilings.**
+
+| family | usable items | best model-free shortcut | ceiling | verdict |
+|---|---|---|---|---|
+| premise selection | 63,831 (24,718 distinct gold premises) | **0.327** (depth-6 tree), chance 0.167 | 0.45 | READY |
+| rewrite direction | 3,466 controlled (16,414 raw) | **0.6026** (GB depth-3), chance 0.50 | 0.65 | READY *under control* |
+| legal transformation | 24,000 (12,000 matched pairs) | **0.5197** graded pooled, chance 0.50 | 0.65 | READY (graded arm) |
+
+**Refutations and kills, recorded because they matter more than the passes.**
+(1) The "36.9% of `rw` steps are reverse" estimate is **wrong**: measured 19.42% per rewrite element
+and 25.12% per tactic first-element over 250,814 train steps. The binary is *not* naturally
+balanced and needs explicit balancing.
+(2) Rewrite direction **breached at 0.7085** without control, driven entirely by lemma-name
+features (char-n-gram logistic 0.6748 alone). A within-lemma direction-balancing control makes
+every lemma-constant feature uninformative by construction — they collapse to exactly 0.5000 — at
+the cost of shrinking the pool 16,414 → 3,466.
+(3) Premise selection rung `L1_cross_module` **breached at 0.866**; one named control brought it to
+0.644, still breached, so it was **rejected, not tuned**, and retained in `REJECTED_LEVELS` so the
+rejection stays reproducible.
+(4) Legal transformation killed two axes: `violated_precondition` (0.777 — the only textually
+checkable violation raises novel-identifier count by +0.92) and `wrong_successor` (0.664 after one
+repair). `wrong_rewrite_direction` is flagged AT RISK at 0.6472, under ceiling by 0.003 with
+SE ≈ 0.013.
+(5) Premise selection excluded 6,877 transitions where the gold premise name is already printed in
+`state_before` — a real leak, not hygiene.
+
+**The blocking scientific finding.** All three families carry **raw Lean pretty-printed strings**
+(`state: str`, `options: tuple[str, ...]`) and contain **zero** references to `CanonicalState` or
+`CanonicalAction` (verified by grep; `formal_structural` has 3). **They therefore cannot support a
+Game-R tournament**: Game R requires re-rendering the same canonical content through eight
+representations, and a pre-rendered string fixes R at "Lean's pretty-printer". They measure solver
+capability on real mathematical decisions, which is a different and also valuable game. Only the
+canonical `formal_structural` probe bank can carry Game R today.
+
+**Decisions made and why.** (1) Pursue V7 on `formal_structural` as the Game-R path, because it is
+the only canonical substrate available. (2) Keep all three new families: they are the honest
+long-term answer to "the probes are a poor proxy for mathematical reasoning", and converting them
+to canonical form is a specified, separable task. (3) Exclude `research/env_legal/items.jsonl.gz`
+(9.4 MB, regenerable in 45 s) from the commit.
+
+**Tests and verification actually executed.** `python -m pytest` → **625 passed in 63.51s**
+(190 before this sprint). `python -m ruff check arena tests` → All checks passed.
+`python -m ruff format --check arena tests` → 179 files already formatted.
+`python -m mypy arena` → Success, no issues in 129 source files. Import path confirmed inside this
+worktree. V7 launched at 12:38:56 after `verify` confirmed the live digest
+`25eb57cb8173332b43f8f07f6214e6b74f9e11afac5242392da751458fb024ae`; 872 planned calls against a
+900 budget; Q0 1.000. A `--dry-run` with a stub solver exercised every path first and made no call.
+
+**Failures and unresolved uncertainty.** V7 is **still running** and its result is unknown; nothing
+here anticipates it. The dry run surfaced that `formal_expression_depth`'s real per-level shortcut
+is 0.833 at L2 against qwen's measured 0.792 there, so `VOID_SHORTCUT` is the likely outcome for
+that mechanism — as the preregistration predicted. Legal transformation is 100% `TIER_B_CONSTRUCTED`
+with zero Lean-verified items; the Tier-A replay is designed but **not run** (≈3,100 replays for
+1,000 items at the historical 32/100 yield). Rewrite direction's equation sides are a textual parse
+of recorded signatures, not elaboration.
+
+**Effect on the overall project.** No representation has been scored. `RSTAR_NOT_IDENTIFIED`
+stands. The project now has three shortcut-audited task families built from 250,814 real verified
+Lean transitions, where before it had synthetic mechanism probes.
+
+**Next intended step.** Await V7. If it qualifies ≥2 mechanisms, run the founder tournament on
+`formal_structural`. Regardless, ship `TRAINING_LANGUAGE_V0`.
