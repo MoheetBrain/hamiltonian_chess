@@ -287,6 +287,10 @@ can carry Game R today. Converting them to canonical form is a specified, separa
 **Fitness V7 running.** Launched 12:38:56 against `qwen38-rvn` bare after digest verification;
 872 planned calls / 900 budget; Q0 1.000. Result unknown at time of writing.
 
+**Repository hygiene.** `research/environments/measurements/train_premise_citation_counts.json`
+(2.4 MB, derived, regenerable, unvalidated) was swept in by `git add -A` at `cf1b07f` and removed
+immediately afterwards; it is now gitignored.
+
 **Sealed before any sprint work began.** `artifacts/manifests/SEALED_SPLITS.json` records sha256
 and byte counts for four held-out LeanDojo splits. Permitted development sources are only
 `random/train.json`, `corpus.jsonl`, and `steps.jsonl` filtered to `split == "train"`.

@@ -13,3 +13,6 @@ build/
 artifacts/arena.db
 artifacts/cache/
 artifacts/tmp/
+
+# Regenerable derived measurement dumps (see research/*/README.md)
+research/environments/measurements/train_premise_citation_counts.json

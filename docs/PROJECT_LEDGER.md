@@ -939,3 +939,33 @@ Lean transitions, where before it had synthetic mechanism probes.
 
 **Next intended step.** Await V7. If it qualifies ≥2 mechanisms, run the founder tournament on
 `formal_structural`. Regardless, ship `TRAINING_LANGUAGE_V0`.
+
+---
+
+## 2026-09-07 — Remove a regenerable 2.4 MB derived dump committed in error
+
+**Branch.** `claude/phase-6-parallel-setup-9c6068`. **Stage.** 72-hour sprint, hour ~5.
+
+**Objective.** Restore consistency between the repository and its own documentation.
+
+**Files changed.** `research/environments/measurements/train_premise_citation_counts.json` removed
+from tracking and added to `.gitignore`.
+
+**What happened.** `git add -A` in the previous commit (`cf1b07f`) swept up a 2,424,793-byte
+derived premise-frequency dump that `research/environments/README.md` explicitly states was **not**
+committed because it is regenerable by `build_train_priors.py`. The repository therefore
+contradicted its own README. The file is also unvalidated output from a subagent terminated
+mid-run, which is precisely the material the README quarantines.
+
+**Decisions and why.** Remove rather than amend the README: the file is derived, regenerable in
+seconds, and unvalidated. Keeping 2.4 MB of unchecked numbers where a reader might cite them is the
+worse option. Added to `.gitignore` so it cannot recur.
+
+**Tests actually executed.** `python -m pytest` → 625 passed (unchanged; no code touched).
+
+**Failures and uncertainty.** None. The previous commit stands as recorded; this is a follow-up
+correction, not a rewrite of it.
+
+**Effect.** No scientific claim changes.
+
+**Next intended step.** Await V7; ship `TRAINING_LANGUAGE_V0`.
