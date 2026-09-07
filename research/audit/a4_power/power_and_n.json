@@ -1,0 +1,310 @@
+{
+ "_frozen_threshold": 0.1,
+ "_note": "SHORTCUT_MARGIN = 0.10 is preregistered and frozen and is NOT varied here. All quantities describe the behaviour of the decision procedure AT that threshold.",
+ "estimator_resolution": {
+  "dead_zone": [
+   0.083333333333,
+   0.125
+  ],
+  "dead_zone_width": 0.041666666667,
+  "declared_threshold": 0.1,
+  "distance_in_quanta": 0.40000000000000024,
+  "distance_to_declared_threshold": 0.016666666666666677,
+  "distance_to_effective_threshold": 0.04166666666666667,
+  "effective_operational_threshold_at_n24": 0.125,
+  "largest_achievable_margin_that_fails": 0.083333333333,
+  "observed_is_the_largest_failing_value": true,
+  "observed_margin_transitive_L3": 0.08333333333333333,
+  "quantum_of_the_estimator": 0.041666666666666664,
+  "smallest_ACHIEVABLE_margin_that_passes": 0.125
+ },
+ "gate_operating_characteristic": {
+  "discordance_0.1667": {
+   "0.0000": {
+    "P_pass_gate_fully_clustered": 0.135595,
+    "P_pass_gate_items_independent": 0.101285,
+    "true_margin": 0.0
+   },
+   "0.0500": {
+    "P_pass_gate_fully_clustered": 0.245865,
+    "P_pass_gate_items_independent": 0.24805,
+    "true_margin": 0.05
+   },
+   "0.0833": {
+    "P_pass_gate_fully_clustered": 0.339695,
+    "P_pass_gate_items_independent": 0.389675,
+    "true_margin": 0.0833333333
+   },
+   "0.1000": {
+    "P_pass_gate_fully_clustered": 0.390005,
+    "P_pass_gate_items_independent": 0.464695,
+    "true_margin": 0.1
+   },
+   "0.1250": {
+    "P_pass_gate_fully_clustered": 0.47397,
+    "P_pass_gate_items_independent": 0.58855,
+    "true_margin": 0.125
+   },
+   "0.1500": {
+    "P_pass_gate_fully_clustered": 0.55783,
+    "P_pass_gate_items_independent": 0.711025,
+    "true_margin": 0.15
+   },
+   "0.2000": null,
+   "0.2500": null,
+   "0.3000": null,
+   "0.4000": null,
+   "0.5000": null
+  },
+  "discordance_0.2500": {
+   "0.0000": {
+    "P_pass_gate_fully_clustered": 0.18695,
+    "P_pass_gate_items_independent": 0.151475,
+    "true_margin": 0.0
+   },
+   "0.0500": {
+    "P_pass_gate_fully_clustered": 0.29365,
+    "P_pass_gate_items_independent": 0.293805,
+    "true_margin": 0.05
+   },
+   "0.0833": {
+    "P_pass_gate_fully_clustered": 0.37942,
+    "P_pass_gate_items_independent": 0.41568,
+    "true_margin": 0.0833333333
+   },
+   "0.1000": {
+    "P_pass_gate_fully_clustered": 0.424255,
+    "P_pass_gate_items_independent": 0.481485,
+    "true_margin": 0.1
+   },
+   "0.1250": {
+    "P_pass_gate_fully_clustered": 0.49015,
+    "P_pass_gate_items_independent": 0.579465,
+    "true_margin": 0.125
+   },
+   "0.1500": {
+    "P_pass_gate_fully_clustered": 0.564915,
+    "P_pass_gate_items_independent": 0.67956,
+    "true_margin": 0.15
+   },
+   "0.2000": {
+    "P_pass_gate_fully_clustered": 0.70811,
+    "P_pass_gate_items_independent": 0.849945,
+    "true_margin": 0.2
+   },
+   "0.2500": {
+    "P_pass_gate_fully_clustered": 0.84144,
+    "P_pass_gate_items_independent": 0.9605,
+    "true_margin": 0.25
+   },
+   "0.3000": null,
+   "0.4000": null,
+   "0.5000": null
+  },
+  "discordance_0.3333": {
+   "0.0000": {
+    "P_pass_gate_fully_clustered": 0.2239,
+    "P_pass_gate_items_independent": 0.18875,
+    "true_margin": 0.0
+   },
+   "0.0500": {
+    "P_pass_gate_fully_clustered": 0.322405,
+    "P_pass_gate_items_independent": 0.32241,
+    "true_margin": 0.05
+   },
+   "0.0833": {
+    "P_pass_gate_fully_clustered": 0.40014,
+    "P_pass_gate_items_independent": 0.430195,
+    "true_margin": 0.0833333333
+   },
+   "0.1000": {
+    "P_pass_gate_fully_clustered": 0.438065,
+    "P_pass_gate_items_independent": 0.48443,
+    "true_margin": 0.1
+   },
+   "0.1250": {
+    "P_pass_gate_fully_clustered": 0.49938,
+    "P_pass_gate_items_independent": 0.573915,
+    "true_margin": 0.125
+   },
+   "0.1500": {
+    "P_pass_gate_fully_clustered": 0.56202,
+    "P_pass_gate_items_independent": 0.65624,
+    "true_margin": 0.15
+   },
+   "0.2000": {
+    "P_pass_gate_fully_clustered": 0.684425,
+    "P_pass_gate_items_independent": 0.80805,
+    "true_margin": 0.2
+   },
+   "0.2500": {
+    "P_pass_gate_fully_clustered": 0.79859,
+    "P_pass_gate_items_independent": 0.917825,
+    "true_margin": 0.25
+   },
+   "0.3000": {
+    "P_pass_gate_fully_clustered": 0.89492,
+    "P_pass_gate_items_independent": 0.977555,
+    "true_margin": 0.3
+   },
+   "0.4000": null,
+   "0.5000": null
+  }
+ },
+ "power_to_separate_0.0833_from_0.10": {
+  "cluster_robust_SE": {
+   "SE": 0.1035964,
+   "power_one_sided_alpha_0.05": 0.06890805832505677,
+   "power_two_sided_alpha_0.05": 0.03600275773761132,
+   "separation_in_SE_units": 0.16088075132597923
+  },
+  "estimator_resolution_argument": {
+   "quantum": 0.041666666666666664,
+   "separation_in_quanta": 0.40000000000000024,
+   "verdict": "The separation to be resolved (0.016667) is 0.40 of ONE quantum of the estimator (1/24 = 0.041667). No outcome of the n = 24 experiment can lie strictly between 0.0833 and 0.10. The distinction is not merely underpowered, it is unrepresentable."
+  },
+  "item_level_mcnemar_SE": {
+   "SE": 0.0815786,
+   "power_one_sided_alpha_0.05": 0.07485568964733848,
+   "power_two_sided_alpha_0.05": 0.039573066103004574,
+   "separation_in_SE_units": 0.20430194519968076
+  },
+  "separation_required": 0.016666666666666677
+ },
+ "required_n": {
+  "_actual_n_run": 24,
+  "_design_effect_applied": 1.6126377864963268,
+  "margin_0.05": {
+   "discordance_0.1667_observed": {
+    "A_items_to_detect_margin_gt_0": 521,
+    "A_items_with_design_effect": 841,
+    "B_items_to_pass_gate_with_80pct_power": 406,
+    "B_items_with_design_effect": 655,
+    "C_items_for_CI_halfwidth_below_gap": 253,
+    "C_items_with_design_effect": 407,
+    "assumed_discordance": 0.16666666666666666,
+    "note": null
+   },
+   "discordance_0.3333": {
+    "A_items_to_detect_margin_gt_0": 1045,
+    "A_items_with_design_effect": 1684,
+    "B_items_to_pass_gate_with_80pct_power": 819,
+    "B_items_with_design_effect": 1320,
+    "C_items_for_CI_halfwidth_below_gap": 509,
+    "C_items_with_design_effect": 820,
+    "assumed_discordance": 0.3333333333333333,
+    "note": null
+   },
+   "true_margin": 0.05
+  },
+  "margin_0.08": {
+   "discordance_0.1667_observed": {
+    "A_items_to_detect_margin_gt_0": 203,
+    "A_items_with_design_effect": 326,
+    "B_items_to_pass_gate_with_80pct_power": 2478,
+    "B_items_with_design_effect": 3995,
+    "C_items_for_CI_halfwidth_below_gap": 1540,
+    "C_items_with_design_effect": 2483,
+    "assumed_discordance": 0.16666666666666666,
+    "note": null
+   },
+   "discordance_0.3333": {
+    "A_items_to_detect_margin_gt_0": 407,
+    "A_items_with_design_effect": 656,
+    "B_items_to_pass_gate_with_80pct_power": 5054,
+    "B_items_with_design_effect": 8149,
+    "C_items_for_CI_halfwidth_below_gap": 3140,
+    "C_items_with_design_effect": 5064,
+    "assumed_discordance": 0.3333333333333333,
+    "note": null
+   },
+   "true_margin": 0.08
+  },
+  "margin_0.10": {
+   "discordance_0.1667_observed": {
+    "A_items_to_detect_margin_gt_0": 129,
+    "A_items_with_design_effect": 208,
+    "B_items_to_pass_gate_with_80pct_power": null,
+    "B_items_with_design_effect": null,
+    "C_items_for_CI_halfwidth_below_gap": null,
+    "C_items_with_design_effect": null,
+    "assumed_discordance": 0.16666666666666666,
+    "note": "delta EQUALS the gate: no finite n separates a point from itself; power at the boundary is alpha by construction"
+   },
+   "discordance_0.3333": {
+    "A_items_to_detect_margin_gt_0": 260,
+    "A_items_with_design_effect": 419,
+    "B_items_to_pass_gate_with_80pct_power": null,
+    "B_items_with_design_effect": null,
+    "C_items_for_CI_halfwidth_below_gap": null,
+    "C_items_with_design_effect": null,
+    "assumed_discordance": 0.3333333333333333,
+    "note": "delta EQUALS the gate: no finite n separates a point from itself; power at the boundary is alpha by construction"
+   },
+   "true_margin": 0.1
+  },
+  "margin_0.15": {
+   "discordance_0.1667_observed": {
+    "A_items_to_detect_margin_gt_0": 56,
+    "A_items_with_design_effect": 90,
+    "B_items_to_pass_gate_with_80pct_power": 357,
+    "B_items_with_design_effect": 575,
+    "C_items_for_CI_halfwidth_below_gap": 222,
+    "C_items_with_design_effect": 358,
+    "assumed_discordance": 0.16666666666666666,
+    "note": null
+   },
+   "discordance_0.3333": {
+    "A_items_to_detect_margin_gt_0": 114,
+    "A_items_with_design_effect": 184,
+    "B_items_to_pass_gate_with_80pct_power": 769,
+    "B_items_with_design_effect": 1240,
+    "C_items_for_CI_halfwidth_below_gap": 478,
+    "C_items_with_design_effect": 771,
+    "assumed_discordance": 0.3333333333333333,
+    "note": null
+   },
+   "true_margin": 0.15
+  }
+ },
+ "shortcut_selection_bias": {
+  "5_informative_rules": {
+   "E_best_shortcut_under_null": 0.6586791666666666,
+   "P_best_shortcut_ge_0.6667_under_null": 0.5587775,
+   "P_best_shortcut_ge_0.75_under_null": 0.10798,
+   "quantiles": {
+    "0.5": 0.6666666666666666,
+    "0.75": 0.7083333333333333,
+    "0.9": 0.75,
+    "0.95": 0.75,
+    "0.99": 0.7916666666666666
+   },
+   "upward_bias_vs_0.5": 0.1586791666666666
+  },
+  "5_rules_clustered_by_family": {
+   "E_best_shortcut_under_null": 0.7226391666666667,
+   "P_best_shortcut_ge_0.6667_under_null": 0.9144225,
+   "upward_bias_vs_0.5": 0.22263916666666672
+  },
+  "7_informative_rules": {
+   "E_best_shortcut_under_null": 0.674201875,
+   "P_best_shortcut_ge_0.6667_under_null": 0.6840175,
+   "P_best_shortcut_ge_0.75_under_null": 0.148265,
+   "quantiles": {
+    "0.5": 0.6666666666666667,
+    "0.75": 0.7083333333333334,
+    "0.9": 0.75,
+    "0.95": 0.75,
+    "0.99": 0.8333333333333334
+   },
+   "upward_bias_vs_0.5": 0.17420187499999995
+  },
+  "observed_transitive_L3": {
+   "best_shortcut_accuracy": 0.6666666666666666,
+   "polarity": "INVERTED (0.3333 -> 0.6667)",
+   "raw_rule_score": 0.3333333333333333,
+   "reading": "The rule the solver is required to beat by 0.10 scores 0.3333 -- it is ANTI-correlated with the answer. The 0.6667 figure is the accuracy of a post-hoc negation, selected as the max of |s-0.5| over 7 rules on these same 24 items. It is not a shortcut any adversary proposed in advance.",
+   "selected_rule": "first_mentioned_in_state"
+  }
+ }
+}

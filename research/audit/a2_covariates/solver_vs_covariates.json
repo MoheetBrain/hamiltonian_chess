@@ -1,0 +1,470 @@
+{
+  "formal_expression_depth|L0": {
+    "solver_accuracy_frozen_v7": 1.0,
+    "n_positive": 24,
+    "v7_best_shortcut": 0.6667,
+    "v7_best_shortcut_feature": "more_frequent_in_state",
+    "a2_best_covariate": "view_deepest_bracket_nesting",
+    "a2_best_covariate_accuracy": 1.0,
+    "a2_margin_solver_minus_covariate": 0.0,
+    "v7_margin_solver_minus_shortcut": 0.3333,
+    "a2_understated_by_v7": 0.3333,
+    "solver_beats_best_covariate": false,
+    "a2_best_cheap_surface": "ast_latest_preorder",
+    "a2_best_cheap_surface_accuracy": 0.9167,
+    "a2_margin_solver_minus_cheap": 0.0833,
+    "a2_best_counting_surface": "view_deepest_bracket_nesting",
+    "a2_best_counting_surface_accuracy": 1.0,
+    "a2_top5": [
+      {
+        "covariate": "view_deepest_bracket_nesting",
+        "best": 1.0
+      },
+      {
+        "covariate": "view_greater_mean_bracket_nesting",
+        "best": 0.9167
+      },
+      {
+        "covariate": "ast_latest_preorder",
+        "best": 0.9167
+      },
+      {
+        "covariate": "ast_earliest_preorder",
+        "best": 0.8333
+      },
+      {
+        "covariate": "more_frequent_in_state*",
+        "best": 0.6667
+      }
+    ]
+  },
+  "formal_expression_depth|L1": {
+    "solver_accuracy_frozen_v7": 0.8333,
+    "n_positive": 24,
+    "v7_best_shortcut": 1.0,
+    "v7_best_shortcut_feature": "first_mentioned_in_state",
+    "a2_best_covariate": "first_mentioned_in_state*",
+    "a2_best_covariate_accuracy": 1.0,
+    "a2_margin_solver_minus_covariate": -0.1667,
+    "v7_margin_solver_minus_shortcut": -0.1667,
+    "a2_understated_by_v7": 0.0,
+    "solver_beats_best_covariate": false,
+    "a2_best_cheap_surface": "first_mentioned_in_state*",
+    "a2_best_cheap_surface_accuracy": 1.0,
+    "a2_margin_solver_minus_cheap": -0.1667,
+    "a2_best_counting_surface": "view_deepest_bracket_nesting",
+    "a2_best_counting_surface_accuracy": 1.0,
+    "a2_top5": [
+      {
+        "covariate": "first_mentioned_in_state*",
+        "best": 1.0
+      },
+      {
+        "covariate": "view_deepest_bracket_nesting",
+        "best": 1.0
+      },
+      {
+        "covariate": "view_greater_mean_bracket_nesting",
+        "best": 1.0
+      },
+      {
+        "covariate": "ast_earliest_preorder",
+        "best": 1.0
+      },
+      {
+        "covariate": "more_frequent_in_state*",
+        "best": 0.875
+      }
+    ]
+  },
+  "formal_expression_depth|L2": {
+    "solver_accuracy_frozen_v7": 0.7917,
+    "n_positive": 24,
+    "v7_best_shortcut": 0.8333,
+    "v7_best_shortcut_feature": "first_mentioned_in_state",
+    "a2_best_covariate": "view_deepest_bracket_nesting",
+    "a2_best_covariate_accuracy": 1.0,
+    "a2_margin_solver_minus_covariate": -0.2083,
+    "v7_margin_solver_minus_shortcut": -0.0417,
+    "a2_understated_by_v7": 0.1667,
+    "solver_beats_best_covariate": false,
+    "a2_best_cheap_surface": "last_mentioned_in_view",
+    "a2_best_cheap_surface_accuracy": 0.9167,
+    "a2_margin_solver_minus_cheap": -0.125,
+    "a2_best_counting_surface": "view_deepest_bracket_nesting",
+    "a2_best_counting_surface_accuracy": 1.0,
+    "a2_top5": [
+      {
+        "covariate": "view_deepest_bracket_nesting",
+        "best": 1.0
+      },
+      {
+        "covariate": "last_mentioned_in_view",
+        "best": 0.9167
+      },
+      {
+        "covariate": "nearest_to_view_end",
+        "best": 0.9167
+      },
+      {
+        "covariate": "view_greater_mean_bracket_nesting",
+        "best": 0.9167
+      },
+      {
+        "covariate": "ast_latest_preorder",
+        "best": 0.9167
+      }
+    ]
+  },
+  "formal_expression_depth|L3": {
+    "solver_accuracy_frozen_v7": 0.625,
+    "n_positive": 24,
+    "v7_best_shortcut": 0.9167,
+    "v7_best_shortcut_feature": "first_mentioned_in_state",
+    "a2_best_covariate": "view_deepest_bracket_nesting",
+    "a2_best_covariate_accuracy": 1.0,
+    "a2_margin_solver_minus_covariate": -0.375,
+    "v7_margin_solver_minus_shortcut": -0.2917,
+    "a2_understated_by_v7": 0.0833,
+    "solver_beats_best_covariate": false,
+    "a2_best_cheap_surface": "first_mentioned_in_state*",
+    "a2_best_cheap_surface_accuracy": 0.9167,
+    "a2_margin_solver_minus_cheap": -0.2917,
+    "a2_best_counting_surface": "view_deepest_bracket_nesting",
+    "a2_best_counting_surface_accuracy": 1.0,
+    "a2_top5": [
+      {
+        "covariate": "view_deepest_bracket_nesting",
+        "best": 1.0
+      },
+      {
+        "covariate": "view_greater_mean_bracket_nesting",
+        "best": 1.0
+      },
+      {
+        "covariate": "first_mentioned_in_state*",
+        "best": 0.9167
+      },
+      {
+        "covariate": "ast_earliest_preorder",
+        "best": 0.9167
+      },
+      {
+        "covariate": "more_frequent_in_state*",
+        "best": 0.875
+      }
+    ]
+  },
+  "precondition_conjunction|L0": {
+    "solver_accuracy_frozen_v7": 1.0,
+    "n_positive": 24,
+    "v7_best_shortcut": 1.0,
+    "v7_best_shortcut_feature": "first_mentioned_in_state",
+    "a2_best_covariate": "first_mentioned_in_state*",
+    "a2_best_covariate_accuracy": 1.0,
+    "a2_margin_solver_minus_covariate": 0.0,
+    "v7_margin_solver_minus_shortcut": 0.0,
+    "a2_understated_by_v7": 0.0,
+    "solver_beats_best_covariate": false,
+    "a2_best_cheap_surface": "first_mentioned_in_state*",
+    "a2_best_cheap_surface_accuracy": 1.0,
+    "a2_margin_solver_minus_cheap": 0.0,
+    "a2_best_counting_surface": "view_greater_mean_bracket_nesting",
+    "a2_best_counting_surface_accuracy": 1.0,
+    "a2_top5": [
+      {
+        "covariate": "first_mentioned_in_state*",
+        "best": 1.0
+      },
+      {
+        "covariate": "more_frequent_in_state*",
+        "best": 1.0
+      },
+      {
+        "covariate": "more_frequent_in_view",
+        "best": 1.0
+      },
+      {
+        "covariate": "more_frequent_in_prompt",
+        "best": 1.0
+      },
+      {
+        "covariate": "view_greater_mean_bracket_nesting",
+        "best": 1.0
+      }
+    ]
+  },
+  "precondition_conjunction|L1": {
+    "solver_accuracy_frozen_v7": 0.9583,
+    "n_positive": 24,
+    "v7_best_shortcut": 0.5,
+    "v7_best_shortcut_feature": "always_first_option",
+    "a2_best_covariate": "first_mentioned_in_state*",
+    "a2_best_covariate_accuracy": 0.5,
+    "a2_margin_solver_minus_covariate": 0.4583,
+    "v7_margin_solver_minus_shortcut": 0.4583,
+    "a2_understated_by_v7": 0.0,
+    "solver_beats_best_covariate": true,
+    "a2_best_cheap_surface": "first_mentioned_in_state*",
+    "a2_best_cheap_surface_accuracy": 0.5,
+    "a2_margin_solver_minus_cheap": 0.4583,
+    "a2_best_counting_surface": "view_deepest_bracket_nesting",
+    "a2_best_counting_surface_accuracy": 0.5,
+    "a2_top5": [
+      {
+        "covariate": "first_mentioned_in_state*",
+        "best": 0.5
+      },
+      {
+        "covariate": "last_mentioned_in_state*",
+        "best": 0.5
+      },
+      {
+        "covariate": "more_frequent_in_state*",
+        "best": 0.5
+      },
+      {
+        "covariate": "shorter_option_text*",
+        "best": 0.5
+      },
+      {
+        "covariate": "alphabetically_first*",
+        "best": 0.5
+      }
+    ]
+  },
+  "precondition_conjunction|L2": {
+    "solver_accuracy_frozen_v7": 1.0,
+    "n_positive": 24,
+    "v7_best_shortcut": 0.5,
+    "v7_best_shortcut_feature": "always_first_option",
+    "a2_best_covariate": "first_mentioned_in_state*",
+    "a2_best_covariate_accuracy": 0.5,
+    "a2_margin_solver_minus_covariate": 0.5,
+    "v7_margin_solver_minus_shortcut": 0.5,
+    "a2_understated_by_v7": 0.0,
+    "solver_beats_best_covariate": true,
+    "a2_best_cheap_surface": "first_mentioned_in_state*",
+    "a2_best_cheap_surface_accuracy": 0.5,
+    "a2_margin_solver_minus_cheap": 0.5,
+    "a2_best_counting_surface": "view_deepest_bracket_nesting",
+    "a2_best_counting_surface_accuracy": 0.5,
+    "a2_top5": [
+      {
+        "covariate": "first_mentioned_in_state*",
+        "best": 0.5
+      },
+      {
+        "covariate": "last_mentioned_in_state*",
+        "best": 0.5
+      },
+      {
+        "covariate": "more_frequent_in_state*",
+        "best": 0.5
+      },
+      {
+        "covariate": "shorter_option_text*",
+        "best": 0.5
+      },
+      {
+        "covariate": "alphabetically_first*",
+        "best": 0.5
+      }
+    ]
+  },
+  "precondition_conjunction|L3": {
+    "solver_accuracy_frozen_v7": 1.0,
+    "n_positive": 24,
+    "v7_best_shortcut": 0.5,
+    "v7_best_shortcut_feature": "always_first_option",
+    "a2_best_covariate": "first_mentioned_in_state*",
+    "a2_best_covariate_accuracy": 0.5,
+    "a2_margin_solver_minus_covariate": 0.5,
+    "v7_margin_solver_minus_shortcut": 0.5,
+    "a2_understated_by_v7": 0.0,
+    "solver_beats_best_covariate": true,
+    "a2_best_cheap_surface": "first_mentioned_in_state*",
+    "a2_best_cheap_surface_accuracy": 0.5,
+    "a2_margin_solver_minus_cheap": 0.5,
+    "a2_best_counting_surface": "view_deepest_bracket_nesting",
+    "a2_best_counting_surface_accuracy": 0.5,
+    "a2_top5": [
+      {
+        "covariate": "first_mentioned_in_state*",
+        "best": 0.5
+      },
+      {
+        "covariate": "last_mentioned_in_state*",
+        "best": 0.5
+      },
+      {
+        "covariate": "more_frequent_in_state*",
+        "best": 0.5
+      },
+      {
+        "covariate": "shorter_option_text*",
+        "best": 0.5
+      },
+      {
+        "covariate": "alphabetically_first*",
+        "best": 0.5
+      }
+    ]
+  },
+  "transitive_dependency|L0": {
+    "solver_accuracy_frozen_v7": 0.9583,
+    "n_positive": 24,
+    "v7_best_shortcut": 1.0,
+    "v7_best_shortcut_feature": "first_mentioned_in_state",
+    "a2_best_covariate": "first_mentioned_in_state*",
+    "a2_best_covariate_accuracy": 1.0,
+    "a2_margin_solver_minus_covariate": -0.0417,
+    "v7_margin_solver_minus_shortcut": -0.0417,
+    "a2_understated_by_v7": 0.0,
+    "solver_beats_best_covariate": false,
+    "a2_best_cheap_surface": "first_mentioned_in_state*",
+    "a2_best_cheap_surface_accuracy": 1.0,
+    "a2_margin_solver_minus_cheap": -0.0417,
+    "a2_best_counting_surface": "view_deepest_bracket_nesting",
+    "a2_best_counting_surface_accuracy": 1.0,
+    "a2_top5": [
+      {
+        "covariate": "first_mentioned_in_state*",
+        "best": 1.0
+      },
+      {
+        "covariate": "more_frequent_in_state*",
+        "best": 1.0
+      },
+      {
+        "covariate": "last_mentioned_in_view",
+        "best": 1.0
+      },
+      {
+        "covariate": "nearest_to_view_end",
+        "best": 1.0
+      },
+      {
+        "covariate": "more_frequent_in_view",
+        "best": 1.0
+      }
+    ]
+  },
+  "transitive_dependency|L1": {
+    "solver_accuracy_frozen_v7": 1.0,
+    "n_positive": 24,
+    "v7_best_shortcut": 0.8333,
+    "v7_best_shortcut_feature": "more_frequent_in_state",
+    "a2_best_covariate": "more_frequent_in_state*",
+    "a2_best_covariate_accuracy": 0.8333,
+    "a2_margin_solver_minus_covariate": 0.1667,
+    "v7_margin_solver_minus_shortcut": 0.1667,
+    "a2_understated_by_v7": -0.0,
+    "solver_beats_best_covariate": true,
+    "a2_best_cheap_surface": "more_frequent_in_state*",
+    "a2_best_cheap_surface_accuracy": 0.8333,
+    "a2_margin_solver_minus_cheap": 0.1667,
+    "a2_best_counting_surface": "view_deepest_bracket_nesting",
+    "a2_best_counting_surface_accuracy": 0.5,
+    "a2_top5": [
+      {
+        "covariate": "more_frequent_in_state*",
+        "best": 0.8333
+      },
+      {
+        "covariate": "more_frequent_in_view",
+        "best": 0.8333
+      },
+      {
+        "covariate": "more_frequent_in_prompt",
+        "best": 0.8333
+      },
+      {
+        "covariate": "dep_higher_in_degree",
+        "best": 0.8333
+      },
+      {
+        "covariate": "dep_earlier_in_evidence_list",
+        "best": 0.6667
+      }
+    ]
+  },
+  "transitive_dependency|L2": {
+    "solver_accuracy_frozen_v7": 0.9583,
+    "n_positive": 24,
+    "v7_best_shortcut": 0.625,
+    "v7_best_shortcut_feature": "more_frequent_in_state",
+    "a2_best_covariate": "dep_earlier_in_evidence_list",
+    "a2_best_covariate_accuracy": 0.75,
+    "a2_margin_solver_minus_covariate": 0.2083,
+    "v7_margin_solver_minus_shortcut": 0.3333,
+    "a2_understated_by_v7": 0.125,
+    "solver_beats_best_covariate": true,
+    "a2_best_cheap_surface": "dep_earlier_in_evidence_list",
+    "a2_best_cheap_surface_accuracy": 0.75,
+    "a2_margin_solver_minus_cheap": 0.2083,
+    "a2_best_counting_surface": "view_deepest_bracket_nesting",
+    "a2_best_counting_surface_accuracy": 0.5,
+    "a2_top5": [
+      {
+        "covariate": "dep_earlier_in_evidence_list",
+        "best": 0.75
+      },
+      {
+        "covariate": "dep_later_in_evidence_list",
+        "best": 0.75
+      },
+      {
+        "covariate": "more_frequent_in_state*",
+        "best": 0.625
+      },
+      {
+        "covariate": "more_frequent_in_view",
+        "best": 0.625
+      },
+      {
+        "covariate": "more_frequent_in_prompt",
+        "best": 0.625
+      }
+    ]
+  },
+  "transitive_dependency|L3": {
+    "solver_accuracy_frozen_v7": 0.75,
+    "n_positive": 24,
+    "v7_best_shortcut": 0.6667,
+    "v7_best_shortcut_feature": "first_mentioned_in_state",
+    "a2_best_covariate": "first_mentioned_in_state*",
+    "a2_best_covariate_accuracy": 0.6667,
+    "a2_margin_solver_minus_covariate": 0.0833,
+    "v7_margin_solver_minus_shortcut": 0.0833,
+    "a2_understated_by_v7": 0.0,
+    "solver_beats_best_covariate": false,
+    "a2_best_cheap_surface": "first_mentioned_in_state*",
+    "a2_best_cheap_surface_accuracy": 0.6667,
+    "a2_margin_solver_minus_cheap": 0.0833,
+    "a2_best_counting_surface": "view_deepest_bracket_nesting",
+    "a2_best_counting_surface_accuracy": 0.5,
+    "a2_top5": [
+      {
+        "covariate": "first_mentioned_in_state*",
+        "best": 0.6667
+      },
+      {
+        "covariate": "dep_earlier_in_evidence_list",
+        "best": 0.6667
+      },
+      {
+        "covariate": "dep_later_in_evidence_list",
+        "best": 0.6667
+      },
+      {
+        "covariate": "last_mentioned_in_view",
+        "best": 0.5833
+      },
+      {
+        "covariate": "nearest_to_view_end",
+        "best": 0.5833
+      }
+    ]
+  }
+}

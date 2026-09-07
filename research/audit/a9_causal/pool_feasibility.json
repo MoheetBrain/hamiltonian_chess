@@ -1,0 +1,543 @@
+{
+  "formal_expression_depth_source_pool": {
+    "eligible_states": 104,
+    "strata": {
+      "deep": {
+        "count_deepest_less_frequent": 4,
+        "count_deepest_more_frequent": 24,
+        "count_tie_deepest_eq_runnerup": 8,
+        "dev_families_needed": 12,
+        "polarity_balance_feasible_at_dev_scale": false,
+        "polarity_balanced_pairs_available": 4,
+        "states": 36,
+        "tie_filter_feasible_at_dev_scale": false
+      },
+      "medium": {
+        "count_deepest_less_frequent": 5,
+        "count_deepest_more_frequent": 19,
+        "count_tie_deepest_eq_runnerup": 10,
+        "dev_families_needed": 12,
+        "polarity_balance_feasible_at_dev_scale": false,
+        "polarity_balanced_pairs_available": 5,
+        "states": 34,
+        "tie_filter_feasible_at_dev_scale": false
+      },
+      "shallow": {
+        "count_deepest_less_frequent": 1,
+        "count_deepest_more_frequent": 29,
+        "count_tie_deepest_eq_runnerup": 4,
+        "dev_families_needed": 12,
+        "polarity_balance_feasible_at_dev_scale": false,
+        "polarity_balanced_pairs_available": 1,
+        "states": 34,
+        "tie_filter_feasible_at_dev_scale": false
+      }
+    }
+  },
+  "polarity_pairs_by_cell": {
+    "formal_expression_depth/L0": {
+      "alphabetically_first": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      },
+      "first_mentioned_in_state": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      },
+      "last_mentioned_in_state": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      },
+      "more_frequent_in_state": {
+        "families_0of2": 2,
+        "families_1of2_balanced_by_construction": 4,
+        "families_2of2": 6,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 8,
+        "opposite_polarity_pairs_available": 2
+      },
+      "shorter_option_text": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      }
+    },
+    "formal_expression_depth/L1": {
+      "alphabetically_first": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      },
+      "first_mentioned_in_state": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 0,
+        "families_2of2": 12,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 0,
+        "opposite_polarity_pairs_available": 0
+      },
+      "last_mentioned_in_state": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      },
+      "more_frequent_in_state": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 3,
+        "families_2of2": 9,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 3,
+        "opposite_polarity_pairs_available": 0
+      },
+      "shorter_option_text": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      }
+    },
+    "formal_expression_depth/L2": {
+      "alphabetically_first": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      },
+      "first_mentioned_in_state": {
+        "families_0of2": 2,
+        "families_1of2_balanced_by_construction": 0,
+        "families_2of2": 10,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 4,
+        "opposite_polarity_pairs_available": 2
+      },
+      "last_mentioned_in_state": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      },
+      "more_frequent_in_state": {
+        "families_0of2": 2,
+        "families_1of2_balanced_by_construction": 4,
+        "families_2of2": 6,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 8,
+        "opposite_polarity_pairs_available": 2
+      },
+      "shorter_option_text": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      }
+    },
+    "formal_expression_depth/L3": {
+      "alphabetically_first": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      },
+      "first_mentioned_in_state": {
+        "families_0of2": 1,
+        "families_1of2_balanced_by_construction": 0,
+        "families_2of2": 11,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 2,
+        "opposite_polarity_pairs_available": 1
+      },
+      "last_mentioned_in_state": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      },
+      "more_frequent_in_state": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 3,
+        "families_2of2": 9,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 3,
+        "opposite_polarity_pairs_available": 0
+      },
+      "shorter_option_text": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      }
+    },
+    "precondition_conjunction/L0": {
+      "alphabetically_first": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      },
+      "first_mentioned_in_state": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 0,
+        "families_2of2": 12,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 0,
+        "opposite_polarity_pairs_available": 0
+      },
+      "last_mentioned_in_state": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      },
+      "more_frequent_in_state": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 0,
+        "families_2of2": 12,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 0,
+        "opposite_polarity_pairs_available": 0
+      },
+      "shorter_option_text": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      }
+    },
+    "precondition_conjunction/L1": {
+      "alphabetically_first": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      },
+      "first_mentioned_in_state": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      },
+      "last_mentioned_in_state": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      },
+      "more_frequent_in_state": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      },
+      "shorter_option_text": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      }
+    },
+    "precondition_conjunction/L2": {
+      "alphabetically_first": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      },
+      "first_mentioned_in_state": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      },
+      "last_mentioned_in_state": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      },
+      "more_frequent_in_state": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      },
+      "shorter_option_text": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      }
+    },
+    "precondition_conjunction/L3": {
+      "alphabetically_first": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      },
+      "first_mentioned_in_state": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      },
+      "last_mentioned_in_state": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      },
+      "more_frequent_in_state": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      },
+      "shorter_option_text": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      }
+    },
+    "transitive_dependency/L0": {
+      "alphabetically_first": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      },
+      "first_mentioned_in_state": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 0,
+        "families_2of2": 12,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 0,
+        "opposite_polarity_pairs_available": 0
+      },
+      "last_mentioned_in_state": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      },
+      "more_frequent_in_state": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 0,
+        "families_2of2": 12,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 0,
+        "opposite_polarity_pairs_available": 0
+      },
+      "shorter_option_text": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      }
+    },
+    "transitive_dependency/L1": {
+      "alphabetically_first": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      },
+      "first_mentioned_in_state": {
+        "families_0of2": 6,
+        "families_1of2_balanced_by_construction": 0,
+        "families_2of2": 6,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 6
+      },
+      "last_mentioned_in_state": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      },
+      "more_frequent_in_state": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 4,
+        "families_2of2": 8,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 4,
+        "opposite_polarity_pairs_available": 0
+      },
+      "shorter_option_text": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      }
+    },
+    "transitive_dependency/L2": {
+      "alphabetically_first": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      },
+      "first_mentioned_in_state": {
+        "families_0of2": 5,
+        "families_1of2_balanced_by_construction": 0,
+        "families_2of2": 7,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 10,
+        "opposite_polarity_pairs_available": 5
+      },
+      "last_mentioned_in_state": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      },
+      "more_frequent_in_state": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 9,
+        "families_2of2": 3,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 9,
+        "opposite_polarity_pairs_available": 0
+      },
+      "shorter_option_text": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      }
+    },
+    "transitive_dependency/L3": {
+      "alphabetically_first": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      },
+      "first_mentioned_in_state": {
+        "families_0of2": 8,
+        "families_1of2_balanced_by_construction": 0,
+        "families_2of2": 4,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 8,
+        "opposite_polarity_pairs_available": 4
+      },
+      "last_mentioned_in_state": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      },
+      "more_frequent_in_state": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 11,
+        "families_2of2": 1,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 11,
+        "opposite_polarity_pairs_available": 0
+      },
+      "shorter_option_text": {
+        "families_0of2": 0,
+        "families_1of2_balanced_by_construction": 12,
+        "families_2of2": 0,
+        "families_needed_for_24_positives": 12,
+        "max_balanced_families_by_selection": 12,
+        "opposite_polarity_pairs_available": 0
+      }
+    }
+  }
+}

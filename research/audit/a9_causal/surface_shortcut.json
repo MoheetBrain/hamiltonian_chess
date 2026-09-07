@@ -1,0 +1,1526 @@
+{
+  "formal_expression_depth/L0": {
+    "V5E_L0_STRUCTURED_ENGLISH|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L0_STRUCTURED_ENGLISH|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L0_STRUCTURED_ENGLISH|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.08333333333333333,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L1_CURRENT_HML|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L1_CURRENT_HML|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L1_CURRENT_HML|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L2_SEXPR|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L2_SEXPR|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L2_SEXPR|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L3_JSON_AST|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L3_JSON_AST|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L3_JSON_AST|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L4_TYPED_PREFIX|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L4_TYPED_PREFIX|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L4_TYPED_PREFIX|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.08333333333333333,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L6_GRAPH_TRIPLES|full_prompt": {
+      "first_mentioned_in_state": 0.8333333333333334,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L6_GRAPH_TRIPLES|full_prompt_bare": {
+      "first_mentioned_in_state": 0.8333333333333334,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L6_GRAPH_TRIPLES|rendered_state": {
+      "first_mentioned_in_state": 0.8333333333333334,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5_AUDIT_canonical_record": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    }
+  },
+  "formal_expression_depth/L1": {
+    "V5E_L0_STRUCTURED_ENGLISH|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L0_STRUCTURED_ENGLISH|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L0_STRUCTURED_ENGLISH|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.16666666666666666,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L1_CURRENT_HML|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L1_CURRENT_HML|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L1_CURRENT_HML|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.16666666666666666,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L2_SEXPR|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L2_SEXPR|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L2_SEXPR|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.16666666666666666,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L3_JSON_AST|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L3_JSON_AST|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L3_JSON_AST|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.16666666666666666,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L4_TYPED_PREFIX|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L4_TYPED_PREFIX|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L4_TYPED_PREFIX|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.16666666666666666,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|full_prompt": {
+      "first_mentioned_in_state": 1.0,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|full_prompt_bare": {
+      "first_mentioned_in_state": 1.0,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|rendered_state": {
+      "first_mentioned_in_state": 1.0,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L6_GRAPH_TRIPLES|full_prompt": {
+      "first_mentioned_in_state": 1.0,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L6_GRAPH_TRIPLES|full_prompt_bare": {
+      "first_mentioned_in_state": 1.0,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L6_GRAPH_TRIPLES|rendered_state": {
+      "first_mentioned_in_state": 1.0,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.16666666666666666,
+      "more_frequent_in_state": 0.875
+    },
+    "V5_AUDIT_canonical_record": {
+      "first_mentioned_in_state": 1.0,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.875
+    }
+  },
+  "formal_expression_depth/L2": {
+    "V5E_L0_STRUCTURED_ENGLISH|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L0_STRUCTURED_ENGLISH|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L0_STRUCTURED_ENGLISH|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.08333333333333333,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L1_CURRENT_HML|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L1_CURRENT_HML|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L1_CURRENT_HML|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.08333333333333333,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L2_SEXPR|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L2_SEXPR|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L2_SEXPR|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.08333333333333333,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L3_JSON_AST|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L3_JSON_AST|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L3_JSON_AST|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.08333333333333333,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L4_TYPED_PREFIX|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L4_TYPED_PREFIX|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L4_TYPED_PREFIX|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.08333333333333333,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|full_prompt": {
+      "first_mentioned_in_state": 0.8333333333333334,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|full_prompt_bare": {
+      "first_mentioned_in_state": 0.8333333333333334,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|rendered_state": {
+      "first_mentioned_in_state": 0.8333333333333334,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L6_GRAPH_TRIPLES|full_prompt": {
+      "first_mentioned_in_state": 0.8333333333333334,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L6_GRAPH_TRIPLES|full_prompt_bare": {
+      "first_mentioned_in_state": 0.8333333333333334,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L6_GRAPH_TRIPLES|rendered_state": {
+      "first_mentioned_in_state": 0.8333333333333334,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.08333333333333333,
+      "more_frequent_in_state": 0.6666666666666666
+    },
+    "V5_AUDIT_canonical_record": {
+      "first_mentioned_in_state": 0.8333333333333334,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.6666666666666666
+    }
+  },
+  "formal_expression_depth/L3": {
+    "V5E_L0_STRUCTURED_ENGLISH|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L0_STRUCTURED_ENGLISH|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.75
+    },
+    "V5E_L0_STRUCTURED_ENGLISH|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.16666666666666666,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L1_CURRENT_HML|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L1_CURRENT_HML|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.75
+    },
+    "V5E_L1_CURRENT_HML|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.16666666666666666,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L2_SEXPR|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L2_SEXPR|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.75
+    },
+    "V5E_L2_SEXPR|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.16666666666666666,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L3_JSON_AST|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L3_JSON_AST|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.75
+    },
+    "V5E_L3_JSON_AST|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.16666666666666666,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L4_TYPED_PREFIX|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L4_TYPED_PREFIX|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.75
+    },
+    "V5E_L4_TYPED_PREFIX|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.16666666666666666,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|full_prompt": {
+      "first_mentioned_in_state": 0.9166666666666666,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|full_prompt_bare": {
+      "first_mentioned_in_state": 0.875,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.75
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|rendered_state": {
+      "first_mentioned_in_state": 0.9166666666666666,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L6_GRAPH_TRIPLES|full_prompt": {
+      "first_mentioned_in_state": 0.9166666666666666,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L6_GRAPH_TRIPLES|full_prompt_bare": {
+      "first_mentioned_in_state": 0.875,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.75
+    },
+    "V5E_L6_GRAPH_TRIPLES|rendered_state": {
+      "first_mentioned_in_state": 0.9166666666666666,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.875
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.75
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.16666666666666666,
+      "more_frequent_in_state": 0.875
+    },
+    "V5_AUDIT_canonical_record": {
+      "first_mentioned_in_state": 0.9166666666666666,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.875
+    }
+  },
+  "precondition_conjunction/L0": {
+    "V5E_L0_STRUCTURED_ENGLISH|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L0_STRUCTURED_ENGLISH|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L0_STRUCTURED_ENGLISH|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L1_CURRENT_HML|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L1_CURRENT_HML|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L1_CURRENT_HML|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L2_SEXPR|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L2_SEXPR|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L2_SEXPR|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L3_JSON_AST|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L3_JSON_AST|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L3_JSON_AST|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L4_TYPED_PREFIX|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L4_TYPED_PREFIX|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L4_TYPED_PREFIX|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|full_prompt": {
+      "first_mentioned_in_state": 1.0,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|full_prompt_bare": {
+      "first_mentioned_in_state": 1.0,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|rendered_state": {
+      "first_mentioned_in_state": 1.0,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L6_GRAPH_TRIPLES|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L6_GRAPH_TRIPLES|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L6_GRAPH_TRIPLES|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5_AUDIT_canonical_record": {
+      "first_mentioned_in_state": 1.0,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    }
+  },
+  "precondition_conjunction/L1": {
+    "V5E_L0_STRUCTURED_ENGLISH|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L0_STRUCTURED_ENGLISH|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L0_STRUCTURED_ENGLISH|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L1_CURRENT_HML|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L1_CURRENT_HML|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L1_CURRENT_HML|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L2_SEXPR|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L2_SEXPR|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L2_SEXPR|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L3_JSON_AST|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L3_JSON_AST|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L3_JSON_AST|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L4_TYPED_PREFIX|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L4_TYPED_PREFIX|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L4_TYPED_PREFIX|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L6_GRAPH_TRIPLES|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L6_GRAPH_TRIPLES|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L6_GRAPH_TRIPLES|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5_AUDIT_canonical_record": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    }
+  },
+  "precondition_conjunction/L2": {
+    "V5E_L0_STRUCTURED_ENGLISH|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L0_STRUCTURED_ENGLISH|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L0_STRUCTURED_ENGLISH|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L1_CURRENT_HML|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L1_CURRENT_HML|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L1_CURRENT_HML|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L2_SEXPR|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L2_SEXPR|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L2_SEXPR|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L3_JSON_AST|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L3_JSON_AST|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L3_JSON_AST|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L4_TYPED_PREFIX|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L4_TYPED_PREFIX|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L4_TYPED_PREFIX|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L6_GRAPH_TRIPLES|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L6_GRAPH_TRIPLES|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L6_GRAPH_TRIPLES|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5_AUDIT_canonical_record": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    }
+  },
+  "precondition_conjunction/L3": {
+    "V5E_L0_STRUCTURED_ENGLISH|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L0_STRUCTURED_ENGLISH|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L0_STRUCTURED_ENGLISH|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L1_CURRENT_HML|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L1_CURRENT_HML|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L1_CURRENT_HML|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L2_SEXPR|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L2_SEXPR|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L2_SEXPR|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L3_JSON_AST|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L3_JSON_AST|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L3_JSON_AST|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L4_TYPED_PREFIX|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L4_TYPED_PREFIX|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L4_TYPED_PREFIX|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L6_GRAPH_TRIPLES|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L6_GRAPH_TRIPLES|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L6_GRAPH_TRIPLES|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    },
+    "V5_AUDIT_canonical_record": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5
+    }
+  },
+  "transitive_dependency/L0": {
+    "V5E_L0_STRUCTURED_ENGLISH|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L0_STRUCTURED_ENGLISH|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L0_STRUCTURED_ENGLISH|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.6666666666666666,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L1_CURRENT_HML|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L1_CURRENT_HML|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L1_CURRENT_HML|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 1.0,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L2_SEXPR|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L2_SEXPR|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L2_SEXPR|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 1.0,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L3_JSON_AST|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L3_JSON_AST|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L3_JSON_AST|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 1.0,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L4_TYPED_PREFIX|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L4_TYPED_PREFIX|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L4_TYPED_PREFIX|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.6666666666666666,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|full_prompt": {
+      "first_mentioned_in_state": 1.0,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|full_prompt_bare": {
+      "first_mentioned_in_state": 1.0,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|rendered_state": {
+      "first_mentioned_in_state": 1.0,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L6_GRAPH_TRIPLES|full_prompt": {
+      "first_mentioned_in_state": 0.3333333333333333,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L6_GRAPH_TRIPLES|full_prompt_bare": {
+      "first_mentioned_in_state": 0.3333333333333333,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L6_GRAPH_TRIPLES|rendered_state": {
+      "first_mentioned_in_state": 0.3333333333333333,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 1.0,
+      "more_frequent_in_state": 1.0
+    },
+    "V5_AUDIT_canonical_record": {
+      "first_mentioned_in_state": 1.0,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 1.0
+    }
+  },
+  "transitive_dependency/L1": {
+    "V5E_L0_STRUCTURED_ENGLISH|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.8333333333333334
+    },
+    "V5E_L0_STRUCTURED_ENGLISH|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.8333333333333334
+    },
+    "V5E_L0_STRUCTURED_ENGLISH|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5833333333333334,
+      "more_frequent_in_state": 0.8333333333333334
+    },
+    "V5E_L1_CURRENT_HML|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.8333333333333334
+    },
+    "V5E_L1_CURRENT_HML|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.8333333333333334
+    },
+    "V5E_L1_CURRENT_HML|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5833333333333334,
+      "more_frequent_in_state": 0.8333333333333334
+    },
+    "V5E_L2_SEXPR|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.8333333333333334
+    },
+    "V5E_L2_SEXPR|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.8333333333333334
+    },
+    "V5E_L2_SEXPR|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5833333333333334,
+      "more_frequent_in_state": 0.8333333333333334
+    },
+    "V5E_L3_JSON_AST|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.8333333333333334
+    },
+    "V5E_L3_JSON_AST|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.8333333333333334
+    },
+    "V5E_L3_JSON_AST|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5833333333333334,
+      "more_frequent_in_state": 0.8333333333333334
+    },
+    "V5E_L4_TYPED_PREFIX|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.8333333333333334
+    },
+    "V5E_L4_TYPED_PREFIX|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.8333333333333334
+    },
+    "V5E_L4_TYPED_PREFIX|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5833333333333334,
+      "more_frequent_in_state": 0.8333333333333334
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.8333333333333334
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.8333333333333334
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.8333333333333334
+    },
+    "V5E_L6_GRAPH_TRIPLES|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.8333333333333334
+    },
+    "V5E_L6_GRAPH_TRIPLES|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.8333333333333334
+    },
+    "V5E_L6_GRAPH_TRIPLES|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.8333333333333334
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.8333333333333334
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.8333333333333334
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5833333333333334,
+      "more_frequent_in_state": 0.8333333333333334
+    },
+    "V5_AUDIT_canonical_record": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.8333333333333334
+    }
+  },
+  "transitive_dependency/L2": {
+    "V5E_L0_STRUCTURED_ENGLISH|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.625
+    },
+    "V5E_L0_STRUCTURED_ENGLISH|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.625
+    },
+    "V5E_L0_STRUCTURED_ENGLISH|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5833333333333334,
+      "more_frequent_in_state": 0.625
+    },
+    "V5E_L1_CURRENT_HML|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.625
+    },
+    "V5E_L1_CURRENT_HML|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.625
+    },
+    "V5E_L1_CURRENT_HML|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5833333333333334,
+      "more_frequent_in_state": 0.625
+    },
+    "V5E_L2_SEXPR|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.625
+    },
+    "V5E_L2_SEXPR|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.625
+    },
+    "V5E_L2_SEXPR|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5833333333333334,
+      "more_frequent_in_state": 0.625
+    },
+    "V5E_L3_JSON_AST|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.625
+    },
+    "V5E_L3_JSON_AST|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.625
+    },
+    "V5E_L3_JSON_AST|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5833333333333334,
+      "more_frequent_in_state": 0.625
+    },
+    "V5E_L4_TYPED_PREFIX|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.625
+    },
+    "V5E_L4_TYPED_PREFIX|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.625
+    },
+    "V5E_L4_TYPED_PREFIX|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5833333333333334,
+      "more_frequent_in_state": 0.625
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|full_prompt": {
+      "first_mentioned_in_state": 0.5833333333333334,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.625
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5833333333333334,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.625
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|rendered_state": {
+      "first_mentioned_in_state": 0.5833333333333334,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.625
+    },
+    "V5E_L6_GRAPH_TRIPLES|full_prompt": {
+      "first_mentioned_in_state": 0.5833333333333334,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.625
+    },
+    "V5E_L6_GRAPH_TRIPLES|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5833333333333334,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.625
+    },
+    "V5E_L6_GRAPH_TRIPLES|rendered_state": {
+      "first_mentioned_in_state": 0.5833333333333334,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.625
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.625
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.625
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5833333333333334,
+      "more_frequent_in_state": 0.625
+    },
+    "V5_AUDIT_canonical_record": {
+      "first_mentioned_in_state": 0.5833333333333334,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.625
+    }
+  },
+  "transitive_dependency/L3": {
+    "V5E_L0_STRUCTURED_ENGLISH|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5416666666666666
+    },
+    "V5E_L0_STRUCTURED_ENGLISH|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5416666666666666
+    },
+    "V5E_L0_STRUCTURED_ENGLISH|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5833333333333334,
+      "more_frequent_in_state": 0.5416666666666666
+    },
+    "V5E_L1_CURRENT_HML|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5416666666666666
+    },
+    "V5E_L1_CURRENT_HML|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5416666666666666
+    },
+    "V5E_L1_CURRENT_HML|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5833333333333334,
+      "more_frequent_in_state": 0.5416666666666666
+    },
+    "V5E_L2_SEXPR|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5416666666666666
+    },
+    "V5E_L2_SEXPR|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5416666666666666
+    },
+    "V5E_L2_SEXPR|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5833333333333334,
+      "more_frequent_in_state": 0.5416666666666666
+    },
+    "V5E_L3_JSON_AST|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5416666666666666
+    },
+    "V5E_L3_JSON_AST|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5416666666666666
+    },
+    "V5E_L3_JSON_AST|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5833333333333334,
+      "more_frequent_in_state": 0.5416666666666666
+    },
+    "V5E_L4_TYPED_PREFIX|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5416666666666666
+    },
+    "V5E_L4_TYPED_PREFIX|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5416666666666666
+    },
+    "V5E_L4_TYPED_PREFIX|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5833333333333334,
+      "more_frequent_in_state": 0.5416666666666666
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|full_prompt": {
+      "first_mentioned_in_state": 0.3333333333333333,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5416666666666666
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|full_prompt_bare": {
+      "first_mentioned_in_state": 0.3333333333333333,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5416666666666666
+    },
+    "V5E_L5_COMPACT_SYMBOLIC|rendered_state": {
+      "first_mentioned_in_state": 0.3333333333333333,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5416666666666666
+    },
+    "V5E_L6_GRAPH_TRIPLES|full_prompt": {
+      "first_mentioned_in_state": 0.3333333333333333,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5416666666666666
+    },
+    "V5E_L6_GRAPH_TRIPLES|full_prompt_bare": {
+      "first_mentioned_in_state": 0.3333333333333333,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5416666666666666
+    },
+    "V5E_L6_GRAPH_TRIPLES|rendered_state": {
+      "first_mentioned_in_state": 0.3333333333333333,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5416666666666666
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|full_prompt": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5416666666666666
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|full_prompt_bare": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5416666666666666
+    },
+    "V5E_L7_HYBRID_ROLE_LABELLED|rendered_state": {
+      "first_mentioned_in_state": 0.5,
+      "last_mentioned_in_state": 0.5833333333333334,
+      "more_frequent_in_state": 0.5416666666666666
+    },
+    "V5_AUDIT_canonical_record": {
+      "first_mentioned_in_state": 0.3333333333333333,
+      "last_mentioned_in_state": 0.5,
+      "more_frequent_in_state": 0.5416666666666666
+    }
+  }
+}

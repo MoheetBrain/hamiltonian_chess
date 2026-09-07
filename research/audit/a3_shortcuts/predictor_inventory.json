@@ -1,0 +1,703 @@
+{
+  "_disclaimer": "A3 DIAGNOSTIC. Reproduction + degeneracy analysis of the FROZEN V5 shortcut family. Nothing here re-scores, promotes or reinterprets any recorded sentinel.",
+  "live_rule_count_per_cell": {
+    "formal_expression_depth|L0": 1,
+    "formal_expression_depth|L1": 2,
+    "formal_expression_depth|L2": 2,
+    "formal_expression_depth|L3": 2,
+    "precondition_conjunction|L0": 2,
+    "precondition_conjunction|L1": 0,
+    "precondition_conjunction|L2": 0,
+    "precondition_conjunction|L3": 0,
+    "transitive_dependency|L0": 2,
+    "transitive_dependency|L1": 2,
+    "transitive_dependency|L2": 2,
+    "transitive_dependency|L3": 2
+  },
+  "live_rules_per_cell": {
+    "formal_expression_depth|L0": [
+      "more_frequent_in_state"
+    ],
+    "formal_expression_depth|L1": [
+      "first_mentioned_in_state",
+      "more_frequent_in_state"
+    ],
+    "formal_expression_depth|L2": [
+      "first_mentioned_in_state",
+      "more_frequent_in_state"
+    ],
+    "formal_expression_depth|L3": [
+      "first_mentioned_in_state",
+      "more_frequent_in_state"
+    ],
+    "precondition_conjunction|L0": [
+      "first_mentioned_in_state",
+      "more_frequent_in_state"
+    ],
+    "precondition_conjunction|L1": [],
+    "precondition_conjunction|L2": [],
+    "precondition_conjunction|L3": [],
+    "transitive_dependency|L0": [
+      "first_mentioned_in_state",
+      "more_frequent_in_state"
+    ],
+    "transitive_dependency|L1": [
+      "first_mentioned_in_state",
+      "more_frequent_in_state"
+    ],
+    "transitive_dependency|L2": [
+      "first_mentioned_in_state",
+      "more_frequent_in_state"
+    ],
+    "transitive_dependency|L3": [
+      "first_mentioned_in_state",
+      "more_frequent_in_state"
+    ]
+  },
+  "recorded_scan_path": "research/v7/per_level_shortcut_scan.json",
+  "reproduced_audit": {
+    "formal_expression_depth": {
+      "0": {
+        "best_shortcut_accuracy": 0.6666666666666666,
+        "best_shortcut_feature": "more_frequent_in_state",
+        "items": 24,
+        "scores": {
+          "alphabetically_first": 0.5,
+          "always_first_option": 0.5,
+          "always_second_option": 0.5,
+          "first_mentioned_in_state": 0.5,
+          "last_mentioned_in_state": 0.5,
+          "more_frequent_in_state": 0.6666666666666666,
+          "shorter_option_text": 0.5
+        },
+        "status": "CLEAN"
+      },
+      "1": {
+        "best_shortcut_accuracy": 1.0,
+        "best_shortcut_feature": "first_mentioned_in_state",
+        "items": 24,
+        "scores": {
+          "alphabetically_first": 0.5,
+          "always_first_option": 0.5,
+          "always_second_option": 0.5,
+          "first_mentioned_in_state": 1.0,
+          "last_mentioned_in_state": 0.5,
+          "more_frequent_in_state": 0.875,
+          "shorter_option_text": 0.5
+        },
+        "status": "LEAKS"
+      },
+      "2": {
+        "best_shortcut_accuracy": 0.8333333333333334,
+        "best_shortcut_feature": "first_mentioned_in_state",
+        "items": 24,
+        "scores": {
+          "alphabetically_first": 0.5,
+          "always_first_option": 0.5,
+          "always_second_option": 0.5,
+          "first_mentioned_in_state": 0.8333333333333334,
+          "last_mentioned_in_state": 0.5,
+          "more_frequent_in_state": 0.6666666666666666,
+          "shorter_option_text": 0.5
+        },
+        "status": "LEAKS"
+      },
+      "3": {
+        "best_shortcut_accuracy": 0.9166666666666666,
+        "best_shortcut_feature": "first_mentioned_in_state",
+        "items": 24,
+        "scores": {
+          "alphabetically_first": 0.5,
+          "always_first_option": 0.5,
+          "always_second_option": 0.5,
+          "first_mentioned_in_state": 0.9166666666666666,
+          "last_mentioned_in_state": 0.5,
+          "more_frequent_in_state": 0.875,
+          "shorter_option_text": 0.5
+        },
+        "status": "LEAKS"
+      }
+    },
+    "precondition_conjunction": {
+      "0": {
+        "best_shortcut_accuracy": 1.0,
+        "best_shortcut_feature": "first_mentioned_in_state",
+        "items": 24,
+        "scores": {
+          "alphabetically_first": 0.5,
+          "always_first_option": 0.5,
+          "always_second_option": 0.5,
+          "first_mentioned_in_state": 1.0,
+          "last_mentioned_in_state": 0.5,
+          "more_frequent_in_state": 1.0,
+          "shorter_option_text": 0.5
+        },
+        "status": "LEAKS"
+      },
+      "1": {
+        "best_shortcut_accuracy": 0.5,
+        "best_shortcut_feature": "always_first_option",
+        "items": 24,
+        "scores": {
+          "alphabetically_first": 0.5,
+          "always_first_option": 0.5,
+          "always_second_option": 0.5,
+          "first_mentioned_in_state": 0.5,
+          "last_mentioned_in_state": 0.5,
+          "more_frequent_in_state": 0.5,
+          "shorter_option_text": 0.5
+        },
+        "status": "CLEAN"
+      },
+      "2": {
+        "best_shortcut_accuracy": 0.5,
+        "best_shortcut_feature": "always_first_option",
+        "items": 24,
+        "scores": {
+          "alphabetically_first": 0.5,
+          "always_first_option": 0.5,
+          "always_second_option": 0.5,
+          "first_mentioned_in_state": 0.5,
+          "last_mentioned_in_state": 0.5,
+          "more_frequent_in_state": 0.5,
+          "shorter_option_text": 0.5
+        },
+        "status": "CLEAN"
+      },
+      "3": {
+        "best_shortcut_accuracy": 0.5,
+        "best_shortcut_feature": "always_first_option",
+        "items": 24,
+        "scores": {
+          "alphabetically_first": 0.5,
+          "always_first_option": 0.5,
+          "always_second_option": 0.5,
+          "first_mentioned_in_state": 0.5,
+          "last_mentioned_in_state": 0.5,
+          "more_frequent_in_state": 0.5,
+          "shorter_option_text": 0.5
+        },
+        "status": "CLEAN"
+      }
+    },
+    "transitive_dependency": {
+      "0": {
+        "best_shortcut_accuracy": 1.0,
+        "best_shortcut_feature": "first_mentioned_in_state",
+        "items": 24,
+        "scores": {
+          "alphabetically_first": 0.5,
+          "always_first_option": 0.5,
+          "always_second_option": 0.5,
+          "first_mentioned_in_state": 1.0,
+          "last_mentioned_in_state": 0.5,
+          "more_frequent_in_state": 1.0,
+          "shorter_option_text": 0.5
+        },
+        "status": "LEAKS"
+      },
+      "1": {
+        "best_shortcut_accuracy": 0.8333333333333334,
+        "best_shortcut_feature": "more_frequent_in_state",
+        "items": 24,
+        "scores": {
+          "alphabetically_first": 0.5,
+          "always_first_option": 0.5,
+          "always_second_option": 0.5,
+          "first_mentioned_in_state": 0.5,
+          "last_mentioned_in_state": 0.5,
+          "more_frequent_in_state": 0.8333333333333334,
+          "shorter_option_text": 0.5
+        },
+        "status": "LEAKS"
+      },
+      "2": {
+        "best_shortcut_accuracy": 0.625,
+        "best_shortcut_feature": "more_frequent_in_state",
+        "items": 24,
+        "scores": {
+          "alphabetically_first": 0.5,
+          "always_first_option": 0.5,
+          "always_second_option": 0.5,
+          "first_mentioned_in_state": 0.5833333333333334,
+          "last_mentioned_in_state": 0.5,
+          "more_frequent_in_state": 0.625,
+          "shorter_option_text": 0.5
+        },
+        "status": "CLEAN"
+      },
+      "3": {
+        "best_shortcut_accuracy": 0.6666666666666667,
+        "best_shortcut_feature": "first_mentioned_in_state",
+        "items": 24,
+        "scores": {
+          "alphabetically_first": 0.5,
+          "always_first_option": 0.5,
+          "always_second_option": 0.5,
+          "first_mentioned_in_state": 0.3333333333333333,
+          "last_mentioned_in_state": 0.5,
+          "more_frequent_in_state": 0.5416666666666666,
+          "shorter_option_text": 0.5
+        },
+        "status": "CLEAN"
+      }
+    }
+  },
+  "reproduction_exact": true,
+  "reproduction_mismatches": [],
+  "rule_names": [
+    "always_first_option",
+    "always_second_option",
+    "first_mentioned_in_state",
+    "last_mentioned_in_state",
+    "more_frequent_in_state",
+    "shorter_option_text",
+    "alphabetically_first"
+  ],
+  "twin_pair_degeneracy": {
+    "formal_expression_depth|L0": {
+      "alphabetically_first": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "always_first_option": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "always_second_option": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "first_mentioned_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "last_mentioned_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "more_frequent_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 8,
+        "structurally_pinned_at_0.5": false
+      },
+      "shorter_option_text": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      }
+    },
+    "formal_expression_depth|L1": {
+      "alphabetically_first": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "always_first_option": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "always_second_option": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "first_mentioned_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 12,
+        "structurally_pinned_at_0.5": false
+      },
+      "last_mentioned_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "more_frequent_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 9,
+        "structurally_pinned_at_0.5": false
+      },
+      "shorter_option_text": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      }
+    },
+    "formal_expression_depth|L2": {
+      "alphabetically_first": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "always_first_option": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "always_second_option": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "first_mentioned_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 12,
+        "structurally_pinned_at_0.5": false
+      },
+      "last_mentioned_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "more_frequent_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 8,
+        "structurally_pinned_at_0.5": false
+      },
+      "shorter_option_text": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      }
+    },
+    "formal_expression_depth|L3": {
+      "alphabetically_first": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "always_first_option": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "always_second_option": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "first_mentioned_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 12,
+        "structurally_pinned_at_0.5": false
+      },
+      "last_mentioned_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "more_frequent_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 9,
+        "structurally_pinned_at_0.5": false
+      },
+      "shorter_option_text": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      }
+    },
+    "precondition_conjunction|L0": {
+      "alphabetically_first": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "always_first_option": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "always_second_option": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "first_mentioned_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 12,
+        "structurally_pinned_at_0.5": false
+      },
+      "last_mentioned_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "more_frequent_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 12,
+        "structurally_pinned_at_0.5": false
+      },
+      "shorter_option_text": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      }
+    },
+    "precondition_conjunction|L1": {
+      "alphabetically_first": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "always_first_option": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "always_second_option": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "first_mentioned_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "last_mentioned_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "more_frequent_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "shorter_option_text": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      }
+    },
+    "precondition_conjunction|L2": {
+      "alphabetically_first": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "always_first_option": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "always_second_option": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "first_mentioned_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "last_mentioned_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "more_frequent_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "shorter_option_text": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      }
+    },
+    "precondition_conjunction|L3": {
+      "alphabetically_first": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "always_first_option": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "always_second_option": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "first_mentioned_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "last_mentioned_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "more_frequent_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "shorter_option_text": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      }
+    },
+    "transitive_dependency|L0": {
+      "alphabetically_first": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "always_first_option": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "always_second_option": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "first_mentioned_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 12,
+        "structurally_pinned_at_0.5": false
+      },
+      "last_mentioned_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "more_frequent_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 12,
+        "structurally_pinned_at_0.5": false
+      },
+      "shorter_option_text": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      }
+    },
+    "transitive_dependency|L1": {
+      "alphabetically_first": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "always_first_option": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "always_second_option": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "first_mentioned_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 12,
+        "structurally_pinned_at_0.5": false
+      },
+      "last_mentioned_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "more_frequent_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 8,
+        "structurally_pinned_at_0.5": false
+      },
+      "shorter_option_text": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      }
+    },
+    "transitive_dependency|L2": {
+      "alphabetically_first": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "always_first_option": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "always_second_option": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "first_mentioned_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 12,
+        "structurally_pinned_at_0.5": false
+      },
+      "last_mentioned_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "more_frequent_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 3,
+        "structurally_pinned_at_0.5": false
+      },
+      "shorter_option_text": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      }
+    },
+    "transitive_dependency|L3": {
+      "alphabetically_first": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "always_first_option": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "always_second_option": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "first_mentioned_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 12,
+        "structurally_pinned_at_0.5": false
+      },
+      "last_mentioned_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      },
+      "more_frequent_in_state": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 1,
+        "structurally_pinned_at_0.5": false
+      },
+      "shorter_option_text": {
+        "families": 12,
+        "families_where_rule_varies_within_twin": 0,
+        "structurally_pinned_at_0.5": true
+      }
+    }
+  }
+}

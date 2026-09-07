@@ -1,0 +1,2882 @@
+[
+{
+"cell": "formal_expression_depth|L0",
+"family": "v5:dev:formal_expression_depth:l0:fs:26b46d81572a545a",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L0",
+"family": "v5:dev:formal_expression_depth:l0:fs:26b46d81572a545a",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L0",
+"family": "v5:dev:formal_expression_depth:l0:fs:5019c1c281c32986",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L0",
+"family": "v5:dev:formal_expression_depth:l0:fs:5019c1c281c32986",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L0",
+"family": "v5:dev:formal_expression_depth:l0:fs:547372dc08a24f6f",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L0",
+"family": "v5:dev:formal_expression_depth:l0:fs:547372dc08a24f6f",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L0",
+"family": "v5:dev:formal_expression_depth:l0:fs:5cbb639f8811f84c",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": false,
+"same_letter_despite_swap": true
+},
+{
+"cell": "formal_expression_depth|L0",
+"family": "v5:dev:formal_expression_depth:l0:fs:5cbb639f8811f84c",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L0",
+"family": "v5:dev:formal_expression_depth:l0:fs:6991ee043b74f50b",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L0",
+"family": "v5:dev:formal_expression_depth:l0:fs:6991ee043b74f50b",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L0",
+"family": "v5:dev:formal_expression_depth:l0:fs:70e7db6488e35640",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L0",
+"family": "v5:dev:formal_expression_depth:l0:fs:70e7db6488e35640",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L0",
+"family": "v5:dev:formal_expression_depth:l0:fs:722571ddd285c509",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L0",
+"family": "v5:dev:formal_expression_depth:l0:fs:722571ddd285c509",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L0",
+"family": "v5:dev:formal_expression_depth:l0:fs:7227fc077197a0d7",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L0",
+"family": "v5:dev:formal_expression_depth:l0:fs:7227fc077197a0d7",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L0",
+"family": "v5:dev:formal_expression_depth:l0:fs:79533578a1be524c",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L0",
+"family": "v5:dev:formal_expression_depth:l0:fs:79533578a1be524c",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L0",
+"family": "v5:dev:formal_expression_depth:l0:fs:7ca68e1130fa0633",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L0",
+"family": "v5:dev:formal_expression_depth:l0:fs:7ca68e1130fa0633",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L0",
+"family": "v5:dev:formal_expression_depth:l0:fs:b32b92f55358f76e",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L0",
+"family": "v5:dev:formal_expression_depth:l0:fs:b32b92f55358f76e",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L0",
+"family": "v5:dev:formal_expression_depth:l0:fs:bd09376d28cc07ce",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L0",
+"family": "v5:dev:formal_expression_depth:l0:fs:bd09376d28cc07ce",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L1",
+"family": "v5:dev:formal_expression_depth:l1:fs:042bc453a72f0a77",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": false,
+"same_letter_despite_swap": true
+},
+{
+"cell": "formal_expression_depth|L1",
+"family": "v5:dev:formal_expression_depth:l1:fs:042bc453a72f0a77",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L1",
+"family": "v5:dev:formal_expression_depth:l1:fs:b8542e70f00520f1",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": false,
+"same_letter_despite_swap": true
+},
+{
+"cell": "formal_expression_depth|L1",
+"family": "v5:dev:formal_expression_depth:l1:fs:b8542e70f00520f1",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L1",
+"family": "v5:dev:formal_expression_depth:l1:fs:c1ba2840e997b124",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": false,
+"same_letter_despite_swap": true
+},
+{
+"cell": "formal_expression_depth|L1",
+"family": "v5:dev:formal_expression_depth:l1:fs:c1ba2840e997b124",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L1",
+"family": "v5:dev:formal_expression_depth:l1:fs:ec0e7db9d7520cef",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": false,
+"same_letter_despite_swap": true
+},
+{
+"cell": "formal_expression_depth|L1",
+"family": "v5:dev:formal_expression_depth:l1:fs:ec0e7db9d7520cef",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L1",
+"family": "v5:dev:formal_expression_depth:l1:fs:090a1107562d79d5",
+"arm": "ORIGINAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": false,
+"swap_correct": false,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L1",
+"family": "v5:dev:formal_expression_depth:l1:fs:090a1107562d79d5",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L1",
+"family": "v5:dev:formal_expression_depth:l1:fs:0ad41d66299b6e4a",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": false,
+"same_letter_despite_swap": true
+},
+{
+"cell": "formal_expression_depth|L1",
+"family": "v5:dev:formal_expression_depth:l1:fs:0ad41d66299b6e4a",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L1",
+"family": "v5:dev:formal_expression_depth:l1:fs:303b7eaab79abb99",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": false,
+"same_letter_despite_swap": true
+},
+{
+"cell": "formal_expression_depth|L1",
+"family": "v5:dev:formal_expression_depth:l1:fs:303b7eaab79abb99",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L1",
+"family": "v5:dev:formal_expression_depth:l1:fs:40b58c5d2a3a56e1",
+"arm": "ORIGINAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": false,
+"swap_correct": false,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L1",
+"family": "v5:dev:formal_expression_depth:l1:fs:40b58c5d2a3a56e1",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L1",
+"family": "v5:dev:formal_expression_depth:l1:fs:5381d2af5ad60c98",
+"arm": "ORIGINAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": false,
+"swap_correct": false,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L1",
+"family": "v5:dev:formal_expression_depth:l1:fs:5381d2af5ad60c98",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L1",
+"family": "v5:dev:formal_expression_depth:l1:fs:5e50f9438cba35af",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": false,
+"same_letter_despite_swap": true
+},
+{
+"cell": "formal_expression_depth|L1",
+"family": "v5:dev:formal_expression_depth:l1:fs:5e50f9438cba35af",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L1",
+"family": "v5:dev:formal_expression_depth:l1:fs:652da967ac8b05f5",
+"arm": "ORIGINAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": false,
+"swap_correct": false,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L1",
+"family": "v5:dev:formal_expression_depth:l1:fs:652da967ac8b05f5",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L1",
+"family": "v5:dev:formal_expression_depth:l1:fs:65c06e679601e8ae",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": false,
+"same_letter_despite_swap": true
+},
+{
+"cell": "formal_expression_depth|L1",
+"family": "v5:dev:formal_expression_depth:l1:fs:65c06e679601e8ae",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L2",
+"family": "v5:dev:formal_expression_depth:l2:fs:26b46d81572a545a",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L2",
+"family": "v5:dev:formal_expression_depth:l2:fs:26b46d81572a545a",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L2",
+"family": "v5:dev:formal_expression_depth:l2:fs:5019c1c281c32986",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": false,
+"same_letter_despite_swap": true
+},
+{
+"cell": "formal_expression_depth|L2",
+"family": "v5:dev:formal_expression_depth:l2:fs:5019c1c281c32986",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L2",
+"family": "v5:dev:formal_expression_depth:l2:fs:547372dc08a24f6f",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": false,
+"same_letter_despite_swap": true
+},
+{
+"cell": "formal_expression_depth|L2",
+"family": "v5:dev:formal_expression_depth:l2:fs:547372dc08a24f6f",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L2",
+"family": "v5:dev:formal_expression_depth:l2:fs:5cbb639f8811f84c",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": false,
+"same_letter_despite_swap": true
+},
+{
+"cell": "formal_expression_depth|L2",
+"family": "v5:dev:formal_expression_depth:l2:fs:5cbb639f8811f84c",
+"arm": "COUNTERFACTUAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": false,
+"swap_correct": true,
+"same_letter_despite_swap": true
+},
+{
+"cell": "formal_expression_depth|L2",
+"family": "v5:dev:formal_expression_depth:l2:fs:6991ee043b74f50b",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": false,
+"same_letter_despite_swap": true
+},
+{
+"cell": "formal_expression_depth|L2",
+"family": "v5:dev:formal_expression_depth:l2:fs:6991ee043b74f50b",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L2",
+"family": "v5:dev:formal_expression_depth:l2:fs:70e7db6488e35640",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": false,
+"same_letter_despite_swap": true
+},
+{
+"cell": "formal_expression_depth|L2",
+"family": "v5:dev:formal_expression_depth:l2:fs:70e7db6488e35640",
+"arm": "COUNTERFACTUAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": false,
+"swap_correct": true,
+"same_letter_despite_swap": true
+},
+{
+"cell": "formal_expression_depth|L2",
+"family": "v5:dev:formal_expression_depth:l2:fs:722571ddd285c509",
+"arm": "ORIGINAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": false,
+"swap_correct": false,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L2",
+"family": "v5:dev:formal_expression_depth:l2:fs:722571ddd285c509",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L2",
+"family": "v5:dev:formal_expression_depth:l2:fs:7227fc077197a0d7",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L2",
+"family": "v5:dev:formal_expression_depth:l2:fs:7227fc077197a0d7",
+"arm": "COUNTERFACTUAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": false,
+"swap_correct": false,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L2",
+"family": "v5:dev:formal_expression_depth:l2:fs:79533578a1be524c",
+"arm": "ORIGINAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": false,
+"swap_correct": false,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L2",
+"family": "v5:dev:formal_expression_depth:l2:fs:79533578a1be524c",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L2",
+"family": "v5:dev:formal_expression_depth:l2:fs:7ca68e1130fa0633",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": false,
+"same_letter_despite_swap": true
+},
+{
+"cell": "formal_expression_depth|L2",
+"family": "v5:dev:formal_expression_depth:l2:fs:7ca68e1130fa0633",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L2",
+"family": "v5:dev:formal_expression_depth:l2:fs:b32b92f55358f76e",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": false,
+"same_letter_despite_swap": true
+},
+{
+"cell": "formal_expression_depth|L2",
+"family": "v5:dev:formal_expression_depth:l2:fs:b32b92f55358f76e",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L2",
+"family": "v5:dev:formal_expression_depth:l2:fs:bd09376d28cc07ce",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": false,
+"same_letter_despite_swap": true
+},
+{
+"cell": "formal_expression_depth|L2",
+"family": "v5:dev:formal_expression_depth:l2:fs:bd09376d28cc07ce",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L3",
+"family": "v5:dev:formal_expression_depth:l3:fs:c5e2455cf3cfca47",
+"arm": "ORIGINAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": false,
+"swap_correct": false,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L3",
+"family": "v5:dev:formal_expression_depth:l3:fs:c5e2455cf3cfca47",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L3",
+"family": "v5:dev:formal_expression_depth:l3:fs:cabc59bccae88d10",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": false,
+"same_letter_despite_swap": true
+},
+{
+"cell": "formal_expression_depth|L3",
+"family": "v5:dev:formal_expression_depth:l3:fs:cabc59bccae88d10",
+"arm": "COUNTERFACTUAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": false,
+"swap_correct": true,
+"same_letter_despite_swap": true
+},
+{
+"cell": "formal_expression_depth|L3",
+"family": "v5:dev:formal_expression_depth:l3:fs:dcc826b50d9f1f2a",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": false,
+"same_letter_despite_swap": true
+},
+{
+"cell": "formal_expression_depth|L3",
+"family": "v5:dev:formal_expression_depth:l3:fs:dcc826b50d9f1f2a",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L3",
+"family": "v5:dev:formal_expression_depth:l3:fs:de118a328f3da0b5",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": false,
+"same_letter_despite_swap": true
+},
+{
+"cell": "formal_expression_depth|L3",
+"family": "v5:dev:formal_expression_depth:l3:fs:de118a328f3da0b5",
+"arm": "COUNTERFACTUAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": false,
+"swap_correct": true,
+"same_letter_despite_swap": true
+},
+{
+"cell": "formal_expression_depth|L3",
+"family": "v5:dev:formal_expression_depth:l3:fs:edf9c75173833889",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L3",
+"family": "v5:dev:formal_expression_depth:l3:fs:edf9c75173833889",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L3",
+"family": "v5:dev:formal_expression_depth:l3:fs:022fea842e4142a0",
+"arm": "ORIGINAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": false,
+"swap_correct": false,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L3",
+"family": "v5:dev:formal_expression_depth:l3:fs:022fea842e4142a0",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L3",
+"family": "v5:dev:formal_expression_depth:l3:fs:10b70a1b7443eab9",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": false,
+"same_letter_despite_swap": true
+},
+{
+"cell": "formal_expression_depth|L3",
+"family": "v5:dev:formal_expression_depth:l3:fs:10b70a1b7443eab9",
+"arm": "COUNTERFACTUAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": false,
+"swap_correct": true,
+"same_letter_despite_swap": true
+},
+{
+"cell": "formal_expression_depth|L3",
+"family": "v5:dev:formal_expression_depth:l3:fs:123f163f27d2f499",
+"arm": "ORIGINAL",
+"base_answer": 1,
+"swap_answer": 1,
+"base_correct": false,
+"swap_correct": true,
+"same_letter_despite_swap": true
+},
+{
+"cell": "formal_expression_depth|L3",
+"family": "v5:dev:formal_expression_depth:l3:fs:123f163f27d2f499",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L3",
+"family": "v5:dev:formal_expression_depth:l3:fs:1a61fbc614fbabd0",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": false,
+"same_letter_despite_swap": true
+},
+{
+"cell": "formal_expression_depth|L3",
+"family": "v5:dev:formal_expression_depth:l3:fs:1a61fbc614fbabd0",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L3",
+"family": "v5:dev:formal_expression_depth:l3:fs:1e6912d0d24bc09c",
+"arm": "ORIGINAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": false,
+"swap_correct": false,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L3",
+"family": "v5:dev:formal_expression_depth:l3:fs:1e6912d0d24bc09c",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L3",
+"family": "v5:dev:formal_expression_depth:l3:fs:2779252b8a015b1b",
+"arm": "ORIGINAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": false,
+"swap_correct": false,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L3",
+"family": "v5:dev:formal_expression_depth:l3:fs:2779252b8a015b1b",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "formal_expression_depth|L3",
+"family": "v5:dev:formal_expression_depth:l3:fs:422553769df53f88",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": false,
+"same_letter_despite_swap": true
+},
+{
+"cell": "formal_expression_depth|L3",
+"family": "v5:dev:formal_expression_depth:l3:fs:422553769df53f88",
+"arm": "COUNTERFACTUAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": false,
+"swap_correct": true,
+"same_letter_despite_swap": true
+},
+{
+"cell": "transitive_dependency|L0",
+"family": "v5:dev:transitive_dependency:l0:synthetic:20261907",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L0",
+"family": "v5:dev:transitive_dependency:l0:synthetic:20261907",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L0",
+"family": "v5:dev:transitive_dependency:l0:synthetic:20261908",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L0",
+"family": "v5:dev:transitive_dependency:l0:synthetic:20261908",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L0",
+"family": "v5:dev:transitive_dependency:l0:synthetic:20261909",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L0",
+"family": "v5:dev:transitive_dependency:l0:synthetic:20261909",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L0",
+"family": "v5:dev:transitive_dependency:l0:synthetic:20261910",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L0",
+"family": "v5:dev:transitive_dependency:l0:synthetic:20261910",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L0",
+"family": "v5:dev:transitive_dependency:l0:synthetic:20261911",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L0",
+"family": "v5:dev:transitive_dependency:l0:synthetic:20261911",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L0",
+"family": "v5:dev:transitive_dependency:l0:synthetic:20261912",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L0",
+"family": "v5:dev:transitive_dependency:l0:synthetic:20261912",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L0",
+"family": "v5:dev:transitive_dependency:l0:synthetic:20261913",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L0",
+"family": "v5:dev:transitive_dependency:l0:synthetic:20261913",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L0",
+"family": "v5:dev:transitive_dependency:l0:synthetic:20261914",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L0",
+"family": "v5:dev:transitive_dependency:l0:synthetic:20261914",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L0",
+"family": "v5:dev:transitive_dependency:l0:synthetic:20261915",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L0",
+"family": "v5:dev:transitive_dependency:l0:synthetic:20261915",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L0",
+"family": "v5:dev:transitive_dependency:l0:synthetic:20261916",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L0",
+"family": "v5:dev:transitive_dependency:l0:synthetic:20261916",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L0",
+"family": "v5:dev:transitive_dependency:l0:synthetic:20261917",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L0",
+"family": "v5:dev:transitive_dependency:l0:synthetic:20261917",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L0",
+"family": "v5:dev:transitive_dependency:l0:synthetic:20261918",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L0",
+"family": "v5:dev:transitive_dependency:l0:synthetic:20261918",
+"arm": "COUNTERFACTUAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": false,
+"swap_correct": true,
+"same_letter_despite_swap": true
+},
+{
+"cell": "transitive_dependency|L1",
+"family": "v5:dev:transitive_dependency:l1:synthetic:20262007",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L1",
+"family": "v5:dev:transitive_dependency:l1:synthetic:20262007",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L1",
+"family": "v5:dev:transitive_dependency:l1:synthetic:20262008",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L1",
+"family": "v5:dev:transitive_dependency:l1:synthetic:20262008",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L1",
+"family": "v5:dev:transitive_dependency:l1:synthetic:20262009",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L1",
+"family": "v5:dev:transitive_dependency:l1:synthetic:20262009",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L1",
+"family": "v5:dev:transitive_dependency:l1:synthetic:20262010",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L1",
+"family": "v5:dev:transitive_dependency:l1:synthetic:20262010",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L1",
+"family": "v5:dev:transitive_dependency:l1:synthetic:20262011",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L1",
+"family": "v5:dev:transitive_dependency:l1:synthetic:20262011",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L1",
+"family": "v5:dev:transitive_dependency:l1:synthetic:20262012",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L1",
+"family": "v5:dev:transitive_dependency:l1:synthetic:20262012",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L1",
+"family": "v5:dev:transitive_dependency:l1:synthetic:20262013",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L1",
+"family": "v5:dev:transitive_dependency:l1:synthetic:20262013",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L1",
+"family": "v5:dev:transitive_dependency:l1:synthetic:20262014",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L1",
+"family": "v5:dev:transitive_dependency:l1:synthetic:20262014",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L1",
+"family": "v5:dev:transitive_dependency:l1:synthetic:20262015",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L1",
+"family": "v5:dev:transitive_dependency:l1:synthetic:20262015",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L1",
+"family": "v5:dev:transitive_dependency:l1:synthetic:20262016",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L1",
+"family": "v5:dev:transitive_dependency:l1:synthetic:20262016",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L1",
+"family": "v5:dev:transitive_dependency:l1:synthetic:20262017",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L1",
+"family": "v5:dev:transitive_dependency:l1:synthetic:20262017",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L1",
+"family": "v5:dev:transitive_dependency:l1:synthetic:20262018",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L1",
+"family": "v5:dev:transitive_dependency:l1:synthetic:20262018",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L2",
+"family": "v5:dev:transitive_dependency:l2:synthetic:20262107",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L2",
+"family": "v5:dev:transitive_dependency:l2:synthetic:20262107",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L2",
+"family": "v5:dev:transitive_dependency:l2:synthetic:20262108",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L2",
+"family": "v5:dev:transitive_dependency:l2:synthetic:20262108",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L2",
+"family": "v5:dev:transitive_dependency:l2:synthetic:20262109",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L2",
+"family": "v5:dev:transitive_dependency:l2:synthetic:20262109",
+"arm": "COUNTERFACTUAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": false,
+"swap_correct": true,
+"same_letter_despite_swap": true
+},
+{
+"cell": "transitive_dependency|L2",
+"family": "v5:dev:transitive_dependency:l2:synthetic:20262110",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L2",
+"family": "v5:dev:transitive_dependency:l2:synthetic:20262110",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L2",
+"family": "v5:dev:transitive_dependency:l2:synthetic:20262111",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L2",
+"family": "v5:dev:transitive_dependency:l2:synthetic:20262111",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L2",
+"family": "v5:dev:transitive_dependency:l2:synthetic:20262112",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L2",
+"family": "v5:dev:transitive_dependency:l2:synthetic:20262112",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L2",
+"family": "v5:dev:transitive_dependency:l2:synthetic:20262113",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L2",
+"family": "v5:dev:transitive_dependency:l2:synthetic:20262113",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L2",
+"family": "v5:dev:transitive_dependency:l2:synthetic:20262114",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L2",
+"family": "v5:dev:transitive_dependency:l2:synthetic:20262114",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L2",
+"family": "v5:dev:transitive_dependency:l2:synthetic:20262115",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L2",
+"family": "v5:dev:transitive_dependency:l2:synthetic:20262115",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L2",
+"family": "v5:dev:transitive_dependency:l2:synthetic:20262116",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L2",
+"family": "v5:dev:transitive_dependency:l2:synthetic:20262116",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L2",
+"family": "v5:dev:transitive_dependency:l2:synthetic:20262117",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": false,
+"same_letter_despite_swap": true
+},
+{
+"cell": "transitive_dependency|L2",
+"family": "v5:dev:transitive_dependency:l2:synthetic:20262117",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L2",
+"family": "v5:dev:transitive_dependency:l2:synthetic:20262118",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L2",
+"family": "v5:dev:transitive_dependency:l2:synthetic:20262118",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L3",
+"family": "v5:dev:transitive_dependency:l3:synthetic:20262207",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L3",
+"family": "v5:dev:transitive_dependency:l3:synthetic:20262207",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L3",
+"family": "v5:dev:transitive_dependency:l3:synthetic:20262208",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L3",
+"family": "v5:dev:transitive_dependency:l3:synthetic:20262208",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L3",
+"family": "v5:dev:transitive_dependency:l3:synthetic:20262209",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L3",
+"family": "v5:dev:transitive_dependency:l3:synthetic:20262209",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L3",
+"family": "v5:dev:transitive_dependency:l3:synthetic:20262210",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": false,
+"same_letter_despite_swap": true
+},
+{
+"cell": "transitive_dependency|L3",
+"family": "v5:dev:transitive_dependency:l3:synthetic:20262210",
+"arm": "COUNTERFACTUAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": false,
+"swap_correct": true,
+"same_letter_despite_swap": true
+},
+{
+"cell": "transitive_dependency|L3",
+"family": "v5:dev:transitive_dependency:l3:synthetic:20262211",
+"arm": "ORIGINAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": false,
+"swap_correct": false,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L3",
+"family": "v5:dev:transitive_dependency:l3:synthetic:20262211",
+"arm": "COUNTERFACTUAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": false,
+"swap_correct": false,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L3",
+"family": "v5:dev:transitive_dependency:l3:synthetic:20262212",
+"arm": "ORIGINAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": false,
+"swap_correct": false,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L3",
+"family": "v5:dev:transitive_dependency:l3:synthetic:20262212",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L3",
+"family": "v5:dev:transitive_dependency:l3:synthetic:20262213",
+"arm": "ORIGINAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": false,
+"swap_correct": false,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L3",
+"family": "v5:dev:transitive_dependency:l3:synthetic:20262213",
+"arm": "COUNTERFACTUAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": false,
+"swap_correct": true,
+"same_letter_despite_swap": true
+},
+{
+"cell": "transitive_dependency|L3",
+"family": "v5:dev:transitive_dependency:l3:synthetic:20262214",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L3",
+"family": "v5:dev:transitive_dependency:l3:synthetic:20262214",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L3",
+"family": "v5:dev:transitive_dependency:l3:synthetic:20262215",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L3",
+"family": "v5:dev:transitive_dependency:l3:synthetic:20262215",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L3",
+"family": "v5:dev:transitive_dependency:l3:synthetic:20262216",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": false,
+"same_letter_despite_swap": true
+},
+{
+"cell": "transitive_dependency|L3",
+"family": "v5:dev:transitive_dependency:l3:synthetic:20262216",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L3",
+"family": "v5:dev:transitive_dependency:l3:synthetic:20262217",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L3",
+"family": "v5:dev:transitive_dependency:l3:synthetic:20262217",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L3",
+"family": "v5:dev:transitive_dependency:l3:synthetic:20262218",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "transitive_dependency|L3",
+"family": "v5:dev:transitive_dependency:l3:synthetic:20262218",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L0",
+"family": "v5:dev:precondition_conjunction:l0:synthetic:20262907",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L0",
+"family": "v5:dev:precondition_conjunction:l0:synthetic:20262907",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L0",
+"family": "v5:dev:precondition_conjunction:l0:synthetic:20262908",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L0",
+"family": "v5:dev:precondition_conjunction:l0:synthetic:20262908",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L0",
+"family": "v5:dev:precondition_conjunction:l0:synthetic:20262909",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L0",
+"family": "v5:dev:precondition_conjunction:l0:synthetic:20262909",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L0",
+"family": "v5:dev:precondition_conjunction:l0:synthetic:20262910",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L0",
+"family": "v5:dev:precondition_conjunction:l0:synthetic:20262910",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L0",
+"family": "v5:dev:precondition_conjunction:l0:synthetic:20262911",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L0",
+"family": "v5:dev:precondition_conjunction:l0:synthetic:20262911",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L0",
+"family": "v5:dev:precondition_conjunction:l0:synthetic:20262912",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L0",
+"family": "v5:dev:precondition_conjunction:l0:synthetic:20262912",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L0",
+"family": "v5:dev:precondition_conjunction:l0:synthetic:20262913",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L0",
+"family": "v5:dev:precondition_conjunction:l0:synthetic:20262913",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L0",
+"family": "v5:dev:precondition_conjunction:l0:synthetic:20262914",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L0",
+"family": "v5:dev:precondition_conjunction:l0:synthetic:20262914",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L0",
+"family": "v5:dev:precondition_conjunction:l0:synthetic:20262915",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L0",
+"family": "v5:dev:precondition_conjunction:l0:synthetic:20262915",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L0",
+"family": "v5:dev:precondition_conjunction:l0:synthetic:20262916",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L0",
+"family": "v5:dev:precondition_conjunction:l0:synthetic:20262916",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L0",
+"family": "v5:dev:precondition_conjunction:l0:synthetic:20262917",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L0",
+"family": "v5:dev:precondition_conjunction:l0:synthetic:20262917",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L0",
+"family": "v5:dev:precondition_conjunction:l0:synthetic:20262918",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L0",
+"family": "v5:dev:precondition_conjunction:l0:synthetic:20262918",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L1",
+"family": "v5:dev:precondition_conjunction:l1:synthetic:20263007",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L1",
+"family": "v5:dev:precondition_conjunction:l1:synthetic:20263007",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L1",
+"family": "v5:dev:precondition_conjunction:l1:synthetic:20263008",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L1",
+"family": "v5:dev:precondition_conjunction:l1:synthetic:20263008",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L1",
+"family": "v5:dev:precondition_conjunction:l1:synthetic:20263009",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L1",
+"family": "v5:dev:precondition_conjunction:l1:synthetic:20263009",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L1",
+"family": "v5:dev:precondition_conjunction:l1:synthetic:20263010",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L1",
+"family": "v5:dev:precondition_conjunction:l1:synthetic:20263010",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L1",
+"family": "v5:dev:precondition_conjunction:l1:synthetic:20263011",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L1",
+"family": "v5:dev:precondition_conjunction:l1:synthetic:20263011",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L1",
+"family": "v5:dev:precondition_conjunction:l1:synthetic:20263012",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L1",
+"family": "v5:dev:precondition_conjunction:l1:synthetic:20263012",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L1",
+"family": "v5:dev:precondition_conjunction:l1:synthetic:20263013",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L1",
+"family": "v5:dev:precondition_conjunction:l1:synthetic:20263013",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L1",
+"family": "v5:dev:precondition_conjunction:l1:synthetic:20263014",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L1",
+"family": "v5:dev:precondition_conjunction:l1:synthetic:20263014",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L1",
+"family": "v5:dev:precondition_conjunction:l1:synthetic:20263015",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L1",
+"family": "v5:dev:precondition_conjunction:l1:synthetic:20263015",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L1",
+"family": "v5:dev:precondition_conjunction:l1:synthetic:20263016",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L1",
+"family": "v5:dev:precondition_conjunction:l1:synthetic:20263016",
+"arm": "COUNTERFACTUAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": false,
+"swap_correct": true,
+"same_letter_despite_swap": true
+},
+{
+"cell": "precondition_conjunction|L1",
+"family": "v5:dev:precondition_conjunction:l1:synthetic:20263017",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L1",
+"family": "v5:dev:precondition_conjunction:l1:synthetic:20263017",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L1",
+"family": "v5:dev:precondition_conjunction:l1:synthetic:20263018",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L1",
+"family": "v5:dev:precondition_conjunction:l1:synthetic:20263018",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L2",
+"family": "v5:dev:precondition_conjunction:l2:synthetic:20263107",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L2",
+"family": "v5:dev:precondition_conjunction:l2:synthetic:20263107",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L2",
+"family": "v5:dev:precondition_conjunction:l2:synthetic:20263108",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L2",
+"family": "v5:dev:precondition_conjunction:l2:synthetic:20263108",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L2",
+"family": "v5:dev:precondition_conjunction:l2:synthetic:20263109",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L2",
+"family": "v5:dev:precondition_conjunction:l2:synthetic:20263109",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L2",
+"family": "v5:dev:precondition_conjunction:l2:synthetic:20263110",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L2",
+"family": "v5:dev:precondition_conjunction:l2:synthetic:20263110",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L2",
+"family": "v5:dev:precondition_conjunction:l2:synthetic:20263111",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L2",
+"family": "v5:dev:precondition_conjunction:l2:synthetic:20263111",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L2",
+"family": "v5:dev:precondition_conjunction:l2:synthetic:20263112",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L2",
+"family": "v5:dev:precondition_conjunction:l2:synthetic:20263112",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L2",
+"family": "v5:dev:precondition_conjunction:l2:synthetic:20263113",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L2",
+"family": "v5:dev:precondition_conjunction:l2:synthetic:20263113",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L2",
+"family": "v5:dev:precondition_conjunction:l2:synthetic:20263114",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L2",
+"family": "v5:dev:precondition_conjunction:l2:synthetic:20263114",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L2",
+"family": "v5:dev:precondition_conjunction:l2:synthetic:20263115",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L2",
+"family": "v5:dev:precondition_conjunction:l2:synthetic:20263115",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L2",
+"family": "v5:dev:precondition_conjunction:l2:synthetic:20263116",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L2",
+"family": "v5:dev:precondition_conjunction:l2:synthetic:20263116",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L2",
+"family": "v5:dev:precondition_conjunction:l2:synthetic:20263117",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L2",
+"family": "v5:dev:precondition_conjunction:l2:synthetic:20263117",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L2",
+"family": "v5:dev:precondition_conjunction:l2:synthetic:20263118",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L2",
+"family": "v5:dev:precondition_conjunction:l2:synthetic:20263118",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L3",
+"family": "v5:dev:precondition_conjunction:l3:synthetic:20263207",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L3",
+"family": "v5:dev:precondition_conjunction:l3:synthetic:20263207",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L3",
+"family": "v5:dev:precondition_conjunction:l3:synthetic:20263208",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L3",
+"family": "v5:dev:precondition_conjunction:l3:synthetic:20263208",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L3",
+"family": "v5:dev:precondition_conjunction:l3:synthetic:20263209",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L3",
+"family": "v5:dev:precondition_conjunction:l3:synthetic:20263209",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L3",
+"family": "v5:dev:precondition_conjunction:l3:synthetic:20263210",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L3",
+"family": "v5:dev:precondition_conjunction:l3:synthetic:20263210",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L3",
+"family": "v5:dev:precondition_conjunction:l3:synthetic:20263211",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L3",
+"family": "v5:dev:precondition_conjunction:l3:synthetic:20263211",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L3",
+"family": "v5:dev:precondition_conjunction:l3:synthetic:20263212",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L3",
+"family": "v5:dev:precondition_conjunction:l3:synthetic:20263212",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L3",
+"family": "v5:dev:precondition_conjunction:l3:synthetic:20263213",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L3",
+"family": "v5:dev:precondition_conjunction:l3:synthetic:20263213",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L3",
+"family": "v5:dev:precondition_conjunction:l3:synthetic:20263214",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L3",
+"family": "v5:dev:precondition_conjunction:l3:synthetic:20263214",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L3",
+"family": "v5:dev:precondition_conjunction:l3:synthetic:20263215",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L3",
+"family": "v5:dev:precondition_conjunction:l3:synthetic:20263215",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L3",
+"family": "v5:dev:precondition_conjunction:l3:synthetic:20263216",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L3",
+"family": "v5:dev:precondition_conjunction:l3:synthetic:20263216",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L3",
+"family": "v5:dev:precondition_conjunction:l3:synthetic:20263217",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": false,
+"same_letter_despite_swap": true
+},
+{
+"cell": "precondition_conjunction|L3",
+"family": "v5:dev:precondition_conjunction:l3:synthetic:20263217",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L3",
+"family": "v5:dev:precondition_conjunction:l3:synthetic:20263218",
+"arm": "ORIGINAL",
+"base_answer": 0,
+"swap_answer": 1,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+},
+{
+"cell": "precondition_conjunction|L3",
+"family": "v5:dev:precondition_conjunction:l3:synthetic:20263218",
+"arm": "COUNTERFACTUAL",
+"base_answer": 1,
+"swap_answer": 0,
+"base_correct": true,
+"swap_correct": true,
+"same_letter_despite_swap": false
+}
+]

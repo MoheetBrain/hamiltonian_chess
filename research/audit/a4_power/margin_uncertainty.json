@@ -1,0 +1,1314 @@
+{
+ "_frozen_threshold": 0.1,
+ "_note": "SHORTCUT_MARGIN = 0.10 is preregistered and frozen. Nothing in this file is a proposal to change it. Every number characterises the behaviour of the DECISION PROCEDURE at that fixed threshold.",
+ "cells": {
+  "formal_expression_depth|L0": {
+   "best_shortcut_feature": "more_frequent_in_state",
+   "best_shortcut_inverted": false,
+   "ci95_bootstrap_cluster_family": [
+    0.125,
+    0.5416666666666666
+   ],
+   "ci95_bootstrap_item": [
+    0.16666666666666666,
+    0.5416666666666666
+   ],
+   "ci95_newcombe_paired_score": [
+    0.12685354133978352,
+    0.5329368316186827
+   ],
+   "design_effect": 1.363636363636363,
+   "discordant_pairs": 8,
+   "effective_n": 17.60000000000001,
+   "family_level_differences": [
+    1,
+    0,
+    0,
+    2,
+    1,
+    2,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0
+   ],
+   "icc_of_difference_within_family": 0.2903225806451614,
+   "level": 0,
+   "margin": 0.3333333333333333,
+   "mcnemar_exact_p_two_sided_H0_margin_0": 0.0078125,
+   "mechanism": "formal_expression_depth",
+   "n_families": 12,
+   "n_items": 24,
+   "phi_correlation_solver_vs_shortcut": 0.0,
+   "posterior": {
+    "bayesian_bootstrap_over_families": {
+     "P_margin_gt_0": 1.0,
+     "P_margin_gt_0.10": 0.996805,
+     "ci95": [
+      0.14940861135035816,
+      0.5516342091142132
+     ],
+     "posterior_mean": 0.3333259526924856
+    },
+    "haldane_Dir0.001": {
+     "P_margin_gt_0": 0.999995,
+     "P_margin_gt_0.10": 0.998695,
+     "ci95": [
+      0.16396254886724201,
+      0.5283760459425474
+     ],
+     "posterior_mean": 0.33326046555626804
+    },
+    "jeffreys_Dir0.5": {
+     "P_margin_gt_0": 0.999295,
+     "P_margin_gt_0.10": 0.98812,
+     "ci95": [
+      0.12819442309975534,
+      0.5041493248348335
+     ],
+     "posterior_mean": 0.30781488296977927
+    },
+    "uniform_Dir1": {
+     "P_margin_gt_0": 0.998025,
+     "P_margin_gt_0.10": 0.97463,
+     "ci95": [
+      0.09944519066085765,
+      0.48192809963016303
+     ],
+     "posterior_mean": 0.28591204753100413
+    }
+   },
+   "se_cluster_robust": 0.11236664374387367,
+   "se_difference_if_independent": 0.09622504486493763,
+   "se_difference_paired_mcnemar": 0.09622504486493764,
+   "se_single_arm_PREREG_FORMULA": 0.0,
+   "shortcut_accuracy": 0.6666666666666666,
+   "shortcut_ci95_clopper_pearson": [
+    0.44678038434035194,
+    0.8436977142908647
+   ],
+   "shortcut_ci95_wilson": [
+    0.4670631683813174,
+    0.8202780967270225
+   ],
+   "shortcut_constant_within_every_family": false,
+   "solver_accuracy": 1.0,
+   "solver_ci95_clopper_pearson": [
+    0.8575264022774743,
+    1.0
+   ],
+   "solver_ci95_wilson": [
+    0.8620237953250198,
+    1.0
+   ],
+   "solver_constant_within_every_family": true,
+   "table_abcd": [
+    16,
+    8,
+    0,
+    0
+   ]
+  },
+  "formal_expression_depth|L1": {
+   "best_shortcut_feature": "first_mentioned_in_state",
+   "best_shortcut_inverted": false,
+   "ci95_bootstrap_cluster_family": [
+    -0.2916666666666667,
+    -0.041666666666666664
+   ],
+   "ci95_bootstrap_item": [
+    -0.3333333333333333,
+    -0.041666666666666664
+   ],
+   "ci95_newcombe_paired_score": [
+    -0.3585307064969906,
+    0.0036666188525691645
+   ],
+   "design_effect": 0.8727272727272728,
+   "discordant_pairs": 4,
+   "effective_n": 27.499999999999996,
+   "family_level_differences": [
+    0,
+    0,
+    0,
+    0,
+    -1,
+    0,
+    0,
+    -1,
+    -1,
+    0,
+    -1,
+    0
+   ],
+   "icc_of_difference_within_family": -0.15789473684210512,
+   "level": 1,
+   "margin": -0.16666666666666666,
+   "mcnemar_exact_p_two_sided_H0_margin_0": 0.125,
+   "mechanism": "formal_expression_depth",
+   "n_families": 12,
+   "n_items": 24,
+   "phi_correlation_solver_vs_shortcut": 0.0,
+   "posterior": {
+    "bayesian_bootstrap_over_families": {
+     "P_margin_gt_0": 0.0,
+     "P_margin_gt_0.10": 0.0,
+     "ci95": [
+      -0.30433792481676764,
+      -0.054434755861783896
+     ],
+     "posterior_mean": -0.16639022215726545
+    },
+    "haldane_Dir0.001": {
+     "P_margin_gt_0": 2.5e-05,
+     "P_margin_gt_0.10": 0.0,
+     "ci95": [
+      -0.33654222062020234,
+      -0.049278803250301186
+     ],
+     "posterior_mean": -0.16652116128928518
+    },
+    "jeffreys_Dir0.5": {
+     "P_margin_gt_0": 0.01474,
+     "P_margin_gt_0.10": 0.0007,
+     "ci95": [
+      -0.3247398945680004,
+      -0.017111698060549217
+     ],
+     "posterior_mean": -0.15380813649411276
+    },
+    "uniform_Dir1": {
+     "P_margin_gt_0": 0.031335,
+     "P_margin_gt_0.10": 0.001895,
+     "ci95": [
+      -0.31455772858897185,
+      0.008445400165000979
+     ],
+     "posterior_mean": -0.14283499210775658
+    }
+   },
+   "se_cluster_robust": 0.07106690545187015,
+   "se_difference_if_independent": 0.07607257743127306,
+   "se_difference_paired_mcnemar": 0.07607257743127308,
+   "se_single_arm_PREREG_FORMULA": 0.07607257743127306,
+   "shortcut_accuracy": 1.0,
+   "shortcut_ci95_clopper_pearson": [
+    0.8575264022774743,
+    1.0
+   ],
+   "shortcut_ci95_wilson": [
+    0.8620237953250198,
+    1.0
+   ],
+   "shortcut_constant_within_every_family": true,
+   "solver_accuracy": 0.8333333333333334,
+   "solver_ci95_clopper_pearson": [
+    0.6261582865113173,
+    0.9526463733927428
+   ],
+   "solver_ci95_wilson": [
+    0.6414692935030094,
+    0.9332132367136705
+   ],
+   "solver_constant_within_every_family": false,
+   "table_abcd": [
+    20,
+    0,
+    4,
+    0
+   ]
+  },
+  "formal_expression_depth|L2": {
+   "best_shortcut_feature": "first_mentioned_in_state",
+   "best_shortcut_inverted": false,
+   "ci95_bootstrap_cluster_family": [
+    -0.25,
+    0.20833333333333334
+   ],
+   "ci95_bootstrap_item": [
+    -0.25,
+    0.16666666666666666
+   ],
+   "ci95_newcombe_paired_score": [
+    -0.2578558926583904,
+    0.177880169458096
+   ],
+   "design_effect": 1.3979314099074576,
+   "discordant_pairs": 7,
+   "effective_n": 17.168224299065425,
+   "family_level_differences": [
+    0,
+    0,
+    0,
+    -1,
+    2,
+    1,
+    -1,
+    -1,
+    -1,
+    0,
+    0,
+    0
+   ],
+   "icc_of_difference_within_family": 0.3209876543209876,
+   "level": 2,
+   "margin": -0.041666666666666664,
+   "mcnemar_exact_p_two_sided_H0_margin_0": 1.0,
+   "mechanism": "formal_expression_depth",
+   "n_families": 12,
+   "n_items": 24,
+   "phi_correlation_solver_vs_shortcut": 0.04588314677411235,
+   "posterior": {
+    "bayesian_bootstrap_over_families": {
+     "P_margin_gt_0": 0.3321,
+     "P_margin_gt_0.10": 0.119255,
+     "ci95": [
+      -0.2530913121460119,
+      0.2229754356984565
+     ],
+     "posterior_mean": -0.041549797706694355
+    },
+    "haldane_Dir0.001": {
+     "P_margin_gt_0": 0.343775,
+     "P_margin_gt_0.10": 0.090005,
+     "ci95": [
+      -0.2572424214168638,
+      0.17134178566848973
+     ],
+     "posterior_mean": -0.04178115830047985
+    },
+    "jeffreys_Dir0.5": {
+     "P_margin_gt_0": 0.356005,
+     "P_margin_gt_0.10": 0.09372,
+     "ci95": [
+      -0.24921880514238,
+      0.17323121200036518
+     ],
+     "posterior_mean": -0.03803826284737276
+    },
+    "uniform_Dir1": {
+     "P_margin_gt_0": 0.361895,
+     "P_margin_gt_0.10": 0.095,
+     "ci95": [
+      -0.24467520116687708,
+      0.17169703908156206
+     ],
+     "posterior_mean": -0.03625836201679125
+    }
+   },
+   "se_cluster_robust": 0.12995239998794275,
+   "se_difference_if_independent": 0.11251285934735868,
+   "se_difference_paired_mcnemar": 0.10991105410655844,
+   "se_single_arm_PREREG_FORMULA": 0.08289816934939807,
+   "shortcut_accuracy": 0.8333333333333334,
+   "shortcut_ci95_clopper_pearson": [
+    0.6261582865113173,
+    0.9526463733927428
+   ],
+   "shortcut_ci95_wilson": [
+    0.6414692935030094,
+    0.9332132367136705
+   ],
+   "shortcut_constant_within_every_family": true,
+   "solver_accuracy": 0.7916666666666666,
+   "solver_ci95_clopper_pearson": [
+    0.5784871563627474,
+    0.928681382801945
+   ],
+   "solver_ci95_wilson": [
+    0.5952954674681135,
+    0.9075517464714814
+   ],
+   "solver_constant_within_every_family": false,
+   "table_abcd": [
+    16,
+    3,
+    4,
+    1
+   ]
+  },
+  "formal_expression_depth|L3": {
+   "best_shortcut_feature": "first_mentioned_in_state",
+   "best_shortcut_inverted": false,
+   "ci95_bootstrap_cluster_family": [
+    -0.4583333333333333,
+    -0.08333333333333333
+   ],
+   "ci95_bootstrap_item": [
+    -0.5,
+    -0.08333333333333333
+   ],
+   "ci95_newcombe_paired_score": [
+    -0.49398169586455104,
+    -0.0616135241767643
+   ],
+   "design_effect": 0.7708219923788785,
+   "discordant_pairs": 9,
+   "effective_n": 31.135593220338986,
+   "family_level_differences": [
+    -1,
+    1,
+    0,
+    -1,
+    0,
+    -1,
+    -1,
+    -1,
+    0,
+    -1,
+    -1,
+    -1
+   ],
+   "icc_of_difference_within_family": -0.2531645569620254,
+   "level": 3,
+   "margin": -0.2916666666666667,
+   "mcnemar_exact_p_two_sided_H0_margin_0": 0.0390625,
+   "mechanism": "formal_expression_depth",
+   "n_families": 12,
+   "n_items": 24,
+   "phi_correlation_solver_vs_shortcut": 0.0778498944161523,
+   "posterior": {
+    "bayesian_bootstrap_over_families": {
+     "P_margin_gt_0": 0.00401,
+     "P_margin_gt_0.10": 0.000295,
+     "ci95": [
+      -0.4344189566258682,
+      -0.09306001494432209
+     ],
+     "posterior_mean": -0.29199021144971443
+    },
+    "haldane_Dir0.001": {
+     "P_margin_gt_0": 0.00368,
+     "P_margin_gt_0.10": 0.00033,
+     "ci95": [
+      -0.5056619674150198,
+      -0.08425551992098139
+     ],
+     "posterior_mean": -0.291371202009247
+    },
+    "jeffreys_Dir0.5": {
+     "P_margin_gt_0": 0.0071,
+     "P_margin_gt_0.10": 0.00061,
+     "ci95": [
+      -0.4819802010470656,
+      -0.05896489679084926
+     ],
+     "posterior_mean": -0.26921308236093233
+    },
+    "uniform_Dir1": {
+     "P_margin_gt_0": 0.01096,
+     "P_margin_gt_0.10": 0.000915,
+     "ci95": [
+      -0.46086544587814743,
+      -0.03904260186227141
+     ],
+     "posterior_mean": -0.24992736048782943
+    }
+   },
+   "se_cluster_robust": 0.09649802426406816,
+   "se_difference_if_independent": 0.11379145561231903,
+   "se_difference_paired_mcnemar": 0.10991105410655844,
+   "se_single_arm_PREREG_FORMULA": 0.09882117688026186,
+   "shortcut_accuracy": 0.9166666666666666,
+   "shortcut_ci95_clopper_pearson": [
+    0.7300271984423965,
+    0.9897436587187498
+   ],
+   "shortcut_ci95_wilson": [
+    0.741511978067893,
+    0.9768411847029566
+   ],
+   "shortcut_constant_within_every_family": true,
+   "solver_accuracy": 0.625,
+   "solver_ci95_clopper_pearson": [
+    0.405936384007944,
+    0.8120070718039977
+   ],
+   "solver_ci95_wilson": [
+    0.4270996244267427,
+    0.7884063244045122
+   ],
+   "solver_constant_within_every_family": false,
+   "table_abcd": [
+    14,
+    1,
+    8,
+    1
+   ]
+  },
+  "precondition_conjunction|L0": {
+   "best_shortcut_feature": "first_mentioned_in_state",
+   "best_shortcut_inverted": false,
+   "ci95_bootstrap_cluster_family": [
+    0.0,
+    0.0
+   ],
+   "ci95_bootstrap_item": [
+    0.0,
+    0.0
+   ],
+   "ci95_newcombe_paired_score": [
+    -0.13797620467498017,
+    0.13797620467498017
+   ],
+   "design_effect": NaN,
+   "discordant_pairs": 0,
+   "effective_n": NaN,
+   "family_level_differences": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "icc_of_difference_within_family": NaN,
+   "level": 0,
+   "margin": 0.0,
+   "mcnemar_exact_p_two_sided_H0_margin_0": 1.0,
+   "mechanism": "precondition_conjunction",
+   "n_families": 12,
+   "n_items": 24,
+   "phi_correlation_solver_vs_shortcut": 0.0,
+   "posterior": {
+    "bayesian_bootstrap_over_families": {
+     "P_margin_gt_0": 0.0,
+     "P_margin_gt_0.10": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "posterior_mean": 0.0
+    },
+    "haldane_Dir0.001": {
+     "P_margin_gt_0": 0.387595,
+     "P_margin_gt_0.10": 4e-05,
+     "ci95": [
+      -1.3747134010993612e-13,
+      2.860501490857947e-13
+     ],
+     "posterior_mean": 5.043085985003127e-07
+    },
+    "jeffreys_Dir0.5": {
+     "P_margin_gt_0": 0.49939,
+     "P_margin_gt_0.10": 0.01468,
+     "ci95": [
+      -0.08282257033874522,
+      0.08318709109960588
+     ],
+     "posterior_mean": 8.714669528694543e-06
+    },
+    "uniform_Dir1": {
+     "P_margin_gt_0": 0.50109,
+     "P_margin_gt_0.10": 0.02954,
+     "ci95": [
+      -0.10540823354873537,
+      0.1058622065861278
+     ],
+     "posterior_mean": 6.183429132048086e-05
+    }
+   },
+   "se_cluster_robust": 0.0,
+   "se_difference_if_independent": 0.0,
+   "se_difference_paired_mcnemar": 0.0,
+   "se_single_arm_PREREG_FORMULA": 0.0,
+   "shortcut_accuracy": 1.0,
+   "shortcut_ci95_clopper_pearson": [
+    0.8575264022774743,
+    1.0
+   ],
+   "shortcut_ci95_wilson": [
+    0.8620237953250198,
+    1.0
+   ],
+   "shortcut_constant_within_every_family": true,
+   "solver_accuracy": 1.0,
+   "solver_ci95_clopper_pearson": [
+    0.8575264022774743,
+    1.0
+   ],
+   "solver_ci95_wilson": [
+    0.8620237953250198,
+    1.0
+   ],
+   "solver_constant_within_every_family": true,
+   "table_abcd": [
+    24,
+    0,
+    0,
+    0
+   ]
+  },
+  "precondition_conjunction|L1": {
+   "best_shortcut_feature": "always_first_option",
+   "best_shortcut_inverted": false,
+   "ci95_bootstrap_cluster_family": [
+    0.375,
+    0.5
+   ],
+   "ci95_bootstrap_item": [
+    0.25,
+    0.6666666666666666
+   ],
+   "ci95_newcombe_paired_score": [
+    0.23950831880460616,
+    0.6400312737441445
+   ],
+   "design_effect": 0.16783216783216784,
+   "discordant_pairs": 11,
+   "effective_n": 143.0,
+   "family_level_differences": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1
+   ],
+   "icc_of_difference_within_family": -0.8333333333333333,
+   "level": 1,
+   "margin": 0.4583333333333333,
+   "mcnemar_exact_p_two_sided_H0_margin_0": 0.0009765625,
+   "mechanism": "precondition_conjunction",
+   "n_families": 12,
+   "n_items": 24,
+   "phi_correlation_solver_vs_shortcut": 0.20851441405707474,
+   "posterior": {
+    "bayesian_bootstrap_over_families": {
+     "P_margin_gt_0": 1.0,
+     "P_margin_gt_0.10": 1.0,
+     "ci95": [
+      0.3572603847357796,
+      0.49885204757992063
+     ],
+     "posterior_mean": 0.45829837984473765
+    },
+    "haldane_Dir0.001": {
+     "P_margin_gt_0": 1.0,
+     "P_margin_gt_0.10": 0.99999,
+     "ci95": [
+      0.26844489803719823,
+      0.6550560588327184
+     ],
+     "posterior_mean": 0.4583468612626798
+    },
+    "jeffreys_Dir0.5": {
+     "P_margin_gt_0": 0.99997,
+     "P_margin_gt_0.10": 0.998935,
+     "ci95": [
+      0.226034453010214,
+      0.6211192565254837
+     ],
+     "posterior_mean": 0.4232907512572189
+    },
+    "uniform_Dir1": {
+     "P_margin_gt_0": 0.999795,
+     "P_margin_gt_0.10": 0.997005,
+     "ci95": [
+      0.18980969653136437,
+      0.5931108490055925
+     ],
+     "posterior_mean": 0.3932348744085409
+    }
+   },
+   "se_cluster_robust": 0.041666666666666664,
+   "se_difference_if_independent": 0.10991105410655842,
+   "se_difference_paired_mcnemar": 0.10170707302692228,
+   "se_single_arm_PREREG_FORMULA": 0.04078937543219002,
+   "shortcut_accuracy": 0.5,
+   "shortcut_ci95_clopper_pearson": [
+    0.291241779836212,
+    0.708758220163788
+   ],
+   "shortcut_ci95_wilson": [
+    0.31427425819573357,
+    0.6857257418042665
+   ],
+   "shortcut_constant_within_every_family": false,
+   "solver_accuracy": 0.9583333333333334,
+   "solver_ci95_clopper_pearson": [
+    0.7887983165430269,
+    0.9989456475545303
+   ],
+   "solver_ci95_wilson": [
+    0.7975819352134406,
+    0.9926065438344941
+   ],
+   "solver_constant_within_every_family": false,
+   "table_abcd": [
+    12,
+    11,
+    0,
+    1
+   ]
+  },
+  "precondition_conjunction|L2": {
+   "best_shortcut_feature": "always_first_option",
+   "best_shortcut_inverted": false,
+   "ci95_bootstrap_cluster_family": [
+    0.5,
+    0.5
+   ],
+   "ci95_bootstrap_item": [
+    0.2916666666666667,
+    0.7083333333333334
+   ],
+   "ci95_newcombe_paired_score": [
+    0.2686312807978203,
+    0.6857257418042664
+   ],
+   "design_effect": 0.0,
+   "discordant_pairs": 12,
+   "effective_n": NaN,
+   "family_level_differences": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "icc_of_difference_within_family": -1.0,
+   "level": 2,
+   "margin": 0.5,
+   "mcnemar_exact_p_two_sided_H0_margin_0": 0.00048828125,
+   "mechanism": "precondition_conjunction",
+   "n_families": 12,
+   "n_items": 24,
+   "phi_correlation_solver_vs_shortcut": 0.0,
+   "posterior": {
+    "bayesian_bootstrap_over_families": {
+     "P_margin_gt_0": 1.0,
+     "P_margin_gt_0.10": 1.0,
+     "ci95": [
+      0.4999999999999999,
+      0.5000000000000001
+     ],
+     "posterior_mean": 0.5
+    },
+    "haldane_Dir0.001": {
+     "P_margin_gt_0": 1.0,
+     "P_margin_gt_0.10": 1.0,
+     "ci95": [
+      0.30475531054217125,
+      0.6949664319473946
+     ],
+     "posterior_mean": 0.4998535428680194
+    },
+    "jeffreys_Dir0.5": {
+     "P_margin_gt_0": 0.999975,
+     "P_margin_gt_0.10": 0.999545,
+     "ci95": [
+      0.2574272183212545,
+      0.658908037937133
+     ],
+     "posterior_mean": 0.4615652300692875
+    },
+    "uniform_Dir1": {
+     "P_margin_gt_0": 0.999835,
+     "P_margin_gt_0.10": 0.998385,
+     "ci95": [
+      0.21891402488939565,
+      0.6272084728158631
+     ],
+     "posterior_mean": 0.4283471301597562
+    }
+   },
+   "se_cluster_robust": 0.0,
+   "se_difference_if_independent": 0.10206207261596575,
+   "se_difference_paired_mcnemar": 0.10206207261596574,
+   "se_single_arm_PREREG_FORMULA": 0.0,
+   "shortcut_accuracy": 0.5,
+   "shortcut_ci95_clopper_pearson": [
+    0.291241779836212,
+    0.708758220163788
+   ],
+   "shortcut_ci95_wilson": [
+    0.31427425819573357,
+    0.6857257418042665
+   ],
+   "shortcut_constant_within_every_family": false,
+   "solver_accuracy": 1.0,
+   "solver_ci95_clopper_pearson": [
+    0.8575264022774743,
+    1.0
+   ],
+   "solver_ci95_wilson": [
+    0.8620237953250198,
+    1.0
+   ],
+   "solver_constant_within_every_family": true,
+   "table_abcd": [
+    12,
+    12,
+    0,
+    0
+   ]
+  },
+  "precondition_conjunction|L3": {
+   "best_shortcut_feature": "always_first_option",
+   "best_shortcut_inverted": false,
+   "ci95_bootstrap_cluster_family": [
+    0.5,
+    0.5
+   ],
+   "ci95_bootstrap_item": [
+    0.2916666666666667,
+    0.7083333333333334
+   ],
+   "ci95_newcombe_paired_score": [
+    0.2686312807978203,
+    0.6857257418042664
+   ],
+   "design_effect": 0.0,
+   "discordant_pairs": 12,
+   "effective_n": NaN,
+   "family_level_differences": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "icc_of_difference_within_family": -1.0,
+   "level": 3,
+   "margin": 0.5,
+   "mcnemar_exact_p_two_sided_H0_margin_0": 0.00048828125,
+   "mechanism": "precondition_conjunction",
+   "n_families": 12,
+   "n_items": 24,
+   "phi_correlation_solver_vs_shortcut": 0.0,
+   "posterior": {
+    "bayesian_bootstrap_over_families": {
+     "P_margin_gt_0": 1.0,
+     "P_margin_gt_0.10": 1.0,
+     "ci95": [
+      0.4999999999999999,
+      0.5000000000000001
+     ],
+     "posterior_mean": 0.5
+    },
+    "haldane_Dir0.001": {
+     "P_margin_gt_0": 1.0,
+     "P_margin_gt_0.10": 1.0,
+     "ci95": [
+      0.30591948032790356,
+      0.6947418590975875
+     ],
+     "posterior_mean": 0.5005197105766834
+    },
+    "jeffreys_Dir0.5": {
+     "P_margin_gt_0": 0.99996,
+     "P_margin_gt_0.10": 0.99951,
+     "ci95": [
+      0.25780859171152404,
+      0.659080613013247
+     ],
+     "posterior_mean": 0.46157438414258317
+    },
+    "uniform_Dir1": {
+     "P_margin_gt_0": 0.999895,
+     "P_margin_gt_0.10": 0.99849,
+     "ci95": [
+      0.22041435794857556,
+      0.6288107345422871
+     ],
+     "posterior_mean": 0.42864894754059896
+    }
+   },
+   "se_cluster_robust": 0.0,
+   "se_difference_if_independent": 0.10206207261596575,
+   "se_difference_paired_mcnemar": 0.10206207261596574,
+   "se_single_arm_PREREG_FORMULA": 0.0,
+   "shortcut_accuracy": 0.5,
+   "shortcut_ci95_clopper_pearson": [
+    0.291241779836212,
+    0.708758220163788
+   ],
+   "shortcut_ci95_wilson": [
+    0.31427425819573357,
+    0.6857257418042665
+   ],
+   "shortcut_constant_within_every_family": false,
+   "solver_accuracy": 1.0,
+   "solver_ci95_clopper_pearson": [
+    0.8575264022774743,
+    1.0
+   ],
+   "solver_ci95_wilson": [
+    0.8620237953250198,
+    1.0
+   ],
+   "solver_constant_within_every_family": true,
+   "table_abcd": [
+    12,
+    12,
+    0,
+    0
+   ]
+  },
+  "transitive_dependency|L0": {
+   "best_shortcut_feature": "first_mentioned_in_state",
+   "best_shortcut_inverted": false,
+   "ci95_bootstrap_cluster_family": [
+    -0.125,
+    0.0
+   ],
+   "ci95_bootstrap_item": [
+    -0.125,
+    0.0
+   ],
+   "ci95_newcombe_paired_score": [
+    -0.20241806478655944,
+    0.1005025494617516
+   ],
+   "design_effect": 1.043478260869565,
+   "discordant_pairs": 1,
+   "effective_n": 23.000000000000007,
+   "family_level_differences": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    -1
+   ],
+   "icc_of_difference_within_family": 0.0,
+   "level": 0,
+   "margin": -0.041666666666666664,
+   "mcnemar_exact_p_two_sided_H0_margin_0": 1.0,
+   "mechanism": "transitive_dependency",
+   "n_families": 12,
+   "n_items": 24,
+   "phi_correlation_solver_vs_shortcut": 0.0,
+   "posterior": {
+    "bayesian_bootstrap_over_families": {
+     "P_margin_gt_0": 0.0,
+     "P_margin_gt_0.10": 0.0,
+     "ci95": [
+      -0.14308431755940973,
+      -0.0011568807584586257
+     ],
+     "posterior_mean": -0.04162984762311193
+    },
+    "haldane_Dir0.001": {
+     "P_margin_gt_0": 0.000725,
+     "P_margin_gt_0.10": 1.5e-05,
+     "ci95": [
+      -0.14885724209016424,
+      -0.001103722433466606
+     ],
+     "posterior_mean": -0.041841797099942575
+    },
+    "jeffreys_Dir0.5": {
+     "P_margin_gt_0": 0.182155,
+     "P_margin_gt_0.10": 0.00651,
+     "ci95": [
+      -0.16024717075127973,
+      0.05821536683370696
+     ],
+     "posterior_mean": -0.03848893302456749
+    },
+    "uniform_Dir1": {
+     "P_margin_gt_0": 0.25038,
+     "P_margin_gt_0.10": 0.014595,
+     "ci95": [
+      -0.16672160910139636,
+      0.08157570548702495
+     ],
+     "posterior_mean": -0.03561587916761758
+    }
+   },
+   "se_cluster_robust": 0.041666666666666664,
+   "se_difference_if_independent": 0.04078937543219002,
+   "se_difference_paired_mcnemar": 0.040789375432190036,
+   "se_single_arm_PREREG_FORMULA": 0.04078937543219002,
+   "shortcut_accuracy": 1.0,
+   "shortcut_ci95_clopper_pearson": [
+    0.8575264022774743,
+    1.0
+   ],
+   "shortcut_ci95_wilson": [
+    0.8620237953250198,
+    1.0
+   ],
+   "shortcut_constant_within_every_family": true,
+   "solver_accuracy": 0.9583333333333334,
+   "solver_ci95_clopper_pearson": [
+    0.7887983165430269,
+    0.9989456475545303
+   ],
+   "solver_ci95_wilson": [
+    0.7975819352134406,
+    0.9926065438344941
+   ],
+   "solver_constant_within_every_family": false,
+   "table_abcd": [
+    23,
+    0,
+    1,
+    0
+   ]
+  },
+  "transitive_dependency|L1": {
+   "best_shortcut_feature": "more_frequent_in_state",
+   "best_shortcut_inverted": false,
+   "ci95_bootstrap_cluster_family": [
+    0.041666666666666664,
+    0.2916666666666667
+   ],
+   "ci95_bootstrap_item": [
+    0.041666666666666664,
+    0.3333333333333333
+   ],
+   "ci95_newcombe_paired_score": [
+    -0.0036666188525691645,
+    0.3585307064969906
+   ],
+   "design_effect": 0.8727272727272728,
+   "discordant_pairs": 4,
+   "effective_n": 27.499999999999996,
+   "family_level_differences": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0
+   ],
+   "icc_of_difference_within_family": -0.15789473684210512,
+   "level": 1,
+   "margin": 0.16666666666666666,
+   "mcnemar_exact_p_two_sided_H0_margin_0": 0.125,
+   "mechanism": "transitive_dependency",
+   "n_families": 12,
+   "n_items": 24,
+   "phi_correlation_solver_vs_shortcut": 0.0,
+   "posterior": {
+    "bayesian_bootstrap_over_families": {
+     "P_margin_gt_0": 1.0,
+     "P_margin_gt_0.10": 0.839505,
+     "ci95": [
+      0.0546691598426359,
+      0.3048395745694999
+     ],
+     "posterior_mean": 0.16671232849411521
+    },
+    "haldane_Dir0.001": {
+     "P_margin_gt_0": 0.99996,
+     "P_margin_gt_0.10": 0.807275,
+     "ci95": [
+      0.04951051914298798,
+      0.335733747174149
+     ],
+     "posterior_mean": 0.16663529340459413
+    },
+    "jeffreys_Dir0.5": {
+     "P_margin_gt_0": 0.98509,
+     "P_margin_gt_0.10": 0.745735,
+     "ci95": [
+      0.0164969597702619,
+      0.32511226035252494
+     ],
+     "posterior_mean": 0.1542268459488354
+    },
+    "uniform_Dir1": {
+     "P_margin_gt_0": 0.969,
+     "P_margin_gt_0.10": 0.692605,
+     "ci95": [
+      -0.007988520024716566,
+      0.31569953030954695
+     ],
+     "posterior_mean": 0.14303077107291148
+    }
+   },
+   "se_cluster_robust": 0.07106690545187015,
+   "se_difference_if_independent": 0.07607257743127306,
+   "se_difference_paired_mcnemar": 0.07607257743127308,
+   "se_single_arm_PREREG_FORMULA": 0.0,
+   "shortcut_accuracy": 0.8333333333333334,
+   "shortcut_ci95_clopper_pearson": [
+    0.6261582865113173,
+    0.9526463733927428
+   ],
+   "shortcut_ci95_wilson": [
+    0.6414692935030094,
+    0.9332132367136705
+   ],
+   "shortcut_constant_within_every_family": false,
+   "solver_accuracy": 1.0,
+   "solver_ci95_clopper_pearson": [
+    0.8575264022774743,
+    1.0
+   ],
+   "solver_ci95_wilson": [
+    0.8620237953250198,
+    1.0
+   ],
+   "solver_constant_within_every_family": true,
+   "table_abcd": [
+    20,
+    4,
+    0,
+    0
+   ]
+  },
+  "transitive_dependency|L2": {
+   "best_shortcut_feature": "more_frequent_in_state",
+   "best_shortcut_inverted": false,
+   "ci95_bootstrap_cluster_family": [
+    0.125,
+    0.5
+   ],
+   "ci95_bootstrap_item": [
+    0.125,
+    0.5416666666666666
+   ],
+   "ci95_newcombe_paired_score": [
+    0.08629507283650245,
+    0.5395618844681869
+   ],
+   "design_effect": 0.6942148760330576,
+   "discordant_pairs": 10,
+   "effective_n": 34.571428571428584,
+   "family_level_differences": [
+    1,
+    1,
+    -1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    1,
+    1
+   ],
+   "icc_of_difference_within_family": -0.32530120481927716,
+   "level": 2,
+   "margin": 0.3333333333333333,
+   "mcnemar_exact_p_two_sided_H0_margin_0": 0.021484375,
+   "mechanism": "transitive_dependency",
+   "n_families": 12,
+   "n_items": 24,
+   "phi_correlation_solver_vs_shortcut": -0.16151457061744964,
+   "posterior": {
+    "bayesian_bootstrap_over_families": {
+     "P_margin_gt_0": 0.99812,
+     "P_margin_gt_0.10": 0.985845,
+     "ci95": [
+      0.13136498079664521,
+      0.46178185079428535
+     ],
+     "posterior_mean": 0.3335328204129824
+    },
+    "haldane_Dir0.001": {
+     "P_margin_gt_0": 0.998235,
+     "P_margin_gt_0.10": 0.982605,
+     "ci95": [
+      0.11709241978111279,
+      0.5503882091503105
+     ],
+     "posterior_mean": 0.33362557940034776
+    },
+    "jeffreys_Dir0.5": {
+     "P_margin_gt_0": 0.996155,
+     "P_margin_gt_0.10": 0.96857,
+     "ci95": [
+      0.08806467432082511,
+      0.523080547439456
+     ],
+     "posterior_mean": 0.3075665139571869
+    },
+    "uniform_Dir1": {
+     "P_margin_gt_0": 0.99427,
+     "P_margin_gt_0.10": 0.95494,
+     "ci95": [
+      0.06899156009776844,
+      0.49804207401254214
+     ],
+     "posterior_mean": 0.2859706888116621
+    }
+   },
+   "se_cluster_robust": 0.09401267913629437,
+   "se_difference_if_independent": 0.10690836332181008,
+   "se_difference_paired_mcnemar": 0.11283386673105501,
+   "se_single_arm_PREREG_FORMULA": 0.04078937543219002,
+   "shortcut_accuracy": 0.625,
+   "shortcut_ci95_clopper_pearson": [
+    0.405936384007944,
+    0.8120070718039977
+   ],
+   "shortcut_ci95_wilson": [
+    0.4270996244267427,
+    0.7884063244045122
+   ],
+   "shortcut_constant_within_every_family": false,
+   "solver_accuracy": 0.9583333333333334,
+   "solver_ci95_clopper_pearson": [
+    0.7887983165430269,
+    0.9989456475545303
+   ],
+   "solver_ci95_wilson": [
+    0.7975819352134406,
+    0.9926065438344941
+   ],
+   "solver_constant_within_every_family": false,
+   "table_abcd": [
+    14,
+    9,
+    1,
+    0
+   ]
+  },
+  "transitive_dependency|L3": {
+   "best_shortcut_feature": "first_mentioned_in_state",
+   "best_shortcut_inverted": true,
+   "ci95_bootstrap_cluster_family": [
+    -0.08333333333333333,
+    0.2916666666666667
+   ],
+   "ci95_bootstrap_item": [
+    -0.08333333333333333,
+    0.25
+   ],
+   "ci95_newcombe_paired_score": [
+    -0.07715802848066244,
+    0.24132516263443418
+   ],
+   "design_effect": 1.6126482213438738,
+   "discordant_pairs": 4,
+   "effective_n": 14.88235294117647,
+   "family_level_differences": [
+    2,
+    0,
+    0,
+    1,
+    0,
+    -1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "icc_of_difference_within_family": 0.5111111111111112,
+   "level": 3,
+   "margin": 0.08333333333333333,
+   "mcnemar_exact_p_two_sided_H0_margin_0": 0.625,
+   "mechanism": "transitive_dependency",
+   "n_families": 12,
+   "n_items": 24,
+   "phi_correlation_solver_vs_shortcut": 0.6123724356957945,
+   "posterior": {
+    "bayesian_bootstrap_over_families": {
+     "P_margin_gt_0": 0.83182,
+     "P_margin_gt_0.10": 0.374275,
+     "ci95": [
+      -0.08014502039053312,
+      0.3015155827929605
+     ],
+     "posterior_mean": 0.08296464190944987
+    },
+    "haldane_Dir0.001": {
+     "P_margin_gt_0": 0.8747,
+     "P_margin_gt_0.10": 0.384445,
+     "ci95": [
+      -0.06806321873767329,
+      0.25423805460079196
+     ],
+     "posterior_mean": 0.08313488523689858
+    },
+    "jeffreys_Dir0.5": {
+     "P_margin_gt_0": 0.83999,
+     "P_margin_gt_0.10": 0.367265,
+     "ci95": [
+      -0.0831476422657734,
+      0.25050861525975465
+     ],
+     "posterior_mean": 0.07697587625323488
+    },
+    "uniform_Dir1": {
+     "P_margin_gt_0": 0.812475,
+     "P_margin_gt_0.10": 0.35187,
+     "ci95": [
+      -0.09442663511865748,
+      0.24559841419969347
+     ],
+     "posterior_mean": 0.07144603640291534
+    }
+   },
+   "se_cluster_robust": 0.10359692675134352,
+   "se_difference_if_independent": 0.13065894251546376,
+   "se_difference_paired_mcnemar": 0.08157875086438007,
+   "se_single_arm_PREREG_FORMULA": 0.08838834764831845,
+   "shortcut_accuracy": 0.6666666666666666,
+   "shortcut_ci95_clopper_pearson": [
+    0.44678038434035194,
+    0.8436977142908647
+   ],
+   "shortcut_ci95_wilson": [
+    0.4670631683813174,
+    0.8202780967270225
+   ],
+   "shortcut_constant_within_every_family": true,
+   "solver_accuracy": 0.75,
+   "solver_ci95_clopper_pearson": [
+    0.5328871975773306,
+    0.902269590525467
+   ],
+   "solver_ci95_wilson": [
+    0.55100555994846,
+    0.8800063377140499
+   ],
+   "solver_constant_within_every_family": false,
+   "table_abcd": [
+    15,
+    3,
+    1,
+    5
+   ]
+  }
+ }
+}

@@ -1,0 +1,82 @@
+{
+  "counters": {
+    "statements": 1800,
+    "statements_with_unresolved_identifiers": 341,
+    "items_with_at_least_one_incomplete_statement": 178,
+    "items": 300
+  },
+  "free_identifier_histogram": {
+    "0": 1459,
+    "1": 262,
+    "2": 66,
+    "3": 10,
+    "4": 2,
+    "5": 1
+  },
+  "rate_statements_incomplete": 0.18944444444444444,
+  "rate_items_affected": 0.5933333333333334,
+  "method": "identifier is 'free' when it is neither bound by the header's own binder groups nor equal to any mathlib declaration name or name component; such identifiers come from ambient `variable`/`section` declarations that corpus.jsonl does not record",
+  "caveat": "conservative: any identifier that coincides with a mathlib name component is counted as resolved, so the true incompleteness rate is HIGHER than reported",
+  "examples": [
+    {
+      "name": "Ordinal.mem_closure_iff_sup",
+      "free": [
+        "_",
+        "i"
+      ],
+      "header": "theorem mem_closure_iff_sup :\n    a ∈ closure s ↔\n      ∃ (ι : Type u) (_ : Nonempty ι) (f : ι → Ordinal), (∀ i, f i ∈ s) ∧ sup.{u, u} f = a"
+    },
+    {
+      "name": "Ordinal.mem_closed_iff_sup",
+      "free": [
+        "_h",
+        "i"
+      ],
+      "header": "theorem mem_closed_iff_sup (hs : IsClosed s) :\n    a ∈ s ↔ ∃ (ι : Type u) (_hι : Nonempty ι) (f : ι → Ordinal),\n      (∀ i, f i ∈ s) ∧ sup.{u, u} f = a"
+    },
+    {
+      "name": "Int.cast_le",
+      "free": [
+        "m",
+        "n"
+      ],
+      "header": "@[simp, norm_cast] lemma cast_le : (m : R) ≤ n ↔ m ≤ n "
+    },
+    {
+      "name": "Subtype.val_injective",
+      "free": [
+        "_"
+      ],
+      "header": "theorem val_injective : Injective (@val _ p)"
+    },
+    {
+      "name": "Quotient.induction_on_pi",
+      "free": [
+        "i"
+      ],
+      "header": "@[elab_as_elim]\ntheorem Quotient.induction_on_pi {ι : Type*} {α : ι → Sort*} [s : ∀ i, Setoid (α i)]\n    {p : (∀ i, Quotient (s i)) → Prop} (f : ∀ i, Quotient (s i))\n    (h : ∀ a :"
+    },
+    {
+      "name": "Polynomial.coeff_eq_zero_of_degree_lt",
+      "free": [
+        "n"
+      ],
+      "header": "theorem coeff_eq_zero_of_degree_lt (h : degree p < n) : coeff p n = 0"
+    },
+    {
+      "name": "Polynomial.coeff_add_eq_left_of_lt",
+      "free": [
+        "n"
+      ],
+      "header": "theorem coeff_add_eq_left_of_lt (qn : q.natDegree < n) : (p + q).coeff n = p.coeff n"
+    },
+    {
+      "name": "pow_dvd_pow_iff",
+      "free": [
+        "m",
+        "n"
+      ],
+      "header": "lemma pow_dvd_pow_iff (ha₀ : a ≠ 0) (ha : ¬IsUnit a) : a ^ n ∣ a ^ m ↔ n ≤ m "
+    }
+  ]
+}

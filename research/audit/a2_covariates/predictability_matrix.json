@@ -1,0 +1,5576 @@
+{
+  "matrix": {
+    "first_mentioned_in_state*": {
+      "field": "state_first",
+      "direction": "min",
+      "family": "string_position",
+      "formal_expression_depth|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L1": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L2": {
+        "n": 24,
+        "acc": 0.8333,
+        "best": 0.8333,
+        "tie_rate": 0.0,
+        "p": 0.001544,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L3": {
+        "n": 24,
+        "acc": 0.9167,
+        "best": 0.9167,
+        "tie_rate": 0.0,
+        "p": 3.6e-05,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|ALL": {
+        "n": 96,
+        "acc": 0.8125,
+        "best": 0.8125,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 0.75
+      },
+      "precondition_conjunction|L0": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "precondition_conjunction|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|ALL": {
+        "n": 96,
+        "acc": 0.625,
+        "best": 0.625,
+        "tie_rate": 0.0,
+        "p": 0.018433,
+        "cf_blindness": 0.25
+      },
+      "transitive_dependency|L0": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L2": {
+        "n": 24,
+        "acc": 0.5833,
+        "best": 0.5833,
+        "tie_rate": 0.0,
+        "p": 0.541256,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L3": {
+        "n": 24,
+        "acc": 0.3333,
+        "best": 0.6667,
+        "tie_rate": 0.0,
+        "p": 0.15159,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|ALL": {
+        "n": 96,
+        "acc": 0.6042,
+        "best": 0.6042,
+        "tie_rate": 0.0,
+        "p": 0.051911,
+        "cf_blindness": 1.0
+      }
+    },
+    "last_mentioned_in_state*": {
+      "field": "state_last",
+      "direction": "max",
+      "family": "string_position",
+      "formal_expression_depth|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      }
+    },
+    "more_frequent_in_state*": {
+      "field": "state_count",
+      "direction": "max",
+      "family": "frequency",
+      "formal_expression_depth|L0": {
+        "n": 24,
+        "acc": 0.6667,
+        "best": 0.6667,
+        "tie_rate": 0.3333,
+        "p": 0.076813,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L1": {
+        "n": 24,
+        "acc": 0.875,
+        "best": 0.875,
+        "tie_rate": 0.25,
+        "p": 8e-06,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L2": {
+        "n": 24,
+        "acc": 0.6667,
+        "best": 0.6667,
+        "tie_rate": 0.3333,
+        "p": 0.076813,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L3": {
+        "n": 24,
+        "acc": 0.875,
+        "best": 0.875,
+        "tie_rate": 0.25,
+        "p": 8e-06,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|ALL": {
+        "n": 96,
+        "acc": 0.7708,
+        "best": 0.7708,
+        "tie_rate": 0.2917,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "precondition_conjunction|L0": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "precondition_conjunction|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|ALL": {
+        "n": 96,
+        "acc": 0.625,
+        "best": 0.625,
+        "tie_rate": 0.75,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L0": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L1": {
+        "n": 24,
+        "acc": 0.8333,
+        "best": 0.8333,
+        "tie_rate": 0.3333,
+        "p": 3.1e-05,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L2": {
+        "n": 24,
+        "acc": 0.625,
+        "best": 0.625,
+        "tie_rate": 0.75,
+        "p": 0.03125,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L3": {
+        "n": 24,
+        "acc": 0.5417,
+        "best": 0.5417,
+        "tie_rate": 0.9167,
+        "p": 0.5,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|ALL": {
+        "n": 96,
+        "acc": 0.75,
+        "best": 0.75,
+        "tie_rate": 0.5,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      }
+    },
+    "shorter_option_text*": {
+      "field": "name_chars",
+      "direction": "min",
+      "family": "naming",
+      "formal_expression_depth|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.6667,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.9167,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.8958,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      }
+    },
+    "alphabetically_first*": {
+      "field": "name",
+      "direction": "min",
+      "family": "naming",
+      "formal_expression_depth|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      }
+    },
+    "first_mentioned_in_view": {
+      "field": "view_first",
+      "direction": "min",
+      "family": "string_position",
+      "formal_expression_depth|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      }
+    },
+    "last_mentioned_in_view": {
+      "field": "view_last",
+      "direction": "max",
+      "family": "string_position",
+      "formal_expression_depth|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L1": {
+        "n": 24,
+        "acc": 0.1667,
+        "best": 0.8333,
+        "tie_rate": 0.0,
+        "p": 0.001544,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L2": {
+        "n": 24,
+        "acc": 0.0833,
+        "best": 0.9167,
+        "tie_rate": 0.0,
+        "p": 3.6e-05,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L3": {
+        "n": 24,
+        "acc": 0.1667,
+        "best": 0.8333,
+        "tie_rate": 0.0,
+        "p": 0.001544,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|ALL": {
+        "n": 96,
+        "acc": 0.2292,
+        "best": 0.7708,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 0.75
+      },
+      "precondition_conjunction|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L0": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L1": {
+        "n": 24,
+        "acc": 0.5833,
+        "best": 0.5833,
+        "tie_rate": 0.0,
+        "p": 0.541256,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L2": {
+        "n": 24,
+        "acc": 0.5833,
+        "best": 0.5833,
+        "tie_rate": 0.0,
+        "p": 0.541256,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L3": {
+        "n": 24,
+        "acc": 0.5833,
+        "best": 0.5833,
+        "tie_rate": 0.0,
+        "p": 0.541256,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|ALL": {
+        "n": 96,
+        "acc": 0.6875,
+        "best": 0.6875,
+        "tie_rate": 0.0,
+        "p": 0.000306,
+        "cf_blindness": 1.0
+      }
+    },
+    "nearest_to_view_end": {
+      "field": "view_last_from_end",
+      "direction": "min",
+      "family": "string_position",
+      "formal_expression_depth|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L1": {
+        "n": 24,
+        "acc": 0.1667,
+        "best": 0.8333,
+        "tie_rate": 0.0,
+        "p": 0.001544,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L2": {
+        "n": 24,
+        "acc": 0.0833,
+        "best": 0.9167,
+        "tie_rate": 0.0,
+        "p": 3.6e-05,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L3": {
+        "n": 24,
+        "acc": 0.1667,
+        "best": 0.8333,
+        "tie_rate": 0.0,
+        "p": 0.001544,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|ALL": {
+        "n": 96,
+        "acc": 0.2292,
+        "best": 0.7708,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 0.75
+      },
+      "precondition_conjunction|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L0": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L1": {
+        "n": 24,
+        "acc": 0.5833,
+        "best": 0.5833,
+        "tie_rate": 0.0,
+        "p": 0.541256,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L2": {
+        "n": 24,
+        "acc": 0.5833,
+        "best": 0.5833,
+        "tie_rate": 0.0,
+        "p": 0.541256,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L3": {
+        "n": 24,
+        "acc": 0.5833,
+        "best": 0.5833,
+        "tie_rate": 0.0,
+        "p": 0.541256,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|ALL": {
+        "n": 96,
+        "acc": 0.6875,
+        "best": 0.6875,
+        "tie_rate": 0.0,
+        "p": 0.000306,
+        "cf_blindness": 1.0
+      }
+    },
+    "more_frequent_in_view": {
+      "field": "view_count",
+      "direction": "max",
+      "family": "frequency",
+      "formal_expression_depth|L0": {
+        "n": 24,
+        "acc": 0.6667,
+        "best": 0.6667,
+        "tie_rate": 0.3333,
+        "p": 0.076813,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L1": {
+        "n": 24,
+        "acc": 0.875,
+        "best": 0.875,
+        "tie_rate": 0.25,
+        "p": 8e-06,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L2": {
+        "n": 24,
+        "acc": 0.6667,
+        "best": 0.6667,
+        "tie_rate": 0.3333,
+        "p": 0.076813,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L3": {
+        "n": 24,
+        "acc": 0.875,
+        "best": 0.875,
+        "tie_rate": 0.25,
+        "p": 8e-06,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|ALL": {
+        "n": 96,
+        "acc": 0.7708,
+        "best": 0.7708,
+        "tie_rate": 0.2917,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "precondition_conjunction|L0": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "precondition_conjunction|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|ALL": {
+        "n": 96,
+        "acc": 0.625,
+        "best": 0.625,
+        "tie_rate": 0.75,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L0": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L1": {
+        "n": 24,
+        "acc": 0.8333,
+        "best": 0.8333,
+        "tie_rate": 0.3333,
+        "p": 3.1e-05,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L2": {
+        "n": 24,
+        "acc": 0.625,
+        "best": 0.625,
+        "tie_rate": 0.75,
+        "p": 0.03125,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L3": {
+        "n": 24,
+        "acc": 0.5417,
+        "best": 0.5417,
+        "tie_rate": 0.9167,
+        "p": 0.5,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|ALL": {
+        "n": 96,
+        "acc": 0.75,
+        "best": 0.75,
+        "tie_rate": 0.5,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      }
+    },
+    "first_mentioned_in_prompt": {
+      "field": "prompt_first",
+      "direction": "min",
+      "family": "string_position",
+      "formal_expression_depth|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      }
+    },
+    "more_frequent_in_prompt": {
+      "field": "prompt_count",
+      "direction": "max",
+      "family": "frequency",
+      "formal_expression_depth|L0": {
+        "n": 24,
+        "acc": 0.6667,
+        "best": 0.6667,
+        "tie_rate": 0.3333,
+        "p": 0.076813,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L1": {
+        "n": 24,
+        "acc": 0.875,
+        "best": 0.875,
+        "tie_rate": 0.25,
+        "p": 8e-06,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L2": {
+        "n": 24,
+        "acc": 0.6667,
+        "best": 0.6667,
+        "tie_rate": 0.3333,
+        "p": 0.076813,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L3": {
+        "n": 24,
+        "acc": 0.875,
+        "best": 0.875,
+        "tie_rate": 0.25,
+        "p": 8e-06,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|ALL": {
+        "n": 96,
+        "acc": 0.7708,
+        "best": 0.7708,
+        "tie_rate": 0.2917,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "precondition_conjunction|L0": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "precondition_conjunction|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|ALL": {
+        "n": 96,
+        "acc": 0.625,
+        "best": 0.625,
+        "tie_rate": 0.75,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L0": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L1": {
+        "n": 24,
+        "acc": 0.8333,
+        "best": 0.8333,
+        "tie_rate": 0.3333,
+        "p": 3.1e-05,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L2": {
+        "n": 24,
+        "acc": 0.625,
+        "best": 0.625,
+        "tie_rate": 0.75,
+        "p": 0.03125,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L3": {
+        "n": 24,
+        "acc": 0.5417,
+        "best": 0.5417,
+        "tie_rate": 0.9167,
+        "p": 0.5,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|ALL": {
+        "n": 96,
+        "acc": 0.75,
+        "best": 0.75,
+        "tie_rate": 0.5,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      }
+    },
+    "view_deepest_bracket_nesting": {
+      "field": "view_max_brace_depth",
+      "direction": "max",
+      "family": "rendered_string_depth",
+      "formal_expression_depth|L0": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L1": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L2": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L3": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|ALL": {
+        "n": 96,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "precondition_conjunction|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L0": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|ALL": {
+        "n": 96,
+        "acc": 0.625,
+        "best": 0.625,
+        "tie_rate": 0.75,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      }
+    },
+    "view_greater_mean_bracket_nesting": {
+      "field": "view_mean_brace_depth",
+      "direction": "max",
+      "family": "rendered_string_depth",
+      "formal_expression_depth|L0": {
+        "n": 24,
+        "acc": 0.9167,
+        "best": 0.9167,
+        "tie_rate": 0.0,
+        "p": 3.6e-05,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L1": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L2": {
+        "n": 24,
+        "acc": 0.9167,
+        "best": 0.9167,
+        "tie_rate": 0.0,
+        "p": 3.6e-05,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L3": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|ALL": {
+        "n": 96,
+        "acc": 0.9583,
+        "best": 0.9583,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "precondition_conjunction|L0": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "precondition_conjunction|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|ALL": {
+        "n": 96,
+        "acc": 0.625,
+        "best": 0.625,
+        "tie_rate": 0.75,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L0": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|ALL": {
+        "n": 96,
+        "acc": 0.625,
+        "best": 0.625,
+        "tie_rate": 0.75,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      }
+    },
+    "view_greater_min_bracket_nesting": {
+      "field": "view_min_brace_depth",
+      "direction": "max",
+      "family": "rendered_string_depth",
+      "formal_expression_depth|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      }
+    },
+    "view_more_open_braces_before_first": {
+      "field": "view_open_braces_before_first",
+      "direction": "max",
+      "family": "delimiter_count",
+      "formal_expression_depth|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      }
+    },
+    "view_fewer_open_braces_before_first": {
+      "field": "view_open_braces_before_first",
+      "direction": "min",
+      "family": "delimiter_count",
+      "formal_expression_depth|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      }
+    },
+    "larger_numeric_suffix": {
+      "field": "name_trailing_int",
+      "direction": "max",
+      "family": "naming",
+      "formal_expression_depth|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.25,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.3333,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0833,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.1667,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.2083,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.25,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.3333,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0833,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.1667,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      }
+    },
+    "smaller_numeric_suffix": {
+      "field": "name_trailing_int",
+      "direction": "min",
+      "family": "naming",
+      "formal_expression_depth|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.25,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.3333,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0833,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.1667,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.2083,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.25,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.3333,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0833,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.1667,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      }
+    },
+    "ast_greatest_depth[TRUTH:fed]": {
+      "field": "ast_max_depth",
+      "direction": "max",
+      "family": "structural",
+      "formal_expression_depth|L0": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L1": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L2": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L3": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|ALL": {
+        "n": 96,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "precondition_conjunction|L0": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L1": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L2": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L3": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|ALL": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L0": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L1": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L2": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L3": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|ALL": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      }
+    },
+    "ast_earliest_preorder": {
+      "field": "ast_first_preorder",
+      "direction": "min",
+      "family": "traversal_order",
+      "formal_expression_depth|L0": {
+        "n": 24,
+        "acc": 0.8333,
+        "best": 0.8333,
+        "tie_rate": 0.0,
+        "p": 0.001544,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L1": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L2": {
+        "n": 24,
+        "acc": 0.8333,
+        "best": 0.8333,
+        "tie_rate": 0.0,
+        "p": 0.001544,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L3": {
+        "n": 24,
+        "acc": 0.9167,
+        "best": 0.9167,
+        "tie_rate": 0.0,
+        "p": 3.6e-05,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|ALL": {
+        "n": 96,
+        "acc": 0.8958,
+        "best": 0.8958,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "precondition_conjunction|L0": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L1": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L2": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L3": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|ALL": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L0": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L1": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L2": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L3": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|ALL": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      }
+    },
+    "ast_latest_preorder": {
+      "field": "ast_last_preorder",
+      "direction": "max",
+      "family": "traversal_order",
+      "formal_expression_depth|L0": {
+        "n": 24,
+        "acc": 0.0833,
+        "best": 0.9167,
+        "tie_rate": 0.0,
+        "p": 3.6e-05,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L1": {
+        "n": 24,
+        "acc": 0.1667,
+        "best": 0.8333,
+        "tie_rate": 0.0,
+        "p": 0.001544,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L2": {
+        "n": 24,
+        "acc": 0.0833,
+        "best": 0.9167,
+        "tie_rate": 0.0,
+        "p": 3.6e-05,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L3": {
+        "n": 24,
+        "acc": 0.1667,
+        "best": 0.8333,
+        "tie_rate": 0.0,
+        "p": 0.001544,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|ALL": {
+        "n": 96,
+        "acc": 0.125,
+        "best": 0.875,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "precondition_conjunction|L0": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L1": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L2": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L3": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|ALL": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L0": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L1": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L2": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L3": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|ALL": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      }
+    },
+    "ast_more_occurrences": {
+      "field": "ast_count",
+      "direction": "max",
+      "family": "frequency",
+      "formal_expression_depth|L0": {
+        "n": 24,
+        "acc": 0.6667,
+        "best": 0.6667,
+        "tie_rate": 0.3333,
+        "p": 0.076813,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L1": {
+        "n": 24,
+        "acc": 0.875,
+        "best": 0.875,
+        "tie_rate": 0.25,
+        "p": 8e-06,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L2": {
+        "n": 24,
+        "acc": 0.6667,
+        "best": 0.6667,
+        "tie_rate": 0.3333,
+        "p": 0.076813,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L3": {
+        "n": 24,
+        "acc": 0.875,
+        "best": 0.875,
+        "tie_rate": 0.25,
+        "p": 8e-06,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|ALL": {
+        "n": 96,
+        "acc": 0.7708,
+        "best": 0.7708,
+        "tie_rate": 0.2917,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "precondition_conjunction|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      }
+    },
+    "ast_greater_mean_depth": {
+      "field": "ast_mean_depth",
+      "direction": "max",
+      "family": "structural",
+      "formal_expression_depth|L0": {
+        "n": 24,
+        "acc": 0.7917,
+        "best": 0.7917,
+        "tie_rate": 0.0833,
+        "p": 0.004344,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L1": {
+        "n": 24,
+        "acc": 0.9583,
+        "best": 0.9583,
+        "tie_rate": 0.0833,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L2": {
+        "n": 24,
+        "acc": 0.7917,
+        "best": 0.7917,
+        "tie_rate": 0.0833,
+        "p": 0.004344,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L3": {
+        "n": 24,
+        "acc": 0.6667,
+        "best": 0.6667,
+        "tie_rate": 0.0,
+        "p": 0.15159,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|ALL": {
+        "n": 96,
+        "acc": 0.8021,
+        "best": 0.8021,
+        "tie_rate": 0.0625,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "precondition_conjunction|L0": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L1": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L2": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L3": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|ALL": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L0": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L1": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L2": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L3": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|ALL": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      }
+    },
+    "ast_greater_min_depth": {
+      "field": "ast_min_depth",
+      "direction": "max",
+      "family": "structural",
+      "formal_expression_depth|L0": {
+        "n": 24,
+        "acc": 0.7083,
+        "best": 0.7083,
+        "tie_rate": 0.0833,
+        "p": 0.052479,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L1": {
+        "n": 24,
+        "acc": 0.875,
+        "best": 0.875,
+        "tie_rate": 0.0833,
+        "p": 0.000121,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L2": {
+        "n": 24,
+        "acc": 0.7083,
+        "best": 0.7083,
+        "tie_rate": 0.0833,
+        "p": 0.052479,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|L3": {
+        "n": 24,
+        "acc": 0.5417,
+        "best": 0.5417,
+        "tie_rate": 0.25,
+        "p": 0.814529,
+        "cf_blindness": 1.0
+      },
+      "formal_expression_depth|ALL": {
+        "n": 96,
+        "acc": 0.7083,
+        "best": 0.7083,
+        "tie_rate": 0.125,
+        "p": 1.5e-05,
+        "cf_blindness": 1.0
+      },
+      "precondition_conjunction|L0": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L1": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L2": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L3": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|ALL": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L0": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L1": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L2": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L3": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|ALL": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      }
+    },
+    "dep_is_ancestor[TRUTH:td]": {
+      "field": "dep_is_ancestor",
+      "direction": "max",
+      "family": "structural",
+      "formal_expression_depth|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L0": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L1": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L2": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L3": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|ALL": {
+        "n": 96,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      }
+    },
+    "dep_earlier_in_evidence_list": {
+      "field": "dep_node_index",
+      "direction": "min",
+      "family": "field_order",
+      "formal_expression_depth|L0": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L1": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L2": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L3": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|ALL": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L0": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L1": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L2": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L3": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|ALL": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L1": {
+        "n": 24,
+        "acc": 0.6667,
+        "best": 0.6667,
+        "tie_rate": 0.0,
+        "p": 0.15159,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L2": {
+        "n": 24,
+        "acc": 0.75,
+        "best": 0.75,
+        "tie_rate": 0.0,
+        "p": 0.022656,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L3": {
+        "n": 24,
+        "acc": 0.6667,
+        "best": 0.6667,
+        "tie_rate": 0.0,
+        "p": 0.15159,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|ALL": {
+        "n": 96,
+        "acc": 0.6458,
+        "best": 0.6458,
+        "tie_rate": 0.0,
+        "p": 0.005573,
+        "cf_blindness": 1.0
+      }
+    },
+    "dep_later_in_evidence_list": {
+      "field": "dep_node_index",
+      "direction": "max",
+      "family": "field_order",
+      "formal_expression_depth|L0": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L1": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L2": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L3": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|ALL": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L0": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L1": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L2": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L3": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|ALL": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L1": {
+        "n": 24,
+        "acc": 0.3333,
+        "best": 0.6667,
+        "tie_rate": 0.0,
+        "p": 0.15159,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L2": {
+        "n": 24,
+        "acc": 0.25,
+        "best": 0.75,
+        "tie_rate": 0.0,
+        "p": 0.022656,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L3": {
+        "n": 24,
+        "acc": 0.3333,
+        "best": 0.6667,
+        "tie_rate": 0.0,
+        "p": 0.15159,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|ALL": {
+        "n": 96,
+        "acc": 0.3542,
+        "best": 0.6458,
+        "tie_rate": 0.0,
+        "p": 0.005573,
+        "cf_blindness": 1.0
+      }
+    },
+    "dep_higher_in_degree": {
+      "field": "dep_in_degree",
+      "direction": "max",
+      "family": "frequency",
+      "formal_expression_depth|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L0": {
+        "n": 24,
+        "acc": 0.5417,
+        "best": 0.5417,
+        "tie_rate": 0.9167,
+        "p": 0.5,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L1": {
+        "n": 24,
+        "acc": 0.8333,
+        "best": 0.8333,
+        "tie_rate": 0.3333,
+        "p": 3.1e-05,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L2": {
+        "n": 24,
+        "acc": 0.625,
+        "best": 0.625,
+        "tie_rate": 0.75,
+        "p": 0.03125,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L3": {
+        "n": 24,
+        "acc": 0.5417,
+        "best": 0.5417,
+        "tie_rate": 0.9167,
+        "p": 0.5,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|ALL": {
+        "n": 96,
+        "acc": 0.6354,
+        "best": 0.6354,
+        "tie_rate": 0.7292,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      }
+    },
+    "dep_closer_textually_to_leaf": {
+      "field": "dep_text_dist_to_leaf",
+      "direction": "min",
+      "family": "string_position",
+      "formal_expression_depth|L0": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L1": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L2": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L3": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|ALL": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L0": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L1": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L2": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L3": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|ALL": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L0": {
+        "n": 24,
+        "acc": 0.3333,
+        "best": 0.6667,
+        "tie_rate": 0.0,
+        "p": 0.15159,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L2": {
+        "n": 24,
+        "acc": 0.4167,
+        "best": 0.5833,
+        "tie_rate": 0.0,
+        "p": 0.541256,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|ALL": {
+        "n": 96,
+        "acc": 0.4375,
+        "best": 0.5625,
+        "tie_rate": 0.0,
+        "p": 0.261469,
+        "cf_blindness": 1.0
+      }
+    },
+    "dep_farther_textually_from_leaf": {
+      "field": "dep_text_dist_to_leaf",
+      "direction": "max",
+      "family": "string_position",
+      "formal_expression_depth|L0": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L1": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L2": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L3": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|ALL": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L0": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L1": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L2": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L3": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|ALL": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L0": {
+        "n": 24,
+        "acc": 0.6667,
+        "best": 0.6667,
+        "tie_rate": 0.0,
+        "p": 0.15159,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L2": {
+        "n": 24,
+        "acc": 0.5833,
+        "best": 0.5833,
+        "tie_rate": 0.0,
+        "p": 0.541256,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|ALL": {
+        "n": 96,
+        "acc": 0.5625,
+        "best": 0.5625,
+        "tie_rate": 0.0,
+        "p": 0.261469,
+        "cf_blindness": 1.0
+      }
+    },
+    "dep_shorter_path_from_leaf": {
+      "field": "dep_hops_from_leaf",
+      "direction": "min",
+      "family": "structural",
+      "formal_expression_depth|L0": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L1": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L2": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L3": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|ALL": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L0": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L1": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L2": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L3": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|ALL": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L0": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L1": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L2": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L3": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|ALL": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      }
+    },
+    "prem_all_matched[TRUTH:pc]": {
+      "field": "prem_all_matched",
+      "direction": "max",
+      "family": "structural",
+      "formal_expression_depth|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L0": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "precondition_conjunction|L1": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "precondition_conjunction|L2": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "precondition_conjunction|L3": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "precondition_conjunction|ALL": {
+        "n": 96,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      }
+    },
+    "prem_fewer_unmatched": {
+      "field": "prem_unmatched",
+      "direction": "min",
+      "family": "structural",
+      "formal_expression_depth|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L0": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "precondition_conjunction|L1": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "precondition_conjunction|L2": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "precondition_conjunction|L3": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "precondition_conjunction|ALL": {
+        "n": 96,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      }
+    },
+    "prem_more_matched": {
+      "field": "prem_matched",
+      "direction": "max",
+      "family": "structural",
+      "formal_expression_depth|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L0": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "precondition_conjunction|L1": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "precondition_conjunction|L2": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "precondition_conjunction|L3": {
+        "n": 24,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "precondition_conjunction|ALL": {
+        "n": 96,
+        "acc": 1.0,
+        "best": 1.0,
+        "tie_rate": 0.0,
+        "p": 0.0,
+        "cf_blindness": 1.0
+      },
+      "transitive_dependency|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      },
+      "transitive_dependency|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 1.0,
+        "p": 1.0,
+        "cf_blindness": null
+      }
+    },
+    "prem_earlier_first_proposition": {
+      "field": "prem_first_prop_index",
+      "direction": "min",
+      "family": "field_order",
+      "formal_expression_depth|L0": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L1": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L2": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L3": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|ALL": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L0": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L1": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L2": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L3": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|ALL": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      }
+    },
+    "prem_later_first_proposition": {
+      "field": "prem_first_prop_index",
+      "direction": "max",
+      "family": "field_order",
+      "formal_expression_depth|L0": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L1": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L2": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|L3": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "formal_expression_depth|ALL": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "precondition_conjunction|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L0": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L1": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L2": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|L3": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      },
+      "transitive_dependency|ALL": {
+        "n": 0,
+        "acc": null,
+        "best": null,
+        "tie_rate": null,
+        "p": null,
+        "cf_blindness": null
+      }
+    },
+    "greater_option_state_overlap": {
+      "field": "opt_view_overlap",
+      "direction": "max",
+      "family": "lexical_overlap",
+      "formal_expression_depth|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      }
+    },
+    "shorter_option_render": {
+      "field": "opt_render_chars",
+      "direction": "min",
+      "family": "length",
+      "formal_expression_depth|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      }
+    },
+    "always_first_option*": {
+      "field": "-",
+      "direction": "constant:0",
+      "family": "option_order",
+      "formal_expression_depth|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      }
+    },
+    "always_second_option*": {
+      "field": "-",
+      "direction": "constant:1",
+      "family": "option_order",
+      "formal_expression_depth|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "formal_expression_depth|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "precondition_conjunction|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L0": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L1": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L2": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|L3": {
+        "n": 24,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      },
+      "transitive_dependency|ALL": {
+        "n": 96,
+        "acc": 0.5,
+        "best": 0.5,
+        "tie_rate": 0.0,
+        "p": 1.0,
+        "cf_blindness": 0.0
+      }
+    }
+  },
+  "top_non_truth_covariates_per_cell": {
+    "formal_expression_depth|L0": [
+      {
+        "covariate": "view_deepest_bracket_nesting",
+        "best": 1.0,
+        "acc": 1.0,
+        "family": "rendered_string_depth"
+      },
+      {
+        "covariate": "view_greater_mean_bracket_nesting",
+        "best": 0.9167,
+        "acc": 0.9167,
+        "family": "rendered_string_depth"
+      },
+      {
+        "covariate": "ast_latest_preorder",
+        "best": 0.9167,
+        "acc": 0.0833,
+        "family": "traversal_order"
+      },
+      {
+        "covariate": "ast_earliest_preorder",
+        "best": 0.8333,
+        "acc": 0.8333,
+        "family": "traversal_order"
+      },
+      {
+        "covariate": "ast_greater_mean_depth",
+        "best": 0.7917,
+        "acc": 0.7917,
+        "family": "structural"
+      },
+      {
+        "covariate": "ast_greater_min_depth",
+        "best": 0.7083,
+        "acc": 0.7083,
+        "family": "structural"
+      }
+    ],
+    "formal_expression_depth|L1": [
+      {
+        "covariate": "first_mentioned_in_state*",
+        "best": 1.0,
+        "acc": 1.0,
+        "family": "string_position"
+      },
+      {
+        "covariate": "view_deepest_bracket_nesting",
+        "best": 1.0,
+        "acc": 1.0,
+        "family": "rendered_string_depth"
+      },
+      {
+        "covariate": "view_greater_mean_bracket_nesting",
+        "best": 1.0,
+        "acc": 1.0,
+        "family": "rendered_string_depth"
+      },
+      {
+        "covariate": "ast_earliest_preorder",
+        "best": 1.0,
+        "acc": 1.0,
+        "family": "traversal_order"
+      },
+      {
+        "covariate": "ast_greater_mean_depth",
+        "best": 0.9583,
+        "acc": 0.9583,
+        "family": "structural"
+      },
+      {
+        "covariate": "more_frequent_in_state*",
+        "best": 0.875,
+        "acc": 0.875,
+        "family": "frequency"
+      }
+    ],
+    "formal_expression_depth|L2": [
+      {
+        "covariate": "view_deepest_bracket_nesting",
+        "best": 1.0,
+        "acc": 1.0,
+        "family": "rendered_string_depth"
+      },
+      {
+        "covariate": "last_mentioned_in_view",
+        "best": 0.9167,
+        "acc": 0.0833,
+        "family": "string_position"
+      },
+      {
+        "covariate": "nearest_to_view_end",
+        "best": 0.9167,
+        "acc": 0.0833,
+        "family": "string_position"
+      },
+      {
+        "covariate": "view_greater_mean_bracket_nesting",
+        "best": 0.9167,
+        "acc": 0.9167,
+        "family": "rendered_string_depth"
+      },
+      {
+        "covariate": "ast_latest_preorder",
+        "best": 0.9167,
+        "acc": 0.0833,
+        "family": "traversal_order"
+      },
+      {
+        "covariate": "first_mentioned_in_state*",
+        "best": 0.8333,
+        "acc": 0.8333,
+        "family": "string_position"
+      }
+    ],
+    "formal_expression_depth|L3": [
+      {
+        "covariate": "view_deepest_bracket_nesting",
+        "best": 1.0,
+        "acc": 1.0,
+        "family": "rendered_string_depth"
+      },
+      {
+        "covariate": "view_greater_mean_bracket_nesting",
+        "best": 1.0,
+        "acc": 1.0,
+        "family": "rendered_string_depth"
+      },
+      {
+        "covariate": "first_mentioned_in_state*",
+        "best": 0.9167,
+        "acc": 0.9167,
+        "family": "string_position"
+      },
+      {
+        "covariate": "ast_earliest_preorder",
+        "best": 0.9167,
+        "acc": 0.9167,
+        "family": "traversal_order"
+      },
+      {
+        "covariate": "more_frequent_in_state*",
+        "best": 0.875,
+        "acc": 0.875,
+        "family": "frequency"
+      },
+      {
+        "covariate": "more_frequent_in_view",
+        "best": 0.875,
+        "acc": 0.875,
+        "family": "frequency"
+      }
+    ],
+    "formal_expression_depth|ALL": [
+      {
+        "covariate": "view_deepest_bracket_nesting",
+        "best": 1.0,
+        "acc": 1.0,
+        "family": "rendered_string_depth"
+      },
+      {
+        "covariate": "view_greater_mean_bracket_nesting",
+        "best": 0.9583,
+        "acc": 0.9583,
+        "family": "rendered_string_depth"
+      },
+      {
+        "covariate": "ast_earliest_preorder",
+        "best": 0.8958,
+        "acc": 0.8958,
+        "family": "traversal_order"
+      },
+      {
+        "covariate": "ast_latest_preorder",
+        "best": 0.875,
+        "acc": 0.125,
+        "family": "traversal_order"
+      },
+      {
+        "covariate": "first_mentioned_in_state*",
+        "best": 0.8125,
+        "acc": 0.8125,
+        "family": "string_position"
+      },
+      {
+        "covariate": "ast_greater_mean_depth",
+        "best": 0.8021,
+        "acc": 0.8021,
+        "family": "structural"
+      }
+    ],
+    "precondition_conjunction|L0": [
+      {
+        "covariate": "first_mentioned_in_state*",
+        "best": 1.0,
+        "acc": 1.0,
+        "family": "string_position"
+      },
+      {
+        "covariate": "more_frequent_in_state*",
+        "best": 1.0,
+        "acc": 1.0,
+        "family": "frequency"
+      },
+      {
+        "covariate": "more_frequent_in_view",
+        "best": 1.0,
+        "acc": 1.0,
+        "family": "frequency"
+      },
+      {
+        "covariate": "more_frequent_in_prompt",
+        "best": 1.0,
+        "acc": 1.0,
+        "family": "frequency"
+      },
+      {
+        "covariate": "view_greater_mean_bracket_nesting",
+        "best": 1.0,
+        "acc": 1.0,
+        "family": "rendered_string_depth"
+      },
+      {
+        "covariate": "prem_fewer_unmatched",
+        "best": 1.0,
+        "acc": 1.0,
+        "family": "structural"
+      }
+    ],
+    "precondition_conjunction|L1": [
+      {
+        "covariate": "prem_fewer_unmatched",
+        "best": 1.0,
+        "acc": 1.0,
+        "family": "structural"
+      },
+      {
+        "covariate": "prem_more_matched",
+        "best": 1.0,
+        "acc": 1.0,
+        "family": "structural"
+      },
+      {
+        "covariate": "first_mentioned_in_state*",
+        "best": 0.5,
+        "acc": 0.5,
+        "family": "string_position"
+      },
+      {
+        "covariate": "last_mentioned_in_state*",
+        "best": 0.5,
+        "acc": 0.5,
+        "family": "string_position"
+      },
+      {
+        "covariate": "more_frequent_in_state*",
+        "best": 0.5,
+        "acc": 0.5,
+        "family": "frequency"
+      },
+      {
+        "covariate": "shorter_option_text*",
+        "best": 0.5,
+        "acc": 0.5,
+        "family": "naming"
+      }
+    ],
+    "precondition_conjunction|L2": [
+      {
+        "covariate": "prem_fewer_unmatched",
+        "best": 1.0,
+        "acc": 1.0,
+        "family": "structural"
+      },
+      {
+        "covariate": "prem_more_matched",
+        "best": 1.0,
+        "acc": 1.0,
+        "family": "structural"
+      },
+      {
+        "covariate": "first_mentioned_in_state*",
+        "best": 0.5,
+        "acc": 0.5,
+        "family": "string_position"
+      },
+      {
+        "covariate": "last_mentioned_in_state*",
+        "best": 0.5,
+        "acc": 0.5,
+        "family": "string_position"
+      },
+      {
+        "covariate": "more_frequent_in_state*",
+        "best": 0.5,
+        "acc": 0.5,
+        "family": "frequency"
+      },
+      {
+        "covariate": "shorter_option_text*",
+        "best": 0.5,
+        "acc": 0.5,
+        "family": "naming"
+      }
+    ],
+    "precondition_conjunction|L3": [
+      {
+        "covariate": "prem_fewer_unmatched",
+        "best": 1.0,
+        "acc": 1.0,
+        "family": "structural"
+      },
+      {
+        "covariate": "prem_more_matched",
+        "best": 1.0,
+        "acc": 1.0,
+        "family": "structural"
+      },
+      {
+        "covariate": "first_mentioned_in_state*",
+        "best": 0.5,
+        "acc": 0.5,
+        "family": "string_position"
+      },
+      {
+        "covariate": "last_mentioned_in_state*",
+        "best": 0.5,
+        "acc": 0.5,
+        "family": "string_position"
+      },
+      {
+        "covariate": "more_frequent_in_state*",
+        "best": 0.5,
+        "acc": 0.5,
+        "family": "frequency"
+      },
+      {
+        "covariate": "shorter_option_text*",
+        "best": 0.5,
+        "acc": 0.5,
+        "family": "naming"
+      }
+    ],
+    "precondition_conjunction|ALL": [
+      {
+        "covariate": "prem_fewer_unmatched",
+        "best": 1.0,
+        "acc": 1.0,
+        "family": "structural"
+      },
+      {
+        "covariate": "prem_more_matched",
+        "best": 1.0,
+        "acc": 1.0,
+        "family": "structural"
+      },
+      {
+        "covariate": "first_mentioned_in_state*",
+        "best": 0.625,
+        "acc": 0.625,
+        "family": "string_position"
+      },
+      {
+        "covariate": "more_frequent_in_state*",
+        "best": 0.625,
+        "acc": 0.625,
+        "family": "frequency"
+      },
+      {
+        "covariate": "more_frequent_in_view",
+        "best": 0.625,
+        "acc": 0.625,
+        "family": "frequency"
+      },
+      {
+        "covariate": "more_frequent_in_prompt",
+        "best": 0.625,
+        "acc": 0.625,
+        "family": "frequency"
+      }
+    ],
+    "transitive_dependency|L0": [
+      {
+        "covariate": "first_mentioned_in_state*",
+        "best": 1.0,
+        "acc": 1.0,
+        "family": "string_position"
+      },
+      {
+        "covariate": "more_frequent_in_state*",
+        "best": 1.0,
+        "acc": 1.0,
+        "family": "frequency"
+      },
+      {
+        "covariate": "last_mentioned_in_view",
+        "best": 1.0,
+        "acc": 1.0,
+        "family": "string_position"
+      },
+      {
+        "covariate": "nearest_to_view_end",
+        "best": 1.0,
+        "acc": 1.0,
+        "family": "string_position"
+      },
+      {
+        "covariate": "more_frequent_in_view",
+        "best": 1.0,
+        "acc": 1.0,
+        "family": "frequency"
+      },
+      {
+        "covariate": "more_frequent_in_prompt",
+        "best": 1.0,
+        "acc": 1.0,
+        "family": "frequency"
+      }
+    ],
+    "transitive_dependency|L1": [
+      {
+        "covariate": "more_frequent_in_state*",
+        "best": 0.8333,
+        "acc": 0.8333,
+        "family": "frequency"
+      },
+      {
+        "covariate": "more_frequent_in_view",
+        "best": 0.8333,
+        "acc": 0.8333,
+        "family": "frequency"
+      },
+      {
+        "covariate": "more_frequent_in_prompt",
+        "best": 0.8333,
+        "acc": 0.8333,
+        "family": "frequency"
+      },
+      {
+        "covariate": "dep_higher_in_degree",
+        "best": 0.8333,
+        "acc": 0.8333,
+        "family": "frequency"
+      },
+      {
+        "covariate": "dep_earlier_in_evidence_list",
+        "best": 0.6667,
+        "acc": 0.6667,
+        "family": "field_order"
+      },
+      {
+        "covariate": "dep_later_in_evidence_list",
+        "best": 0.6667,
+        "acc": 0.3333,
+        "family": "field_order"
+      }
+    ],
+    "transitive_dependency|L2": [
+      {
+        "covariate": "dep_earlier_in_evidence_list",
+        "best": 0.75,
+        "acc": 0.75,
+        "family": "field_order"
+      },
+      {
+        "covariate": "dep_later_in_evidence_list",
+        "best": 0.75,
+        "acc": 0.25,
+        "family": "field_order"
+      },
+      {
+        "covariate": "more_frequent_in_state*",
+        "best": 0.625,
+        "acc": 0.625,
+        "family": "frequency"
+      },
+      {
+        "covariate": "more_frequent_in_view",
+        "best": 0.625,
+        "acc": 0.625,
+        "family": "frequency"
+      },
+      {
+        "covariate": "more_frequent_in_prompt",
+        "best": 0.625,
+        "acc": 0.625,
+        "family": "frequency"
+      },
+      {
+        "covariate": "dep_higher_in_degree",
+        "best": 0.625,
+        "acc": 0.625,
+        "family": "frequency"
+      }
+    ],
+    "transitive_dependency|L3": [
+      {
+        "covariate": "first_mentioned_in_state*",
+        "best": 0.6667,
+        "acc": 0.3333,
+        "family": "string_position"
+      },
+      {
+        "covariate": "dep_earlier_in_evidence_list",
+        "best": 0.6667,
+        "acc": 0.6667,
+        "family": "field_order"
+      },
+      {
+        "covariate": "dep_later_in_evidence_list",
+        "best": 0.6667,
+        "acc": 0.3333,
+        "family": "field_order"
+      },
+      {
+        "covariate": "last_mentioned_in_view",
+        "best": 0.5833,
+        "acc": 0.5833,
+        "family": "string_position"
+      },
+      {
+        "covariate": "nearest_to_view_end",
+        "best": 0.5833,
+        "acc": 0.5833,
+        "family": "string_position"
+      },
+      {
+        "covariate": "more_frequent_in_state*",
+        "best": 0.5417,
+        "acc": 0.5417,
+        "family": "frequency"
+      }
+    ],
+    "transitive_dependency|ALL": [
+      {
+        "covariate": "more_frequent_in_state*",
+        "best": 0.75,
+        "acc": 0.75,
+        "family": "frequency"
+      },
+      {
+        "covariate": "more_frequent_in_view",
+        "best": 0.75,
+        "acc": 0.75,
+        "family": "frequency"
+      },
+      {
+        "covariate": "more_frequent_in_prompt",
+        "best": 0.75,
+        "acc": 0.75,
+        "family": "frequency"
+      },
+      {
+        "covariate": "last_mentioned_in_view",
+        "best": 0.6875,
+        "acc": 0.6875,
+        "family": "string_position"
+      },
+      {
+        "covariate": "nearest_to_view_end",
+        "best": 0.6875,
+        "acc": 0.6875,
+        "family": "string_position"
+      },
+      {
+        "covariate": "dep_earlier_in_evidence_list",
+        "best": 0.6458,
+        "acc": 0.6458,
+        "family": "field_order"
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "astra": {
+    "rule": "lexical_name_goal_overlap",
+    "accuracy": 0.4166666666666667,
+    "n": 60,
+    "sampler": "arena L3_same_module_freq_matched (source_adapter.py:21)"
+  },
+  "production": {
+    "L2_standard": {
+      "n_dev_holdout": 19104,
+      "lexical_overlap_name_vs_goal": 0.221734,
+      "best_shortcut": "combined_decision_tree_depth6",
+      "best_shortcut_accuracy": 0.326895
+    },
+    "L3_same_module_freq_matched": {
+      "n_dev_holdout": 17513,
+      "lexical_overlap_name_vs_goal": 0.241992,
+      "best_shortcut": "combined_logistic_regression",
+      "best_shortcut_accuracy": 0.32827
+    },
+    "L4_high_similarity": {
+      "n_dev_holdout": 17607,
+      "lexical_overlap_name_vs_goal": 0.187709,
+      "best_shortcut": "combined_logistic_regression",
+      "best_shortcut_accuracy": 0.262225
+    }
+  },
+  "astra_vs_production_L3_same_rule_family": {
+    "z": 3.151099252205852,
+    "two_sided_p": 0.001626572061013557,
+    "pooled_p": 0.24258806123029647,
+    "se": 0.05543293076039729
+  },
+  "astra_vs_production_L3_best_combined": {
+    "z": 1.4553040963931305,
+    "two_sided_p": 0.14558509309080606,
+    "pooled_p": 0.3285722415068571,
+    "se": 0.06074102786197856
+  },
+  "note": "Astra draws from the same sampler but adds three admission filters (explicit theorem/lemma header for gold AND all six candidates, single goal, import+declaration-order scope). The production L3 lexical rule is measured on 17,513 grouped-holdout items."
+}

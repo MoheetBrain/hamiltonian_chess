@@ -1,0 +1,119 @@
+{
+  "source": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo_raw/leandojo_benchmark_4/random/train.json",
+  "theorems_scanned": 5000,
+  "counters": {
+    "theorems": 5000,
+    "steps": 10720,
+    "goals_1": 10632,
+    "state_has_inaccessible_dagger_names": 8906,
+    "state_has_universe_metavariable": 188,
+    "state_has_any_metavariable_marker": 228,
+    "state_has_case_labels": 4894,
+    "usable_by_production_filter": 2629,
+    "usable_and_inaccessible_names": 2193,
+    "usable_and_universe_mvar": 32,
+    "state_has_elided_subterm": 843,
+    "usable_and_elided": 201,
+    "goals_2": 72,
+    "state_not_single_goal": 88,
+    "goals_4": 11,
+    "goals_3": 3,
+    "goals_5": 2
+  },
+  "rates": {
+    "state_has_inaccessible_dagger_names": 0.8307835820895523,
+    "state_has_universe_metavariable": 0.01753731343283582,
+    "state_has_any_metavariable_marker": 0.02126865671641791,
+    "state_has_elided_subterm": 0.07863805970149254,
+    "state_has_case_labels": 0.4565298507462687,
+    "state_not_single_goal": 0.008208955223880597
+  },
+  "premise_short_name_collisions": {
+    "distinct_full_names": 8125,
+    "distinct_short_names": 7023,
+    "short_names_owned_by_more_than_one_full_name": 571,
+    "examples": {
+      "injective": [
+        "Equiv.injective",
+        "IsFractionRing.injective",
+        "IsLocalization.injective",
+        "RingEquiv.injective",
+        "RingHom.injective",
+        "StrictMono.injective"
+      ],
+      "comp": [
+        "AlgHom.comp",
+        "CategoryTheory.Functor.Faithful.comp",
+        "ContDiffAt.comp",
+        "Continuous.comp",
+        "ContinuousLinearMap.comp",
+        "Filter.Tendsto.comp",
+        "FormalMultilinearSeries.comp",
+        "Function.Injective.comp",
+        "Function.Surjective.comp",
+        "Function.comp",
+        "HasDerivAt.comp",
+        "HasMFDerivAt.comp",
+        "LinearMap.comp",
+        "Measurable.comp",
+        "Monotone.comp",
+        "Nat.Partrec'.comp",
+        "Partrec.comp",
+        "Polynomial.comp",
+        "ProbabilityTheory.kernel.IndepFun.comp",
+        "RegularExpression.comp",
+        "Rel.comp",
+        "RingHom.comp",
+        "Set.MapsTo.comp",
+        "TopCat.Presheaf.Pushforward.comp"
+      ],
+      "of_apply": [
+        "Matrix.of_apply",
+        "MonoidAlgebra.of_apply"
+      ],
+      "trans": [
+        "Associated.trans",
+        "Dvd.dvd.trans",
+        "Eq.trans",
+        "Equiv.trans",
+        "Filter.EventuallyEq.trans",
+        "HasSubset.Subset.trans",
+        "Homeomorph.trans",
+        "Iff.trans",
+        "LE.le.trans",
+        "LT.lt.trans",
+        "List.Perm.trans",
+        "Path.trans",
+        "Set.Subset.trans",
+        "trans"
+      ],
+      "mul_comm": [
+        "Nat.mul_comm",
+        "Rat.mul_comm",
+        "mul_comm"
+      ],
+      "le_antisymm": [
+        "Nat.le_antisymm",
+        "le_antisymm"
+      ],
+      "union_subset": [
+        "Finset.union_subset",
+        "Set.union_subset"
+      ],
+      "rfl": [
+        "Iff.rfl",
+        "MeasureTheory.Measure.AbsolutelyContinuous.rfl",
+        "Set.Subset.rfl",
+        "rfl"
+      ],
+      "mem_univ": [
+        "Finset.mem_univ",
+        "Set.mem_univ"
+      ],
+      "basic": [
+        "MeasurableSpace.GenerateMeasurable.basic",
+        "TopologicalSpace.GenerateOpen.basic"
+      ]
+    }
+  }
+}

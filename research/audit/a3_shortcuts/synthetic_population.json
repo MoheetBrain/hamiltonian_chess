@@ -1,0 +1,471 @@
+{
+  "_disclaimer": "A3 DIAGNOSTIC of the frozen GENERATORS. Zero model calls. NOT a re-scoring of V7; no sentinel may be promoted, re-scored or reinterpreted from these numbers.",
+  "cells": {
+    "precondition_conjunction|L0": {
+      "n_families_total": 400,
+      "n_positives_total": 800,
+      "population_best_folded": 1.0,
+      "population_best_rule": "first_mentioned_in_state",
+      "population_scores_all": {
+        "alphabetically_first": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "always_first_option": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "first_mentioned_in_state": {
+          "folded": 1.0,
+          "raw": 1.0
+        },
+        "last_mentioned_in_state": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "more_frequent_in_state": {
+          "folded": 1.0,
+          "raw": 1.0
+        },
+        "shorter_option_text": {
+          "folded": 0.5,
+          "raw": 0.5
+        }
+      },
+      "population_scores_excluding_DEV12": {
+        "alphabetically_first": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "always_first_option": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "first_mentioned_in_state": {
+          "folded": 1.0,
+          "raw": 1.0
+        },
+        "last_mentioned_in_state": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "more_frequent_in_state": {
+          "folded": 1.0,
+          "raw": 1.0
+        },
+        "shorter_option_text": {
+          "folded": 0.5,
+          "raw": 0.5
+        }
+      }
+    },
+    "precondition_conjunction|L1": {
+      "n_families_total": 400,
+      "n_positives_total": 800,
+      "population_best_folded": 0.5,
+      "population_best_rule": "always_first_option",
+      "population_scores_all": {
+        "alphabetically_first": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "always_first_option": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "first_mentioned_in_state": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "last_mentioned_in_state": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "more_frequent_in_state": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "shorter_option_text": {
+          "folded": 0.5,
+          "raw": 0.5
+        }
+      },
+      "population_scores_excluding_DEV12": {
+        "alphabetically_first": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "always_first_option": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "first_mentioned_in_state": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "last_mentioned_in_state": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "more_frequent_in_state": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "shorter_option_text": {
+          "folded": 0.5,
+          "raw": 0.5
+        }
+      }
+    },
+    "precondition_conjunction|L2": {
+      "n_families_total": 400,
+      "n_positives_total": 800,
+      "population_best_folded": 0.5,
+      "population_best_rule": "always_first_option",
+      "population_scores_all": {
+        "alphabetically_first": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "always_first_option": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "first_mentioned_in_state": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "last_mentioned_in_state": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "more_frequent_in_state": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "shorter_option_text": {
+          "folded": 0.5,
+          "raw": 0.5
+        }
+      },
+      "population_scores_excluding_DEV12": {
+        "alphabetically_first": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "always_first_option": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "first_mentioned_in_state": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "last_mentioned_in_state": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "more_frequent_in_state": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "shorter_option_text": {
+          "folded": 0.5,
+          "raw": 0.5
+        }
+      }
+    },
+    "precondition_conjunction|L3": {
+      "n_families_total": 400,
+      "n_positives_total": 800,
+      "population_best_folded": 0.5,
+      "population_best_rule": "always_first_option",
+      "population_scores_all": {
+        "alphabetically_first": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "always_first_option": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "first_mentioned_in_state": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "last_mentioned_in_state": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "more_frequent_in_state": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "shorter_option_text": {
+          "folded": 0.5,
+          "raw": 0.5
+        }
+      },
+      "population_scores_excluding_DEV12": {
+        "alphabetically_first": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "always_first_option": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "first_mentioned_in_state": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "last_mentioned_in_state": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "more_frequent_in_state": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "shorter_option_text": {
+          "folded": 0.5,
+          "raw": 0.5
+        }
+      }
+    },
+    "transitive_dependency|L0": {
+      "n_families_total": 400,
+      "n_positives_total": 800,
+      "population_best_folded": 1.0,
+      "population_best_rule": "first_mentioned_in_state",
+      "population_scores_all": {
+        "alphabetically_first": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "always_first_option": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "first_mentioned_in_state": {
+          "folded": 1.0,
+          "raw": 1.0
+        },
+        "last_mentioned_in_state": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "more_frequent_in_state": {
+          "folded": 1.0,
+          "raw": 1.0
+        },
+        "shorter_option_text": {
+          "folded": 0.5,
+          "raw": 0.5
+        }
+      },
+      "population_scores_excluding_DEV12": {
+        "alphabetically_first": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "always_first_option": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "first_mentioned_in_state": {
+          "folded": 1.0,
+          "raw": 1.0
+        },
+        "last_mentioned_in_state": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "more_frequent_in_state": {
+          "folded": 1.0,
+          "raw": 1.0
+        },
+        "shorter_option_text": {
+          "folded": 0.5,
+          "raw": 0.5
+        }
+      }
+    },
+    "transitive_dependency|L1": {
+      "n_families_total": 400,
+      "n_positives_total": 800,
+      "population_best_folded": 0.75875,
+      "population_best_rule": "more_frequent_in_state",
+      "population_scores_all": {
+        "alphabetically_first": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "always_first_option": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "first_mentioned_in_state": {
+          "folded": 0.5175,
+          "raw": 0.5175
+        },
+        "last_mentioned_in_state": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "more_frequent_in_state": {
+          "folded": 0.75875,
+          "raw": 0.75875
+        },
+        "shorter_option_text": {
+          "folded": 0.5,
+          "raw": 0.5
+        }
+      },
+      "population_scores_excluding_DEV12": {
+        "alphabetically_first": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "always_first_option": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "first_mentioned_in_state": {
+          "folded": 0.5180412371134021,
+          "raw": 0.5180412371134021
+        },
+        "last_mentioned_in_state": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "more_frequent_in_state": {
+          "folded": 0.7564432989690721,
+          "raw": 0.7564432989690721
+        },
+        "shorter_option_text": {
+          "folded": 0.5,
+          "raw": 0.5
+        }
+      }
+    },
+    "transitive_dependency|L2": {
+      "n_families_total": 400,
+      "n_positives_total": 800,
+      "population_best_folded": 0.68125,
+      "population_best_rule": "more_frequent_in_state",
+      "population_scores_all": {
+        "alphabetically_first": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "always_first_option": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "first_mentioned_in_state": {
+          "folded": 0.55,
+          "raw": 0.55
+        },
+        "last_mentioned_in_state": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "more_frequent_in_state": {
+          "folded": 0.68125,
+          "raw": 0.68125
+        },
+        "shorter_option_text": {
+          "folded": 0.5,
+          "raw": 0.5
+        }
+      },
+      "population_scores_excluding_DEV12": {
+        "alphabetically_first": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "always_first_option": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "first_mentioned_in_state": {
+          "folded": 0.5489690721649485,
+          "raw": 0.5489690721649485
+        },
+        "last_mentioned_in_state": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "more_frequent_in_state": {
+          "folded": 0.6829896907216495,
+          "raw": 0.6829896907216495
+        },
+        "shorter_option_text": {
+          "folded": 0.5,
+          "raw": 0.5
+        }
+      }
+    },
+    "transitive_dependency|L3": {
+      "n_families_total": 400,
+      "n_positives_total": 800,
+      "population_best_folded": 0.60125,
+      "population_best_rule": "more_frequent_in_state",
+      "population_scores_all": {
+        "alphabetically_first": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "always_first_option": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "first_mentioned_in_state": {
+          "folded": 0.5175,
+          "raw": 0.5175
+        },
+        "last_mentioned_in_state": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "more_frequent_in_state": {
+          "folded": 0.60125,
+          "raw": 0.60125
+        },
+        "shorter_option_text": {
+          "folded": 0.5,
+          "raw": 0.5
+        }
+      },
+      "population_scores_excluding_DEV12": {
+        "alphabetically_first": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "always_first_option": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "first_mentioned_in_state": {
+          "folded": 0.5231958762886598,
+          "raw": 0.5231958762886598
+        },
+        "last_mentioned_in_state": {
+          "folded": 0.5,
+          "raw": 0.5
+        },
+        "more_frequent_in_state": {
+          "folded": 0.6030927835051546,
+          "raw": 0.6030927835051546
+        },
+        "shorter_option_text": {
+          "folded": 0.5,
+          "raw": 0.5
+        }
+      }
+    }
+  },
+  "dev_families_per_cell": 12,
+  "n_families_per_cell": 400
+}

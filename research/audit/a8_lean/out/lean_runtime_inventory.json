@@ -1,0 +1,135 @@
+{
+  "corpus": [
+    "/Users/moheet/Documents/ChatGPT/HML_V3/data/corpus/lean_runtime_v2_full.canonical.part-000.jsonl.gz",
+    "/Users/moheet/Documents/ChatGPT/HML_V3/data/corpus/lean_runtime_v2_full.canonical.part-001.jsonl.gz",
+    "/Users/moheet/Documents/ChatGPT/HML_V3/data/corpus/lean_runtime_v2_full.canonical.part-002.jsonl.gz",
+    "/Users/moheet/Documents/ChatGPT/HML_V3/data/corpus/lean_runtime_v2_full.canonical.part-003.jsonl.gz",
+    "/Users/moheet/Documents/ChatGPT/HML_V3/data/corpus/lean_runtime_v2_full.canonical.part-004.jsonl.gz"
+  ],
+  "sealed_shards_read": 0,
+  "transitions": 1150,
+  "distinct_theorems": 1085,
+  "distinct_source_files": 738,
+  "domains": {
+    "Data": 162,
+    "Algebra": 122,
+    "MeasureTheory": 119,
+    "Analysis": 115,
+    "Topology": 84,
+    "NumberTheory": 67,
+    "SetTheory": 65,
+    "RingTheory": 63,
+    "Order": 59,
+    "Computability": 42,
+    "Combinatorics": 36,
+    "LinearAlgebra": 36,
+    "CategoryTheory": 35,
+    "GroupTheory": 25,
+    "Probability": 22,
+    "Geometry": 20,
+    "packages": 19,
+    "FieldTheory": 12,
+    "AlgebraicGeometry": 9,
+    "Tactic": 9,
+    "Dynamics": 8,
+    "Init": 7,
+    "ModelTheory": 7,
+    "Logic": 4,
+    "Control": 1,
+    "Deprecated": 1,
+    "Testing": 1
+  },
+  "official_split_labels": {
+    "None": 1150
+  },
+  "premise_refs_per_transition": {
+    "0": 401,
+    "1": 247,
+    "2": 148,
+    "3": 135,
+    "4": 72,
+    "5": 47,
+    "6": 40,
+    "7": 29,
+    "8": 10,
+    "9": 7,
+    "10": 6,
+    "11": 2,
+    "12": 1,
+    "13": 2,
+    "14": 2,
+    "38": 1
+  },
+  "goals_per_state_before": {
+    "1": 892,
+    "2": 157,
+    "3": 65,
+    "4": 22,
+    "5": 8,
+    "6": 3,
+    "7": 1,
+    "8": 1,
+    "12": 1
+  },
+  "single_premise_single_goal_transitions": 190,
+  "transitions_with_all_seven_semantic_fields": 748,
+  "counters": {
+    "transitions": 1150,
+    "locals_with_diagnostic_name": 21620,
+    "locals_with_stable_identity": 21620,
+    "fvar_identity_maps": 1150,
+    "mvar_identity_maps": 1150,
+    "with_transitive_imports": 1150,
+    "with_external_premises_used": 749,
+    "with_local_context_refs": 850,
+    "let_bound_locals": 177,
+    "metavariables_assigned": 4380
+  },
+  "binder_roles": {
+    "EXPLICIT": 9151,
+    "IMPLICIT": 8772,
+    "INSTANCE_IMPLICIT": 3648,
+    "STRICT_IMPLICIT": 49
+  },
+  "declaration_roles": {
+    "cdecl": 21443,
+    "ldecl": 177
+  },
+  "metavariable_kinds": {
+    "NATURAL": 3526,
+    "SYNTHETIC_OPAQUE": 1367,
+    "SYNTHETIC": 1072
+  },
+  "information_accounting": {
+    "binder_and_local_identity=PRESERVED_WITH_CROSS_RUN_NORMALIZATION": 1150,
+    "expression_structure=PRESERVED": 1150,
+    "full_lean_metavariable_inventory=DELEGATED_BY_SOURCE_COUNTS_AND_CHANGE_RECORDS": 1150,
+    "goal_identity_and_order=PRESERVED_WITH_CROSS_RUN_NORMALIZATION": 1150,
+    "lean_metadata_payload=SOURCE_SPECIFIC_BY_DESIGN": 1150,
+    "relevant_metavariables=PRESERVED": 1150,
+    "standalone_constraint_table=UNEXPOSED_BY_LEAN_4_10": 1150
+  },
+  "expression_node_kinds": {
+    "application": 59816,
+    "symbol": 31727,
+    "local_reference": 25093,
+    "bound_variable": 3388,
+    "metavariable_reference": 3061,
+    "lambda": 2229,
+    "literal": 1114,
+    "dependent_function": 1008,
+    "sort": 248,
+    "annotated": 189,
+    "let": 2
+  },
+  "target_tree_depth": {
+    "n": 1574,
+    "mean": 10.470139771283355,
+    "max": 59
+  },
+  "local_context_size": {
+    "n": 1574,
+    "mean": 13.735705209656926,
+    "max": 86
+  }
+}

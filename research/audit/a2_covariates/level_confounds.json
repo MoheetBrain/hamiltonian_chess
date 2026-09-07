@@ -1,0 +1,558 @@
+{
+  "level_confounds": {
+    "formal_expression_depth": {
+      "solver_accuracy": {
+        "L0": 1.0,
+        "L1": 0.8333,
+        "L2": 0.7917,
+        "L3": 0.625
+      },
+      "prompt_tokens_real_mean": {
+        "by_level": {
+          "L0": 5519.833,
+          "L1": 4283.25,
+          "L2": 5078.5,
+          "L3": 5271.0
+        },
+        "rho_vs_level_L0toL3": -0.2,
+        "rho_vs_level_L1toL3": 1.0,
+        "rho_vs_solver_accuracy_L1toL3": -1.0
+      },
+      "prompt_chars_mean": {
+        "by_level": {
+          "L0": 24682.667,
+          "L1": 14850.75,
+          "L2": 23328.333,
+          "L3": 24593.583
+        },
+        "rho_vs_level_L0toL3": -0.2,
+        "rho_vs_level_L1toL3": 1.0,
+        "rho_vs_solver_accuracy_L1toL3": -1.0
+      },
+      "state_chars_mean": {
+        "by_level": {
+          "L0": 4385.333,
+          "L1": 3669.833,
+          "L2": 4090.0,
+          "L3": 4326.667
+        },
+        "rho_vs_level_L0toL3": -0.2,
+        "rho_vs_level_L1toL3": 1.0,
+        "rho_vs_solver_accuracy_L1toL3": -1.0
+      },
+      "goal_nodes_mean": {
+        "by_level": {
+          "L0": 38.667,
+          "L1": 17.0,
+          "L2": 38.667,
+          "L3": 36.25
+        },
+        "rho_vs_level_L0toL3": -0.2108,
+        "rho_vs_level_L1toL3": 0.5,
+        "rho_vs_solver_accuracy_L1toL3": -0.5
+      },
+      "goal_max_depth_mean": {
+        "by_level": {
+          "L0": 8.0,
+          "L1": 5.667,
+          "L2": 8.0,
+          "L3": 9.583
+        },
+        "rho_vs_level_L0toL3": 0.6325,
+        "rho_vs_level_L1toL3": 1.0,
+        "rho_vs_solver_accuracy_L1toL3": -1.0
+      },
+      "goal_leaf_identifiers_mean": {
+        "by_level": {
+          "L0": 10.5,
+          "L1": 6.417,
+          "L2": 10.5,
+          "L3": 11.167
+        },
+        "rho_vs_level_L0toL3": 0.6325,
+        "rho_vs_level_L1toL3": 1.0,
+        "rho_vs_solver_accuracy_L1toL3": -1.0
+      },
+      "goal_identifier_mean_depth": {
+        "by_level": {
+          "L0": 5.984,
+          "L1": 4.557,
+          "L2": 5.984,
+          "L3": 6.717
+        },
+        "rho_vs_level_L0toL3": 0.6325,
+        "rho_vs_level_L1toL3": 1.0,
+        "rho_vs_solver_accuracy_L1toL3": -1.0
+      },
+      "state_objects_mean": {
+        "by_level": {
+          "L0": 11.667,
+          "L1": 17.75,
+          "L2": 11.667,
+          "L3": 14.333
+        },
+        "rho_vs_level_L0toL3": 0.2108,
+        "rho_vs_level_L1toL3": -0.5,
+        "rho_vs_solver_accuracy_L1toL3": 0.5
+      },
+      "state_assumptions_mean": {
+        "by_level": {
+          "L0": 0.0,
+          "L1": 0.0,
+          "L2": 0.0,
+          "L3": 0.0
+        },
+        "rho_vs_level_L0toL3": null,
+        "rho_vs_level_L1toL3": null,
+        "rho_vs_solver_accuracy_L1toL3": null
+      },
+      "state_propositions_mean": {
+        "by_level": {
+          "L0": 0.0,
+          "L1": 0.0,
+          "L2": 0.0,
+          "L3": 0.0
+        },
+        "rho_vs_level_L0toL3": null,
+        "rho_vs_level_L1toL3": null,
+        "rho_vs_solver_accuracy_L1toL3": null
+      },
+      "state_facts_mean": {
+        "by_level": {
+          "L0": 2.0,
+          "L1": 0.0,
+          "L2": 0.0,
+          "L3": 0.0
+        },
+        "rho_vs_level_L0toL3": -0.7746,
+        "rho_vs_level_L1toL3": null,
+        "rho_vs_solver_accuracy_L1toL3": null
+      },
+      "state_evidence_nodes_mean": {
+        "by_level": {
+          "L0": 0.0,
+          "L1": 0.0,
+          "L2": 0.0,
+          "L3": 0.0
+        },
+        "rho_vs_level_L0toL3": null,
+        "rho_vs_level_L1toL3": null,
+        "rho_vs_solver_accuracy_L1toL3": null
+      },
+      "delimiter_total_mean": {
+        "by_level": {
+          "L0": 1525.083,
+          "L1": 1285.25,
+          "L2": 1412.083,
+          "L3": 1498.917
+        },
+        "rho_vs_level_L0toL3": -0.2,
+        "rho_vs_level_L1toL3": 1.0,
+        "rho_vs_solver_accuracy_L1toL3": -1.0
+      },
+      "answer_share_index0": {
+        "by_level": {
+          "L0": 0.5,
+          "L1": 0.5,
+          "L2": 0.5,
+          "L3": 0.5
+        },
+        "rho_vs_level_L0toL3": null,
+        "rho_vs_level_L1toL3": null,
+        "rho_vs_solver_accuracy_L1toL3": null
+      },
+      "target_first_mention_norm_mean": {
+        "by_level": {
+          "L0": 0.0438,
+          "L1": 0.1111,
+          "L2": 0.137,
+          "L3": 0.1173
+        },
+        "rho_vs_level_L0toL3": 0.8,
+        "rho_vs_level_L1toL3": 0.5,
+        "rho_vs_solver_accuracy_L1toL3": -0.5
+      }
+    },
+    "transitive_dependency": {
+      "solver_accuracy": {
+        "L0": 0.9583,
+        "L1": 1.0,
+        "L2": 0.9583,
+        "L3": 0.75
+      },
+      "prompt_tokens_real_mean": {
+        "by_level": {
+          "L0": 3125.417,
+          "L1": 2795.667,
+          "L2": 2967.5,
+          "L3": 3321.625
+        },
+        "rho_vs_level_L0toL3": 0.4,
+        "rho_vs_level_L1toL3": 1.0,
+        "rho_vs_solver_accuracy_L1toL3": -1.0
+      },
+      "prompt_chars_mean": {
+        "by_level": {
+          "L0": 9155.0,
+          "L1": 8237.0,
+          "L2": 8707.0,
+          "L3": 9647.0
+        },
+        "rho_vs_level_L0toL3": 0.4,
+        "rho_vs_level_L1toL3": 1.0,
+        "rho_vs_solver_accuracy_L1toL3": -1.0
+      },
+      "state_chars_mean": {
+        "by_level": {
+          "L0": 2873.0,
+          "L1": 2519.0,
+          "L2": 2767.0,
+          "L3": 3263.0
+        },
+        "rho_vs_level_L0toL3": 0.4,
+        "rho_vs_level_L1toL3": 1.0,
+        "rho_vs_solver_accuracy_L1toL3": -1.0
+      },
+      "goal_nodes_mean": {
+        "by_level": {
+          "L0": 2.0,
+          "L1": 2.0,
+          "L2": 2.0,
+          "L3": 2.0
+        },
+        "rho_vs_level_L0toL3": null,
+        "rho_vs_level_L1toL3": null,
+        "rho_vs_solver_accuracy_L1toL3": null
+      },
+      "goal_max_depth_mean": {
+        "by_level": {
+          "L0": 1.0,
+          "L1": 1.0,
+          "L2": 1.0,
+          "L3": 1.0
+        },
+        "rho_vs_level_L0toL3": null,
+        "rho_vs_level_L1toL3": null,
+        "rho_vs_solver_accuracy_L1toL3": null
+      },
+      "goal_leaf_identifiers_mean": {
+        "by_level": {
+          "L0": 1.0,
+          "L1": 1.0,
+          "L2": 1.0,
+          "L3": 1.0
+        },
+        "rho_vs_level_L0toL3": null,
+        "rho_vs_level_L1toL3": null,
+        "rho_vs_solver_accuracy_L1toL3": null
+      },
+      "goal_identifier_mean_depth": {
+        "by_level": {
+          "L0": 1.0,
+          "L1": 1.0,
+          "L2": 1.0,
+          "L3": 1.0
+        },
+        "rho_vs_level_L0toL3": null,
+        "rho_vs_level_L1toL3": null,
+        "rho_vs_solver_accuracy_L1toL3": null
+      },
+      "state_objects_mean": {
+        "by_level": {
+          "L0": 6.0,
+          "L1": 6.0,
+          "L2": 6.0,
+          "L3": 6.0
+        },
+        "rho_vs_level_L0toL3": null,
+        "rho_vs_level_L1toL3": null,
+        "rho_vs_solver_accuracy_L1toL3": null
+      },
+      "state_assumptions_mean": {
+        "by_level": {
+          "L0": 0.0,
+          "L1": 0.0,
+          "L2": 0.0,
+          "L3": 0.0
+        },
+        "rho_vs_level_L0toL3": null,
+        "rho_vs_level_L1toL3": null,
+        "rho_vs_solver_accuracy_L1toL3": null
+      },
+      "state_propositions_mean": {
+        "by_level": {
+          "L0": 0.0,
+          "L1": 0.0,
+          "L2": 0.0,
+          "L3": 0.0
+        },
+        "rho_vs_level_L0toL3": null,
+        "rho_vs_level_L1toL3": null,
+        "rho_vs_solver_accuracy_L1toL3": null
+      },
+      "state_facts_mean": {
+        "by_level": {
+          "L0": 1.0,
+          "L1": 0.0,
+          "L2": 0.0,
+          "L3": 0.0
+        },
+        "rho_vs_level_L0toL3": -0.7746,
+        "rho_vs_level_L1toL3": null,
+        "rho_vs_solver_accuracy_L1toL3": null
+      },
+      "state_evidence_nodes_mean": {
+        "by_level": {
+          "L0": 9.0,
+          "L1": 7.0,
+          "L2": 9.0,
+          "L3": 13.0
+        },
+        "rho_vs_level_L0toL3": 0.6325,
+        "rho_vs_level_L1toL3": 1.0,
+        "rho_vs_solver_accuracy_L1toL3": -1.0
+      },
+      "delimiter_total_mean": {
+        "by_level": {
+          "L0": 924.0,
+          "L1": 817.0,
+          "L2": 885.0,
+          "L3": 1021.0
+        },
+        "rho_vs_level_L0toL3": 0.4,
+        "rho_vs_level_L1toL3": 1.0,
+        "rho_vs_solver_accuracy_L1toL3": -1.0
+      },
+      "answer_share_index0": {
+        "by_level": {
+          "L0": 0.5,
+          "L1": 0.5,
+          "L2": 0.5,
+          "L3": 0.5
+        },
+        "rho_vs_level_L0toL3": null,
+        "rho_vs_level_L1toL3": null,
+        "rho_vs_solver_accuracy_L1toL3": null
+      },
+      "target_first_mention_norm_mean": {
+        "by_level": {
+          "L0": 0.0365,
+          "L1": 0.1677,
+          "L2": 0.1244,
+          "L3": 0.2065
+        },
+        "rho_vs_level_L0toL3": 0.8,
+        "rho_vs_level_L1toL3": 0.5,
+        "rho_vs_solver_accuracy_L1toL3": -0.5
+      }
+    },
+    "precondition_conjunction": {
+      "solver_accuracy": {
+        "L0": 1.0,
+        "L1": 0.9583,
+        "L2": 1.0,
+        "L3": 1.0
+      },
+      "prompt_tokens_real_mean": {
+        "by_level": {
+          "L0": 5507.417,
+          "L1": 4602.333,
+          "L2": 5350.0,
+          "L3": 6858.0
+        },
+        "rho_vs_level_L0toL3": 0.4,
+        "rho_vs_level_L1toL3": 1.0,
+        "rho_vs_solver_accuracy_L1toL3": 0.866
+      },
+      "prompt_chars_mean": {
+        "by_level": {
+          "L0": 16482.0,
+          "L1": 13779.0,
+          "L2": 16029.0,
+          "L3": 20529.0
+        },
+        "rho_vs_level_L0toL3": 0.4,
+        "rho_vs_level_L1toL3": 1.0,
+        "rho_vs_solver_accuracy_L1toL3": 0.866
+      },
+      "state_chars_mean": {
+        "by_level": {
+          "L0": 3923.0,
+          "L1": 3296.0,
+          "L2": 3812.0,
+          "L3": 4844.0
+        },
+        "rho_vs_level_L0toL3": 0.4,
+        "rho_vs_level_L1toL3": 1.0,
+        "rho_vs_solver_accuracy_L1toL3": 0.866
+      },
+      "goal_nodes_mean": {
+        "by_level": {
+          "L0": 2.0,
+          "L1": 2.0,
+          "L2": 2.0,
+          "L3": 2.0
+        },
+        "rho_vs_level_L0toL3": null,
+        "rho_vs_level_L1toL3": null,
+        "rho_vs_solver_accuracy_L1toL3": null
+      },
+      "goal_max_depth_mean": {
+        "by_level": {
+          "L0": 1.0,
+          "L1": 1.0,
+          "L2": 1.0,
+          "L3": 1.0
+        },
+        "rho_vs_level_L0toL3": null,
+        "rho_vs_level_L1toL3": null,
+        "rho_vs_solver_accuracy_L1toL3": null
+      },
+      "goal_leaf_identifiers_mean": {
+        "by_level": {
+          "L0": 1.0,
+          "L1": 1.0,
+          "L2": 1.0,
+          "L3": 1.0
+        },
+        "rho_vs_level_L0toL3": null,
+        "rho_vs_level_L1toL3": null,
+        "rho_vs_solver_accuracy_L1toL3": null
+      },
+      "goal_identifier_mean_depth": {
+        "by_level": {
+          "L0": 1.0,
+          "L1": 1.0,
+          "L2": 1.0,
+          "L3": 1.0
+        },
+        "rho_vs_level_L0toL3": null,
+        "rho_vs_level_L1toL3": null,
+        "rho_vs_solver_accuracy_L1toL3": null
+      },
+      "state_objects_mean": {
+        "by_level": {
+          "L0": 6.0,
+          "L1": 6.0,
+          "L2": 6.0,
+          "L3": 6.0
+        },
+        "rho_vs_level_L0toL3": null,
+        "rho_vs_level_L1toL3": null,
+        "rho_vs_solver_accuracy_L1toL3": null
+      },
+      "state_assumptions_mean": {
+        "by_level": {
+          "L0": 12.0,
+          "L1": 10.0,
+          "L2": 12.0,
+          "L3": 16.0
+        },
+        "rho_vs_level_L0toL3": 0.6325,
+        "rho_vs_level_L1toL3": 1.0,
+        "rho_vs_solver_accuracy_L1toL3": 0.866
+      },
+      "state_propositions_mean": {
+        "by_level": {
+          "L0": 6.0,
+          "L1": 4.0,
+          "L2": 6.0,
+          "L3": 10.0
+        },
+        "rho_vs_level_L0toL3": 0.6325,
+        "rho_vs_level_L1toL3": 1.0,
+        "rho_vs_solver_accuracy_L1toL3": 0.866
+      },
+      "state_facts_mean": {
+        "by_level": {
+          "L0": 1.0,
+          "L1": 0.0,
+          "L2": 0.0,
+          "L3": 0.0
+        },
+        "rho_vs_level_L0toL3": -0.7746,
+        "rho_vs_level_L1toL3": null,
+        "rho_vs_solver_accuracy_L1toL3": null
+      },
+      "state_evidence_nodes_mean": {
+        "by_level": {
+          "L0": 0.0,
+          "L1": 0.0,
+          "L2": 0.0,
+          "L3": 0.0
+        },
+        "rho_vs_level_L0toL3": null,
+        "rho_vs_level_L1toL3": null,
+        "rho_vs_solver_accuracy_L1toL3": null
+      },
+      "delimiter_total_mean": {
+        "by_level": {
+          "L0": 1464.0,
+          "L1": 1223.0,
+          "L2": 1425.0,
+          "L3": 1829.0
+        },
+        "rho_vs_level_L0toL3": 0.4,
+        "rho_vs_level_L1toL3": 1.0,
+        "rho_vs_solver_accuracy_L1toL3": 0.866
+      },
+      "answer_share_index0": {
+        "by_level": {
+          "L0": 0.5,
+          "L1": 0.5,
+          "L2": 0.5,
+          "L3": 0.5
+        },
+        "rho_vs_level_L0toL3": null,
+        "rho_vs_level_L1toL3": null,
+        "rho_vs_solver_accuracy_L1toL3": null
+      },
+      "target_first_mention_norm_mean": {
+        "by_level": {
+          "L0": 0.3263,
+          "L1": 0.4484,
+          "L2": 0.4391,
+          "L3": 0.4265
+        },
+        "rho_vs_level_L0toL3": 0.2,
+        "rho_vs_level_L1toL3": -1.0,
+        "rho_vs_solver_accuracy_L1toL3": -0.866
+      }
+    }
+  },
+  "question_text_by_cell": {
+    "formal_expression_depth|L0": "Which identifier occurs at the greatest nesting depth inside the goal expression? Depth counts nested argument levels from the goal's root.",
+    "formal_expression_depth|L1": "Which identifier occurs at the greatest nesting depth inside the goal expression? Depth counts nested argument levels from the goal's root.",
+    "formal_expression_depth|L2": "Which identifier occurs at the greatest nesting depth inside the goal expression? Depth counts nested argument levels from the goal's root.",
+    "formal_expression_depth|L3": "Which identifier occurs at the greatest nesting depth inside the goal expression? Depth counts nested argument levels from the goal's root.",
+    "transitive_dependency|L0": "Which evidence ID is a transitive dependency of e:leaf, reached by following the dependencies field 3 step(s) from e:leaf?",
+    "transitive_dependency|L1": "Which evidence ID is a transitive dependency of e:leaf, reached by following the dependencies field 2 step(s) from e:leaf?",
+    "transitive_dependency|L2": "Which evidence ID is a transitive dependency of e:leaf, reached by following the dependencies field 3 step(s) from e:leaf?",
+    "transitive_dependency|L3": "Which evidence ID is a transitive dependency of e:leaf, reached by following the dependencies field 5 step(s) from e:leaf?",
+    "precondition_conjunction|L0": "Which answer ID has every one of its requires(answer, premise) propositions matched by an identical holds(premise) assumption?",
+    "precondition_conjunction|L1": "Which answer ID has every one of its requires(answer, premise) propositions matched by an identical holds(premise) assumption?",
+    "precondition_conjunction|L2": "Which answer ID has every one of its requires(answer, premise) propositions matched by an identical holds(premise) assumption?",
+    "precondition_conjunction|L3": "Which answer ID has every one of its requires(answer, premise) propositions matched by an identical holds(premise) assumption?"
+  },
+  "formal_source_state_reuse_across_levels": {
+    "L0 vs L1": 0,
+    "L0 vs L2": 12,
+    "L0 vs L3": 0,
+    "L1 vs L2": 0,
+    "L1 vs L3": 0,
+    "L2 vs L3": 0
+  },
+  "depth_vs_traversal_order_on_real_lean_states": {
+    "length_fair_states": 104,
+    "stratum_sizes": {
+      "shallow": 34,
+      "medium": 34,
+      "deep": 36
+    },
+    "states_scored": 87,
+    "mean_spearman_depth_vs_preorder_rank": -0.7812,
+    "share_negative_rho": 0.9195,
+    "share_deepest_identifier_is_also_first_in_preorder": 0.7931,
+    "note": "negative rho means deeper identifiers occur EARLIER in pre-order, which is what makes 'answer with the first identifier you see' a working rule"
+  }
+}

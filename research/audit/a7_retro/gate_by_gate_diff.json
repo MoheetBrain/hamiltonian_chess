@@ -1,0 +1,343 @@
+{
+ "analysis_class": "READ_ONLY_AUDIT_EXTRACTION_ZERO_MODEL_CALLS",
+ "artifacts": {
+  "phase6_qwen_bare": {
+   "path": "artifacts/experiments/fitness_v5/development/result-qwen38-rvn_latest-bare.json",
+   "sha256": "e753de987dab6c3a95fc07581e85b93a7812cc77b4905a086dd2d6848be4916a"
+  },
+  "v5_gemma_framed": {
+   "path": "artifacts/experiments/fitness_v5/development/result.json",
+   "sha256": "0c5b3271c772bcaf304af65ae469d615572022d18ac81f3083b27a88b0097579"
+  },
+  "v7_qwen_bare": {
+   "path": "artifacts/experiments/fitness_v7/development/result-qwen38-rvn_latest-bare.json",
+   "sha256": "ecdefc4f8399f82160e577050312781c2899d1f48e9a157a157c661b67fc13db"
+  }
+ },
+ "auditor": "A7 / Part K questions 1 and 9",
+ "frontier_constants": {
+  "phase6_frontier_target": 0.625,
+  "phase6_negative_target_accuracy_max": 0.6,
+  "phase6_shortcut_margin": "ABSENT",
+  "phase6_shortcut_rule_max": 0.75,
+  "v7_effective_window": [
+   0.7,
+   0.85
+  ],
+  "v7_frontier_target": 0.7749999999999999,
+  "v7_shortcut_audit_scope": "EVERY level L0..L3, reported in full; gated at the selected level",
+  "v7_shortcut_margin": 0.1,
+  "v7_shortcut_rule_max": 0.75
+ },
+ "instrument_qualified": {
+  "phase6": false,
+  "v7": false
+ },
+ "instrument_versions": {
+  "phase6": "arena-game-r-constrained-formal-instrument-v5.0.0",
+  "v5": "arena-game-r-constrained-formal-instrument-v5.0.0",
+  "v7": "arena-game-r-derived-frontier-instrument-v7.0.0"
+ },
+ "mechanisms": {
+  "formal_expression_depth": {
+   "phase6": {
+    "full_family_summary": {
+     "context_truncated_rows": 0,
+     "largest_answer_share": 0.5416666666666666,
+     "negative_target_accuracy": 0.5,
+     "position_invariance": 0.5416666666666666,
+     "positive_accuracy": 0.625,
+     "positive_examples": 24,
+     "positive_negative_gap": 0.125,
+     "valid_response_rate": 1.0
+    },
+    "ladder": {
+     "0": 1.0,
+     "1": 0.8333333333333334,
+     "2": 0.7916666666666666,
+     "3": 0.625
+    },
+    "qualification": {
+     "checks": {
+      "answer_share": "PASS",
+      "context": "PASS",
+      "negative_collapse": "VOID_NEGATIVE_CONTROL",
+      "position_invariance": "PASS",
+      "q0": "PASS",
+      "sample_size": "PASS",
+      "shortcut": "VOID_SHORTCUT",
+      "valid_response": "PASS"
+     },
+     "qualified": false,
+     "verdict": "VOID_NEGATIVE_CONTROL"
+    },
+    "selected_level": 3,
+    "selection": {
+     "candidate_accuracy": 0.625,
+     "candidate_level": 3,
+     "explicit_positive_accuracy": 1.0,
+     "selected_level": 3,
+     "verdict": "FRONTIER_SELECTED"
+    },
+    "shortcut_audit_at_selected_level_only": {
+     "items": 24,
+     "status": "LEAKS",
+     "worst_rule": "first_mentioned_in_state",
+     "worst_score": 0.9166666666666666
+    }
+   },
+   "v7": {
+    "full_family_summary": {
+     "context_truncated_rows": 0,
+     "largest_answer_share": 0.5416666666666666,
+     "negative_target_accuracy": 0.5,
+     "position_invariance": 0.5833333333333334,
+     "positive_accuracy": 0.7916666666666666,
+     "positive_examples": 24,
+     "positive_negative_gap": 0.29166666666666663,
+     "valid_response_rate": 1.0
+    },
+    "ladder": {
+     "0": 1.0,
+     "1": 0.8333333333333334,
+     "2": 0.7916666666666666,
+     "3": 0.625
+    },
+    "qualification": {
+     "all_failures": [
+      "shortcut_absolute",
+      "shortcut_margin"
+     ],
+     "best_shortcut_accuracy": 0.8333333333333334,
+     "best_shortcut_feature": "first_mentioned_in_state",
+     "checks": {
+      "answer_share": "PASS",
+      "context": "PASS",
+      "negative_collapse": "PASS",
+      "position_invariance": "PASS",
+      "q0": "PASS",
+      "sample_size": "PASS",
+      "shortcut_absolute": "VOID_SHORTCUT",
+      "shortcut_margin": "VOID_SHORTCUT",
+      "valid_response": "PASS"
+     },
+     "positive_accuracy": 0.7916666666666666,
+     "qualified": false,
+     "shortcut_margin_observed": -0.04166666666666674,
+     "shortcut_margin_required": 0.1,
+     "verdict": "VOID_SHORTCUT"
+    },
+    "selected_level": 2,
+    "selection": {
+     "candidate_accuracy": 0.7916666666666666,
+     "candidate_inside_qualifying_window": true,
+     "candidate_level": 2,
+     "distance_to_target": 0.01666666666666672,
+     "explicit_positive_accuracy": 1.0,
+     "frontier_target": 0.7749999999999999,
+     "qualifying_window": [
+      0.7,
+      0.85
+     ],
+     "selected_level": 2,
+     "verdict": "FRONTIER_SELECTED"
+    },
+    "shortcut_audit_at_selected_level_only": {
+     "items": 24,
+     "status": "LEAKS",
+     "worst_rule": null,
+     "worst_score": null
+    }
+   }
+  },
+  "precondition_conjunction": {
+   "phase6": {
+    "ladder": {
+     "0": 1.0,
+     "1": 0.9583333333333334,
+     "2": 1.0,
+     "3": 1.0
+    },
+    "qualification": {
+     "qualified": false,
+     "verdict": "VOID_CEILING"
+    },
+    "selected_level": null,
+    "selection": {
+     "candidate_accuracy": 0.9583333333333334,
+     "candidate_level": 1,
+     "explicit_positive_accuracy": 1.0,
+     "selected_level": null,
+     "verdict": "VOID_CEILING"
+    }
+   },
+   "v7": {
+    "ladder": {
+     "0": 1.0,
+     "1": 0.9583333333333334,
+     "2": 1.0,
+     "3": 1.0
+    },
+    "qualification": {
+     "qualified": false,
+     "verdict": "VOID_CEILING"
+    },
+    "selected_level": null,
+    "selection": {
+     "candidate_accuracy": 0.9583333333333334,
+     "candidate_inside_qualifying_window": false,
+     "candidate_level": 1,
+     "distance_to_target": 0.18333333333333346,
+     "explicit_positive_accuracy": 1.0,
+     "frontier_target": 0.7749999999999999,
+     "qualifying_window": [
+      0.7,
+      0.85
+     ],
+     "selected_level": null,
+     "verdict": "VOID_CEILING"
+    }
+   }
+  },
+  "transitive_dependency": {
+   "phase6": {
+    "full_family_summary": {
+     "context_truncated_rows": 0,
+     "largest_answer_share": 0.5,
+     "negative_target_accuracy": 0.5,
+     "position_invariance": 0.8333333333333334,
+     "positive_accuracy": 0.75,
+     "positive_examples": 24,
+     "positive_negative_gap": 0.25,
+     "valid_response_rate": 1.0
+    },
+    "ladder": {
+     "0": 0.9583333333333334,
+     "1": 1.0,
+     "2": 0.9583333333333334,
+     "3": 0.75
+    },
+    "qualification": {
+     "checks": {
+      "answer_share": "PASS",
+      "context": "PASS",
+      "negative_collapse": "PASS",
+      "position_invariance": "PASS",
+      "q0": "PASS",
+      "sample_size": "PASS",
+      "shortcut": "PASS",
+      "valid_response": "PASS"
+     },
+     "qualified": true,
+     "verdict": "QUALIFIED"
+    },
+    "selected_level": 3,
+    "selection": {
+     "candidate_accuracy": 0.75,
+     "candidate_level": 3,
+     "explicit_positive_accuracy": 0.9583333333333334,
+     "selected_level": 3,
+     "verdict": "FRONTIER_SELECTED"
+    },
+    "shortcut_audit_at_selected_level_only": {
+     "items": 24,
+     "status": "CLEAN",
+     "worst_rule": "first_mentioned_in_state",
+     "worst_score": 0.6666666666666667
+    }
+   },
+   "v7": {
+    "full_family_summary": {
+     "context_truncated_rows": 0,
+     "largest_answer_share": 0.5,
+     "negative_target_accuracy": 0.5,
+     "position_invariance": 0.8333333333333334,
+     "positive_accuracy": 0.75,
+     "positive_examples": 24,
+     "positive_negative_gap": 0.25,
+     "valid_response_rate": 1.0
+    },
+    "ladder": {
+     "0": 0.9583333333333334,
+     "1": 1.0,
+     "2": 0.9583333333333334,
+     "3": 0.75
+    },
+    "qualification": {
+     "all_failures": [
+      "shortcut_margin"
+     ],
+     "best_shortcut_accuracy": 0.6666666666666667,
+     "best_shortcut_feature": "first_mentioned_in_state",
+     "checks": {
+      "answer_share": "PASS",
+      "context": "PASS",
+      "negative_collapse": "PASS",
+      "position_invariance": "PASS",
+      "q0": "PASS",
+      "sample_size": "PASS",
+      "shortcut_absolute": "PASS",
+      "shortcut_margin": "VOID_SHORTCUT",
+      "valid_response": "PASS"
+     },
+     "positive_accuracy": 0.75,
+     "qualified": false,
+     "shortcut_margin_observed": 0.08333333333333326,
+     "shortcut_margin_required": 0.1,
+     "verdict": "VOID_SHORTCUT"
+    },
+    "selected_level": 3,
+    "selection": {
+     "candidate_accuracy": 0.75,
+     "candidate_inside_qualifying_window": true,
+     "candidate_level": 3,
+     "distance_to_target": 0.02499999999999991,
+     "explicit_positive_accuracy": 0.9583333333333334,
+     "frontier_target": 0.7749999999999999,
+     "qualifying_window": [
+      0.7,
+      0.85
+     ],
+     "selected_level": 3,
+     "verdict": "FRONTIER_SELECTED"
+    },
+    "shortcut_audit_at_selected_level_only": {
+     "items": 24,
+     "status": "CLEAN",
+     "worst_rule": null,
+     "worst_score": null
+    }
+   }
+  }
+ },
+ "model_calls_made": 0,
+ "note": "Every value below was written by the run that produced the artifact. Nothing is re-scored; no verdict is reinterpreted.",
+ "phase6_cache_census": {
+  "ladder_rows": {
+   "cache_hit_true": 13,
+   "rows": 288
+  },
+  "mechanisms.formal_expression_depth.rows": {
+   "cache_hit_true": 24,
+   "rows": 72
+  },
+  "mechanisms.transitive_dependency.rows": {
+   "cache_hit_true": 24,
+   "rows": 72
+  },
+  "total_cache_hit_true": 61
+ },
+ "qualified_mechanisms": {
+  "phase6": [
+   "transitive_dependency"
+  ],
+  "v7": []
+ },
+ "v7_cache_census": {
+  "ladder_rows": {
+   "cache_hit_true": 0,
+   "rows": 0
+  },
+  "total_cache_hit_true": 0
+ }
+}

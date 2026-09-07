@@ -1,0 +1,1435 @@
+{
+  "cells": {
+    "formal_expression_depth/L0": {
+      "best_shortcut_accuracy": 0.6666666666666666,
+      "best_shortcut_feature": "more_frequent_in_state",
+      "families": 12,
+      "positives": 24,
+      "rules": {
+        "alphabetically_first": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "always_first_option": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": true,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "always_second_option": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": true,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "first_mentioned_in_state": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "last_mentioned_in_state": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "more_frequent_in_state": {
+          "best_of_rule_or_negation": 0.6666666666666666,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 68,
+          "direction_A_pairs_within_family": 4,
+          "direction_B_pairs_across_family": 56,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 4,
+          "family_hit_histogram": {
+            "0": 2,
+            "1": 4,
+            "2": 6
+          },
+          "inverted_score": 0.33333333333333337,
+          "score": 0.6666666666666666
+        },
+        "shorter_option_text": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        }
+      },
+      "subset_feasibility": {
+        "best": {
+          "families": 12,
+          "mask": 4095,
+          "worst": 0.6666666666666666
+        },
+        "families_available": 12,
+        "feasible_by_size": {
+          "12": 1
+        },
+        "feasible_subsets": 1,
+        "min_positives_required": 24,
+        "target_best_shortcut_max": 0.75
+      },
+      "worst_informative_rule": "more_frequent_in_state"
+    },
+    "formal_expression_depth/L1": {
+      "best_shortcut_accuracy": 1.0,
+      "best_shortcut_feature": "first_mentioned_in_state",
+      "families": 12,
+      "positives": 24,
+      "rules": {
+        "alphabetically_first": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 92,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 40,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "always_first_option": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": true,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "always_second_option": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": true,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "first_mentioned_in_state": {
+          "best_of_rule_or_negation": 1.0,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 0,
+          "direction_A_pairs_within_family": 0,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 0,
+          "family_hit_histogram": {
+            "2": 12
+          },
+          "inverted_score": 0.0,
+          "score": 1.0
+        },
+        "last_mentioned_in_state": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 92,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 40,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "more_frequent_in_state": {
+          "best_of_rule_or_negation": 0.875,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 33,
+          "direction_A_pairs_within_family": 3,
+          "direction_B_pairs_across_family": 27,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 3,
+          "family_hit_histogram": {
+            "1": 3,
+            "2": 9
+          },
+          "inverted_score": 0.125,
+          "score": 0.875
+        },
+        "shorter_option_text": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        }
+      },
+      "subset_feasibility": {
+        "best": null,
+        "families_available": 12,
+        "feasible_by_size": {},
+        "feasible_subsets": 0,
+        "min_positives_required": 24,
+        "target_best_shortcut_max": 0.75
+      },
+      "worst_informative_rule": "first_mentioned_in_state"
+    },
+    "formal_expression_depth/L2": {
+      "best_shortcut_accuracy": 0.8333333333333334,
+      "best_shortcut_feature": "first_mentioned_in_state",
+      "families": 12,
+      "positives": 24,
+      "rules": {
+        "alphabetically_first": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "always_first_option": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": true,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "always_second_option": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": true,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "first_mentioned_in_state": {
+          "best_of_rule_or_negation": 0.8333333333333334,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 40,
+          "direction_A_pairs_within_family": 0,
+          "direction_B_pairs_across_family": 40,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 0,
+          "family_hit_histogram": {
+            "0": 2,
+            "2": 10
+          },
+          "inverted_score": 0.16666666666666663,
+          "score": 0.8333333333333334
+        },
+        "last_mentioned_in_state": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "more_frequent_in_state": {
+          "best_of_rule_or_negation": 0.6666666666666666,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 68,
+          "direction_A_pairs_within_family": 4,
+          "direction_B_pairs_across_family": 56,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 4,
+          "family_hit_histogram": {
+            "0": 2,
+            "1": 4,
+            "2": 6
+          },
+          "inverted_score": 0.33333333333333337,
+          "score": 0.6666666666666666
+        },
+        "shorter_option_text": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        }
+      },
+      "subset_feasibility": {
+        "best": null,
+        "families_available": 12,
+        "feasible_by_size": {},
+        "feasible_subsets": 0,
+        "min_positives_required": 24,
+        "target_best_shortcut_max": 0.75
+      },
+      "worst_informative_rule": "first_mentioned_in_state"
+    },
+    "formal_expression_depth/L3": {
+      "best_shortcut_accuracy": 0.9166666666666666,
+      "best_shortcut_feature": "first_mentioned_in_state",
+      "families": 12,
+      "positives": 24,
+      "rules": {
+        "alphabetically_first": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 110,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 22,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "always_first_option": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": true,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "always_second_option": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": true,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "first_mentioned_in_state": {
+          "best_of_rule_or_negation": 0.9166666666666666,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 22,
+          "direction_A_pairs_within_family": 0,
+          "direction_B_pairs_across_family": 22,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 0,
+          "family_hit_histogram": {
+            "0": 1,
+            "2": 11
+          },
+          "inverted_score": 0.08333333333333337,
+          "score": 0.9166666666666666
+        },
+        "last_mentioned_in_state": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 110,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 22,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "more_frequent_in_state": {
+          "best_of_rule_or_negation": 0.875,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 33,
+          "direction_A_pairs_within_family": 3,
+          "direction_B_pairs_across_family": 27,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 3,
+          "family_hit_histogram": {
+            "1": 3,
+            "2": 9
+          },
+          "inverted_score": 0.125,
+          "score": 0.875
+        },
+        "shorter_option_text": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 110,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 22,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        }
+      },
+      "subset_feasibility": {
+        "best": null,
+        "families_available": 12,
+        "feasible_by_size": {},
+        "feasible_subsets": 0,
+        "min_positives_required": 24,
+        "target_best_shortcut_max": 0.75
+      },
+      "worst_informative_rule": "first_mentioned_in_state"
+    },
+    "precondition_conjunction/L0": {
+      "best_shortcut_accuracy": 1.0,
+      "best_shortcut_feature": "first_mentioned_in_state",
+      "families": 12,
+      "positives": 24,
+      "rules": {
+        "alphabetically_first": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 68,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 64,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "always_first_option": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": true,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "always_second_option": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": true,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "first_mentioned_in_state": {
+          "best_of_rule_or_negation": 1.0,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 0,
+          "direction_A_pairs_within_family": 0,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 0,
+          "family_hit_histogram": {
+            "2": 12
+          },
+          "inverted_score": 0.0,
+          "score": 1.0
+        },
+        "last_mentioned_in_state": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 60,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 72,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "more_frequent_in_state": {
+          "best_of_rule_or_negation": 1.0,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 0,
+          "direction_A_pairs_within_family": 0,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 0,
+          "family_hit_histogram": {
+            "2": 12
+          },
+          "inverted_score": 0.0,
+          "score": 1.0
+        },
+        "shorter_option_text": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 68,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 64,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        }
+      },
+      "subset_feasibility": {
+        "best": null,
+        "families_available": 12,
+        "feasible_by_size": {},
+        "feasible_subsets": 0,
+        "min_positives_required": 24,
+        "target_best_shortcut_max": 0.75
+      },
+      "worst_informative_rule": "first_mentioned_in_state"
+    },
+    "precondition_conjunction/L1": {
+      "best_shortcut_accuracy": 0.5,
+      "best_shortcut_feature": "always_first_option",
+      "families": 12,
+      "positives": 24,
+      "rules": {
+        "alphabetically_first": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 60,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 72,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "always_first_option": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": true,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "always_second_option": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": true,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "first_mentioned_in_state": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "last_mentioned_in_state": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 60,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 72,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "more_frequent_in_state": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "shorter_option_text": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 60,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 72,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        }
+      },
+      "subset_feasibility": {
+        "best": {
+          "families": 12,
+          "mask": 4095,
+          "worst": 0.5
+        },
+        "families_available": 12,
+        "feasible_by_size": {
+          "12": 1
+        },
+        "feasible_subsets": 1,
+        "min_positives_required": 24,
+        "target_best_shortcut_max": 0.75
+      },
+      "worst_informative_rule": "first_mentioned_in_state"
+    },
+    "precondition_conjunction/L2": {
+      "best_shortcut_accuracy": 0.5,
+      "best_shortcut_feature": "always_first_option",
+      "families": 12,
+      "positives": 24,
+      "rules": {
+        "alphabetically_first": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 62,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 70,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "always_first_option": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": true,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "always_second_option": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": true,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "first_mentioned_in_state": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "last_mentioned_in_state": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 62,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 70,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "more_frequent_in_state": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "shorter_option_text": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 62,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 70,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        }
+      },
+      "subset_feasibility": {
+        "best": {
+          "families": 12,
+          "mask": 4095,
+          "worst": 0.5
+        },
+        "families_available": 12,
+        "feasible_by_size": {
+          "12": 1
+        },
+        "feasible_subsets": 1,
+        "min_positives_required": 24,
+        "target_best_shortcut_max": 0.75
+      },
+      "worst_informative_rule": "first_mentioned_in_state"
+    },
+    "precondition_conjunction/L3": {
+      "best_shortcut_accuracy": 0.5,
+      "best_shortcut_feature": "always_first_option",
+      "families": 12,
+      "positives": 24,
+      "rules": {
+        "alphabetically_first": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 68,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 64,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "always_first_option": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": true,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "always_second_option": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": true,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "first_mentioned_in_state": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "last_mentioned_in_state": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 78,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 54,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "more_frequent_in_state": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "shorter_option_text": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 68,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 64,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        }
+      },
+      "subset_feasibility": {
+        "best": {
+          "families": 12,
+          "mask": 4095,
+          "worst": 0.5
+        },
+        "families_available": 12,
+        "feasible_by_size": {
+          "12": 1
+        },
+        "feasible_subsets": 1,
+        "min_positives_required": 24,
+        "target_best_shortcut_max": 0.75
+      },
+      "worst_informative_rule": "first_mentioned_in_state"
+    },
+    "transitive_dependency/L0": {
+      "best_shortcut_accuracy": 1.0,
+      "best_shortcut_feature": "first_mentioned_in_state",
+      "families": 12,
+      "positives": 24,
+      "rules": {
+        "alphabetically_first": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 78,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 54,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "always_first_option": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": true,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "always_second_option": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": true,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "first_mentioned_in_state": {
+          "best_of_rule_or_negation": 1.0,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 0,
+          "direction_A_pairs_within_family": 0,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 0,
+          "family_hit_histogram": {
+            "2": 12
+          },
+          "inverted_score": 0.0,
+          "score": 1.0
+        },
+        "last_mentioned_in_state": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "more_frequent_in_state": {
+          "best_of_rule_or_negation": 1.0,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 0,
+          "direction_A_pairs_within_family": 0,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 0,
+          "family_hit_histogram": {
+            "2": 12
+          },
+          "inverted_score": 0.0,
+          "score": 1.0
+        },
+        "shorter_option_text": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 78,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 54,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        }
+      },
+      "subset_feasibility": {
+        "best": null,
+        "families_available": 12,
+        "feasible_by_size": {},
+        "feasible_subsets": 0,
+        "min_positives_required": 24,
+        "target_best_shortcut_max": 0.75
+      },
+      "worst_informative_rule": "first_mentioned_in_state"
+    },
+    "transitive_dependency/L1": {
+      "best_shortcut_accuracy": 0.8333333333333334,
+      "best_shortcut_feature": "more_frequent_in_state",
+      "families": 12,
+      "positives": 24,
+      "rules": {
+        "alphabetically_first": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 62,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 70,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "always_first_option": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": true,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "always_second_option": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": true,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "first_mentioned_in_state": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 72,
+          "direction_A_pairs_within_family": 0,
+          "direction_B_pairs_across_family": 72,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 0,
+          "family_hit_histogram": {
+            "0": 6,
+            "2": 6
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "last_mentioned_in_state": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "more_frequent_in_state": {
+          "best_of_rule_or_negation": 0.8333333333333334,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 44,
+          "direction_A_pairs_within_family": 4,
+          "direction_B_pairs_across_family": 32,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 4,
+          "family_hit_histogram": {
+            "1": 4,
+            "2": 8
+          },
+          "inverted_score": 0.16666666666666663,
+          "score": 0.8333333333333334
+        },
+        "shorter_option_text": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 62,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 70,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        }
+      },
+      "subset_feasibility": {
+        "best": null,
+        "families_available": 12,
+        "feasible_by_size": {},
+        "feasible_subsets": 0,
+        "min_positives_required": 24,
+        "target_best_shortcut_max": 0.75
+      },
+      "worst_informative_rule": "more_frequent_in_state"
+    },
+    "transitive_dependency/L2": {
+      "best_shortcut_accuracy": 0.625,
+      "best_shortcut_feature": "more_frequent_in_state",
+      "families": 12,
+      "positives": 24,
+      "rules": {
+        "alphabetically_first": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 68,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 64,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "always_first_option": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": true,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "always_second_option": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": true,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "first_mentioned_in_state": {
+          "best_of_rule_or_negation": 0.5833333333333334,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 70,
+          "direction_A_pairs_within_family": 0,
+          "direction_B_pairs_across_family": 70,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 0,
+          "family_hit_histogram": {
+            "0": 5,
+            "2": 7
+          },
+          "inverted_score": 0.41666666666666663,
+          "score": 0.5833333333333334
+        },
+        "last_mentioned_in_state": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "more_frequent_in_state": {
+          "best_of_rule_or_negation": 0.625,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 99,
+          "direction_A_pairs_within_family": 9,
+          "direction_B_pairs_across_family": 27,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 9,
+          "family_hit_histogram": {
+            "1": 9,
+            "2": 3
+          },
+          "inverted_score": 0.375,
+          "score": 0.625
+        },
+        "shorter_option_text": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 68,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 64,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        }
+      },
+      "subset_feasibility": {
+        "best": {
+          "families": 12,
+          "mask": 4095,
+          "worst": 0.625
+        },
+        "families_available": 12,
+        "feasible_by_size": {
+          "12": 1
+        },
+        "feasible_subsets": 1,
+        "min_positives_required": 24,
+        "target_best_shortcut_max": 0.75
+      },
+      "worst_informative_rule": "more_frequent_in_state"
+    },
+    "transitive_dependency/L3": {
+      "best_shortcut_accuracy": 0.6666666666666667,
+      "best_shortcut_feature": "first_mentioned_in_state",
+      "families": 12,
+      "positives": 24,
+      "rules": {
+        "alphabetically_first": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 78,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 54,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "always_first_option": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": true,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "always_second_option": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": true,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "first_mentioned_in_state": {
+          "best_of_rule_or_negation": 0.6666666666666667,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 64,
+          "direction_A_pairs_within_family": 0,
+          "direction_B_pairs_across_family": 64,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 0,
+          "family_hit_histogram": {
+            "0": 8,
+            "2": 4
+          },
+          "inverted_score": 0.6666666666666667,
+          "score": 0.3333333333333333
+        },
+        "last_mentioned_in_state": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 132,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 0,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        },
+        "more_frequent_in_state": {
+          "best_of_rule_or_negation": 0.5416666666666666,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 121,
+          "direction_A_pairs_within_family": 11,
+          "direction_B_pairs_across_family": 11,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 11,
+          "family_hit_histogram": {
+            "1": 11,
+            "2": 1
+          },
+          "inverted_score": 0.45833333333333337,
+          "score": 0.5416666666666666
+        },
+        "shorter_option_text": {
+          "best_of_rule_or_negation": 0.5,
+          "constant_rule": false,
+          "direction_A_pairs_across_family": 78,
+          "direction_A_pairs_within_family": 12,
+          "direction_B_pairs_across_family": 54,
+          "direction_B_pairs_within_family": 0,
+          "families_with_constant_prediction": 12,
+          "family_hit_histogram": {
+            "1": 12
+          },
+          "inverted_score": 0.5,
+          "score": 0.5
+        }
+      },
+      "subset_feasibility": {
+        "best": {
+          "families": 12,
+          "mask": 4095,
+          "worst": 0.6666666666666667
+        },
+        "families_available": 12,
+        "feasible_by_size": {
+          "12": 1
+        },
+        "feasible_subsets": 1,
+        "min_positives_required": 24,
+        "target_best_shortcut_max": 0.75
+      },
+      "worst_informative_rule": "first_mentioned_in_state"
+    }
+  },
+  "total_probes": 864
+}

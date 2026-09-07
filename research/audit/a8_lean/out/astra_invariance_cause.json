@@ -1,0 +1,23 @@
+{
+  "alpha_rename_outcome_over_300": {
+    "requires only independent Nat/Int variable declarations": 298,
+    "no supported local declarations": 2
+  },
+  "gate": "research/astra/game_r_premise/invariance.py:31 _LOCAL = '([A-Za-z_][A-Za-z0-9_]*(?: [A-Za-z_][A-Za-z0-9_]*)*) : (Nat|Int)\\n' -- applied with re.fullmatch to EVERY context line (invariance.py:46)",
+  "context_lines_total": 3800,
+  "context_lines_matching_gate": 1,
+  "context_line_nonconformance_reasons": {
+    "typed local whose type is not Nat/Int": 2484,
+    "inaccessible ✝ name (not a legal identifier)": 1191,
+    "case label line": 109,
+    "continuation / wrapped / other": 15
+  },
+  "codec_content_verbatim": {
+    "structured_english:all_verbatim": 300,
+    "json_ast:all_verbatim": 300,
+    "sexpr:all_verbatim": 300,
+    "hml:all_verbatim": 300,
+    "compact_symbolic:all_verbatim": 300
+  },
+  "conclusion": "the metamorphic fragment is a binder-free Nat/Int fragment; real mathlib contexts are type-universe/instance contexts, so the gate rejects the first context line of every admitted row"
+}

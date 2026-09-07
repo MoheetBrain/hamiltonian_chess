@@ -1,0 +1,1244 @@
+[
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 0,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:106494c1c5b909b997df",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 4630,
+  "options": [
+   "f1",
+   "f0"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "more_frequent_in_state",
+  "gated_feature_prediction": 0,
+  "depth_lead": 1
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 1,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:565bc342ca7c1788f6b6",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 6594,
+  "options": [
+   "f34",
+   "f33"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": 1
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 1,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:e399dfa6ff6ffe31e73d",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 4231,
+  "options": [
+   "f14",
+   "f0"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": 1
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 1,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:6388dbda78177beacae8",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 6594,
+  "options": [
+   "f34",
+   "f33"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": 1
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 1,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:7c722fc750d4afeb9b5f",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 2421,
+  "options": [
+   "f1",
+   "f0"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": 2
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 1,
+  "variant": "ORIGINAL",
+  "probe_id": "probe:b48a9fd1ad266f2d6d60",
+  "expected_index": 0,
+  "parsed_index": 1,
+  "raw_output": "{\"choice\":\"B\"}",
+  "prompt_tokens": 4100,
+  "options": [
+   "f0",
+   "f15"
+  ],
+  "category": "reasoning_failure(residual)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 0,
+  "depth_lead": 3
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 1,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:dd729dd94700b7f4e5a2",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 4100,
+  "options": [
+   "f15",
+   "f0"
+  ],
+  "category": "reasoning_failure(residual)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": 3
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 1,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:f212f0015788fd71dd91",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 3605,
+  "options": [
+   "f2",
+   "f0"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": 1
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 1,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:0eb94d0e7ecd78f99371",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 3432,
+  "options": [
+   "f2",
+   "f0"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": 2
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 1,
+  "variant": "ORIGINAL",
+  "probe_id": "probe:7ac1a6e17a2dc8068810",
+  "expected_index": 0,
+  "parsed_index": 1,
+  "raw_output": "{\"choice\":\"B\"}",
+  "prompt_tokens": 2729,
+  "options": [
+   "f0",
+   "f4"
+  ],
+  "category": "reasoning_failure(residual)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 0,
+  "depth_lead": 3
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 1,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:54551f5ca9186478c4d1",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 2729,
+  "options": [
+   "f4",
+   "f0"
+  ],
+  "category": "reasoning_failure(residual)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": 3
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 1,
+  "variant": "ORIGINAL",
+  "probe_id": "probe:afbd2706011484cbc139",
+  "expected_index": 0,
+  "parsed_index": 1,
+  "raw_output": "{\"choice\":\"B\"}",
+  "prompt_tokens": 4103,
+  "options": [
+   "f2",
+   "f15"
+  ],
+  "category": "reasoning_failure(residual)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 0,
+  "depth_lead": 3
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 1,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:6ed06cc154f660f76730",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 4103,
+  "options": [
+   "f15",
+   "f2"
+  ],
+  "category": "reasoning_failure(residual)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": 3
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 1,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:fc4ca1a5ccd578a39c98",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 2752,
+  "options": [
+   "f4",
+   "f3"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": 1
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 1,
+  "variant": "ORIGINAL",
+  "probe_id": "probe:f39c95acd373afc22756",
+  "expected_index": 0,
+  "parsed_index": 1,
+  "raw_output": "{\"choice\":\"B\"}",
+  "prompt_tokens": 6998,
+  "options": [
+   "f7",
+   "f31"
+  ],
+  "category": "reasoning_failure(residual)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 0,
+  "depth_lead": 3
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 1,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:7c606a871f2520d5c122",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 6998,
+  "options": [
+   "f31",
+   "f7"
+  ],
+  "category": "reasoning_failure(residual)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": 3
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 1,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:0e1d6ec48b50902b8b17",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 3837,
+  "options": [
+   "f2",
+   "f0"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": 1
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 2,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:d289b0777bf661e7951e",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 5373,
+  "options": [
+   "f5",
+   "f0"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": 2
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 2,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:3f52df38df978a9f8bee",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 3639,
+  "options": [
+   "f3",
+   "f1"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": 2
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 2,
+  "variant": "COUNTERFACTUAL",
+  "probe_id": "probe:aac6e2d1b24a1b8ea69e",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 4189,
+  "options": [
+   "f0",
+   "f1"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": 1
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 2,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:8e115a558531e0becd33",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 4189,
+  "options": [
+   "f1",
+   "f0"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": 1
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 2,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:8be7be04416655d7e4a8",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 4122,
+  "options": [
+   "f3",
+   "f1"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 0,
+  "depth_lead": 1
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 2,
+  "variant": "COUNTERFACTUAL",
+  "probe_id": "probe:cb9fe251a9ea9c3bf5d2",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 4696,
+  "options": [
+   "f0",
+   "f1"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 0,
+  "depth_lead": 1
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 2,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:eed0a8e585a7c6bf4ba0",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 4696,
+  "options": [
+   "f1",
+   "f0"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 0,
+  "depth_lead": 1
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 2,
+  "variant": "ORIGINAL",
+  "probe_id": "probe:7bce989c628ec7d14454",
+  "expected_index": 0,
+  "parsed_index": 1,
+  "raw_output": "{\"choice\":\"B\"}",
+  "prompt_tokens": 6127,
+  "options": [
+   "f1",
+   "f3"
+  ],
+  "category": "reasoning_failure(residual)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 0,
+  "depth_lead": 1
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 2,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:a35d7d1997ad5c7600ec",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 6127,
+  "options": [
+   "f3",
+   "f1"
+  ],
+  "category": "reasoning_failure(residual)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": 1
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 2,
+  "variant": "COUNTERFACTUAL",
+  "probe_id": "probe:27d14987a1a1dec39eff",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 7517,
+  "options": [
+   "f24",
+   "f26"
+  ],
+  "category": "reasoning_failure(residual)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": 1
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 2,
+  "variant": "SWAPPED_COUNTERFACTUAL",
+  "probe_id": "probe:3403f2c88918ff036732",
+  "expected_index": 0,
+  "parsed_index": 1,
+  "raw_output": "{\"choice\":\"B\"}",
+  "prompt_tokens": 7517,
+  "options": [
+   "f26",
+   "f24"
+  ],
+  "category": "reasoning_failure(residual)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 0,
+  "depth_lead": 1
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 2,
+  "variant": "ORIGINAL",
+  "probe_id": "probe:a9da667d371dc1dcb95e",
+  "expected_index": 0,
+  "parsed_index": 1,
+  "raw_output": "{\"choice\":\"B\"}",
+  "prompt_tokens": 3224,
+  "options": [
+   "f1",
+   "f2"
+  ],
+  "category": "reasoning_failure(residual)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 0,
+  "depth_lead": 1
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 2,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:b4c0577f912c357146ad",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 3224,
+  "options": [
+   "f2",
+   "f1"
+  ],
+  "category": "reasoning_failure(residual)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": 1
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 2,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:5fa1f7fb099fa3978642",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 6097,
+  "options": [
+   "f3",
+   "f1"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": 1
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 2,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:4b278aa5c7432479b7c1",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 4373,
+  "options": [
+   "f4",
+   "f3"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": 1
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 2,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:36408bf3e2f14d3f7295",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 4682,
+  "options": [
+   "f4",
+   "f0"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": 2
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 3,
+  "variant": "ORIGINAL",
+  "probe_id": "probe:3025e6d5e62b8a664741",
+  "expected_index": 0,
+  "parsed_index": 1,
+  "raw_output": "{\"choice\":\"B\"}",
+  "prompt_tokens": 5085,
+  "options": [
+   "f0",
+   "f3"
+  ],
+  "category": "reasoning_failure(residual)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 0,
+  "depth_lead": 2
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 3,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:f99018304e1f5e2be148",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 5085,
+  "options": [
+   "f3",
+   "f0"
+  ],
+  "category": "reasoning_failure(residual)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": 2
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 3,
+  "variant": "COUNTERFACTUAL",
+  "probe_id": "probe:200b5ceb73ccb9c63ff5",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 6297,
+  "options": [
+   "f9",
+   "f0"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 0,
+  "depth_lead": 1
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 3,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:351d06b1c1eb12b1c9b4",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 6297,
+  "options": [
+   "f0",
+   "f9"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 0,
+  "depth_lead": 1
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 3,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:aecbed9b4ea025ac751a",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 4069,
+  "options": [
+   "f5",
+   "f0"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": 1
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 3,
+  "variant": "COUNTERFACTUAL",
+  "probe_id": "probe:cb1363fa97f20cd18447",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 4081,
+  "options": [
+   "f0",
+   "f1"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": 1
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 3,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:366f7d349131dedbffca",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 4081,
+  "options": [
+   "f1",
+   "f0"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": 1
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 3,
+  "variant": "ORIGINAL",
+  "probe_id": "probe:df26fe36b2c2ffc053eb",
+  "expected_index": 0,
+  "parsed_index": 1,
+  "raw_output": "{\"choice\":\"B\"}",
+  "prompt_tokens": 6019,
+  "options": [
+   "f1",
+   "f13"
+  ],
+  "category": "reasoning_failure(residual)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 0,
+  "depth_lead": 1
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 3,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:3220e88fe720fdaf2616",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 6019,
+  "options": [
+   "f13",
+   "f1"
+  ],
+  "category": "reasoning_failure(residual)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": 1
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 3,
+  "variant": "COUNTERFACTUAL",
+  "probe_id": "probe:50df176f3b66cb1e13fc",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 5999,
+  "options": [
+   "f0",
+   "f1"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": 1
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 3,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:41c909e7bbc35049b9fe",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 5999,
+  "options": [
+   "f1",
+   "f0"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": 1
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 3,
+  "variant": "ORIGINAL",
+  "probe_id": "probe:b839a48fcd2f0759e414",
+  "expected_index": 0,
+  "parsed_index": 1,
+  "raw_output": "{\"choice\":\"B\"}",
+  "prompt_tokens": 5530,
+  "options": [
+   "f0",
+   "f3"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 0,
+  "depth_lead": 1
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 3,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:d879993a0d240e1ea34c",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 4495,
+  "options": [
+   "f8",
+   "f0"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": 4
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 3,
+  "variant": "ORIGINAL",
+  "probe_id": "probe:0cf5b41c747948683301",
+  "expected_index": 0,
+  "parsed_index": 1,
+  "raw_output": "{\"choice\":\"B\"}",
+  "prompt_tokens": 5829,
+  "options": [
+   "f1",
+   "f9"
+  ],
+  "category": "reasoning_failure(residual)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 0,
+  "depth_lead": 2
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 3,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:1dad3979b4e581de8d65",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 5829,
+  "options": [
+   "f9",
+   "f1"
+  ],
+  "category": "reasoning_failure(residual)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": 2
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 3,
+  "variant": "ORIGINAL",
+  "probe_id": "probe:1988019be4ebed6ed73a",
+  "expected_index": 0,
+  "parsed_index": 1,
+  "raw_output": "{\"choice\":\"B\"}",
+  "prompt_tokens": 5098,
+  "options": [
+   "f7",
+   "f8"
+  ],
+  "category": "reasoning_failure(residual)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 0,
+  "depth_lead": 1
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 3,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:c99b7d9b1e7edd3ebb6c",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 5098,
+  "options": [
+   "f8",
+   "f7"
+  ],
+  "category": "reasoning_failure(residual)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": 1
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 3,
+  "variant": "COUNTERFACTUAL",
+  "probe_id": "probe:d326825843eab8eb1348",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 4988,
+  "options": [
+   "f0",
+   "f1"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": 1
+ },
+ {
+  "mechanism": "formal_expression_depth",
+  "level": 3,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:c4af8931e5f13a57dbe1",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 4988,
+  "options": [
+   "f1",
+   "f0"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": 1
+ },
+ {
+  "mechanism": "transitive_dependency",
+  "level": 0,
+  "variant": "COUNTERFACTUAL",
+  "probe_id": "probe:401c1f86bf3a33f3bec5",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 3130,
+  "options": [
+   "e:d0318",
+   "e:3bbf9"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": null
+ },
+ {
+  "mechanism": "transitive_dependency",
+  "level": 2,
+  "variant": "COUNTERFACTUAL",
+  "probe_id": "probe:8e496284de80bfb74b9c",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 2964,
+  "options": [
+   "e:d2d10",
+   "e:7ed32"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "more_frequent_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": null
+ },
+ {
+  "mechanism": "transitive_dependency",
+  "level": 2,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:3a7c40507a616aeaf901",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 2986,
+  "options": [
+   "e:56802",
+   "e:5401f"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "more_frequent_in_state",
+  "gated_feature_prediction": 0,
+  "depth_lead": null
+ },
+ {
+  "mechanism": "transitive_dependency",
+  "level": 3,
+  "variant": "COUNTERFACTUAL",
+  "probe_id": "probe:d93e488f6fea5d2b4a5f",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 3314,
+  "options": [
+   "e:b18e2",
+   "e:bff8e"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": null
+ },
+ {
+  "mechanism": "transitive_dependency",
+  "level": 3,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:291d77e3fd65a9ab1463",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 3315,
+  "options": [
+   "e:bff8e",
+   "e:b18e2"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": null
+ },
+ {
+  "mechanism": "transitive_dependency",
+  "level": 3,
+  "variant": "ORIGINAL",
+  "probe_id": "probe:50e4608d07ad0eb36f2c",
+  "expected_index": 0,
+  "parsed_index": 1,
+  "raw_output": "{\"choice\":\"B\"}",
+  "prompt_tokens": 3317,
+  "options": [
+   "e:4d5fa",
+   "e:2a774"
+  ],
+  "category": "reasoning_failure(residual)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 0,
+  "depth_lead": null
+ },
+ {
+  "mechanism": "transitive_dependency",
+  "level": 3,
+  "variant": "COUNTERFACTUAL",
+  "probe_id": "probe:199a1f9cd875e53408fe",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 3321,
+  "options": [
+   "e:4d5fa",
+   "e:2a774"
+  ],
+  "category": "reasoning_failure(residual)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": null
+ },
+ {
+  "mechanism": "transitive_dependency",
+  "level": 3,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:96bcc7ac8d81cdf113d3",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 3317,
+  "options": [
+   "e:2a774",
+   "e:4d5fa"
+  ],
+  "category": "reasoning_failure(residual)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": null
+ },
+ {
+  "mechanism": "transitive_dependency",
+  "level": 3,
+  "variant": "SWAPPED_COUNTERFACTUAL",
+  "probe_id": "probe:5fa12cef985580dfa3c7",
+  "expected_index": 0,
+  "parsed_index": 1,
+  "raw_output": "{\"choice\":\"B\"}",
+  "prompt_tokens": 3321,
+  "options": [
+   "e:2a774",
+   "e:4d5fa"
+  ],
+  "category": "reasoning_failure(residual)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 0,
+  "depth_lead": null
+ },
+ {
+  "mechanism": "transitive_dependency",
+  "level": 3,
+  "variant": "ORIGINAL",
+  "probe_id": "probe:9dd1524708cfeab3d0ad",
+  "expected_index": 0,
+  "parsed_index": 1,
+  "raw_output": "{\"choice\":\"B\"}",
+  "prompt_tokens": 3335,
+  "options": [
+   "e:5d4ac",
+   "e:20c87"
+  ],
+  "category": "shortcut_consistent(gated_feature)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": null
+ },
+ {
+  "mechanism": "transitive_dependency",
+  "level": 3,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:7361ec9bc35ce3594594",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 3335,
+  "options": [
+   "e:20c87",
+   "e:5d4ac"
+  ],
+  "category": "shortcut_consistent(gated_feature)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 0,
+  "depth_lead": null
+ },
+ {
+  "mechanism": "transitive_dependency",
+  "level": 3,
+  "variant": "ORIGINAL",
+  "probe_id": "probe:13e503040e1054026edc",
+  "expected_index": 0,
+  "parsed_index": 1,
+  "raw_output": "{\"choice\":\"B\"}",
+  "prompt_tokens": 3329,
+  "options": [
+   "e:f0d67",
+   "e:9bb90"
+  ],
+  "category": "reasoning_failure(residual)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 0,
+  "depth_lead": null
+ },
+ {
+  "mechanism": "transitive_dependency",
+  "level": 3,
+  "variant": "COUNTERFACTUAL",
+  "probe_id": "probe:5d1ddcb095b82fe3e524",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 3327,
+  "options": [
+   "e:f0d67",
+   "e:9bb90"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": null
+ },
+ {
+  "mechanism": "transitive_dependency",
+  "level": 3,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:c55ef9cec8edfc755f2e",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 3329,
+  "options": [
+   "e:9bb90",
+   "e:f0d67"
+  ],
+  "category": "reasoning_failure(residual)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 1,
+  "depth_lead": null
+ },
+ {
+  "mechanism": "transitive_dependency",
+  "level": 3,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:2926f0b6776ed33ddba1",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 3320,
+  "options": [
+   "e:dfb8d",
+   "e:fef12"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "first_mentioned_in_state",
+  "gated_feature_prediction": 0,
+  "depth_lead": null
+ },
+ {
+  "mechanism": "precondition_conjunction",
+  "level": 1,
+  "variant": "COUNTERFACTUAL",
+  "probe_id": "probe:7d422d9667d486265fa8",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 4603,
+  "options": [
+   "answer:08675",
+   "answer:01944"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "always_first_option",
+  "gated_feature_prediction": 0,
+  "depth_lead": null
+ },
+ {
+  "mechanism": "precondition_conjunction",
+  "level": 3,
+  "variant": "SWAPPED_ORIGINAL",
+  "probe_id": "probe:d0cb5e6f9c3f6dec31e0",
+  "expected_index": 1,
+  "parsed_index": 0,
+  "raw_output": "{\"choice\":\"A\"}",
+  "prompt_tokens": 6857,
+  "options": [
+   "answer:3a8cf",
+   "answer:8a696"
+  ],
+  "category": "position_anchoring(content_independent)",
+  "gated_feature": "always_first_option",
+  "gated_feature_prediction": 0,
+  "depth_lead": null
+ }
+]

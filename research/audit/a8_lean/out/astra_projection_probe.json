@@ -1,0 +1,74 @@
+{
+  "bank": "research/astra/artifacts/dev_bank.jsonl",
+  "marker_counts": {
+    "items": 300,
+    "state:inaccessible_dagger_✝": 247,
+    "statement:coercion_arrow_↑": 25,
+    "state:coercion_arrow_↑": 84,
+    "heldout": 60,
+    "heldout_state:inaccessible_dagger_✝": 49,
+    "state:elided_subterm_⋯": 19,
+    "heldout_state:coercion_arrow_↑": 22,
+    "heldout_state:elided_subterm_⋯": 7,
+    "statement:elided_subterm_⋯": 1,
+    "state:universe_metavariable_?u": 3
+  },
+  "marker_rates_over_300": {
+    "state:inaccessible_dagger_✝": 0.8233333333333334,
+    "statement:coercion_arrow_↑": 0.08333333333333333,
+    "state:coercion_arrow_↑": 0.28,
+    "state:elided_subterm_⋯": 0.06333333333333334,
+    "statement:elided_subterm_⋯": 0.0033333333333333335,
+    "state:universe_metavariable_?u": 0.01
+  },
+  "codec_payload_sharing": {
+    "structured_english": {
+      "bytes": 1628,
+      "payload_bytes_verbatim": 1502,
+      "fields_carried_verbatim": 6,
+      "n_fields": 6,
+      "lean_goal_text_verbatim": true,
+      "fraction_identical_payload": 0.9226044226044227
+    },
+    "json_ast": {
+      "bytes": 1587,
+      "payload_bytes_verbatim": 1502,
+      "fields_carried_verbatim": 6,
+      "n_fields": 6,
+      "lean_goal_text_verbatim": true,
+      "fraction_identical_payload": 0.9464398235664776
+    },
+    "sexpr": {
+      "bytes": 1808,
+      "payload_bytes_verbatim": 124,
+      "fields_carried_verbatim": 3,
+      "n_fields": 6,
+      "lean_goal_text_verbatim": true,
+      "fraction_identical_payload": 0.06858407079646017
+    },
+    "hml": {
+      "bytes": 1654,
+      "payload_bytes_verbatim": 1502,
+      "fields_carried_verbatim": 6,
+      "n_fields": 6,
+      "lean_goal_text_verbatim": true,
+      "fraction_identical_payload": 0.9081015719467956
+    },
+    "compact_symbolic": {
+      "bytes": 1539,
+      "payload_bytes_verbatim": 1502,
+      "fields_carried_verbatim": 6,
+      "n_fields": 6,
+      "lean_goal_text_verbatim": true,
+      "fraction_identical_payload": 0.9759584145549057
+    }
+  },
+  "codec_rendered_bytes": {
+    "structured_english": 1628,
+    "json_ast": 1587,
+    "sexpr": 1808,
+    "hml": 1654,
+    "compact_symbolic": 1539
+  },
+  "note": "every codec embeds the SAME canonical_json() of the SAME fields; only the outer envelope differs"
+}

@@ -1,0 +1,245 @@
+{
+ "v5_instrument": "arena-game-r-constrained-formal-instrument-v5.0.0",
+ "v7_instrument": "arena-game-r-derived-frontier-instrument-v7.0.0",
+ "v5_rows": 432,
+ "v7_rows": 864,
+ "v5_arm_schedule": "positives (inferred: ladder_rows are positives only)",
+ "v7_arm_schedule": "full",
+ "v5_model_digest": "25eb57cb8173332b43f8f07f6214e6b74f9e11afac5242392da751458fb024ae",
+ "v7_model_digest": "25eb57cb8173332b43f8f07f6214e6b74f9e11afac5242392da751458fb024ae",
+ "digests_equal": true,
+ "v5_runtime": {
+  "engine": "ollama",
+  "format": "json_schema:choice_ab",
+  "num_ctx": 32768,
+  "num_predict": 64,
+  "raw": true,
+  "seed": 20260905,
+  "temperature": 0.0,
+  "think": false,
+  "top_k": 64,
+  "top_p": 0.95
+ },
+ "v7_runtime": {
+  "engine": "ollama",
+  "format": "json_schema:choice_ab",
+  "instrument_namespace": "arena-game-r-derived-frontier-instrument-v7.0.0",
+  "num_ctx": 32768,
+  "num_predict": 64,
+  "raw": true,
+  "seed": 20260905,
+  "temperature": 0.0,
+  "think": false,
+  "top_k": 64,
+  "top_p": 0.95
+ },
+ "v5_dev_pool_hash": "f804e0d998f1cfac20559728cae29733602990ed801430c1398db798b84a9c8b",
+ "v7_dev_pool_hash": "f804e0d998f1cfac20559728cae29733602990ed801430c1398db798b84a9c8b",
+ "dev_pools_equal": true,
+ "v5_cache_scopes": null,
+ "v7_cache_scopes": {
+  "FRESH": 864
+ },
+ "v5_fresh_calls": null,
+ "v7_fresh_calls": 864,
+ "prompt_overlap": {
+  "v5_distinct_prompts": 360,
+  "v7_distinct_prompts": 717,
+  "shared_prompts": 360,
+  "identical_raw_output_on_shared": 360,
+  "disagreements": 0,
+  "agreement_rate": 1.0
+ },
+ "disagreement_examples": [],
+ "ladders": {
+  "formal_expression_depth": {
+   "v5": {
+    "0": 1.0,
+    "1": 0.8333333333333334,
+    "2": 0.7916666666666666,
+    "3": 0.625
+   },
+   "v7": {
+    "0": 1.0,
+    "1": 0.8333333333333334,
+    "2": 0.7916666666666666,
+    "3": 0.625
+   },
+   "identical": true,
+   "v5_selected": 3,
+   "v7_selected": 2,
+   "v5_verdict": "VOID_NEGATIVE_CONTROL",
+   "v7_verdict": "VOID_SHORTCUT"
+  },
+  "precondition_conjunction": {
+   "v5": {
+    "0": 1.0,
+    "1": 0.9583333333333334,
+    "2": 1.0,
+    "3": 1.0
+   },
+   "v7": {
+    "0": 1.0,
+    "1": 0.9583333333333334,
+    "2": 1.0,
+    "3": 1.0
+   },
+   "identical": true,
+   "v5_selected": null,
+   "v7_selected": null,
+   "v5_verdict": "VOID_CEILING",
+   "v7_verdict": "VOID_CEILING"
+  },
+  "transitive_dependency": {
+   "v5": {
+    "0": 0.9583333333333334,
+    "1": 1.0,
+    "2": 0.9583333333333334,
+    "3": 0.75
+   },
+   "v7": {
+    "0": 0.9583333333333334,
+    "1": 1.0,
+    "2": 0.9583333333333334,
+    "3": 0.75
+   },
+   "identical": true,
+   "v5_selected": 3,
+   "v7_selected": 3,
+   "v5_verdict": "QUALIFIED",
+   "v7_verdict": "VOID_SHORTCUT"
+  }
+ },
+ "target_sensitivity_grid": {
+  "formal_expression_depth": {
+   "picks": {
+    "0.30": 3,
+    "0.33": 3,
+    "0.35": 3,
+    "0.38": 3,
+    "0.40": 3,
+    "0.43": 3,
+    "0.45": 3,
+    "0.48": 3,
+    "0.50": 3,
+    "0.53": 3,
+    "0.55": 3,
+    "0.58": 3,
+    "0.60": 3,
+    "0.63": 3,
+    "0.65": 3,
+    "0.68": 3,
+    "0.70": 3,
+    "0.73": 2,
+    "0.75": 2,
+    "0.78": 2,
+    "0.80": 2,
+    "0.83": 1,
+    "0.85": 1,
+    "0.88": 1,
+    "0.90": 1,
+    "0.93": 1,
+    "0.95": 1,
+    "0.98": 1,
+    "1.00": 1
+   },
+   "switch_points": [
+    {
+     "target_at_switch": "0.73",
+     "from_level": 3,
+     "to_level": 2
+    },
+    {
+     "target_at_switch": "0.83",
+     "from_level": 2,
+     "to_level": 1
+    }
+   ]
+  },
+  "precondition_conjunction": {
+   "picks": {
+    "0.30": 1,
+    "0.33": 1,
+    "0.35": 1,
+    "0.38": 1,
+    "0.40": 1,
+    "0.43": 1,
+    "0.45": 1,
+    "0.48": 1,
+    "0.50": 1,
+    "0.53": 1,
+    "0.55": 1,
+    "0.58": 1,
+    "0.60": 1,
+    "0.63": 1,
+    "0.65": 1,
+    "0.68": 1,
+    "0.70": 1,
+    "0.73": 1,
+    "0.75": 1,
+    "0.78": 1,
+    "0.80": 1,
+    "0.83": 1,
+    "0.85": 1,
+    "0.88": 1,
+    "0.90": 1,
+    "0.93": 1,
+    "0.95": 1,
+    "0.98": 1,
+    "1.00": 2
+   },
+   "switch_points": [
+    {
+     "target_at_switch": "1.00",
+     "from_level": 1,
+     "to_level": 2
+    }
+   ]
+  },
+  "transitive_dependency": {
+   "picks": {
+    "0.30": 3,
+    "0.33": 3,
+    "0.35": 3,
+    "0.38": 3,
+    "0.40": 3,
+    "0.43": 3,
+    "0.45": 3,
+    "0.48": 3,
+    "0.50": 3,
+    "0.53": 3,
+    "0.55": 3,
+    "0.58": 3,
+    "0.60": 3,
+    "0.63": 3,
+    "0.65": 3,
+    "0.68": 3,
+    "0.70": 3,
+    "0.73": 3,
+    "0.75": 3,
+    "0.78": 3,
+    "0.80": 3,
+    "0.83": 3,
+    "0.85": 3,
+    "0.88": 2,
+    "0.90": 2,
+    "0.93": 2,
+    "0.95": 2,
+    "0.98": 2,
+    "1.00": 1
+   },
+   "switch_points": [
+    {
+     "target_at_switch": "0.88",
+     "from_level": 3,
+     "to_level": 2
+    },
+    {
+     "target_at_switch": "1.00",
+     "from_level": 2,
+     "to_level": 1
+    }
+   ]
+  }
+ }
+}

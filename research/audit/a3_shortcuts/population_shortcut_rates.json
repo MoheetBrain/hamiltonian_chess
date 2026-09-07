@@ -1,0 +1,35 @@
+{
+  "_disclaimer": "A3 DIAGNOSTIC. Not a re-scoring of V7.",
+  "note": "Pool = the SAME length-filtered, stratified pool build_dev_pool draws from; DEV uses only the first 12 per stratum.",
+  "pooled": {
+    "first_mention_population_accuracy": 0.9135,
+    "more_frequent_population_accuracy": 0.7981,
+    "n_states": 104
+  },
+  "strata": {
+    "deep": {
+      "P(deepest is earlier in preorder)": 0.8611,
+      "P(deepest recurs more)": 0.6667,
+      "P(tie)": 0.2222,
+      "first_mention_population_accuracy": 0.8611,
+      "more_frequent_population_accuracy": 0.7778,
+      "n_states": 36
+    },
+    "medium": {
+      "P(deepest is earlier in preorder)": 0.8824,
+      "P(deepest recurs more)": 0.5588,
+      "P(tie)": 0.2941,
+      "first_mention_population_accuracy": 0.8824,
+      "more_frequent_population_accuracy": 0.7059,
+      "n_states": 34
+    },
+    "shallow": {
+      "P(deepest is earlier in preorder)": 1.0,
+      "P(deepest recurs more)": 0.8529,
+      "P(tie)": 0.1176,
+      "first_mention_population_accuracy": 1.0,
+      "more_frequent_population_accuracy": 0.9118,
+      "n_states": 34
+    }
+  }
+}

@@ -370,6 +370,35 @@ Phase 6 lacked), arena parity that refuses byte-identical arms, a derived fronti
 new task families: they emit pre-rendered Lean strings, so eight representation arms would receive
 byte-identical inputs. The handoff leads with this.
 
+## V7 Total Forensic Audit (2026-09-07) — `V7_PARTIALLY_VALID_INSTRUMENT_CONFOUNDED`
+
+`docs/V7_TOTAL_FORENSIC_AUDIT.md`. Nine auditors briefed to destroy the argument, plus integrator
+verification. **No experiment run, no threshold changed, no result re-scored.**
+
+**The representation hypothesis has not failed — it has never been tested.** No experiment in
+V1→V7 has ever scored two representations against a Solver. All 864 V7 rows carry one
+`candidate_id`; V4's frozen manifest has an 8-founder roster with `probes: []`; the 120 mutants
+appear only in a deterministic Gate-0 check.
+
+**V7's three verdicts do not share a fate.** `formal_expression_depth` is **correctly voided** —
+solvable at 1.000 by bracket counting on the rendered prompt across all eight surfaces, so its
+optimal strategy is *representation-invariant*. `transitive_dependency`'s void is **not supported**
+— one row from qualifying, comparator below its own null mean, power 0.069, McNemar p = 0.625.
+`precondition_conjunction` is **balanced by construction** (verified in source) and failed on
+ceiling alone.
+
+**The instrument audits a string the Solver never receives** (`canonical_json` vs the rendered
+surface); the gated cue is at exact chance on the real input in all twelve cells. The dominant
+error mode is **position anchoring** (56.5%), which the gates cannot detect. 67% of probes are
+synthetic but stamped formal. **V7's arithmetic, by contrast, recomputes exactly** — 252 checks,
+0 mismatches.
+
+**Correction to an earlier claim in this project's own record:** splits were **not** sealed before
+agent reads. `novel_premises/{val,test}` were parsed 5h16m earlier; the premise-selection promotion
+pool is spent, at design level.
+
+**Diagnosis:** flat landscape 0.02 · instruments confounded / untested **0.88** · mixed 0.10.
+
 ## Current Blockers
 
 A new experiment version (V4.1 calibration or V5) requires explicit authorisation before any

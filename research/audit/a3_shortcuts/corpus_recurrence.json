@@ -1,0 +1,11 @@
+{
+  "P(deepest recurs LESS)": 0.0868,
+  "P(deepest recurs MORE than runner-up)": 0.7484,
+  "P(equal recurrence)": 0.1649,
+  "_disclaimer": "A3 DIAGNOSTIC. Not a re-scoring of V7.",
+  "mean_depth_lead": 1.618,
+  "mean_distinct_identifiers": 5.859,
+  "mean_max_depth": 13.184,
+  "n_eligible_states": 461,
+  "pearson_corr(occurrence_count, max_depth) over candidate ids": 0.4454
+}

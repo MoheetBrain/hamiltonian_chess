@@ -1,0 +1,73 @@
+{
+  "families": 12,
+  "max_over_m_independent_rules": {
+    "1": {
+      "P(best>0.5)": 0.7744140625,
+      "P(best>0.5834)": 0.3876953125,
+      "P(best>0.6667)": 0.14599609375,
+      "P(best>0.75)": 0.03857421875,
+      "expected_best": 0.61279296875
+    },
+    "2": {
+      "P(best>0.5)": 0.9491109848022461,
+      "P(best>0.5834)": 0.6250829696655273,
+      "P(best>0.6667)": 0.2706773281097412,
+      "P(best>0.75)": 0.07566046714782715,
+      "expected_best": 0.6611802577972412
+    },
+    "3": {
+      "P(best>0.5)": 0.9885201537981629,
+      "P(best>0.5834)": 0.7704365449026227,
+      "P(best>0.6667)": 0.3771555892890319,
+      "P(best>0.75)": 0.11131614248733968,
+      "expected_best": 0.6889845754485577
+    },
+    "5": {
+      "P(best>0.5)": 0.9994158019321668,
+      "P(best>0.5834)": 0.9139327511415702,
+      "P(best>0.6667)": 0.5457454502083631,
+      "P(best>0.75)": 0.17855437829348064,
+      "expected_best": 0.7226187756826983
+    }
+  },
+  "note": "Under a generator that is balanced only in expectation, the gated statistic sits well above 0.5 by construction, so a fixed 0.10 margin is a moving target.",
+  "positives": 24,
+  "single_rule_null_distribution": [
+    {
+      "best_of_rule_or_negation": 0.5,
+      "probability": 0.2255859375
+    },
+    {
+      "best_of_rule_or_negation": 0.5833333333333333,
+      "probability": 0.193359375
+    },
+    {
+      "best_of_rule_or_negation": 0.5833333333333334,
+      "probability": 0.193359375
+    },
+    {
+      "best_of_rule_or_negation": 0.6666666666666666,
+      "probability": 0.120849609375
+    },
+    {
+      "best_of_rule_or_negation": 0.6666666666666667,
+      "probability": 0.120849609375
+    },
+    {
+      "best_of_rule_or_negation": 0.75,
+      "probability": 0.107421875
+    },
+    {
+      "best_of_rule_or_negation": 0.8333333333333334,
+      "probability": 0.0322265625
+    },
+    {
+      "best_of_rule_or_negation": 0.9166666666666666,
+      "probability": 0.005859375
+    },
+    {
+      "best_of_rule_or_negation": 1.0,
+      "probability": 0.00048828125
+    }
+  ]
+}

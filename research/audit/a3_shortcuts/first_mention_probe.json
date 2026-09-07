@@ -1,0 +1,180 @@
+{
+  "_disclaimer": "A3 DIAGNOSTIC. Not a re-scoring of V7.",
+  "by_level": {
+    "L0": {
+      "answer_is_head_of_application_spine": 0.0,
+      "depth_gap_distribution": {
+        "1": 18,
+        "2": 6
+      },
+      "depth_oracle_accuracy": 1.0,
+      "json_rule_accuracy": 0.5,
+      "json_rule_equals_preorder_rule": 0.5,
+      "mean_nodes": 37.666666666666664,
+      "n": 24,
+      "preorder_rule_accuracy": 0.8333333333333334,
+      "preorder_rule_equals_depth_oracle": 0.8333333333333334
+    },
+    "L1": {
+      "answer_is_head_of_application_spine": 0.0,
+      "depth_gap_distribution": {
+        "1": 12,
+        "2": 4,
+        "3": 8
+      },
+      "depth_oracle_accuracy": 1.0,
+      "json_rule_accuracy": 1.0,
+      "json_rule_equals_preorder_rule": 1.0,
+      "mean_nodes": 16.0,
+      "n": 24,
+      "preorder_rule_accuracy": 1.0,
+      "preorder_rule_equals_depth_oracle": 1.0
+    },
+    "L2": {
+      "answer_is_head_of_application_spine": 0.0,
+      "depth_gap_distribution": {
+        "1": 18,
+        "2": 6
+      },
+      "depth_oracle_accuracy": 1.0,
+      "json_rule_accuracy": 0.8333333333333334,
+      "json_rule_equals_preorder_rule": 1.0,
+      "mean_nodes": 37.666666666666664,
+      "n": 24,
+      "preorder_rule_accuracy": 0.8333333333333334,
+      "preorder_rule_equals_depth_oracle": 0.8333333333333334
+    },
+    "L3": {
+      "answer_is_head_of_application_spine": 0.0,
+      "depth_gap_distribution": {
+        "1": 18,
+        "2": 4,
+        "4": 2
+      },
+      "depth_oracle_accuracy": 1.0,
+      "json_rule_accuracy": 0.9166666666666666,
+      "json_rule_equals_preorder_rule": 1.0,
+      "mean_nodes": 35.25,
+      "n": 24,
+      "preorder_rule_accuracy": 0.9166666666666666,
+      "preorder_rule_equals_depth_oracle": 0.9166666666666666
+    }
+  },
+  "examples": [
+    {
+      "answer_is_head_of_spine": false,
+      "depth_0": 4,
+      "depth_1": 3,
+      "depth_oracle_pred": 0,
+      "expected_index": 0,
+      "head_spine_0": false,
+      "head_spine_1": false,
+      "json_first_mention_pred": 0,
+      "level": 1,
+      "n_nodes": 15,
+      "name_0": "f33",
+      "name_1": "f34",
+      "preorder_rank_pred": 0,
+      "probe_id": "probe:6606563a9b6ea076b7d6",
+      "rank_0": 8,
+      "rank_1": 9,
+      "variant": "ORIGINAL"
+    },
+    {
+      "answer_is_head_of_spine": false,
+      "depth_0": 3,
+      "depth_1": 4,
+      "depth_oracle_pred": 1,
+      "expected_index": 1,
+      "head_spine_0": false,
+      "head_spine_1": false,
+      "json_first_mention_pred": 1,
+      "level": 1,
+      "n_nodes": 15,
+      "name_0": "f33",
+      "name_1": "f34",
+      "preorder_rank_pred": 1,
+      "probe_id": "probe:20585f6ae3a59b241992",
+      "rank_0": 9,
+      "rank_1": 8,
+      "variant": "COUNTERFACTUAL"
+    },
+    {
+      "answer_is_head_of_spine": false,
+      "depth_0": 4,
+      "depth_1": 3,
+      "depth_oracle_pred": 0,
+      "expected_index": 0,
+      "head_spine_0": false,
+      "head_spine_1": false,
+      "json_first_mention_pred": 0,
+      "level": 1,
+      "n_nodes": 13,
+      "name_0": "f0",
+      "name_1": "f14",
+      "preorder_rank_pred": 0,
+      "probe_id": "probe:20baf62f5376388ffa48",
+      "rank_0": 4,
+      "rank_1": 5,
+      "variant": "ORIGINAL"
+    },
+    {
+      "answer_is_head_of_spine": false,
+      "depth_0": 3,
+      "depth_1": 4,
+      "depth_oracle_pred": 1,
+      "expected_index": 1,
+      "head_spine_0": false,
+      "head_spine_1": false,
+      "json_first_mention_pred": 1,
+      "level": 1,
+      "n_nodes": 13,
+      "name_0": "f0",
+      "name_1": "f14",
+      "preorder_rank_pred": 1,
+      "probe_id": "probe:3769488a3d5cf6c8be18",
+      "rank_0": 5,
+      "rank_1": 4,
+      "variant": "COUNTERFACTUAL"
+    },
+    {
+      "answer_is_head_of_spine": false,
+      "depth_0": 4,
+      "depth_1": 3,
+      "depth_oracle_pred": 0,
+      "expected_index": 0,
+      "head_spine_0": false,
+      "head_spine_1": false,
+      "json_first_mention_pred": 0,
+      "level": 1,
+      "n_nodes": 15,
+      "name_0": "f33",
+      "name_1": "f34",
+      "preorder_rank_pred": 0,
+      "probe_id": "probe:2655a9dc0df165f2d72b",
+      "rank_0": 8,
+      "rank_1": 9,
+      "variant": "ORIGINAL"
+    },
+    {
+      "answer_is_head_of_spine": false,
+      "depth_0": 3,
+      "depth_1": 4,
+      "depth_oracle_pred": 1,
+      "expected_index": 1,
+      "head_spine_0": false,
+      "head_spine_1": false,
+      "json_first_mention_pred": 1,
+      "level": 1,
+      "n_nodes": 15,
+      "name_0": "f33",
+      "name_1": "f34",
+      "preorder_rank_pred": 1,
+      "probe_id": "probe:c0cd64c1b9d5f18c006b",
+      "rank_0": 9,
+      "rank_1": 8,
+      "variant": "COUNTERFACTUAL"
+    }
+  ],
+  "explanation": "L0 asserts both depths in `established_facts`, and `established_facts` sorts BEFORE `goal` in the canonical JSON, so at L0 the JSON first-mention rule reads the explicit fact block (fixed order) rather than the term -- which is why it is pinned at 0.500 there while the preorder rule, which reads the term, is not."
+}

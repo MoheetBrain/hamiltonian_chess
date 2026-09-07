@@ -1,0 +1,122 @@
+{
+  "formal_expression_depth|L2": {
+    "probe_id": "probe:e086b42ae2952b5ac3c5",
+    "family_id": "v5:dev:formal_expression_depth:l2:fs:26b46d81572a545a",
+    "question": "Which identifier occurs at the greatest nesting depth inside the goal expression? Depth counts nested argument levels from the goal's root.",
+    "options": {
+      "A": "f12",
+      "B": "f13"
+    },
+    "preregistered_answer": "A",
+    "ORIGINAL": {
+      "A": {
+        "identifier": "f12",
+        "first_char_index_in_state_json": 468,
+        "first_char_index_in_visible_state": 1888,
+        "last_char_index_in_visible_state": 17167,
+        "occurrences_in_visible_state": 3,
+        "max_bracket_nesting_at_an_occurrence": 28
+      },
+      "B": {
+        "identifier": "f13",
+        "first_char_index_in_state_json": 1408,
+        "first_char_index_in_visible_state": 2268,
+        "last_char_index_in_visible_state": 23867,
+        "occurrences_in_visible_state": 3,
+        "max_bracket_nesting_at_an_occurrence": 25
+      }
+    },
+    "COUNTERFACTUAL_sibling": {
+      "probe_id": "probe:e7ee473d71d4665f5ce0",
+      "preregistered_answer": "B",
+      "A": {
+        "first_char_index_in_state_json": 1408,
+        "max_bracket_nesting_at_an_occurrence": 25
+      },
+      "B": {
+        "first_char_index_in_state_json": 468,
+        "max_bracket_nesting_at_an_occurrence": 28
+      }
+    }
+  },
+  "transitive_dependency|L3": {
+    "probe_id": "probe:486ecd98bb07a941500f",
+    "family_id": "v5:dev:transitive_dependency:l3:synthetic:20262207",
+    "question": "Which evidence ID is a transitive dependency of e:leaf, reached by following the dependencies field 5 step(s) from e:leaf?",
+    "options": {
+      "A": "e:a41ef",
+      "B": "e:10b40"
+    },
+    "preregistered_answer": "A",
+    "ORIGINAL": {
+      "A": {
+        "identifier": "e:a41ef",
+        "first_char_index_in_state_json": 643,
+        "first_char_index_in_visible_state": 377,
+        "last_char_index_in_visible_state": 5746,
+        "occurrences_in_visible_state": 3,
+        "max_bracket_nesting_at_an_occurrence": 6
+      },
+      "B": {
+        "identifier": "e:10b40",
+        "first_char_index_in_state_json": 916,
+        "first_char_index_in_visible_state": 766,
+        "last_char_index_in_visible_state": 6305,
+        "occurrences_in_visible_state": 3,
+        "max_bracket_nesting_at_an_occurrence": 6
+      }
+    },
+    "COUNTERFACTUAL_sibling": {
+      "probe_id": "probe:3cfb85689a60a0dceb73",
+      "preregistered_answer": "B",
+      "A": {
+        "first_char_index_in_state_json": 916,
+        "max_bracket_nesting_at_an_occurrence": 6
+      },
+      "B": {
+        "first_char_index_in_state_json": 643,
+        "max_bracket_nesting_at_an_occurrence": 6
+      }
+    }
+  },
+  "precondition_conjunction|L2": {
+    "probe_id": "probe:f13eb934aaebdec5e973",
+    "family_id": "v5:dev:precondition_conjunction:l2:synthetic:20263107",
+    "question": "Which answer ID has every one of its requires(answer, premise) propositions matched by an identical holds(premise) assumption?",
+    "options": {
+      "A": "answer:23672",
+      "B": "answer:0c01b"
+    },
+    "preregistered_answer": "A",
+    "ORIGINAL": {
+      "A": {
+        "identifier": "answer:23672",
+        "first_char_index_in_state_json": 1597,
+        "first_char_index_in_visible_state": 382,
+        "last_char_index_in_visible_state": 14232,
+        "occurrences_in_visible_state": 4,
+        "max_bracket_nesting_at_an_occurrence": 8
+      },
+      "B": {
+        "identifier": "answer:0c01b",
+        "first_char_index_in_state_json": 1751,
+        "first_char_index_in_visible_state": 781,
+        "last_char_index_in_visible_state": 13544,
+        "occurrences_in_visible_state": 4,
+        "max_bracket_nesting_at_an_occurrence": 8
+      }
+    },
+    "COUNTERFACTUAL_sibling": {
+      "probe_id": "probe:7a503635cb82d9f514b6",
+      "preregistered_answer": "B",
+      "A": {
+        "first_char_index_in_state_json": 1597,
+        "max_bracket_nesting_at_an_occurrence": 8
+      },
+      "B": {
+        "first_char_index_in_state_json": 1751,
+        "max_bracket_nesting_at_an_occurrence": 8
+      }
+    }
+  }
+}

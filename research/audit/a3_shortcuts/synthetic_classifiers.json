@@ -1,0 +1,231 @@
+{
+  "_disclaimer": "A3 DIAGNOSTIC at large n. NOT a re-scoring of V7; no sentinel may be promoted, re-scored or reinterpreted from these numbers.",
+  "cells": {
+    "precondition_conjunction|L0": {
+      "best_grouped_cv": 1.0,
+      "best_grouped_cv_model": "logistic_regression",
+      "models": {
+        "decision_stump_d1": {
+          "grouped_5fold_cv": 1.0,
+          "in_sample": 1.0
+        },
+        "decision_tree_d5": {
+          "grouped_5fold_cv": 1.0,
+          "in_sample": 1.0
+        },
+        "gradient_boosting": {
+          "grouped_5fold_cv": 1.0,
+          "in_sample": 1.0
+        },
+        "logistic_regression": {
+          "grouped_5fold_cv": 1.0,
+          "in_sample": 1.0
+        },
+        "random_forest_300": {
+          "grouped_5fold_cv": 1.0,
+          "in_sample": 1.0
+        }
+      },
+      "n_families": 400,
+      "n_positives": 800
+    },
+    "precondition_conjunction|L1": {
+      "best_grouped_cv": 0.5,
+      "best_grouped_cv_model": "logistic_regression",
+      "models": {
+        "decision_stump_d1": {
+          "grouped_5fold_cv": 0.5,
+          "in_sample": 0.5
+        },
+        "decision_tree_d5": {
+          "grouped_5fold_cv": 0.5,
+          "in_sample": 0.5
+        },
+        "gradient_boosting": {
+          "grouped_5fold_cv": 0.5,
+          "in_sample": 0.5
+        },
+        "logistic_regression": {
+          "grouped_5fold_cv": 0.5,
+          "in_sample": 0.5
+        },
+        "random_forest_300": {
+          "grouped_5fold_cv": 0.5,
+          "in_sample": 0.5
+        }
+      },
+      "n_families": 400,
+      "n_positives": 800
+    },
+    "precondition_conjunction|L2": {
+      "best_grouped_cv": 0.5,
+      "best_grouped_cv_model": "logistic_regression",
+      "models": {
+        "decision_stump_d1": {
+          "grouped_5fold_cv": 0.5,
+          "in_sample": 0.50125
+        },
+        "decision_tree_d5": {
+          "grouped_5fold_cv": 0.5,
+          "in_sample": 0.50125
+        },
+        "gradient_boosting": {
+          "grouped_5fold_cv": 0.5,
+          "in_sample": 0.50125
+        },
+        "logistic_regression": {
+          "grouped_5fold_cv": 0.5,
+          "in_sample": 0.50125
+        },
+        "random_forest_300": {
+          "grouped_5fold_cv": 0.5,
+          "in_sample": 0.50125
+        }
+      },
+      "n_families": 400,
+      "n_positives": 800
+    },
+    "precondition_conjunction|L3": {
+      "best_grouped_cv": 0.5,
+      "best_grouped_cv_model": "logistic_regression",
+      "models": {
+        "decision_stump_d1": {
+          "grouped_5fold_cv": 0.5,
+          "in_sample": 0.5
+        },
+        "decision_tree_d5": {
+          "grouped_5fold_cv": 0.5,
+          "in_sample": 0.5
+        },
+        "gradient_boosting": {
+          "grouped_5fold_cv": 0.5,
+          "in_sample": 0.5
+        },
+        "logistic_regression": {
+          "grouped_5fold_cv": 0.5,
+          "in_sample": 0.5
+        },
+        "random_forest_300": {
+          "grouped_5fold_cv": 0.5,
+          "in_sample": 0.5
+        }
+      },
+      "n_families": 400,
+      "n_positives": 800
+    },
+    "transitive_dependency|L0": {
+      "best_grouped_cv": 1.0,
+      "best_grouped_cv_model": "logistic_regression",
+      "models": {
+        "decision_stump_d1": {
+          "grouped_5fold_cv": 1.0,
+          "in_sample": 1.0
+        },
+        "decision_tree_d5": {
+          "grouped_5fold_cv": 1.0,
+          "in_sample": 1.0
+        },
+        "gradient_boosting": {
+          "grouped_5fold_cv": 1.0,
+          "in_sample": 1.0
+        },
+        "logistic_regression": {
+          "grouped_5fold_cv": 1.0,
+          "in_sample": 1.0
+        },
+        "random_forest_300": {
+          "grouped_5fold_cv": 1.0,
+          "in_sample": 1.0
+        }
+      },
+      "n_families": 400,
+      "n_positives": 800
+    },
+    "transitive_dependency|L1": {
+      "best_grouped_cv": 0.8825,
+      "best_grouped_cv_model": "random_forest_300",
+      "models": {
+        "decision_stump_d1": {
+          "grouped_5fold_cv": 0.75875,
+          "in_sample": 0.75875
+        },
+        "decision_tree_d5": {
+          "grouped_5fold_cv": 0.76875,
+          "in_sample": 0.8
+        },
+        "gradient_boosting": {
+          "grouped_5fold_cv": 0.85,
+          "in_sample": 1.0
+        },
+        "logistic_regression": {
+          "grouped_5fold_cv": 0.83,
+          "in_sample": 0.845
+        },
+        "random_forest_300": {
+          "grouped_5fold_cv": 0.8825,
+          "in_sample": 1.0
+        }
+      },
+      "n_families": 400,
+      "n_positives": 800
+    },
+    "transitive_dependency|L2": {
+      "best_grouped_cv": 0.7025,
+      "best_grouped_cv_model": "logistic_regression",
+      "models": {
+        "decision_stump_d1": {
+          "grouped_5fold_cv": 0.68125,
+          "in_sample": 0.68125
+        },
+        "decision_tree_d5": {
+          "grouped_5fold_cv": 0.675,
+          "in_sample": 0.725
+        },
+        "gradient_boosting": {
+          "grouped_5fold_cv": 0.6725,
+          "in_sample": 0.99875
+        },
+        "logistic_regression": {
+          "grouped_5fold_cv": 0.7025,
+          "in_sample": 0.7025
+        },
+        "random_forest_300": {
+          "grouped_5fold_cv": 0.69875,
+          "in_sample": 1.0
+        }
+      },
+      "n_families": 400,
+      "n_positives": 800
+    },
+    "transitive_dependency|L3": {
+      "best_grouped_cv": 0.64,
+      "best_grouped_cv_model": "random_forest_300",
+      "models": {
+        "decision_stump_d1": {
+          "grouped_5fold_cv": 0.60125,
+          "in_sample": 0.60125
+        },
+        "decision_tree_d5": {
+          "grouped_5fold_cv": 0.61,
+          "in_sample": 0.62
+        },
+        "gradient_boosting": {
+          "grouped_5fold_cv": 0.5975,
+          "in_sample": 0.99625
+        },
+        "logistic_regression": {
+          "grouped_5fold_cv": 0.57,
+          "in_sample": 0.6025
+        },
+        "random_forest_300": {
+          "grouped_5fold_cv": 0.64,
+          "in_sample": 0.9975
+        }
+      },
+      "n_families": 400,
+      "n_positives": 800
+    }
+  },
+  "n_families_per_cell": 400,
+  "seed": 20260907
+}

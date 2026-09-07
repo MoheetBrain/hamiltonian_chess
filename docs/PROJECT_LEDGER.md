@@ -1314,3 +1314,96 @@ unavailable, so a successor must supply one.
 `RSTAR_NOT_IDENTIFIED` stand.
 
 **Next intended step.** Unchanged: extend `precondition_conjunction`'s ladder upward.
+
+---
+
+## 2026-09-07 — V7 TOTAL FORENSIC AUDIT: `V7_PARTIALLY_VALID_INSTRUMENT_CONFOUNDED`
+
+**Branch.** `claude/phase-6-parallel-setup-9c6068`. **Stage.** Post-V7 forensic audit.
+**No experiment was run, no threshold changed, no result re-scored.**
+
+**Objective.** Determine whether "zero qualified mechanisms" means the representation hypothesis
+failed, or that the measurement system is wrong. Nine auditors, each briefed to destroy the
+argument rather than defend it, plus integrator verification of every load-bearing claim.
+
+**Files changed.** New: `docs/V7_TOTAL_FORENSIC_AUDIT.md`, `research/audit/**` (108 files, 2.0 MB),
+`.gitignore` entries for three regenerable intermediates. No existing file modified.
+
+**THE VERDICT.** The representation hypothesis has **not** failed — it has **never been tested**.
+In the whole V1→V7 programme no experiment has ever scored two representations against a Solver.
+All 864 V7 rows carry one `candidate_id` (`V5E_L3_JSON_AST`); V4's frozen manifest lists an
+8-founder roster with `probes: []`; the 120 mutants appear only in a deterministic Gate-0 check.
+`Δ = Acc(R_A) − Acc(R_B)` has been computed once in programme history (V3) and was ruled invalid.
+
+**Confirmed, and integrator-verified independently:**
+1. `shortcut_audit` scores rules on `canonical_json(state)` (`fitness_v5.py:798-799`) while the
+   Solver reads the *rendered* surface (`:550-565`). `first_mentioned_in_state` is **exactly 0.5000
+   in all twelve cells** on the string the model actually sees — and it produced **both**
+   `VOID_SHORTCUT` verdicts. Three auditors reached this independently with identical corrected
+   margins.
+2. But `formal_expression_depth` is solvable at **1.000 by bracket-depth counting on the rendered
+   prompt at every level** (integrator-verified 24/24 ×4), on all eight surfaces. Under any lossless
+   bracketed serialisation "max AST depth" *is* "max delimiter balance", so the optimal strategy is
+   **representation-invariant** and a tournament on it could never have detected a representation
+   effect. Its void is correct — for a weaker reason than the true one. The leak is intrinsic:
+   deepest == first in 79.3% of donor states.
+3. `transitive_dependency`'s void is **not supported**. `best_shortcut` is a max over 7 rules × 2
+   polarities on the same 24 items; `P(best ≥ 0.6667 | null) = 0.914` and the observed value sits
+   *below* the clustered null mean; the winning rule is anti-correlated (0.3333 raw) and 0.6667 is
+   its post-hoc negation. McNemar exact p = 0.625 on 4 discordant pairs. One row from qualifying.
+4. The 0.10 threshold is **unrepresentable** at n=24 (margins are k/24): the executed gate is 0.125,
+   25% stricter than declared. Power to distinguish .083 from .10 is **0.069**; ≈4,000 items would
+   be needed. Both values lie inside the project's own equivalence region of 0.125.
+5. The dominant error mode is **position anchoring** (56.5% of 69 wrong rows; 95.2% "A" on swapped
+   arms; destroyed twins draw "A" 69.4%), and the gates cannot see it — `position_invariance_min` is
+   set at chance and the selected cell passes at 0.583. Wrong answers are *anti*-correlated with the
+   gated cue: the model is not following it.
+6. `relabel()`'s counterfactual is blind to exactly the rules that matter (`cf_blindness = 1.000`
+   for every order/position/frequency/depth rule); its docstring claim is refuted by measurement.
+7. `DONOR_ROOT` is HML_V3, **not LeanDojo**: 576 of 864 probes (67%) are synthetic but stamped
+   `arena-formal-structural-v1.0.0`.
+8. **`precondition_conjunction` is balanced BY CONSTRUCTION** — verified in source: `_premise_family`
+   builds `objects` and `propositions` once and passes them unchanged to all three arms; only
+   `assumptions` varies, so the answer identifiers never move. Best shortcut exactly 0.500 at
+   L1–L3. So the other two mechanisms' shortcut domination is a **generator defect, not a fact about
+   mathematics** — and the repository already contains the fix, in one of its own mechanisms.
+
+**Self-correction.** `PROJECT_LEDGER.md:747` claims the splits were "sealed before any agent was
+spawned". **That is refuted.** `novel_premises/{val,test}` had already been parsed by committed
+sprint scripts — `premise_selection_shortcuts.json` reports 3,586 novel_premises items across six
+distractor policies — **5h16m before the seal**. Real exposure is 21,632 steps against 8,766
+declared, and the *shipped* distractor tiers are the *measured* policies, so the contamination is
+design-level. The premise-selection promotion pool is spent.
+
+**Where V7 holds up (`REFUTED` suspicions).** The verdict **recomputes exactly** from the 864 stored
+rows with no `arena` import — 252 checks, 0 mismatches. Probe bank bit-exact. Preregistration
+discipline was correct and the refusal to drop the margin to 0.08 is endorsed. The derived frontier
+target is arithmetically right; labels are not string-generated; closeness-to-target does not select
+strong shortcuts (p = 0.889); no cache row was lost or replayed; 872 = 864 + 8 Q0, proved.
+
+**The proposed way forward also falsifies.** Astra's five codecs fail the cheapest falsifier —
+*no ≥40-char span of Lean pretty text may appear in more than one arm* — at **300/300 × 5/5**;
+four of five are 91–98% identical `canonical_json` behind a different line prefix. Its parity proof
+is over a projection measurably missing information (18.9% of candidate statements are not closed
+propositions). Constructive finding: the elaborated object **already exists locally** in
+`lean_runtime_v2_full.canonical.part-*`, but only 190 transitions are single-premise/single-goal —
+**scale, not method, is the gap**.
+
+**Diagnosis.** A (landscape genuinely flat) **0.02** · B (instruments confounded, hypothesis
+untested) **0.88** · C (mixed) **0.10**.
+
+**Tests actually executed.** `python -m pytest` → **964 passed, 1 skipped**.
+`ruff check arena tests releases` → All checks passed. `mypy arena` → Success, 130 source files.
+No model call, no GPU, no cloud — laptop only, as instructed.
+
+**Failures and unresolved uncertainty.** No multi-seed run exists anywhere in the programme;
+determinism is asserted from T=0 and identical twin pairs, never from a re-run. Level ladders
+confound difficulty with length (ρ = ±1.0), and length-as-cause remains HYPOTHESIS at 3 levels.
+Effective n is 14.9 against a declared minimum of 24.
+
+**Next intended step.** One experiment: extend `precondition_conjunction` upward until the control
+lands in [0.70, 0.85], then run the programme's **first founder tournament** on it — the only clean
+mechanism, clean by construction. Preconditions, all at zero model cost: audit shortcuts **on the
+rendered prompt, per representation**; enforce the ≥40-char cross-arm span check; score
+`always_first_option` against the model's answers rather than the key; separate selection and
+qualification pools; size n for the decision.

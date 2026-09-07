@@ -1,0 +1,694 @@
+{
+  "_disclaimer": "A3 DIAGNOSTIC of the shortcut instrument. These classifiers are NOT a re-scoring of V7 and may not be used to re-score, promote or reinterpret any sentinel.",
+  "cells": {
+    "formal_expression_depth|L0": {
+      "answer_share_index_0": 0.5,
+      "best_combined_in_sample": 0.8333333333333334,
+      "best_combined_loso_cv": 0.6666666666666666,
+      "delta_in_sample_vs_v5": 0.16666666666666674,
+      "delta_loso_cv_vs_v5_in_sample": 0.0,
+      "models": {
+        "decision_stump_d1": {
+          "in_sample": 0.7083333333333334,
+          "level_transfer": 0.5,
+          "loso_cv": 0.6666666666666666
+        },
+        "decision_tree_d3": {
+          "in_sample": 0.75,
+          "level_transfer": 0.5,
+          "loso_cv": 0.625
+        },
+        "decision_tree_unbounded": {
+          "in_sample": 0.8333333333333334,
+          "level_transfer": 0.5,
+          "loso_cv": 0.625
+        },
+        "hist_gradient_boosting": {
+          "in_sample": 0.5,
+          "level_transfer": 0.5,
+          "loso_cv": 0.5
+        },
+        "logistic_regression": {
+          "in_sample": 0.6666666666666666,
+          "level_transfer": 0.6666666666666666,
+          "loso_cv": 0.6666666666666666
+        },
+        "majority_baseline": {
+          "in_sample": 0.5,
+          "level_transfer": 0.5,
+          "loso_cv": 0.5
+        },
+        "random_forest_300": {
+          "in_sample": 0.8333333333333334,
+          "level_transfer": 0.5,
+          "loso_cv": 0.625
+        }
+      },
+      "n": 24,
+      "n_families": 12,
+      "v5_best_feature": "more_frequent_in_state",
+      "v5_best_in_sample": 0.6666666666666666,
+      "v5_family_in_sample": {
+        "always_first_option": 0.5,
+        "first_mentioned_in_state": 0.5,
+        "last_mentioned_in_state": 0.5,
+        "more_frequent_in_state": 0.6666666666666666
+      }
+    },
+    "formal_expression_depth|L1": {
+      "answer_share_index_0": 0.5,
+      "best_combined_in_sample": 1.0,
+      "best_combined_loso_cv": 1.0,
+      "delta_in_sample_vs_v5": 0.0,
+      "delta_loso_cv_vs_v5_in_sample": 0.0,
+      "models": {
+        "decision_stump_d1": {
+          "in_sample": 1.0,
+          "level_transfer": 0.7083333333333334,
+          "loso_cv": 1.0
+        },
+        "decision_tree_d3": {
+          "in_sample": 1.0,
+          "level_transfer": 0.8333333333333334,
+          "loso_cv": 1.0
+        },
+        "decision_tree_unbounded": {
+          "in_sample": 1.0,
+          "level_transfer": 0.75,
+          "loso_cv": 1.0
+        },
+        "hist_gradient_boosting": {
+          "in_sample": 0.5,
+          "level_transfer": 0.75,
+          "loso_cv": 0.5
+        },
+        "logistic_regression": {
+          "in_sample": 1.0,
+          "level_transfer": 0.9583333333333334,
+          "loso_cv": 1.0
+        },
+        "majority_baseline": {
+          "in_sample": 0.5,
+          "level_transfer": 0.5,
+          "loso_cv": 0.5
+        },
+        "random_forest_300": {
+          "in_sample": 1.0,
+          "level_transfer": 1.0,
+          "loso_cv": 1.0
+        }
+      },
+      "n": 24,
+      "n_families": 12,
+      "v5_best_feature": "first_mentioned_in_state",
+      "v5_best_in_sample": 1.0,
+      "v5_family_in_sample": {
+        "always_first_option": 0.5,
+        "first_mentioned_in_state": 1.0,
+        "last_mentioned_in_state": 0.5,
+        "more_frequent_in_state": 0.875
+      }
+    },
+    "formal_expression_depth|L2": {
+      "answer_share_index_0": 0.5,
+      "best_combined_in_sample": 1.0,
+      "best_combined_loso_cv": 0.7916666666666666,
+      "delta_in_sample_vs_v5": 0.16666666666666663,
+      "delta_loso_cv_vs_v5_in_sample": -0.04166666666666674,
+      "models": {
+        "decision_stump_d1": {
+          "in_sample": 0.8333333333333334,
+          "level_transfer": 0.8333333333333334,
+          "loso_cv": 0.75
+        },
+        "decision_tree_d3": {
+          "in_sample": 1.0,
+          "level_transfer": 0.7916666666666666,
+          "loso_cv": 0.625
+        },
+        "decision_tree_unbounded": {
+          "in_sample": 1.0,
+          "level_transfer": 0.875,
+          "loso_cv": 0.625
+        },
+        "hist_gradient_boosting": {
+          "in_sample": 0.5,
+          "level_transfer": 0.8333333333333334,
+          "loso_cv": 0.5
+        },
+        "logistic_regression": {
+          "in_sample": 0.75,
+          "level_transfer": 0.75,
+          "loso_cv": 0.7083333333333334
+        },
+        "majority_baseline": {
+          "in_sample": 0.5,
+          "level_transfer": 0.5,
+          "loso_cv": 0.5
+        },
+        "random_forest_300": {
+          "in_sample": 1.0,
+          "level_transfer": 0.8333333333333334,
+          "loso_cv": 0.7916666666666666
+        }
+      },
+      "n": 24,
+      "n_families": 12,
+      "v5_best_feature": "first_mentioned_in_state",
+      "v5_best_in_sample": 0.8333333333333334,
+      "v5_family_in_sample": {
+        "always_first_option": 0.5,
+        "first_mentioned_in_state": 0.8333333333333334,
+        "last_mentioned_in_state": 0.5,
+        "more_frequent_in_state": 0.6666666666666666
+      }
+    },
+    "formal_expression_depth|L3": {
+      "answer_share_index_0": 0.5,
+      "best_combined_in_sample": 1.0,
+      "best_combined_loso_cv": 0.9166666666666666,
+      "delta_in_sample_vs_v5": 0.08333333333333337,
+      "delta_loso_cv_vs_v5_in_sample": 0.0,
+      "models": {
+        "decision_stump_d1": {
+          "in_sample": 0.9166666666666666,
+          "level_transfer": 0.9166666666666666,
+          "loso_cv": 0.7916666666666666
+        },
+        "decision_tree_d3": {
+          "in_sample": 1.0,
+          "level_transfer": 0.875,
+          "loso_cv": 0.875
+        },
+        "decision_tree_unbounded": {
+          "in_sample": 1.0,
+          "level_transfer": 0.8333333333333334,
+          "loso_cv": 0.875
+        },
+        "hist_gradient_boosting": {
+          "in_sample": 0.5,
+          "level_transfer": 0.9583333333333334,
+          "loso_cv": 0.5
+        },
+        "logistic_regression": {
+          "in_sample": 1.0,
+          "level_transfer": 0.8333333333333334,
+          "loso_cv": 0.9166666666666666
+        },
+        "majority_baseline": {
+          "in_sample": 0.5,
+          "level_transfer": 0.5,
+          "loso_cv": 0.5
+        },
+        "random_forest_300": {
+          "in_sample": 1.0,
+          "level_transfer": 0.9166666666666666,
+          "loso_cv": 0.9166666666666666
+        }
+      },
+      "n": 24,
+      "n_families": 12,
+      "v5_best_feature": "first_mentioned_in_state",
+      "v5_best_in_sample": 0.9166666666666666,
+      "v5_family_in_sample": {
+        "always_first_option": 0.5,
+        "first_mentioned_in_state": 0.9166666666666666,
+        "last_mentioned_in_state": 0.5,
+        "more_frequent_in_state": 0.875
+      }
+    },
+    "precondition_conjunction|L0": {
+      "answer_share_index_0": 0.5,
+      "best_combined_in_sample": 1.0,
+      "best_combined_loso_cv": 1.0,
+      "delta_in_sample_vs_v5": 0.0,
+      "delta_loso_cv_vs_v5_in_sample": 0.0,
+      "models": {
+        "decision_stump_d1": {
+          "in_sample": 1.0,
+          "level_transfer": 0.5,
+          "loso_cv": 1.0
+        },
+        "decision_tree_d3": {
+          "in_sample": 1.0,
+          "level_transfer": 0.5,
+          "loso_cv": 1.0
+        },
+        "decision_tree_unbounded": {
+          "in_sample": 1.0,
+          "level_transfer": 0.5,
+          "loso_cv": 1.0
+        },
+        "hist_gradient_boosting": {
+          "in_sample": 0.5,
+          "level_transfer": 0.5,
+          "loso_cv": 0.5
+        },
+        "logistic_regression": {
+          "in_sample": 1.0,
+          "level_transfer": 0.5,
+          "loso_cv": 1.0
+        },
+        "majority_baseline": {
+          "in_sample": 0.5,
+          "level_transfer": 0.5,
+          "loso_cv": 0.5
+        },
+        "random_forest_300": {
+          "in_sample": 1.0,
+          "level_transfer": 0.5,
+          "loso_cv": 1.0
+        }
+      },
+      "n": 24,
+      "n_families": 12,
+      "v5_best_feature": "first_mentioned_in_state",
+      "v5_best_in_sample": 1.0,
+      "v5_family_in_sample": {
+        "always_first_option": 0.5,
+        "first_mentioned_in_state": 1.0,
+        "last_mentioned_in_state": 0.5,
+        "more_frequent_in_state": 1.0
+      }
+    },
+    "precondition_conjunction|L1": {
+      "answer_share_index_0": 0.5,
+      "best_combined_in_sample": 0.5,
+      "best_combined_loso_cv": 0.5,
+      "delta_in_sample_vs_v5": 0.0,
+      "delta_loso_cv_vs_v5_in_sample": 0.0,
+      "models": {
+        "decision_stump_d1": {
+          "in_sample": 0.5,
+          "level_transfer": 0.5,
+          "loso_cv": 0.5
+        },
+        "decision_tree_d3": {
+          "in_sample": 0.5,
+          "level_transfer": 0.5,
+          "loso_cv": 0.5
+        },
+        "decision_tree_unbounded": {
+          "in_sample": 0.5,
+          "level_transfer": 0.5,
+          "loso_cv": 0.5
+        },
+        "hist_gradient_boosting": {
+          "in_sample": 0.5,
+          "level_transfer": 0.5,
+          "loso_cv": 0.5
+        },
+        "logistic_regression": {
+          "in_sample": 0.5,
+          "level_transfer": 0.5,
+          "loso_cv": 0.5
+        },
+        "majority_baseline": {
+          "in_sample": 0.5,
+          "level_transfer": 0.5,
+          "loso_cv": 0.5
+        },
+        "random_forest_300": {
+          "in_sample": 0.5,
+          "level_transfer": 0.5,
+          "loso_cv": 0.5
+        }
+      },
+      "n": 24,
+      "n_families": 12,
+      "v5_best_feature": "first_mentioned_in_state",
+      "v5_best_in_sample": 0.5,
+      "v5_family_in_sample": {
+        "always_first_option": 0.5,
+        "first_mentioned_in_state": 0.5,
+        "last_mentioned_in_state": 0.5,
+        "more_frequent_in_state": 0.5
+      }
+    },
+    "precondition_conjunction|L2": {
+      "answer_share_index_0": 0.5,
+      "best_combined_in_sample": 0.5,
+      "best_combined_loso_cv": 0.5,
+      "delta_in_sample_vs_v5": 0.0,
+      "delta_loso_cv_vs_v5_in_sample": 0.0,
+      "models": {
+        "decision_stump_d1": {
+          "in_sample": 0.5,
+          "level_transfer": 0.5,
+          "loso_cv": 0.5
+        },
+        "decision_tree_d3": {
+          "in_sample": 0.5,
+          "level_transfer": 0.5,
+          "loso_cv": 0.5
+        },
+        "decision_tree_unbounded": {
+          "in_sample": 0.5,
+          "level_transfer": 0.5,
+          "loso_cv": 0.5
+        },
+        "hist_gradient_boosting": {
+          "in_sample": 0.5,
+          "level_transfer": 0.5,
+          "loso_cv": 0.5
+        },
+        "logistic_regression": {
+          "in_sample": 0.5,
+          "level_transfer": 0.5,
+          "loso_cv": 0.5
+        },
+        "majority_baseline": {
+          "in_sample": 0.5,
+          "level_transfer": 0.5,
+          "loso_cv": 0.5
+        },
+        "random_forest_300": {
+          "in_sample": 0.5,
+          "level_transfer": 0.5,
+          "loso_cv": 0.5
+        }
+      },
+      "n": 24,
+      "n_families": 12,
+      "v5_best_feature": "first_mentioned_in_state",
+      "v5_best_in_sample": 0.5,
+      "v5_family_in_sample": {
+        "always_first_option": 0.5,
+        "first_mentioned_in_state": 0.5,
+        "last_mentioned_in_state": 0.5,
+        "more_frequent_in_state": 0.5
+      }
+    },
+    "precondition_conjunction|L3": {
+      "answer_share_index_0": 0.5,
+      "best_combined_in_sample": 0.5,
+      "best_combined_loso_cv": 0.5,
+      "delta_in_sample_vs_v5": 0.0,
+      "delta_loso_cv_vs_v5_in_sample": 0.0,
+      "models": {
+        "decision_stump_d1": {
+          "in_sample": 0.5,
+          "level_transfer": 0.5,
+          "loso_cv": 0.5
+        },
+        "decision_tree_d3": {
+          "in_sample": 0.5,
+          "level_transfer": 0.5,
+          "loso_cv": 0.5
+        },
+        "decision_tree_unbounded": {
+          "in_sample": 0.5,
+          "level_transfer": 0.5,
+          "loso_cv": 0.5
+        },
+        "hist_gradient_boosting": {
+          "in_sample": 0.5,
+          "level_transfer": 0.5,
+          "loso_cv": 0.5
+        },
+        "logistic_regression": {
+          "in_sample": 0.5,
+          "level_transfer": 0.5,
+          "loso_cv": 0.5
+        },
+        "majority_baseline": {
+          "in_sample": 0.5,
+          "level_transfer": 0.5,
+          "loso_cv": 0.5
+        },
+        "random_forest_300": {
+          "in_sample": 0.5,
+          "level_transfer": 0.5,
+          "loso_cv": 0.5
+        }
+      },
+      "n": 24,
+      "n_families": 12,
+      "v5_best_feature": "first_mentioned_in_state",
+      "v5_best_in_sample": 0.5,
+      "v5_family_in_sample": {
+        "always_first_option": 0.5,
+        "first_mentioned_in_state": 0.5,
+        "last_mentioned_in_state": 0.5,
+        "more_frequent_in_state": 0.5
+      }
+    },
+    "transitive_dependency|L0": {
+      "answer_share_index_0": 0.5,
+      "best_combined_in_sample": 1.0,
+      "best_combined_loso_cv": 1.0,
+      "delta_in_sample_vs_v5": 0.0,
+      "delta_loso_cv_vs_v5_in_sample": 0.0,
+      "models": {
+        "decision_stump_d1": {
+          "in_sample": 1.0,
+          "level_transfer": 1.0,
+          "loso_cv": 1.0
+        },
+        "decision_tree_d3": {
+          "in_sample": 1.0,
+          "level_transfer": 1.0,
+          "loso_cv": 1.0
+        },
+        "decision_tree_unbounded": {
+          "in_sample": 1.0,
+          "level_transfer": 1.0,
+          "loso_cv": 1.0
+        },
+        "hist_gradient_boosting": {
+          "in_sample": 0.5,
+          "level_transfer": 0.5,
+          "loso_cv": 0.5
+        },
+        "logistic_regression": {
+          "in_sample": 1.0,
+          "level_transfer": 1.0,
+          "loso_cv": 1.0
+        },
+        "majority_baseline": {
+          "in_sample": 0.5,
+          "level_transfer": 0.5,
+          "loso_cv": 0.5
+        },
+        "random_forest_300": {
+          "in_sample": 1.0,
+          "level_transfer": 1.0,
+          "loso_cv": 1.0
+        }
+      },
+      "n": 24,
+      "n_families": 12,
+      "v5_best_feature": "first_mentioned_in_state",
+      "v5_best_in_sample": 1.0,
+      "v5_family_in_sample": {
+        "always_first_option": 0.5,
+        "first_mentioned_in_state": 1.0,
+        "last_mentioned_in_state": 0.5,
+        "more_frequent_in_state": 1.0
+      }
+    },
+    "transitive_dependency|L1": {
+      "answer_share_index_0": 0.5,
+      "best_combined_in_sample": 1.0,
+      "best_combined_loso_cv": 0.9583333333333334,
+      "delta_in_sample_vs_v5": 0.16666666666666663,
+      "delta_loso_cv_vs_v5_in_sample": 0.125,
+      "models": {
+        "decision_stump_d1": {
+          "in_sample": 0.8333333333333334,
+          "level_transfer": 0.8333333333333334,
+          "loso_cv": 0.8333333333333334
+        },
+        "decision_tree_d3": {
+          "in_sample": 0.9166666666666666,
+          "level_transfer": 0.8333333333333334,
+          "loso_cv": 0.8333333333333334
+        },
+        "decision_tree_unbounded": {
+          "in_sample": 1.0,
+          "level_transfer": 0.8333333333333334,
+          "loso_cv": 0.9583333333333334
+        },
+        "hist_gradient_boosting": {
+          "in_sample": 0.5,
+          "level_transfer": 0.5833333333333334,
+          "loso_cv": 0.5
+        },
+        "logistic_regression": {
+          "in_sample": 0.9166666666666666,
+          "level_transfer": 0.9166666666666666,
+          "loso_cv": 0.75
+        },
+        "majority_baseline": {
+          "in_sample": 0.5,
+          "level_transfer": 0.5,
+          "loso_cv": 0.5
+        },
+        "random_forest_300": {
+          "in_sample": 1.0,
+          "level_transfer": 1.0,
+          "loso_cv": 0.875
+        }
+      },
+      "n": 24,
+      "n_families": 12,
+      "v5_best_feature": "more_frequent_in_state",
+      "v5_best_in_sample": 0.8333333333333334,
+      "v5_family_in_sample": {
+        "always_first_option": 0.5,
+        "first_mentioned_in_state": 0.5,
+        "last_mentioned_in_state": 0.5,
+        "more_frequent_in_state": 0.8333333333333334
+      }
+    },
+    "transitive_dependency|L2": {
+      "answer_share_index_0": 0.5,
+      "best_combined_in_sample": 1.0,
+      "best_combined_loso_cv": 0.75,
+      "delta_in_sample_vs_v5": 0.375,
+      "delta_loso_cv_vs_v5_in_sample": 0.125,
+      "models": {
+        "decision_stump_d1": {
+          "in_sample": 0.625,
+          "level_transfer": 0.625,
+          "loso_cv": 0.5
+        },
+        "decision_tree_d3": {
+          "in_sample": 0.6666666666666666,
+          "level_transfer": 0.6666666666666666,
+          "loso_cv": 0.5416666666666666
+        },
+        "decision_tree_unbounded": {
+          "in_sample": 1.0,
+          "level_transfer": 0.5833333333333334,
+          "loso_cv": 0.75
+        },
+        "hist_gradient_boosting": {
+          "in_sample": 0.5,
+          "level_transfer": 0.7916666666666666,
+          "loso_cv": 0.5
+        },
+        "logistic_regression": {
+          "in_sample": 0.5833333333333334,
+          "level_transfer": 0.6666666666666666,
+          "loso_cv": 0.25
+        },
+        "majority_baseline": {
+          "in_sample": 0.5,
+          "level_transfer": 0.5,
+          "loso_cv": 0.5
+        },
+        "random_forest_300": {
+          "in_sample": 1.0,
+          "level_transfer": 0.625,
+          "loso_cv": 0.625
+        }
+      },
+      "n": 24,
+      "n_families": 12,
+      "v5_best_feature": "more_frequent_in_state",
+      "v5_best_in_sample": 0.625,
+      "v5_family_in_sample": {
+        "always_first_option": 0.5,
+        "first_mentioned_in_state": 0.5833333333333334,
+        "last_mentioned_in_state": 0.5,
+        "more_frequent_in_state": 0.625
+      }
+    },
+    "transitive_dependency|L3": {
+      "answer_share_index_0": 0.5,
+      "best_combined_in_sample": 1.0,
+      "best_combined_loso_cv": 0.6666666666666666,
+      "delta_in_sample_vs_v5": 0.33333333333333326,
+      "delta_loso_cv_vs_v5_in_sample": -1.1102230246251565e-16,
+      "models": {
+        "decision_stump_d1": {
+          "in_sample": 0.6666666666666666,
+          "level_transfer": 0.5416666666666666,
+          "loso_cv": 0.4166666666666667
+        },
+        "decision_tree_d3": {
+          "in_sample": 0.9166666666666666,
+          "level_transfer": 0.6666666666666666,
+          "loso_cv": 0.375
+        },
+        "decision_tree_unbounded": {
+          "in_sample": 1.0,
+          "level_transfer": 0.7083333333333334,
+          "loso_cv": 0.4583333333333333
+        },
+        "hist_gradient_boosting": {
+          "in_sample": 0.5,
+          "level_transfer": 0.6666666666666666,
+          "loso_cv": 0.5
+        },
+        "logistic_regression": {
+          "in_sample": 0.6666666666666666,
+          "level_transfer": 0.5,
+          "loso_cv": 0.6666666666666666
+        },
+        "majority_baseline": {
+          "in_sample": 0.5,
+          "level_transfer": 0.5,
+          "loso_cv": 0.5
+        },
+        "random_forest_300": {
+          "in_sample": 1.0,
+          "level_transfer": 0.5,
+          "loso_cv": 0.4166666666666667
+        }
+      },
+      "n": 24,
+      "n_families": 12,
+      "v5_best_feature": "first_mentioned_in_state",
+      "v5_best_in_sample": 0.6666666666666667,
+      "v5_family_in_sample": {
+        "always_first_option": 0.5,
+        "first_mentioned_in_state": 0.6666666666666667,
+        "last_mentioned_in_state": 0.5,
+        "more_frequent_in_state": 0.5416666666666666
+      }
+    }
+  },
+  "excluded_semantic_features": [
+    "SEMANTIC_bracket_depth_at_first",
+    "SEMANTIC_bracket_depth_at_last"
+  ],
+  "feature_names": [
+    "d_count_quoted",
+    "d_count_raw",
+    "d_first_offset",
+    "d_first_offset_frac",
+    "d_last_offset",
+    "d_last_offset_frac",
+    "d_n_colons_before_first",
+    "d_n_commas_before_first",
+    "d_n_open_braces_before_first",
+    "d_n_open_brackets_before_first",
+    "d_n_quotes_before_first",
+    "d_name_hash_bucket",
+    "d_name_len",
+    "d_name_lex_rank_vs_other",
+    "d_name_n_alpha",
+    "d_name_n_digits",
+    "d_name_n_dot",
+    "d_name_n_nonalnum",
+    "d_name_n_underscore",
+    "d_name_n_upper",
+    "d_name_ngram3_overlap_with_state",
+    "d_name_token_overlap_with_other",
+    "d_prompt_first_offset",
+    "d_span",
+    "g_n_context_objects",
+    "g_state_len",
+    "g_state_n_commas",
+    "g_state_n_distinct_ids",
+    "g_state_n_lean_nodes",
+    "g_state_n_local_ref",
+    "g_state_n_open_braces",
+    "g_state_n_open_brackets",
+    "g_state_n_quotes"
+  ],
+  "n_surface_features": 33,
+  "seed": 20260907
+}

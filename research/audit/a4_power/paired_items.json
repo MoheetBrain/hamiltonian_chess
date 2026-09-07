@@ -1,0 +1,5618 @@
+{
+ "formal_expression_depth|L0": {
+  "best_shortcut_accuracy": 0.6666666666666666,
+  "best_shortcut_feature": "more_frequent_in_state",
+  "best_shortcut_inverted": false,
+  "family_count": 12,
+  "family_sizes": [
+   [
+    2,
+    12
+   ]
+  ],
+  "family_solver_concordant": 12,
+  "items": [
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l0:fs:26b46d81572a545a",
+    "parsed_index": 0,
+    "probe_id": "probe:4c5c1f9ae1819fb484ec",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l0:fs:26b46d81572a545a",
+    "parsed_index": 1,
+    "probe_id": "probe:91fee9e290a57a8b65e8",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l0:fs:5019c1c281c32986",
+    "parsed_index": 0,
+    "probe_id": "probe:e1b648195dab8f7c944f",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l0:fs:5019c1c281c32986",
+    "parsed_index": 1,
+    "probe_id": "probe:bfbbb33cc47f26f0dc37",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l0:fs:547372dc08a24f6f",
+    "parsed_index": 0,
+    "probe_id": "probe:62c11287a6fbad546433",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l0:fs:547372dc08a24f6f",
+    "parsed_index": 1,
+    "probe_id": "probe:947a78c717eea037628f",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l0:fs:5cbb639f8811f84c",
+    "parsed_index": 0,
+    "probe_id": "probe:6aa24b635ed0713f7b78",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l0:fs:5cbb639f8811f84c",
+    "parsed_index": 1,
+    "probe_id": "probe:e49757439f4e34e3a53e",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l0:fs:6991ee043b74f50b",
+    "parsed_index": 0,
+    "probe_id": "probe:7af34c7948d2a003e579",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l0:fs:6991ee043b74f50b",
+    "parsed_index": 1,
+    "probe_id": "probe:eb9adbc3a01c946bc130",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l0:fs:70e7db6488e35640",
+    "parsed_index": 0,
+    "probe_id": "probe:ac15a811fb6f3720d065",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l0:fs:70e7db6488e35640",
+    "parsed_index": 1,
+    "probe_id": "probe:749acafa3efad75bb313",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l0:fs:722571ddd285c509",
+    "parsed_index": 0,
+    "probe_id": "probe:38effe57ccea3c5980ae",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l0:fs:722571ddd285c509",
+    "parsed_index": 1,
+    "probe_id": "probe:70687e4bbd364cb50542",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l0:fs:7227fc077197a0d7",
+    "parsed_index": 0,
+    "probe_id": "probe:62babf2a34fa725c46e5",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l0:fs:7227fc077197a0d7",
+    "parsed_index": 1,
+    "probe_id": "probe:ac36028f4b0754692715",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l0:fs:79533578a1be524c",
+    "parsed_index": 0,
+    "probe_id": "probe:09375c5d9c7f11110f5b",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l0:fs:79533578a1be524c",
+    "parsed_index": 1,
+    "probe_id": "probe:ba70001822a7dc8c264b",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l0:fs:7ca68e1130fa0633",
+    "parsed_index": 0,
+    "probe_id": "probe:abf884a541765bed005a",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l0:fs:7ca68e1130fa0633",
+    "parsed_index": 1,
+    "probe_id": "probe:8c64cdfcd21655a8932f",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l0:fs:b32b92f55358f76e",
+    "parsed_index": 0,
+    "probe_id": "probe:f18c47d200dbba3e9c55",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l0:fs:b32b92f55358f76e",
+    "parsed_index": 1,
+    "probe_id": "probe:f0058a293bd00da84e76",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l0:fs:bd09376d28cc07ce",
+    "parsed_index": 0,
+    "probe_id": "probe:a306f3ae3fe70111e9fd",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l0:fs:bd09376d28cc07ce",
+    "parsed_index": 1,
+    "probe_id": "probe:a188ba690b6f097535a8",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   }
+  ],
+  "level": 0,
+  "margin": 0.3333333333333333,
+  "mechanism": "formal_expression_depth",
+  "n": 24,
+  "n_families": 12,
+  "rule_scores": {
+   "alphabetically_first": 0.5,
+   "always_first_option": 0.5,
+   "always_second_option": 0.5,
+   "first_mentioned_in_state": 0.5,
+   "last_mentioned_in_state": 0.5,
+   "more_frequent_in_state": 0.6666666666666666,
+   "shorter_option_text": 0.5
+  },
+  "solver_accuracy": 1.0,
+  "table": {
+   "both": 16,
+   "neither": 0,
+   "shortcut_only": 0,
+   "solver_only": 8
+  }
+ },
+ "formal_expression_depth|L1": {
+  "best_shortcut_accuracy": 1.0,
+  "best_shortcut_feature": "first_mentioned_in_state",
+  "best_shortcut_inverted": false,
+  "family_count": 12,
+  "family_sizes": [
+   [
+    2,
+    12
+   ]
+  ],
+  "family_solver_concordant": 8,
+  "items": [
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l1:fs:042bc453a72f0a77",
+    "parsed_index": 0,
+    "probe_id": "probe:6606563a9b6ea076b7d6",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l1:fs:042bc453a72f0a77",
+    "parsed_index": 1,
+    "probe_id": "probe:20585f6ae3a59b241992",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l1:fs:b8542e70f00520f1",
+    "parsed_index": 0,
+    "probe_id": "probe:20baf62f5376388ffa48",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l1:fs:b8542e70f00520f1",
+    "parsed_index": 1,
+    "probe_id": "probe:3769488a3d5cf6c8be18",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l1:fs:c1ba2840e997b124",
+    "parsed_index": 0,
+    "probe_id": "probe:2655a9dc0df165f2d72b",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l1:fs:c1ba2840e997b124",
+    "parsed_index": 1,
+    "probe_id": "probe:c0cd64c1b9d5f18c006b",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l1:fs:ec0e7db9d7520cef",
+    "parsed_index": 0,
+    "probe_id": "probe:6734e26779975fe7814b",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l1:fs:ec0e7db9d7520cef",
+    "parsed_index": 1,
+    "probe_id": "probe:74362d5406535d058af8",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l1:fs:090a1107562d79d5",
+    "parsed_index": 1,
+    "probe_id": "probe:b48a9fd1ad266f2d6d60",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": false,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l1:fs:090a1107562d79d5",
+    "parsed_index": 1,
+    "probe_id": "probe:288a55d723c939d2830f",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l1:fs:0ad41d66299b6e4a",
+    "parsed_index": 0,
+    "probe_id": "probe:df662b7c8221d283fff8",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l1:fs:0ad41d66299b6e4a",
+    "parsed_index": 1,
+    "probe_id": "probe:a648e19185865d86a3b2",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l1:fs:303b7eaab79abb99",
+    "parsed_index": 0,
+    "probe_id": "probe:2f6b72859909e0c14e39",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l1:fs:303b7eaab79abb99",
+    "parsed_index": 1,
+    "probe_id": "probe:dff7c4ec1034dcf1e8eb",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l1:fs:40b58c5d2a3a56e1",
+    "parsed_index": 1,
+    "probe_id": "probe:7ac1a6e17a2dc8068810",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": false,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l1:fs:40b58c5d2a3a56e1",
+    "parsed_index": 1,
+    "probe_id": "probe:40942bcd8d4594004d8a",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l1:fs:5381d2af5ad60c98",
+    "parsed_index": 1,
+    "probe_id": "probe:afbd2706011484cbc139",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": false,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l1:fs:5381d2af5ad60c98",
+    "parsed_index": 1,
+    "probe_id": "probe:cea8568b0b41850bb764",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l1:fs:5e50f9438cba35af",
+    "parsed_index": 0,
+    "probe_id": "probe:a2225a5181c58d017672",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l1:fs:5e50f9438cba35af",
+    "parsed_index": 1,
+    "probe_id": "probe:ad0769d7886615f26bdd",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l1:fs:652da967ac8b05f5",
+    "parsed_index": 1,
+    "probe_id": "probe:f39c95acd373afc22756",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": false,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l1:fs:652da967ac8b05f5",
+    "parsed_index": 1,
+    "probe_id": "probe:b7d1fe9e961fb6d50261",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l1:fs:65c06e679601e8ae",
+    "parsed_index": 0,
+    "probe_id": "probe:4a0137d413635d581b68",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l1:fs:65c06e679601e8ae",
+    "parsed_index": 1,
+    "probe_id": "probe:e521451442a317f51970",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   }
+  ],
+  "level": 1,
+  "margin": -0.16666666666666666,
+  "mechanism": "formal_expression_depth",
+  "n": 24,
+  "n_families": 12,
+  "rule_scores": {
+   "alphabetically_first": 0.5,
+   "always_first_option": 0.5,
+   "always_second_option": 0.5,
+   "first_mentioned_in_state": 1.0,
+   "last_mentioned_in_state": 0.5,
+   "more_frequent_in_state": 0.875,
+   "shorter_option_text": 0.5
+  },
+  "solver_accuracy": 0.8333333333333334,
+  "table": {
+   "both": 20,
+   "neither": 0,
+   "shortcut_only": 4,
+   "solver_only": 0
+  }
+ },
+ "formal_expression_depth|L2": {
+  "best_shortcut_accuracy": 0.8333333333333334,
+  "best_shortcut_feature": "first_mentioned_in_state",
+  "best_shortcut_inverted": false,
+  "family_count": 12,
+  "family_sizes": [
+   [
+    2,
+    12
+   ]
+  ],
+  "family_solver_concordant": 7,
+  "items": [
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l2:fs:26b46d81572a545a",
+    "parsed_index": 0,
+    "probe_id": "probe:e086b42ae2952b5ac3c5",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l2:fs:26b46d81572a545a",
+    "parsed_index": 1,
+    "probe_id": "probe:e7ee473d71d4665f5ce0",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l2:fs:5019c1c281c32986",
+    "parsed_index": 0,
+    "probe_id": "probe:1676eb60ce335ffa4de2",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l2:fs:5019c1c281c32986",
+    "parsed_index": 1,
+    "probe_id": "probe:5761495cc331bf6b8b6c",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l2:fs:547372dc08a24f6f",
+    "parsed_index": 0,
+    "probe_id": "probe:5303737663acca5b05ed",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l2:fs:547372dc08a24f6f",
+    "parsed_index": 1,
+    "probe_id": "probe:f343583744109d028839",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l2:fs:5cbb639f8811f84c",
+    "parsed_index": 0,
+    "probe_id": "probe:62b30c5892146309eb0d",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l2:fs:5cbb639f8811f84c",
+    "parsed_index": 0,
+    "probe_id": "probe:aac6e2d1b24a1b8ea69e",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": false,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l2:fs:6991ee043b74f50b",
+    "parsed_index": 0,
+    "probe_id": "probe:f0a6d7625f13f892035b",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l2:fs:6991ee043b74f50b",
+    "parsed_index": 1,
+    "probe_id": "probe:0caace7f3cfcc0db70cd",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l2:fs:70e7db6488e35640",
+    "parsed_index": 0,
+    "probe_id": "probe:b1f53780373d2ed91b0c",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l2:fs:70e7db6488e35640",
+    "parsed_index": 0,
+    "probe_id": "probe:cb9fe251a9ea9c3bf5d2",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": false,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l2:fs:722571ddd285c509",
+    "parsed_index": 1,
+    "probe_id": "probe:7bce989c628ec7d14454",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": false,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l2:fs:722571ddd285c509",
+    "parsed_index": 1,
+    "probe_id": "probe:8d1e84400f7225124810",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l2:fs:7227fc077197a0d7",
+    "parsed_index": 0,
+    "probe_id": "probe:de0619db2532793dccb0",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l2:fs:7227fc077197a0d7",
+    "parsed_index": 0,
+    "probe_id": "probe:27d14987a1a1dec39eff",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": false,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l2:fs:79533578a1be524c",
+    "parsed_index": 1,
+    "probe_id": "probe:a9da667d371dc1dcb95e",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": false,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l2:fs:79533578a1be524c",
+    "parsed_index": 1,
+    "probe_id": "probe:bed842fa65f70fb30252",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l2:fs:7ca68e1130fa0633",
+    "parsed_index": 0,
+    "probe_id": "probe:42af47770789e1468688",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l2:fs:7ca68e1130fa0633",
+    "parsed_index": 1,
+    "probe_id": "probe:6691cf27705f8bea2066",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l2:fs:b32b92f55358f76e",
+    "parsed_index": 0,
+    "probe_id": "probe:b43eb09d0b2107b41096",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l2:fs:b32b92f55358f76e",
+    "parsed_index": 1,
+    "probe_id": "probe:ee0df1d93b0c6b03515a",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l2:fs:bd09376d28cc07ce",
+    "parsed_index": 0,
+    "probe_id": "probe:d9f106a6b18122f94bd3",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l2:fs:bd09376d28cc07ce",
+    "parsed_index": 1,
+    "probe_id": "probe:8fdefb0717949e220866",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   }
+  ],
+  "level": 2,
+  "margin": -0.041666666666666664,
+  "mechanism": "formal_expression_depth",
+  "n": 24,
+  "n_families": 12,
+  "rule_scores": {
+   "alphabetically_first": 0.5,
+   "always_first_option": 0.5,
+   "always_second_option": 0.5,
+   "first_mentioned_in_state": 0.8333333333333334,
+   "last_mentioned_in_state": 0.5,
+   "more_frequent_in_state": 0.6666666666666666,
+   "shorter_option_text": 0.5
+  },
+  "solver_accuracy": 0.7916666666666666,
+  "table": {
+   "both": 16,
+   "neither": 1,
+   "shortcut_only": 4,
+   "solver_only": 3
+  }
+ },
+ "formal_expression_depth|L3": {
+  "best_shortcut_accuracy": 0.9166666666666666,
+  "best_shortcut_feature": "first_mentioned_in_state",
+  "best_shortcut_inverted": false,
+  "family_count": 12,
+  "family_sizes": [
+   [
+    2,
+    12
+   ]
+  ],
+  "family_solver_concordant": 3,
+  "items": [
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l3:fs:c5e2455cf3cfca47",
+    "parsed_index": 1,
+    "probe_id": "probe:3025e6d5e62b8a664741",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": false,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l3:fs:c5e2455cf3cfca47",
+    "parsed_index": 1,
+    "probe_id": "probe:bd074c46a23669d35006",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l3:fs:cabc59bccae88d10",
+    "parsed_index": 0,
+    "probe_id": "probe:8619d6e243ae158919df",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l3:fs:cabc59bccae88d10",
+    "parsed_index": 0,
+    "probe_id": "probe:200b5ceb73ccb9c63ff5",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 0,
+    "solver_correct": false,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l3:fs:dcc826b50d9f1f2a",
+    "parsed_index": 0,
+    "probe_id": "probe:7ab6e8cd064474f061c3",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l3:fs:dcc826b50d9f1f2a",
+    "parsed_index": 1,
+    "probe_id": "probe:06b44618ed635118779a",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l3:fs:de118a328f3da0b5",
+    "parsed_index": 0,
+    "probe_id": "probe:6ff9ebe09381e53f2def",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l3:fs:de118a328f3da0b5",
+    "parsed_index": 0,
+    "probe_id": "probe:cb1363fa97f20cd18447",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": false,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l3:fs:edf9c75173833889",
+    "parsed_index": 0,
+    "probe_id": "probe:7025ea3f533f46265b04",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l3:fs:edf9c75173833889",
+    "parsed_index": 1,
+    "probe_id": "probe:ee7eb748d0ee6a313489",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l3:fs:022fea842e4142a0",
+    "parsed_index": 1,
+    "probe_id": "probe:df26fe36b2c2ffc053eb",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": false,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l3:fs:022fea842e4142a0",
+    "parsed_index": 1,
+    "probe_id": "probe:fde283c2031e9e51641b",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l3:fs:10b70a1b7443eab9",
+    "parsed_index": 0,
+    "probe_id": "probe:aaee6457284c62d435a6",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l3:fs:10b70a1b7443eab9",
+    "parsed_index": 0,
+    "probe_id": "probe:50df176f3b66cb1e13fc",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": false,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l3:fs:123f163f27d2f499",
+    "parsed_index": 1,
+    "probe_id": "probe:b839a48fcd2f0759e414",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": false,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l3:fs:123f163f27d2f499",
+    "parsed_index": 1,
+    "probe_id": "probe:5a4251c798703023a04d",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l3:fs:1a61fbc614fbabd0",
+    "parsed_index": 0,
+    "probe_id": "probe:70c297966b3dcf059966",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l3:fs:1a61fbc614fbabd0",
+    "parsed_index": 1,
+    "probe_id": "probe:dbc204f98124622ab1ba",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l3:fs:1e6912d0d24bc09c",
+    "parsed_index": 1,
+    "probe_id": "probe:0cf5b41c747948683301",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": false,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l3:fs:1e6912d0d24bc09c",
+    "parsed_index": 1,
+    "probe_id": "probe:1ba4db1ed37d6aabc058",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l3:fs:2779252b8a015b1b",
+    "parsed_index": 1,
+    "probe_id": "probe:1988019be4ebed6ed73a",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": false,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l3:fs:2779252b8a015b1b",
+    "parsed_index": 1,
+    "probe_id": "probe:27c5a33a074434b3f311",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:formal_expression_depth:l3:fs:422553769df53f88",
+    "parsed_index": 0,
+    "probe_id": "probe:cec5048ad87166cb7d81",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:formal_expression_depth:l3:fs:422553769df53f88",
+    "parsed_index": 0,
+    "probe_id": "probe:d326825843eab8eb1348",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": false,
+    "variant": "COUNTERFACTUAL"
+   }
+  ],
+  "level": 3,
+  "margin": -0.2916666666666667,
+  "mechanism": "formal_expression_depth",
+  "n": 24,
+  "n_families": 12,
+  "rule_scores": {
+   "alphabetically_first": 0.5,
+   "always_first_option": 0.5,
+   "always_second_option": 0.5,
+   "first_mentioned_in_state": 0.9166666666666666,
+   "last_mentioned_in_state": 0.5,
+   "more_frequent_in_state": 0.875,
+   "shorter_option_text": 0.5
+  },
+  "solver_accuracy": 0.625,
+  "table": {
+   "both": 14,
+   "neither": 1,
+   "shortcut_only": 8,
+   "solver_only": 1
+  }
+ },
+ "precondition_conjunction|L0": {
+  "best_shortcut_accuracy": 1.0,
+  "best_shortcut_feature": "first_mentioned_in_state",
+  "best_shortcut_inverted": false,
+  "family_count": 12,
+  "family_sizes": [
+   [
+    2,
+    12
+   ]
+  ],
+  "family_solver_concordant": 12,
+  "items": [
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l0:synthetic:20262907",
+    "parsed_index": 0,
+    "probe_id": "probe:a092219d8662ccebdf5d",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l0:synthetic:20262907",
+    "parsed_index": 1,
+    "probe_id": "probe:d7c37b237591dc2ae527",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l0:synthetic:20262908",
+    "parsed_index": 0,
+    "probe_id": "probe:fe7167f78e6aeed2291c",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l0:synthetic:20262908",
+    "parsed_index": 1,
+    "probe_id": "probe:f1b39bb328ec62f53e95",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l0:synthetic:20262909",
+    "parsed_index": 0,
+    "probe_id": "probe:a2960392fc539cdfe440",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l0:synthetic:20262909",
+    "parsed_index": 1,
+    "probe_id": "probe:34ff0d542247ac09586e",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l0:synthetic:20262910",
+    "parsed_index": 0,
+    "probe_id": "probe:3b57d20bb1e6d5aff453",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l0:synthetic:20262910",
+    "parsed_index": 1,
+    "probe_id": "probe:2aeebcc5a4bf2524e4e4",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l0:synthetic:20262911",
+    "parsed_index": 0,
+    "probe_id": "probe:d540634b4e0f3c1397a0",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l0:synthetic:20262911",
+    "parsed_index": 1,
+    "probe_id": "probe:00d37db698fdb8f0816b",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l0:synthetic:20262912",
+    "parsed_index": 0,
+    "probe_id": "probe:a7661581552a5419aa71",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l0:synthetic:20262912",
+    "parsed_index": 1,
+    "probe_id": "probe:4772520159ae7b159ab0",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l0:synthetic:20262913",
+    "parsed_index": 0,
+    "probe_id": "probe:205dabf4d14e0b561a61",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l0:synthetic:20262913",
+    "parsed_index": 1,
+    "probe_id": "probe:fae954480439ee7423a2",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l0:synthetic:20262914",
+    "parsed_index": 0,
+    "probe_id": "probe:8771e7356eeab6bf3595",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l0:synthetic:20262914",
+    "parsed_index": 1,
+    "probe_id": "probe:ae067e1fe5a4b0383d4d",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l0:synthetic:20262915",
+    "parsed_index": 0,
+    "probe_id": "probe:9076ebae239a473774f8",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l0:synthetic:20262915",
+    "parsed_index": 1,
+    "probe_id": "probe:99eee7892f98ff0a358b",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l0:synthetic:20262916",
+    "parsed_index": 0,
+    "probe_id": "probe:2da3e21a71a26c0333ca",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l0:synthetic:20262916",
+    "parsed_index": 1,
+    "probe_id": "probe:49a57cf1ea6c9a082ed0",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l0:synthetic:20262917",
+    "parsed_index": 0,
+    "probe_id": "probe:6f8badfe10c07f988dc3",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l0:synthetic:20262917",
+    "parsed_index": 1,
+    "probe_id": "probe:49a653bb82b9145ab355",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l0:synthetic:20262918",
+    "parsed_index": 0,
+    "probe_id": "probe:be6657882d80de11e669",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l0:synthetic:20262918",
+    "parsed_index": 1,
+    "probe_id": "probe:ba6cd3a536e8338146fd",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   }
+  ],
+  "level": 0,
+  "margin": 0.0,
+  "mechanism": "precondition_conjunction",
+  "n": 24,
+  "n_families": 12,
+  "rule_scores": {
+   "alphabetically_first": 0.5,
+   "always_first_option": 0.5,
+   "always_second_option": 0.5,
+   "first_mentioned_in_state": 1.0,
+   "last_mentioned_in_state": 0.5,
+   "more_frequent_in_state": 1.0,
+   "shorter_option_text": 0.5
+  },
+  "solver_accuracy": 1.0,
+  "table": {
+   "both": 24,
+   "neither": 0,
+   "shortcut_only": 0,
+   "solver_only": 0
+  }
+ },
+ "precondition_conjunction|L1": {
+  "best_shortcut_accuracy": 0.5,
+  "best_shortcut_feature": "always_first_option",
+  "best_shortcut_inverted": false,
+  "family_count": 12,
+  "family_sizes": [
+   [
+    2,
+    12
+   ]
+  ],
+  "family_solver_concordant": 11,
+  "items": [
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l1:synthetic:20263007",
+    "parsed_index": 0,
+    "probe_id": "probe:c3eba31706fa723ec463",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l1:synthetic:20263007",
+    "parsed_index": 1,
+    "probe_id": "probe:f1b6e111865c0624a141",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l1:synthetic:20263008",
+    "parsed_index": 0,
+    "probe_id": "probe:01b81c97cd1ea16f3b55",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l1:synthetic:20263008",
+    "parsed_index": 1,
+    "probe_id": "probe:141318f450c3ce8ebd5e",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l1:synthetic:20263009",
+    "parsed_index": 0,
+    "probe_id": "probe:ebd697de7e6e42608129",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l1:synthetic:20263009",
+    "parsed_index": 1,
+    "probe_id": "probe:ddb8f342ca6e5afbd21f",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l1:synthetic:20263010",
+    "parsed_index": 0,
+    "probe_id": "probe:76e9f3bcf0f435d87fa9",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l1:synthetic:20263010",
+    "parsed_index": 1,
+    "probe_id": "probe:552ac95367d3f19fa6f6",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l1:synthetic:20263011",
+    "parsed_index": 0,
+    "probe_id": "probe:12f413d3d023117e5ec1",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l1:synthetic:20263011",
+    "parsed_index": 1,
+    "probe_id": "probe:af61cd047e63dd464788",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l1:synthetic:20263012",
+    "parsed_index": 0,
+    "probe_id": "probe:28a2196d7f6bc5411646",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l1:synthetic:20263012",
+    "parsed_index": 1,
+    "probe_id": "probe:15b5e0927b1e24af24b6",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l1:synthetic:20263013",
+    "parsed_index": 0,
+    "probe_id": "probe:1057410c5232a363fd38",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l1:synthetic:20263013",
+    "parsed_index": 1,
+    "probe_id": "probe:4ec2c4f8ffbec290accc",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l1:synthetic:20263014",
+    "parsed_index": 0,
+    "probe_id": "probe:085b544db9616c42896d",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l1:synthetic:20263014",
+    "parsed_index": 1,
+    "probe_id": "probe:df4da898d00c3734c759",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l1:synthetic:20263015",
+    "parsed_index": 0,
+    "probe_id": "probe:09e588ff6a1b054107b7",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l1:synthetic:20263015",
+    "parsed_index": 1,
+    "probe_id": "probe:e96461444a45577c94a3",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l1:synthetic:20263016",
+    "parsed_index": 0,
+    "probe_id": "probe:b3835ab23865597111d5",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l1:synthetic:20263016",
+    "parsed_index": 0,
+    "probe_id": "probe:7d422d9667d486265fa8",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 0,
+    "solver_correct": false,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l1:synthetic:20263017",
+    "parsed_index": 0,
+    "probe_id": "probe:9082ebcbb856aa5b530a",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l1:synthetic:20263017",
+    "parsed_index": 1,
+    "probe_id": "probe:7a2d15eb86cf781ac9c3",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l1:synthetic:20263018",
+    "parsed_index": 0,
+    "probe_id": "probe:725222c4d5b60223079e",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l1:synthetic:20263018",
+    "parsed_index": 1,
+    "probe_id": "probe:44d7e8cf16c92f70b0c2",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   }
+  ],
+  "level": 1,
+  "margin": 0.4583333333333333,
+  "mechanism": "precondition_conjunction",
+  "n": 24,
+  "n_families": 12,
+  "rule_scores": {
+   "alphabetically_first": 0.5,
+   "always_first_option": 0.5,
+   "always_second_option": 0.5,
+   "first_mentioned_in_state": 0.5,
+   "last_mentioned_in_state": 0.5,
+   "more_frequent_in_state": 0.5,
+   "shorter_option_text": 0.5
+  },
+  "solver_accuracy": 0.9583333333333334,
+  "table": {
+   "both": 12,
+   "neither": 1,
+   "shortcut_only": 0,
+   "solver_only": 11
+  }
+ },
+ "precondition_conjunction|L2": {
+  "best_shortcut_accuracy": 0.5,
+  "best_shortcut_feature": "always_first_option",
+  "best_shortcut_inverted": false,
+  "family_count": 12,
+  "family_sizes": [
+   [
+    2,
+    12
+   ]
+  ],
+  "family_solver_concordant": 12,
+  "items": [
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l2:synthetic:20263107",
+    "parsed_index": 0,
+    "probe_id": "probe:f13eb934aaebdec5e973",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l2:synthetic:20263107",
+    "parsed_index": 1,
+    "probe_id": "probe:7a503635cb82d9f514b6",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l2:synthetic:20263108",
+    "parsed_index": 0,
+    "probe_id": "probe:1a6badf0362ace3b13a3",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l2:synthetic:20263108",
+    "parsed_index": 1,
+    "probe_id": "probe:49043c517fcad3c47bfb",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l2:synthetic:20263109",
+    "parsed_index": 0,
+    "probe_id": "probe:99bbfe658ed294557505",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l2:synthetic:20263109",
+    "parsed_index": 1,
+    "probe_id": "probe:77a0d50759caec0df77e",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l2:synthetic:20263110",
+    "parsed_index": 0,
+    "probe_id": "probe:510d7bfbf6f8eb142f70",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l2:synthetic:20263110",
+    "parsed_index": 1,
+    "probe_id": "probe:00755842a1d5c514809c",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l2:synthetic:20263111",
+    "parsed_index": 0,
+    "probe_id": "probe:f79d7f68b163394da95f",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l2:synthetic:20263111",
+    "parsed_index": 1,
+    "probe_id": "probe:052fbecab462459870d9",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l2:synthetic:20263112",
+    "parsed_index": 0,
+    "probe_id": "probe:1cdcefe467617a9205f9",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l2:synthetic:20263112",
+    "parsed_index": 1,
+    "probe_id": "probe:20698e98a80c8b6421d2",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l2:synthetic:20263113",
+    "parsed_index": 0,
+    "probe_id": "probe:04a40c0d8e0c836e8071",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l2:synthetic:20263113",
+    "parsed_index": 1,
+    "probe_id": "probe:2ff6d3f94f55c56f7ec8",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l2:synthetic:20263114",
+    "parsed_index": 0,
+    "probe_id": "probe:65d8a8af09b5b72e8d3b",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l2:synthetic:20263114",
+    "parsed_index": 1,
+    "probe_id": "probe:5b4996380f7fbb543c83",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l2:synthetic:20263115",
+    "parsed_index": 0,
+    "probe_id": "probe:283527761f369a5a9cdd",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l2:synthetic:20263115",
+    "parsed_index": 1,
+    "probe_id": "probe:2b4d0714c39282a5cf4c",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l2:synthetic:20263116",
+    "parsed_index": 0,
+    "probe_id": "probe:8f174e0a36d2737cb3da",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l2:synthetic:20263116",
+    "parsed_index": 1,
+    "probe_id": "probe:020902cc3e58f48ee049",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l2:synthetic:20263117",
+    "parsed_index": 0,
+    "probe_id": "probe:4f3a0ec9d3a823de3f68",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l2:synthetic:20263117",
+    "parsed_index": 1,
+    "probe_id": "probe:71a9aa056ff69e7e5c94",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l2:synthetic:20263118",
+    "parsed_index": 0,
+    "probe_id": "probe:859bb326aead90cb2432",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l2:synthetic:20263118",
+    "parsed_index": 1,
+    "probe_id": "probe:1a5ef1807a4e9d70edeb",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   }
+  ],
+  "level": 2,
+  "margin": 0.5,
+  "mechanism": "precondition_conjunction",
+  "n": 24,
+  "n_families": 12,
+  "rule_scores": {
+   "alphabetically_first": 0.5,
+   "always_first_option": 0.5,
+   "always_second_option": 0.5,
+   "first_mentioned_in_state": 0.5,
+   "last_mentioned_in_state": 0.5,
+   "more_frequent_in_state": 0.5,
+   "shorter_option_text": 0.5
+  },
+  "solver_accuracy": 1.0,
+  "table": {
+   "both": 12,
+   "neither": 0,
+   "shortcut_only": 0,
+   "solver_only": 12
+  }
+ },
+ "precondition_conjunction|L3": {
+  "best_shortcut_accuracy": 0.5,
+  "best_shortcut_feature": "always_first_option",
+  "best_shortcut_inverted": false,
+  "family_count": 12,
+  "family_sizes": [
+   [
+    2,
+    12
+   ]
+  ],
+  "family_solver_concordant": 12,
+  "items": [
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l3:synthetic:20263207",
+    "parsed_index": 0,
+    "probe_id": "probe:13c3bfcf07b59177cb4e",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l3:synthetic:20263207",
+    "parsed_index": 1,
+    "probe_id": "probe:979dd6adde4a5c0cd151",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l3:synthetic:20263208",
+    "parsed_index": 0,
+    "probe_id": "probe:e604deb258869337a8b3",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l3:synthetic:20263208",
+    "parsed_index": 1,
+    "probe_id": "probe:d2b81828a0bda951ab09",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l3:synthetic:20263209",
+    "parsed_index": 0,
+    "probe_id": "probe:5c5636a38f6b351a26ae",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l3:synthetic:20263209",
+    "parsed_index": 1,
+    "probe_id": "probe:07fa0b42251d25cab627",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l3:synthetic:20263210",
+    "parsed_index": 0,
+    "probe_id": "probe:415f100b55eecb6d0c06",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l3:synthetic:20263210",
+    "parsed_index": 1,
+    "probe_id": "probe:45a3043928aaf3fecee9",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l3:synthetic:20263211",
+    "parsed_index": 0,
+    "probe_id": "probe:1c3ae566a1fe42192c3e",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l3:synthetic:20263211",
+    "parsed_index": 1,
+    "probe_id": "probe:cf65f2d47403f8edf52f",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l3:synthetic:20263212",
+    "parsed_index": 0,
+    "probe_id": "probe:316a1eae1c030f441786",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l3:synthetic:20263212",
+    "parsed_index": 1,
+    "probe_id": "probe:06907ab7c229b5aecf2f",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l3:synthetic:20263213",
+    "parsed_index": 0,
+    "probe_id": "probe:5fb0cd20602152c750d7",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l3:synthetic:20263213",
+    "parsed_index": 1,
+    "probe_id": "probe:154f7659373714276bc1",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l3:synthetic:20263214",
+    "parsed_index": 0,
+    "probe_id": "probe:a9c3b68be8d3dde7a75f",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l3:synthetic:20263214",
+    "parsed_index": 1,
+    "probe_id": "probe:e73642c0bc907aac78fc",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l3:synthetic:20263215",
+    "parsed_index": 0,
+    "probe_id": "probe:7f821a7b8693c21078a9",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l3:synthetic:20263215",
+    "parsed_index": 1,
+    "probe_id": "probe:0c9ec71ed0dbf1e422a9",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l3:synthetic:20263216",
+    "parsed_index": 0,
+    "probe_id": "probe:0b4851fab06ed46ad5da",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l3:synthetic:20263216",
+    "parsed_index": 1,
+    "probe_id": "probe:1a9df22aa567a8605bde",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l3:synthetic:20263217",
+    "parsed_index": 0,
+    "probe_id": "probe:09decc5d55f5237cbe68",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l3:synthetic:20263217",
+    "parsed_index": 1,
+    "probe_id": "probe:91e6fc28af3ad148580f",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:precondition_conjunction:l3:synthetic:20263218",
+    "parsed_index": 0,
+    "probe_id": "probe:e5f2b02aabef78fc0c30",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:precondition_conjunction:l3:synthetic:20263218",
+    "parsed_index": 1,
+    "probe_id": "probe:afe2dfa058ee726a6206",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   }
+  ],
+  "level": 3,
+  "margin": 0.5,
+  "mechanism": "precondition_conjunction",
+  "n": 24,
+  "n_families": 12,
+  "rule_scores": {
+   "alphabetically_first": 0.5,
+   "always_first_option": 0.5,
+   "always_second_option": 0.5,
+   "first_mentioned_in_state": 0.5,
+   "last_mentioned_in_state": 0.5,
+   "more_frequent_in_state": 0.5,
+   "shorter_option_text": 0.5
+  },
+  "solver_accuracy": 1.0,
+  "table": {
+   "both": 12,
+   "neither": 0,
+   "shortcut_only": 0,
+   "solver_only": 12
+  }
+ },
+ "transitive_dependency|L0": {
+  "best_shortcut_accuracy": 1.0,
+  "best_shortcut_feature": "first_mentioned_in_state",
+  "best_shortcut_inverted": false,
+  "family_count": 12,
+  "family_sizes": [
+   [
+    2,
+    12
+   ]
+  ],
+  "family_solver_concordant": 11,
+  "items": [
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l0:synthetic:20261907",
+    "parsed_index": 0,
+    "probe_id": "probe:04b26de84d7991e9b116",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l0:synthetic:20261907",
+    "parsed_index": 1,
+    "probe_id": "probe:6a3a68d5ccb40bff5537",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l0:synthetic:20261908",
+    "parsed_index": 0,
+    "probe_id": "probe:84bae5e39de31a9bc43a",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l0:synthetic:20261908",
+    "parsed_index": 1,
+    "probe_id": "probe:923f048efe464d210951",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l0:synthetic:20261909",
+    "parsed_index": 0,
+    "probe_id": "probe:56968cd29eff53eade92",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l0:synthetic:20261909",
+    "parsed_index": 1,
+    "probe_id": "probe:abd7ddbb0e32d7429289",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l0:synthetic:20261910",
+    "parsed_index": 0,
+    "probe_id": "probe:7cd1a6f045d78a8c840a",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l0:synthetic:20261910",
+    "parsed_index": 1,
+    "probe_id": "probe:ac0a4dd96e0bda8a9374",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l0:synthetic:20261911",
+    "parsed_index": 0,
+    "probe_id": "probe:9ee7d07dfc4e1618be46",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l0:synthetic:20261911",
+    "parsed_index": 1,
+    "probe_id": "probe:c6a324ea46071f0d2372",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l0:synthetic:20261912",
+    "parsed_index": 0,
+    "probe_id": "probe:6b763b042249d35e381f",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l0:synthetic:20261912",
+    "parsed_index": 1,
+    "probe_id": "probe:0e2f6dbcbd459cf47dbc",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l0:synthetic:20261913",
+    "parsed_index": 0,
+    "probe_id": "probe:afcc8a3813719740a3a0",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l0:synthetic:20261913",
+    "parsed_index": 1,
+    "probe_id": "probe:17ccf7f305502b87b8a3",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l0:synthetic:20261914",
+    "parsed_index": 0,
+    "probe_id": "probe:a1927f432fc12058aa2b",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l0:synthetic:20261914",
+    "parsed_index": 1,
+    "probe_id": "probe:6c76d11819f91bf59c43",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l0:synthetic:20261915",
+    "parsed_index": 0,
+    "probe_id": "probe:7b84199558a7cdee07d3",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l0:synthetic:20261915",
+    "parsed_index": 1,
+    "probe_id": "probe:e957fdb536121943d3da",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l0:synthetic:20261916",
+    "parsed_index": 0,
+    "probe_id": "probe:0c20312b83a1b8663ea8",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l0:synthetic:20261916",
+    "parsed_index": 1,
+    "probe_id": "probe:057997bf03564070151c",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l0:synthetic:20261917",
+    "parsed_index": 0,
+    "probe_id": "probe:f8a95f03058b3c8cf9f5",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l0:synthetic:20261917",
+    "parsed_index": 1,
+    "probe_id": "probe:ad31432b47f1593cc1ab",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l0:synthetic:20261918",
+    "parsed_index": 0,
+    "probe_id": "probe:30f13094728c84a773db",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l0:synthetic:20261918",
+    "parsed_index": 0,
+    "probe_id": "probe:401c1f86bf3a33f3bec5",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": false,
+    "variant": "COUNTERFACTUAL"
+   }
+  ],
+  "level": 0,
+  "margin": -0.041666666666666664,
+  "mechanism": "transitive_dependency",
+  "n": 24,
+  "n_families": 12,
+  "rule_scores": {
+   "alphabetically_first": 0.5,
+   "always_first_option": 0.5,
+   "always_second_option": 0.5,
+   "first_mentioned_in_state": 1.0,
+   "last_mentioned_in_state": 0.5,
+   "more_frequent_in_state": 1.0,
+   "shorter_option_text": 0.5
+  },
+  "solver_accuracy": 0.9583333333333334,
+  "table": {
+   "both": 23,
+   "neither": 0,
+   "shortcut_only": 1,
+   "solver_only": 0
+  }
+ },
+ "transitive_dependency|L1": {
+  "best_shortcut_accuracy": 0.8333333333333334,
+  "best_shortcut_feature": "more_frequent_in_state",
+  "best_shortcut_inverted": false,
+  "family_count": 12,
+  "family_sizes": [
+   [
+    2,
+    12
+   ]
+  ],
+  "family_solver_concordant": 12,
+  "items": [
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l1:synthetic:20262007",
+    "parsed_index": 0,
+    "probe_id": "probe:17c8f12ac7bc484b4bf8",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l1:synthetic:20262007",
+    "parsed_index": 1,
+    "probe_id": "probe:033077455f9b8a959817",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l1:synthetic:20262008",
+    "parsed_index": 0,
+    "probe_id": "probe:e1dada61d38b1fc4862f",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l1:synthetic:20262008",
+    "parsed_index": 1,
+    "probe_id": "probe:a4f305d7cfefb799ce5d",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l1:synthetic:20262009",
+    "parsed_index": 0,
+    "probe_id": "probe:fb685b231cff41aebd65",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l1:synthetic:20262009",
+    "parsed_index": 1,
+    "probe_id": "probe:a0b3ecdae6bf0a1f0867",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l1:synthetic:20262010",
+    "parsed_index": 0,
+    "probe_id": "probe:49f8ff0da88dd97ec25f",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l1:synthetic:20262010",
+    "parsed_index": 1,
+    "probe_id": "probe:44e2d80a1bec14d7939a",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l1:synthetic:20262011",
+    "parsed_index": 0,
+    "probe_id": "probe:65a94eaf9e8b9db1337d",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l1:synthetic:20262011",
+    "parsed_index": 1,
+    "probe_id": "probe:dd1f8b51b0874ae120d6",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l1:synthetic:20262012",
+    "parsed_index": 0,
+    "probe_id": "probe:5d000590c53b07b9582d",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l1:synthetic:20262012",
+    "parsed_index": 1,
+    "probe_id": "probe:e9c1e7ee582fffe356d1",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l1:synthetic:20262013",
+    "parsed_index": 0,
+    "probe_id": "probe:8a14a3ce9d06715776ec",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l1:synthetic:20262013",
+    "parsed_index": 1,
+    "probe_id": "probe:4d97d1a8d18dde51ff17",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l1:synthetic:20262014",
+    "parsed_index": 0,
+    "probe_id": "probe:21e69b0e18ef0b771b53",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l1:synthetic:20262014",
+    "parsed_index": 1,
+    "probe_id": "probe:bcf5443daa627fa00cb7",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l1:synthetic:20262015",
+    "parsed_index": 0,
+    "probe_id": "probe:be2d8f31b7d02eb27cfb",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l1:synthetic:20262015",
+    "parsed_index": 1,
+    "probe_id": "probe:7e66c8a2d5baba46df17",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l1:synthetic:20262016",
+    "parsed_index": 0,
+    "probe_id": "probe:5685da581c4978a84944",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l1:synthetic:20262016",
+    "parsed_index": 1,
+    "probe_id": "probe:88e27d4585a456a449e0",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l1:synthetic:20262017",
+    "parsed_index": 0,
+    "probe_id": "probe:c825d3b097c077e4e544",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l1:synthetic:20262017",
+    "parsed_index": 1,
+    "probe_id": "probe:cf500d6c9f8258504b79",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l1:synthetic:20262018",
+    "parsed_index": 0,
+    "probe_id": "probe:4b6409d48d796a60f534",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l1:synthetic:20262018",
+    "parsed_index": 1,
+    "probe_id": "probe:64c995d9c87075a299ca",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   }
+  ],
+  "level": 1,
+  "margin": 0.16666666666666666,
+  "mechanism": "transitive_dependency",
+  "n": 24,
+  "n_families": 12,
+  "rule_scores": {
+   "alphabetically_first": 0.5,
+   "always_first_option": 0.5,
+   "always_second_option": 0.5,
+   "first_mentioned_in_state": 0.5,
+   "last_mentioned_in_state": 0.5,
+   "more_frequent_in_state": 0.8333333333333334,
+   "shorter_option_text": 0.5
+  },
+  "solver_accuracy": 1.0,
+  "table": {
+   "both": 20,
+   "neither": 0,
+   "shortcut_only": 0,
+   "solver_only": 4
+  }
+ },
+ "transitive_dependency|L2": {
+  "best_shortcut_accuracy": 0.625,
+  "best_shortcut_feature": "more_frequent_in_state",
+  "best_shortcut_inverted": false,
+  "family_count": 12,
+  "family_sizes": [
+   [
+    2,
+    12
+   ]
+  ],
+  "family_solver_concordant": 11,
+  "items": [
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l2:synthetic:20262107",
+    "parsed_index": 0,
+    "probe_id": "probe:a1ca69523415b4f931bb",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l2:synthetic:20262107",
+    "parsed_index": 1,
+    "probe_id": "probe:cbaac1ea90a12b8e32a8",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l2:synthetic:20262108",
+    "parsed_index": 0,
+    "probe_id": "probe:64f3f84b8780ff9e25d7",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l2:synthetic:20262108",
+    "parsed_index": 1,
+    "probe_id": "probe:0e2d30a2e29518d5aa65",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l2:synthetic:20262109",
+    "parsed_index": 0,
+    "probe_id": "probe:6966e26e6f79e366a073",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l2:synthetic:20262109",
+    "parsed_index": 0,
+    "probe_id": "probe:8e496284de80bfb74b9c",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": false,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l2:synthetic:20262110",
+    "parsed_index": 0,
+    "probe_id": "probe:e3b703a2ba31e65ba20d",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l2:synthetic:20262110",
+    "parsed_index": 1,
+    "probe_id": "probe:b3236f63ae496bd44cd1",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l2:synthetic:20262111",
+    "parsed_index": 0,
+    "probe_id": "probe:6eeef71b61a26358058d",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l2:synthetic:20262111",
+    "parsed_index": 1,
+    "probe_id": "probe:4629c4b238998fbaf51a",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l2:synthetic:20262112",
+    "parsed_index": 0,
+    "probe_id": "probe:9aed33b2e8eab14b58c5",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l2:synthetic:20262112",
+    "parsed_index": 1,
+    "probe_id": "probe:346ce6870139fd624726",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l2:synthetic:20262113",
+    "parsed_index": 0,
+    "probe_id": "probe:7be14bc601b3aca312af",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l2:synthetic:20262113",
+    "parsed_index": 1,
+    "probe_id": "probe:386e7ea232d81c39bb97",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l2:synthetic:20262114",
+    "parsed_index": 0,
+    "probe_id": "probe:c4a71f5a488f3b9a675a",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l2:synthetic:20262114",
+    "parsed_index": 1,
+    "probe_id": "probe:73f866810aea0087350c",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l2:synthetic:20262115",
+    "parsed_index": 0,
+    "probe_id": "probe:35d1d210563fa9344d78",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l2:synthetic:20262115",
+    "parsed_index": 1,
+    "probe_id": "probe:22e04082b9e35771b91e",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l2:synthetic:20262116",
+    "parsed_index": 0,
+    "probe_id": "probe:4944bf90b3d46ae33a50",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l2:synthetic:20262116",
+    "parsed_index": 1,
+    "probe_id": "probe:24bf8f42aa63827522de",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l2:synthetic:20262117",
+    "parsed_index": 0,
+    "probe_id": "probe:9fb4a0cd3255c15b7b80",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l2:synthetic:20262117",
+    "parsed_index": 1,
+    "probe_id": "probe:103e104b7b0ae3b5d3ce",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l2:synthetic:20262118",
+    "parsed_index": 0,
+    "probe_id": "probe:0cc2c24100059dcf48aa",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l2:synthetic:20262118",
+    "parsed_index": 1,
+    "probe_id": "probe:9738d22d3bfa7c89ce28",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   }
+  ],
+  "level": 2,
+  "margin": 0.3333333333333333,
+  "mechanism": "transitive_dependency",
+  "n": 24,
+  "n_families": 12,
+  "rule_scores": {
+   "alphabetically_first": 0.5,
+   "always_first_option": 0.5,
+   "always_second_option": 0.5,
+   "first_mentioned_in_state": 0.5833333333333334,
+   "last_mentioned_in_state": 0.5,
+   "more_frequent_in_state": 0.625,
+   "shorter_option_text": 0.5
+  },
+  "solver_accuracy": 0.9583333333333334,
+  "table": {
+   "both": 14,
+   "neither": 0,
+   "shortcut_only": 1,
+   "solver_only": 9
+  }
+ },
+ "transitive_dependency|L3": {
+  "best_shortcut_accuracy": 0.6666666666666667,
+  "best_shortcut_feature": "first_mentioned_in_state",
+  "best_shortcut_inverted": true,
+  "family_count": 12,
+  "family_sizes": [
+   [
+    2,
+    12
+   ]
+  ],
+  "family_solver_concordant": 10,
+  "items": [
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l3:synthetic:20262207",
+    "parsed_index": 0,
+    "probe_id": "probe:486ecd98bb07a941500f",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l3:synthetic:20262207",
+    "parsed_index": 1,
+    "probe_id": "probe:3cfb85689a60a0dceb73",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l3:synthetic:20262208",
+    "parsed_index": 0,
+    "probe_id": "probe:0c048f0d3a3944eee661",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l3:synthetic:20262208",
+    "parsed_index": 1,
+    "probe_id": "probe:ea741086fb6d244c538b",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l3:synthetic:20262209",
+    "parsed_index": 0,
+    "probe_id": "probe:b5dcbb975b4114580a74",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l3:synthetic:20262209",
+    "parsed_index": 1,
+    "probe_id": "probe:45a539b123e03d40e874",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l3:synthetic:20262210",
+    "parsed_index": 0,
+    "probe_id": "probe:066fe58db563f0a77812",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 0,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l3:synthetic:20262210",
+    "parsed_index": 0,
+    "probe_id": "probe:d93e488f6fea5d2b4a5f",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": false,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l3:synthetic:20262211",
+    "parsed_index": 1,
+    "probe_id": "probe:50e4608d07ad0eb36f2c",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": false,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l3:synthetic:20262211",
+    "parsed_index": 0,
+    "probe_id": "probe:199a1f9cd875e53408fe",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 0,
+    "solver_correct": false,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l3:synthetic:20262212",
+    "parsed_index": 1,
+    "probe_id": "probe:9dd1524708cfeab3d0ad",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": false,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l3:synthetic:20262212",
+    "parsed_index": 1,
+    "probe_id": "probe:48e4a2fe1d48d8603363",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l3:synthetic:20262213",
+    "parsed_index": 1,
+    "probe_id": "probe:13e503040e1054026edc",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 0,
+    "solver_correct": false,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l3:synthetic:20262213",
+    "parsed_index": 0,
+    "probe_id": "probe:5d1ddcb095b82fe3e524",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 1,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 0,
+    "solver_correct": false,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l3:synthetic:20262214",
+    "parsed_index": 0,
+    "probe_id": "probe:3aa269a034fdc776b6f8",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l3:synthetic:20262214",
+    "parsed_index": 1,
+    "probe_id": "probe:51e62a792da007e8e74e",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l3:synthetic:20262215",
+    "parsed_index": 0,
+    "probe_id": "probe:30f04c2a00519d41439b",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l3:synthetic:20262215",
+    "parsed_index": 1,
+    "probe_id": "probe:d7f840df0984491263d6",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l3:synthetic:20262216",
+    "parsed_index": 0,
+    "probe_id": "probe:8a88e2e8c382d2f32abd",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l3:synthetic:20262216",
+    "parsed_index": 1,
+    "probe_id": "probe:605a83fd423abbc45236",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l3:synthetic:20262217",
+    "parsed_index": 0,
+    "probe_id": "probe:39376f51676ca695a295",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l3:synthetic:20262217",
+    "parsed_index": 1,
+    "probe_id": "probe:d05174c4fb2f43d24681",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   },
+   {
+    "expected_index": 0,
+    "family_id": "v5:dev:transitive_dependency:l3:synthetic:20262218",
+    "parsed_index": 0,
+    "probe_id": "probe:47c44bb831992c9b5585",
+    "rule_correct": {
+     "alphabetically_first": 0,
+     "always_first_option": 1,
+     "always_second_option": 0,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 0,
+     "more_frequent_in_state": 1,
+     "shorter_option_text": 0
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "ORIGINAL"
+   },
+   {
+    "expected_index": 1,
+    "family_id": "v5:dev:transitive_dependency:l3:synthetic:20262218",
+    "parsed_index": 1,
+    "probe_id": "probe:b415b7eb659d7ef73125",
+    "rule_correct": {
+     "alphabetically_first": 1,
+     "always_first_option": 0,
+     "always_second_option": 1,
+     "first_mentioned_in_state": 0,
+     "last_mentioned_in_state": 1,
+     "more_frequent_in_state": 0,
+     "shorter_option_text": 1
+    },
+    "shortcut_correct": 1,
+    "solver_correct": true,
+    "variant": "COUNTERFACTUAL"
+   }
+  ],
+  "level": 3,
+  "margin": 0.08333333333333333,
+  "mechanism": "transitive_dependency",
+  "n": 24,
+  "n_families": 12,
+  "rule_scores": {
+   "alphabetically_first": 0.5,
+   "always_first_option": 0.5,
+   "always_second_option": 0.5,
+   "first_mentioned_in_state": 0.3333333333333333,
+   "last_mentioned_in_state": 0.5,
+   "more_frequent_in_state": 0.5416666666666666,
+   "shorter_option_text": 0.5
+  },
+  "solver_accuracy": 0.75,
+  "table": {
+   "both": 15,
+   "neither": 5,
+   "shortcut_only": 1,
+   "solver_only": 3
+  }
+ }
+}

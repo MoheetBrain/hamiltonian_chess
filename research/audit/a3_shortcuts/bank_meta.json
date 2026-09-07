@@ -1,0 +1,94 @@
+{
+  "cells": [
+    [
+      "formal_expression_depth",
+      0
+    ],
+    [
+      "formal_expression_depth",
+      1
+    ],
+    [
+      "formal_expression_depth",
+      2
+    ],
+    [
+      "formal_expression_depth",
+      3
+    ],
+    [
+      "precondition_conjunction",
+      0
+    ],
+    [
+      "precondition_conjunction",
+      1
+    ],
+    [
+      "precondition_conjunction",
+      2
+    ],
+    [
+      "precondition_conjunction",
+      3
+    ],
+    [
+      "transitive_dependency",
+      0
+    ],
+    [
+      "transitive_dependency",
+      1
+    ],
+    [
+      "transitive_dependency",
+      2
+    ],
+    [
+      "transitive_dependency",
+      3
+    ]
+  ],
+  "feature_names_per_option": [
+    "SEMANTIC_bracket_depth_at_first",
+    "SEMANTIC_bracket_depth_at_last",
+    "count_quoted",
+    "count_raw",
+    "first_offset",
+    "first_offset_frac",
+    "last_offset",
+    "last_offset_frac",
+    "n_colons_before_first",
+    "n_commas_before_first",
+    "n_open_braces_before_first",
+    "n_open_brackets_before_first",
+    "n_quotes_before_first",
+    "name_hash_bucket",
+    "name_len",
+    "name_lex_rank_vs_other",
+    "name_n_alpha",
+    "name_n_digits",
+    "name_n_dot",
+    "name_n_nonalnum",
+    "name_n_underscore",
+    "name_n_upper",
+    "name_ngram3_overlap_with_state",
+    "name_token_overlap_with_other",
+    "prompt_first_offset",
+    "span"
+  ],
+  "global_feature_names": [
+    "n_context_objects",
+    "state_len",
+    "state_n_commas",
+    "state_n_distinct_ids",
+    "state_n_lean_nodes",
+    "state_n_local_ref",
+    "state_n_open_braces",
+    "state_n_open_brackets",
+    "state_n_quotes"
+  ],
+  "n_all_probes": 864,
+  "n_positive_probes": 288,
+  "note": "A3 DIAGNOSTIC ARTIFACT -- not a re-scoring of V7"
+}

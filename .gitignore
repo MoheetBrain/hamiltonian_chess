@@ -16,3 +16,8 @@ artifacts/tmp/
 
 # Regenerable derived measurement dumps (see research/*/README.md)
 research/environments/measurements/train_premise_citation_counts.json
+
+# Large regenerable audit intermediates (see research/audit/README.md)
+research/audit/a2_covariates/probe_covariates.jsonl
+research/audit/a3_shortcuts/bank_features.jsonl
+research/audit/a5_sel/a5_rows_annotated.json

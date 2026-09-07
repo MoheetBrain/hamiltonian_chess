@@ -1,0 +1,694 @@
+{
+ "Q11_exact_N_per_mechanism_level": {
+  "formal_expression_depth|L0": {
+   "POSITIVE_n_used_for_accuracy_and_the_gate": 24,
+   "by_variant": {
+    "COUNTERFACTUAL": 12,
+    "DESTROYED_COUNTERFACTUAL": 12,
+    "DESTROYED_ORIGINAL": 12,
+    "ORIGINAL": 12,
+    "SWAPPED_COUNTERFACTUAL": 12,
+    "SWAPPED_ORIGINAL": 12
+   },
+   "total_rows": 72
+  },
+  "formal_expression_depth|L1": {
+   "POSITIVE_n_used_for_accuracy_and_the_gate": 24,
+   "by_variant": {
+    "COUNTERFACTUAL": 12,
+    "DESTROYED_COUNTERFACTUAL": 12,
+    "DESTROYED_ORIGINAL": 12,
+    "ORIGINAL": 12,
+    "SWAPPED_COUNTERFACTUAL": 12,
+    "SWAPPED_ORIGINAL": 12
+   },
+   "total_rows": 72
+  },
+  "formal_expression_depth|L2": {
+   "POSITIVE_n_used_for_accuracy_and_the_gate": 24,
+   "by_variant": {
+    "COUNTERFACTUAL": 12,
+    "DESTROYED_COUNTERFACTUAL": 12,
+    "DESTROYED_ORIGINAL": 12,
+    "ORIGINAL": 12,
+    "SWAPPED_COUNTERFACTUAL": 12,
+    "SWAPPED_ORIGINAL": 12
+   },
+   "total_rows": 72
+  },
+  "formal_expression_depth|L3": {
+   "POSITIVE_n_used_for_accuracy_and_the_gate": 24,
+   "by_variant": {
+    "COUNTERFACTUAL": 12,
+    "DESTROYED_COUNTERFACTUAL": 12,
+    "DESTROYED_ORIGINAL": 12,
+    "ORIGINAL": 12,
+    "SWAPPED_COUNTERFACTUAL": 12,
+    "SWAPPED_ORIGINAL": 12
+   },
+   "total_rows": 72
+  },
+  "precondition_conjunction|L0": {
+   "POSITIVE_n_used_for_accuracy_and_the_gate": 24,
+   "by_variant": {
+    "COUNTERFACTUAL": 12,
+    "DESTROYED_COUNTERFACTUAL": 12,
+    "DESTROYED_ORIGINAL": 12,
+    "ORIGINAL": 12,
+    "SWAPPED_COUNTERFACTUAL": 12,
+    "SWAPPED_ORIGINAL": 12
+   },
+   "total_rows": 72
+  },
+  "precondition_conjunction|L1": {
+   "POSITIVE_n_used_for_accuracy_and_the_gate": 24,
+   "by_variant": {
+    "COUNTERFACTUAL": 12,
+    "DESTROYED_COUNTERFACTUAL": 12,
+    "DESTROYED_ORIGINAL": 12,
+    "ORIGINAL": 12,
+    "SWAPPED_COUNTERFACTUAL": 12,
+    "SWAPPED_ORIGINAL": 12
+   },
+   "total_rows": 72
+  },
+  "precondition_conjunction|L2": {
+   "POSITIVE_n_used_for_accuracy_and_the_gate": 24,
+   "by_variant": {
+    "COUNTERFACTUAL": 12,
+    "DESTROYED_COUNTERFACTUAL": 12,
+    "DESTROYED_ORIGINAL": 12,
+    "ORIGINAL": 12,
+    "SWAPPED_COUNTERFACTUAL": 12,
+    "SWAPPED_ORIGINAL": 12
+   },
+   "total_rows": 72
+  },
+  "precondition_conjunction|L3": {
+   "POSITIVE_n_used_for_accuracy_and_the_gate": 24,
+   "by_variant": {
+    "COUNTERFACTUAL": 12,
+    "DESTROYED_COUNTERFACTUAL": 12,
+    "DESTROYED_ORIGINAL": 12,
+    "ORIGINAL": 12,
+    "SWAPPED_COUNTERFACTUAL": 12,
+    "SWAPPED_ORIGINAL": 12
+   },
+   "total_rows": 72
+  },
+  "transitive_dependency|L0": {
+   "POSITIVE_n_used_for_accuracy_and_the_gate": 24,
+   "by_variant": {
+    "COUNTERFACTUAL": 12,
+    "DESTROYED_COUNTERFACTUAL": 12,
+    "DESTROYED_ORIGINAL": 12,
+    "ORIGINAL": 12,
+    "SWAPPED_COUNTERFACTUAL": 12,
+    "SWAPPED_ORIGINAL": 12
+   },
+   "total_rows": 72
+  },
+  "transitive_dependency|L1": {
+   "POSITIVE_n_used_for_accuracy_and_the_gate": 24,
+   "by_variant": {
+    "COUNTERFACTUAL": 12,
+    "DESTROYED_COUNTERFACTUAL": 12,
+    "DESTROYED_ORIGINAL": 12,
+    "ORIGINAL": 12,
+    "SWAPPED_COUNTERFACTUAL": 12,
+    "SWAPPED_ORIGINAL": 12
+   },
+   "total_rows": 72
+  },
+  "transitive_dependency|L2": {
+   "POSITIVE_n_used_for_accuracy_and_the_gate": 24,
+   "by_variant": {
+    "COUNTERFACTUAL": 12,
+    "DESTROYED_COUNTERFACTUAL": 12,
+    "DESTROYED_ORIGINAL": 12,
+    "ORIGINAL": 12,
+    "SWAPPED_COUNTERFACTUAL": 12,
+    "SWAPPED_ORIGINAL": 12
+   },
+   "total_rows": 72
+  },
+  "transitive_dependency|L3": {
+   "POSITIVE_n_used_for_accuracy_and_the_gate": 24,
+   "by_variant": {
+    "COUNTERFACTUAL": 12,
+    "DESTROYED_COUNTERFACTUAL": 12,
+    "DESTROYED_ORIGINAL": 12,
+    "ORIGINAL": 12,
+    "SWAPPED_COUNTERFACTUAL": 12,
+    "SWAPPED_ORIGINAL": 12
+   },
+   "total_rows": 72
+  }
+ },
+ "Q12_provenance_and_shared_structure": {
+  "formal_expression_depth|L0": {
+   "distinct_generator_templates": 1,
+   "distinct_theorem_ids": null,
+   "families": 12,
+   "family_source_ids_sample": [
+    "26b46d81572a545a",
+    "5019c1c281c32986",
+    "547372dc08a24f6f"
+   ],
+   "generator": "arena.experiments.fitness_v5._formal_family over a real theorem pool",
+   "items_per_family": [
+    [
+     2,
+     12
+    ]
+   ],
+   "positive_items": 24,
+   "theorem_id_multiplicity": null,
+   "variants_per_family": [
+    "COUNTERFACTUAL",
+    "ORIGINAL"
+   ]
+  },
+  "formal_expression_depth|L1": {
+   "distinct_generator_templates": 1,
+   "distinct_theorem_ids": null,
+   "families": 12,
+   "family_source_ids_sample": [
+    "042bc453a72f0a77",
+    "090a1107562d79d5",
+    "0ad41d66299b6e4a"
+   ],
+   "generator": "arena.experiments.fitness_v5._formal_family over a real theorem pool",
+   "items_per_family": [
+    [
+     2,
+     12
+    ]
+   ],
+   "positive_items": 24,
+   "theorem_id_multiplicity": null,
+   "variants_per_family": [
+    "COUNTERFACTUAL",
+    "ORIGINAL"
+   ]
+  },
+  "formal_expression_depth|L2": {
+   "distinct_generator_templates": 1,
+   "distinct_theorem_ids": null,
+   "families": 12,
+   "family_source_ids_sample": [
+    "26b46d81572a545a",
+    "5019c1c281c32986",
+    "547372dc08a24f6f"
+   ],
+   "generator": "arena.experiments.fitness_v5._formal_family over a real theorem pool",
+   "items_per_family": [
+    [
+     2,
+     12
+    ]
+   ],
+   "positive_items": 24,
+   "theorem_id_multiplicity": null,
+   "variants_per_family": [
+    "COUNTERFACTUAL",
+    "ORIGINAL"
+   ]
+  },
+  "formal_expression_depth|L3": {
+   "distinct_generator_templates": 1,
+   "distinct_theorem_ids": null,
+   "families": 12,
+   "family_source_ids_sample": [
+    "022fea842e4142a0",
+    "10b70a1b7443eab9",
+    "123f163f27d2f499"
+   ],
+   "generator": "arena.experiments.fitness_v5._formal_family over a real theorem pool",
+   "items_per_family": [
+    [
+     2,
+     12
+    ]
+   ],
+   "positive_items": 24,
+   "theorem_id_multiplicity": null,
+   "variants_per_family": [
+    "COUNTERFACTUAL",
+    "ORIGINAL"
+   ]
+  },
+  "precondition_conjunction|L0": {
+   "distinct_generator_templates": 1,
+   "distinct_theorem_ids": null,
+   "families": 12,
+   "family_source_ids_sample": [
+    "20262907",
+    "20262908",
+    "20262909"
+   ],
+   "generator": "arena.experiments.fitness_v5._synthetic_family, one template per (mechanism, level), families differ only by an integer salt",
+   "items_per_family": [
+    [
+     2,
+     12
+    ]
+   ],
+   "positive_items": 24,
+   "theorem_id_multiplicity": null,
+   "variants_per_family": [
+    "COUNTERFACTUAL",
+    "ORIGINAL"
+   ]
+  },
+  "precondition_conjunction|L1": {
+   "distinct_generator_templates": 1,
+   "distinct_theorem_ids": null,
+   "families": 12,
+   "family_source_ids_sample": [
+    "20263007",
+    "20263008",
+    "20263009"
+   ],
+   "generator": "arena.experiments.fitness_v5._synthetic_family, one template per (mechanism, level), families differ only by an integer salt",
+   "items_per_family": [
+    [
+     2,
+     12
+    ]
+   ],
+   "positive_items": 24,
+   "theorem_id_multiplicity": null,
+   "variants_per_family": [
+    "COUNTERFACTUAL",
+    "ORIGINAL"
+   ]
+  },
+  "precondition_conjunction|L2": {
+   "distinct_generator_templates": 1,
+   "distinct_theorem_ids": null,
+   "families": 12,
+   "family_source_ids_sample": [
+    "20263107",
+    "20263108",
+    "20263109"
+   ],
+   "generator": "arena.experiments.fitness_v5._synthetic_family, one template per (mechanism, level), families differ only by an integer salt",
+   "items_per_family": [
+    [
+     2,
+     12
+    ]
+   ],
+   "positive_items": 24,
+   "theorem_id_multiplicity": null,
+   "variants_per_family": [
+    "COUNTERFACTUAL",
+    "ORIGINAL"
+   ]
+  },
+  "precondition_conjunction|L3": {
+   "distinct_generator_templates": 1,
+   "distinct_theorem_ids": null,
+   "families": 12,
+   "family_source_ids_sample": [
+    "20263207",
+    "20263208",
+    "20263209"
+   ],
+   "generator": "arena.experiments.fitness_v5._synthetic_family, one template per (mechanism, level), families differ only by an integer salt",
+   "items_per_family": [
+    [
+     2,
+     12
+    ]
+   ],
+   "positive_items": 24,
+   "theorem_id_multiplicity": null,
+   "variants_per_family": [
+    "COUNTERFACTUAL",
+    "ORIGINAL"
+   ]
+  },
+  "transitive_dependency|L0": {
+   "distinct_generator_templates": 1,
+   "distinct_theorem_ids": null,
+   "families": 12,
+   "family_source_ids_sample": [
+    "20261907",
+    "20261908",
+    "20261909"
+   ],
+   "generator": "arena.experiments.fitness_v5._synthetic_family, one template per (mechanism, level), families differ only by an integer salt",
+   "items_per_family": [
+    [
+     2,
+     12
+    ]
+   ],
+   "positive_items": 24,
+   "theorem_id_multiplicity": null,
+   "variants_per_family": [
+    "COUNTERFACTUAL",
+    "ORIGINAL"
+   ]
+  },
+  "transitive_dependency|L1": {
+   "distinct_generator_templates": 1,
+   "distinct_theorem_ids": null,
+   "families": 12,
+   "family_source_ids_sample": [
+    "20262007",
+    "20262008",
+    "20262009"
+   ],
+   "generator": "arena.experiments.fitness_v5._synthetic_family, one template per (mechanism, level), families differ only by an integer salt",
+   "items_per_family": [
+    [
+     2,
+     12
+    ]
+   ],
+   "positive_items": 24,
+   "theorem_id_multiplicity": null,
+   "variants_per_family": [
+    "COUNTERFACTUAL",
+    "ORIGINAL"
+   ]
+  },
+  "transitive_dependency|L2": {
+   "distinct_generator_templates": 1,
+   "distinct_theorem_ids": null,
+   "families": 12,
+   "family_source_ids_sample": [
+    "20262107",
+    "20262108",
+    "20262109"
+   ],
+   "generator": "arena.experiments.fitness_v5._synthetic_family, one template per (mechanism, level), families differ only by an integer salt",
+   "items_per_family": [
+    [
+     2,
+     12
+    ]
+   ],
+   "positive_items": 24,
+   "theorem_id_multiplicity": null,
+   "variants_per_family": [
+    "COUNTERFACTUAL",
+    "ORIGINAL"
+   ]
+  },
+  "transitive_dependency|L3": {
+   "distinct_generator_templates": 1,
+   "distinct_theorem_ids": null,
+   "families": 12,
+   "family_source_ids_sample": [
+    "20262207",
+    "20262208",
+    "20262209"
+   ],
+   "generator": "arena.experiments.fitness_v5._synthetic_family, one template per (mechanism, level), families differ only by an integer salt",
+   "items_per_family": [
+    [
+     2,
+     12
+    ]
+   ],
+   "positive_items": 24,
+   "theorem_id_multiplicity": null,
+   "variants_per_family": [
+    "COUNTERFACTUAL",
+    "ORIGINAL"
+   ]
+  }
+ },
+ "Q12_within_family_constancy": {
+  "formal_expression_depth|L0": {
+   "all_rules_constant_within_every_family": false,
+   "families": 12,
+   "rules_constant_within_family": {
+    "alphabetically_first": "0/12",
+    "always_first_option": "0/12",
+    "always_second_option": "0/12",
+    "first_mentioned_in_state": "0/12",
+    "last_mentioned_in_state": "0/12",
+    "more_frequent_in_state": "8/12",
+    "shorter_option_text": "0/12"
+   },
+   "solver_constant_within_family": "12/12",
+   "solver_within_family_agreement_rate": 1.0
+  },
+  "formal_expression_depth|L1": {
+   "all_rules_constant_within_every_family": false,
+   "families": 12,
+   "rules_constant_within_family": {
+    "alphabetically_first": "0/12",
+    "always_first_option": "0/12",
+    "always_second_option": "0/12",
+    "first_mentioned_in_state": "12/12",
+    "last_mentioned_in_state": "0/12",
+    "more_frequent_in_state": "9/12",
+    "shorter_option_text": "0/12"
+   },
+   "solver_constant_within_family": "8/12",
+   "solver_within_family_agreement_rate": 0.6666666666666666
+  },
+  "formal_expression_depth|L2": {
+   "all_rules_constant_within_every_family": false,
+   "families": 12,
+   "rules_constant_within_family": {
+    "alphabetically_first": "0/12",
+    "always_first_option": "0/12",
+    "always_second_option": "0/12",
+    "first_mentioned_in_state": "12/12",
+    "last_mentioned_in_state": "0/12",
+    "more_frequent_in_state": "8/12",
+    "shorter_option_text": "0/12"
+   },
+   "solver_constant_within_family": "7/12",
+   "solver_within_family_agreement_rate": 0.5833333333333334
+  },
+  "formal_expression_depth|L3": {
+   "all_rules_constant_within_every_family": false,
+   "families": 12,
+   "rules_constant_within_family": {
+    "alphabetically_first": "0/12",
+    "always_first_option": "0/12",
+    "always_second_option": "0/12",
+    "first_mentioned_in_state": "12/12",
+    "last_mentioned_in_state": "0/12",
+    "more_frequent_in_state": "9/12",
+    "shorter_option_text": "0/12"
+   },
+   "solver_constant_within_family": "3/12",
+   "solver_within_family_agreement_rate": 0.25
+  },
+  "precondition_conjunction|L0": {
+   "all_rules_constant_within_every_family": false,
+   "families": 12,
+   "rules_constant_within_family": {
+    "alphabetically_first": "0/12",
+    "always_first_option": "0/12",
+    "always_second_option": "0/12",
+    "first_mentioned_in_state": "12/12",
+    "last_mentioned_in_state": "0/12",
+    "more_frequent_in_state": "12/12",
+    "shorter_option_text": "0/12"
+   },
+   "solver_constant_within_family": "12/12",
+   "solver_within_family_agreement_rate": 1.0
+  },
+  "precondition_conjunction|L1": {
+   "all_rules_constant_within_every_family": false,
+   "families": 12,
+   "rules_constant_within_family": {
+    "alphabetically_first": "0/12",
+    "always_first_option": "0/12",
+    "always_second_option": "0/12",
+    "first_mentioned_in_state": "0/12",
+    "last_mentioned_in_state": "0/12",
+    "more_frequent_in_state": "0/12",
+    "shorter_option_text": "0/12"
+   },
+   "solver_constant_within_family": "11/12",
+   "solver_within_family_agreement_rate": 0.9166666666666666
+  },
+  "precondition_conjunction|L2": {
+   "all_rules_constant_within_every_family": false,
+   "families": 12,
+   "rules_constant_within_family": {
+    "alphabetically_first": "0/12",
+    "always_first_option": "0/12",
+    "always_second_option": "0/12",
+    "first_mentioned_in_state": "0/12",
+    "last_mentioned_in_state": "0/12",
+    "more_frequent_in_state": "0/12",
+    "shorter_option_text": "0/12"
+   },
+   "solver_constant_within_family": "12/12",
+   "solver_within_family_agreement_rate": 1.0
+  },
+  "precondition_conjunction|L3": {
+   "all_rules_constant_within_every_family": false,
+   "families": 12,
+   "rules_constant_within_family": {
+    "alphabetically_first": "0/12",
+    "always_first_option": "0/12",
+    "always_second_option": "0/12",
+    "first_mentioned_in_state": "0/12",
+    "last_mentioned_in_state": "0/12",
+    "more_frequent_in_state": "0/12",
+    "shorter_option_text": "0/12"
+   },
+   "solver_constant_within_family": "12/12",
+   "solver_within_family_agreement_rate": 1.0
+  },
+  "transitive_dependency|L0": {
+   "all_rules_constant_within_every_family": false,
+   "families": 12,
+   "rules_constant_within_family": {
+    "alphabetically_first": "0/12",
+    "always_first_option": "0/12",
+    "always_second_option": "0/12",
+    "first_mentioned_in_state": "12/12",
+    "last_mentioned_in_state": "0/12",
+    "more_frequent_in_state": "12/12",
+    "shorter_option_text": "0/12"
+   },
+   "solver_constant_within_family": "11/12",
+   "solver_within_family_agreement_rate": 0.9166666666666666
+  },
+  "transitive_dependency|L1": {
+   "all_rules_constant_within_every_family": false,
+   "families": 12,
+   "rules_constant_within_family": {
+    "alphabetically_first": "0/12",
+    "always_first_option": "0/12",
+    "always_second_option": "0/12",
+    "first_mentioned_in_state": "12/12",
+    "last_mentioned_in_state": "0/12",
+    "more_frequent_in_state": "8/12",
+    "shorter_option_text": "0/12"
+   },
+   "solver_constant_within_family": "12/12",
+   "solver_within_family_agreement_rate": 1.0
+  },
+  "transitive_dependency|L2": {
+   "all_rules_constant_within_every_family": false,
+   "families": 12,
+   "rules_constant_within_family": {
+    "alphabetically_first": "0/12",
+    "always_first_option": "0/12",
+    "always_second_option": "0/12",
+    "first_mentioned_in_state": "12/12",
+    "last_mentioned_in_state": "0/12",
+    "more_frequent_in_state": "3/12",
+    "shorter_option_text": "0/12"
+   },
+   "solver_constant_within_family": "11/12",
+   "solver_within_family_agreement_rate": 0.9166666666666666
+  },
+  "transitive_dependency|L3": {
+   "all_rules_constant_within_every_family": false,
+   "families": 12,
+   "rules_constant_within_family": {
+    "alphabetically_first": "0/12",
+    "always_first_option": "0/12",
+    "always_second_option": "0/12",
+    "first_mentioned_in_state": "12/12",
+    "last_mentioned_in_state": "0/12",
+    "more_frequent_in_state": "1/12",
+    "shorter_option_text": "0/12"
+   },
+   "solver_constant_within_family": "10/12",
+   "solver_within_family_agreement_rate": 0.8333333333333334
+  }
+ },
+ "Q13_Q14_effective_sample_size": {
+  "formal_expression_depth|L0": {
+   "design_effect": 1.363636363636363,
+   "effective_n": 17.60000000000001,
+   "icc_of_difference": 0.2903225806451614,
+   "independent_units_families": 12,
+   "nominal_n": 24
+  },
+  "formal_expression_depth|L1": {
+   "design_effect": 0.8727272727272728,
+   "effective_n": 27.499999999999996,
+   "icc_of_difference": -0.15789473684210512,
+   "independent_units_families": 12,
+   "nominal_n": 24
+  },
+  "formal_expression_depth|L2": {
+   "design_effect": 1.3979314099074576,
+   "effective_n": 17.168224299065425,
+   "icc_of_difference": 0.3209876543209876,
+   "independent_units_families": 12,
+   "nominal_n": 24
+  },
+  "formal_expression_depth|L3": {
+   "design_effect": 0.7708219923788785,
+   "effective_n": 31.135593220338986,
+   "icc_of_difference": -0.2531645569620254,
+   "independent_units_families": 12,
+   "nominal_n": 24
+  },
+  "precondition_conjunction|L0": {
+   "design_effect": NaN,
+   "effective_n": NaN,
+   "icc_of_difference": NaN,
+   "independent_units_families": 12,
+   "nominal_n": 24
+  },
+  "precondition_conjunction|L1": {
+   "design_effect": 0.16783216783216784,
+   "effective_n": 143.0,
+   "icc_of_difference": -0.8333333333333333,
+   "independent_units_families": 12,
+   "nominal_n": 24
+  },
+  "precondition_conjunction|L2": {
+   "design_effect": 0.0,
+   "effective_n": NaN,
+   "icc_of_difference": -1.0,
+   "independent_units_families": 12,
+   "nominal_n": 24
+  },
+  "precondition_conjunction|L3": {
+   "design_effect": 0.0,
+   "effective_n": NaN,
+   "icc_of_difference": -1.0,
+   "independent_units_families": 12,
+   "nominal_n": 24
+  },
+  "transitive_dependency|L0": {
+   "design_effect": 1.043478260869565,
+   "effective_n": 23.000000000000007,
+   "icc_of_difference": 0.0,
+   "independent_units_families": 12,
+   "nominal_n": 24
+  },
+  "transitive_dependency|L1": {
+   "design_effect": 0.8727272727272728,
+   "effective_n": 27.499999999999996,
+   "icc_of_difference": -0.15789473684210512,
+   "independent_units_families": 12,
+   "nominal_n": 24
+  },
+  "transitive_dependency|L2": {
+   "design_effect": 0.6942148760330576,
+   "effective_n": 34.571428571428584,
+   "icc_of_difference": -0.32530120481927716,
+   "independent_units_families": 12,
+   "nominal_n": 24
+  },
+  "transitive_dependency|L3": {
+   "design_effect": 1.6126482213438738,
+   "effective_n": 14.88235294117647,
+   "icc_of_difference": 0.5111111111111112,
+   "independent_units_families": 12,
+   "nominal_n": 24
+  }
+ }
+}

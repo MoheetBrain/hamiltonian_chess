@@ -1,0 +1,24 @@
+{
+  "claim": "Lossless source-envelope serialization, not full mathematical AST representation.",
+  "missing_constructs": [
+    "backend-native Lean proof-state/source-signature atoms with honest assurance",
+    "ordered premise-citation choices separate from legal CanonicalAction transitions",
+    "frozen premise projection independent of private trace evidence",
+    "elaborated dependent types, binders, implicit parameters and universe levels"
+  ],
+  "production_founders": "REPRESENTATION_COVERAGE_FAILURE",
+  "reuse": {
+    "compact_symbolic": "alias-record pattern from arena/languages/symbolic/__init__.py",
+    "hml": "assignment-line pattern from arena/languages/hml/__init__.py",
+    "json_ast": "arena.languages._json_tools.canonical_json/strict_json_loads",
+    "sexpr": "arena.languages._notation.sexpr_encode/sexpr_decode",
+    "structured_english": "field-line pattern from arena/languages/structured_english/__init__.py"
+  },
+  "supported_research_envelopes": [
+    "structured_english",
+    "json_ast",
+    "sexpr",
+    "hml",
+    "compact_symbolic"
+  ]
+}
