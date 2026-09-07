@@ -114,6 +114,18 @@ score, hidden split or trained adapter imported.
 - `game_r_mutant_audit` — 120/120 `GAME_R_COMPATIBLE`.
 - Canonical validation and assurance suite: not re-run (no relevant code changed).
 
+**Parallel next-stage branch `claude/phase-6-parallel-setup-9c6068` (2026-09-07), base `b82f8ed`.**
+Run from that worktree with the shared venv, always via `python -m` (a bare `pytest` console
+script imports the main checkout instead — see Risks):
+
+- `python -m pytest` — **470 passed** (190 before this branch; 280 added, none regressed).
+- `python -m ruff check .` — clean. `python -m ruff format --check .` — 223 files formatted.
+- `python -m mypy arena` — clean, 125 files.
+- `research/` excluded from the lint gate in `pyproject.toml` (one-off analysis scripts).
+- Frozen artifacts re-verified unchanged at end of session: `GOAL.md`
+  `43d8fcdb…0117b`; Phase-5 `result.json` `0c5b3271…97579`.
+- **No model call, GPU minute, download or training run** was made by this branch.
+
 ## Known Failures and Limitations
 
 - Under a sound protocol the Solver still cannot measure any mechanism that needs more than
@@ -157,10 +169,61 @@ qwen38-rvn receives bare bytes, so Phase 6 runs **both** solvers under a `bare` 
 delivers exactly the instrument's bytes. Preregistered in `docs/PHASE6_PREREGISTRATION.md`
 before any experimental call. Phase-5 artifacts and sentinel are untouched.
 
+## Parallel next-stage branch (2026-09-07) — preparation, no experiment
+
+Branch `claude/phase-6-parallel-setup-9c6068`, base `b82f8ed`. Built **alongside** the live Phase-6
+run, deliberately off its critical path: no model call, no GPU minute, no download, no change to
+any frozen artifact. Contamination of the live run was shown structurally impossible (every Arena
+output path resolves from CWD; the only hardcoded absolute path in the package is a read-only glob
+into `HML_V3` at `arena/environments/formal_structural.py:49`) and confirmed empirically.
+
+**Measured findings** (all reproducible from `research/`, none requiring a model):
+
+1. `WORLD_V0_NEXT_ACTION` is degenerate: model-free whole-target exact **676/676**, held-out
+   **96/96**; **0.8195** with zero arithmetic; 7 of 8 target fields fully mechanical; unrepaired by
+   identifier obfuscation. The historical `exact ≈ 1.000` is therefore not evidence of
+   mathematical learning. `artifacts/reports/next_action_leakage.json`.
+2. The five Route-B arms are hand-written codecs that **ignore the genome** — `_encode_payload`
+   never reads `self.genome`; only `GenomePhenotypeLanguage` is genome-driven. Changing a gene
+   changes nothing for those arms. Five of fourteen gene families are inert.
+3. Six further parity defects that would silently bias Route B, including train/eval truncation on
+   **opposite sides** (train left, eval right, neither logged) and a label-mask boundary that makes
+   the number of supervised target tokens a function of representation length.
+   `docs/ROUTE_B_PARITY_AUDIT.md`.
+4. The V5 frontier selector aims at 0.625 while the gate requires ≥ 0.70 (the destroyed control is
+   a constant 0.5000, verified 24/24 twin pairs byte-identical). Traced to V5 raising `gap_min`
+   0.10 → 0.20 without moving the target. **It cost Phase 5 nothing** — the one in-window cell was
+   already selected — and both naive fixes score *above* an oracle, i.e. convert noise into passes.
+   `artifacts/reports/v5_selector_analysis.json`.
+5. Canonical schema vs 368 real Lean states: **0 mapped losslessly**, 79.3% with loss, 20.7%
+   unmappable. G1/G2≡G6/G3 confirmed REQUIRED; G7 and G8 **refuted**; four new gaps found.
+   No schema change was made. `docs/CANONICAL_VNEXT_PILOT.md`.
+6. Corpus reality: the richly-annotated reasoning corpus is **792 steps**, not ~300k; verification
+   and richness are anti-correlated (nothing on disk is both); no owner-authored chain corpus
+   beyond 10 hand-authored problems exists. A full LeanDojo Benchmark 4 trace (259,580 transitions,
+   premise-annotated, same pinned mathlib commit) is **already local and unused**.
+
+**New code, additive and unwired:** `arena/training/{route_b_data,verified_eval,gpu_authorisation}.py`,
+`arena/corpus/{trace,contamination,provenance}.py`, additive flags on `prepare_matched_data.py`.
+
+**Documents:** `PARALLEL_NEXT_STAGE_HANDOFF` · `PHASE6_INTEGRATION_MAP` · `ROUTE_B_V1_SPEC` ·
+`ROUTE_B_PARITY_AUDIT` · `CORPUS_STRATEGY` · `REASONING_OPERATION_DISCOVERY` ·
+`FUTURE_ENVIRONMENT_FAMILIES` · `CANONICAL_VNEXT_PILOT`.
+
+**Not done, deliberately:** no Fitness V6, no founder tournament, no mutation campaign, no Route-B
+run, no schema change, no mass ingestion, no reinterpretation of any recorded sentinel.
+
 ## Current Blockers
 
 A new experiment version (V4.1 calibration or V5) requires explicit authorisation before any
-model call. GPU spend for Route B requires explicit authorisation.
+model call. GPU spend for Route B requires explicit authorisation, and is now additionally gated
+mechanically by `arena/training/gpu_authorisation.py` (fail-closed; requires an explicit flag, an
+environment variable, and a preregistration document whose hash matches).
+
+**New blocker, measured 2026-09-07:** the `WORLD_V0_NEXT_ACTION` task family is degenerate — a
+model-free predictor reproduces the whole gold target on 676/676 tasks (held-out 96/96). Route B
+cannot run on it, and no replacement slice has yet passed the headroom gate in
+`docs/ROUTE_B_V1_SPEC.md`. See `artifacts/reports/next_action_leakage.json`.
 
 ## Exact Next Actions
 
@@ -175,3 +238,22 @@ model call. GPU spend for Route B requires explicit authorisation.
    selected stratum.
 5. Do **not** build V6 on this evidence: the preregistered rule admits a new version only for
    a change of frozen variable class, and the indicated change is the Solver.
+
+**Superseding detail from the parallel next-stage branch** (`docs/PARALLEL_NEXT_STAGE_HANDOFF.md`
+§7, `docs/PHASE6_INTEGRATION_MAP.md`):
+
+6. Item 3 above cannot be executed as written: the historical Route-B task family is degenerate
+   (see Blockers). `docs/ROUTE_B_V1_SPEC.md` names a replacement slice and a headroom gate that
+   must pass **before** any GPU minute.
+7. Item 4 understates the leak. `first_mentioned_in_state` is **1.000** on the shallow stratum,
+   **0.9167** at deep L3 and **0.8125** pooled over the four-level bank — not 0.833. Filtering
+   alone cannot rescue that mechanism.
+8. Adopt the fail-fast shortcut check (`docs/FUTURE_ENVIRONMENT_FAMILIES.md` §5) as a
+   precondition on every future task family: fit a bounded model-free predictor on train, evaluate
+   held-out against a preregistered ceiling, reject before writing the instrument. Minutes of CPU,
+   no model call.
+9. Then build premise selection from the LeanDojo trace already on disk (~163,300 items, real
+   distractors, a `novel_premises` OOD split, zero download) — **sealing
+   `novel_premises/{val,test}.json` first**.
+10. Pin `gemma4:12b`'s training cutoff. It is unrecorded, so every temporal-holdout OOD claim in
+    the project is currently a hypothesis rather than a holdout.

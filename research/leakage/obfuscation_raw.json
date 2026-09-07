@@ -1,0 +1,189 @@
+{
+ "action_id_redundant_sources": [
+  {
+   "source": "('object', 0, 'object_id')",
+   "affix_rule": [
+    "object:",
+    "",
+    "action:",
+    ":valid"
+   ]
+  },
+  {
+   "source": "('state_id',)",
+   "affix_rule": [
+    "state:",
+    ":initial",
+    "action:",
+    ":valid"
+   ]
+  }
+ ],
+ "obfuscation_none": {
+  "TIER_B_no_arithmetic": {
+   "rules": {
+    "action_id": "affix_from('object', 0, 'object_id')",
+    "operation": "lookup('sid_seg', 1)[13 entries]",
+    "warrant": "constant[1 entries]",
+    "expected_usefulness": "constant[1 entries]",
+    "target_ids": "constant",
+    "preconditions": "copy_observation.assumptions",
+    "generated_obligations": "constant",
+    "arguments": "per-goal-op induced template"
+   },
+   "per_field_exact_all676": {
+    "action_id": 1.0,
+    "operation": 1.0,
+    "target_ids": 1.0,
+    "arguments": 0.819527,
+    "warrant": 1.0,
+    "preconditions": 1.0,
+    "generated_obligations": 1.0,
+    "expected_usefulness": 1.0
+   },
+   "whole_target_exact_all676": 0.819527,
+   "whole_target_exact_heldout96": 0.791667,
+   "target_minus_action_id_all676": 0.819527
+  },
+  "TIER_C_with_arithmetic": {
+   "rules": {
+    "action_id": "affix_from('object', 0, 'object_id')",
+    "operation": "lookup('sid_seg', 1)[13 entries]",
+    "warrant": "constant[1 entries]",
+    "expected_usefulness": "constant[1 entries]",
+    "target_ids": "constant",
+    "preconditions": "copy_observation.assumptions",
+    "generated_obligations": "constant",
+    "arguments": "per-goal-op induced template"
+   },
+   "per_field_exact_all676": {
+    "action_id": 1.0,
+    "operation": 1.0,
+    "target_ids": 1.0,
+    "arguments": 1.0,
+    "warrant": 1.0,
+    "preconditions": 1.0,
+    "generated_obligations": 1.0,
+    "expected_usefulness": 1.0
+   },
+   "whole_target_exact_all676": 1.0,
+   "whole_target_exact_heldout96": 1.0,
+   "target_minus_action_id_all676": 1.0
+  }
+ },
+ "obfuscation_state_id_only": {
+  "TIER_B_no_arithmetic": {
+   "rules": {
+    "action_id": "affix_from('object', 0, 'object_id')",
+    "operation": "lookup('goal', 0, 'op')[18 entries]",
+    "warrant": "constant[1 entries]",
+    "expected_usefulness": "constant[1 entries]",
+    "target_ids": "constant",
+    "preconditions": "copy_observation.assumptions",
+    "generated_obligations": "constant",
+    "arguments": "per-goal-op induced template"
+   },
+   "per_field_exact_all676": {
+    "action_id": 1.0,
+    "operation": 1.0,
+    "target_ids": 1.0,
+    "arguments": 0.819527,
+    "warrant": 1.0,
+    "preconditions": 1.0,
+    "generated_obligations": 1.0,
+    "expected_usefulness": 1.0
+   },
+   "whole_target_exact_all676": 0.819527,
+   "whole_target_exact_heldout96": 0.791667,
+   "target_minus_action_id_all676": 0.819527
+  },
+  "TIER_C_with_arithmetic": {
+   "rules": {
+    "action_id": "affix_from('object', 0, 'object_id')",
+    "operation": "lookup('goal', 0, 'op')[18 entries]",
+    "warrant": "constant[1 entries]",
+    "expected_usefulness": "constant[1 entries]",
+    "target_ids": "constant",
+    "preconditions": "copy_observation.assumptions",
+    "generated_obligations": "constant",
+    "arguments": "per-goal-op induced template"
+   },
+   "per_field_exact_all676": {
+    "action_id": 1.0,
+    "operation": 1.0,
+    "target_ids": 1.0,
+    "arguments": 1.0,
+    "warrant": 1.0,
+    "preconditions": 1.0,
+    "generated_obligations": 1.0,
+    "expected_usefulness": 1.0
+   },
+   "whole_target_exact_all676": 1.0,
+   "whole_target_exact_heldout96": 1.0,
+   "target_minus_action_id_all676": 1.0
+  }
+ },
+ "obfuscation_all_ids": {
+  "TIER_B_no_arithmetic": {
+   "rules": {
+    "action_id": "lookup('object', 0, 'object_id')",
+    "operation": "lookup('goal', 0, 'op')[18 entries]",
+    "warrant": "constant[1 entries]",
+    "expected_usefulness": "constant[1 entries]",
+    "target_ids": "constant",
+    "preconditions": "copy_observation.assumptions",
+    "generated_obligations": "constant",
+    "arguments": "per-goal-op induced template"
+   },
+   "per_field_exact_all676": {
+    "action_id": 0.857988,
+    "operation": 1.0,
+    "target_ids": 1.0,
+    "arguments": 0.819527,
+    "warrant": 1.0,
+    "preconditions": 1.0,
+    "generated_obligations": 1.0,
+    "expected_usefulness": 1.0
+   },
+   "whole_target_exact_all676": 0.707101,
+   "whole_target_exact_heldout96": 0.0,
+   "target_minus_action_id_all676": 0.819527
+  },
+  "TIER_C_with_arithmetic": {
+   "rules": {
+    "action_id": "lookup('object', 0, 'object_id')",
+    "operation": "lookup('goal', 0, 'op')[18 entries]",
+    "warrant": "constant[1 entries]",
+    "expected_usefulness": "constant[1 entries]",
+    "target_ids": "constant",
+    "preconditions": "copy_observation.assumptions",
+    "generated_obligations": "constant",
+    "arguments": "per-goal-op induced template"
+   },
+   "per_field_exact_all676": {
+    "action_id": 0.857988,
+    "operation": 1.0,
+    "target_ids": 1.0,
+    "arguments": 1.0,
+    "warrant": 1.0,
+    "preconditions": 1.0,
+    "generated_obligations": 1.0,
+    "expected_usefulness": 1.0
+   },
+   "whole_target_exact_all676": 0.857988,
+   "whole_target_exact_heldout96": 0.0,
+   "target_minus_action_id_all676": 1.0
+  }
+ },
+ "target_character_share": {
+  "action_id": 0.1306,
+  "operation": 0.0872,
+  "target_ids": 0.0571,
+  "arguments": 0.2849,
+  "warrant": 0.1115,
+  "preconditions": 0.1654,
+  "generated_obligations": 0.0707,
+  "expected_usefulness": 0.068
+ },
+ "zero_math_character_share": 0.6905
+}

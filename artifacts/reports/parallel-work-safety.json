@@ -1,0 +1,359 @@
+{
+  "generated_utc": "2026-09-07T05:18:00Z",
+  "generated_local": "2026-09-07T06:18:00+01:00 (BST)",
+  "auditor": "subagent-1-concurrency-safety",
+  "audit_method": "read-only inspection plus one controlled execution of pytest/ruff/mypy from the parallel worktree, with before/after fingerprints of the live worktree's artifacts",
+  "worktrees": [
+    {
+      "path": "/Users/moheet/Documents/ChatGPT/hamiltonian_chess",
+      "role": "main checkout",
+      "branch": "codex/arena-v0-fitness",
+      "head_sha": "39952276a24462be8d0c8bce58bc3d106fd1dd2c",
+      "clean": true,
+      "note": "6 commits behind origin/codex/arena-v0-fitness. Target of the venv editable install .pth."
+    },
+    {
+      "path": "/Users/moheet/Documents/ChatGPT/hamiltonian_chess/.claude/worktrees/hamiltonian-arena-takeover-caa2eb",
+      "role": "LIVE Phase-6 experiment worktree",
+      "branch": "claude/hamiltonian-arena-takeover-caa2eb",
+      "head_sha": "b82f8ed60fd1b8947a303f491b8f67315cd98ce7",
+      "clean": false,
+      "uncommitted": [
+        "M arena/experiments/fitness_v5.py (1 insertion, 3 deletions)",
+        "?? artifacts/experiments/fitness_v5/development/result-gemma4_12b-bare.json"
+      ],
+      "note": "The uncommitted fitness_v5.py edit replaces the hardcoded 'experiments/fitness_v5/development/result.json' write target with development_artifact_path(solver, bare). This is precisely what keeps the frozen Phase-5 result.json from being overwritten by Phase 6."
+    },
+    {
+      "path": "/Users/moheet/Documents/ChatGPT/hamiltonian_chess/.claude/worktrees/phase-6-parallel-setup-9c6068",
+      "role": "my parallel worktree",
+      "branch": "claude/phase-6-parallel-setup-9c6068",
+      "head_sha": "b82f8ed60fd1b8947a303f491b8f67315cd98ce7",
+      "clean": true,
+      "note": "No uncommitted work at audit start. After the audit's tool run, only gitignored caches (.pytest_cache/.ruff_cache/.mypy_cache) exist; git status remains empty."
+    }
+  ],
+  "branches": [
+    {
+      "ref": "refs/heads/claude/hamiltonian-arena-takeover-caa2eb",
+      "sha": "b82f8ed60fd1b8947a303f491b8f67315cd98ce7",
+      "checked_out_in": "live worktree"
+    },
+    {
+      "ref": "refs/heads/claude/phase-6-parallel-setup-9c6068",
+      "sha": "b82f8ed60fd1b8947a303f491b8f67315cd98ce7",
+      "checked_out_in": "my worktree"
+    },
+    {
+      "ref": "refs/heads/codex/arena-v0",
+      "sha": "c1dd586db6abb9bd4e72f0048122eb4ddca98739",
+      "checked_out_in": null
+    },
+    {
+      "ref": "refs/heads/codex/arena-v0-fitness",
+      "sha": "39952276a24462be8d0c8bce58bc3d106fd1dd2c",
+      "checked_out_in": "main checkout"
+    },
+    {
+      "ref": "refs/remotes/origin/codex/arena-v0",
+      "sha": "c1dd586db6abb9bd4e72f0048122eb4ddca98739",
+      "checked_out_in": null
+    },
+    {
+      "ref": "refs/remotes/origin/codex/arena-v0-fitness",
+      "sha": "b82f8ed60fd1b8947a303f491b8f67315cd98ce7",
+      "checked_out_in": null
+    }
+  ],
+  "remote": "origin https://github.com/MoheetBrain/hamiltonian_chess.git",
+  "branch_topology_note": "My branch and the live branch are the SAME commit (b82f8ed). We diverge only by working-tree contents, not by history. b82f8ed is published as origin/codex/arena-v0-fitness.",
+  "live_phase6": {
+    "alive": true,
+    "processes": [
+      {
+        "pid": 83916,
+        "cmd": "/bin/bash /tmp/phase6_run.sh",
+        "elapsed_at_observation": "31:32",
+        "role": "orchestrator"
+      },
+      {
+        "pid": 92940,
+        "cmd": "python -m arena.experiments.fitness_v5 develop --solver qwen38-rvn --bare",
+        "ppid": 83916,
+        "role": "current experiment condition (2nd of 2)"
+      },
+      {
+        "pid": 92944,
+        "cmd": "llama-server --model .../sha256-399aad23d80c... --port 49635 --host 127.0.0.1 -c 32768",
+        "ppid": 3728,
+        "role": "model server spawned by Ollama"
+      },
+      {
+        "pid": 3728,
+        "cmd": "ollama serve",
+        "role": "shared Ollama daemon listening on 127.0.0.1:11434"
+      },
+      {
+        "pid": 84331,
+        "cmd": "tail -n +1 -f artifacts/tmp/phase6.log",
+        "role": "observer tail from the live session"
+      }
+    ],
+    "log_path": "/Users/moheet/Documents/ChatGPT/hamiltonian_chess/.claude/worktrees/hamiltonian-arena-takeover-caa2eb/artifacts/tmp/phase6.log",
+    "log_tail_summary": "Run started 05:42:11 BST. Condition 1 (gemma4:12b --bare) completed at 06:13:12 across all three mechanisms (formal_expression_depth, transitive_dependency, precondition_conjunction), each at levels L0-L3, and emitted a terminal JSON line. Condition 2 (qwen38-rvn:latest --bare) began at 06:13:12 with digest verified and Q0 valid rate reported at 06:13:18; no mechanism lines had been written for it at observation time. 23 log lines total. Progress state only - no scientific interpretation drawn.",
+    "head_sha": "b82f8ed60fd1b8947a303f491b8f67315cd98ce7",
+    "clean": false,
+    "pushed": true,
+    "pushed_evidence": "git branch -r --contains HEAD (run in the live worktree) returns origin/codex/arena-v0-fitness; refs/remotes/origin/codex/arena-v0-fitness == b82f8ed60fd1b8947a303f491b8f67315cd98ce7. The COMMIT is safely on the remote; the uncommitted working-tree edit to arena/experiments/fitness_v5.py is NOT.",
+    "coordination_files": [
+      {
+        "path": "/tmp/phase6_run.sh",
+        "read_only_observed": true,
+        "content_summary": "cd into the live worktree, then run '.venv/bin/python -m arena.experiments.fitness_v5 develop' twice: --solver gemma4:12b --bare, then --solver qwen38-rvn --bare, with START/DONE date banners.",
+        "important": "It cd's into the LIVE worktree, so all of its cwd-relative writes land there and nowhere else. Note it invokes '.venv/bin/python' relative to the live worktree, which resolves through that worktree's own .venv directory."
+      },
+      {
+        "path": "/tmp/phase6_qwen.sh",
+        "read_only_observed": true,
+        "content_summary": "cd into the live worktree, then a single run: '.venv/bin/python -m arena.experiments.fitness_v5 develop --solver qwen38-rvn --bare', wrapped in QWEN BARE START/DONE banners.",
+        "important": "Same cwd discipline as phase6_run.sh - it cd's into the LIVE worktree, so all cwd-relative writes land there."
+      }
+    ],
+    "other_tmp_coordination_files": "None found. A scan of /tmp for names matching phase6|arena|hamilton|claude- returned only /tmp/phase6_run.sh.",
+    "run_was_relaunched_during_audit": {
+      "observed": true,
+      "what_happened": "At 06:16:04 BST the live session terminated the original orchestrator (/tmp/phase6_run.sh, pid 83916) together with its qwen child (pid 92940) and relaunched ONLY the qwen condition via a new script /tmp/phase6_qwen.sh (pid 94413, child python pid 94418), logging to a NEW file artifacts/tmp/phase6_qwen.log. The original artifacts/tmp/phase6.log stops at 06:13:18 and is now static.",
+      "caused_by_this_audit": false,
+      "evidence_it_was_not_me": "The relaunch timestamp is 06:16:04 (per the QWEN BARE START banner and the mtime of /tmp/phase6_qwen.sh). My only executed commands - pytest, ruff, mypy - ran at 06:17:26-06:17:44, i.e. AFTER the relaunch. This audit issued no kill, signal, or model call at any point; it only read files and ran CPU-only lint/test tools in my own worktree.",
+      "current_progress": "phase6_qwen.log: QWEN BARE START 06:16:04; solver qwen38-rvn:latest digest verified 06:16:05; Q0 valid rate 1.000 at 06:16:05; formal_expression_depth L0 line at 06:18:19. Progress state only - no scientific interpretation drawn.",
+      "implication": "The gemma4:12b condition's output (result-gemma4_12b-bare.json, written 06:15) is complete and on disk. The qwen condition restarted from its cache, so completed cache rows from the first attempt are reused rather than re-inferred."
+    },
+    "processes_current": [
+      {
+        "pid": 94413,
+        "cmd": "/bin/bash /tmp/phase6_qwen.sh",
+        "role": "current orchestrator (replaced pid 83916)"
+      },
+      {
+        "pid": 94418,
+        "cmd": "python -m arena.experiments.fitness_v5 develop --solver qwen38-rvn --bare",
+        "ppid": 94413,
+        "role": "current experiment condition"
+      },
+      {
+        "pid": 3728,
+        "cmd": "ollama serve",
+        "role": "shared Ollama daemon on 127.0.0.1:11434"
+      },
+      {
+        "pid": 95106,
+        "cmd": "tail -f artifacts/tmp/phase6_qwen.log",
+        "role": "observer tail from the live session"
+      }
+    ],
+    "processes_note": "The 'processes' list above is the ORIGINAL observation at ~06:14. See processes_current for the post-relaunch state at 06:20.",
+    "log_paths_current": [
+      ".../artifacts/tmp/phase6.log (static since 06:13:18, gemma condition complete)",
+      ".../artifacts/tmp/phase6_qwen.log (ACTIVE, qwen condition since 06:16:04)"
+    ]
+  },
+  "shared_writable_paths": [
+    {
+      "path": "http://127.0.0.1:11434 (Ollama daemon, pid 3728)",
+      "shared": true,
+      "evidence": "arena/experiments/fitness_v5.py:137,144,598 and arena/players/solver.py:49 hardcode http://127.0.0.1:11434. lsof confirms a single listener. The live run is actively driving it via llama-server pid 92944.",
+      "risk": "CRITICAL and the ONLY real contamination vector. This is a machine-wide singleton, not worktree-scoped. Any model call from my worktree would contend for the same daemon/GPU, could evict the loaded model, and would perturb the live run's latency and token accounting. Mitigation: I make no model calls at all."
+    },
+    {
+      "path": "/Users/moheet/Documents/ChatGPT/HML_V3 (DONOR_ROOT)",
+      "shared": true,
+      "evidence": "arena/environments/formal_structural.py:49 DONOR_ROOT = Path(\"/Users/moheet/Documents/ChatGPT/HML_V3\") - the only hardcoded absolute path in the arena package. All uses are reads: root.glob(CORPUS_GLOB) and gzip.open(path, 'rt') at lines 254 and 263. grep for open(...w), write_text, write_bytes, mkdir, shutil against this module returns no write operation.",
+      "risk": "LOW. Shared but read-only by construction. No test references it (grep for formal_structural|DONOR_ROOT|HML_V3 across tests/ returns nothing). 124 GB - never scan recursively."
+    },
+    {
+      "path": "/Users/moheet/Documents/ChatGPT/hamiltonian_chess/.git (common git dir)",
+      "shared": true,
+      "evidence": "My worktree's .git file reads 'gitdir: .../.git/worktrees/phase-6-parallel-setup-9c6068'; --git-common-dir resolves to .../.git. refs/stash, .git/config, and .git/hooks live in the common dir and are therefore shared by all three worktrees.",
+      "risk": "MEDIUM if I use writing git commands. extensions.worktreeConfig is 'true', so per-worktree config overrides are possible, but the base .git/config is still shared. The stash stack is shared and currently EMPTY - a git stash from my worktree would push onto the same stack the live session could pop. Mitigation: I run no writing git commands."
+    },
+    {
+      "path": "<cwd>/artifacts/cache/fitness_v5/*.json",
+      "shared": false,
+      "evidence": "arena/experiments/fitness_v5.py:639 - path = root / \"artifacts/cache/fitness_v5\" / f\"{stable_hash(identity)}.json\", where root comes from --root defaulting to Path.cwd() (line 1172). Purely cwd-relative.",
+      "risk": "NONE while cwd stays in my worktree. The live cache under the live worktree held 710 then 716 files during observation (it is actively growing) and is a separate directory tree from mine."
+    },
+    {
+      "path": "<cwd>/artifacts/experiments/... and <cwd>/artifacts/arena.db",
+      "shared": false,
+      "evidence": "arena/storage/artifacts.py:21-22 ArtifactStore(root='artifacts') stores Path(root) verbatim; every call site passes root/'artifacts' where root is Path.cwd() (arena/cli.py:285, arena/experiments/fitness_v5.py:1124). arena/storage/db.py:123 defaults to the relative 'artifacts/arena.db'; arena/pipeline.py:34 builds self.artifact_root/'arena.db'.",
+      "risk": "NONE while cwd stays in my worktree."
+    },
+    {
+      "path": "/tmp (via tempfile)",
+      "shared": true,
+      "evidence": "The only tempfile use in the arena package is arena/league/registry.py:241, tempfile.mkstemp(prefix=..., suffix='.tmp', dir=destination.parent) - the dir= argument pins the temp file next to its destination, so it never lands in the shared /tmp. No other module imports tempfile.",
+      "risk": "NONE. No arena code writes into the shared /tmp namespace."
+    },
+    {
+      "path": "$HOME/.ollama and $HOME/.cache",
+      "shared": true,
+      "evidence": "grep for '\\.ollama|\\.cache|XDG_|HOME' across arena/ and tests/ returns no matches. Arena code never constructs a HOME-relative path. ~/.ollama is written by the Ollama daemon itself, not by Arena.",
+      "risk": "NONE from my workstream, provided I make no model calls (which would cause the daemon to write there)."
+    },
+    {
+      "path": "<cwd>/.pytest_cache, .ruff_cache, .mypy_cache",
+      "shared": false,
+      "evidence": "All three are cwd/rootdir-relative and are listed in .gitignore. Observed after my tool run: created only under my worktree (mtime 2026-09-07 06:17:35). The main checkout's caches retain mtimes of 2026-09-05 and the live worktree's .mypy_cache 2026-09-06 21:30 - untouched by me.",
+      "risk": "NONE."
+    }
+  ],
+  "path_resolution": {
+    "artifacts_root": "Resolved RELATIVE TO THE PROCESS CWD, never to the package location and never absolutely. Every entry point defaults to Path.cwd(): arena/cli.py lines 54, 114, 128, 137, 156, 163, 174, 248, 285, 295, 314; and every experiment module exposes '--root' with default=Path.cwd() (fitness_v2:1679, fitness_v3:1070, fitness_v4:2033, fitness_v4_forensics:243, fitness_v4_preflight:142, fitness_v5:1172, game_r_mutant_audit:334).",
+    "cache_root": "root / 'artifacts/cache/fitness_v5' / '<stable_hash(identity)>.json' (arena/experiments/fitness_v5.py:639), with the same cwd-derived root. Cache identity keys on the solver digest and runtime-config hash, so rows cannot be misattributed across solvers.",
+    "database": "arena/storage/db.py:123 defaults to the relative path 'artifacts/arena.db'; also gitignored.",
+    "evidence": "grep across arena/ for Path.home(), expanduser, /Users/, tempfile, gettempdir, /tmp, os.environ, getenv, Path(__file__), Path.cwd(), os.getcwd found exactly ONE hardcoded absolute path in the whole package (DONOR_ROOT, read-only) and ZERO uses of Path.home(), expanduser, os.environ, getenv, or Path(__file__)-relative resolution. There is no environment variable that can redirect Arena's output.",
+    "conclusion": "A command run from MY worktree CANNOT write into the LIVE worktree's artifacts, because there is no absolute or package-relative artifact path anywhere in the code. The single exception is that passing an explicit --root pointing at the live worktree would do so - that is the one thing to never do.",
+    "verified_empirically": "Running the full pytest suite, ruff, and mypy from my worktree left the live worktree's result.json byte-identical (sha256 0c5b3271... before and after) with an unchanged mtime (1788758125), and its cache file count unchanged at 716."
+  },
+  "venv_resolution": {
+    "venv": "/Users/moheet/Documents/ChatGPT/hamiltonian_chess/.venv (python 3.14.7, prompt 'hamiltonian-arena'; no .venv exists in my worktree)",
+    "editable_install": "site-packages/_editable_impl_hamiltonian_arena.pth contains the single bare line '/Users/moheet/Documents/ChatGPT/hamiltonian_chess' (the MAIN CHECKOUT). hamiltonian_arena-0.1.0.dist-info/direct_url.json confirms {\"url\":\"file:///Users/moheet/Documents/ChatGPT/hamiltonian_chess\",\"dir_info\":{\"editable\":true}}. There is no pythonpath setting in [tool.pytest.ini_options] and no repo-root conftest.py (the only conftest.py is tests/languages/conftest.py), so nothing else puts my worktree on sys.path.",
+    "imports_arena_from": "DEPENDS ON THE INVOCATION FORM - this is the single most important finding of the audit.",
+    "resolution_matrix": [
+      {
+        "invocation": ".venv/bin/python -c 'import arena' (cwd=my worktree)",
+        "resolves_to": "MY worktree",
+        "correct": true,
+        "evidence": "ARENA_FILE=.../phase-6-parallel-setup-9c6068/arena/__init__.py; sys.path[0] is '' (cwd), which precedes the site-packages .pth entry."
+      },
+      {
+        "invocation": ".venv/bin/python -m pytest (cwd=my worktree)",
+        "resolves_to": "MY worktree",
+        "correct": true,
+        "evidence": "Probe test printed ARENA_FILE=.../phase-6-parallel-setup-9c6068/arena/__init__.py"
+      },
+      {
+        "invocation": ".venv/bin/pytest (console script, cwd=my worktree)",
+        "resolves_to": "MAIN CHECKOUT",
+        "correct": false,
+        "evidence": "Probe test printed ARENA_FILE=/Users/moheet/Documents/ChatGPT/hamiltonian_chess/arena/__init__.py. A console script sets sys.path[0] to .venv/bin, so cwd is absent from sys.path and the editable .pth wins."
+      },
+      {
+        "invocation": ".venv/bin/python -m mypy (cwd=my worktree)",
+        "resolves_to": "MY worktree",
+        "correct": true,
+        "evidence": "mypy -v log: BuildSource(path='.../phase-6-parallel-setup-9c6068/arena/experiments/fitness_v5.py')"
+      }
+    ],
+    "evidence": "Empirically determined with a throwaway probe test that prints arena.__file__, run under each invocation form. Not inferred from documentation.",
+    "safe_for_my_worktree": true,
+    "safe_only_if": "I ALWAYS use the 'python -m <tool>' form. The bare console scripts (pytest, mypy, ruff, arena) silently test/lint/run the MAIN CHECKOUT's code - the wrong tree, and one that is 6 commits behind. This is a correctness trap, not a contamination trap: the main checkout is not the live worktree, so it cannot corrupt the experiment, but it would make my results meaningless.",
+    "note": "The main checkout is 6 commits behind origin/codex/arena-v0-fitness, so the divergence between the two trees is real and substantial - a silently wrong-tree test run would not be obvious from the results."
+  },
+  "test_suite_safety": {
+    "makes_model_calls": false,
+    "writes_outside_tmp": false,
+    "safe_to_run_concurrently": true,
+    "evidence": [
+      "NETWORK: grep across tests/ for ollama|11434|localhost|127.0.0.1|urlopen|urllib|requests.|httpx|socket|_call_ollama|Request( returns exactly ONE hit: tests/experiments/test_model_fitness.py:31, 'monkeypatch.setattr(model_fitness, \"_call_ollama\", fake_call)' - which replaces the network call with a fake. No test opens a socket.",
+      "NO LIVE MODULE UNDER TEST: grep for 'fitness_v5' across tests/ returns nothing. The module the live experiment is executing has no test coverage, so pytest never imports it.",
+      "NO DONOR CORPUS: grep for formal_structural|DONOR_ROOT|HML_V3 across tests/ returns nothing, so no test scans the 124 GB tree.",
+      "NO MODEL-BACKED TESTS: the 'slow: exhaustive or model-backed tests' marker is declared in pyproject.toml but is used by ZERO tests. The only marker in use is a single @pytest.mark.integration at tests/integration/test_runtime.py:6.",
+      "WRITES: every filesystem write in tests/ is rooted at the tmp_path fixture - tests/experiments/test_model_fitness.py:94 ArtifactStore(tmp_path/'artifacts'), test_fitness_v2.py:153 tmp_path/'artifacts/experiments/...', test_fitness_v3.py:83 tmp_path/'artifacts/cache/fitness_v3', test_fitness_v4.py:179 tmp_path/'artifacts/cache/fitness_v4', tests/league/test_registry.py:29 registry.save(tmp_path/'league.json'), tests/storage/test_db.py:8,26,45,50 ArenaDatabase(tmp_path/'arena.db'). No test calls os.chdir or Path.cwd().",
+      "EXECUTED: '.venv/bin/python -m pytest -q' from my worktree - 190 passed in 8.99s wall (8.37s user, 97% cpu, single core).",
+      "EXECUTED: '.venv/bin/python -m ruff check .' - 'All checks passed!' (ruff 0.16.6).",
+      "EXECUTED: '.venv/bin/python -m mypy' - 'Success: no issues found in 118 source files', verified via -v to be analysing MY worktree's arena.",
+      "PROOF OF NON-INTERFERENCE: live result.json sha256 was 0c5b3271...0579 with mtime 1788758125 both BEFORE and AFTER the pytest/ruff/mypy run; the live cache directory held 716 files before and after; no cache directory was created or touched in the main checkout or the live worktree."
+    ],
+    "resource_contention_note": "The suite is single-threaded, CPU-only, and finishes in ~9 seconds. The live run is GPU/model-bound on llama-server. Contention is negligible. Do not add -n auto / xdist parallelism, which would spike CPU during a timing-sensitive run."
+  },
+  "frozen_artifacts": [
+    {
+      "path": "GOAL.md",
+      "declared_sha256": "43d8fcdb5db39b1841b9f620d939e13c47014d98ecba0d09fdd84f699d20117b",
+      "actual_sha256": "43d8fcdb5db39b1841b9f620d939e13c47014d98ecba0d09fdd84f699d20117b",
+      "match": true,
+      "verified_in": [
+        "my worktree",
+        "live worktree",
+        "main checkout"
+      ],
+      "declaration_sources": [
+        "docs/PROJECT_STATUS.md:5",
+        "docs/CURRENT_STATE.md:12",
+        "docs/CLAUDE_FINAL_HANDOFF.md:14",
+        "docs/PHASE6_IN_PROGRESS.md:60"
+      ]
+    },
+    {
+      "path": "artifacts/experiments/fitness_v5/development/result.json",
+      "declared_sha256": "0c5b3271c772bcaf304af65ae469d615572022d18ac81f3083b27a88b0097579",
+      "actual_sha256": "0c5b3271c772bcaf304af65ae469d615572022d18ac81f3083b27a88b0097579",
+      "match": true,
+      "verified_in": [
+        "my worktree",
+        "live worktree",
+        "committed blob at b82f8ed"
+      ],
+      "not_present_in": "main checkout (file does not exist there)",
+      "declaration_sources": [
+        "docs/PROJECT_STATUS.md:109",
+        "docs/CLAUDE_FINAL_HANDOFF.md:374",
+        "docs/PHASE6_IN_PROGRESS.md:59",
+        "docs/FITNESS_V5_RESULT.md:6"
+      ],
+      "transient_observation": "An early 'git status' reported this file as modified in the live worktree. That was a STALE INDEX STAT ENTRY, not a content change: 'git diff --stat' on the path is empty, the working file hashes to the declared value, and 'git show b82f8ed:<path> | shasum -a 256' yields the same digest. A later status run showed the path clean. The frozen artifact is intact.",
+      "reverified_after_relaunch": "sha256 still 0c5b3271c772bcaf304af65ae469d615572022d18ac81f3083b27a88b0097579 at 06:20 BST, after the relaunch and after this audit's pytest/ruff/mypy run."
+    }
+  ],
+  "why_the_frozen_result_survives_phase6": {
+    "mechanism": "arena/experiments/fitness_v5.py:1019-1026 development_artifact_path(solver, bare) returns the exact Phase-5 path 'experiments/fitness_v5/development/result.json' ONLY when solver digest == DEFAULT_SOLVER digest AND bare is False; every other condition writes to 'result-<name>-bare.json' beside it.",
+    "caveat": "In the COMMITTED code at b82f8ed (i.e. the copy in MY worktree) run_development still writes unconditionally to the hardcoded 'experiments/fitness_v5/development/result.json'. The routing through development_artifact_path exists ONLY as an UNCOMMITTED edit in the live worktree. Consequence: if I ever ran 'develop' from my worktree, it would clobber MY copy of the frozen result.json. It still could not touch the live one (cwd-relative), but it would destroy my reference copy - one more reason the experiment modules are off limits."
+  },
+  "git_shared_state": {
+    "common_git_dir": "/Users/moheet/Documents/ChatGPT/hamiltonian_chess/.git",
+    "config_shared": true,
+    "extensions_worktreeConfig": "true (per-worktree config overrides are enabled, but the base .git/config remains shared)",
+    "stash_shared": true,
+    "stash_current_contents": "EMPTY (git stash list returns nothing)",
+    "hooks_shared": true,
+    "hooks_installed": "NONE - .git/hooks contains no non-sample hooks and core.hooksPath is unset.",
+    "risk": "Any writing git command I run mutates state the live session also sees. git stash in particular pushes onto a stack shared with the live worktree."
+  },
+  "contamination_verdict": "SAFE_WITH_CONDITIONS",
+  "verdict_rationale": "Arena resolves every output path from the process CWD - there is no absolute, package-relative, or environment-driven artifact path anywhere in the package (the sole hardcoded absolute path, DONOR_ROOT, is read-only). Therefore work confined to my worktree physically cannot write into the live worktree's artifacts, and this was confirmed empirically by byte-identical before/after fingerprints across a full pytest+ruff+mypy run. The residual risk is not filesystem-based: it is (1) the shared Ollama daemon on 127.0.0.1:11434, which is a machine-wide singleton, (2) the shared git common dir, and (3) an editable-install .pth that makes bare console scripts silently operate on the main checkout instead of my worktree.",
+  "conditions": [
+    "NEVER make a model call. No ollama CLI, no request to 127.0.0.1:11434, and nothing under arena.experiments.* (fitness_v1..v5, model_fitness, game_r_mutant_audit, fitness_v4_forensics, fitness_v4_preflight all reach the shared daemon). The Ollama daemon is machine-wide and is the only true contamination vector.",
+    "ALWAYS invoke tools as '/Users/moheet/Documents/ChatGPT/hamiltonian_chess/.venv/bin/python -m pytest|ruff|mypy' with cwd inside my worktree. NEVER the bare console scripts '.venv/bin/pytest', '.venv/bin/mypy', '.venv/bin/ruff', or '.venv/bin/arena' - the editable .pth makes those import arena from the MAIN CHECKOUT (which is 6 commits behind), silently testing the wrong tree.",
+    "NEVER pass --root (or any path argument) pointing outside my worktree. --root is the one supported way to make Arena write into another worktree.",
+    "KEEP cwd inside my worktree for every command. All artifact, cache, and database paths are cwd-relative, so cwd IS the isolation boundary.",
+    "NO writing git commands anywhere: no commit, checkout, stash, reset, merge, rebase, push, or branch mutation. The stash stack, config, and hooks live in the shared common git dir. Read-only git is fine; prefer 'git --no-optional-locks' when inspecting the live worktree so its index is never rewritten.",
+    "TREAT the live worktree and the main checkout as strictly read-only, including their .venv. Do not create a .venv in my worktree by running an installer that could rewrite the shared editable install.",
+    "DO NOT run pytest with xdist/-n parallelism. The serial suite takes ~9s single-core; parallel CPU spikes could perturb a timing-sensitive run.",
+    "TREAT /Users/moheet/Documents/ChatGPT/HML_V3 as read-only and never scan it recursively (124 GB).",
+    "DO NOT modify GOAL.md or artifacts/experiments/fitness_v5/development/result.json in my worktree - both currently hash to their declared frozen values and are my clean reference copies.",
+    "NEVER kill or signal pids 83916, 92940, 92944, 3728, or 84331.",
+    "NEVER kill or signal the CURRENT live pids either: 94413 (/tmp/phase6_qwen.sh) and 94418 (fitness_v5 develop --solver qwen38-rvn --bare), plus 3728 (ollama serve). The original pids 83916/92940 were retired by the LIVE SESSION ITSELF at 06:16:04, not by this audit."
+  ],
+  "safe_operations_confirmed": [
+    "'.venv/bin/python -m pytest -q' from my worktree (190 passed, 9s, zero network, all writes to tmp_path)",
+    "'.venv/bin/python -m ruff check .' from my worktree",
+    "'.venv/bin/python -m mypy' from my worktree",
+    "read-only git inspection with --no-optional-locks",
+    "reading files anywhere, including the live worktree and its log"
+  ],
+  "not_found": [
+    "/Users/moheet/Documents/ChatGPT/hamiltonian_chess/.githooks - the global CLAUDE.md protocol describes a '.githooks/' pre-commit fallback and a scripts/install-git-hooks.sh installer for repositories that carry it. NEITHER EXISTS in this repository, and .git/hooks contains no active hooks. The commit-continuity protocol is therefore NOT mechanically enforced here by a repo-level hook; only the Claude Code PreToolUse hook (external to this repo, not verifiable from inside it) would apply.",
+    "No .venv in my worktree - confirmed absent; the shared venv at the main checkout is the only interpreter.",
+    "No repo-root conftest.py - only tests/languages/conftest.py exists (it defines a single pure data fixture, representative_state, with no I/O and no network).",
+    "No pytest 'pythonpath' / 'pytest-randomly' / network-disabling fixture, marker, or plugin (e.g. pytest-socket) is configured. Test-suite network safety rests on the code containing no network calls, not on an enforced guard.",
+    "No tests exist for arena/experiments/fitness_v5.py - the module driving the live experiment is untested.",
+    "No /tmp coordination files other than /tmp/phase6_run.sh."
+  ],
+  "surprises": [
+    "The editable install .pth points at the MAIN CHECKOUT, so bare console scripts operate on the wrong tree. Silent, no warning, and the main checkout is 6 commits behind.",
+    "The live worktree is NOT clean: the fix that protects the frozen result.json from being overwritten exists only as an UNCOMMITTED working-tree edit. If that worktree were reset or the edit lost mid-run, Phase 6 would overwrite the frozen Phase-5 artifact. It is also the one piece of the live setup that is not backed up on the remote.",
+    "'git status' initially mis-reported the frozen result.json as modified purely from a stale index stat cache; content-level verification (git diff + sha256 against the committed blob) was required to establish that it is in fact untouched.",
+    "The live run was relaunched mid-audit at 06:16:04 by the live session (new script /tmp/phase6_qwen.sh, new log phase6_qwen.log), retiring the original orchestrator. This audit did not cause it - the relaunch preceded every command this audit executed. Anyone monitoring artifacts/tmp/phase6.log alone would wrongly conclude the run had died; the active log is now phase6_qwen.log."
+  ]
+}

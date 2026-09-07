@@ -1,0 +1,4544 @@
+{
+  "ANALYSIS_CLASS": "EXPLORATORY_POST_HOC_INSTRUMENT_PROPERTY",
+  "effective_positive_accuracy_window": [
+    0.7,
+    0.85
+  ],
+  "false_positive_nulls": {
+    "coin_flipper|L0_competent(p0=1.0)": {
+      "explicit_p0": 1.0,
+      "has_true_band": false,
+      "p_qualified": {
+        "current_target_0.625": 0.021355,
+        "highest_qualifying": 0.054815,
+        "midpoint_0.80_gap0.25_calibrated": 0.01952,
+        "oracle_knows_true_p": 0.01841,
+        "window_midpoint_0.775": 0.054035
+      },
+      "replicates": 200000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 81820,
+          "2": 65284,
+          "3": 52896
+        },
+        "highest_qualifying": {
+          "1": 80765,
+          "2": 65336,
+          "3": 53899
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 78479,
+          "2": 65583,
+          "3": 55938
+        },
+        "oracle_knows_true_p": {
+          "1": 200000,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 78482,
+          "2": 65581,
+          "3": 55937
+        }
+      },
+      "selector_agreement_same_level": 0.90991,
+      "selector_agreement_same_verdict": 0.96679,
+      "true_levels_inside_effective_window": [],
+      "true_profile_L1_L3": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 4271,
+          "VOID_CEILING": 4,
+          "VOID_FLOOR": 67,
+          "VOID_NEGATIVE_CONTROL": 192593,
+          "VOID_POSITION": 3041,
+          "VOID_POSITION_SHARE": 24
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 10963,
+          "VOID_CEILING": 4,
+          "VOID_FLOOR": 67,
+          "VOID_NEGATIVE_CONTROL": 185997,
+          "VOID_POSITION": 2947,
+          "VOID_POSITION_SHARE": 22
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 3904,
+          "VOID_CEILING": 83,
+          "VOID_FLOOR": 67,
+          "VOID_NEGATIVE_CONTROL": 193136,
+          "VOID_POSITION": 2810
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 3682,
+          "VOID_CEILING": 38,
+          "VOID_FLOOR": 15162,
+          "VOID_NEGATIVE_CONTROL": 178399,
+          "VOID_POSITION": 2704,
+          "VOID_POSITION_SHARE": 15
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 10807,
+          "VOID_CEILING": 80,
+          "VOID_FLOOR": 67,
+          "VOID_NEGATIVE_CONTROL": 181207,
+          "VOID_POSITION": 7798,
+          "VOID_POSITION_SHARE": 41
+        }
+      }
+    },
+    "coin_flipper|L0_null(p0=0.5)": {
+      "explicit_p0": 0.5,
+      "has_true_band": false,
+      "p_qualified": {
+        "current_target_0.625": 0.0,
+        "highest_qualifying": 0.0,
+        "midpoint_0.80_gap0.25_calibrated": 0.0,
+        "oracle_knows_true_p": 0.0,
+        "window_midpoint_0.775": 0.0
+      },
+      "replicates": 200000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 1,
+          "2": 0,
+          "3": 1
+        },
+        "highest_qualifying": {
+          "1": 1,
+          "2": 0,
+          "3": 1
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 1,
+          "2": 1,
+          "3": 0
+        },
+        "oracle_knows_true_p": {
+          "1": 2,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 1,
+          "2": 1,
+          "3": 0
+        }
+      },
+      "selector_agreement_same_level": 0.999995,
+      "selector_agreement_same_verdict": 1.0,
+      "true_levels_inside_effective_window": [],
+      "true_profile_L1_L3": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "VOID_INSTRUMENT_LIMIT": 199998,
+          "VOID_NEGATIVE_CONTROL": 2
+        },
+        "highest_qualifying": {
+          "VOID_INSTRUMENT_LIMIT": 199998,
+          "VOID_NEGATIVE_CONTROL": 2
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "VOID_INSTRUMENT_LIMIT": 199998,
+          "VOID_NEGATIVE_CONTROL": 2
+        },
+        "oracle_knows_true_p": {
+          "VOID_INSTRUMENT_LIMIT": 199998,
+          "VOID_NEGATIVE_CONTROL": 2
+        },
+        "window_midpoint_0.775": {
+          "VOID_INSTRUMENT_LIMIT": 199998,
+          "VOID_NEGATIVE_CONTROL": 2
+        }
+      }
+    },
+    "constant_answerer|L0_competent(p0=1.0)": {
+      "explicit_p0": 1.0,
+      "has_true_band": false,
+      "p_qualified": {
+        "current_target_0.625": 0.0,
+        "highest_qualifying": 0.0,
+        "midpoint_0.80_gap0.25_calibrated": 0.0,
+        "oracle_knows_true_p": 0.0,
+        "window_midpoint_0.775": 0.0
+      },
+      "replicates": 2000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 2000,
+          "2": 0,
+          "3": 0
+        },
+        "highest_qualifying": {
+          "1": 2000,
+          "2": 0,
+          "3": 0
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 2000,
+          "2": 0,
+          "3": 0
+        },
+        "oracle_knows_true_p": {
+          "1": 2000,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 2000,
+          "2": 0,
+          "3": 0
+        }
+      },
+      "selector_agreement_same_level": 1.0,
+      "selector_agreement_same_verdict": 1.0,
+      "true_levels_inside_effective_window": [],
+      "true_profile_L1_L3": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "VOID_NEGATIVE_CONTROL": 2000
+        },
+        "highest_qualifying": {
+          "VOID_NEGATIVE_CONTROL": 2000
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "VOID_NEGATIVE_CONTROL": 2000
+        },
+        "oracle_knows_true_p": {
+          "VOID_NEGATIVE_CONTROL": 2000
+        },
+        "window_midpoint_0.775": {
+          "VOID_NEGATIVE_CONTROL": 2000
+        }
+      }
+    },
+    "constant_answerer|L0_null(p0=0.5)": {
+      "explicit_p0": 0.5,
+      "has_true_band": false,
+      "p_qualified": {
+        "current_target_0.625": 0.0,
+        "highest_qualifying": 0.0,
+        "midpoint_0.80_gap0.25_calibrated": 0.0,
+        "oracle_knows_true_p": 0.0,
+        "window_midpoint_0.775": 0.0
+      },
+      "replicates": 2000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 0,
+          "2": 0,
+          "3": 0
+        },
+        "highest_qualifying": {
+          "1": 0,
+          "2": 0,
+          "3": 0
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 0,
+          "2": 0,
+          "3": 0
+        },
+        "oracle_knows_true_p": {
+          "1": 0,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 0,
+          "2": 0,
+          "3": 0
+        }
+      },
+      "selector_agreement_same_level": 1.0,
+      "selector_agreement_same_verdict": 1.0,
+      "true_levels_inside_effective_window": [],
+      "true_profile_L1_L3": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "VOID_INSTRUMENT_LIMIT": 2000
+        },
+        "highest_qualifying": {
+          "VOID_INSTRUMENT_LIMIT": 2000
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "VOID_INSTRUMENT_LIMIT": 2000
+        },
+        "oracle_knows_true_p": {
+          "VOID_INSTRUMENT_LIMIT": 2000
+        },
+        "window_midpoint_0.775": {
+          "VOID_INSTRUMENT_LIMIT": 2000
+        }
+      }
+    },
+    "sub_window_reader(p=0.65 flat)|L0_competent": {
+      "explicit_p0": 1.0,
+      "has_true_band": false,
+      "p_qualified": {
+        "current_target_0.625": 0.07436,
+        "highest_qualifying": 0.586765,
+        "midpoint_0.80_gap0.25_calibrated": 0.36009,
+        "oracle_knows_true_p": 0.254045,
+        "window_midpoint_0.775": 0.533135
+      },
+      "replicates": 200000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 91105,
+          "2": 63411,
+          "3": 45484
+        },
+        "highest_qualifying": {
+          "1": 68852,
+          "2": 63550,
+          "3": 67598
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 79402,
+          "2": 65567,
+          "3": 55031
+        },
+        "oracle_knows_true_p": {
+          "1": 200000,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 79403,
+          "2": 65702,
+          "3": 54895
+        }
+      },
+      "selector_agreement_same_level": 0.20404,
+      "selector_agreement_same_verdict": 0.517335,
+      "true_levels_inside_effective_window": [],
+      "true_profile_L1_L3": [
+        0.65,
+        0.65,
+        0.65
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 14872,
+          "VOID_CEILING": 1,
+          "VOID_NEGATIVE_CONTROL": 179809,
+          "VOID_POSITION": 5243,
+          "VOID_POSITION_SHARE": 75
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 117353,
+          "VOID_CEILING": 1,
+          "VOID_NEGATIVE_CONTROL": 81129,
+          "VOID_POSITION": 1502,
+          "VOID_POSITION_SHARE": 15
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 72018,
+          "VOID_CEILING": 4540,
+          "VOID_NEGATIVE_CONTROL": 98710,
+          "VOID_POSITION": 24732
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 50809,
+          "VOID_CEILING": 2690,
+          "VOID_FLOOR": 320,
+          "VOID_NEGATIVE_CONTROL": 128280,
+          "VOID_POSITION": 17771,
+          "VOID_POSITION_SHARE": 130
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 106627,
+          "VOID_CEILING": 2946,
+          "VOID_NEGATIVE_CONTROL": 53368,
+          "VOID_POSITION": 36851,
+          "VOID_POSITION_SHARE": 208
+        }
+      }
+    }
+  },
+  "frontier_target_in_window": false,
+  "frozen_phase5_counterfactual": {
+    "_note": "Off-frontier position invariance and the shortcut audit were never measured in Phase 5 (only positive arms ran off-frontier). Invariance is set to PASS and the shortcut audit is omitted, which can only FAVOUR the alternative selectors. EXPLORATORY: this does not re-score V5.",
+    "_qualified_mechanism_count": {
+      "current_target_0.625": 0,
+      "highest_qualifying": 0,
+      "midpoint_0.80_gap0.25_calibrated": 0,
+      "window_midpoint_0.775": 0
+    },
+    "formal_expression_depth": {
+      "current_target_0.625": {
+        "level": 2,
+        "qualified": false,
+        "selector": "current_target_0.625",
+        "verdict": "VOID_NEGATIVE_CONTROL"
+      },
+      "highest_qualifying": {
+        "level": 2,
+        "qualified": false,
+        "selector": "highest_qualifying",
+        "verdict": "VOID_NEGATIVE_CONTROL"
+      },
+      "midpoint_0.80_gap0.25_calibrated": {
+        "level": 1,
+        "qualified": false,
+        "selector": "midpoint_0.80_gap0.25_calibrated",
+        "verdict": "VOID_CEILING"
+      },
+      "window_midpoint_0.775": {
+        "level": 1,
+        "qualified": false,
+        "selector": "window_midpoint_0.775",
+        "verdict": "VOID_CEILING"
+      }
+    },
+    "precondition_conjunction": {
+      "current_target_0.625": {
+        "level": 1,
+        "qualified": false,
+        "selector": "current_target_0.625",
+        "verdict": "VOID_POSITION_SHARE"
+      },
+      "highest_qualifying": {
+        "level": 1,
+        "qualified": false,
+        "selector": "highest_qualifying",
+        "verdict": "VOID_POSITION_SHARE"
+      },
+      "midpoint_0.80_gap0.25_calibrated": {
+        "level": 1,
+        "qualified": false,
+        "selector": "midpoint_0.80_gap0.25_calibrated",
+        "verdict": "VOID_NEGATIVE_CONTROL"
+      },
+      "window_midpoint_0.775": {
+        "level": 1,
+        "qualified": false,
+        "selector": "window_midpoint_0.775",
+        "verdict": "VOID_POSITION_SHARE"
+      }
+    },
+    "transitive_dependency": {
+      "current_target_0.625": {
+        "level": null,
+        "qualified": false,
+        "selector": "current_target_0.625",
+        "verdict": "VOID_INSTRUMENT_LIMIT"
+      },
+      "highest_qualifying": {
+        "level": null,
+        "qualified": false,
+        "selector": "highest_qualifying",
+        "verdict": "VOID_INSTRUMENT_LIMIT"
+      },
+      "midpoint_0.80_gap0.25_calibrated": {
+        "level": null,
+        "qualified": false,
+        "selector": "midpoint_0.80_gap0.25_calibrated",
+        "verdict": "VOID_INSTRUMENT_LIMIT"
+      },
+      "window_midpoint_0.775": {
+        "level": null,
+        "qualified": false,
+        "selector": "window_midpoint_0.775",
+        "verdict": "VOID_INSTRUMENT_LIMIT"
+      }
+    }
+  },
+  "model_calls_made_by_this_analysis": 0,
+  "seed": 20260905,
+  "selectors": [
+    "current_target_0.625",
+    "window_midpoint_0.775",
+    "highest_qualifying",
+    "midpoint_0.80_gap0.25_calibrated",
+    "oracle_knows_true_p"
+  ],
+  "sensitivity_summary": {
+    "max_sensitivity_gain_over_current": {
+      "calibrated": 0.6537,
+      "current": 0.1772,
+      "decay": 0.7,
+      "gain_midpoint": 0.5992999999999999,
+      "highest_qualifying": 0.8197,
+      "p1": 0.775,
+      "true_profile": [
+        0.775,
+        0.6925,
+        0.6347499999999999
+      ],
+      "window_midpoint": 0.7765
+    },
+    "mean_p_qualified_given_true_band": {
+      "current_target_0.625": 0.25663199999999997,
+      "highest_qualifying": 0.733758,
+      "midpoint_0.80_gap0.25_calibrated": 0.59069,
+      "oracle_knows_true_p": 0.563788,
+      "window_midpoint_0.775": 0.7064619999999999
+    },
+    "mean_p_qualified_no_true_band": {
+      "current_target_0.625": 0.08069736842105263,
+      "highest_qualifying": 0.27335263157894735,
+      "midpoint_0.80_gap0.25_calibrated": 0.1588657894736842,
+      "oracle_knows_true_p": 0.17037368421052634,
+      "window_midpoint_0.775": 0.2623236842105263
+    },
+    "profiles_with_a_true_in_window_level": 25,
+    "profiles_without": 19
+  },
+  "sweep": [
+    {
+      "decay": 0.9,
+      "explicit_p0": 0.98,
+      "has_true_band": false,
+      "p1": 0.95,
+      "p_qualified": {
+        "current_target_0.625": 0.5152,
+        "highest_qualifying": 0.5184,
+        "midpoint_0.80_gap0.25_calibrated": 0.49725,
+        "oracle_knows_true_p": 0.39595,
+        "window_midpoint_0.775": 0.51835
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 2550,
+          "2": 6696,
+          "3": 10535
+        },
+        "highest_qualifying": {
+          "1": 2394,
+          "2": 5932,
+          "3": 11455
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 2706,
+          "2": 7022,
+          "3": 10053
+        },
+        "oracle_knows_true_p": {
+          "1": 0,
+          "2": 0,
+          "3": 19781
+        },
+        "window_midpoint_0.775": {
+          "1": 2615,
+          "2": 6868,
+          "3": 10298
+        }
+      },
+      "selector_agreement_same_level": 0.98,
+      "selector_agreement_same_verdict": 0.99685,
+      "true_levels_inside_effective_window": [],
+      "true_profile_L1_L3": [
+        0.95,
+        0.905,
+        0.8645
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 10304,
+          "VOID_CEILING": 9214,
+          "VOID_INSTRUMENT_LIMIT": 219,
+          "VOID_NEGATIVE_CONTROL": 250,
+          "VOID_POSITION": 11,
+          "VOID_POSITION_SHARE": 2
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 10368,
+          "VOID_CEILING": 9214,
+          "VOID_INSTRUMENT_LIMIT": 219,
+          "VOID_NEGATIVE_CONTROL": 188,
+          "VOID_POSITION": 9,
+          "VOID_POSITION_SHARE": 2
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 9945,
+          "VOID_CEILING": 9517,
+          "VOID_INSTRUMENT_LIMIT": 219,
+          "VOID_NEGATIVE_CONTROL": 309,
+          "VOID_POSITION": 10
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 7919,
+          "VOID_CEILING": 11628,
+          "VOID_INSTRUMENT_LIMIT": 219,
+          "VOID_NEGATIVE_CONTROL": 221,
+          "VOID_POSITION": 11,
+          "VOID_POSITION_SHARE": 2
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 10367,
+          "VOID_CEILING": 9312,
+          "VOID_INSTRUMENT_LIMIT": 219,
+          "VOID_NEGATIVE_CONTROL": 90,
+          "VOID_POSITION": 10,
+          "VOID_POSITION_SHARE": 2
+        }
+      }
+    },
+    {
+      "decay": 0.7,
+      "explicit_p0": 0.98,
+      "has_true_band": true,
+      "p1": 0.95,
+      "p_qualified": {
+        "current_target_0.625": 0.54275,
+        "highest_qualifying": 0.8052,
+        "midpoint_0.80_gap0.25_calibrated": 0.6911,
+        "oracle_knows_true_p": 0.5943,
+        "window_midpoint_0.775": 0.78885
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 130,
+          "2": 5542,
+          "3": 14083
+        },
+        "highest_qualifying": {
+          "1": 175,
+          "2": 6486,
+          "3": 13094
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 1368,
+          "2": 12400,
+          "3": 5987
+        },
+        "oracle_knows_true_p": {
+          "1": 0,
+          "2": 19755,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 836,
+          "2": 11482,
+          "3": 7437
+        }
+      },
+      "selector_agreement_same_level": 0.4805,
+      "selector_agreement_same_verdict": 0.7379,
+      "true_levels_inside_effective_window": [
+        2,
+        3
+      ],
+      "true_profile_L1_L3": [
+        0.95,
+        0.815,
+        0.7204999999999999
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 10855,
+          "VOID_CEILING": 420,
+          "VOID_INSTRUMENT_LIMIT": 245,
+          "VOID_NEGATIVE_CONTROL": 7508,
+          "VOID_POSITION": 953,
+          "VOID_POSITION_SHARE": 19
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 16104,
+          "VOID_CEILING": 420,
+          "VOID_INSTRUMENT_LIMIT": 245,
+          "VOID_NEGATIVE_CONTROL": 2764,
+          "VOID_POSITION": 458,
+          "VOID_POSITION_SHARE": 9
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 13822,
+          "VOID_CEILING": 3528,
+          "VOID_INSTRUMENT_LIMIT": 245,
+          "VOID_NEGATIVE_CONTROL": 1725,
+          "VOID_POSITION": 680
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 11886,
+          "VOID_CEILING": 6529,
+          "VOID_INSTRUMENT_LIMIT": 245,
+          "VOID_NEGATIVE_CONTROL": 1189,
+          "VOID_POSITION": 144,
+          "VOID_POSITION_SHARE": 7
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 15777,
+          "VOID_CEILING": 2263,
+          "VOID_INSTRUMENT_LIMIT": 245,
+          "VOID_NEGATIVE_CONTROL": 809,
+          "VOID_POSITION": 893,
+          "VOID_POSITION_SHARE": 13
+        }
+      }
+    },
+    {
+      "decay": 0.5,
+      "explicit_p0": 0.98,
+      "has_true_band": true,
+      "p1": 0.95,
+      "p_qualified": {
+        "current_target_0.625": 0.20725,
+        "highest_qualifying": 0.60675,
+        "midpoint_0.80_gap0.25_calibrated": 0.43155,
+        "oracle_knows_true_p": 0.5249,
+        "window_midpoint_0.775": 0.58905
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 12,
+          "2": 8753,
+          "3": 10996
+        },
+        "highest_qualifying": {
+          "1": 248,
+          "2": 13446,
+          "3": 6067
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 3754,
+          "2": 13381,
+          "3": 2626
+        },
+        "oracle_knows_true_p": {
+          "1": 0,
+          "2": 19761,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 1968,
+          "2": 14582,
+          "3": 3211
+        }
+      },
+      "selector_agreement_same_level": 0.32005,
+      "selector_agreement_same_verdict": 0.5966,
+      "true_levels_inside_effective_window": [
+        2
+      ],
+      "true_profile_L1_L3": [
+        0.95,
+        0.725,
+        0.6125
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 4145,
+          "VOID_CEILING": 21,
+          "VOID_INSTRUMENT_LIMIT": 239,
+          "VOID_NEGATIVE_CONTROL": 14652,
+          "VOID_POSITION": 926,
+          "VOID_POSITION_SHARE": 17
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 12135,
+          "VOID_CEILING": 21,
+          "VOID_INSTRUMENT_LIMIT": 239,
+          "VOID_NEGATIVE_CONTROL": 7171,
+          "VOID_POSITION": 424,
+          "VOID_POSITION_SHARE": 10
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 8631,
+          "VOID_CEILING": 4284,
+          "VOID_INSTRUMENT_LIMIT": 239,
+          "VOID_NEGATIVE_CONTROL": 5447,
+          "VOID_POSITION": 1399
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 10498,
+          "VOID_CEILING": 1428,
+          "VOID_FLOOR": 1,
+          "VOID_INSTRUMENT_LIMIT": 239,
+          "VOID_NEGATIVE_CONTROL": 6493,
+          "VOID_POSITION": 1321,
+          "VOID_POSITION_SHARE": 20
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 11781,
+          "VOID_CEILING": 2415,
+          "VOID_INSTRUMENT_LIMIT": 239,
+          "VOID_NEGATIVE_CONTROL": 3545,
+          "VOID_POSITION": 1999,
+          "VOID_POSITION_SHARE": 21
+        }
+      }
+    },
+    {
+      "decay": 0.3,
+      "explicit_p0": 0.98,
+      "has_true_band": false,
+      "p1": 0.95,
+      "p_qualified": {
+        "current_target_0.625": 0.10735,
+        "highest_qualifying": 0.256,
+        "midpoint_0.80_gap0.25_calibrated": 0.15125,
+        "oracle_knows_true_p": 0.2029,
+        "window_midpoint_0.775": 0.2516
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 13,
+          "2": 13608,
+          "3": 6151
+        },
+        "highest_qualifying": {
+          "1": 431,
+          "2": 14695,
+          "3": 4646
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 9819,
+          "2": 8250,
+          "3": 1703
+        },
+        "oracle_knows_true_p": {
+          "1": 0,
+          "2": 19772,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 6482,
+          "2": 10783,
+          "3": 2507
+        }
+      },
+      "selector_agreement_same_level": 0.44515,
+      "selector_agreement_same_verdict": 0.85155,
+      "true_levels_inside_effective_window": [],
+      "true_profile_L1_L3": [
+        0.95,
+        0.635,
+        0.5405
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 2147,
+          "VOID_CEILING": 21,
+          "VOID_FLOOR": 2,
+          "VOID_INSTRUMENT_LIMIT": 228,
+          "VOID_NEGATIVE_CONTROL": 16675,
+          "VOID_POSITION": 922,
+          "VOID_POSITION_SHARE": 5
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 5120,
+          "VOID_CEILING": 21,
+          "VOID_FLOOR": 2,
+          "VOID_INSTRUMENT_LIMIT": 228,
+          "VOID_NEGATIVE_CONTROL": 13821,
+          "VOID_POSITION": 803,
+          "VOID_POSITION_SHARE": 5
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 3025,
+          "VOID_CEILING": 9418,
+          "VOID_INSTRUMENT_LIMIT": 228,
+          "VOID_NEGATIVE_CONTROL": 6259,
+          "VOID_POSITION": 1070
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 4058,
+          "VOID_CEILING": 173,
+          "VOID_FLOOR": 41,
+          "VOID_INSTRUMENT_LIMIT": 228,
+          "VOID_NEGATIVE_CONTROL": 13807,
+          "VOID_POSITION": 1683,
+          "VOID_POSITION_SHARE": 10
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 5032,
+          "VOID_CEILING": 6111,
+          "VOID_INSTRUMENT_LIMIT": 228,
+          "VOID_NEGATIVE_CONTROL": 6616,
+          "VOID_POSITION": 1996,
+          "VOID_POSITION_SHARE": 17
+        }
+      }
+    },
+    {
+      "decay": 0.9,
+      "explicit_p0": 0.98,
+      "has_true_band": true,
+      "p1": 0.9,
+      "p_qualified": {
+        "current_target_0.625": 0.76055,
+        "highest_qualifying": 0.7964,
+        "midpoint_0.80_gap0.25_calibrated": 0.7543,
+        "oracle_knows_true_p": 0.56795,
+        "window_midpoint_0.775": 0.7953
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 3675,
+          "2": 6642,
+          "3": 9427
+        },
+        "highest_qualifying": {
+          "1": 2342,
+          "2": 4817,
+          "3": 12585
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 4912,
+          "2": 7314,
+          "3": 7518
+        },
+        "oracle_knows_true_p": {
+          "1": 0,
+          "2": 0,
+          "3": 19744
+        },
+        "window_midpoint_0.775": {
+          "1": 4360,
+          "2": 7143,
+          "3": 8241
+        }
+      },
+      "selector_agreement_same_level": 0.849,
+      "selector_agreement_same_verdict": 0.96445,
+      "true_levels_inside_effective_window": [
+        3
+      ],
+      "true_profile_L1_L3": [
+        0.9,
+        0.8600000000000001,
+        0.8240000000000001
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 15211,
+          "VOID_CEILING": 3294,
+          "VOID_INSTRUMENT_LIMIT": 256,
+          "VOID_NEGATIVE_CONTROL": 1160,
+          "VOID_POSITION": 72,
+          "VOID_POSITION_SHARE": 7
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 15928,
+          "VOID_CEILING": 3294,
+          "VOID_INSTRUMENT_LIMIT": 256,
+          "VOID_NEGATIVE_CONTROL": 470,
+          "VOID_POSITION": 48,
+          "VOID_POSITION_SHARE": 4
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 15086,
+          "VOID_CEILING": 4210,
+          "VOID_INSTRUMENT_LIMIT": 256,
+          "VOID_NEGATIVE_CONTROL": 386,
+          "VOID_POSITION": 62
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 11359,
+          "VOID_CEILING": 7380,
+          "VOID_INSTRUMENT_LIMIT": 256,
+          "VOID_NEGATIVE_CONTROL": 898,
+          "VOID_POSITION": 101,
+          "VOID_POSITION_SHARE": 6
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 15906,
+          "VOID_CEILING": 3628,
+          "VOID_INSTRUMENT_LIMIT": 256,
+          "VOID_NEGATIVE_CONTROL": 134,
+          "VOID_POSITION": 72,
+          "VOID_POSITION_SHARE": 4
+        }
+      }
+    },
+    {
+      "decay": 0.7,
+      "explicit_p0": 0.98,
+      "has_true_band": true,
+      "p1": 0.9,
+      "p_qualified": {
+        "current_target_0.625": 0.4272,
+        "highest_qualifying": 0.8298,
+        "midpoint_0.80_gap0.25_calibrated": 0.70735,
+        "oracle_knows_true_p": 0.6399,
+        "window_midpoint_0.775": 0.8044
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 505,
+          "2": 6431,
+          "3": 12837
+        },
+        "highest_qualifying": {
+          "1": 924,
+          "2": 8539,
+          "3": 10310
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 5129,
+          "2": 10515,
+          "3": 4129
+        },
+        "oracle_knows_true_p": {
+          "1": 0,
+          "2": 19773,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 3652,
+          "2": 10937,
+          "3": 5184
+        }
+      },
+      "selector_agreement_same_level": 0.31465,
+      "selector_agreement_same_verdict": 0.5996,
+      "true_levels_inside_effective_window": [
+        2
+      ],
+      "true_profile_L1_L3": [
+        0.9,
+        0.78,
+        0.696
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 8544,
+          "VOID_CEILING": 137,
+          "VOID_INSTRUMENT_LIMIT": 227,
+          "VOID_NEGATIVE_CONTROL": 10046,
+          "VOID_POSITION": 1033,
+          "VOID_POSITION_SHARE": 13
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 16596,
+          "VOID_CEILING": 137,
+          "VOID_INSTRUMENT_LIMIT": 227,
+          "VOID_NEGATIVE_CONTROL": 2725,
+          "VOID_POSITION": 311,
+          "VOID_POSITION_SHARE": 4
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 14147,
+          "VOID_CEILING": 3086,
+          "VOID_INSTRUMENT_LIMIT": 227,
+          "VOID_NEGATIVE_CONTROL": 1684,
+          "VOID_POSITION": 856
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 12798,
+          "VOID_CEILING": 3839,
+          "VOID_INSTRUMENT_LIMIT": 227,
+          "VOID_NEGATIVE_CONTROL": 2685,
+          "VOID_POSITION": 444,
+          "VOID_POSITION_SHARE": 7
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 16088,
+          "VOID_CEILING": 1799,
+          "VOID_INSTRUMENT_LIMIT": 227,
+          "VOID_NEGATIVE_CONTROL": 714,
+          "VOID_POSITION": 1162,
+          "VOID_POSITION_SHARE": 10
+        }
+      }
+    },
+    {
+      "decay": 0.5,
+      "explicit_p0": 0.98,
+      "has_true_band": true,
+      "p1": 0.9,
+      "p_qualified": {
+        "current_target_0.625": 0.17835,
+        "highest_qualifying": 0.6056,
+        "midpoint_0.80_gap0.25_calibrated": 0.4578,
+        "oracle_knows_true_p": 0.43415,
+        "window_midpoint_0.775": 0.5856
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 172,
+          "2": 10142,
+          "3": 9449
+        },
+        "highest_qualifying": {
+          "1": 2035,
+          "2": 12669,
+          "3": 5059
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 9121,
+          "2": 8712,
+          "3": 1930
+        },
+        "oracle_knows_true_p": {
+          "1": 0,
+          "2": 19763,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 6302,
+          "2": 10865,
+          "3": 2596
+        }
+      },
+      "selector_agreement_same_level": 0.2539,
+      "selector_agreement_same_verdict": 0.57245,
+      "true_levels_inside_effective_window": [
+        2
+      ],
+      "true_profile_L1_L3": [
+        0.9,
+        0.7,
+        0.6
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 3567,
+          "VOID_CEILING": 18,
+          "VOID_INSTRUMENT_LIMIT": 237,
+          "VOID_NEGATIVE_CONTROL": 15322,
+          "VOID_POSITION": 846,
+          "VOID_POSITION_SHARE": 10
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 12112,
+          "VOID_CEILING": 18,
+          "VOID_INSTRUMENT_LIMIT": 237,
+          "VOID_NEGATIVE_CONTROL": 7187,
+          "VOID_POSITION": 442,
+          "VOID_POSITION_SHARE": 4
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 9156,
+          "VOID_CEILING": 5830,
+          "VOID_INSTRUMENT_LIMIT": 237,
+          "VOID_NEGATIVE_CONTROL": 3435,
+          "VOID_POSITION": 1342
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 8683,
+          "VOID_CEILING": 875,
+          "VOID_FLOOR": 7,
+          "VOID_INSTRUMENT_LIMIT": 237,
+          "VOID_NEGATIVE_CONTROL": 8547,
+          "VOID_POSITION": 1635,
+          "VOID_POSITION_SHARE": 16
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 11712,
+          "VOID_CEILING": 3431,
+          "VOID_INSTRUMENT_LIMIT": 237,
+          "VOID_NEGATIVE_CONTROL": 2572,
+          "VOID_POSITION": 2040,
+          "VOID_POSITION_SHARE": 8
+        }
+      }
+    },
+    {
+      "decay": 0.3,
+      "explicit_p0": 0.98,
+      "has_true_band": false,
+      "p1": 0.9,
+      "p_qualified": {
+        "current_target_0.625": 0.09865,
+        "highest_qualifying": 0.36645,
+        "midpoint_0.80_gap0.25_calibrated": 0.28175,
+        "oracle_knows_true_p": 0.2116,
+        "window_midpoint_0.775": 0.35755
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 173,
+          "2": 13666,
+          "3": 5918
+        },
+        "highest_qualifying": {
+          "1": 3398,
+          "2": 12276,
+          "3": 4083
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 14250,
+          "2": 4457,
+          "3": 1050
+        },
+        "oracle_knows_true_p": {
+          "1": 19757,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 11247,
+          "2": 6787,
+          "3": 1723
+        }
+      },
+      "selector_agreement_same_level": 0.27935,
+      "selector_agreement_same_verdict": 0.7376,
+      "true_levels_inside_effective_window": [],
+      "true_profile_L1_L3": [
+        0.9,
+        0.62,
+        0.536
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 1973,
+          "VOID_CEILING": 16,
+          "VOID_FLOOR": 1,
+          "VOID_INSTRUMENT_LIMIT": 243,
+          "VOID_NEGATIVE_CONTROL": 16891,
+          "VOID_POSITION": 865,
+          "VOID_POSITION_SHARE": 11
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 7329,
+          "VOID_CEILING": 16,
+          "VOID_FLOOR": 1,
+          "VOID_INSTRUMENT_LIMIT": 243,
+          "VOID_NEGATIVE_CONTROL": 11746,
+          "VOID_POSITION": 658,
+          "VOID_POSITION_SHARE": 7
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 5635,
+          "VOID_CEILING": 10245,
+          "VOID_INSTRUMENT_LIMIT": 243,
+          "VOID_NEGATIVE_CONTROL": 3045,
+          "VOID_POSITION": 832
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 4232,
+          "VOID_CEILING": 15498,
+          "VOID_INSTRUMENT_LIMIT": 243,
+          "VOID_NEGATIVE_CONTROL": 27
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 7151,
+          "VOID_CEILING": 7477,
+          "VOID_INSTRUMENT_LIMIT": 243,
+          "VOID_NEGATIVE_CONTROL": 3451,
+          "VOID_POSITION": 1665,
+          "VOID_POSITION_SHARE": 13
+        }
+      }
+    },
+    {
+      "decay": 0.9,
+      "explicit_p0": 0.98,
+      "has_true_band": true,
+      "p1": 0.85,
+      "p_qualified": {
+        "current_target_0.625": 0.7441,
+        "highest_qualifying": 0.91355,
+        "midpoint_0.80_gap0.25_calibrated": 0.857,
+        "oracle_knows_true_p": 0.63985,
+        "window_midpoint_0.775": 0.90505
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 4432,
+          "2": 6803,
+          "3": 8520
+        },
+        "highest_qualifying": {
+          "1": 1693,
+          "2": 4587,
+          "3": 13475
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 7280,
+          "2": 7027,
+          "3": 5448
+        },
+        "oracle_knows_true_p": {
+          "1": 0,
+          "2": 0,
+          "3": 19755
+        },
+        "window_midpoint_0.775": {
+          "1": 6429,
+          "2": 7137,
+          "3": 6189
+        }
+      },
+      "selector_agreement_same_level": 0.5628,
+      "selector_agreement_same_verdict": 0.83095,
+      "true_levels_inside_effective_window": [
+        1,
+        2,
+        3
+      ],
+      "true_profile_L1_L3": [
+        0.85,
+        0.815,
+        0.7835
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 14882,
+          "VOID_CEILING": 673,
+          "VOID_INSTRUMENT_LIMIT": 245,
+          "VOID_NEGATIVE_CONTROL": 3915,
+          "VOID_POSITION": 276,
+          "VOID_POSITION_SHARE": 9
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 18271,
+          "VOID_CEILING": 673,
+          "VOID_INSTRUMENT_LIMIT": 245,
+          "VOID_NEGATIVE_CONTROL": 713,
+          "VOID_POSITION": 97,
+          "VOID_POSITION_SHARE": 1
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 17140,
+          "VOID_CEILING": 1962,
+          "VOID_INSTRUMENT_LIMIT": 245,
+          "VOID_NEGATIVE_CONTROL": 394,
+          "VOID_POSITION": 259
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 12797,
+          "VOID_CEILING": 4030,
+          "VOID_INSTRUMENT_LIMIT": 245,
+          "VOID_NEGATIVE_CONTROL": 2509,
+          "VOID_POSITION": 413,
+          "VOID_POSITION_SHARE": 6
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 18101,
+          "VOID_CEILING": 1228,
+          "VOID_INSTRUMENT_LIMIT": 245,
+          "VOID_NEGATIVE_CONTROL": 125,
+          "VOID_POSITION": 298,
+          "VOID_POSITION_SHARE": 3
+        }
+      }
+    },
+    {
+      "decay": 0.7,
+      "explicit_p0": 0.98,
+      "has_true_band": true,
+      "p1": 0.85,
+      "p_qualified": {
+        "current_target_0.625": 0.3141,
+        "highest_qualifying": 0.84635,
+        "midpoint_0.80_gap0.25_calibrated": 0.7298,
+        "oracle_knows_true_p": 0.5835,
+        "window_midpoint_0.775": 0.816
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 1274,
+          "2": 7557,
+          "3": 10926
+        },
+        "highest_qualifying": {
+          "1": 2655,
+          "2": 9301,
+          "3": 7801
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 9710,
+          "2": 7313,
+          "3": 2734
+        },
+        "oracle_knows_true_p": {
+          "1": 0,
+          "2": 19757,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 7830,
+          "2": 8385,
+          "3": 3542
+        }
+      },
+      "selector_agreement_same_level": 0.1919,
+      "selector_agreement_same_verdict": 0.4684,
+      "true_levels_inside_effective_window": [
+        1,
+        2
+      ],
+      "true_profile_L1_L3": [
+        0.85,
+        0.745,
+        0.6715
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 6282,
+          "VOID_CEILING": 36,
+          "VOID_INSTRUMENT_LIMIT": 243,
+          "VOID_NEGATIVE_CONTROL": 12471,
+          "VOID_POSITION": 942,
+          "VOID_POSITION_SHARE": 26
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 16927,
+          "VOID_CEILING": 36,
+          "VOID_INSTRUMENT_LIMIT": 243,
+          "VOID_NEGATIVE_CONTROL": 2590,
+          "VOID_POSITION": 197,
+          "VOID_POSITION_SHARE": 7
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 14596,
+          "VOID_CEILING": 2778,
+          "VOID_INSTRUMENT_LIMIT": 243,
+          "VOID_NEGATIVE_CONTROL": 1447,
+          "VOID_POSITION": 936
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 11670,
+          "VOID_CEILING": 2169,
+          "VOID_INSTRUMENT_LIMIT": 243,
+          "VOID_NEGATIVE_CONTROL": 4958,
+          "VOID_POSITION": 937,
+          "VOID_POSITION_SHARE": 23
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 16320,
+          "VOID_CEILING": 1489,
+          "VOID_INSTRUMENT_LIMIT": 243,
+          "VOID_NEGATIVE_CONTROL": 647,
+          "VOID_POSITION": 1286,
+          "VOID_POSITION_SHARE": 15
+        }
+      }
+    },
+    {
+      "decay": 0.5,
+      "explicit_p0": 0.98,
+      "has_true_band": true,
+      "p1": 0.85,
+      "p_qualified": {
+        "current_target_0.625": 0.1555,
+        "highest_qualifying": 0.68715,
+        "midpoint_0.80_gap0.25_calibrated": 0.5696,
+        "oracle_knows_true_p": 0.474,
+        "window_midpoint_0.775": 0.6599
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 838,
+          "2": 10892,
+          "3": 8021
+        },
+        "highest_qualifying": {
+          "1": 5763,
+          "2": 10157,
+          "3": 3831
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 13583,
+          "2": 4999,
+          "3": 1169
+        },
+        "oracle_knows_true_p": {
+          "1": 19751,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 11225,
+          "2": 6742,
+          "3": 1784
+        }
+      },
+      "selector_agreement_same_level": 0.1746,
+      "selector_agreement_same_verdict": 0.4804,
+      "true_levels_inside_effective_window": [
+        1
+      ],
+      "true_profile_L1_L3": [
+        0.85,
+        0.675,
+        0.5875
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 3110,
+          "VOID_CEILING": 7,
+          "VOID_INSTRUMENT_LIMIT": 249,
+          "VOID_NEGATIVE_CONTROL": 15774,
+          "VOID_POSITION": 849,
+          "VOID_POSITION_SHARE": 11
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 13743,
+          "VOID_CEILING": 7,
+          "VOID_INSTRUMENT_LIMIT": 249,
+          "VOID_NEGATIVE_CONTROL": 5667,
+          "VOID_POSITION": 332,
+          "VOID_POSITION_SHARE": 2
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 11392,
+          "VOID_CEILING": 5048,
+          "VOID_INSTRUMENT_LIMIT": 249,
+          "VOID_NEGATIVE_CONTROL": 2276,
+          "VOID_POSITION": 1035
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 9480,
+          "VOID_CEILING": 9866,
+          "VOID_INSTRUMENT_LIMIT": 249,
+          "VOID_NEGATIVE_CONTROL": 380,
+          "VOID_POSITION": 23,
+          "VOID_POSITION_SHARE": 2
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 13198,
+          "VOID_CEILING": 3286,
+          "VOID_INSTRUMENT_LIMIT": 249,
+          "VOID_NEGATIVE_CONTROL": 1530,
+          "VOID_POSITION": 1731,
+          "VOID_POSITION_SHARE": 6
+        }
+      }
+    },
+    {
+      "decay": 0.3,
+      "explicit_p0": 0.98,
+      "has_true_band": true,
+      "p1": 0.85,
+      "p_qualified": {
+        "current_target_0.625": 0.10205,
+        "highest_qualifying": 0.55615,
+        "midpoint_0.80_gap0.25_calibrated": 0.47405,
+        "oracle_knows_true_p": 0.4706,
+        "window_midpoint_0.775": 0.54465
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 971,
+          "2": 13103,
+          "3": 5707
+        },
+        "highest_qualifying": {
+          "1": 8141,
+          "2": 8625,
+          "3": 3015
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 16997,
+          "2": 2185,
+          "3": 599
+        },
+        "oracle_knows_true_p": {
+          "1": 19781,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 15187,
+          "2": 3585,
+          "3": 1009
+        }
+      },
+      "selector_agreement_same_level": 0.17515,
+      "selector_agreement_same_verdict": 0.5529,
+      "true_levels_inside_effective_window": [
+        1
+      ],
+      "true_profile_L1_L3": [
+        0.85,
+        0.605,
+        0.5315
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 2041,
+          "VOID_CEILING": 8,
+          "VOID_INSTRUMENT_LIMIT": 219,
+          "VOID_NEGATIVE_CONTROL": 16955,
+          "VOID_POSITION": 766,
+          "VOID_POSITION_SHARE": 11
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 11123,
+          "VOID_CEILING": 8,
+          "VOID_INSTRUMENT_LIMIT": 219,
+          "VOID_NEGATIVE_CONTROL": 8255,
+          "VOID_POSITION": 391,
+          "VOID_POSITION_SHARE": 4
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 9481,
+          "VOID_CEILING": 7586,
+          "VOID_INSTRUMENT_LIMIT": 219,
+          "VOID_NEGATIVE_CONTROL": 2125,
+          "VOID_POSITION": 589
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 9412,
+          "VOID_CEILING": 9939,
+          "VOID_INSTRUMENT_LIMIT": 219,
+          "VOID_NEGATIVE_CONTROL": 390,
+          "VOID_POSITION": 34,
+          "VOID_POSITION_SHARE": 6
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 10893,
+          "VOID_CEILING": 6053,
+          "VOID_INSTRUMENT_LIMIT": 219,
+          "VOID_NEGATIVE_CONTROL": 1690,
+          "VOID_POSITION": 1136,
+          "VOID_POSITION_SHARE": 9
+        }
+      }
+    },
+    {
+      "decay": 0.9,
+      "explicit_p0": 0.98,
+      "has_true_band": true,
+      "p1": 0.8,
+      "p_qualified": {
+        "current_target_0.625": 0.53155,
+        "highest_qualifying": 0.93405,
+        "midpoint_0.80_gap0.25_calibrated": 0.83975,
+        "oracle_knows_true_p": 0.63355,
+        "window_midpoint_0.775": 0.9045
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 5309,
+          "2": 6811,
+          "3": 7661
+        },
+        "highest_qualifying": {
+          "1": 2114,
+          "2": 5609,
+          "3": 12058
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 9175,
+          "2": 6488,
+          "3": 4118
+        },
+        "oracle_knows_true_p": {
+          "1": 0,
+          "2": 19781,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 8545,
+          "2": 6667,
+          "3": 4569
+        }
+      },
+      "selector_agreement_same_level": 0.2704,
+      "selector_agreement_same_verdict": 0.59995,
+      "true_levels_inside_effective_window": [
+        1,
+        2,
+        3
+      ],
+      "true_profile_L1_L3": [
+        0.8,
+        0.77,
+        0.7430000000000001
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 10631,
+          "VOID_CEILING": 77,
+          "VOID_INSTRUMENT_LIMIT": 219,
+          "VOID_NEGATIVE_CONTROL": 8523,
+          "VOID_POSITION": 538,
+          "VOID_POSITION_SHARE": 12
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 18681,
+          "VOID_CEILING": 77,
+          "VOID_INSTRUMENT_LIMIT": 219,
+          "VOID_NEGATIVE_CONTROL": 930,
+          "VOID_POSITION": 92,
+          "VOID_POSITION_SHARE": 1
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 16795,
+          "VOID_CEILING": 1384,
+          "VOID_INSTRUMENT_LIMIT": 219,
+          "VOID_NEGATIVE_CONTROL": 841,
+          "VOID_POSITION": 761
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 12671,
+          "VOID_CEILING": 3166,
+          "VOID_INSTRUMENT_LIMIT": 219,
+          "VOID_NEGATIVE_CONTROL": 3326,
+          "VOID_POSITION": 611,
+          "VOID_POSITION_SHARE": 7
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 18090,
+          "VOID_CEILING": 598,
+          "VOID_INSTRUMENT_LIMIT": 219,
+          "VOID_NEGATIVE_CONTROL": 224,
+          "VOID_POSITION": 861,
+          "VOID_POSITION_SHARE": 8
+        }
+      }
+    },
+    {
+      "decay": 0.7,
+      "explicit_p0": 0.98,
+      "has_true_band": true,
+      "p1": 0.8,
+      "p_qualified": {
+        "current_target_0.625": 0.22365,
+        "highest_qualifying": 0.84995,
+        "midpoint_0.80_gap0.25_calibrated": 0.70905,
+        "oracle_knows_true_p": 0.63065,
+        "window_midpoint_0.775": 0.8115
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 2737,
+          "2": 8161,
+          "3": 8856
+        },
+        "highest_qualifying": {
+          "1": 5339,
+          "2": 8546,
+          "3": 5869
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 12450,
+          "2": 5336,
+          "3": 1968
+        },
+        "oracle_knows_true_p": {
+          "1": 19754,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 11059,
+          "2": 6172,
+          "3": 2523
+        }
+      },
+      "selector_agreement_same_level": 0.12435,
+      "selector_agreement_same_verdict": 0.38185,
+      "true_levels_inside_effective_window": [
+        1,
+        2
+      ],
+      "true_profile_L1_L3": [
+        0.8,
+        0.71,
+        0.647
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 4473,
+          "VOID_CEILING": 5,
+          "VOID_INSTRUMENT_LIMIT": 246,
+          "VOID_NEGATIVE_CONTROL": 14559,
+          "VOID_POSITION": 698,
+          "VOID_POSITION_SHARE": 19
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 16999,
+          "VOID_CEILING": 5,
+          "VOID_INSTRUMENT_LIMIT": 246,
+          "VOID_NEGATIVE_CONTROL": 2633,
+          "VOID_POSITION": 114,
+          "VOID_POSITION_SHARE": 3
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 14181,
+          "VOID_CEILING": 2182,
+          "VOID_INSTRUMENT_LIMIT": 246,
+          "VOID_NEGATIVE_CONTROL": 2253,
+          "VOID_POSITION": 1138
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 12613,
+          "VOID_CEILING": 5173,
+          "VOID_INSTRUMENT_LIMIT": 246,
+          "VOID_NEGATIVE_CONTROL": 1712,
+          "VOID_POSITION": 244,
+          "VOID_POSITION_SHARE": 12
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 16230,
+          "VOID_CEILING": 1194,
+          "VOID_INSTRUMENT_LIMIT": 246,
+          "VOID_NEGATIVE_CONTROL": 818,
+          "VOID_POSITION": 1501,
+          "VOID_POSITION_SHARE": 11
+        }
+      }
+    },
+    {
+      "decay": 0.5,
+      "explicit_p0": 0.98,
+      "has_true_band": true,
+      "p1": 0.8,
+      "p_qualified": {
+        "current_target_0.625": 0.1406,
+        "highest_qualifying": 0.74395,
+        "midpoint_0.80_gap0.25_calibrated": 0.60785,
+        "oracle_knows_true_p": 0.6327,
+        "window_midpoint_0.775": 0.71705
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 2377,
+          "2": 10911,
+          "3": 6500
+        },
+        "highest_qualifying": {
+          "1": 9495,
+          "2": 7462,
+          "3": 2831
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 15850,
+          "2": 3111,
+          "3": 827
+        },
+        "oracle_knows_true_p": {
+          "1": 19788,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 14479,
+          "2": 4140,
+          "3": 1169
+        }
+      },
+      "selector_agreement_same_level": 0.14565,
+      "selector_agreement_same_verdict": 0.40835,
+      "true_levels_inside_effective_window": [
+        1
+      ],
+      "true_profile_L1_L3": [
+        0.8,
+        0.65,
+        0.575
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 2812,
+          "VOID_CEILING": 4,
+          "VOID_INSTRUMENT_LIMIT": 212,
+          "VOID_NEGATIVE_CONTROL": 16275,
+          "VOID_POSITION": 689,
+          "VOID_POSITION_SHARE": 8
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 14879,
+          "VOID_CEILING": 4,
+          "VOID_INSTRUMENT_LIMIT": 212,
+          "VOID_NEGATIVE_CONTROL": 4686,
+          "VOID_POSITION": 214,
+          "VOID_POSITION_SHARE": 5
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 12157,
+          "VOID_CEILING": 3410,
+          "VOID_INSTRUMENT_LIMIT": 212,
+          "VOID_NEGATIVE_CONTROL": 3207,
+          "VOID_POSITION": 1014
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 12654,
+          "VOID_CEILING": 5159,
+          "VOID_INSTRUMENT_LIMIT": 212,
+          "VOID_NEGATIVE_CONTROL": 1702,
+          "VOID_POSITION": 265,
+          "VOID_POSITION_SHARE": 8
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 14341,
+          "VOID_CEILING": 2431,
+          "VOID_INSTRUMENT_LIMIT": 212,
+          "VOID_NEGATIVE_CONTROL": 1467,
+          "VOID_POSITION": 1535,
+          "VOID_POSITION_SHARE": 14
+        }
+      }
+    },
+    {
+      "decay": 0.3,
+      "explicit_p0": 0.98,
+      "has_true_band": true,
+      "p1": 0.8,
+      "p_qualified": {
+        "current_target_0.625": 0.12235,
+        "highest_qualifying": 0.67045,
+        "midpoint_0.80_gap0.25_calibrated": 0.55135,
+        "oracle_knows_true_p": 0.62145,
+        "window_midpoint_0.775": 0.65795
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 2878,
+          "2": 11568,
+          "3": 5332
+        },
+        "highest_qualifying": {
+          "1": 11899,
+          "2": 5692,
+          "3": 2187
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 17879,
+          "2": 1440,
+          "3": 459
+        },
+        "oracle_knows_true_p": {
+          "1": 19778,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 16952,
+          "2": 2113,
+          "3": 713
+        }
+      },
+      "selector_agreement_same_level": 0.1823,
+      "selector_agreement_same_verdict": 0.4566,
+      "true_levels_inside_effective_window": [
+        1
+      ],
+      "true_profile_L1_L3": [
+        0.8,
+        0.59,
+        0.527
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 2447,
+          "VOID_CEILING": 10,
+          "VOID_INSTRUMENT_LIMIT": 222,
+          "VOID_NEGATIVE_CONTROL": 16732,
+          "VOID_POSITION": 582,
+          "VOID_POSITION_SHARE": 7
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 13409,
+          "VOID_CEILING": 10,
+          "VOID_INSTRUMENT_LIMIT": 222,
+          "VOID_NEGATIVE_CONTROL": 6132,
+          "VOID_POSITION": 225,
+          "VOID_POSITION_SHARE": 2
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 11027,
+          "VOID_CEILING": 4420,
+          "VOID_INSTRUMENT_LIMIT": 222,
+          "VOID_NEGATIVE_CONTROL": 3705,
+          "VOID_POSITION": 626
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 12429,
+          "VOID_CEILING": 5321,
+          "VOID_INSTRUMENT_LIMIT": 222,
+          "VOID_NEGATIVE_CONTROL": 1749,
+          "VOID_POSITION": 272,
+          "VOID_POSITION_SHARE": 7
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 13159,
+          "VOID_CEILING": 3684,
+          "VOID_INSTRUMENT_LIMIT": 222,
+          "VOID_NEGATIVE_CONTROL": 1895,
+          "VOID_POSITION": 1032,
+          "VOID_POSITION_SHARE": 8
+        }
+      }
+    },
+    {
+      "decay": 0.9,
+      "explicit_p0": 0.98,
+      "has_true_band": true,
+      "p1": 0.775,
+      "p_qualified": {
+        "current_target_0.625": 0.4085,
+        "highest_qualifying": 0.92145,
+        "midpoint_0.80_gap0.25_calibrated": 0.7925,
+        "oracle_knows_true_p": 0.63155,
+        "window_midpoint_0.775": 0.87875
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 5774,
+          "2": 6776,
+          "3": 7236
+        },
+        "highest_qualifying": {
+          "1": 2815,
+          "2": 6110,
+          "3": 10861
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 9376,
+          "2": 6382,
+          "3": 4028
+        },
+        "oracle_knows_true_p": {
+          "1": 19786,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 8922,
+          "2": 6573,
+          "3": 4291
+        }
+      },
+      "selector_agreement_same_level": 0.17765,
+      "selector_agreement_same_verdict": 0.49395,
+      "true_levels_inside_effective_window": [
+        1,
+        2,
+        3
+      ],
+      "true_profile_L1_L3": [
+        0.775,
+        0.7475,
+        0.72275
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 8170,
+          "VOID_CEILING": 21,
+          "VOID_INSTRUMENT_LIMIT": 214,
+          "VOID_NEGATIVE_CONTROL": 10931,
+          "VOID_POSITION": 649,
+          "VOID_POSITION_SHARE": 15
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 18429,
+          "VOID_CEILING": 21,
+          "VOID_INSTRUMENT_LIMIT": 214,
+          "VOID_NEGATIVE_CONTROL": 1256,
+          "VOID_POSITION": 80
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 15850,
+          "VOID_CEILING": 1281,
+          "VOID_INSTRUMENT_LIMIT": 214,
+          "VOID_NEGATIVE_CONTROL": 1499,
+          "VOID_POSITION": 1156
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 12631,
+          "VOID_CEILING": 3633,
+          "VOID_INSTRUMENT_LIMIT": 214,
+          "VOID_NEGATIVE_CONTROL": 2967,
+          "VOID_POSITION": 548,
+          "VOID_POSITION_SHARE": 7
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 17575,
+          "VOID_CEILING": 568,
+          "VOID_INSTRUMENT_LIMIT": 214,
+          "VOID_NEGATIVE_CONTROL": 372,
+          "VOID_POSITION": 1267,
+          "VOID_POSITION_SHARE": 4
+        }
+      }
+    },
+    {
+      "decay": 0.7,
+      "explicit_p0": 0.98,
+      "has_true_band": true,
+      "p1": 0.775,
+      "p_qualified": {
+        "current_target_0.625": 0.1772,
+        "highest_qualifying": 0.8197,
+        "midpoint_0.80_gap0.25_calibrated": 0.6537,
+        "oracle_knows_true_p": 0.6322,
+        "window_midpoint_0.775": 0.7765
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 3754,
+          "2": 8439,
+          "3": 7594
+        },
+        "highest_qualifying": {
+          "1": 7014,
+          "2": 7805,
+          "3": 4968
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 13054,
+          "2": 4812,
+          "3": 1921
+        },
+        "oracle_knows_true_p": {
+          "1": 19787,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 12124,
+          "2": 5377,
+          "3": 2286
+        }
+      },
+      "selector_agreement_same_level": 0.11785,
+      "selector_agreement_same_verdict": 0.3723,
+      "true_levels_inside_effective_window": [
+        1
+      ],
+      "true_profile_L1_L3": [
+        0.775,
+        0.6925,
+        0.6347499999999999
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 3544,
+          "VOID_CEILING": 1,
+          "VOID_INSTRUMENT_LIMIT": 213,
+          "VOID_NEGATIVE_CONTROL": 15563,
+          "VOID_POSITION": 665,
+          "VOID_POSITION_SHARE": 14
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 16394,
+          "VOID_CEILING": 1,
+          "VOID_INSTRUMENT_LIMIT": 213,
+          "VOID_NEGATIVE_CONTROL": 3276,
+          "VOID_POSITION": 113,
+          "VOID_POSITION_SHARE": 3
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 13074,
+          "VOID_CEILING": 1826,
+          "VOID_INSTRUMENT_LIMIT": 213,
+          "VOID_NEGATIVE_CONTROL": 3429,
+          "VOID_POSITION": 1458
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 12644,
+          "VOID_CEILING": 3499,
+          "VOID_INSTRUMENT_LIMIT": 213,
+          "VOID_NEGATIVE_CONTROL": 3115,
+          "VOID_POSITION": 514,
+          "VOID_POSITION_SHARE": 15
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 15530,
+          "VOID_CEILING": 1072,
+          "VOID_INSTRUMENT_LIMIT": 213,
+          "VOID_NEGATIVE_CONTROL": 1312,
+          "VOID_POSITION": 1858,
+          "VOID_POSITION_SHARE": 15
+        }
+      }
+    },
+    {
+      "decay": 0.5,
+      "explicit_p0": 0.98,
+      "has_true_band": true,
+      "p1": 0.775,
+      "p_qualified": {
+        "current_target_0.625": 0.13095,
+        "highest_qualifying": 0.7281,
+        "midpoint_0.80_gap0.25_calibrated": 0.56435,
+        "oracle_knows_true_p": 0.6298,
+        "window_midpoint_0.775": 0.6996
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 3618,
+          "2": 10226,
+          "3": 5898
+        },
+        "highest_qualifying": {
+          "1": 10784,
+          "2": 6349,
+          "3": 2609
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 16013,
+          "2": 2881,
+          "3": 848
+        },
+        "oracle_knows_true_p": {
+          "1": 19742,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 15098,
+          "2": 3554,
+          "3": 1090
+        }
+      },
+      "selector_agreement_same_level": 0.1648,
+      "selector_agreement_same_verdict": 0.41345,
+      "true_levels_inside_effective_window": [
+        1
+      ],
+      "true_profile_L1_L3": [
+        0.775,
+        0.6375,
+        0.56875
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 2619,
+          "VOID_CEILING": 3,
+          "VOID_INSTRUMENT_LIMIT": 258,
+          "VOID_NEGATIVE_CONTROL": 16503,
+          "VOID_POSITION": 606,
+          "VOID_POSITION_SHARE": 11
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 14562,
+          "VOID_CEILING": 3,
+          "VOID_INSTRUMENT_LIMIT": 258,
+          "VOID_NEGATIVE_CONTROL": 4990,
+          "VOID_POSITION": 181,
+          "VOID_POSITION_SHARE": 6
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 11287,
+          "VOID_CEILING": 2564,
+          "VOID_INSTRUMENT_LIMIT": 258,
+          "VOID_NEGATIVE_CONTROL": 4733,
+          "VOID_POSITION": 1158
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 12596,
+          "VOID_CEILING": 3573,
+          "VOID_INSTRUMENT_LIMIT": 258,
+          "VOID_NEGATIVE_CONTROL": 3027,
+          "VOID_POSITION": 533,
+          "VOID_POSITION_SHARE": 13
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 13992,
+          "VOID_CEILING": 1902,
+          "VOID_INSTRUMENT_LIMIT": 258,
+          "VOID_NEGATIVE_CONTROL": 2145,
+          "VOID_POSITION": 1687,
+          "VOID_POSITION_SHARE": 16
+        }
+      }
+    },
+    {
+      "decay": 0.3,
+      "explicit_p0": 0.98,
+      "has_true_band": true,
+      "p1": 0.775,
+      "p_qualified": {
+        "current_target_0.625": 0.1261,
+        "highest_qualifying": 0.6804,
+        "midpoint_0.80_gap0.25_calibrated": 0.5368,
+        "oracle_knows_true_p": 0.63685,
+        "window_midpoint_0.775": 0.6675
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 4216,
+          "2": 10610,
+          "3": 4948
+        },
+        "highest_qualifying": {
+          "1": 13330,
+          "2": 4669,
+          "3": 1775
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 17881,
+          "2": 1427,
+          "3": 466
+        },
+        "oracle_knows_true_p": {
+          "1": 19774,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 17276,
+          "2": 1873,
+          "3": 625
+        }
+      },
+      "selector_agreement_same_level": 0.21885,
+      "selector_agreement_same_verdict": 0.4491,
+      "true_levels_inside_effective_window": [
+        1
+      ],
+      "true_profile_L1_L3": [
+        0.775,
+        0.5825,
+        0.52475
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 2522,
+          "VOID_CEILING": 7,
+          "VOID_INSTRUMENT_LIMIT": 226,
+          "VOID_NEGATIVE_CONTROL": 16707,
+          "VOID_POSITION": 525,
+          "VOID_POSITION_SHARE": 13
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 13608,
+          "VOID_CEILING": 7,
+          "VOID_INSTRUMENT_LIMIT": 226,
+          "VOID_NEGATIVE_CONTROL": 5946,
+          "VOID_POSITION": 206,
+          "VOID_POSITION_SHARE": 7
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 10736,
+          "VOID_CEILING": 3027,
+          "VOID_INSTRUMENT_LIMIT": 226,
+          "VOID_NEGATIVE_CONTROL": 5230,
+          "VOID_POSITION": 781
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 12737,
+          "VOID_CEILING": 3505,
+          "VOID_INSTRUMENT_LIMIT": 226,
+          "VOID_NEGATIVE_CONTROL": 2998,
+          "VOID_POSITION": 515,
+          "VOID_POSITION_SHARE": 19
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 13350,
+          "VOID_CEILING": 2597,
+          "VOID_INSTRUMENT_LIMIT": 226,
+          "VOID_NEGATIVE_CONTROL": 2608,
+          "VOID_POSITION": 1199,
+          "VOID_POSITION_SHARE": 20
+        }
+      }
+    },
+    {
+      "decay": 0.9,
+      "explicit_p0": 0.98,
+      "has_true_band": true,
+      "p1": 0.75,
+      "p_qualified": {
+        "current_target_0.625": 0.2882,
+        "highest_qualifying": 0.8861,
+        "midpoint_0.80_gap0.25_calibrated": 0.71665,
+        "oracle_knows_true_p": 0.5977,
+        "window_midpoint_0.775": 0.82555
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 6337,
+          "2": 6977,
+          "3": 6450
+        },
+        "highest_qualifying": {
+          "1": 3969,
+          "2": 6479,
+          "3": 9316
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 9780,
+          "2": 6069,
+          "3": 3915
+        },
+        "oracle_knows_true_p": {
+          "1": 19764,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 9486,
+          "2": 6165,
+          "3": 4113
+        }
+      },
+      "selector_agreement_same_level": 0.1304,
+      "selector_agreement_same_verdict": 0.41865,
+      "true_levels_inside_effective_window": [
+        1,
+        2,
+        3
+      ],
+      "true_profile_L1_L3": [
+        0.75,
+        0.725,
+        0.7025
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 5764,
+          "VOID_CEILING": 8,
+          "VOID_INSTRUMENT_LIMIT": 236,
+          "VOID_NEGATIVE_CONTROL": 13260,
+          "VOID_POSITION": 709,
+          "VOID_POSITION_SHARE": 23
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 17722,
+          "VOID_CEILING": 8,
+          "VOID_INSTRUMENT_LIMIT": 236,
+          "VOID_NEGATIVE_CONTROL": 1965,
+          "VOID_POSITION": 67,
+          "VOID_POSITION_SHARE": 2
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 14333,
+          "VOID_CEILING": 1145,
+          "VOID_INSTRUMENT_LIMIT": 236,
+          "VOID_NEGATIVE_CONTROL": 2670,
+          "VOID_POSITION": 1616
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 11954,
+          "VOID_CEILING": 2299,
+          "VOID_FLOOR": 1,
+          "VOID_INSTRUMENT_LIMIT": 236,
+          "VOID_NEGATIVE_CONTROL": 4572,
+          "VOID_POSITION": 923,
+          "VOID_POSITION_SHARE": 15
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 16511,
+          "VOID_CEILING": 528,
+          "VOID_INSTRUMENT_LIMIT": 236,
+          "VOID_NEGATIVE_CONTROL": 819,
+          "VOID_POSITION": 1900,
+          "VOID_POSITION_SHARE": 6
+        }
+      }
+    },
+    {
+      "decay": 0.7,
+      "explicit_p0": 0.98,
+      "has_true_band": true,
+      "p1": 0.75,
+      "p_qualified": {
+        "current_target_0.625": 0.14765,
+        "highest_qualifying": 0.7778,
+        "midpoint_0.80_gap0.25_calibrated": 0.58145,
+        "oracle_knows_true_p": 0.5933,
+        "window_midpoint_0.775": 0.73105
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 4871,
+          "2": 8147,
+          "3": 6740
+        },
+        "highest_qualifying": {
+          "1": 8049,
+          "2": 7311,
+          "3": 4398
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 13062,
+          "2": 4740,
+          "3": 1956
+        },
+        "oracle_knows_true_p": {
+          "1": 19758,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 12454,
+          "2": 5101,
+          "3": 2203
+        }
+      },
+      "selector_agreement_same_level": 0.13055,
+      "selector_agreement_same_verdict": 0.3873,
+      "true_levels_inside_effective_window": [
+        1
+      ],
+      "true_profile_L1_L3": [
+        0.75,
+        0.675,
+        0.6224999999999999
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 2953,
+          "VOID_CEILING": 2,
+          "VOID_INSTRUMENT_LIMIT": 242,
+          "VOID_NEGATIVE_CONTROL": 16211,
+          "VOID_POSITION": 579,
+          "VOID_POSITION_SHARE": 13
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 15556,
+          "VOID_CEILING": 2,
+          "VOID_INSTRUMENT_LIMIT": 242,
+          "VOID_NEGATIVE_CONTROL": 4093,
+          "VOID_POSITION": 105,
+          "VOID_POSITION_SHARE": 2
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 11629,
+          "VOID_CEILING": 1444,
+          "VOID_INSTRUMENT_LIMIT": 242,
+          "VOID_NEGATIVE_CONTROL": 5000,
+          "VOID_POSITION": 1685
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 11866,
+          "VOID_CEILING": 2349,
+          "VOID_INSTRUMENT_LIMIT": 242,
+          "VOID_NEGATIVE_CONTROL": 4609,
+          "VOID_POSITION": 918,
+          "VOID_POSITION_SHARE": 16
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 14621,
+          "VOID_CEILING": 891,
+          "VOID_INSTRUMENT_LIMIT": 242,
+          "VOID_NEGATIVE_CONTROL": 2017,
+          "VOID_POSITION": 2218,
+          "VOID_POSITION_SHARE": 11
+        }
+      }
+    },
+    {
+      "decay": 0.5,
+      "explicit_p0": 0.98,
+      "has_true_band": true,
+      "p1": 0.75,
+      "p_qualified": {
+        "current_target_0.625": 0.11955,
+        "highest_qualifying": 0.6896,
+        "midpoint_0.80_gap0.25_calibrated": 0.5079,
+        "oracle_knows_true_p": 0.5984,
+        "window_midpoint_0.775": 0.6624
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 5007,
+          "2": 9556,
+          "3": 5179
+        },
+        "highest_qualifying": {
+          "1": 11809,
+          "2": 5569,
+          "3": 2364
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 15821,
+          "2": 2955,
+          "3": 966
+        },
+        "oracle_knows_true_p": {
+          "1": 19742,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 15245,
+          "2": 3352,
+          "3": 1145
+        }
+      },
+      "selector_agreement_same_level": 0.1995,
+      "selector_agreement_same_verdict": 0.43905,
+      "true_levels_inside_effective_window": [
+        1
+      ],
+      "true_profile_L1_L3": [
+        0.75,
+        0.625,
+        0.5625
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 2391,
+          "VOID_CEILING": 2,
+          "VOID_INSTRUMENT_LIMIT": 258,
+          "VOID_NEGATIVE_CONTROL": 16794,
+          "VOID_POSITION": 547,
+          "VOID_POSITION_SHARE": 8
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 13792,
+          "VOID_CEILING": 2,
+          "VOID_INSTRUMENT_LIMIT": 258,
+          "VOID_NEGATIVE_CONTROL": 5767,
+          "VOID_POSITION": 176,
+          "VOID_POSITION_SHARE": 5
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 10158,
+          "VOID_CEILING": 1768,
+          "VOID_INSTRUMENT_LIMIT": 258,
+          "VOID_NEGATIVE_CONTROL": 6455,
+          "VOID_POSITION": 1361
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 11968,
+          "VOID_CEILING": 2274,
+          "VOID_INSTRUMENT_LIMIT": 258,
+          "VOID_NEGATIVE_CONTROL": 4581,
+          "VOID_POSITION": 905,
+          "VOID_POSITION_SHARE": 14
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 13248,
+          "VOID_CEILING": 1343,
+          "VOID_INSTRUMENT_LIMIT": 258,
+          "VOID_NEGATIVE_CONTROL": 3176,
+          "VOID_POSITION": 1959,
+          "VOID_POSITION_SHARE": 16
+        }
+      }
+    },
+    {
+      "decay": 0.3,
+      "explicit_p0": 0.98,
+      "has_true_band": true,
+      "p1": 0.75,
+      "p_qualified": {
+        "current_target_0.625": 0.13175,
+        "highest_qualifying": 0.6424,
+        "midpoint_0.80_gap0.25_calibrated": 0.4787,
+        "oracle_knows_true_p": 0.59885,
+        "window_midpoint_0.775": 0.6287
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 5843,
+          "2": 9396,
+          "3": 4529
+        },
+        "highest_qualifying": {
+          "1": 14027,
+          "2": 4012,
+          "3": 1729
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 17611,
+          "2": 1588,
+          "3": 569
+        },
+        "oracle_knows_true_p": {
+          "1": 19768,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 17239,
+          "2": 1862,
+          "3": 667
+        }
+      },
+      "selector_agreement_same_level": 0.27955,
+      "selector_agreement_same_verdict": 0.48995,
+      "true_levels_inside_effective_window": [
+        1
+      ],
+      "true_profile_L1_L3": [
+        0.75,
+        0.575,
+        0.5225
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 2635,
+          "VOID_CEILING": 8,
+          "VOID_INSTRUMENT_LIMIT": 232,
+          "VOID_NEGATIVE_CONTROL": 16556,
+          "VOID_POSITION": 553,
+          "VOID_POSITION_SHARE": 16
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 12848,
+          "VOID_CEILING": 8,
+          "VOID_INSTRUMENT_LIMIT": 232,
+          "VOID_NEGATIVE_CONTROL": 6631,
+          "VOID_POSITION": 272,
+          "VOID_POSITION_SHARE": 9
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 9574,
+          "VOID_CEILING": 1922,
+          "VOID_INSTRUMENT_LIMIT": 232,
+          "VOID_NEGATIVE_CONTROL": 7218,
+          "VOID_POSITION": 1054
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 11977,
+          "VOID_CEILING": 2195,
+          "VOID_FLOOR": 1,
+          "VOID_INSTRUMENT_LIMIT": 232,
+          "VOID_NEGATIVE_CONTROL": 4589,
+          "VOID_POSITION": 989,
+          "VOID_POSITION_SHARE": 17
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 12574,
+          "VOID_CEILING": 1644,
+          "VOID_INSTRUMENT_LIMIT": 232,
+          "VOID_NEGATIVE_CONTROL": 3931,
+          "VOID_POSITION": 1601,
+          "VOID_POSITION_SHARE": 18
+        }
+      }
+    },
+    {
+      "decay": 0.9,
+      "explicit_p0": 0.98,
+      "has_true_band": true,
+      "p1": 0.7,
+      "p_qualified": {
+        "current_target_0.625": 0.12995,
+        "highest_qualifying": 0.74055,
+        "midpoint_0.80_gap0.25_calibrated": 0.5123,
+        "oracle_knows_true_p": 0.4343,
+        "window_midpoint_0.775": 0.6715
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 7753,
+          "2": 6584,
+          "3": 5425
+        },
+        "highest_qualifying": {
+          "1": 6379,
+          "2": 6689,
+          "3": 6694
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 9506,
+          "2": 6226,
+          "3": 4030
+        },
+        "oracle_knows_true_p": {
+          "1": 19762,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 9428,
+          "2": 6275,
+          "3": 4059
+        }
+      },
+      "selector_agreement_same_level": 0.1303,
+      "selector_agreement_same_verdict": 0.42195,
+      "true_levels_inside_effective_window": [
+        1
+      ],
+      "true_profile_L1_L3": [
+        0.7,
+        0.6799999999999999,
+        0.6619999999999999
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 2599,
+          "VOID_INSTRUMENT_LIMIT": 238,
+          "VOID_NEGATIVE_CONTROL": 16580,
+          "VOID_POSITION": 569,
+          "VOID_POSITION_SHARE": 14
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 14811,
+          "VOID_INSTRUMENT_LIMIT": 238,
+          "VOID_NEGATIVE_CONTROL": 4852,
+          "VOID_POSITION": 96,
+          "VOID_POSITION_SHARE": 3
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 10246,
+          "VOID_CEILING": 726,
+          "VOID_INSTRUMENT_LIMIT": 238,
+          "VOID_NEGATIVE_CONTROL": 6387,
+          "VOID_POSITION": 2403
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 8686,
+          "VOID_CEILING": 781,
+          "VOID_FLOOR": 4,
+          "VOID_INSTRUMENT_LIMIT": 238,
+          "VOID_NEGATIVE_CONTROL": 8653,
+          "VOID_POSITION": 1625,
+          "VOID_POSITION_SHARE": 13
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 13430,
+          "VOID_CEILING": 420,
+          "VOID_INSTRUMENT_LIMIT": 238,
+          "VOID_NEGATIVE_CONTROL": 2743,
+          "VOID_POSITION": 3152,
+          "VOID_POSITION_SHARE": 17
+        }
+      }
+    },
+    {
+      "decay": 0.7,
+      "explicit_p0": 0.98,
+      "has_true_band": true,
+      "p1": 0.7,
+      "p_qualified": {
+        "current_target_0.625": 0.09165,
+        "highest_qualifying": 0.606,
+        "midpoint_0.80_gap0.25_calibrated": 0.3933,
+        "oracle_knows_true_p": 0.4295,
+        "window_midpoint_0.775": 0.56645
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 7423,
+          "2": 7346,
+          "3": 4990
+        },
+        "highest_qualifying": {
+          "1": 9864,
+          "2": 6251,
+          "3": 3644
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 12511,
+          "2": 4914,
+          "3": 2334
+        },
+        "oracle_knows_true_p": {
+          "1": 19759,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 12290,
+          "2": 5023,
+          "3": 2446
+        }
+      },
+      "selector_agreement_same_level": 0.22635,
+      "selector_agreement_same_verdict": 0.5007,
+      "true_levels_inside_effective_window": [
+        1
+      ],
+      "true_profile_L1_L3": [
+        0.7,
+        0.6399999999999999,
+        0.598
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 1833,
+          "VOID_INSTRUMENT_LIMIT": 241,
+          "VOID_NEGATIVE_CONTROL": 17414,
+          "VOID_POSITION": 505,
+          "VOID_POSITION_SHARE": 7
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 12120,
+          "VOID_INSTRUMENT_LIMIT": 241,
+          "VOID_NEGATIVE_CONTROL": 7487,
+          "VOID_POSITION": 151,
+          "VOID_POSITION_SHARE": 1
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 7866,
+          "VOID_CEILING": 731,
+          "VOID_INSTRUMENT_LIMIT": 241,
+          "VOID_NEGATIVE_CONTROL": 9096,
+          "VOID_POSITION": 2066
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 8590,
+          "VOID_CEILING": 874,
+          "VOID_FLOOR": 5,
+          "VOID_INSTRUMENT_LIMIT": 241,
+          "VOID_NEGATIVE_CONTROL": 8652,
+          "VOID_POSITION": 1623,
+          "VOID_POSITION_SHARE": 15
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 11329,
+          "VOID_CEILING": 517,
+          "VOID_INSTRUMENT_LIMIT": 241,
+          "VOID_NEGATIVE_CONTROL": 4915,
+          "VOID_POSITION": 2981,
+          "VOID_POSITION_SHARE": 17
+        }
+      }
+    },
+    {
+      "decay": 0.5,
+      "explicit_p0": 0.98,
+      "has_true_band": true,
+      "p1": 0.7,
+      "p_qualified": {
+        "current_target_0.625": 0.0971,
+        "highest_qualifying": 0.5236,
+        "midpoint_0.80_gap0.25_calibrated": 0.3336,
+        "oracle_knows_true_p": 0.43025,
+        "window_midpoint_0.775": 0.5014
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 8012,
+          "2": 7561,
+          "3": 4168
+        },
+        "highest_qualifying": {
+          "1": 12436,
+          "2": 4929,
+          "3": 2376
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 14807,
+          "2": 3495,
+          "3": 1439
+        },
+        "oracle_knows_true_p": {
+          "1": 19741,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 14635,
+          "2": 3605,
+          "3": 1501
+        }
+      },
+      "selector_agreement_same_level": 0.33625,
+      "selector_agreement_same_verdict": 0.5812,
+      "true_levels_inside_effective_window": [
+        1
+      ],
+      "true_profile_L1_L3": [
+        0.7,
+        0.6,
+        0.55
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 1942,
+          "VOID_INSTRUMENT_LIMIT": 259,
+          "VOID_NEGATIVE_CONTROL": 17217,
+          "VOID_POSITION": 569,
+          "VOID_POSITION_SHARE": 13
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 10472,
+          "VOID_INSTRUMENT_LIMIT": 259,
+          "VOID_NEGATIVE_CONTROL": 8987,
+          "VOID_POSITION": 272,
+          "VOID_POSITION_SHARE": 10
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 6672,
+          "VOID_CEILING": 779,
+          "VOID_INSTRUMENT_LIMIT": 259,
+          "VOID_NEGATIVE_CONTROL": 10597,
+          "VOID_POSITION": 1693
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 8605,
+          "VOID_CEILING": 876,
+          "VOID_FLOOR": 4,
+          "VOID_INSTRUMENT_LIMIT": 259,
+          "VOID_NEGATIVE_CONTROL": 8571,
+          "VOID_POSITION": 1668,
+          "VOID_POSITION_SHARE": 17
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 10028,
+          "VOID_CEILING": 633,
+          "VOID_INSTRUMENT_LIMIT": 259,
+          "VOID_NEGATIVE_CONTROL": 6391,
+          "VOID_POSITION": 2666,
+          "VOID_POSITION_SHARE": 23
+        }
+      }
+    },
+    {
+      "decay": 0.3,
+      "explicit_p0": 0.98,
+      "has_true_band": true,
+      "p1": 0.7,
+      "p_qualified": {
+        "current_target_0.625": 0.1172,
+        "highest_qualifying": 0.4829,
+        "midpoint_0.80_gap0.25_calibrated": 0.31545,
+        "oracle_knows_true_p": 0.4345,
+        "window_midpoint_0.775": 0.47235
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 8987,
+          "2": 7008,
+          "3": 3768
+        },
+        "highest_qualifying": {
+          "1": 14198,
+          "2": 3681,
+          "3": 1884
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 16371,
+          "2": 2277,
+          "3": 1115
+        },
+        "oracle_knows_true_p": {
+          "1": 19763,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 16242,
+          "2": 2369,
+          "3": 1152
+        }
+      },
+      "selector_agreement_same_level": 0.43375,
+      "selector_agreement_same_verdict": 0.63515,
+      "true_levels_inside_effective_window": [
+        1
+      ],
+      "true_profile_L1_L3": [
+        0.7,
+        0.5599999999999999,
+        0.518
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 2344,
+          "VOID_CEILING": 6,
+          "VOID_FLOOR": 1,
+          "VOID_INSTRUMENT_LIMIT": 237,
+          "VOID_NEGATIVE_CONTROL": 16844,
+          "VOID_POSITION": 559,
+          "VOID_POSITION_SHARE": 9
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 9658,
+          "VOID_CEILING": 6,
+          "VOID_FLOOR": 1,
+          "VOID_INSTRUMENT_LIMIT": 237,
+          "VOID_NEGATIVE_CONTROL": 9714,
+          "VOID_POSITION": 376,
+          "VOID_POSITION_SHARE": 8
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 6309,
+          "VOID_CEILING": 802,
+          "VOID_INSTRUMENT_LIMIT": 237,
+          "VOID_NEGATIVE_CONTROL": 11261,
+          "VOID_POSITION": 1391
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 8690,
+          "VOID_CEILING": 853,
+          "VOID_FLOOR": 3,
+          "VOID_INSTRUMENT_LIMIT": 237,
+          "VOID_NEGATIVE_CONTROL": 8596,
+          "VOID_POSITION": 1606,
+          "VOID_POSITION_SHARE": 15
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 9447,
+          "VOID_CEILING": 698,
+          "VOID_INSTRUMENT_LIMIT": 237,
+          "VOID_NEGATIVE_CONTROL": 7363,
+          "VOID_POSITION": 2240,
+          "VOID_POSITION_SHARE": 15
+        }
+      }
+    },
+    {
+      "decay": 0.9,
+      "explicit_p0": 0.98,
+      "has_true_band": false,
+      "p1": 0.65,
+      "p_qualified": {
+        "current_target_0.625": 0.0609,
+        "highest_qualifying": 0.50545,
+        "midpoint_0.80_gap0.25_calibrated": 0.29325,
+        "oracle_knows_true_p": 0.251,
+        "window_midpoint_0.775": 0.4657
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 8968,
+          "2": 6326,
+          "3": 4498
+        },
+        "highest_qualifying": {
+          "1": 8269,
+          "2": 6348,
+          "3": 5175
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 9147,
+          "2": 6231,
+          "3": 4414
+        },
+        "oracle_knows_true_p": {
+          "1": 19792,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 9141,
+          "2": 6225,
+          "3": 4426
+        }
+      },
+      "selector_agreement_same_level": 0.27325,
+      "selector_agreement_same_verdict": 0.5759,
+      "true_levels_inside_effective_window": [],
+      "true_profile_L1_L3": [
+        0.65,
+        0.635,
+        0.6215
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 1218,
+          "VOID_INSTRUMENT_LIMIT": 208,
+          "VOID_NEGATIVE_CONTROL": 18058,
+          "VOID_POSITION": 507,
+          "VOID_POSITION_SHARE": 9
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 10109,
+          "VOID_INSTRUMENT_LIMIT": 208,
+          "VOID_NEGATIVE_CONTROL": 9482,
+          "VOID_POSITION": 200,
+          "VOID_POSITION_SHARE": 1
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 5865,
+          "VOID_CEILING": 387,
+          "VOID_INSTRUMENT_LIMIT": 208,
+          "VOID_NEGATIVE_CONTROL": 11304,
+          "VOID_POSITION": 2236
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 5020,
+          "VOID_CEILING": 255,
+          "VOID_FLOOR": 34,
+          "VOID_INSTRUMENT_LIMIT": 208,
+          "VOID_NEGATIVE_CONTROL": 12733,
+          "VOID_POSITION": 1731,
+          "VOID_POSITION_SHARE": 19
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 9314,
+          "VOID_CEILING": 269,
+          "VOID_INSTRUMENT_LIMIT": 208,
+          "VOID_NEGATIVE_CONTROL": 6655,
+          "VOID_POSITION": 3531,
+          "VOID_POSITION_SHARE": 23
+        }
+      }
+    },
+    {
+      "decay": 0.7,
+      "explicit_p0": 0.98,
+      "has_true_band": false,
+      "p1": 0.65,
+      "p_qualified": {
+        "current_target_0.625": 0.0626,
+        "highest_qualifying": 0.4047,
+        "midpoint_0.80_gap0.25_calibrated": 0.22365,
+        "oracle_knows_true_p": 0.25695,
+        "window_midpoint_0.775": 0.37845
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 9234,
+          "2": 6400,
+          "3": 4107
+        },
+        "highest_qualifying": {
+          "1": 10491,
+          "2": 5716,
+          "3": 3534
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 11550,
+          "2": 5229,
+          "3": 2962
+        },
+        "oracle_knows_true_p": {
+          "1": 19741,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 11508,
+          "2": 5246,
+          "3": 2987
+        }
+      },
+      "selector_agreement_same_level": 0.40475,
+      "selector_agreement_same_verdict": 0.67025,
+      "true_levels_inside_effective_window": [],
+      "true_profile_L1_L3": [
+        0.65,
+        0.605,
+        0.5735
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 1252,
+          "VOID_INSTRUMENT_LIMIT": 259,
+          "VOID_NEGATIVE_CONTROL": 17990,
+          "VOID_POSITION": 493,
+          "VOID_POSITION_SHARE": 6
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 8094,
+          "VOID_INSTRUMENT_LIMIT": 259,
+          "VOID_NEGATIVE_CONTROL": 11371,
+          "VOID_POSITION": 273,
+          "VOID_POSITION_SHARE": 3
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 4473,
+          "VOID_CEILING": 279,
+          "VOID_INSTRUMENT_LIMIT": 259,
+          "VOID_NEGATIVE_CONTROL": 13135,
+          "VOID_POSITION": 1854
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 5139,
+          "VOID_CEILING": 267,
+          "VOID_FLOOR": 25,
+          "VOID_INSTRUMENT_LIMIT": 259,
+          "VOID_NEGATIVE_CONTROL": 12601,
+          "VOID_POSITION": 1695,
+          "VOID_POSITION_SHARE": 14
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 7569,
+          "VOID_CEILING": 224,
+          "VOID_INSTRUMENT_LIMIT": 259,
+          "VOID_NEGATIVE_CONTROL": 8840,
+          "VOID_POSITION": 3088,
+          "VOID_POSITION_SHARE": 20
+        }
+      }
+    },
+    {
+      "decay": 0.5,
+      "explicit_p0": 0.98,
+      "has_true_band": false,
+      "p1": 0.65,
+      "p_qualified": {
+        "current_target_0.625": 0.06845,
+        "highest_qualifying": 0.33725,
+        "midpoint_0.80_gap0.25_calibrated": 0.18605,
+        "oracle_knows_true_p": 0.2492,
+        "window_midpoint_0.775": 0.32345
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 10014,
+          "2": 6251,
+          "3": 3508
+        },
+        "highest_qualifying": {
+          "1": 12091,
+          "2": 4996,
+          "3": 2686
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 13246,
+          "2": 4331,
+          "3": 2196
+        },
+        "oracle_knows_true_p": {
+          "1": 19773,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 13206,
+          "2": 4360,
+          "3": 2207
+        }
+      },
+      "selector_agreement_same_level": 0.512,
+      "selector_agreement_same_verdict": 0.7364,
+      "true_levels_inside_effective_window": [],
+      "true_profile_L1_L3": [
+        0.65,
+        0.575,
+        0.5375
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 1369,
+          "VOID_CEILING": 1,
+          "VOID_INSTRUMENT_LIMIT": 227,
+          "VOID_NEGATIVE_CONTROL": 17864,
+          "VOID_POSITION": 534,
+          "VOID_POSITION_SHARE": 5
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 6745,
+          "VOID_CEILING": 1,
+          "VOID_INSTRUMENT_LIMIT": 227,
+          "VOID_NEGATIVE_CONTROL": 12633,
+          "VOID_POSITION": 391,
+          "VOID_POSITION_SHARE": 3
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 3721,
+          "VOID_CEILING": 258,
+          "VOID_INSTRUMENT_LIMIT": 227,
+          "VOID_NEGATIVE_CONTROL": 14280,
+          "VOID_POSITION": 1514
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 4984,
+          "VOID_CEILING": 259,
+          "VOID_FLOOR": 28,
+          "VOID_INSTRUMENT_LIMIT": 227,
+          "VOID_NEGATIVE_CONTROL": 12761,
+          "VOID_POSITION": 1728,
+          "VOID_POSITION_SHARE": 13
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 6469,
+          "VOID_CEILING": 230,
+          "VOID_INSTRUMENT_LIMIT": 227,
+          "VOID_NEGATIVE_CONTROL": 10334,
+          "VOID_POSITION": 2722,
+          "VOID_POSITION_SHARE": 18
+        }
+      }
+    },
+    {
+      "decay": 0.3,
+      "explicit_p0": 0.98,
+      "has_true_band": false,
+      "p1": 0.65,
+      "p_qualified": {
+        "current_target_0.625": 0.08375,
+        "highest_qualifying": 0.3105,
+        "midpoint_0.80_gap0.25_calibrated": 0.17135,
+        "oracle_knows_true_p": 0.2595,
+        "window_midpoint_0.775": 0.30175
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 10936,
+          "2": 5578,
+          "3": 3263
+        },
+        "highest_qualifying": {
+          "1": 13591,
+          "2": 3976,
+          "3": 2210
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 14724,
+          "2": 3263,
+          "3": 1790
+        },
+        "oracle_knows_true_p": {
+          "1": 19777,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 14691,
+          "2": 3284,
+          "3": 1802
+        }
+      },
+      "selector_agreement_same_level": 0.59705,
+      "selector_agreement_same_verdict": 0.7745,
+      "true_levels_inside_effective_window": [],
+      "true_profile_L1_L3": [
+        0.65,
+        0.545,
+        0.5135
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 1675,
+          "VOID_CEILING": 1,
+          "VOID_INSTRUMENT_LIMIT": 223,
+          "VOID_NEGATIVE_CONTROL": 17466,
+          "VOID_POSITION": 627,
+          "VOID_POSITION_SHARE": 8
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 6210,
+          "VOID_CEILING": 1,
+          "VOID_INSTRUMENT_LIMIT": 223,
+          "VOID_NEGATIVE_CONTROL": 13043,
+          "VOID_POSITION": 518,
+          "VOID_POSITION_SHARE": 5
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 3427,
+          "VOID_CEILING": 235,
+          "VOID_INSTRUMENT_LIMIT": 223,
+          "VOID_NEGATIVE_CONTROL": 14803,
+          "VOID_POSITION": 1312
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 5190,
+          "VOID_CEILING": 237,
+          "VOID_FLOOR": 36,
+          "VOID_INSTRUMENT_LIMIT": 223,
+          "VOID_NEGATIVE_CONTROL": 12584,
+          "VOID_POSITION": 1717,
+          "VOID_POSITION_SHARE": 13
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 6035,
+          "VOID_CEILING": 205,
+          "VOID_INSTRUMENT_LIMIT": 223,
+          "VOID_NEGATIVE_CONTROL": 11147,
+          "VOID_POSITION": 2374,
+          "VOID_POSITION_SHARE": 16
+        }
+      }
+    },
+    {
+      "decay": 0.9,
+      "explicit_p0": 0.98,
+      "has_true_band": false,
+      "p1": 0.625,
+      "p_qualified": {
+        "current_target_0.625": 0.04885,
+        "highest_qualifying": 0.38755,
+        "midpoint_0.80_gap0.25_calibrated": 0.2125,
+        "oracle_knows_true_p": 0.17865,
+        "window_midpoint_0.775": 0.36045
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 9178,
+          "2": 6194,
+          "3": 4368
+        },
+        "highest_qualifying": {
+          "1": 8686,
+          "2": 6149,
+          "3": 4905
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 8842,
+          "2": 6257,
+          "3": 4641
+        },
+        "oracle_knows_true_p": {
+          "1": 19740,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 8828,
+          "2": 6274,
+          "3": 4638
+        }
+      },
+      "selector_agreement_same_level": 0.3868,
+      "selector_agreement_same_verdict": 0.6755,
+      "true_levels_inside_effective_window": [],
+      "true_profile_L1_L3": [
+        0.625,
+        0.6125,
+        0.6012500000000001
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 977,
+          "VOID_INSTRUMENT_LIMIT": 260,
+          "VOID_NEGATIVE_CONTROL": 18320,
+          "VOID_POSITION": 436,
+          "VOID_POSITION_SHARE": 7
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 7751,
+          "VOID_INSTRUMENT_LIMIT": 260,
+          "VOID_NEGATIVE_CONTROL": 11750,
+          "VOID_POSITION": 236,
+          "VOID_POSITION_SHARE": 3
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 4250,
+          "VOID_CEILING": 227,
+          "VOID_INSTRUMENT_LIMIT": 260,
+          "VOID_NEGATIVE_CONTROL": 13322,
+          "VOID_POSITION": 1941
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 3573,
+          "VOID_CEILING": 145,
+          "VOID_FLOOR": 65,
+          "VOID_INSTRUMENT_LIMIT": 260,
+          "VOID_NEGATIVE_CONTROL": 14410,
+          "VOID_POSITION": 1540,
+          "VOID_POSITION_SHARE": 7
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 7209,
+          "VOID_CEILING": 181,
+          "VOID_INSTRUMENT_LIMIT": 260,
+          "VOID_NEGATIVE_CONTROL": 8941,
+          "VOID_POSITION": 3388,
+          "VOID_POSITION_SHARE": 21
+        }
+      }
+    },
+    {
+      "decay": 0.7,
+      "explicit_p0": 0.98,
+      "has_true_band": false,
+      "p1": 0.625,
+      "p_qualified": {
+        "current_target_0.625": 0.0519,
+        "highest_qualifying": 0.3075,
+        "midpoint_0.80_gap0.25_calibrated": 0.15805,
+        "oracle_knows_true_p": 0.1844,
+        "window_midpoint_0.775": 0.29205
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 9782,
+          "2": 6088,
+          "3": 3912
+        },
+        "highest_qualifying": {
+          "1": 10554,
+          "2": 5678,
+          "3": 3550
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 10890,
+          "2": 5594,
+          "3": 3298
+        },
+        "oracle_knows_true_p": {
+          "1": 19782,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 10881,
+          "2": 5599,
+          "3": 3302
+        }
+      },
+      "selector_agreement_same_level": 0.5045,
+      "selector_agreement_same_verdict": 0.75135,
+      "true_levels_inside_effective_window": [],
+      "true_profile_L1_L3": [
+        0.625,
+        0.5875,
+        0.56125
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 1038,
+          "VOID_INSTRUMENT_LIMIT": 218,
+          "VOID_NEGATIVE_CONTROL": 18211,
+          "VOID_POSITION": 528,
+          "VOID_POSITION_SHARE": 5
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 6150,
+          "VOID_INSTRUMENT_LIMIT": 218,
+          "VOID_NEGATIVE_CONTROL": 13260,
+          "VOID_POSITION": 368,
+          "VOID_POSITION_SHARE": 4
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 3161,
+          "VOID_CEILING": 153,
+          "VOID_INSTRUMENT_LIMIT": 218,
+          "VOID_NEGATIVE_CONTROL": 14862,
+          "VOID_POSITION": 1606
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 3688,
+          "VOID_CEILING": 133,
+          "VOID_FLOOR": 83,
+          "VOID_INSTRUMENT_LIMIT": 218,
+          "VOID_NEGATIVE_CONTROL": 14281,
+          "VOID_POSITION": 1582,
+          "VOID_POSITION_SHARE": 15
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 5841,
+          "VOID_CEILING": 128,
+          "VOID_INSTRUMENT_LIMIT": 218,
+          "VOID_NEGATIVE_CONTROL": 10831,
+          "VOID_POSITION": 2958,
+          "VOID_POSITION_SHARE": 24
+        }
+      }
+    },
+    {
+      "decay": 0.5,
+      "explicit_p0": 0.98,
+      "has_true_band": false,
+      "p1": 0.625,
+      "p_qualified": {
+        "current_target_0.625": 0.0572,
+        "highest_qualifying": 0.25865,
+        "midpoint_0.80_gap0.25_calibrated": 0.1306,
+        "oracle_knows_true_p": 0.17705,
+        "window_midpoint_0.775": 0.2485
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 10613,
+          "2": 5741,
+          "3": 3414
+        },
+        "highest_qualifying": {
+          "1": 11792,
+          "2": 5095,
+          "3": 2881
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 12384,
+          "2": 4702,
+          "3": 2682
+        },
+        "oracle_knows_true_p": {
+          "1": 19768,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 12352,
+          "2": 4723,
+          "3": 2693
+        }
+      },
+      "selector_agreement_same_level": 0.6026,
+      "selector_agreement_same_verdict": 0.8027,
+      "true_levels_inside_effective_window": [],
+      "true_profile_L1_L3": [
+        0.625,
+        0.5625,
+        0.53125
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 1144,
+          "VOID_CEILING": 1,
+          "VOID_INSTRUMENT_LIMIT": 232,
+          "VOID_NEGATIVE_CONTROL": 18049,
+          "VOID_POSITION": 568,
+          "VOID_POSITION_SHARE": 6
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 5173,
+          "VOID_CEILING": 1,
+          "VOID_INSTRUMENT_LIMIT": 232,
+          "VOID_NEGATIVE_CONTROL": 14144,
+          "VOID_POSITION": 447,
+          "VOID_POSITION_SHARE": 3
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 2612,
+          "VOID_CEILING": 155,
+          "VOID_INSTRUMENT_LIMIT": 232,
+          "VOID_NEGATIVE_CONTROL": 15731,
+          "VOID_POSITION": 1270
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 3541,
+          "VOID_CEILING": 147,
+          "VOID_FLOOR": 79,
+          "VOID_INSTRUMENT_LIMIT": 232,
+          "VOID_NEGATIVE_CONTROL": 14462,
+          "VOID_POSITION": 1528,
+          "VOID_POSITION_SHARE": 11
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 4970,
+          "VOID_CEILING": 134,
+          "VOID_INSTRUMENT_LIMIT": 232,
+          "VOID_NEGATIVE_CONTROL": 12164,
+          "VOID_POSITION": 2484,
+          "VOID_POSITION_SHARE": 16
+        }
+      }
+    },
+    {
+      "decay": 0.3,
+      "explicit_p0": 0.98,
+      "has_true_band": false,
+      "p1": 0.625,
+      "p_qualified": {
+        "current_target_0.625": 0.0656,
+        "highest_qualifying": 0.22865,
+        "midpoint_0.80_gap0.25_calibrated": 0.1157,
+        "oracle_knows_true_p": 0.1809,
+        "window_midpoint_0.775": 0.2228
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 11378,
+          "2": 5167,
+          "3": 3206
+        },
+        "highest_qualifying": {
+          "1": 12910,
+          "2": 4294,
+          "3": 2547
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 13617,
+          "2": 3871,
+          "3": 2263
+        },
+        "oracle_knows_true_p": {
+          "1": 19751,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 13607,
+          "2": 3877,
+          "3": 2267
+        }
+      },
+      "selector_agreement_same_level": 0.6731,
+      "selector_agreement_same_verdict": 0.8387,
+      "true_levels_inside_effective_window": [],
+      "true_profile_L1_L3": [
+        0.625,
+        0.5375,
+        0.51125
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 1312,
+          "VOID_INSTRUMENT_LIMIT": 249,
+          "VOID_NEGATIVE_CONTROL": 17826,
+          "VOID_POSITION": 608,
+          "VOID_POSITION_SHARE": 5
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 4573,
+          "VOID_INSTRUMENT_LIMIT": 249,
+          "VOID_NEGATIVE_CONTROL": 14655,
+          "VOID_POSITION": 518,
+          "VOID_POSITION_SHARE": 5
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 2314,
+          "VOID_CEILING": 156,
+          "VOID_INSTRUMENT_LIMIT": 249,
+          "VOID_NEGATIVE_CONTROL": 16130,
+          "VOID_POSITION": 1151
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 3618,
+          "VOID_CEILING": 154,
+          "VOID_FLOOR": 77,
+          "VOID_INSTRUMENT_LIMIT": 249,
+          "VOID_NEGATIVE_CONTROL": 14371,
+          "VOID_POSITION": 1519,
+          "VOID_POSITION_SHARE": 12
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 4456,
+          "VOID_CEILING": 144,
+          "VOID_INSTRUMENT_LIMIT": 249,
+          "VOID_NEGATIVE_CONTROL": 12919,
+          "VOID_POSITION": 2216,
+          "VOID_POSITION_SHARE": 16
+        }
+      }
+    },
+    {
+      "decay": 0.9,
+      "explicit_p0": 0.98,
+      "has_true_band": false,
+      "p1": 0.6,
+      "p_qualified": {
+        "current_target_0.625": 0.0422,
+        "highest_qualifying": 0.27695,
+        "midpoint_0.80_gap0.25_calibrated": 0.13655,
+        "oracle_knows_true_p": 0.1202,
+        "window_midpoint_0.775": 0.2611
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 9228,
+          "2": 6257,
+          "3": 4286
+        },
+        "highest_qualifying": {
+          "1": 8879,
+          "2": 6197,
+          "3": 4695
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 8554,
+          "2": 6394,
+          "3": 4823
+        },
+        "oracle_knows_true_p": {
+          "1": 19771,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 8560,
+          "2": 6389,
+          "3": 4822
+        }
+      },
+      "selector_agreement_same_level": 0.5201,
+      "selector_agreement_same_verdict": 0.7719,
+      "true_levels_inside_effective_window": [],
+      "true_profile_L1_L3": [
+        0.6,
+        0.59,
+        0.581
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 844,
+          "VOID_INSTRUMENT_LIMIT": 229,
+          "VOID_NEGATIVE_CONTROL": 18469,
+          "VOID_POSITION": 454,
+          "VOID_POSITION_SHARE": 4
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 5539,
+          "VOID_INSTRUMENT_LIMIT": 229,
+          "VOID_NEGATIVE_CONTROL": 13903,
+          "VOID_POSITION": 325,
+          "VOID_POSITION_SHARE": 4
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 2731,
+          "VOID_CEILING": 141,
+          "VOID_INSTRUMENT_LIMIT": 229,
+          "VOID_NEGATIVE_CONTROL": 15347,
+          "VOID_POSITION": 1552
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 2404,
+          "VOID_CEILING": 79,
+          "VOID_FLOOR": 136,
+          "VOID_INSTRUMENT_LIMIT": 229,
+          "VOID_NEGATIVE_CONTROL": 15892,
+          "VOID_POSITION": 1253,
+          "VOID_POSITION_SHARE": 7
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 5222,
+          "VOID_CEILING": 112,
+          "VOID_INSTRUMENT_LIMIT": 229,
+          "VOID_NEGATIVE_CONTROL": 11477,
+          "VOID_POSITION": 2947,
+          "VOID_POSITION_SHARE": 13
+        }
+      }
+    },
+    {
+      "decay": 0.7,
+      "explicit_p0": 0.98,
+      "has_true_band": false,
+      "p1": 0.6,
+      "p_qualified": {
+        "current_target_0.625": 0.04485,
+        "highest_qualifying": 0.22185,
+        "midpoint_0.80_gap0.25_calibrated": 0.1066,
+        "oracle_knows_true_p": 0.1193,
+        "window_midpoint_0.775": 0.2117
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 9830,
+          "2": 6071,
+          "3": 3861
+        },
+        "highest_qualifying": {
+          "1": 10023,
+          "2": 5989,
+          "3": 3750
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 10101,
+          "2": 5850,
+          "3": 3811
+        },
+        "oracle_knows_true_p": {
+          "1": 19762,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 10094,
+          "2": 5851,
+          "3": 3817
+        }
+      },
+      "selector_agreement_same_level": 0.6161,
+      "selector_agreement_same_verdict": 0.82565,
+      "true_levels_inside_effective_window": [],
+      "true_profile_L1_L3": [
+        0.6,
+        0.57,
+        0.5489999999999999
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 897,
+          "VOID_INSTRUMENT_LIMIT": 238,
+          "VOID_NEGATIVE_CONTROL": 18389,
+          "VOID_POSITION": 469,
+          "VOID_POSITION_SHARE": 7
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 4437,
+          "VOID_INSTRUMENT_LIMIT": 238,
+          "VOID_NEGATIVE_CONTROL": 14940,
+          "VOID_POSITION": 378,
+          "VOID_POSITION_SHARE": 7
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 2132,
+          "VOID_CEILING": 103,
+          "VOID_INSTRUMENT_LIMIT": 238,
+          "VOID_NEGATIVE_CONTROL": 16313,
+          "VOID_POSITION": 1214
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 2386,
+          "VOID_CEILING": 64,
+          "VOID_FLOOR": 125,
+          "VOID_INSTRUMENT_LIMIT": 238,
+          "VOID_NEGATIVE_CONTROL": 15868,
+          "VOID_POSITION": 1311,
+          "VOID_POSITION_SHARE": 8
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 4234,
+          "VOID_CEILING": 87,
+          "VOID_INSTRUMENT_LIMIT": 238,
+          "VOID_NEGATIVE_CONTROL": 12967,
+          "VOID_POSITION": 2463,
+          "VOID_POSITION_SHARE": 11
+        }
+      }
+    },
+    {
+      "decay": 0.5,
+      "explicit_p0": 0.98,
+      "has_true_band": false,
+      "p1": 0.6,
+      "p_qualified": {
+        "current_target_0.625": 0.04895,
+        "highest_qualifying": 0.19515,
+        "midpoint_0.80_gap0.25_calibrated": 0.09265,
+        "oracle_knows_true_p": 0.1242,
+        "window_midpoint_0.775": 0.18835
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 10510,
+          "2": 5673,
+          "3": 3567
+        },
+        "highest_qualifying": {
+          "1": 11153,
+          "2": 5298,
+          "3": 3299
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 11512,
+          "2": 5026,
+          "3": 3212
+        },
+        "oracle_knows_true_p": {
+          "1": 19750,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 11499,
+          "2": 5032,
+          "3": 3219
+        }
+      },
+      "selector_agreement_same_level": 0.68695,
+      "selector_agreement_same_verdict": 0.8561,
+      "true_levels_inside_effective_window": [],
+      "true_profile_L1_L3": [
+        0.6,
+        0.55,
+        0.525
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 979,
+          "VOID_INSTRUMENT_LIMIT": 250,
+          "VOID_NEGATIVE_CONTROL": 18230,
+          "VOID_POSITION": 536,
+          "VOID_POSITION_SHARE": 5
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 3903,
+          "VOID_INSTRUMENT_LIMIT": 250,
+          "VOID_NEGATIVE_CONTROL": 15389,
+          "VOID_POSITION": 454,
+          "VOID_POSITION_SHARE": 4
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 1853,
+          "VOID_CEILING": 88,
+          "VOID_INSTRUMENT_LIMIT": 250,
+          "VOID_NEGATIVE_CONTROL": 16784,
+          "VOID_POSITION": 1025
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 2484,
+          "VOID_CEILING": 70,
+          "VOID_FLOOR": 143,
+          "VOID_INSTRUMENT_LIMIT": 250,
+          "VOID_NEGATIVE_CONTROL": 15781,
+          "VOID_POSITION": 1264,
+          "VOID_POSITION_SHARE": 8
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 3767,
+          "VOID_CEILING": 79,
+          "VOID_INSTRUMENT_LIMIT": 250,
+          "VOID_NEGATIVE_CONTROL": 13727,
+          "VOID_POSITION": 2169,
+          "VOID_POSITION_SHARE": 8
+        }
+      }
+    },
+    {
+      "decay": 0.3,
+      "explicit_p0": 0.98,
+      "has_true_band": false,
+      "p1": 0.6,
+      "p_qualified": {
+        "current_target_0.625": 0.05325,
+        "highest_qualifying": 0.17435,
+        "midpoint_0.80_gap0.25_calibrated": 0.08025,
+        "oracle_knows_true_p": 0.123,
+        "window_midpoint_0.775": 0.16965
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 11311,
+          "2": 5103,
+          "3": 3370
+        },
+        "highest_qualifying": {
+          "1": 12126,
+          "2": 4634,
+          "3": 3024
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 12534,
+          "2": 4392,
+          "3": 2858
+        },
+        "oracle_knows_true_p": {
+          "1": 19784,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 12528,
+          "2": 4393,
+          "3": 2863
+        }
+      },
+      "selector_agreement_same_level": 0.7446,
+      "selector_agreement_same_verdict": 0.8793,
+      "true_levels_inside_effective_window": [],
+      "true_profile_L1_L3": [
+        0.6,
+        0.53,
+        0.509
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 1065,
+          "VOID_CEILING": 1,
+          "VOID_INSTRUMENT_LIMIT": 216,
+          "VOID_NEGATIVE_CONTROL": 18135,
+          "VOID_POSITION": 580,
+          "VOID_POSITION_SHARE": 3
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 3487,
+          "VOID_CEILING": 1,
+          "VOID_INSTRUMENT_LIMIT": 216,
+          "VOID_NEGATIVE_CONTROL": 15763,
+          "VOID_POSITION": 530,
+          "VOID_POSITION_SHARE": 3
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 1605,
+          "VOID_CEILING": 74,
+          "VOID_INSTRUMENT_LIMIT": 216,
+          "VOID_NEGATIVE_CONTROL": 17233,
+          "VOID_POSITION": 872
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 2460,
+          "VOID_CEILING": 70,
+          "VOID_FLOOR": 162,
+          "VOID_INSTRUMENT_LIMIT": 216,
+          "VOID_NEGATIVE_CONTROL": 15810,
+          "VOID_POSITION": 1276,
+          "VOID_POSITION_SHARE": 6
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 3393,
+          "VOID_CEILING": 69,
+          "VOID_INSTRUMENT_LIMIT": 216,
+          "VOID_NEGATIVE_CONTROL": 14412,
+          "VOID_POSITION": 1900,
+          "VOID_POSITION_SHARE": 10
+        }
+      }
+    },
+    {
+      "decay": 0.9,
+      "explicit_p0": 0.98,
+      "has_true_band": false,
+      "p1": 0.55,
+      "p_qualified": {
+        "current_target_0.625": 0.03095,
+        "highest_qualifying": 0.1315,
+        "midpoint_0.80_gap0.25_calibrated": 0.0559,
+        "oracle_knows_true_p": 0.04995,
+        "window_midpoint_0.775": 0.12745
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 8871,
+          "2": 6214,
+          "3": 4663
+        },
+        "highest_qualifying": {
+          "1": 8705,
+          "2": 6221,
+          "3": 4822
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 8219,
+          "2": 6342,
+          "3": 5187
+        },
+        "oracle_knows_true_p": {
+          "1": 19748,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 8222,
+          "2": 6338,
+          "3": 5188
+        }
+      },
+      "selector_agreement_same_level": 0.75615,
+      "selector_agreement_same_verdict": 0.9012,
+      "true_levels_inside_effective_window": [],
+      "true_profile_L1_L3": [
+        0.55,
+        0.545,
+        0.5405
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 619,
+          "VOID_FLOOR": 2,
+          "VOID_INSTRUMENT_LIMIT": 252,
+          "VOID_NEGATIVE_CONTROL": 18704,
+          "VOID_POSITION": 417,
+          "VOID_POSITION_SHARE": 6
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 2630,
+          "VOID_FLOOR": 2,
+          "VOID_INSTRUMENT_LIMIT": 252,
+          "VOID_NEGATIVE_CONTROL": 16735,
+          "VOID_POSITION": 377,
+          "VOID_POSITION_SHARE": 4
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 1118,
+          "VOID_CEILING": 33,
+          "VOID_FLOOR": 2,
+          "VOID_INSTRUMENT_LIMIT": 252,
+          "VOID_NEGATIVE_CONTROL": 17904,
+          "VOID_POSITION": 691
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 999,
+          "VOID_CEILING": 9,
+          "VOID_FLOOR": 550,
+          "VOID_INSTRUMENT_LIMIT": 252,
+          "VOID_NEGATIVE_CONTROL": 17520,
+          "VOID_POSITION": 666,
+          "VOID_POSITION_SHARE": 4
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 2549,
+          "VOID_CEILING": 27,
+          "VOID_FLOOR": 2,
+          "VOID_INSTRUMENT_LIMIT": 252,
+          "VOID_NEGATIVE_CONTROL": 15432,
+          "VOID_POSITION": 1722,
+          "VOID_POSITION_SHARE": 16
+        }
+      }
+    },
+    {
+      "decay": 0.7,
+      "explicit_p0": 0.98,
+      "has_true_band": false,
+      "p1": 0.55,
+      "p_qualified": {
+        "current_target_0.625": 0.0318,
+        "highest_qualifying": 0.115,
+        "midpoint_0.80_gap0.25_calibrated": 0.04505,
+        "oracle_knows_true_p": 0.0516,
+        "window_midpoint_0.775": 0.11205
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 9347,
+          "2": 6011,
+          "3": 4407
+        },
+        "highest_qualifying": {
+          "1": 9279,
+          "2": 6030,
+          "3": 4456
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 8968,
+          "2": 6131,
+          "3": 4666
+        },
+        "oracle_knows_true_p": {
+          "1": 19765,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 8963,
+          "2": 6136,
+          "3": 4666
+        }
+      },
+      "selector_agreement_same_level": 0.79605,
+      "selector_agreement_same_verdict": 0.91825,
+      "true_levels_inside_effective_window": [],
+      "true_profile_L1_L3": [
+        0.55,
+        0.535,
+        0.5245
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 636,
+          "VOID_FLOOR": 2,
+          "VOID_INSTRUMENT_LIMIT": 235,
+          "VOID_NEGATIVE_CONTROL": 18690,
+          "VOID_POSITION": 431,
+          "VOID_POSITION_SHARE": 6
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 2300,
+          "VOID_FLOOR": 2,
+          "VOID_INSTRUMENT_LIMIT": 235,
+          "VOID_NEGATIVE_CONTROL": 17064,
+          "VOID_POSITION": 393,
+          "VOID_POSITION_SHARE": 6
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 901,
+          "VOID_CEILING": 39,
+          "VOID_FLOOR": 2,
+          "VOID_INSTRUMENT_LIMIT": 235,
+          "VOID_NEGATIVE_CONTROL": 18164,
+          "VOID_POSITION": 659
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 1032,
+          "VOID_CEILING": 25,
+          "VOID_FLOOR": 543,
+          "VOID_INSTRUMENT_LIMIT": 235,
+          "VOID_NEGATIVE_CONTROL": 17473,
+          "VOID_POSITION": 687,
+          "VOID_POSITION_SHARE": 5
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 2241,
+          "VOID_CEILING": 34,
+          "VOID_FLOOR": 2,
+          "VOID_INSTRUMENT_LIMIT": 235,
+          "VOID_NEGATIVE_CONTROL": 15893,
+          "VOID_POSITION": 1584,
+          "VOID_POSITION_SHARE": 11
+        }
+      }
+    },
+    {
+      "decay": 0.5,
+      "explicit_p0": 0.98,
+      "has_true_band": false,
+      "p1": 0.55,
+      "p_qualified": {
+        "current_target_0.625": 0.0316,
+        "highest_qualifying": 0.1061,
+        "midpoint_0.80_gap0.25_calibrated": 0.0427,
+        "oracle_knows_true_p": 0.05165,
+        "window_midpoint_0.775": 0.10355
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 9777,
+          "2": 5799,
+          "3": 4205
+        },
+        "highest_qualifying": {
+          "1": 9785,
+          "2": 5813,
+          "3": 4183
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 9598,
+          "2": 5896,
+          "3": 4287
+        },
+        "oracle_knows_true_p": {
+          "1": 19781,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 9598,
+          "2": 5897,
+          "3": 4286
+        }
+      },
+      "selector_agreement_same_level": 0.8207,
+      "selector_agreement_same_verdict": 0.92685,
+      "true_levels_inside_effective_window": [],
+      "true_profile_L1_L3": [
+        0.55,
+        0.525,
+        0.5125
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 632,
+          "VOID_INSTRUMENT_LIMIT": 219,
+          "VOID_NEGATIVE_CONTROL": 18702,
+          "VOID_POSITION": 443,
+          "VOID_POSITION_SHARE": 4
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 2122,
+          "VOID_INSTRUMENT_LIMIT": 219,
+          "VOID_NEGATIVE_CONTROL": 17237,
+          "VOID_POSITION": 418,
+          "VOID_POSITION_SHARE": 4
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 854,
+          "VOID_CEILING": 23,
+          "VOID_INSTRUMENT_LIMIT": 219,
+          "VOID_NEGATIVE_CONTROL": 18315,
+          "VOID_POSITION": 589
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 1033,
+          "VOID_CEILING": 12,
+          "VOID_FLOOR": 518,
+          "VOID_INSTRUMENT_LIMIT": 219,
+          "VOID_NEGATIVE_CONTROL": 17512,
+          "VOID_POSITION": 699,
+          "VOID_POSITION_SHARE": 7
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 2071,
+          "VOID_CEILING": 21,
+          "VOID_INSTRUMENT_LIMIT": 219,
+          "VOID_NEGATIVE_CONTROL": 16279,
+          "VOID_POSITION": 1399,
+          "VOID_POSITION_SHARE": 11
+        }
+      }
+    },
+    {
+      "decay": 0.3,
+      "explicit_p0": 0.98,
+      "has_true_band": false,
+      "p1": 0.55,
+      "p_qualified": {
+        "current_target_0.625": 0.0292,
+        "highest_qualifying": 0.0917,
+        "midpoint_0.80_gap0.25_calibrated": 0.03735,
+        "oracle_knows_true_p": 0.0491,
+        "window_midpoint_0.775": 0.08965
+      },
+      "replicates": 20000,
+      "selected_level_mix": {
+        "current_target_0.625": {
+          "1": 10184,
+          "2": 5578,
+          "3": 3989
+        },
+        "highest_qualifying": {
+          "1": 10223,
+          "2": 5553,
+          "3": 3975
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "1": 10083,
+          "2": 5580,
+          "3": 4088
+        },
+        "oracle_knows_true_p": {
+          "1": 19751,
+          "2": 0,
+          "3": 0
+        },
+        "window_midpoint_0.775": {
+          "1": 10081,
+          "2": 5581,
+          "3": 4089
+        }
+      },
+      "selector_agreement_same_level": 0.8454,
+      "selector_agreement_same_verdict": 0.93875,
+      "true_levels_inside_effective_window": [],
+      "true_profile_L1_L3": [
+        0.55,
+        0.515,
+        0.5045
+      ],
+      "verdict_mix": {
+        "current_target_0.625": {
+          "QUALIFIED": 584,
+          "VOID_CEILING": 2,
+          "VOID_FLOOR": 5,
+          "VOID_INSTRUMENT_LIMIT": 249,
+          "VOID_NEGATIVE_CONTROL": 18752,
+          "VOID_POSITION": 405,
+          "VOID_POSITION_SHARE": 3
+        },
+        "highest_qualifying": {
+          "QUALIFIED": 1834,
+          "VOID_CEILING": 2,
+          "VOID_FLOOR": 5,
+          "VOID_INSTRUMENT_LIMIT": 249,
+          "VOID_NEGATIVE_CONTROL": 17528,
+          "VOID_POSITION": 379,
+          "VOID_POSITION_SHARE": 3
+        },
+        "midpoint_0.80_gap0.25_calibrated": {
+          "QUALIFIED": 747,
+          "VOID_CEILING": 16,
+          "VOID_FLOOR": 5,
+          "VOID_INSTRUMENT_LIMIT": 249,
+          "VOID_NEGATIVE_CONTROL": 18466,
+          "VOID_POSITION": 517
+        },
+        "oracle_knows_true_p": {
+          "QUALIFIED": 982,
+          "VOID_CEILING": 13,
+          "VOID_FLOOR": 518,
+          "VOID_INSTRUMENT_LIMIT": 249,
+          "VOID_NEGATIVE_CONTROL": 17582,
+          "VOID_POSITION": 654,
+          "VOID_POSITION_SHARE": 2
+        },
+        "window_midpoint_0.775": {
+          "QUALIFIED": 1793,
+          "VOID_CEILING": 16,
+          "VOID_FLOOR": 5,
+          "VOID_INSTRUMENT_LIMIT": 249,
+          "VOID_NEGATIVE_CONTROL": 16667,
+          "VOID_POSITION": 1264,
+          "VOID_POSITION_SHARE": 6
+        }
+      }
+    }
+  ],
+  "window_midpoint": 0.7749999999999999,
+  "window_width_in_standard_errors_at_n24": 1.76
+}

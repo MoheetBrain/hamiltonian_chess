@@ -1,0 +1,1090 @@
+{
+  "generated_utc": "2026-09-07T05:21:06Z",
+  "schema_version": "user-reasoning-chain-inventory-v1",
+  "method": {
+    "mode": "READ-ONLY inventory. No LLM/model calls were made. No files outside the Arena parallel worktree were written. No processes were signalled.",
+    "procedure": [
+      "Read each repository's own self-description first (README.md, AGENTS.md, RESEARCH_STATE.md, STATUS.json, manifests/) to learn what it CLAIMS to contain.",
+      "Verified every claim against the actual files on disk: directory listings level by level, exact `wc -l` counts on JSONL where cheap, `du -sh` for sizes.",
+      "For every distinct format, loaded ONE real record and recorded the ACTUAL top-level keys. No schema in this file is guessed.",
+      "Established provenance from generator scripts and manifests where available; where provenance is genuinely ambiguous it is recorded as AMBIGUOUS rather than assumed.",
+      "Verification status is recorded only where an artifact carries explicit verifier evidence (SymPy certificate, Lean replay certificate, exact-source-match audit)."
+    ],
+    "epistemic_rule_applied": "Human or LLM reasoning prose is NOT canonical mathematical truth. Every asset is catalogued as ANNOTATION_UNVERIFIED unless it carries an independent verifier result recorded in the data itself.",
+    "trust_tiers": {
+      "VERIFIED_FORMAL": "Steps originate from, or were replayed against, a formal proof assistant (Lean/Isabelle) and the artifact records the verifier outcome.",
+      "DETERMINISTICALLY_CHECKED": "Steps carry a machine-checkable non-formal certificate (e.g. SymPy solution-set equality, exact byte match against an immutable source, schema/round-trip validation).",
+      "ANNOTATION_UNVERIFIED": "Semantics asserted by a human annotator, an LLM, or a curated extraction pipeline with no independent mathematical verifier."
+    }
+  },
+
+  "assets": [
+    {
+      "asset_id": "prm800k-local-labels",
+      "repo": "prm800k (local clone of openai/prm800k)",
+      "path": "/Users/moheet/Documents/ChatGPT/prm800k/prm800k/data/{phase1_train,phase1_test,phase2_train,phase2_test}.jsonl",
+      "format": "jsonl (newline-delimited JSON, one full solution sample per line)",
+      "item_count": {
+        "method": "EXACT — streaming pass with `wc -l` and a Python count over every line",
+        "solution_samples_lines": 101599,
+        "lines_per_file": {"phase1_train": 949, "phase1_test": 106, "phase2_train": 97782, "phase2_test": 2762},
+        "steps": 733768,
+        "step_level_completion_labels": 1085590,
+        "label_distribution": {"+1": 678195, "0": 106024, "-1": 262146, "null_unrated": 39225}
+      },
+      "size_on_disk": "455 MB (data/ only); 942 MB whole repo including math_splits and instruction PDFs",
+      "actual_top_level_keys": ["labeler", "timestamp", "generation", "is_quality_control_question", "is_initial_screening_question", "question", "label"],
+      "nested_schema_real": {
+        "question": ["problem", "ground_truth_solution", "ground_truth_answer", "pre_generated_steps", "pre_generated_answer", "pre_generated_verifier_score"],
+        "label": ["steps"],
+        "label.steps[i]": ["completions", "human_completion", "chosen_completion"],
+        "label.steps[i].completions[j]": ["text", "rating", "flagged"]
+      },
+      "granularity": "STEP = one sentence-to-short-paragraph solution step produced by a model. At most one clause of mathematical work. Multiple ALTERNATIVE completions per step position exist (phase 1 especially), which makes this a decision-point corpus, not only a linear chain.",
+      "per_step_contents": {
+        "raw_text": true,
+        "claimed_operation_label": false,
+        "state_before": "IMPLICIT ONLY — reconstructable as the prefix of prior chosen steps; there is no explicit state object",
+        "state_after": false,
+        "dependencies_between_steps": false,
+        "warrant_or_justification": false,
+        "final_answer": "yes at the trajectory level (ground_truth_answer, pre_generated_answer)",
+        "verification_status": "human 3-way rating (-1 neutral/incorrect-progress taxonomy per OpenAI's labeler instructions), plus a `pre_generated_verifier_score` from OpenAI's own PRM (a model score, NOT a verifier)"
+      },
+      "provenance": "Solution STEPS are LLM-generated (OpenAI model completions over MATH problems). STEP LABELS are human annotator ratings collected by OpenAI (labeler UUID and timestamp per record). Problems and ground_truth_solution come from the Hendrycks MATH dataset.",
+      "verification_status": "NONE mathematically. The ratings are human process supervision. `pre_generated_verifier_score` is a learned PRM score. No symbolic or formal checker touched these steps.",
+      "representative_excerpt": "\"I know that $200,\\!000 = 2^5\\cdot 10^4 = 2^9\\cdot 5^4$.\" — one step of a 16-step trajectory whose final answer 320,000 is WRONG (ground truth 40,000); the corpus deliberately contains labelled-incorrect chains.",
+      "trust_tier": "ANNOTATION_UNVERIFIED",
+      "contamination_risk": "HIGH — every problem is from the Hendrycks MATH benchmark. If MATH (or any MATH-derived eval such as MATH-500) is ever wanted as held-out evaluation, this corpus MUST be firewalled from training. The repo also ships OpenAI's own MATH re-split at prm800k/math_splits/{train.jsonl (12000), test.jsonl (500)} which is the origin of the widely used MATH-500 test set.",
+      "license": "MIT License, Copyright (c) 2023 OpenAI (/Users/moheet/Documents/ChatGPT/prm800k/LICENSE). Note: the MIT licence covers the repository; the underlying MATH problems carry their own upstream terms.",
+      "notes": "A second byte-level copy of this repository exists at /Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/prm800k_raw/ (942 MB) with an added PRM800K_INVENTORY.json and README_PROVENANCE.md. Pinned source commit referenced elsewhere in the project: 7ecc794703b2877f63226f2477a49b34f9b25163."
+    },
+
+    {
+      "asset_id": "prm800k-math-splits",
+      "repo": "prm800k",
+      "path": "/Users/moheet/Documents/ChatGPT/prm800k/prm800k/math_splits/{train.jsonl,test.jsonl}",
+      "format": "jsonl",
+      "item_count": {"method": "EXACT (`wc -l`)", "train": 12000, "test": 500},
+      "size_on_disk": "11 MB",
+      "actual_top_level_keys": "NOT INSPECTED at field level — this is OpenAI's MATH problem re-split, not a reasoning-chain asset. Listed here only for the contamination firewall.",
+      "granularity": "whole problem (no steps)",
+      "per_step_contents": null,
+      "provenance": "Hendrycks MATH, re-split by OpenAI for the Let's Verify Step by Step paper.",
+      "verification_status": "n/a",
+      "trust_tier": "ANNOTATION_UNVERIFIED",
+      "contamination_risk": "CRITICAL — test.jsonl (500 problems) is the canonical MATH-500 evaluation set. Never train on it.",
+      "license": "MIT (repo)"
+    },
+
+    {
+      "asset_id": "gold125-math-trajectories",
+      "repo": "hmlt-reasoning-corpus",
+      "path": "/Users/moheet/Documents/ChatGPT/hmlt-reasoning-corpus/data/gold125/trajectories/MATH-GOLD-*.json",
+      "format": "json (one file per problem)",
+      "item_count": {"method": "EXACT (`ls | wc -l`, plus Python step count)", "trajectories": 100, "ids": "MATH-GOLD-026 .. MATH-GOLD-125"},
+      "size_on_disk": "7.5 MB",
+      "actual_top_level_keys": ["schema_version", "problem_id", "source_dataset", "source_row_id", "source_hash", "category", "level", "problem", "original_solution", "selection_reason", "targeted_semantic_features", "initial_state", "steps", "final_state", "goal_status", "operations_observed", "operation_profile", "source_quality", "meta_reasoning", "hml_gaps", "canonical_verification"],
+      "actual_step_keys": ["step_id", "source_span", "explicitness", "reasoning_mode", "atomicity", "macro_components", "warrant", "preconditions", "creates_obligations", "discharges_obligations", "dependencies", "dependency_evidence", "scope", "verification", "hml_support", "semantic_gap_ids", "state_before", "state_after", "state_change", "action", "result", "meta_step_ids"],
+      "state_object_keys": ["objects", "declarations", "types_domains", "facts", "assumptions", "constraints", "definitions", "goals", "subgoals", "candidates", "branch_state", "scope", "dependencies", "open_obligations", "discharged_obligations", "epistemic_status", "id"],
+      "granularity": "STEP = one source SENTENCE / display-math span of the original MATH solution, promoted to a semantic transition. Explicitly tagged ATOMIC vs COMPOUND_MACRO per step. Combined with gold25 the mean is 6.15 steps per problem (769 steps across 125 problems).",
+      "per_step_contents": {
+        "raw_text": "yes — `source_span` is the verbatim source sentence",
+        "claimed_operation_label": "yes — free-text `action` plus a registry `operations_observed` entry",
+        "state_before": "yes — full structured state object",
+        "state_after": "yes — full structured state object",
+        "dependencies_between_steps": "yes — `dependencies` (fact ids) + `dependency_evidence` with a confidence field",
+        "warrant_or_justification": "yes — `warrant` {kind, description, source, evidence_status}",
+        "final_answer": "yes at trajectory level (`goal_status`, `final_state`)",
+        "verification_status": "yes per step — `verification` {status, category, backend, notes}; observed value SOURCE_GROUNDED with backend 'source-span and structural audit'"
+      },
+      "provenance": "Curated deterministic extraction pipeline authored inside this repo (data/gold125/README.md: 'a curated Gold-125 artifact generator for these 125 examples, not a scalable automatic extraction engine'). Source problems and solutions are Hendrycks MATH train rows selected via manifests/gold125_math_v1.json with exact source_row_id and SHA-256 per row. Annotation mode recorded in-file as 'source-grounded semantic extraction with explicit uncertainty; not a formal proof replay'.",
+      "verification_status": "NOT mathematically verified. canonical_verification.status = STRUCTURAL_SOURCE_AUDIT for all 100; formal_math_replay explicitly states 'not claimed for automatic extraction'. What IS deterministically checked is that every source_span is byte-exact against the MATH parquet (source_span_failures: [] on the sample inspected).",
+      "representative_excerpt": "step s2 of MATH-GOLD-040 — source_span: \"With a rational function of this form, we will have two asymptotes: a vertical one at $x=-d/c$ if $cx+d$ does not divide $ax+b$, and a horizontal one at $y=a/c$, if we take the limit of $f(x)$ as $x$ goes to $\\pm\\infty$.\" with warrant.evidence_status SOURCE_GROUNDED, a created obligation 'the transformation requires a nonzero or preserved-denominator condition' (status discharged at s4, lifetime_steps 2), and dependencies ['fact:s1'].",
+      "trust_tier": "ANNOTATION_UNVERIFIED",
+      "contamination_risk": "HIGH — derived from Hendrycks MATH train split (data/raw/math/train-00000-of-00001-7320a6f3aba8ebd2.parquet, 12,500 rows, SHA-256 2325458edc03d786939ee9e1e5795efb9e2480247b6e1ed2c51f41bea7369c6a). Overlaps the same benchmark family as PRM800K. Flag for firewalling.",
+      "scientific_value": "HIGHEST-VALUE ASSET FOR OPERATION-VOCABULARY DISCOVERY. It is the only corpus here that carries, per step: an explicit operation label, an explicit warrant, an explicit obligation lifecycle, explicit inter-step dependencies, AND full before/after structured state — over natural-language competition mathematics."
+    },
+
+    {
+      "asset_id": "gold25-math-trajectories",
+      "repo": "hmlt-reasoning-corpus",
+      "path": "/Users/moheet/Documents/ChatGPT/hmlt-reasoning-corpus/data/gold25/trajectories/MATH-GOLD-*.json",
+      "format": "json (one file per problem)",
+      "item_count": {"method": "EXACT", "trajectories": 25, "ids": "MATH-GOLD-001 .. MATH-GOLD-025"},
+      "size_on_disk": "712 KB",
+      "actual_top_level_keys": "same family as gold125 (verified by aggregate pass); differs in canonical_verification.status",
+      "granularity": "same as gold125 — sentence-level source spans promoted to semantic transitions",
+      "per_step_contents": "same as gold125",
+      "provenance": "Earlier frozen Gold-25 run over the same MATH parquet; manifests/gold25_math_v0.json. Was NOT rewritten when Gold-125 was built.",
+      "verification_status": "canonical_verification.status = MANUAL_SEMANTIC_CHECK for all 25 (vs STRUCTURAL_SOURCE_AUDIT for the 100 Gold-125 records). This is a HUMAN/agent semantic check, not a mathematical verifier.",
+      "trust_tier": "ANNOTATION_UNVERIFIED",
+      "contamination_risk": "HIGH — Hendrycks MATH train.",
+      "notes": "gold25 + gold125 together = 125 trajectories / 769 steps. A byte-identical copy of both also exists in the lean-attestation sibling checkout."
+    },
+
+    {
+      "asset_id": "gold125-ontology-v1-derived-transitions",
+      "repo": "hmlt-reasoning-corpus",
+      "path": "/Users/moheet/Documents/ChatGPT/hmlt-reasoning-corpus/data/derived/gold125_ontology_v1/MATH-GOLD-*/s*.json  (+ aggregate gold125_ontology_v1_all_transitions.json)",
+      "format": "json (one file per STEP) plus one 1.6 MB aggregate array",
+      "item_count": {"method": "EXACT (`find -name 's*.json' | wc -l`)", "step_records": 769, "trajectory_dirs": 125, "aggregate_array_length": 769},
+      "size_on_disk": "4.6 MB",
+      "actual_top_level_keys": ["schema_version", "trajectory_id", "step_id", "category", "level", "source_span", "reasoning_mode", "core_operation", "warrant", "knowledge_layer", "goal_effect", "scope_effect", "epistemic_effect", "preconditions", "obligations_created", "obligations_discharged", "dependencies", "state_delta", "atomicity", "meta_operations", "uncertainty", "provenance"],
+      "granularity": "ATOMIC OPERATION LEVEL. This is the multi-axis re-annotation of the 769 gold125/gold25 steps: each step is decomposed onto 7 independent axes (reasoning_mode, core_operation, warrant, knowledge_layer, goal_effect, scope_effect, epistemic_effect) plus atomicity and uncertainty.",
+      "per_step_contents": {
+        "raw_text": "yes (`source_span`)",
+        "claimed_operation_label": "yes — `core_operation` from a closed 19-value vocabulary, with the original observed label preserved in `provenance.observed_operation`",
+        "state_before": "no explicit full state — replaced by `state_delta` {from, to, added_facts, added_obligations, removed_obligations, epistemic_update, scope_effect, dependency_effect}. Full states remain in the gold125 source files.",
+        "state_after": "delta only (see above)",
+        "dependencies_between_steps": "yes (`dependencies`)",
+        "warrant_or_justification": "yes — `warrant` {type, basis, original}",
+        "final_answer": "not at step level",
+        "verification_status": "no verifier; an `uncertainty` field from {CERTAIN, SOURCE_AMBIGUOUS, ANNOTATION_REVIEW, UNRESOLVED} and a `provenance.disagreement` field recording annotator/registry disagreement"
+      },
+      "provenance": "Derived research view produced inside this repo from the gold125/gold25 trajectories, governed by schemas/reasoning_ontology_v1.yaml. The ontology file states explicitly: 'derived research view; does not modify frozen trajectories or HML'.",
+      "verification_status": "NONE. Explicitly an annotation layer.",
+      "representative_excerpt": "MATH-GOLD-007 step s2 — source_span \"Substituting into the second equation, we get\"; core_operation SUBSTITUTE; warrant.type ALGEBRAIC_PRESERVATION with original.description \"Replace x by y+4 in the cubic equation.\"; state_delta.epistemic_update \"Established fact:s2: (y+4)³-y³=28\"; dependencies [\"fact:s1\", \"fact:cubes\"]; uncertainty CERTAIN.",
+      "trust_tier": "ANNOTATION_UNVERIFIED",
+      "contamination_risk": "HIGH — inherits MATH provenance from gold125/gold25.",
+      "scientific_value": "This is the single most directly reusable dataset for 'discover a vocabulary of recurring reasoning operations': 769 hand/pipeline-annotated atomic transitions already factored onto orthogonal semantic axes, with disagreement and uncertainty preserved rather than forced."
+    },
+
+    {
+      "asset_id": "gold10-hand-authored-trajectories",
+      "repo": "hmlt-reasoning-corpus",
+      "path": "/Users/moheet/Documents/ChatGPT/hmlt-reasoning-corpus/data/gold_10/G0*.json,G10.json  and  /Users/moheet/Documents/ChatGPT/hmlt-reasoning-corpus/examples/gold_10/G*/",
+      "format": "json trajectories + per-example markdown/HML renderings",
+      "item_count": {"method": "EXACT", "trajectories": 10, "total_actions": 23},
+      "size_on_disk": "92 KB (data/gold_10) + 160 KB (examples/)",
+      "actual_top_level_keys": ["schema_version", "example_id", "dataset_split", "title", "problem", "gold_status", "hml_status", "reasoning_stages_used", "semantic_gap_ids", "states", "actions", "goal_discharged", "renderings", "verification"],
+      "actual_action_keys": ["id", "from_state", "to_state", "inputs", "operation", "dependencies", "warrant", "preconditions", "resulting_fact", "state_change", "verification", "reasoning_stages", "hml_support", "semantic_gap_ids", "provenance"],
+      "granularity": "MOST GRANULAR NATURAL-LANGUAGE ASSET IN THE PROJECT. A single trivial problem (`x + 2 = 5`) is decomposed into ~2-3 actions, and each action is additionally tagged with the numbered reasoning STAGES it covers (e.g. a0 covers stages [1,2,3,5] = problem segmentation, symbol identification, type/domain resolution, fact extraction). Explicitly sub-sentence.",
+      "per_step_contents": {
+        "raw_text": "no verbatim source span (problems are hand-written), but a natural-language `warrant.description` and `resulting_fact.statement`",
+        "claimed_operation_label": "yes — free-text `operation` (e.g. 'segment_and_resolve_domain')",
+        "state_before": "yes — full state object referenced by `from_state`",
+        "state_after": "yes — `to_state`",
+        "dependencies_between_steps": "yes",
+        "warrant_or_justification": "yes — {kind, rule, description}",
+        "final_answer": "yes (`problem.answer`, `goal_discharged`)",
+        "verification_status": "yes per action — {status, method, evidence}; trajectory-level `verification.canonical_status` = VERIFIED with method 'exact_integer_arithmetic_oracle plus HML kernel check' and a pinned hml_core_sha"
+      },
+      "provenance": "HAND-AUTHORED BY THE PROJECT OWNER / owner's agent. Every state and action carries provenance.authoring = 'hand_authored' and problem.source = 'hand_authored_worked_mathematics'. This is the clearest 'owner-written granular worked solution' asset found anywhere on disk.",
+      "verification_status": "DETERMINISTICALLY CHECKED for the arithmetic content: canonical_status VERIFIED via an exact-integer arithmetic oracle plus an HML kernel check, with the explicit check list recorded (e.g. ['5 - 2 = 3', 'x - 0 = x', 'all action references resolve']). Mathematically trivial content, but the check is real and machine-run.",
+      "representative_excerpt": "G01 action a0: operation 'segment_and_resolve_domain', warrant {kind: 'problem_analysis', rule: 'typed_symbol_identification', description: 'Identify x as the real-valued unknown in the equation.'}, resulting_fact 'x is a real-valued unknown', verification {status: 'verified', method: 'schema_and_domain_check'}. The parallel structured_english.md reads: \"2. Subtract `2` from both sides, preserving equality: `x - 0 = 5 - 2`.\"",
+      "trust_tier": "DETERMINISTICALLY_CHECKED",
+      "contamination_risk": "NONE — hand-authored elementary problems, not from any public benchmark.",
+      "notes": "Each example also ships four parallel renderings: problem.md, structured_english.md, structured_control.json, and hml/program.hml. Useful as a representation-comparison control. Volume is tiny (10 problems / 23 actions)."
+    },
+
+    {
+      "asset_id": "master-synthetic-math-hml",
+      "repo": "hmlt-reasoning-corpus",
+      "path": "/Users/moheet/Documents/ChatGPT/hmlt-reasoning-corpus/MASTER_SYNTHETIC_MATH_HML.md",
+      "format": "markdown (single 497,606-line / 14 MB document)",
+      "item_count": {
+        "method": "EXACT — document's own summary table cross-checked against `grep -c '^#### '` and against the machine-readable transitions.jsonl",
+        "source_problems": 600,
+        "atomic_reasoning_transitions": 3978,
+        "grep_hash4_headers": 3989,
+        "frozen_hml_renderings_emitted": 3090,
+        "corpora": {"ALG": 100, "CALC": 100, "GEN": 100, "LINALG": 100, "MIXED": 100, "PROB": 100}
+      },
+      "size_on_disk": "14 MB (a second byte-similar copy is at /Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/synthetic_math/MASTER_SYNTHETIC_MATH_HML.md, 14.5 MB)",
+      "actual_structure_per_transition": ["STATE_BEFORE", "ACTION", "WARRANT/PRECONDITIONS", "DEPENDENCIES (+ source span SHA-256)", "STATE_AFTER", "Mechanisms", "Classification", "Backend", "Validation", "Pool-B audit", "External check certificate", "Runtime unknowns", "Exact source span (collapsed)", "Deterministically rendered frozen HML (collapsed)"],
+      "granularity": "ATOMIC TRANSITION — typically one algebraic manipulation (e.g. 'Subtract 7 from both sides' as its own transition, then 'Cancel +7-7' as the next). This is finer-grained than PRM800K steps.",
+      "per_step_contents": {
+        "raw_text": "yes — exact source span with SHA-256",
+        "claimed_operation_label": "yes — a 15-value observed ACTION vocabulary",
+        "state_before": "yes (as a mathematical expression string, not a structured object)",
+        "state_after": "yes (string)",
+        "dependencies_between_steps": "yes — claim ids (p0, c001, ...)",
+        "warrant_or_justification": "yes but frequently EMPTY (`[]`) — the source prose rarely states its warrant",
+        "final_answer": "yes per problem ('Final mathematical result' section)",
+        "verification_status": "yes per transition — Classification + Backend + an 'External check certificate' JSON carrying backend, backend_version, before/after SHA-256, method and detail"
+      },
+      "observed_action_vocabulary": {
+        "TRANSFORM": 3076, "SELECT": 194, "CASE_SPLIT": 169, "APPLY_THEOREM": 140, "SUBSTITUTE": 137,
+        "EVALUATE": 97, "BOUND": 62, "VERIFY": 43, "COUNT": 29, "APPLY_DEFINITION": 9, "MODEL": 7,
+        "CONSTRUCT": 7, "INDUCT": 4, "DECLARE": 2, "CONTRADICTION": 2
+      },
+      "classification_counts": {"REPRESENTABLE_BUT_CURRENTLY_UNVERIFIABLE": 1896, "GENUINE_HML_SEMANTIC_GAP": 888, "FULLY_REPRESENTABLE_AND_BACKEND_VERIFIED": 767, "REQUIRES_EXISTING_TRUSTED_BACKEND_OR_LIBRARY": 427},
+      "backend_counts": {"UNSUPPORTED_FRAGMENT": 2922, "SYMPY_VERIFIED": 867, "NOT_APPLICABLE": 102, "SYMPY_MISMATCH": 87},
+      "provenance": "AMBIGUOUS / MOST LIKELY LLM-GENERATED. The document calls its input 'the supplied synthetic worked-mathematics source' and each rendered transition records source.dataset = 'Write-Algebra-Problems.md' with source_role = 'untrusted granular worked-mathematics source'. Six 100-problem markdown corpora (ALG/CALC/GEN/LINALG/MIXED/PROB, 403,401 characters, SHA-256 7f0165e8f88c1a64c8b3d36e3a72e7a3ce042ebd72e7a92d7890ca104a110381) were 'recovered' and embedded verbatim. THE ORIGINAL SOURCE MARKDOWN FILES ARE NOT FOUND ON THIS MACHINE — see not_found. The extraction/rendering pipeline itself is deterministic and in-repo.",
+      "verification_status": "MIXED AND SELF-DECLARED. 867/3978 transitions carry a real SymPy certificate (SYMPY_VERIFIED, e.g. 'equal real solution sets: {8}', with python_version 3.11.15 / SymPy 1.14.0 recorded); 87 carry SYMPY_MISMATCH (i.e. the checker DISAGREED and this was retained honestly); 2,922 are on an unsupported fragment. Separately every emitted HML rendering passed schema validation and an exact round trip (3090/3090).",
+      "representative_excerpt": "ALG-001-T001 — STATE_BEFORE `x+7=15`; ACTION `TRANSFORM` — Subtract $7$ from both sides; STATE_AFTER `x+7-7=15-7`; Backend `SYMPY_VERIFIED` — equal real solution sets: {8}. The very next transition ALG-001-T002 is only the cancellation `x+7-7=15-7` -> `x=8`.",
+      "trust_tier": "DETERMINISTICALLY_CHECKED for the 867 SYMPY_VERIFIED subset; ANNOTATION_UNVERIFIED for the remaining 3,111 transitions.",
+      "contamination_risk": "LOW/UNKNOWN. Not drawn from a named public benchmark; the per-transition source metadata records `gold125_overlap: false`. But because the source problems are synthetic and their generator is unidentified, near-duplication with public benchmark items cannot be ruled out from disk evidence alone.",
+      "scientific_value": "Largest natural-language atomic-transition corpus in the project (3,978 transitions), but its action vocabulary is heavily collapsed onto TRANSFORM (77%), so it is better as a state-transition/verification corpus than as an operation-vocabulary discovery set."
+    },
+
+    {
+      "asset_id": "synthetic-math-transitions-jsonl",
+      "repo": "hml_research_artifacts (external artifact root referenced by RESEARCH_STATE.md)",
+      "path": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/synthetic_math/transitions.jsonl",
+      "format": "jsonl",
+      "item_count": {"method": "EXACT (`wc -l`)", "transitions": 3978},
+      "size_on_disk": "13.6 MB",
+      "actual_top_level_keys": ["id", "problem_id", "domain", "difficulty", "state_before", "action", "warrant_preconditions", "dependencies", "state_after", "mechanisms", "status", "status_reason", "backend", "validation", "runtime_unknowns", "hml"],
+      "granularity": "atomic transition — the machine-readable form of master-synthetic-math-hml",
+      "per_step_contents": "same as master-synthetic-math-hml; note the fields are FLATTENED STRINGS scraped from the markdown (e.g. action = \"TRANSFORM` — Subtract $7$ from **both sides**\" with a stray backtick), so a small cleanup pass is required before use.",
+      "provenance": "Derived from MASTER_SYNTHETIC_MATH_HML.md by the same in-repo pipeline.",
+      "verification_status": "carries the same per-transition status/backend fields (SYMPY_VERIFIED etc.)",
+      "trust_tier": "DETERMINISTICALLY_CHECKED (SymPy subset) / ANNOTATION_UNVERIFIED (rest)",
+      "contamination_risk": "same as master-synthetic-math-hml",
+      "notes": "Prefer this file over parsing the 497k-line markdown. Sibling directories synthetic_math/{exec_lora, state_delta_features, verdict_features} contain derived training features (126 MB total)."
+    },
+
+    {
+      "asset_id": "synthetic-math-auxiliary-schemas",
+      "repo": "hmlt-reasoning-corpus",
+      "path": "/Users/moheet/Documents/ChatGPT/hmlt-reasoning-corpus/data/synthetic_math_{initial_premises,implicit_logical_steps,branch_ancestry,canonicalization_corrections}_v1.json",
+      "format": "json",
+      "item_count": {
+        "method": "EXACT (Python len over the real arrays)",
+        "initial_premises.problems": 600,
+        "branch_ancestry.problems": 28,
+        "implicit_logical_steps.steps": 16,
+        "canonicalization_corrections.corrections": 5
+      },
+      "size_on_disk": "853 KB + 101 KB + 24 KB + 6 KB",
+      "actual_top_level_keys": {
+        "initial_premises": ["derivation_policy", "problems", "schema_version", "source_corpus_sha256"],
+        "implicit_logical_steps": ["allowed_family", "decision", "policy", "schema_version", "steps"],
+        "branch_ancestry": ["based_on_corpus_commit", "derivation_policy", "problems", "schema_version", "source_corpus_sha256"],
+        "canonicalization_corrections": ["corrections", "policy", "schema_version"]
+      },
+      "granularity": "sub-step metadata: premise-level, branch/case-partition-level, and inserted-implicit-step-level",
+      "per_step_contents": "premises carry {premise_id, proposition, scope, dependencies, dependency_status, source_origin, source_problem_sha256, source_span, source_span_sha256}; branch records carry {branch_id, label, assumption, parent_branch_id, partition_id, pre_split_premise_ids, opening_transition_id, linear_predecessor_id, opening_dependency_ids}; implicit steps carry a `deterministic_derivation_proof` with {proof_system: PROPOSITIONAL_NATURAL_DEDUCTION, rule: OR_INTRO, disjuncts, disjunct_index, premise_equals_selected_disjunct}.",
+      "provenance": "In-repo deterministic derivation over the synthetic corpus, with an explicit derivation_policy field.",
+      "verification_status": "The 16 implicit logical steps are the only ones with a machine-checkable natural-deduction proof object. Branch ancestry is schema-validated but not proved.",
+      "trust_tier": "DETERMINISTICALLY_CHECKED (the 16 implicit steps) / ANNOTATION_UNVERIFIED (rest)",
+      "contamination_risk": "same as master-synthetic-math-hml",
+      "scientific_value": "The branch-ancestry file is unusually valuable: it records, per case split, the pre-split premise set and explicitly REJECTS the naive 'previous transition is the parent' heuristic in 38 cases. That is exactly the kind of fine-grained control-flow annotation a reasoning-operation vocabulary needs."
+    },
+
+    {
+      "asset_id": "hml50k-lean-canonical-teaching-corpus",
+      "repo": "hmlt-reasoning-corpus",
+      "path": "/Users/moheet/Documents/ChatGPT/hmlt-reasoning-corpus/data/hml_50k_final/canonical/records.jsonl.gz  (+ tasks/{NEXT_ACTION_SELECT,STATE_DELTA_PREDICT,VALIDITY_JUDGE,WORKED_CONTINUATION}/{HML_WORKED_UTF8,STRUCTURED_NEUTRAL_WORKED}/{train,dev,final}.jsonl.gz)",
+      "format": "gzipped jsonl",
+      "item_count": {
+        "method": "EXACT — read from the artifact's own manifest.json counts block",
+        "canonical": {"train": 50000, "dev": 3000, "final": 3000},
+        "total_canonical": 56000,
+        "task_rows_per_view": {"NEXT_ACTION_SELECT": 56000, "STATE_DELTA_PREDICT": 56000, "VALIDITY_JUDGE": 112000, "WORKED_CONTINUATION": 56000}
+      },
+      "size_on_disk": "398 MB (canonical/records.jsonl.gz alone is 62 MB compressed)",
+      "actual_top_level_keys": ["candidate_audit", "canonical_source_example_id", "canonical_transition_sha256", "complexity_bin", "complexity_score", "depth", "depth_bin", "epistemic_status", "leakage_check", "mathematical_verification_status", "mechanisms", "neutral_transition", "parent_id", "predecessor_record_id", "premises_exposed_to_model", "premises_used", "probability_statistics_related", "proof_length", "record_id", "representation_parity", "selected_trajectory_steps", "semantic_representation_status", "source_family", "source_structural_record", "split", "successor_record_id", "trajectory_step_index", "verifier_verdict", "view_hashes"],
+      "granularity": "ONE LEAN TACTIC APPLICATION per record. `trajectory_step_index` and `predecessor_record_id`/`successor_record_id` chain records into full proof trajectories, so multi-step chains ARE reconstructable.",
+      "per_step_contents": {
+        "raw_text": "yes — the Lean tactic text and the pretty-printed proof state",
+        "claimed_operation_label": "COARSE — neutral_transition.action.operation is the constant 'LEAN_TACTIC'. The finer signal lives in `mechanisms` (e.g. ['context_removal','formal_trace','goal_close','goal_count_reduction','tactic_application']).",
+        "state_before": "yes — structured {hypotheses:[{name,type}], target, n_goals}",
+        "state_after": "yes — same structure",
+        "dependencies_between_steps": "partial — premise ids present but the manifest's own field-provenance census marks dependencies as NOT_RECOVERABLE from the Lean source",
+        "warrant_or_justification": "formal only — warrant.rule = 'LEAN_TACTIC' with an evidence object of kind FORMAL_TRACE carrying mathlib_revision, source_example_id, tactic_sha256, trusted: true",
+        "final_answer": "n/a (theorem proving, not answer extraction)",
+        "verification_status": "yes — verifier_verdict 'VALID', epistemic_status 'FORMAL_TRACE', but mathematical_verification_status is honestly recorded as 'RECORDED_FORMAL_TRACE_NOT_REPLAYED_IN_THIS_MISSION'"
+      },
+      "provenance": "FORMAL PROVER. source_family = LEAN_DOJO_FORMAL_TRACE for all 56,000 records. Pinned mathlib_commit 29dcec074de168ac2bf835a77ef68bbe069194c5; hml_commit 68178f07784d2a17a9aed9c4dedbea9c740c97a0.",
+      "verification_status": "VERIFIED UPSTREAM, NOT RE-REPLAYED HERE. The tactics were recorded by LeanDojo from real compiling mathlib proofs (so they type-check by construction), but this artifact explicitly does not claim a local replay.",
+      "representative_excerpt": "record H50K-LEAN-... over Mathlib/Order/OrderIsoNat.lean::exists_increasing_or_nonincreasing_subseq'::13, gold tactic `exact ⟨0, fun n _ nbad => he ⟨n, hbad.mem_toFinset.2 nbad⟩⟩`, presented against 5 distractor tactics drawn from other mathlib files, all sharing the same tactic head as gold.",
+      "trust_tier": "VERIFIED_FORMAL",
+      "contamination_risk": "MEDIUM — LeanDojo Benchmark 4 has its own official train/val/test splits; the records carry `lean_official_split`. If miniF2F/LeanDojo test is ever wanted as held-out eval, respect that field. Not a natural-language benchmark, so no MATH/GSM8K conflict.",
+      "notes": "The task/*/ views are model-facing prompt/target pairs (keys: audit_metadata, candidate_count, gold_candidate_id, input_text, parent_id, record_id, representation, split, target_text, task) — ONE-STEP multiple-choice items, not chains. Complexity/depth strata are precomputed. This is the corpus behind the disputed +35.55pp headline result."
+    },
+
+    {
+      "asset_id": "lean-canonical-records-241k",
+      "repo": "hml_research_artifacts (external artifact root)",
+      "path": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/lean_domino_v2/lean_canonical_records.jsonl",
+      "format": "jsonl",
+      "item_count": {
+        "method": "EXACT — from synthetic_factory/manifests/authority.json, which pins the file by SHA-256 and asserts an exact line count check before and after generation",
+        "records": 241265,
+        "represented_theorems": 61542,
+        "original_transitions": 259580,
+        "excluded_goal_creation": 18315
+      },
+      "size_on_disk": "755,808,347 bytes (721 MB); directory total 721 MB",
+      "sha256": "8ac0ce010cedaecb1f9edf0d0ef7b0a5700620de52a66e508fd6e71778719869",
+      "actual_top_level_keys": ["example_id", "theorem_id", "source_file", "source_family", "transition_index", "proof_depth", "proof_length", "state_before", "observed_action", "state_after", "lean", "compatibility", "lean_official_split"],
+      "granularity": "ONE LEAN TACTIC per record; `transition_index` + `proof_length` reconstruct full proof chains over 61,542 theorems.",
+      "per_step_contents": {
+        "raw_text": "yes — lean.raw_tactic, lean.raw_state_before (pretty-printed goal state)",
+        "claimed_operation_label": "yes — observed_action.effect_class from an 8-value effect vocabulary plus a compact effect_signature string",
+        "state_before": "yes — structured {hypotheses:[{name,type}], target, n_goals}",
+        "state_after": "yes — same",
+        "dependencies_between_steps": "premises_used present but empty on the inspected record; the v2 census marks dependencies NOT_RECOVERABLE",
+        "warrant_or_justification": "formal backend trace only",
+        "final_answer": "n/a",
+        "verification_status": "implicit — every trace comes from a compiling mathlib proof; `compatibility.frozen_hml_representable` flags representability"
+      },
+      "effect_class_census": {"CLOSE": 107006, "TRANSFORM_TARGET": 58669, "INTRODUCE": 27304, "INTRODUCE_AND_TRANSFORM": 24248, "REWRITE_CONTEXT": 13479, "REWRITE_CONTEXT_AND_TARGET": 6881, "NO_VISIBLE_CHANGE": 2263, "ELIMINATE": 1415},
+      "field_recoverability_census": {"candidate_action": 241265, "state_before": 241265, "state_after": 241265, "formal_backend_trace": 241265, "dependencies": 0, "evidence": 0, "obligations": 0, "preconditions": 0, "scope": 0, "typed_action_arguments": 0},
+      "provenance": "FORMAL PROVER — LeanDojo Benchmark 4 v10 (source_family LEANDOJO_BENCHMARK_4_V10) over mathlib at 29dcec074de168ac2bf835a77ef68bbe069194c5. Raw upstream archive retained at /Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo_raw/ (860 MB, leandojo_benchmark_4.tar.gz + extracted dir).",
+      "verification_status": "VERIFIED_FORMAL by construction (recorded from compiling Lean proofs). NOT re-replayed at this scale. The project's own manifests mark it 'PINNED_NOT_YET_A_VERIFIER_TRANSITION_SOURCE'.",
+      "representative_excerpt": "Mathlib/RingTheory/IntegralRestrict.lean::Algebra.intTrace_eq_trace::0 — raw_tactic `ext x`; target before `intTrace A B = trace A B`; observed_action {effect_class: INTRODUCE_AND_TRANSFORM, effect_signature: 'INTRODUCE_AND_TRANSFORM|dg0|T1|A1|R0|B0', names_added: ['x']}.",
+      "trust_tier": "VERIFIED_FORMAL",
+      "contamination_risk": "MEDIUM — carries `lean_official_split`; respect LeanDojo's own test split if formal theorem proving is ever an eval target.",
+      "scientific_value": "By far the largest step-granular VERIFIED asset (241k steps). Its weakness for operation-vocabulary work is stated in the project's own census: dependencies, evidence, preconditions, obligations, scope and typed action arguments are all NOT_RECOVERABLE from Lean traces — you get state deltas and tactic text, not warrants."
+    },
+
+    {
+      "asset_id": "lean-attestation-replay-certificates",
+      "repo": "hmlt-reasoning-corpus-lean-attestation",
+      "path": "/Users/moheet/Documents/ChatGPT/hmlt-reasoning-corpus-lean-attestation/synthetic_factory/lean_attestation/data/stage100/{certificates_run1.jsonl,certificates_run2.jsonl,selection.jsonl}",
+      "format": "jsonl",
+      "item_count": {"method": "EXACT (`wc -l`)", "certificates_run1": 100, "certificates_run2": 100, "selection": 100},
+      "size_on_disk": "984 KB",
+      "actual_top_level_keys": ["after_match", "attestation_code_sha", "backend_result", "before_match", "certificate_created_at", "certificate_id", "content_sha256_excluding_created_at", "environment", "recorded", "replay_status", "runtime", "runtime_environment_digest", "runtime_io", "schema_version", "source_file", "source_official_split", "source_record_id", "source_record_sha256", "source_split", "source_theorem_id", "transition_index"],
+      "granularity": "one Lean transition, actually re-executed in Lean",
+      "per_step_contents": {
+        "raw_text": "referenced by source_record_id/theorem_id rather than inlined",
+        "claimed_operation_label": "n/a",
+        "state_before": "compared, not stored — `before_match` ∈ {EXACT_TEXT_MATCH, MISMATCH}",
+        "state_after": "compared — `after_match`",
+        "dependencies_between_steps": "n/a",
+        "warrant_or_justification": "the certificate itself",
+        "final_answer": "n/a",
+        "verification_status": "THE POINT OF THE ARTIFACT — replay_status ∈ {REPLAY_PASS, REPLAY_STATE_MISMATCH, REPLAY_TACTIC_FAIL, UNSUPPORTED}"
+      },
+      "replay_outcomes_both_runs_identical": {"UNSUPPORTED": 56, "REPLAY_PASS": 32, "REPLAY_STATE_MISMATCH": 11, "REPLAY_TACTIC_FAIL": 1},
+      "before_after_match_counts": {"EXACT_TEXT_MATCH/EXACT_TEXT_MATCH": 32, "MISMATCH/null": 68},
+      "provenance": "FORMAL PROVER, actually executed. environment records lean_version v4.10.0-rc1, lean_build_commit 3b58e0649156, leandojo_version 2.0.0 (sha abcfb72143ff3829e622418557e14c8b41b69a61), mathlib_sha 29dcec074de168ac2bf835a77ef68bbe069194c5.",
+      "verification_status": "THE ONLY LOCALLY RE-VERIFIED FORMAL DATA FOUND. 32 of 100 sampled transitions were independently replayed to an exact state match in Lean; the run is deterministic (run1 and run2 agree exactly). The 56 UNSUPPORTED cases carry an honest cause: 'The trace is nested inside a compound tactic and the pinned benchmark contains no independently executable exact-state path to its state_before.'",
+      "representative_excerpt": "LEAN-ATT-ee253c1f21a999afee0d629a over Mathlib/Computability/AkraBazzi/AkraBazzi.lean::AkraBazziRecurrence.T_isBigO_smoothingFn_mul_asympBound transition 55 — replay_status UNSUPPORTED, backend_result.result_type NO_EXACT_RECORDED_STATE_PATH at phase PREFIX_PATH.",
+      "trust_tier": "VERIFIED_FORMAL",
+      "contamination_risk": "LOW at n=100; carries source_official_split.",
+      "scientific_value": "Small (100 records) but epistemically the strongest asset on disk: it is the only place where a step's claimed before/after state was checked by an actual prover run rather than asserted."
+    },
+
+    {
+      "asset_id": "counterfactual-transition-factory-stage100",
+      "repo": "hmlt-reasoning-corpus-lean-attestation",
+      "path": "/Users/moheet/Documents/ChatGPT/hmlt-reasoning-corpus-lean-attestation/synthetic_factory/data/stage100/canonical_pairs.jsonl",
+      "format": "jsonl",
+      "item_count": {"method": "EXACT (`wc -l`)", "pairs": 100},
+      "size_on_disk": "1.6 MB",
+      "actual_top_level_keys": ["causality", "change_count", "corpus_sha", "counterfactual_transition", "dependencies", "exact_changed_field", "failure_code_if_invalid", "generator_sha", "hml_sha", "minimality", "mutated_candidate_action", "mutated_state", "mutated_state_after_if_valid", "mutated_verifier_result", "mutation_family", "obligations", "original_candidate_action", "original_state", "original_state_after", "original_verifier_result", "pair_id", "preconditions", "proposed_mutated_state_after", "protocol", "runtime_diagnostic", "schema_version", "scope", "source_provenance", "source_record_id", "source_theorem_id", "source_transition", "source_transition_id", "verifier_trust_mode", "verifier_version"],
+      "granularity": "MINIMAL-PAIR at the single-semantic-field level: one frozen valid transition + one mutation of exactly one field, with the verifier's verdict on each.",
+      "per_step_contents": "original and mutated state/action/state_after, the exact changed field, minimality and causality records, both verifier results, and a failure code when invalid.",
+      "mutation_families_selected": {"BRANCH_JOIN": 10, "CANDIDATES": 10, "DEPENDENCY": 10, "EPISTEMIC_STATUS": 10, "GOAL_DISCHARGE": "(remainder; 10 per family across 10 families)"},
+      "provenance": "SYNTHETIC GENERATOR — an in-repo deterministic mutation factory over frozen, externally adjudicated corpus records. Not an LLM. `authority.py` checks HML tag/SHA/tree, a clean read-only HML checkout, zero writable HML files, and the exact 241,265-line Lean artifact hash before and after generation.",
+      "verification_status": "DETERMINISTICALLY CHECKED by the frozen HML transition verifier: only counterfactuals that import successfully AND are rejected by the verifier are retained. Unknown stays UNRESOLVED and is never relabelled INVALID.",
+      "trust_tier": "DETERMINISTICALLY_CHECKED",
+      "contamination_risk": "LOW",
+      "honest_limitation_recorded_in_repo": "synthetic_factory/README.md states the Stage100 review found 20 semantic-hard certificate-coverage pairs, 60 structural verifier probes and 20 ambiguous pairs, and concludes: 'The tracked Stage100 output is therefore a diagnostic harness artifact, not a production training set. This transparent failure is the reason scaling is disabled.'"
+    },
+
+    {
+      "asset_id": "synthetic-factory-v2",
+      "repo": "hmlt-reasoning-corpus-lean-attestation",
+      "path": "/Users/moheet/Documents/ChatGPT/hmlt-reasoning-corpus-lean-attestation/synthetic_factory_v2/data/{factory_a/a1_regression.jsonl,factory_a/a2_learning.jsonl,factory_b/gold_stage100.jsonl}",
+      "format": "jsonl",
+      "item_count": {"method": "EXACT (`wc -l`)", "a1_regression": 200, "a2_learning": 40, "gold_stage100": 100},
+      "size_on_disk": "1.7 MB",
+      "actual_top_level_keys": {
+        "factory_a": ["ancestor_record_id", "corpus_sha", "factory", "failure_code", "failure_stage", "invariant_family", "label", "learner_input_hash", "oracle", "pair_id", "partition", "prediction_contract", "protocol", "record_id", "schema_version", "secondary_findings", "shortcut_flags", "source_provenance", "source_split", "source_theorem_id", "transition", "variant_role"],
+        "factory_b": ["ancestor_record_id", "applicability_family", "canonical_source", "causal_class", "factory", "field_provenance", "label", "learner_input_hash", "neighborhood_id", "minimality", "oracle", "partition", "prediction_contract", "protocol", "record_id", "renderings", "schema_version", "secondary_findings", "source_provenance", "source_split", "source_theorem_id", "variant_role"],
+        "shared_taxonomy_fields": ["invariant_family", "applicability_family", "causal_class", "shortcut_flags", "failure_code"]
+      },
+      "granularity": "one transition variant per record, organised into labelled minimal-pair neighbourhoods",
+      "provenance": "SYNTHETIC GENERATOR (in-repo, deterministic). Verified against manifests/v2_manifest.json and lean_qualification_census.json.",
+      "verification_status": "each record carries an `oracle` field and a `prediction_contract`; labels come from the frozen verifier, not a model.",
+      "trust_tier": "DETERMINISTICALLY_CHECKED",
+      "contamination_risk": "LOW",
+      "notes": "Small (340 records total). Its main value is the explicit `shortcut_flags` / `secondary_findings` machinery for detecting learner shortcuts."
+    },
+
+    {
+      "asset_id": "prm800k-semantic-gap-pilot",
+      "repo": "hmlt-reasoning-corpus-lean-attestation",
+      "path": "/Users/moheet/Documents/ChatGPT/hmlt-reasoning-corpus-lean-attestation/experiments/prm800k_audit/{samples/deep_sample.jsonl,samples/phase1_decision_points.jsonl,annotations/{minus_one,zero,plus_one,decision_point}_audit.jsonl,results/*.json}",
+      "format": "jsonl + json",
+      "item_count": {
+        "method": "EXACT (`wc -l`)",
+        "deep_sample": 1000,
+        "phase1_decision_points": 200,
+        "minus_one_audit": 500,
+        "zero_audit": 250,
+        "plus_one_audit": 250,
+        "decision_point_audit": 200,
+        "distinct_MATH_problems": 858,
+        "distinct_PRM_trajectories": 907
+      },
+      "size_on_disk": "6.0 MB",
+      "actual_top_level_keys": {
+        "deep_sample": ["alternative_completion_count", "candidate_id", "candidate_text", "completion_index_0_based", "finish_reason", "flagged", "generation", "ground_truth_answer", "ground_truth_solution", "human_completion", "is_chosen_completion", "is_initial_screening_question", "is_quality_control_question", "level", "math_unique_id", "phase", "preceding_state_proxy", "problem", "provenance", "rating", "record_type", "source_line", "split", "state_proxy_warning", "step_index_0_based", "step_position_1_based", "strata", "subject", "trajectory_id", "trajectory_step_count"],
+        "annotations": ["adjudication_status", "candidate_id", "confidence", "current_hml_representation", "current_semantic_firewall_deterministic_detection", "explanation", "human_rating", "preceding_state_proxy", "primary_error_class", "required_missing_fact_warrant_or_precondition", "source_context", "step", "violated_invariant"],
+        "phase1_decision_points": ["candidates", "decision_id", "finish_reason", "ground_truth_answer", "ground_truth_solution", "human_completion", "level", "phase", "preceding_state_proxy", "problem", "record_type", "split", "source_line", "state_proxy_warning", "step_position_1_based", "strata", "subject", "trajectory_id"]
+      },
+      "granularity": "PRM800K step level (one candidate step), with the preceding chosen steps materialised as an explicit `preceding_state_proxy` list. The 200 decision-point records preserve MULTIPLE competing candidates at one position — branching, not a linear chain.",
+      "label_space": {"human_rating": {"-1": 500, "0": 250, "+1": 250}, "subjects": {"Algebra": 162, "Intermediate Algebra": 162, "Counting & Probability": 139, "Precalculus": 137, "Prealgebra": 132, "Number Theory": 123, "Geometry": 130, "UNKNOWN": 15}},
+      "hml_judgment_distribution_reported_in_master_doc": {"CURRENT_KNOWN_CORE_GAP": 693, "BACKEND/VERIFIER_GAP": 166, "EXISTING_SEMANTICS": 112, "LIBRARY_GAP": 27, "SOURCE_AMBIGUITY": 2},
+      "provenance": "Deterministic in-repo sampler (experiments/prm800k_audit/audit_prm800k.py) over the immutable PRM800K checkout at commit 7ecc794703b2877f63226f2477a49b34f9b25163. Every candidate, rating, problem and reconstructed prefix was byte-checked against that source: '1000/1000 exact'.",
+      "verification_status": "DETERMINISTIC PROVENANCE CHECK ONLY (1000/1000 exact match against the immutable source). The semantic annotations are explicitly labelled a conservative rule-based first pass. The repo's own README warns they are 'suitable for discovery and human-adjudication planning, not for training or for claiming error prevalence'.",
+      "representative_excerpt": "candidate phase1-test-000003-s002-c06 — step: \"So let's convert these numbers to base $9$... \" (recorded as \"So let's convert these numbers to base $10$.\") on problem 'Compute $58_9 - 18_9.$'; human_rating -1; primary_error_class UNRESOLVED; confidence LOW; explanation: 'The human -1 label is preserved, but this bounded lexical pass cannot identify one primary semantic defect safely.'",
+      "trust_tier": "ANNOTATION_UNVERIFIED",
+      "contamination_risk": "HIGH — MATH-derived via PRM800K. `math_unique_id` and `split` are preserved per record, so a firewall is mechanically enforceable.",
+      "headline_finding_recorded": "0/1000 = 0.00% marginal semantic discovery: no recurring distinction survived as NEW_CORE_SEMANTIC_CANDIDATE. This is evidence of vocabulary saturation for this pilot, and is directly relevant to any plan to mine a new operation vocabulary from PRM800K."
+    },
+
+    {
+      "asset_id": "vnext-600-representation-views",
+      "repo": "hmlt-reasoning-corpus",
+      "path": "/Users/moheet/Documents/ChatGPT/hmlt-reasoning-corpus/data/vnext_600/{full_audit_records,model_safe_records}.jsonl.gz",
+      "format": "gzipped jsonl",
+      "item_count": {"method": "EXACT (`gzcat | wc -l`)", "full_audit_records": 4127, "model_safe_records": 4127},
+      "size_on_disk": "3.9 MB",
+      "actual_top_level_keys": ["ast", "canonical_sha256", "hml_linear", "hml_tree", "record_id", "representation_parity", "structured_neutral"],
+      "granularity": "ONE TRANSITION per record, rendered into four parallel surface representations (ast / hml_linear / hml_tree / structured_neutral). The `ast` field is a fully typed tree whose action node carries {branch_effect, candidate_effect, dependencies, epistemic_effect, goal_effect, id, obligations_created, obligations_discharged, operation, output_id, preconditions, scope_effect, summary, typing, warrant}.",
+      "provenance": "Deterministic re-rendering of the SYNTHETIC-MATH transitions through the VNext contract.",
+      "verification_status": "representation_parity + canonical_sha256 per record only. NO mathematical verifier.",
+      "trust_tier": "DETERMINISTICALLY_CHECKED (representation parity only) / ANNOTATION_UNVERIFIED (mathematical content)",
+      "contamination_risk": "inherits from master-synthetic-math-hml",
+      "scientific_value": "A REPRESENTATION-COMPARISON control (same semantics, four surfaces), not a source of new reasoning operations."
+    },
+
+    {
+      "asset_id": "vnext-10k-formally-replayed-transitions",
+      "repo": "hmlt-reasoning-corpus",
+      "path": "/Users/moheet/Documents/ChatGPT/hmlt-reasoning-corpus/data/vnext_10k/{train,dev,test,full_audit_records,action_leakage_audit}.jsonl.gz + views/{HML_LINEAR,HML_TREE,AST,STRUCTURED_NEUTRAL,HML_IN_JSON_OUT} + reverse_projection/",
+      "format": "gzipped jsonl",
+      "item_count": {"method": "EXACT (`gzcat | wc -l`)", "full_audit_records": 10000, "train": 8132, "dev": 952, "test": 916, "action_leakage_audit": 4024},
+      "size_on_disk": "37 MB",
+      "actual_top_level_keys": ["canonical_sha256", "difficulty", "domain", "epistemic_status", "leakage_check", "mathematical_verification_status", "mechanisms", "neutral", "parent_group_sha256", "parent_id", "problem_normalized_sha256", "record_id", "representation_parity", "semantic_representation_status", "source_family", "source_process_label", "split", "task_eligibility", "verifier_verdict"],
+      "granularity": "ONE Lean tactic transition per record; `neutral` carries the full {action, case_id, evidence, schema_version, source, state_before, state_after} transition object.",
+      "per_step_contents": {
+        "raw_text": "Lean state and tactic text inside `neutral`",
+        "claimed_operation_label": "COARSE — neutral.action.operation is the constant 'LEAN_TACTIC'; the discriminative signal is in `mechanisms` (e.g. ['ordinary_claim_derivation','goal_close'])",
+        "state_before": "yes", "state_after": "yes",
+        "dependencies_between_steps": "yes — action.dependencies plus evidence.premises_used (real mathlib lemma names)",
+        "warrant_or_justification": "formal — warrant.rule 'LEAN_TACTIC' with evidence.kind 'FORMAL_TRACE_REPLAY'",
+        "final_answer": "n/a",
+        "verification_status": "epistemic_status 'FORMALLY_VERIFIED_TRANSITION', mathematical_verification_status 'FORMAL_REPLAY_VERIFIED', verifier_verdict, leakage_check 'PASS'"
+      },
+      "provenance": "FORMAL PROVER. domain 'formal_lean'; evidence carries mathlib commit 29dcec074de168ac2bf835a77ef68bbe069194c5, file_path, start/end line spans, full_name and premises_used.",
+      "verification_status": "VERIFIED, AND THE STRONGEST VERIFICATION CLAIM IN THE CORPUS REPO. Confirmed by direct inspection of data/vnext_10k/train.jsonl.gz record 1: epistemic_status = 'FORMALLY_VERIFIED_TRANSITION', mathematical_verification_status = 'FORMAL_REPLAY_VERIFIED', evidence.kind = 'FORMAL_TRACE_REPLAY', trusted = true. NOTE THE CONTRAST: the much larger hml_50k_final corpus records only 'RECORDED_FORMAL_TRACE_NOT_REPLAYED_IN_THIS_MISSION'. vnext_10k is 10,000 records; hml_50k_final is 56,000.",
+      "representative_excerpt": "evidence e1 over Mathlib/NumberTheory/LSeries/HurwitzZetaEven.lean::HurwitzZeta.completedHurwitzZetaEven_one_sub, lines [388,14], premises_used ['HurwitzZeta.completedHurwitzZetaEven', 'HurwitzZeta.completedCosZeta', 'sub_div', 'HurwitzZeta.hurwitzEvenFEPair', 'WeakFEPair.functional_equation', 'one_smul'].",
+      "trust_tier": "VERIFIED_FORMAL",
+      "contamination_risk": "MEDIUM — mathlib/LeanDojo derived; respect official splits.",
+      "scientific_value": "The best verified-and-replayed mid-size Lean transition set on disk, and the only one carrying real `premises_used` lemma lists (which the 241k census marks NOT_RECOVERABLE). Good candidate for dependency-structure work."
+    },
+
+    {
+      "asset_id": "hmlv3-lean-runtime-v2-canonical-transitions",
+      "repo": "HML_V3",
+      "path": "/Users/moheet/Documents/ChatGPT/HML_V3/data/corpus/*.jsonl.gz (16 sharded files)",
+      "format": "gzipped jsonl",
+      "item_count": {
+        "method": "EXACT (`gzcat | wc -l` per shard)",
+        "unique_transitions": 1150,
+        "partition_a": {"search_pool_v2": 918, "sealed_final_v2": 232},
+        "partition_b": {"lean_runtime_v2.canonical": 608, "targeted_v2.canonical": 542},
+        "warning": "The two partitions BOTH sum to 1,150 and overlap completely. Do not add them."
+      },
+      "size_on_disk": "49 MB",
+      "actual_top_level_keys": ["action", "corpus_metadata", "provenance", "schema_version", "source_specific_reference", "state_after", "state_before", "state_delta", "transition_id"],
+      "schema_version": "canonical-math-transition-v2.0.0",
+      "granularity": "ONE ATOMIC PROVER OPERATION — a single elaborated Lean tactic occurrence (action.kind = 'LEAN_ELABORATED_TACTIC_OCCURRENCE').",
+      "per_step_contents": {
+        "raw_text": "NO — the tactic surface text is NOT stored. Only byte ranges (source_location start/end line/column/raw) into the pinned Mathlib checkout. Text is recoverable only by joining against external/runtime_work/.",
+        "claimed_operation_label": "only the constant LEAN_ELABORATED_TACTIC_OCCURRENCE at this layer",
+        "state_before": "YES, AND AS A TYPED AST rather than pretty-printed text — state_before.goals[i] carries {identity, local_context, local_instances, target} with structured expression nodes such as {node: 'dependent_function', binder_role: 'IMPLICIT'}, 'bound_variable', 'application', 'sort'.",
+        "state_after": "yes, same typed form",
+        "dependencies_between_steps": "RICHEST OF ANY ASSET FOUND — action.local_context_refs (resolved fvar -> canonical id), action.external_premise_refs, source_specific_reference.elaborated_external_constant_refs, plus a 19-field `state_delta` (goals_created/solved/modified/reordered, metavariables_assigned/created/changed, local_declarations_added/removed/changed, local_context_refs_used, external_premises_used, focus_before/focus_after)",
+        "warrant_or_justification": "NOT FOUND — no field carries a human explanation of why a step is valid",
+        "final_answer": "n/a per row; transition_id + source_specific_reference.transition_index reassemble a proof",
+        "verification_status": "corpus_metadata.canonical_sha256; state_*.source_reference.runtime_state_sha256 and relevant_metavariable_inventory_sha256; action.reference_completeness = 'PARTIAL_TACTICS_WITHOUT_TERMINFO_MAY_HIDE_INTERNAL_USE'"
+      },
+      "provenance": "FORMAL PROVER, freshly elaborated (not a re-use of LeanDojo). Pipeline established from scripts: scripts/extract/prepare_lean_runtime_campaign_v2.py -> scripts/replay/run_lean_runtime_campaign_v2.py (fresh elaboration of pinned Mathlib via external/runtime_probe/RuntimeProbe.lean) -> scripts/audit/build_runtime_v2_audits.py.",
+      "verification_status": "Lean 4 elaboration-time capture from a pinned Mathlib commit, with explicit per-state `information_accounting` declaring what is preserved vs delegated (e.g. standalone_constraint_table: 'UNEXPOSED_BY_LEAN_4_10'). Audits at reports/audits/LEAN_RUNTIME_V2_CORPUS.{json,md} and LEAN_RUNTIME_V2_TARGETED.{json,md}. RESEARCH_STATE.md claims 317 canonical transitions across 26 Mathlib domains were 'certified'; the wider 1,150 is NOT claimed as freshly replay-certified per row.",
+      "representative_excerpt": "state_delta of the first record: delta_source 'ELABORATED_STABLE_IDENTITIES', external_premises_used ['Classical.indefiniteDescription'], goals_created ['_uniq.13786'], goals_solved ['_uniq.13603'], focus_changed true.",
+      "trust_tier": "VERIFIED_FORMAL",
+      "contamination_risk": "LOW as an eval risk (Mathlib4 + Batteries source). BUT: SEALED_V2_MANIFEST.json already declares a sealed split of 232 transitions / 126 families with the policy 'read once, after convergence, on the reported finalists only'. RESPECT THAT SEAL.",
+      "scientific_value": "The highest-fidelity state representation anywhere in the project: typed ASTs plus a 19-field structured state delta and fully resolved dependency references. If the goal is to discover reasoning operations as functions on structured state, this is the best substrate — but it has no natural language and no warrants."
+    },
+
+    {
+      "asset_id": "hmlv3-lean-pipeline-v1",
+      "repo": "HML_V3",
+      "path": "/Users/moheet/Documents/ChatGPT/HML_V3/data/samples/lean_pipeline_v1.{source,canonical}.jsonl.gz",
+      "format": "gzipped jsonl",
+      "item_count": {"method": "EXACT (registry + README agree)", "rows": 1000},
+      "size_on_disk": "617 KB (source) + 2.2 MB (canonical)",
+      "actual_top_level_keys": {
+        "source": ["compatibility", "example_id", "lean", "lean_official_split", "observed_action", "proof_depth", "proof_length", "source_family", "source_file", "state_after", "state_before", "theorem_id", "transition_index", "v3_formal_source_enrichment"],
+        "canonical": ["action", "provenance", "schema_version", "state_after", "state_delta", "state_before", "transition_id", "verifier_result"]
+      },
+      "granularity": "one atomic tactic application. UNIQUELY READABLE: state_before here is pretty-printed hypothesis/type text, e.g. {hypotheses: [{name: 'α', type: 'Type u_1'}, {name: 'T', type: 'ℕ → ℝ'}]}.",
+      "per_step_contents": {
+        "raw_text": "YES — v3_formal_source_enrichment.annotated_tactic, with premise references marked up inline",
+        "claimed_operation_label": "YES — observed_action.effect_class plus effect_signature",
+        "state_before": "yes (readable text)", "state_after": "yes",
+        "dependencies_between_steps": "yes — premises with def_path/def_pos, premise_full_names, names_added/removed/rebound",
+        "warrant_or_justification": "NOT FOUND",
+        "final_answer": "n/a",
+        "verification_status": "YES — an explicit `verifier_result` field, plus exact_source_join {state_after: true, state_before: true, tactic: true}"
+      },
+      "provenance": "FORMAL PROVER — LeanDojo Benchmark 4 (source_family LEANDOJO_BENCHMARK_4_V10) traces re-joined to exact Mathlib source byte ranges.",
+      "verification_status": "PARTIALLY RE-REPLAYED. The dataset registry records verbatim: '1000_FORMAL_TRACE_ACCEPTED; 32_FRESH_EXACT_REPLAY_PASS; 968_NOT_FRESHLY_REPLAYED'. Losslessness audit at reports/audits/LOSSLESSNESS_AUDIT_V1.{json,md}.",
+      "representative_excerpt": "annotated_tactic of row 1: `exact <a>add_eq_of_eq_sub</a> <| <a>Finset.sum_Ico_eq_sub</a> _ <| <a>le_of_lt</a> <| R.r_lt_n i n <| n₀_ge_Rn₀.trans hn`",
+      "trust_tier": "VERIFIED_FORMAL",
+      "contamination_risk": "MEDIUM AND SPECIFIC — registry contamination note: 'Contains 995 official train, 3 validation, and 2 test rows plus all Stage100 QA cases.' Filter on `lean_official_split` before any eval use.",
+      "notes": "A near-identical staging file with two extra keys (strata, structural_profile) is at data/manifests/targeted_pool_v2.source.jsonl.gz, 375 KB, 1,134 rows. NOTE the 32 fresh-replay-pass figure matches the lean-attestation Stage100 result exactly — these are very likely the same 32 transitions."
+    },
+
+    {
+      "asset_id": "hmlv3-micromath-lab-v2",
+      "repo": "HML_V3",
+      "path": "/Users/moheet/Documents/ChatGPT/HML_V3/data/micromath_lab_v2/{micro_dev_v2,micro_shadow_v2,micro_hidden_v2}*.jsonl.gz (V1 predecessor at data/micromath_lab_v1/)",
+      "format": "gzipped jsonl",
+      "item_count": {"method": "EXACT", "micro_dev_v2": 301, "micro_shadow_v2": 135, "micro_hidden_v2": 175, "total": 611, "distinct_base_states": 203, "v1_retired": {"micro_dev": 29, "micro_shadow": 8, "micro_hidden": 8}},
+      "size_on_disk": "14 MB (v2) + 1.2 MB (v1)",
+      "actual_top_level_keys": ["ablated", "answer", "base_transition_id", "chance", "detail", "domain", "domain_confidence", "item_id", "lab_version", "options", "provenance", "question", "relation", "source_file", "state", "stress"],
+      "granularity": "SUB-ATOMIC — the finest granularity found anywhere. A single RELATION within one transition, posed as a forced-choice question. Both `state` and `ablated` embed a FULL canonical-math-transition-v2.0.0 record, so each item ships a positive arm and a relation-destroyed negative control.",
+      "provenance": "SYNTHETIC GENERATOR over formal-prover states — scripts/micromath/build_lab_v2.py. Identifiers are anonymised to opaque tags (v17, h4, t23, p8) per reports/micromath_lab_v2/SPEC.md section 2.",
+      "verification_status": "DETERMINISTIC exact-match against a ground truth read directly out of the Lean state. A shortcut audit is a HARD PRE-INFERENCE GATE (DATASET_CARD.md: 7 cells per split, none failing). Split integrity is enforced by micromath_lab_v2/firewall.json keyed on a PROVENANCE HASH OF THE BASE STATE, not on the split name.",
+      "representative_excerpt": "first row of micro_dev_v2.part-000 — question: \"Which declaration does the action use as an argument?\"; options ['v13','v33']; answer 'v13'; relation ACTION_ARG; provenance {ablated: 'STRUCTURAL_RELATION_ABLATION_NEGATIVE_CONTROL', state: 'REAL_LEAN_DERIVED_BASE_ANONYMISED'}.",
+      "trust_tier": "DETERMINISTICALLY_CHECKED",
+      "contamination_risk": "INTERNAL HOLDOUT RISK — micro_shadow_v2 and micro_hidden_v2 are marked 'Read so far: no' in the dataset card. They are genuine unread holdouts and MUST stay unread.",
+      "scientific_value": "This is the project's existing instrument for asking whether a representation actually exposes a given relation. It is the closest thing on disk to a probe suite for a reasoning-operation vocabulary."
+    },
+
+    {
+      "asset_id": "hmlv3-failure-memory",
+      "repo": "HML_V3",
+      "path": "/Users/moheet/Documents/ChatGPT/HML_V3/research/representation_search/hml_failure_memory.json (+ HML_FAILURE_MEMORY.md)",
+      "format": "json (+ markdown companion)",
+      "item_count": {"method": "EXACT (list length)", "lessons": 58, "ids": "FM-001 .. FM-058"},
+      "size_on_disk": "81 KB (json) + 19 KB (md)",
+      "actual_top_level_keys": ["schema_version", "generated_from", "policy", "lessons"],
+      "schema_version": "hml-failure-memory-v1.0.0",
+      "per_lesson_keys": ["id", "title", "disposition", "evidence_status", "numbers", "source_artifacts", "binding_on", "blocked_traits", "requirement"],
+      "evidence_status_distribution": {"MEASURED_LOCAL_ARTIFACT": 55, "ASSERTED_WITHOUT_LOCAL_ARTIFACT": 2, "REASONING_ERROR": 1},
+      "granularity": "one experimental lesson per record — not a reasoning chain, but a machine-readable constraint set",
+      "provenance": "Human/agent-authored, generated_from 'prior repository artifacts inventoried in research/asset_inventory/ALL_EXPERIMENTS.md', with numeric evidence attached per lesson. The `policy` object declares consulted_every_generation and a_do_not_retry_unchanged_lesson_blocks.",
+      "verification_status": "each lesson self-reports whether its evidence is a measured local artifact; 55/58 are.",
+      "representative_excerpt": "FM-001 — title 'The headline HML advantage was a prompt-envelope artifact'; disposition REJECTED_CAUSAL_CLAIM; numbers {uncontrolled_delta_pp: 35.55, common_envelope_delta_pp: -2.77}; requirement 'non-state prompt bytes must be byte-identical across arms'.",
+      "trust_tier": "ANNOTATION_UNVERIFIED (but 55/58 lessons cite a measured artifact)",
+      "contamination_risk": "n/a",
+      "relevance": "HML_PIVOT_HANDOFF.md explicitly marks this file as TRANSFERRING to Hamiltonian Chess. The Arena's own docs/CROSS_REPO_ASSET_AUDIT.md already lists it as asset 'hmlv3-failure-memory' with decision ADAPT."
+    },
+
+    {
+      "asset_id": "hmlv3-representation-search-history",
+      "repo": "HML_V3",
+      "path": "/Users/moheet/Documents/ChatGPT/HML_V3/data/representation_search_v2/{proposal_history.jsonl,candidate_registry.jsonl,primitive_registry.jsonl,generations/} and data/representation_search/{candidate_registry.jsonl,generations/,sealed_access_log.jsonl,sealed_final_evaluation.json}",
+      "format": "jsonl + per-generation dirs",
+      "item_count": {"method": "EXACT (`wc -l`)", "proposal_history_v2": 3557, "candidate_registry_v2": 566, "candidate_registry_v1": 616, "primitive_registry_proposals": 289, "generations_v2": 108, "generations_v1": 32},
+      "size_on_disk": "proposal_history 1.97 MB, candidate_registry_v2 3.35 MB, candidate_registry_v1 2.7 MB",
+      "actual_top_level_keys": ["generation", "outcome", "payload", "proposal_id", "proposal_type", "schema_version", "source", "warnings"],
+      "granularity": "one LLM proposal about a REPRESENTATION, not a mathematical reasoning step",
+      "provenance": "LLM — confirmed by the `proposer` field in the primitive registry: 'llm/ollama:qwen38-rvn:latest'. These are model-authored hypotheses about representations, NOT worked mathematics.",
+      "verification_status": "each proposal has an `outcome` and the primitive registry carries `evidence` and `falsification` fields; a sealed_access_log.jsonl records sealed-eval reads.",
+      "trust_tier": "ANNOTATION_UNVERIFIED",
+      "contamination_risk": "n/a",
+      "caution": "This is machine-generated reasoning ABOUT representation design. It is NOT a mathematical reasoning-chain asset and must not be counted as one."
+    },
+
+    {
+      "asset_id": "hmlv3-dataset-registry",
+      "repo": "HML_V3",
+      "path": "/Users/moheet/Documents/ChatGPT/HML_V3/data/registry/datasets.yaml (+ research/asset_inventory/{ALL_DATASETS.md,ALL_PROOF_DATA.md,PRIOR_ASSET_DECISIONS.md,ALL_EXPERIMENTS.md})",
+      "format": "yaml (JSON-in-YAML), schema hml-v3-dataset-registry-1.1.0",
+      "item_count": {"method": "EXACT", "datasets_registered": 27},
+      "size_on_disk": "40 KB",
+      "per_entry_fields": ["trust_tier (A-E)", "verification_status", "train_allowed", "evaluation_only", "contamination_notes", "sha256", "path", "row_count"],
+      "granularity": "n/a (meta-inventory)",
+      "provenance": "Authored in HML_V3.",
+      "trust_tier": "ANNOTATION_UNVERIFIED",
+      "contamination_risk": "NONE itself — it is the firewall registry, not data. But it CATALOGUES the contaminated assets, and its train_allowed / evaluation_only / contamination_notes fields are the authoritative starting point for firewall policy.",
+      "relevance": "A PRE-EXISTING CONTAMINATION FIREWALL REGISTRY covering exactly the assets in this inventory. It independently corroborates several counts recorded here: PRM800K 101,599 rows with 1,046,365 non-null ratings (this inventory measured 101,599 lines and 1,085,590 total completions of which 39,225 are unrated -> 1,046,365 rated: EXACT AGREEMENT); lean_domino_v2 241,265; hml_50k_final 56,000; Hendrycks MATH train 12,500; LeanDojo Benchmark 4 122,517; AMPS-Khan 103,059; NuminaMath-LEAN 104,155; Herald_proofs 44,553; state_tactic_pairs 56,407; STP_Lean_0320 3,262,558; Pythagoras_SFT 126,113. It rates hml_50k_final tier E with the note 'representation inference invalidated', and Gold-10/25/125 tier E, human-adjudicated, 160 items total. USE THIS FILE AS THE STARTING POINT FOR ANY FIREWALL POLICY rather than rebuilding one."
+    },
+
+    {
+      "asset_id": "hmlv3-public-benchmark-checkouts",
+      "repo": "HML_V3",
+      "path": "/Users/moheet/Documents/ChatGPT/HML_V3/external/checkouts/{grade-school-math,miniF2F,ProofNet-lean4,Lean-Workbook,LeanDojo-v2,mathlib4-29dcec0}",
+      "format": "jsonl / repo checkouts",
+      "item_count": {
+        "method": "EXACT (`wc -l`) for GSM8K; card-reported for the rest",
+        "gsm8k": {"train": 7473, "test": 1319, "train_socratic": 7473, "test_socratic": 1319, "example_model_solutions": 1319},
+        "miniF2F": 500, "ProofNet_lean4": 371, "Lean_Workbook": 140124
+      },
+      "size_on_disk": "369 MB total (grade-school-math 17 MB, miniF2F 400 KB, ProofNet 564 KB, Lean-Workbook 176 KB, LeanDojo-v2 1.8 MB, mathlib4 349 MB)",
+      "actual_top_level_keys": {"gsm8k": ["question", "answer"]},
+      "granularity": "GSM8K answers are HUMAN-WRITTEN multi-step worked solutions with inline calculator annotations and a '#### <answer>' terminator. A 'step' is one sentence with an embedded arithmetic assertion.",
+      "provenance": "PUBLIC BENCHMARKS, checked out in-tree.",
+      "verification_status": "GSM8K's <<48/2=24>> annotations are machine-checkable arithmetic assertions, which is a real (if shallow) deterministic check.",
+      "representative_excerpt": "GSM8K train: \"Natalia sold 48/2 = <<48/2=24>>24 clips in May.\"",
+      "trust_tier": "ANNOTATION_UNVERIFIED (human-written), with a DETERMINISTICALLY_CHECKABLE arithmetic layer",
+      "contamination_risk": "CRITICAL. Registry entry `openai_gsm8k` is tier D with train_allowed = False and the contamination note: 'must be assumed present in the pretraining data of every public model this project could run.' miniF2F and ProofNet-lean4 are both marked evaluation_only = True. FIREWALL ALL OF THESE.",
+      "notes": "GSM8K's socratic variant is a decomposed question-per-step rendering of the same solutions — potentially interesting as an existing example of forced granular decomposition, but contaminated."
+    },
+
+    {
+      "asset_id": "final-signal-raw-predictions",
+      "repo": "hamiltonian-lang-final-signal",
+      "path": "/Users/moheet/Documents/ChatGPT/hamiltonian-lang-final-signal/experiments/final_hml_signal/raw_predictions/10k_{hml,neutral}_{s1,s2}.json",
+      "format": "json ({summary, rows})",
+      "item_count": {"method": "EXACT (rows array length)", "files": 4, "rows_each": 3000, "total": 12000},
+      "size_on_disk": "~3.69 MB each",
+      "actual_top_level_keys": ["record_id", "parent_id", "answer_index", "candidate_ids", "scores_sum", "scores_mean", "candidate_probabilities", "pred_index", "rank", "reciprocal_rank", "correct", "nll", "entropy", "correct_action_logprob_margin", "n_prompt_tokens", "complexity", "depth", "depth_bin", "trajectory_step_index", "proof_length", "trajectory_length_bin", "fact_count", "candidate_count", "tactic_family", "probability_statistics_related", "complete_trajectory", "complete_multi_step_trajectory", "lexical_pred", "lexical_correct", "lexical_overlaps"],
+      "granularity": "ONE ATOMIC LEAN TACTIC APPLICATION PER RECORD, scored. CRITICALLY: these are MODEL OUTPUTS, not a reasoning corpus. No raw state text (hash-referenced only), no state_before/state_after, no warrant, no final answer.",
+      "chain_structure": "Trajectory structure survives ONLY as metadata columns (depth, trajectory_step_index, proof_length, complete_multi_step_trajectory) — records are NOT linked into multi-step chains.",
+      "provenance": "Model evaluation output over the hml_50k_final / vnext corpora; parent_id points at mathlib, e.g. 'Mathlib/Order/JordanHolder.lean::CompositionSeries.isMaximal_eraseLast_last'.",
+      "verification_status": "underlying transitions are formal traces; scoring is constrained-candidate log-prob exact match.",
+      "trust_tier": "VERIFIED_FORMAL (underlying items) — but the FILE is experiment output, not corpus",
+      "contamination_risk": "inherits LeanDojo splits",
+      "important_context": "The protocol at experiments/final_hml_signal/FINAL_SIGNAL_PROTOCOL.md states verbatim: 'Depth results are depth-conditioned one-step action-selection results. They are not free-running rollouts.' This directly answers whether the +35.55pp headline was measured on reasoning chains: IT WAS NOT."
+    },
+
+    {
+      "asset_id": "final-signal-manual-100-forensics",
+      "repo": "hamiltonian-lang-final-signal",
+      "path": "/Users/moheet/Documents/ChatGPT/hamiltonian-lang-final-signal/experiments/final_hml_signal/forensics/manual_100.jsonl",
+      "format": "jsonl",
+      "item_count": {"method": "EXACT (`wc -l`)", "records": 100},
+      "size_on_disk": "346 KB",
+      "actual_top_level_keys": ["record_id", "parent_id", "selection_category", "concise_canonical_state", "hml_view", "neutral_view", "actions", "gold", "hml_prediction", "hml_scores", "neutral_prediction", "neutral_scores", "tag", "reason", "gold_tactic_head"],
+      "granularity": "one transition, with BOTH rendered surfaces side by side and a human adjudication",
+      "provenance": "HAND-LABELLED by the owner/agent (selection_category, tag, reason are human judgements) over formal Lean transitions.",
+      "verification_status": "underlying transition formal; the adjudication labels are human.",
+      "representative_excerpt": "concise_canonical_state `(fun x => a • x) y ∈ balancedCore 𝕜 s`, gold_tactic_head 'rcases', tag 'LEXICAL_CUE', selection_category 'HML_CORRECT_NEUTRAL_WRONG'.",
+      "trust_tier": "ANNOTATION_UNVERIFIED (the labels) over VERIFIED_FORMAL items",
+      "contamination_risk": "inherits LeanDojo splits",
+      "notes": "This is the ONLY place in that repo carrying raw rendered state text. The 'LEXICAL_CUE' tag is itself an important negative finding: some apparent HML wins were lexical leakage."
+    },
+
+    {
+      "asset_id": "final-signal-common-envelope-control",
+      "repo": "hamiltonian-lang-final-signal",
+      "path": "/Users/moheet/Documents/ChatGPT/hamiltonian-lang-final-signal/experiments/common_envelope_10k/raw/*.jsonl",
+      "format": "jsonl",
+      "item_count": {"method": "EXACT (`wc -l`)", "files": 4, "rows_each": 3000, "total": 12000},
+      "size_on_disk": "17 MB (dir)",
+      "actual_top_level_keys": "same family as final-signal-raw-predictions, PLUS integrity hashes absent from it: prompt_sha256, state_sha256, candidate_sha256, gold_margin, domain",
+      "granularity": "one-step action selection",
+      "provenance": "Model evaluation output under a byte-matched prompt envelope.",
+      "verification_status": "n/a (experiment output)",
+      "trust_tier": "n/a",
+      "contamination_risk": "inherits LeanDojo splits",
+      "importance": "THIS IS THE CONTROL THAT OVERTURNED THE HEADLINE. Delta -2.77pp (HML 85.33% vs Neutral 88.10%), 95% CI [-3.72, -1.81]pp, verdict COMMON_ENVELOPE_EFFECT_FAILED. Its prompt/state/candidate SHA-256 columns are the mechanism that made the refutation checkable, and are worth copying into Arena."
+    },
+
+    {
+      "asset_id": "final-signal-hml-conformance-fixtures",
+      "repo": "hamiltonian-lang-final-signal",
+      "path": "/Users/moheet/Documents/ChatGPT/hamiltonian-lang-final-signal/benchmarks/expected/*.json and examples/**/*.hml",
+      "format": "json + .hml source",
+      "item_count": {"method": "EXACT (file count)", "hml_example_files": 52},
+      "size_on_disk": "small",
+      "granularity": "whole small programs, not reasoning steps",
+      "provenance": "HAND-WRITTEN HML programs paired with expected verifier verdicts.",
+      "verification_status": "DETERMINISTICALLY CHECKED — each fixture pairs a program with an expected compiler/verifier verdict.",
+      "trust_tier": "DETERMINISTICALLY_CHECKED",
+      "contamination_risk": "NONE",
+      "notes": "Language-conformance fixtures, NOT worked solutions. Listed so they are not mistaken for a reasoning corpus."
+    },
+
+    {
+      "asset_id": "reasoning-layer-v1-confirmatory",
+      "repo": "hml_research_artifacts (external artifact root)",
+      "path": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/reasoning_layer_v1_confirmatory/records/{train,dev,final_a}.jsonl.gz (+ prepared/, train/, incidents/)",
+      "format": "gzipped jsonl",
+      "item_count": {"method": "NOT COUNTED — records/ is 9.9 MB gzipped; not decompressed to avoid load during the live experiment", "note": "ESTIMATED same H50K-LEAN record family as hml_50k_final based on matching record_id prefix"},
+      "size_on_disk": "534 MB total (records 9.9 MB, prepared 67 MB, train 307 MB, incidents 150 MB)",
+      "actual_top_level_keys": ["candidates", "current_state", "history", "metadata", "parent_id", "record_id", "semantic_state", "source_example_id", "split", "target"],
+      "granularity": "ONE Lean proof state + a 6-way candidate tactic set, PLUS a `history` list (empty on the inspected record) and a rich `semantic_state` object with {active_goal:{goal_hash, hypothesis_count, position, target, target_shape}, active_scope:{case_label, source_explicit}, ...}.",
+      "per_step_contents": {
+        "raw_text": "yes — current_state is the pretty-printed Lean goal state; candidates are tactic texts",
+        "claimed_operation_label": "indirect — semantic_state.active_goal.target_shape (e.g. 'NOT') and metadata module_presence flags",
+        "state_before": "yes",
+        "state_after": "no — this is a next-action-selection view",
+        "dependencies_between_steps": "metadata.dependency_edge_count present; `history` and `parent_id` chain records",
+        "warrant_or_justification": "no",
+        "final_answer": "n/a",
+        "verification_status": "gold target derived from the recorded formal trace"
+      },
+      "provenance": "FORMAL PROVER (LeanDojo/mathlib), re-prepared for a confirmatory reasoning-layer experiment.",
+      "verification_status": "VERIFIED_FORMAL upstream; not re-replayed.",
+      "trust_tier": "VERIFIED_FORMAL",
+      "contamination_risk": "MEDIUM — LeanDojo splits.",
+      "notes": "Contains an `incidents/` directory (150 MB) that may be the project's failure memory for this run; not opened in this pass."
+    },
+
+    {
+      "asset_id": "arena-world-v0",
+      "repo": "hamiltonian_chess (Arena, this parallel worktree)",
+      "path": "/Users/moheet/Documents/ChatGPT/hamiltonian_chess/.claude/worktrees/phase-6-parallel-setup-9c6068/artifacts/worlds/arena-world-v0.jsonl (+ arena-world-v0-summary.json)",
+      "format": "jsonl",
+      "item_count": {"method": "EXACT (`wc -l`, cross-checked against the summary json)", "tasks": 676, "transitions": 676, "domains": 13, "per_domain": 52},
+      "size_on_disk": "small (world jsonl + summary)",
+      "actual_top_level_keys": ["dimensions", "metadata", "split", "tags", "task_id", "trajectory"],
+      "dimension_axes": ["composition_count", "cross_domain_interaction", "dependency_depth", "domain", "number_of_assumptions", "number_of_legal_actions", "number_of_plausible_invalid_actions", "partiality", "proof_length", "quantifier_alternation", "reasoning_depth", "scope_depth"],
+      "granularity": "ONE TRANSITION per task (proof_length 1 on the inspected record). NOT a multi-step chain corpus.",
+      "per_step_contents": {
+        "raw_text": "no natural language — states are typed S-expression-like objects {op, sort, args, value}",
+        "claimed_operation_label": "yes — typed ops",
+        "state_before": "yes (full CanonicalState: assumptions, bindings, established_facts, evidence_dependencies, goal, legal_actions, local_scope, execution_metadata)",
+        "state_after": "yes (final_state)",
+        "dependencies_between_steps": "evidence_dependencies present; single-transition tasks so cross-step dependency is minimal",
+        "warrant_or_justification": "verifier records on the transition",
+        "final_answer": "yes (final_answer)",
+        "verification_status": "quality label GOLD (520) / SILVER (104) / REJECT (52); Gold requires a native structural check PLUS an independent trusted domain-template replay with a certificate hash"
+      },
+      "provenance": "SYNTHETIC GENERATOR — `arena-world-v0`, deterministic (seed 0), in-repo, world_hash ac16014cd20fbed2dabacd75bff3fd19723e3e96048f82a1ee1a574f59daf256.",
+      "verification_status": "DETERMINISTICALLY CHECKED for GOLD rows (native check + independent domain-template replay + certificate hash).",
+      "trust_tier": "DETERMINISTICALLY_CHECKED",
+      "contamination_risk": "NONE — fully synthetic, generated in-repo.",
+      "notes": "Domains: arithmetic, algebra, logic, binding, sets, probability, statistics, calculus, linear_algebra, physical_dimensions, optimization, partial_operations, reasoning_evidence."
+    },
+
+    {
+      "asset_id": "arena-cross-repo-asset-audit",
+      "repo": "hamiltonian_chess (Arena, this parallel worktree)",
+      "path": "/Users/moheet/Documents/ChatGPT/hamiltonian_chess/.claude/worktrees/phase-6-parallel-setup-9c6068/{docs/CROSS_REPO_ASSET_AUDIT.md,artifacts/reuse/cross_repo_assets.json,artifacts/reuse/provenance.jsonl}",
+      "format": "markdown + json + jsonl",
+      "item_count": {"method": "EXACT", "assets_catalogued": 24, "provenance_import_records": 9, "categories": {"EXPERIMENT_RESULT": 4, "MODEL_HARNESS": 3, "FAILURE_CASE": 2, "DATASET": 2, "SCORER": 2, "SEMANTICS": 2, "REGRESSION": 2, "SEARCH_ALGORITHM": 1, "RENDERER": 1, "CANONICAL_SCHEMA": 1, "TASK_GENERATOR": 1, "CONFORMANCE_TEST": 1, "MODEL_SURFACE": 1, "PROMPT": 1}},
+      "granularity": "n/a (meta-inventory)",
+      "provenance": "Authored in the Arena repo on 2026-09-05 after searching all branches/tags of four private repos.",
+      "trust_tier": "ANNOTATION_UNVERIFIED",
+      "contamination_risk": "n/a",
+      "relevance": "This file ALREADY names the HML_V3 failure-memory path (research/representation_search/HML_FAILURE_MEMORY.md on branch codex/open-ended-search-v2 @ 4395a8c717a334be58b29d53b43c0c842d0e03ac) and the max-EV dataset (experiments/max_ev_representation_v1/dataset/v1/MANIFEST.json, 5,619 rows, decision ADAPT/IMPORT_AS_TEST). It also records the key negative result: under a common envelope canonical JSON beat HML by 2.77 percentage points."
+    },
+
+    {
+      "asset_id": "hf-public-lean-and-math-sources",
+      "repo": "hml_research_artifacts (external artifact root)",
+      "path": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/hf_sources/{Herald_proofs,NuminaMath-LEAN,Pythagoras_SFT,STP_Lean_0320,state_tactic_pairs}/",
+      "format": "mixed (parquet/json data dirs; Pythagoras is a single json)",
+      "item_count": {"method": "NOT COUNTED — deliberately not enumerated to avoid load; each dir carries its own ACQUISITION.json and README.md"},
+      "size_on_disk": "2.7 GB total: STP_Lean_0320 1.6 GB, Pythagoras_SFT 950 MB, NuminaMath-LEAN 75 MB, Herald_proofs 55 MB, state_tactic_pairs 55 MB",
+      "provenance": "PUBLIC HUGGING FACE DATASETS downloaded into the artifact root; each has an ACQUISITION.json recording the download.",
+      "verification_status": "upstream-dependent; not established in this pass",
+      "trust_tier": "VERIFIED_FORMAL (claimed, Lean-based sets) — NOT independently confirmed here",
+      "contamination_risk": "HIGH AND EXTERNAL — these are public benchmark/training sets (NuminaMath, Herald, STP, state-tactic pairs). Any of them may overlap with a formal-math eval you later want held out. Treat as training-only unless audited.",
+      "notes": "Listed for completeness and contamination bookkeeping only; not a source of owner-authored granular reasoning."
+    }
+  ],
+
+  "operation_taxonomies": [
+    {
+      "taxonomy_id": "reasoning_ontology_v1",
+      "path": "/Users/moheet/Documents/ChatGPT/hmlt-reasoning-corpus/schemas/reasoning_ontology_v1.yaml",
+      "kind": "MULTI-AXIS ONTOLOGY (the most complete taxonomy found)",
+      "axes_and_sizes": {
+        "reasoning_mode": {"n": 6, "values": ["EXECUTION", "SEARCH_META", "VERIFICATION", "MODELING", "GOAL_MANAGEMENT", "OTHER"]},
+        "core_operation": {"n": 19, "values": ["DECLARE", "RECORD", "MODEL", "CONSTRUCT", "TRANSFORM", "SUBSTITUTE", "APPLY_DEFINITION", "APPLY_THEOREM", "CASE_SPLIT", "ENUMERATE", "COUNT", "EVALUATE", "BOUND", "SELECT", "VERIFY", "CONTRADICTION", "DISCHARGE", "INDUCT", "UNRESOLVED"]},
+        "warrant": {"n": 16, "values": ["SOURCE_GROUNDED", "DEFINITION", "THEOREM", "IDENTITY", "ALGEBRAIC_PRESERVATION", "MODULAR_ARITHMETIC", "COUNTING_RULE", "PROBABILITY_LAW", "SEQUENCE_RULE", "TRIGONOMETRY_IDENTITY", "CALCULUS_RULE", "GEOMETRY_RULE", "NUMERIC_EVALUATION", "SYMBOLIC_NORMALIZATION", "HEURISTIC_OR_REPRESENTATION_CHOICE", "UNKNOWN"]},
+        "knowledge_layer": {"n": 7, "values": ["CORE", "THEOREM_LIBRARY", "DOMAIN_LIBRARY", "SYMBOLIC_BACKEND", "NUMERIC_BACKEND", "SEARCH_META", "UNKNOWN"]},
+        "goal_effect": {"n": 4, "values": ["NONE", "ADVANCE", "CREATE_SUBGOAL", "DISCHARGE"]},
+        "scope_effect": {"n": 7, "values": ["NONE", "OPEN_BRANCH", "CLOSE_BRANCH", "JOIN_BRANCHES", "INTRODUCE_ASSUMPTION", "DISCHARGE_ASSUMPTION", "UNKNOWN"]},
+        "epistemic_effect": {"n": 6, "values": ["ASSERT", "DERIVE", "PROPOSE_CANDIDATE", "VERIFY_CANDIDATE", "REJECT_CANDIDATE", "UNKNOWN"]},
+        "uncertainty": {"n": 4, "values": ["CERTAIN", "SOURCE_AMBIGUOUS", "ANNOTATION_REVIEW", "UNRESOLVED"]}
+      },
+      "where_the_names_came_from": "Derived bottom-up from the 66 observed operations in the Gold-125 registry, then factored so that 'a named theorem, formula, algorithm, or domain procedure is not automatically a core operation'. Stated principles include: 'A source transition may have one semantic operation plus independent mode, warrant, knowledge, goal, scope, and epistemic effects' and 'Representability is not reasoning superiority.'",
+      "applied_to": "all 769 gold125+gold25 steps (data/derived/gold125_ontology_v1/)",
+      "trust": "ANNOTATION_UNVERIFIED"
+    },
+    {
+      "taxonomy_id": "gold125_operation_registry_v1",
+      "path": "/Users/moheet/Documents/ChatGPT/hmlt-reasoning-corpus/schemas/reasoning_operation_registry_gold125_v1.json",
+      "kind": "OBSERVED-OPERATION REGISTRY (surface vocabulary)",
+      "operation_count": 66,
+      "operations": ["ADD_BOTH_SIDES", "ADVANCE_SEQUENCE", "APPLY_DEFINITION", "APPLY_IDENTITY", "APPLY_PRECEDENCE", "APPLY_THEOREM", "BOUND", "BOUND_REASONING", "BOUND_SEARCH", "CANCEL_SYMMETRIC_TERMS", "CASE_SPLIT", "CLEAR_DENOMINATOR", "COMBINE_CASES", "COMBINE_CASE_COUNTS", "COMBINE_LIKE_TERMS", "COMPLEMENT_COUNT", "CONDITIONAL_PROBABILITY", "CONSTRAINT_PROPAGATION", "CONSTRUCT", "CONTRADICTION", "COUNT", "COUNT_CASES", "COUNT_EXCLUDED", "COUNT_PERMUTATIONS", "CROSS_MULTIPLY", "DIFFERENTIATE", "DISCHARGE", "DISCHARGE_GOAL", "DIVIDE_BOTH_SIDES", "ENUMERATE", "EVALUATE", "EVALUATE_PROBABILITY", "EXPAND", "EXTRACT_ROOT", "FACTOR", "FORMULATE_EQUATION", "FORMULATE_INEQUALITY", "INCLUSION_EXCLUSION", "INDEX_TRANSLATION", "INDUCT", "INTRODUCE_VARIABLE", "MODULAR_REASONING", "MULTIPLY_CONDITIONALS", "MULTIPLY_COUNTS", "OPTIMIZE", "OTHER", "PARAMETERIZE_CONGRUENCE", "PRIME_FACTORIZE", "PROBABILITY", "RATIONALIZE", "RECORD_EQUALITY_CONDITION", "RECORD_GIVEN", "ROUND_TO_DOMAIN", "SEARCH_META", "SELECT_CANDIDATE", "SELECT_EXTREMUM", "SEQUENCE_RECURRENCE", "SOLVE", "SOLVE_CASE", "SUBSTITUTE", "SUBTRACT_BOTH_SIDES", "TAKE_LIMIT", "TRANSFORM", "TRIG_IDENTITY", "VERIFY", "VERIFY_CANDIDATE"],
+      "per_entry_fields": ["observed_operation", "frequency_source_granularity", "candidate_core", "candidate_core_distribution", "layer_class", "layer_distribution", "atomic_components", "atomicity_counts", "reasoning_modes", "categories", "examples", "singleton_or_doubleton", "core_semantics_new_since_gold25"],
+      "where_the_names_came_from": "BOTTOM-UP from what was actually observed in the 125 MATH gold trajectories; each entry records its frequency, the example problem ids it came from, whether it is a singleton/doubleton, and whether it introduced new core semantics relative to Gold-25.",
+      "trust": "ANNOTATION_UNVERIFIED"
+    },
+    {
+      "taxonomy_id": "gold25_reasoning_operation_registry_v0",
+      "path": "/Users/moheet/Documents/ChatGPT/hmlt-reasoning-corpus/schemas/reasoning_operation_registry_gold25_v0.json",
+      "kind": "EXECUTABLE OPERATION SPEC (richer per-entry than v1)",
+      "operation_count": 48,
+      "per_entry_fields": ["operation_id", "canonical_name", "family", "description", "required_inputs", "allowed_types", "warrant_type", "scope_behavior", "hml_rule", "hml_support_status", "preconditions", "..."],
+      "example_entry": "{operation_id: 'ADD_BOTH_SIDES', family: 'EQUATION_TRANSFORMATION', description: 'Add the same term to both sides.', required_inputs: ['equality','term'], allowed_types: ['equation','inequality'], warrant_type: 'equality_preservation', scope_behavior: 'preserves scope', hml_rule: 'add_both_sides', hml_support_status: 'FULL'}",
+      "where_the_names_came_from": "Derived from the 25 Gold-25 MATH trajectories; unlike v1 it also records an operation FAMILY, typed input requirements, and an HML rule binding.",
+      "trust": "ANNOTATION_UNVERIFIED",
+      "note": "This v0 registry is arguably MORE useful than v1 for building an executable operation vocabulary, because it specifies required inputs, allowed types and a warrant type per operation."
+    },
+    {
+      "taxonomy_id": "reasoning_stages_v0_2_0",
+      "path": "/Users/moheet/Documents/ChatGPT/hmlt-reasoning-corpus/schemas/reasoning_stages.json",
+      "kind": "PIPELINE-STAGE TAXONOMY (orthogonal to operations)",
+      "operation_count": 16,
+      "stages": ["problem segmentation", "symbol/object identification", "type/domain resolution", "scope/binder resolution", "fact extraction", "goal identification", "epistemic-state construction", "dependency construction", "subgoal decomposition", "candidate reasoning move", "warrant/rule selection", "precondition checking", "transformation/inference execution", "local verification", "state update", "termination/goal discharge"],
+      "where_the_names_came_from": "Authored in-repo as the decomposition backbone for the hand-authored Gold-10 examples; each Gold-10 action records the stage numbers it covers (`reasoning_stages`).",
+      "applied_to": "the 23 hand-authored Gold-10 actions",
+      "trust": "ANNOTATION_UNVERIFIED",
+      "note": "THIS IS THE FINEST-GRAINED DECOMPOSITION SCHEME IN THE PROJECT. It is the closest existing thing to 'a vocabulary of recurring reasoning operations at sub-sentence granularity', but it is applied to only 10 trivial problems."
+    },
+    {
+      "taxonomy_id": "gold125_gap_registry_v1",
+      "path": "/Users/moheet/Documents/ChatGPT/hmlt-reasoning-corpus/schemas/gold125_gap_registry_v1.json",
+      "kind": "SEMANTIC-GAP REGISTRY (what the language cannot express), not an operation list",
+      "operation_count": 13,
+      "per_entry_fields": ["gap_id", "title", "class", "layer", "severity", "description", "old", "recurrence_count", "domain_spread", "examples"],
+      "example_entry": "MATH-GAP-0001 'Case coverage and branch joins', class CORE_SEMANTIC_MISSING, severity high, recurrence_count 22 across 5 MATH categories.",
+      "where_the_names_came_from": "Bottom-up from failures encountered while representing the 125 gold trajectories.",
+      "trust": "ANNOTATION_UNVERIFIED"
+    },
+    {
+      "taxonomy_id": "master_synthetic_action_vocabulary",
+      "path": "/Users/moheet/Documents/ChatGPT/hmlt-reasoning-corpus/MASTER_SYNTHETIC_MATH_HML.md (and the mirrored transitions.jsonl)",
+      "kind": "OBSERVED ACTION VOCABULARY over 3,978 atomic transitions",
+      "operation_count": 15,
+      "operations_with_counts": {"TRANSFORM": 3076, "SELECT": 194, "CASE_SPLIT": 169, "APPLY_THEOREM": 140, "SUBSTITUTE": 137, "EVALUATE": 97, "BOUND": 62, "VERIFY": 43, "COUNT": 29, "APPLY_DEFINITION": 9, "MODEL": 7, "CONSTRUCT": 7, "INDUCT": 4, "DECLARE": 2, "CONTRADICTION": 2},
+      "where_the_names_came_from": "A subset of the core_operation axis of reasoning_ontology_v1, assigned by the deterministic extractor. Heavily collapsed: 77% of all transitions are labelled TRANSFORM.",
+      "trust": "ANNOTATION_UNVERIFIED",
+      "caveat": "The extreme TRANSFORM skew means this vocabulary carries little discriminative information; it should NOT be treated as evidence that mathematical reasoning has 15 operations."
+    },
+    {
+      "taxonomy_id": "lean_effect_class_vocabulary",
+      "path": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/lean_domino_v2/lean_canonical_records.jsonl (field observed_action.effect_class) and /Users/moheet/Documents/ChatGPT/hmlt-reasoning-corpus-lean-attestation/synthetic_factory_v2/manifests/lean_qualification_census.json",
+      "kind": "MECHANICALLY DERIVED EFFECT VOCABULARY over 241,265 verified Lean transitions",
+      "operation_count": 8,
+      "operations_with_counts": {"CLOSE": 107006, "TRANSFORM_TARGET": 58669, "INTRODUCE": 27304, "INTRODUCE_AND_TRANSFORM": 24248, "REWRITE_CONTEXT": 13479, "REWRITE_CONTEXT_AND_TARGET": 6881, "NO_VISIBLE_CHANGE": 2263, "ELIMINATE": 1415},
+      "where_the_names_came_from": "COMPUTED, not hand-assigned: derived from the observable state delta (delta_goals, target_changed, names_added/removed/rebound) of each recorded Lean tactic. Each record also carries a compact `effect_signature` such as 'INTRODUCE_AND_TRANSFORM|dg0|T1|A1|R0|B0'.",
+      "trust": "VERIFIED_FORMAL (the underlying transitions are formal traces; the effect labels are a deterministic function of the observed states)",
+      "note": "This is the ONLY operation vocabulary in the whole project that is (a) computed rather than asserted and (b) grounded in formally verified transitions. It is also the only one at 100k+ scale."
+    },
+    {
+      "taxonomy_id": "minilang_operation_semantics",
+      "path": "/Users/moheet/Documents/ChatGPT/hmlt-reasoning-corpus-lean-attestation/experiments/minilang_audit/operation_semantics.json (+ operation_statistics.json, hml_mapping.json, translation_failures.json)",
+      "kind": "EXTERNAL PUBLISHED PROOF-LANGUAGE OPERATION SET, audited against HML",
+      "operation_count": 10,
+      "operations": ["INTRO", "HAVE", "CONSIDER_OR", "CONSIDER_EXISTS", "RULE", "CHOOSE", "SIMPLIFY", "CASE_SPLIT", "INDUCT", "END_OR_NEXT"],
+      "where_the_names_came_from": "EXTERNAL: 'A Minimalist Proof Language for Neural Theorem Proving over Isabelle/HOL', arXiv:2507.18885v4 (OOPSLA26 artifact, archive SHA-256 1562c84524c0851682e47b32243c0e2dcbfb47daaf6820bcb5c216ae8f12bc82). Each entry records the paper class, concrete syntax, AST representation and parser representation, with page-level source citations.",
+      "accompanying_statistics": "operation_statistics.json reports an effective operation perplexity of 6.62 with top-1 coverage 0.389, top-3 0.750, top-5 0.861, top-10 0.961 over the paper's Isabelle evaluation runs.",
+      "trust": "VERIFIED_FORMAL (Isabelle-backed, upstream) as a language spec; the HML mapping is ANNOTATION_UNVERIFIED",
+      "note": "STRONG EXTERNAL PRIOR: an independent research group converged on a 10-operation vocabulary for proof steps. Directly comparable to the 19-value core_operation axis here."
+    },
+    {
+      "taxonomy_id": "hmlv3_effect_class_vocabulary",
+      "path": "/Users/moheet/Documents/ChatGPT/HML_V3/data/samples/lean_pipeline_v1.source.jsonl.gz (field observed_action.effect_class)",
+      "kind": "MECHANICALLY DERIVED EFFECT VOCABULARY — the same 8 classes as lean_effect_class_vocabulary, measured on a different sample",
+      "operation_count": 8,
+      "operations_with_counts": {"CLOSE": 127, "TRANSFORM_TARGET": 126, "INTRODUCE": 125, "INTRODUCE_AND_TRANSFORM": 125, "ELIMINATE": 125, "REWRITE_CONTEXT": 124, "REWRITE_CONTEXT_AND_TARGET": 124, "NO_VISIBLE_CHANGE": 124},
+      "where_the_names_came_from": "Derived mechanically from observed goal/hypothesis deltas. Companion field `effect_signature` is a compact code, verbatim example: 'CLOSE|dg-1|T0|A0|R3|B0'.",
+      "trust": "VERIFIED_FORMAL substrate; labels are a deterministic function of the states",
+      "CRITICAL_CAVEAT": "The near-perfect balance (124-127 per class over 1,000 rows) means this sample was STRATIFIED BY EFFECT CLASS. It is NOT a natural frequency distribution. The natural distribution is the 241,265-record census in lean_effect_class_vocabulary, which is heavily skewed (CLOSE 44%, NO_VISIBLE_CHANGE 0.9%). Do not quote the balanced numbers as evidence about how mathematics is actually done."
+    },
+    {
+      "taxonomy_id": "hmlv3_micromath_relation_taxonomy",
+      "path": "/Users/moheet/Documents/ChatGPT/HML_V3/data/micromath_lab_v2/ (fields `relation` and `stress`) and reports/micromath_lab_v2/DATASET_CARD.md",
+      "kind": "RELATION / STRESS TAXONOMY — what a representation must expose, rather than what an operation does",
+      "operation_count": 8,
+      "relations": ["ACTION_ARGUMENT", "BINDER", "DEPENDENCY", "EXPRESSION_DEPTH", "PREMISE", "SCOPE", "TYPE", "MULTI_GOAL"],
+      "where_the_names_came_from": "Authored in HML_V3 as the probe axes for the MicroMath lab, grounded in what is actually recoverable from a Lean state.",
+      "trust": "DETERMINISTICALLY_CHECKED (each probe has an exact ground truth read from the state)",
+      "note": "MULTI_GOAL carries ZERO items in every split, deliberately (lesson FM-044): no axis of the representation space renders it. That is a real, recorded negative result about representational coverage."
+    },
+    {
+      "taxonomy_id": "hmlv3_representation_genome_42_axes",
+      "path": "/Users/moheet/Documents/ChatGPT/HML_V3/schemas/representation_search_genome.schema.json (+ data/representation_search_v2/primitive_registry.jsonl)",
+      "kind": "REPRESENTATION-DESIGN AXIS SPACE, not a reasoning-operation vocabulary",
+      "operation_count": 42,
+      "example_axes": {"action_encoding": ["SOURCE_TACTIC", "GENERIC_SEMANTIC", "STRUCTURED_ARGS", "SOURCE_PLUS_STRUCTURED"], "context_order": ["... 5 values incl. DEPENDENCY_TOPOLOGICAL, GOAL_CENTRED"], "graph_serialization": "7 values", "redundancy_level": "5 values", "others": ["delta_visibility", "dependency_visibility", "premise_locality", "shared_subterm_handling", "type_explicitness"]},
+      "where_the_names_came_from": "42 human-chosen axes in V1, extended at runtime by an LLM meta-designer (289 proposals in primitive_registry.jsonl, proposer 'llm/ollama:qwen38-rvn:latest'). Only FOUR executable hooks exist: neighbourhood_capsule, duplicate_adjacent, section_partition, record_reorder.",
+      "trust": "ANNOTATION_UNVERIFIED",
+      "RETIRED": "HML_PIVOT_HANDOFF.md decision D-025 records that an exhaustive single-axis sweep found NO axis of the 42 can remove any relation from the page except type_explicitness, and declares the 42-axis genome 'does not transfer'. Do not rebuild it."
+    },
+    {
+      "taxonomy_id": "hml_action_language_spec_and_its_refutation",
+      "path": "/Users/moheet/Documents/ChatGPT/hamiltonian-lang-final-signal/research/model_language/HML_ACTION_LANGUAGE_SPEC.md",
+      "kind": "THE FROZEN ACTION SCHEMA — plus a measured finding that most of it is unused",
+      "schema_fields": ["operation", "output_id", "dependencies", "warrant", "preconditions", "obligations_created", "obligations_discharged", "typing", "plus five effect maps (branch/candidate/epistemic/goal/scope)"],
+      "measured_finding_verbatim": "\"Measured over 400 real transitions: every action is operation = \\\"LEAN_TACTIC\\\" ... and all five effect maps empty.\" The document concludes: \"four fifths of the action schema has zero corpus support\".",
+      "independently_confirmed": "YES — confirmed in this inventory by direct inspection of both data/vnext_10k/train.jsonl.gz and data/hml_50k_final/canonical/records.jsonl.gz: neutral_transition.action.operation == 'LEAN_TACTIC' with empty preconditions, obligations and all effect maps.",
+      "trust": "MEASURED",
+      "CONSEQUENCE_FOR_THIS_TASK": "THE SINGLE MOST IMPORTANT CAVEAT IN THIS INVENTORY. The rich 48/66-operation vocabulary and the 7-axis ontology are exercised ONLY by the 125 MATH-derived gold trajectories (769 transitions). The 56,000-record Lean corpus is single-operation and effect-empty. Any claim that this project has a large corpus annotated with a reasoning-operation vocabulary is FALSE; the large corpus is annotated with one constant."
+    },
+    {
+      "taxonomy_id": "arena_world_dimensions",
+      "path": "/Users/moheet/Documents/ChatGPT/hamiltonian_chess/.claude/worktrees/phase-6-parallel-setup-9c6068/artifacts/worlds/arena-world-v0.jsonl (field `dimensions`) and docs/MATHEMATICAL_WORLD.md",
+      "kind": "TASK-DIFFICULTY DIMENSION SET, not an operation vocabulary",
+      "operation_count": 12,
+      "dimensions": ["composition_count", "cross_domain_interaction", "dependency_depth", "domain", "number_of_assumptions", "number_of_legal_actions", "number_of_plausible_invalid_actions", "partiality", "proof_length", "quantifier_alternation", "reasoning_depth", "scope_depth"],
+      "where_the_names_came_from": "Authored in the Arena repo for the frozen world generator.",
+      "trust": "DETERMINISTICALLY_CHECKED (the generator computes them)",
+      "note": "NO NAMED REASONING-OPERATION TAXONOMY EXISTS IN THE ARENA REPO ITSELF. Searched artifacts/, docs/ and arena/ for taxonomy/operation/ontology/action files: none found."
+    }
+  ],
+
+  "bulk_storage_notes": [
+    {
+      "path": "/Users/moheet/Documents/ChatGPT/HML_V3",
+      "total": "124 GB",
+      "where_the_bulk_is": "external/ accounts for essentially the ENTIRE 124 GB: external/runtime_probe/ 103 GB (raw Lean elaboration captures from campaigns campaign500, campaign500b, campaign_targeted), external/runtime_work/ 18 GB (a Mathlib4 build tree at commit 29dcec074de168ac2bf835a77ef68bbe069194c5), external/runtime_cache/ 2.4 GB (mathlib tarball), external/checkouts/ 369 MB (public benchmark clones).",
+      "everything_else_is_small": {".git": "123 MB", ".venv": "28 MB", "data": "98 MB", "reports": "2.6 MB", "src": "2.2 MB", "research": "252 KB", "docs": "124 KB"},
+      "conclusion": "ALL CURATED REASONING ASSETS IN HML_V3 FIT IN ~98 MB UNDER data/. The 124 GB is a Lean build plus raw prover captures, not reasoning data. Not enumerated."
+    },
+    {
+      "path": "/Users/moheet/Documents/ChatGPT/hamiltonian-lang-final-signal",
+      "total": "933 MB",
+      "where_the_bulk_is": ".venv 815 MB dominates. Then .git 25 MB, experiments 41 MB, evaluation 12 MB, audit_rerun 9.4 MB, tests 8.5 MB, benchmarks 6.0 MB, src 5.5 MB, docs 2.3 MB. Adapter/LoRA weights in experiments/common_envelope_10k/adapters/ are only 4.0 MB (the 434 MB of final-signal adapters live in the external artifact root instead).",
+      "conclusion": "This repo is code + experiment outputs, not a corpus. 87% of it is a Python virtualenv."
+    },
+    {
+      "path": "/Users/moheet/Documents/ChatGPT/LUCY",
+      "total": "not measured",
+      "note": "COMPLETELY UNRELATED. It is a local FACE-IDENTITY EMBEDDING PIPELINE (README: detects and aligns faces, builds an identity embedding bank; InsightFace buffalo_l, ComfyUI). A grep across its .py/.md files for reasoning|theorem|worked solution|GSM8K|miniF2F returned ZERO hits. No mathematical reasoning data of any kind. Excluded."
+    },
+    {
+      "path": "/Users/moheet/Documents/ChatGPT/prm800k",
+      "total": "942 MB",
+      "where_the_bulk_is": "prm800k/data/phase2_train.jsonl alone is 456 MB (97,782 lines). math_splits/ is 11 MB, instruction PDFs 10 MB. It is ALL data — no model weights, no build artifacts."
+    },
+    {
+      "path": "/Users/moheet/Documents/ChatGPT/hmlt-reasoning-corpus",
+      "total": "1.2 GB",
+      "where_the_bulk_is": "data/hml_50k_final/ is 398 MB (of which canonical/records.jsonl.gz is 62 MB and the rest is the four task views x two renderers x three splits). MASTER_SYNTHETIC_MATH_HML.md is 14 MB. data/vnext_10k 37 MB, data/raw 15 MB, data/gold125 7.5 MB. The remainder (~700 MB) is .git plus hml_core. This repo is data, not build output."
+    },
+    {
+      "path": "/Users/moheet/Documents/ChatGPT/hmlt-reasoning-corpus-lean-attestation",
+      "total": "51 MB",
+      "where_the_bulk_is": "data/ 28 MB (a copy of gold125/gold25/gold_10/raw), experiments/ 15 MB (minilang_audit 3.7 MB, prm800k_audit 6.0 MB, semantic_firewall 5.2 MB), synthetic_factory 2.9 MB, synthetic_factory_v2 1.8 MB, reports 1.5 MB. Small and entirely data/reports. Note its hml_core/ is an EMPTY submodule mount here."
+    },
+    {
+      "path": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts",
+      "total": "8.8 GB",
+      "note": "NOT one of the repositories named in the task, but it is the external artifact root explicitly referenced by hmlt-reasoning-corpus/RESEARCH_STATE.md, and it holds several of the largest reasoning assets. Discovered while resolving a manifest reference to /home/moheet/HMLTN_CODEX_SYNTH/... (a Linux path that does NOT exist on this machine).",
+      "where_the_bulk_is": {
+        "hf_sources": "2.7 GB — public Hugging Face Lean/math datasets (STP_Lean_0320 1.6 GB, Pythagoras_SFT 950 MB, NuminaMath-LEAN 75 MB, Herald_proofs 55 MB, state_tactic_pairs 55 MB)",
+        "pretrained_hml_signal": "1.1 GB — model/adapter artifacts (not opened)",
+        "prm800k_raw": "942 MB — second copy of the PRM800K repo",
+        "leandojo_raw": "860 MB — leandojo_benchmark_4.tar.gz (68 MB) plus the extracted benchmark",
+        "lean_domino_v2": "721 MB — the 241,265-record lean_canonical_records.jsonl (755 MB file)",
+        "reasoning_layer_v1_confirmatory": "534 MB — train 307 MB, incidents 150 MB, prepared 67 MB, records 9.9 MB",
+        "final_hml_signal": "434 MB — the frozen FINAL_HML_SIGNAL adapters and artifacts referenced by RESEARCH_STATE.md",
+        "vnext_exec": "322 MB", "qwen8_kill": "295 MB", "common_envelope_10k": "252 MB",
+        "synthetic_math": "126 MB — MASTER_SYNTHETIC_MATH_HML.md + transitions.jsonl + derived feature dirs",
+        "mutation_harness": "101 MB", "census_final/census_post_d057/census_post_d060": "~200 MB combined", "lossless_hml_final": "47 MB", "omission_audit": "116 KB"
+      }
+    },
+    {
+      "path": "/Users/moheet/Documents/ChatGPT/PAR2 and the PAR2_* dated directories",
+      "total": "not measured",
+      "note": "UNRELATED to mathematical reasoning. Contents are protein/ligand docking (PROTEINS, BENCHMARK_LIGS, GNINA_SCREEN_EX32, PHARMACOPHORE, XGBOOST_RANDOM_FORREST). Excluded from this inventory."
+    }
+  ],
+
+  "not_found": [
+    {
+      "item": "The original 'supplied synthetic worked-mathematics source' markdown files behind MASTER_SYNTHETIC_MATH_HML.md",
+      "evidence": "Every rendered transition records source.dataset = 'Write-Algebra-Problems.md'. A bounded search for 'Write-*' under /Users/moheet/Documents/ChatGPT and /Users/moheet/Projects/Hamiltonian-Labs returned NOTHING. Only the verbatim text embedded inside MASTER_SYNTHETIC_MATH_HML.md survives (403,401 characters, SHA-256 7f0165e8f88c1a64c8b3d36e3a72e7a3ce042ebd72e7a92d7890ca104a110381).",
+      "consequence": "The GENERATOR of the 600 synthetic problems is NOT IDENTIFIABLE from disk. Whether they were written by the owner, by an LLM, or by a script cannot be determined from local evidence. The corpus itself labels them 'untrusted granular worked-mathematics source'."
+    },
+    {
+      "item": "Exported ChatGPT / Claude conversation logs",
+      "evidence": "A bounded search under /Users/moheet/Documents/ChatGPT for '*conversation*', '*chatgpt*export*' and 'conversations.json' at depth <= 3 returned NOTHING.",
+      "consequence": "No exported conversation corpus is available as a reasoning-chain source."
+    },
+    {
+      "item": "Owner hand-written worked solutions at any meaningful scale",
+      "evidence": "The ONLY artifacts explicitly marked provenance.authoring = 'hand_authored' are the 10 Gold-10 examples (23 actions total) at hmlt-reasoning-corpus/data/gold_10/ and examples/gold_10/. Everything else is either MATH-derived, synthetic-generator-derived, or LeanDojo-derived.",
+      "consequence": "There is NO large corpus of owner-authored granular reasoning chains. The 'very granular reasoning chains' the project remembers appear to be (a) the 10 hand-authored Gold-10 examples, and (b) the 769 pipeline-extracted Gold-125 steps over MATH."
+    },
+    {
+      "item": "/home/moheet/HMLTN_CODEX_SYNTH/ (referenced by synthetic_factory manifests as the corpus and Lean artifact root)",
+      "evidence": "`ls /home/moheet` -> No such file or directory. `ls /Users/moheet/HMLTN_CODEX_SYNTH` -> No such file or directory.",
+      "consequence": "Those manifests were produced on a different (Linux) machine. The Lean artifact they pin was located on THIS machine at /Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/lean_domino_v2/lean_canonical_records.jsonl with the matching byte size (755,808,347)."
+    },
+    {
+      "item": "A named reasoning-operation taxonomy inside the Arena repository",
+      "evidence": "Searched arena/, artifacts/ and docs/ at depth <= 3 for filenames matching taxonom*/operation*/ontolog*/action*: no matches. docs/MATHEMATICAL_WORLD.md defines domains and mechanisms in prose but no enumerated operation vocabulary.",
+      "consequence": "Any Arena operation vocabulary must be imported (best candidates: reasoning_ontology_v1 core_operation, gold25 registry v0, the computed Lean effect classes) or discovered fresh."
+    },
+    {
+      "item": "A locally replayed formal verification of the 50k/241k Lean corpora",
+      "evidence": "hml_50k_final records carry mathematical_verification_status = 'RECORDED_FORMAL_TRACE_NOT_REPLAYED_IN_THIS_MISSION'. The only actual Lean replay found is the 100-record Stage 100 attestation (32 REPLAY_PASS).",
+      "consequence": "Do not describe the 50k or 241k corpora as 'locally verified'. They are verified-by-construction upstream traces."
+    },
+    {
+      "item": "Hand-written worked solutions by the owner inside HML_V3",
+      "evidence": "NOT FOUND. No prose worked-solution files anywhere in HML_V3's data/, research/, docs/ or reports/. All natural-language mathematics in HML_V3 is REFERENCED (MATH, AMPS, PRM800K, GSM8K), never authored.",
+      "consequence": "Confirms the finding above: the owner's only authored granular chains are the 10 Gold-10 examples."
+    },
+    {
+      "item": "Exported conversation logs in HML_V3 or hamiltonian-lang-final-signal",
+      "evidence": "NOT FOUND. A targeted search in HML_V3 for *conversation*, *transcript*, *chatlog*, *export*, *.txt (excluding .venv/.git/external) returned only reports/content_projection_v1/REAL_LEAN_GAP_V1.txt and three .egg-info metadata files. None found in the final-signal repo either."
+    },
+    {
+      "item": "A warrant / justification field on any step of the Lean-derived corpora",
+      "evidence": "NOT FOUND in any HML_V3 schema, and effectively absent in the corpus repo's Lean data (warrant.rule is the constant 'LEAN_TACTIC'). Warrants exist ONLY on the 769 MATH-derived gold steps and the 23 hand-authored Gold-10 actions.",
+      "consequence": "If a reasoning-operation vocabulary must be justified by warrants, the usable evidence base is ~792 steps, not 300,000."
+    },
+    {
+      "item": "Symbolic (SymPy/Z3) verification inside HML_V3",
+      "evidence": "NOT FOUND. HML_PIVOT_HANDOFF.md states the SymPy/Z3/exhaustive/fuzz verifier lives in the SIBLING Arena repo (hamiltonian_chess/arena/assurance/, arena/verifier/), not in HML_V3. The only SymPy evidence found anywhere is the 867 certificates inside the synthetic-math corpus."
+    },
+    {
+      "item": "Mathematical reasoning data in LUCY",
+      "evidence": "NOT FOUND. LUCY is a face-identity embedding pipeline; a grep of its .py/.md for reasoning|theorem|worked solution|GSM8K|miniF2F returned zero hits.",
+      "consequence": "LUCY is confirmed unrelated and can be dropped from all future scans."
+    },
+    {
+      "item": "AGENTS.md / RESEARCH_STATE.md / STATUS.json in hamiltonian-lang-final-signal; AGENTS.md / CLAUDE.md / STATUS.json in HML_V3",
+      "evidence": "NOT FOUND in those repos. HML_V3's equivalents are PROJECT_GOAL.md, RESEARCH_STATE.md, DECISIONS.md, HML_PIVOT_HANDOFF.md, docs/PROJECT_STATUS.md, docs/PROJECT_LEDGER.md. final-signal has docs/PROJECT_STATUS.md (127 KB).",
+      "consequence": "Cosmetic, but note it when writing recovery instructions that assume a uniform file set."
+    }
+  ],
+
+  "project_level_negative_findings_worth_carrying": [
+    {
+      "finding": "The +35.55pp HML advantage was measured on ONE-STEP ACTION SELECTION, not reasoning chains, and has been overturned.",
+      "evidence": "FINAL_SIGNAL_PROTOCOL.md: 'Depth results are depth-conditioned one-step action-selection results. They are not free-running rollouts.' STATUS.json: superseding_evidence.common_envelope_verdict = 'COMMON_ENVELOPE_EFFECT_FAILED', common_envelope_delta_pp = -2.77. hml_failure_memory FM-001 disposition REJECTED_CAUSAL_CLAIM.",
+      "implication_for_this_task": "Do not treat any existing corpus as validated evidence that a reasoning representation helps. Treat the corpora as data, and the prior scores as historical guidance only (which is also what the Arena's own CROSS_REPO_ASSET_AUDIT.md concludes)."
+    },
+    {
+      "finding": "The formal Lean corpora contain NO negative examples and cannot express the discovery dimensions PRM800K names.",
+      "evidence": "HML_V3 RESEARCH_STATE.md verbatim: 'PRM800K names five discovery dimensions — progress, valid-but-useless, dead end, alternative branch, attempt outcome — and no representation in the space can express any of them... A Lean trace holds only steps that were kept, so the formal corpus contains no negative examples at all.'",
+      "implication_for_this_task": "The VERIFIED assets (241k Lean, 56k HML50K, vnext_10k) are survivorship-biased: they record only successful steps. Any vocabulary of reasoning operations learned from them will have no vocabulary for failure, backtracking, or abandoned branches. PRM800K's 262,146 '-1' labels and 106,024 '0' labels are the ONLY large source of negative/neutral reasoning steps on disk — and they are unverified human annotation over a contaminated benchmark."
+    },
+    {
+      "finding": "The project's own PRM800K semantic-discovery pilot found ZERO new core reasoning operations.",
+      "evidence": "MASTER_SYNTHETIC_MATH_HML.md Task B: '0/1000 = 0.00% marginal semantic discovery'. No recurring distinction survived as NEW_CORE_SEMANTIC_CANDIDATE across 1,000 sampled PRM800K steps from 858 distinct MATH problems.",
+      "implication_for_this_task": "A fresh attempt to mine a new operation vocabulary from PRM800K should expect saturation. The existing 19-value core_operation axis plus the independently derived 10-operation Minilang set (arXiv:2507.18885) already bracket the space."
+    },
+    {
+      "finding": "HML_V3's own pivot handoff declares the static-representation thesis unsupported.",
+      "evidence": "HML_PIVOT_HANDOFF.md (2026-09-06): 'STATIC_REPRESENTATION_THESIS_V1: NOT SUPPORTED', and verbatim: 'across this project, defects found in my own instruments and generators outnumber findings about the language, and the single positive language result turned out to be one of those defects.' Its transfer table marks the canonical state schema, typed actions/trajectory machinery, instrument calibration and the 58-lesson failure memory as TRANSFERRING; the 42-axis genome, eight surface seeds, search controller and every notation-ranking result as NOT TRANSFERRING.",
+      "implication_for_this_task": "Reuse the instruments (MicroMath probes, failure memory, split firewalls, integrity hashing), not the conclusions."
+    }
+  ],
+
+  "summary_for_operation_vocabulary_discovery": {
+    "headline": "There IS a real, high-quality granular reasoning-chain asset — but it is SMALL. The rich schema (per-step operation label + warrant + preconditions + obligations with lifetimes + typed inter-step dependencies + full before/after state) exists for exactly 792 steps: 769 MATH-derived Gold-125/Gold-25 transitions plus 23 hand-authored Gold-10 actions. Everything at 10k-300k scale is either single-operation Lean tactic data, or unverified human step ratings, or synthetic transitions with a degenerate action label.",
+    "step_granular_and_scientifically_usable_now": [
+      "data/derived/gold125_ontology_v1/ — 769 atomic transitions, 7 orthogonal semantic axes, uncertainty and annotator disagreement preserved. BEST for vocabulary discovery over natural-language mathematics.",
+      "data/gold125 + data/gold25 trajectories — the same 769 steps with FULL before/after structured state, warrants, obligation lifetimes, and typed dependencies. BEST for state-transition semantics.",
+      "data/gold_10 + examples/gold_10 — 10 problems / 23 actions, hand-authored, arithmetic-oracle verified, and additionally tagged with a 16-stage sub-sentence decomposition. FINEST GRANULARITY IN THE PROJECT, but tiny.",
+      "HML_V3 data/corpus/*.jsonl.gz — ~1,150 freshly elaborated Lean transitions with TYPED AST states and a 19-field structured state delta. BEST structured substrate; no natural language, no warrants; 232 of them are SEALED.",
+      "HML_V3 data/micromath_lab_v2/ — 611 sub-atomic relation probes with negative controls and a shortcut-audit gate. BEST existing INSTRUMENT for testing whether a representation exposes a relation.",
+      "lean_canonical_records.jsonl — 241,265 formally grounded transitions with a COMPUTED 8-class effect vocabulary. BEST for scale and for an operation signal that is measured rather than asserted.",
+      "data/vnext_10k — 10,000 transitions marked FORMAL_REPLAY_VERIFIED with real premises_used lemma lists. BEST verified mid-size set.",
+      "synthetic_math/transitions.jsonl — 3,978 atomic natural-language transitions, 867 with SymPy certificates. Cheap volume, but 77% of labels are TRANSFORM."
+    ],
+    "verified_vs_annotation": {
+      "VERIFIED_FORMAL": ["hmlv3-lean-runtime-v2-canonical-transitions (~1,150, freshly elaborated)", "hmlv3-lean-pipeline-v1 (1,000; 32 freshly replayed, 968 not)", "vnext-10k-formally-replayed-transitions (10,000, FORMAL_REPLAY_VERIFIED)", "lean-canonical-records-241k", "hml50k-lean-canonical-teaching-corpus (56,000, explicitly NOT re-replayed)", "lean-attestation-replay-certificates (100 sampled; 32 REPLAY_PASS — the only certified fresh replay)", "reasoning-layer-v1-confirmatory", "lean_effect_class_vocabulary"],
+      "DETERMINISTICALLY_CHECKED": ["gold10-hand-authored-trajectories", "hmlv3-micromath-lab-v2", "counterfactual-transition-factory-stage100", "synthetic-factory-v2", "arena-world-v0 (GOLD rows)", "final-signal-hml-conformance-fixtures", "the 867 SYMPY_VERIFIED transitions inside master-synthetic-math-hml", "the 16 natural-deduction implicit steps"],
+      "ANNOTATION_UNVERIFIED": ["prm800k-local-labels (all 1,046,365 rated completions)", "gold125-math-trajectories", "gold25-math-trajectories", "gold125-ontology-v1-derived-transitions", "prm800k-semantic-gap-pilot", "final-signal-manual-100-forensics (the labels)", "hmlv3-failure-memory", "hmlv3-representation-search-history (LLM-generated)", "the 3,111 non-SymPy synthetic transitions", "every operation taxonomy except the computed Lean effect classes"],
+      "IMPORTANT_ASYMMETRY": "Verification and richness are ANTI-CORRELATED across this whole estate. Everything VERIFIED_FORMAL is single-operation Lean with no warrants and no negative examples. Everything with a rich reasoning-operation annotation is ANNOTATION_UNVERIFIED and MATH-contaminated. No asset on disk is both."
+    },
+    "contamination_flags": {
+      "MUST_FIREWALL_IF_MATH_IS_EVER_HELD_OUT": ["prm800k-local-labels", "prm800k-math-splits (test.jsonl IS the MATH-500 eval set)", "gold125-math-trajectories", "gold25-math-trajectories", "gold125-ontology-v1-derived-transitions", "prm800k-semantic-gap-pilot", "data/raw/amps_khan (AMPS/Khan, 103,059 rows per the HML_V3 registry)"],
+      "MUST_FIREWALL_ALWAYS": ["HML_V3 external/checkouts/grade-school-math — full GSM8K clone, 7,473 train / 1,319 test, registry tier D, train_allowed = False", "HML_V3 external/checkouts/miniF2F (500) — evaluation_only = True", "HML_V3 external/checkouts/ProofNet-lean4 (371) — evaluation_only = True"],
+      "RESPECT_LEANDOJO_OFFICIAL_SPLITS": ["lean-canonical-records-241k", "hml50k-lean-canonical-teaching-corpus", "vnext-10k-formally-replayed-transitions", "reasoning-layer-v1-confirmatory", "lean-attestation-replay-certificates", "hmlv3-lean-pipeline-v1 (995 train / 3 val / 2 test — filter on lean_official_split)"],
+      "RESPECT_EXISTING_INTERNAL_SEALS": ["HML_V3 data/corpus sealed_final_v2 — 232 transitions / 126 families, policy 'read once, after convergence, on the reported finalists only'", "HML_V3 micro_shadow_v2 (135) and micro_hidden_v2 (175) — marked 'Read so far: no'"],
+      "EXTERNAL_PUBLIC_TRAINING_SETS_UNAUDITED": ["hf-public-lean-and-math-sources (STP_Lean_0320 3,262,558 rows; Pythagoras_SFT 126,113; NuminaMath-LEAN 104,155; Herald_proofs 44,553; state_tactic_pairs 56,407)"],
+      "CLEAN": ["gold10-hand-authored-trajectories", "arena-world-v0", "counterfactual-transition-factory-stage100", "synthetic-factory-v2", "final-signal-hml-conformance-fixtures"],
+      "UNKNOWN": ["master-synthetic-math-hml / synthetic-math-transitions-jsonl — generator unidentified, near-duplication with public benchmarks cannot be excluded from disk evidence"],
+      "USE_THE_EXISTING_REGISTRY": "/Users/moheet/Documents/ChatGPT/HML_V3/data/registry/datasets.yaml already encodes trust_tier (A-E), train_allowed, evaluation_only, contamination_notes and sha256 for 27 datasets. Start from it rather than rebuilding a firewall."
+    }
+  }
+}

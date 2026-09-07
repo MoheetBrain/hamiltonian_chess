@@ -46,6 +46,11 @@ markers = [
 [tool.ruff]
 line-length = 100
 target-version = "py312"
+# `research/` holds one-off analysis scripts kept for reproducibility of a measurement, not
+# library code: they are run once, their output is committed as an artifact, and they are never
+# imported by `arena/`.  They are excluded from the lint gate so that `ruff check .` continues to
+# mean "the shipped code is clean".  Anything promoted out of `research/` into `arena/` must pass.
+extend-exclude = ["research"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B", "SIM"]

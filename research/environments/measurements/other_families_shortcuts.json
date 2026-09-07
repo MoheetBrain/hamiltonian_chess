@@ -1,0 +1,102 @@
+{
+ "source": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo_raw/leandojo_benchmark_4",
+ "population": "random/val + random/test = 8,766 steps unless stated",
+ "seed": 20260907,
+ "F4_progress_close_goal": {
+  "question": "Given the state (and the tactic), will this step close the goal?",
+  "items": 8766,
+  "positive_rate": 0.4051,
+  "majority_class_baseline": 0.5949,
+  "shortcuts_with_tactic_shown": {
+   "train_fitted_tactic_head_prior": {
+    "coverage": 0.9998,
+    "accuracy": 0.8663
+   }
+  },
+  "shortcuts_with_tactic_hidden": {
+   "best_fitted_threshold_on_state_symbolic_tokens": [
+    0.6024,
+    33.0
+   ],
+   "best_fitted_threshold_on_state_bytes4_proxy": [
+    0.6031,
+    18.0
+   ],
+   "best_fitted_threshold_on_hypothesis_count": [
+    0.5966,
+    1.0
+   ],
+   "best_fitted_threshold_on_goal_symbolic_tokens": [
+    0.595,
+    727.0
+   ]
+  },
+  "note": "The threshold rules are FITTED ON THE EVALUATION DATA ITSELF, so they are optimistic ceilings, not held-out accuracies."
+ },
+ "F2_successor_state_discrimination": {
+  "question": "Given the before-state, which of k candidate after-states is the real successor?  (Real distractors only; nothing invented.)",
+  "k": 4,
+  "policies": {
+   "same_theorem": {
+    "items_used": 3881,
+    "chance": 0.25,
+    "token_jaccard_with_before_state": 0.6096,
+    "closest_length_to_before_state": 0.4434
+   },
+   "length_matched_other_theorem": {
+    "items_used": 5023,
+    "chance": 0.25,
+    "token_jaccard_with_before_state": 0.9932,
+    "closest_length_to_before_state": 0.2025
+   }
+  }
+ },
+ "F5_premise_attribution": {
+  "question": "Was this premise cited by this step?  /  Is this premise set sufficient?",
+  "steps_citing_ge2_premises": 3030,
+  "cited_premise_name_visible_in_state": 0.1216,
+  "same_file_random_premise_name_visible_in_state": 0.0202,
+  "single_feature_discrimination_accuracy": 0.5507,
+  "ground_truth_defect": "LeanDojo annotates only premises named in the tactic SYNTAX; simp sets, typeclass instances and definitional unfolding are invisible. 'Sufficient' is therefore unsound without Lean; only 'was cited' is a fact."
+ },
+ "F6_F7_subgoal_and_witness": {
+  "subgoal_selection": {
+   "question": "Which open goal should be attacked next?",
+   "multi_goal_states_in_heldout": 53,
+   "share_of_steps": 0.00605,
+   "why_it_collapses": "LeanDojo reports the FOCUSED goal, and Lean's own focusing convention makes 'the first goal' correct almost always, so the answer is a convention rather than a mathematical judgement."
+  },
+  "quantifier_instantiation": {
+   "question": "Which term witnesses the existential?",
+   "use_steps_in_heldout": 52,
+   "distinct_witnesses": 46,
+   "most_common_witness": {
+    "value": "a",
+    "count": 3
+   },
+   "constant_answer_baseline": 0.0577,
+   "top_witnesses": {
+    "a": 3,
+    "0": 3,
+    "x": 2,
+    "x' + y'": 2,
+    "Ideal.Quotient.mk I x": 1,
+    "1/c": 1,
+    "H": 1,
+    "s.image f": 1,
+    "s₁ ∪ s₂": 1,
+    "(s": 1,
+    "∅": 1,
+    "p": 1
+   }
+  }
+ },
+ "N5_name_statement_alignment": {
+  "question": "Given a mathlib declaration's statement (its own name redacted), which of k candidate names is its real name?  Distractors are other real declarations from the same file.",
+  "k": 4,
+  "items_used": 1500,
+  "chance": 0.25,
+  "name_token_overlap_with_statement": 0.5928,
+  "shortest_name": 0.2377
+ }
+}

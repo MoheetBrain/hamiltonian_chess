@@ -1,0 +1,541 @@
+{
+  "ANALYSIS_CLASS": "EXPLORATORY_POST_HOC_INSTRUMENT_PROPERTY",
+  "NOT_A_RESCORING": "V5's recorded sentinel and artifact are unchanged. This analysis may not be used to re-score V5, to reinterpret any V5 verdict, or to promote anything.",
+  "artifact": "artifacts/experiments/fitness_v5/development/result.json",
+  "artifact_sha256": "0c5b3271c772bcaf304af65ae469d615572022d18ac81f3083b27a88b0097579",
+  "artifact_sha256_matches_frozen": true,
+  "destroyed_control_verification": {
+    "all_exactly_half": true,
+    "all_targets_opposite": true,
+    "all_twin_outputs_identical": true,
+    "all_twin_prompts_identical": true,
+    "measured_cells": 2,
+    "per_mechanism": {
+      "formal_expression_depth": {
+        "destroyed_accuracy": 0.5,
+        "destroyed_correct": 12,
+        "destroyed_rows": 24,
+        "identical_prompt_hash": 12,
+        "identical_raw_output": 12,
+        "is_exactly_half": true,
+        "level": 2,
+        "opposite_expected_index": 12,
+        "twin_pairs": 12
+      },
+      "precondition_conjunction": {
+        "destroyed_accuracy": 0.5,
+        "destroyed_correct": 12,
+        "destroyed_rows": 24,
+        "identical_prompt_hash": 12,
+        "identical_raw_output": 12,
+        "is_exactly_half": true,
+        "level": 1,
+        "opposite_expected_index": 12,
+        "twin_pairs": 12
+      },
+      "transitive_dependency": {
+        "status": "NO_FULL_FAMILY_ROWS_IN_ARTIFACT"
+      }
+    }
+  },
+  "grid": {
+    "formal_expression_depth": {
+      "explicit_positive_accuracy_L0": 0.9166666666666666,
+      "explicit_positive_gate": "PASS",
+      "levels": {
+        "0": {
+          "binding_failures": [
+            "frontier_ceiling(acc <= 0.85)"
+          ],
+          "checks": {
+            "answer_share(<= 0.75)": "PASS",
+            "context_truncation(== 0)": "PASS",
+            "frontier_ceiling(acc <= 0.85)": "VOID_CEILING",
+            "frontier_floor(acc >= 0.35)": "PASS",
+            "negative_collapse(gap >= 0.20 and destroyed <= 0.60)": "PASS",
+            "position_invariance(>= 0.50)": "UNMEASURED_OFF_FRONTIER",
+            "q0(>= 0.95)": "PASS",
+            "sample_size(n >= 24)": "PASS",
+            "shortcut(CLEAN)": "UNMEASURED_OFF_FRONTIER",
+            "valid_response(>= 0.95)": "PASS"
+          },
+          "destroyed_accuracy": 0.5,
+          "destroyed_accuracy_source": "IMPUTED_STRUCTURAL_CONSTANT_0.5000",
+          "largest_answer_share": 0.5833333333333334,
+          "mean_prompt_tokens": 6040.8,
+          "n_positive": 24,
+          "parameters": {
+            "explicit": true,
+            "stratum": "medium"
+          },
+          "position_invariance": null,
+          "positive_accuracy": 0.9166666666666666,
+          "positive_negative_gap": 0.41666666666666663,
+          "shortcut_status": null,
+          "status": "FAIL",
+          "unmeasured_gates": [
+            "position_invariance(>= 0.50)",
+            "shortcut(CLEAN)"
+          ],
+          "valid_response_rate": 1.0
+        },
+        "1": {
+          "binding_failures": [
+            "frontier_ceiling(acc <= 0.85)"
+          ],
+          "checks": {
+            "answer_share(<= 0.75)": "PASS",
+            "context_truncation(== 0)": "PASS",
+            "frontier_ceiling(acc <= 0.85)": "VOID_CEILING",
+            "frontier_floor(acc >= 0.35)": "PASS",
+            "negative_collapse(gap >= 0.20 and destroyed <= 0.60)": "PASS",
+            "position_invariance(>= 0.50)": "UNMEASURED_OFF_FRONTIER",
+            "q0(>= 0.95)": "PASS",
+            "sample_size(n >= 24)": "PASS",
+            "shortcut(CLEAN)": "UNMEASURED_OFF_FRONTIER",
+            "valid_response(>= 0.95)": "PASS"
+          },
+          "destroyed_accuracy": 0.5,
+          "destroyed_accuracy_source": "IMPUTED_STRUCTURAL_CONSTANT_0.5000",
+          "largest_answer_share": 0.5416666666666666,
+          "mean_prompt_tokens": 4617.8,
+          "n_positive": 24,
+          "parameters": {
+            "explicit": false,
+            "stratum": "shallow"
+          },
+          "position_invariance": null,
+          "positive_accuracy": 0.875,
+          "positive_negative_gap": 0.375,
+          "shortcut_status": null,
+          "status": "FAIL",
+          "unmeasured_gates": [
+            "position_invariance(>= 0.50)",
+            "shortcut(CLEAN)"
+          ],
+          "valid_response_rate": 1.0
+        },
+        "2": {
+          "binding_failures": [
+            "negative_collapse(gap >= 0.20 and destroyed <= 0.60)",
+            "shortcut(CLEAN)"
+          ],
+          "checks": {
+            "answer_share(<= 0.75)": "PASS",
+            "context_truncation(== 0)": "PASS",
+            "frontier_ceiling(acc <= 0.85)": "PASS",
+            "frontier_floor(acc >= 0.35)": "PASS",
+            "negative_collapse(gap >= 0.20 and destroyed <= 0.60)": "VOID_NEGATIVE_CONTROL",
+            "position_invariance(>= 0.50)": "PASS",
+            "q0(>= 0.95)": "PASS",
+            "sample_size(n >= 24)": "PASS",
+            "shortcut(CLEAN)": "VOID_SHORTCUT",
+            "valid_response(>= 0.95)": "PASS"
+          },
+          "destroyed_accuracy": 0.5,
+          "destroyed_accuracy_source": "MEASURED_IN_FROZEN_ARTIFACT",
+          "largest_answer_share": 0.625,
+          "mean_prompt_tokens": 5581.5,
+          "n_positive": 24,
+          "parameters": {
+            "explicit": false,
+            "stratum": "medium"
+          },
+          "position_invariance": 0.5,
+          "positive_accuracy": 0.5416666666666666,
+          "positive_negative_gap": 0.04166666666666663,
+          "shortcut_status": "LEAKS",
+          "status": "FAIL",
+          "unmeasured_gates": [],
+          "valid_response_rate": 1.0
+        },
+        "3": {
+          "binding_failures": [
+            "negative_collapse(gap >= 0.20 and destroyed <= 0.60)"
+          ],
+          "checks": {
+            "answer_share(<= 0.75)": "PASS",
+            "context_truncation(== 0)": "PASS",
+            "frontier_ceiling(acc <= 0.85)": "PASS",
+            "frontier_floor(acc >= 0.35)": "PASS",
+            "negative_collapse(gap >= 0.20 and destroyed <= 0.60)": "VOID_NEGATIVE_CONTROL",
+            "position_invariance(>= 0.50)": "UNMEASURED_OFF_FRONTIER",
+            "q0(>= 0.95)": "PASS",
+            "sample_size(n >= 24)": "PASS",
+            "shortcut(CLEAN)": "UNMEASURED_OFF_FRONTIER",
+            "valid_response(>= 0.95)": "PASS"
+          },
+          "destroyed_accuracy": 0.5,
+          "destroyed_accuracy_source": "IMPUTED_STRUCTURAL_CONSTANT_0.5000",
+          "largest_answer_share": 0.7083333333333334,
+          "mean_prompt_tokens": 5812.1,
+          "n_positive": 24,
+          "parameters": {
+            "explicit": false,
+            "stratum": "deep"
+          },
+          "position_invariance": null,
+          "positive_accuracy": 0.5416666666666666,
+          "positive_negative_gap": 0.04166666666666663,
+          "shortcut_status": null,
+          "status": "FAIL",
+          "unmeasured_gates": [
+            "position_invariance(>= 0.50)",
+            "shortcut(CLEAN)"
+          ],
+          "valid_response_rate": 1.0
+        }
+      },
+      "levels_passing_every_measured_gate": [],
+      "recorded_selection": {
+        "candidate_accuracy": 0.5416666666666666,
+        "candidate_level": 2,
+        "explicit_positive_accuracy": 0.9166666666666666,
+        "selected_level": 2,
+        "verdict": "FRONTIER_SELECTED"
+      },
+      "recorded_verdict": "VOID_NEGATIVE_CONTROL",
+      "reproduced_selection": {
+        "candidate_accuracy": 0.5416666666666666,
+        "candidate_level": 2,
+        "explicit_positive_accuracy": 0.9166666666666666,
+        "selected_level": 2,
+        "verdict": "FRONTIER_SELECTED"
+      },
+      "selection_reproduced": true
+    },
+    "precondition_conjunction": {
+      "explicit_positive_accuracy_L0": 1.0,
+      "explicit_positive_gate": "PASS",
+      "levels": {
+        "0": {
+          "binding_failures": [
+            "frontier_ceiling(acc <= 0.85)"
+          ],
+          "checks": {
+            "answer_share(<= 0.75)": "PASS",
+            "context_truncation(== 0)": "PASS",
+            "frontier_ceiling(acc <= 0.85)": "VOID_CEILING",
+            "frontier_floor(acc >= 0.35)": "PASS",
+            "negative_collapse(gap >= 0.20 and destroyed <= 0.60)": "PASS",
+            "position_invariance(>= 0.50)": "UNMEASURED_OFF_FRONTIER",
+            "q0(>= 0.95)": "PASS",
+            "sample_size(n >= 24)": "PASS",
+            "shortcut(CLEAN)": "UNMEASURED_OFF_FRONTIER",
+            "valid_response(>= 0.95)": "PASS"
+          },
+          "destroyed_accuracy": 0.5,
+          "destroyed_accuracy_source": "IMPUTED_STRUCTURAL_CONSTANT_0.5000",
+          "largest_answer_share": 0.5,
+          "mean_prompt_tokens": 5713.5,
+          "n_positive": 24,
+          "parameters": {
+            "explicit": true,
+            "premises": 3
+          },
+          "position_invariance": null,
+          "positive_accuracy": 1.0,
+          "positive_negative_gap": 0.5,
+          "shortcut_status": null,
+          "status": "FAIL",
+          "unmeasured_gates": [
+            "position_invariance(>= 0.50)",
+            "shortcut(CLEAN)"
+          ],
+          "valid_response_rate": 1.0
+        },
+        "1": {
+          "binding_failures": [
+            "answer_share(<= 0.75)"
+          ],
+          "checks": {
+            "answer_share(<= 0.75)": "VOID_POSITION_SHARE",
+            "context_truncation(== 0)": "PASS",
+            "frontier_ceiling(acc <= 0.85)": "PASS",
+            "frontier_floor(acc >= 0.35)": "PASS",
+            "negative_collapse(gap >= 0.20 and destroyed <= 0.60)": "PASS",
+            "position_invariance(>= 0.50)": "PASS",
+            "q0(>= 0.95)": "PASS",
+            "sample_size(n >= 24)": "PASS",
+            "shortcut(CLEAN)": "PASS",
+            "valid_response(>= 0.95)": "PASS"
+          },
+          "destroyed_accuracy": 0.5,
+          "destroyed_accuracy_source": "MEASURED_IN_FROZEN_ARTIFACT",
+          "largest_answer_share": 0.7916666666666666,
+          "mean_prompt_tokens": 4777.9,
+          "n_positive": 24,
+          "parameters": {
+            "explicit": false,
+            "premises": 2
+          },
+          "position_invariance": 0.7916666666666666,
+          "positive_accuracy": 0.7083333333333334,
+          "positive_negative_gap": 0.20833333333333337,
+          "shortcut_status": "CLEAN",
+          "status": "FAIL",
+          "unmeasured_gates": [],
+          "valid_response_rate": 1.0
+        },
+        "2": {
+          "binding_failures": [
+            "negative_collapse(gap >= 0.20 and destroyed <= 0.60)",
+            "answer_share(<= 0.75)"
+          ],
+          "checks": {
+            "answer_share(<= 0.75)": "VOID_POSITION_SHARE",
+            "context_truncation(== 0)": "PASS",
+            "frontier_ceiling(acc <= 0.85)": "PASS",
+            "frontier_floor(acc >= 0.35)": "PASS",
+            "negative_collapse(gap >= 0.20 and destroyed <= 0.60)": "VOID_NEGATIVE_CONTROL",
+            "position_invariance(>= 0.50)": "UNMEASURED_OFF_FRONTIER",
+            "q0(>= 0.95)": "PASS",
+            "sample_size(n >= 24)": "PASS",
+            "shortcut(CLEAN)": "UNMEASURED_OFF_FRONTIER",
+            "valid_response(>= 0.95)": "PASS"
+          },
+          "destroyed_accuracy": 0.5,
+          "destroyed_accuracy_source": "IMPUTED_STRUCTURAL_CONSTANT_0.5000",
+          "largest_answer_share": 1.0,
+          "mean_prompt_tokens": 5550.2,
+          "n_positive": 24,
+          "parameters": {
+            "explicit": false,
+            "premises": 3
+          },
+          "position_invariance": null,
+          "positive_accuracy": 0.5,
+          "positive_negative_gap": 0.0,
+          "shortcut_status": null,
+          "status": "FAIL",
+          "unmeasured_gates": [
+            "position_invariance(>= 0.50)",
+            "shortcut(CLEAN)"
+          ],
+          "valid_response_rate": 1.0
+        },
+        "3": {
+          "binding_failures": [
+            "negative_collapse(gap >= 0.20 and destroyed <= 0.60)",
+            "answer_share(<= 0.75)"
+          ],
+          "checks": {
+            "answer_share(<= 0.75)": "VOID_POSITION_SHARE",
+            "context_truncation(== 0)": "PASS",
+            "frontier_ceiling(acc <= 0.85)": "PASS",
+            "frontier_floor(acc >= 0.35)": "PASS",
+            "negative_collapse(gap >= 0.20 and destroyed <= 0.60)": "VOID_NEGATIVE_CONTROL",
+            "position_invariance(>= 0.50)": "UNMEASURED_OFF_FRONTIER",
+            "q0(>= 0.95)": "PASS",
+            "sample_size(n >= 24)": "PASS",
+            "shortcut(CLEAN)": "UNMEASURED_OFF_FRONTIER",
+            "valid_response(>= 0.95)": "PASS"
+          },
+          "destroyed_accuracy": 0.5,
+          "destroyed_accuracy_source": "IMPUTED_STRUCTURAL_CONSTANT_0.5000",
+          "largest_answer_share": 1.0,
+          "mean_prompt_tokens": 7101.7,
+          "n_positive": 24,
+          "parameters": {
+            "explicit": false,
+            "premises": 5
+          },
+          "position_invariance": null,
+          "positive_accuracy": 0.5,
+          "positive_negative_gap": 0.0,
+          "shortcut_status": null,
+          "status": "FAIL",
+          "unmeasured_gates": [
+            "position_invariance(>= 0.50)",
+            "shortcut(CLEAN)"
+          ],
+          "valid_response_rate": 1.0
+        }
+      },
+      "levels_passing_every_measured_gate": [],
+      "recorded_selection": {
+        "candidate_accuracy": 0.7083333333333334,
+        "candidate_level": 1,
+        "explicit_positive_accuracy": 1.0,
+        "selected_level": 1,
+        "verdict": "FRONTIER_SELECTED"
+      },
+      "recorded_verdict": "VOID_POSITION_SHARE",
+      "reproduced_selection": {
+        "candidate_accuracy": 0.7083333333333334,
+        "candidate_level": 1,
+        "explicit_positive_accuracy": 1.0,
+        "selected_level": 1,
+        "verdict": "FRONTIER_SELECTED"
+      },
+      "selection_reproduced": true
+    },
+    "transitive_dependency": {
+      "explicit_positive_accuracy_L0": 0.875,
+      "explicit_positive_gate": "VOID_INSTRUMENT_LIMIT",
+      "levels": {
+        "0": {
+          "binding_failures": [
+            "frontier_ceiling(acc <= 0.85)"
+          ],
+          "checks": {
+            "answer_share(<= 0.75)": "PASS",
+            "context_truncation(== 0)": "PASS",
+            "frontier_ceiling(acc <= 0.85)": "VOID_CEILING",
+            "frontier_floor(acc >= 0.35)": "PASS",
+            "negative_collapse(gap >= 0.20 and destroyed <= 0.60)": "PASS",
+            "position_invariance(>= 0.50)": "UNMEASURED_OFF_FRONTIER",
+            "q0(>= 0.95)": "PASS",
+            "sample_size(n >= 24)": "PASS",
+            "shortcut(CLEAN)": "UNMEASURED_OFF_FRONTIER",
+            "valid_response(>= 0.95)": "PASS"
+          },
+          "destroyed_accuracy": 0.5,
+          "destroyed_accuracy_source": "IMPUTED_STRUCTURAL_CONSTANT_0.5000",
+          "largest_answer_share": 0.625,
+          "mean_prompt_tokens": 3282.3,
+          "n_positive": 24,
+          "parameters": {
+            "explicit": true,
+            "hops": 3
+          },
+          "position_invariance": null,
+          "positive_accuracy": 0.875,
+          "positive_negative_gap": 0.375,
+          "shortcut_status": null,
+          "status": "FAIL",
+          "unmeasured_gates": [
+            "position_invariance(>= 0.50)",
+            "shortcut(CLEAN)"
+          ],
+          "valid_response_rate": 1.0
+        },
+        "1": {
+          "binding_failures": [
+            "frontier_ceiling(acc <= 0.85)"
+          ],
+          "checks": {
+            "answer_share(<= 0.75)": "PASS",
+            "context_truncation(== 0)": "PASS",
+            "frontier_ceiling(acc <= 0.85)": "VOID_CEILING",
+            "frontier_floor(acc >= 0.35)": "PASS",
+            "negative_collapse(gap >= 0.20 and destroyed <= 0.60)": "PASS",
+            "position_invariance(>= 0.50)": "UNMEASURED_OFF_FRONTIER",
+            "q0(>= 0.95)": "PASS",
+            "sample_size(n >= 24)": "PASS",
+            "shortcut(CLEAN)": "UNMEASURED_OFF_FRONTIER",
+            "valid_response(>= 0.95)": "PASS"
+          },
+          "destroyed_accuracy": 0.5,
+          "destroyed_accuracy_source": "IMPUTED_STRUCTURAL_CONSTANT_0.5000",
+          "largest_answer_share": 0.5833333333333334,
+          "mean_prompt_tokens": 2936.9,
+          "n_positive": 24,
+          "parameters": {
+            "explicit": false,
+            "hops": 2
+          },
+          "position_invariance": null,
+          "positive_accuracy": 0.9166666666666666,
+          "positive_negative_gap": 0.41666666666666663,
+          "shortcut_status": null,
+          "status": "FAIL",
+          "unmeasured_gates": [
+            "position_invariance(>= 0.50)",
+            "shortcut(CLEAN)"
+          ],
+          "valid_response_rate": 1.0
+        },
+        "2": {
+          "binding_failures": [
+            "negative_collapse(gap >= 0.20 and destroyed <= 0.60)",
+            "answer_share(<= 0.75)"
+          ],
+          "checks": {
+            "answer_share(<= 0.75)": "VOID_POSITION_SHARE",
+            "context_truncation(== 0)": "PASS",
+            "frontier_ceiling(acc <= 0.85)": "PASS",
+            "frontier_floor(acc >= 0.35)": "PASS",
+            "negative_collapse(gap >= 0.20 and destroyed <= 0.60)": "VOID_NEGATIVE_CONTROL",
+            "position_invariance(>= 0.50)": "UNMEASURED_OFF_FRONTIER",
+            "q0(>= 0.95)": "PASS",
+            "sample_size(n >= 24)": "PASS",
+            "shortcut(CLEAN)": "UNMEASURED_OFF_FRONTIER",
+            "valid_response(>= 0.95)": "PASS"
+          },
+          "destroyed_accuracy": 0.5,
+          "destroyed_accuracy_source": "IMPUTED_STRUCTURAL_CONSTANT_0.5000",
+          "largest_answer_share": 0.8333333333333334,
+          "mean_prompt_tokens": 3118.5,
+          "n_positive": 24,
+          "parameters": {
+            "explicit": false,
+            "hops": 3
+          },
+          "position_invariance": null,
+          "positive_accuracy": 0.6666666666666666,
+          "positive_negative_gap": 0.16666666666666663,
+          "shortcut_status": null,
+          "status": "FAIL",
+          "unmeasured_gates": [
+            "position_invariance(>= 0.50)",
+            "shortcut(CLEAN)"
+          ],
+          "valid_response_rate": 1.0
+        },
+        "3": {
+          "binding_failures": [
+            "negative_collapse(gap >= 0.20 and destroyed <= 0.60)",
+            "answer_share(<= 0.75)"
+          ],
+          "checks": {
+            "answer_share(<= 0.75)": "VOID_POSITION_SHARE",
+            "context_truncation(== 0)": "PASS",
+            "frontier_ceiling(acc <= 0.85)": "PASS",
+            "frontier_floor(acc >= 0.35)": "PASS",
+            "negative_collapse(gap >= 0.20 and destroyed <= 0.60)": "VOID_NEGATIVE_CONTROL",
+            "position_invariance(>= 0.50)": "UNMEASURED_OFF_FRONTIER",
+            "q0(>= 0.95)": "PASS",
+            "sample_size(n >= 24)": "PASS",
+            "shortcut(CLEAN)": "UNMEASURED_OFF_FRONTIER",
+            "valid_response(>= 0.95)": "PASS"
+          },
+          "destroyed_accuracy": 0.5,
+          "destroyed_accuracy_source": "IMPUTED_STRUCTURAL_CONSTANT_0.5000",
+          "largest_answer_share": 1.0,
+          "mean_prompt_tokens": 3492.4,
+          "n_positive": 24,
+          "parameters": {
+            "explicit": false,
+            "hops": 5
+          },
+          "position_invariance": null,
+          "positive_accuracy": 0.5,
+          "positive_negative_gap": 0.0,
+          "shortcut_status": null,
+          "status": "FAIL",
+          "unmeasured_gates": [
+            "position_invariance(>= 0.50)",
+            "shortcut(CLEAN)"
+          ],
+          "valid_response_rate": 1.0
+        }
+      },
+      "levels_passing_every_measured_gate": [],
+      "recorded_selection": {
+        "explicit_positive_accuracy": 0.875,
+        "selected_level": null,
+        "verdict": "VOID_INSTRUMENT_LIMIT"
+      },
+      "recorded_verdict": "VOID_INSTRUMENT_LIMIT",
+      "reproduced_selection": {
+        "explicit_positive_accuracy": 0.875,
+        "selected_level": null,
+        "verdict": "VOID_INSTRUMENT_LIMIT"
+      },
+      "selection_reproduced": true
+    }
+  },
+  "model_calls_made_by_this_analysis": 0,
+  "q0_valid_rate": 1.0
+}

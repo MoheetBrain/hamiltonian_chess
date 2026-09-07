@@ -1,0 +1,55 @@
+{
+ "source": "/Users/moheet/Documents/ChatGPT/HML_V3/data/corpus/lean_runtime_v2_full.canonical.part-*.jsonl.gz",
+ "parts": 5,
+ "rows": 1150,
+ "rows_with_at_least_one_external_premise_ref": 749,
+ "field_shape_first_record": {
+  "source_specific_reference_keys": [
+   "elaborated_external_constant_refs",
+   "fresh_trace_ordinal",
+   "theorem_id",
+   "transition_index"
+  ],
+  "corpus_metadata_keys": [
+   "canonical_bytes",
+   "canonical_sha256",
+   "domain",
+   "official_split",
+   "raw_file",
+   "recorded_effect_class",
+   "source_file",
+   "tactic_family",
+   "theorem_family"
+  ]
+ },
+ "distinct_theorem_keys": 1085,
+ "steps_per_theorem": {
+  "max": 8,
+  "mean": 1.06,
+  "theorems_with_ge2_steps": 48
+ },
+ "distinct_premise_names": 1782,
+ "same_proof_pool_feasibility": {
+  "theorems_with_ge1_cited_premise": 720,
+  "theorems_with_ge4_distinct_cited_premises": 217,
+  "steps_whose_OTHER_steps_supply_ge3_distinct_premises": 29,
+  "verdict": "NOT PORTABLE: the structured corpus is essentially one traced step per theorem (mean 1.06 steps/theorem), so same-proof distractor pools do not exist at usable scale."
+ },
+ "top_premises": {
+  "rfl": 23,
+  "Ne": 13,
+  "mul_assoc": 12,
+  "symm": 12,
+  "mul_one": 11,
+  "add_comm": 11,
+  "mul_comm": 9,
+  "le_rfl": 8,
+  "le_trans": 7,
+  "and_imp": 7,
+  "Function.comp_apply": 7,
+  "id": 7,
+  "atTop": 7,
+  "zero_mul": 6,
+  "congr_arg": 6
+ }
+}

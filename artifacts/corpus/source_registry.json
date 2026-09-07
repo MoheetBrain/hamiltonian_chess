@@ -1,0 +1,1387 @@
+{
+  "generated_utc": "2026-09-07T05:32:06Z",
+  "schema": "arena-corpus-source-registry-v1.0.0",
+  "scope": "EXTERNAL corpora only. Local and donor assets (HML_V3 Lean runtime corpus, hml-reasoning-corpus, the locally built mathlib4) are inventoried by other workstreams and appear here only where an external source's classification depends on them.",
+  "method": "Live primary-source verification on 2026-09-07. Hugging Face facts were read from the Hub API (repo metadata, README frontmatter, file listings, Dataset Viewer size and schema endpoints), not from memory. GitHub and Zenodo facts were read from the repositories, LICENSE files, release records and generation scripts themselves. Project design-history exposure was established by reading docs/CANONICAL_VNEXT_GAP_REPORT.md, docs/FITNESS_V5_SPEC.md, docs/PHASE5_SCHEDULED_DIRECTIVE.md and docs/PROJECT_STATUS.md in this worktree. NOTHING WAS DOWNLOADED: no dataset, no tarball, no model. No local model or LLM call was made. This artifact is research and registry design only.",
+  "verification_notes": [
+    "Where a primary source could not be reached, or two primary sources disagree, the field says UNVERIFIED and the disagreement is recorded rather than resolved by guessing. See the top-level 'unverified' list.",
+    "licence_verified is TRUE only when a licence file, repository licence field, or dataset-card frontmatter was actually read. A licence inferred from a paper, a badge, or a sibling repository is recorded as FALSE.",
+    "Canonical upstreams are distinguished from mirrors and derivatives throughout. Several widely-used HF datasets in this space are mirrors that alter or drop fields (the LeanDojo mirror drops annotated_tactic and the premise corpus) or that assert a licence the upstream does not (NaturalProofs is commonly cited as MIT; its DATA is not).",
+    "Dataset marketing claims are not reported as fact. Where a card's headline count disagrees with the shipped files, both are recorded (e.g. Lean Workbook's 57,231 + 82,893 problems versus the 25,200-row transition parquet).",
+    "size_bytes is the download or distribution size in bytes unless the entry says otherwise; size_estimated flags any figure not read from a file listing or size endpoint.",
+    "trust_tier uses the vocabulary requested for this registry; trust_tier_arena maps each entry onto the tiers already enforced in arena/provenance.py so the registry can be consumed by existing code without a translation layer."
+  ],
+  "trust_tier_definitions": {
+    "VERIFIED_FORMAL": "A proof assistant or formal verifier produced or checked the artifact (Lean kernel, Isabelle, Metamath verifiers).",
+    "DETERMINISTICALLY_CHECKED": "Checked by an exact mechanical procedure that is not a proof assistant (symbolic algebra, exact-answer match, generator ground truth).",
+    "HUMAN_ANNOTATED": "Correctness rests on human labelling or human authorship, with no mechanical check.",
+    "MODEL_GENERATED": "Produced by a language model; candidate semantics only, never canonical truth.",
+    "UNVERIFIED": "No verification path established."
+  },
+  "trust_tier_map_to_arena_provenance": {
+    "VERIFIED_FORMAL": "A_NATIVE_VERIFIED",
+    "DETERMINISTICALLY_CHECKED": "B_INDEPENDENTLY_REVERIFIED",
+    "HUMAN_ANNOTATED": "C_CANDIDATE_SEMANTICS or D_ANNOTATION depending on whether the label grounds an oracle",
+    "MODEL_GENERATED": "C_CANDIDATE_SEMANTICS",
+    "UNVERIFIED": "D_ANNOTATION",
+    "note": "arena/provenance.py permits only A and B tiers to ground an oracle (ORACLE_GRADE_TIERS)."
+  },
+  "arena_role_definitions": {
+    "Sigma_canonical_semantics": "Can supply canonical mathematical meaning, i.e. ground truth about what a state IS. Requires executable verification of states.",
+    "D_task_distribution": "Supplies tasks/problems that define what the Solver is asked to do.",
+    "U_library": "Supplies the mathematical library the Solver may draw on (declarations, lemmas, simp sets, premises).",
+    "verified_trajectories": "Supplies before-state / action / after-state triples with a verification path.",
+    "natural_language_alignment": "Supplies paired natural-language and formal content for studying the NL-to-formal boundary.",
+    "reasoning_operation_discovery": "Supplies material from which the vocabulary of mathematical operations (theorem selection, rewrite target, instantiation, subgoal choice) can be mined.",
+    "development": "Instrument building and adapter debugging.",
+    "evaluation_OOD": "Out-of-distribution generalisation checking.",
+    "future_SFT_RL_data": "Post-R* training material only."
+  },
+  "sources": [
+    {
+      "source": "AMPS (Auxiliary Mathematics Problems and Solutions)",
+      "official_location": "Google Drive link in the https://github.com/hendrycks/math README: https://drive.google.com/file/d/1hQsua3TkpEmcJD_UWQx8dmNdEZPyxw23/view",
+      "version": "single unversioned release accompanying the 2021 MATH paper",
+      "version_date": "2021",
+      "licence": "UNVERIFIED for AMPS specifically. No AMPS-specific licence exists; it falls under the hendrycks/math repo MIT LICENSE by default and the README says nothing about AMPS terms. The paper notes Khan Academy's exercise framework is MIT-licensed with attribution. Whether the tarball contains its own LICENSE file is UNVERIFIED.",
+      "licence_verified": false,
+      "size_items": "over 100,000 Khan Academy problems across 693 exercise types, plus around 5 million Mathematica-generated problems from 100 hand-designed scripts",
+      "size_bytes": 23000000000,
+      "size_estimated": true,
+      "domains": [
+        "K-12 through undergraduate: arithmetic, algebra, counting, geometry, linear algebra, calculus"
+      ],
+      "formality": "informal",
+      "has_proof_states": false,
+      "has_transitions": false,
+      "verifier": "final-answer match; the Mathematica portion is generator-backed so answers are exact by construction",
+      "has_natural_solutions": true,
+      "steps_decomposed": "partially -- the Khan portion has LaTeX step-by-step solutions; only 37 of the 100 Mathematica scripts emit full step-by-step solutions, the rest give final answers only",
+      "contamination_risk": "HIGH",
+      "contamination_notes": "Public since 2021 and widely used for math pretraining. Design-clean.",
+      "engineering_effort": "HIGH",
+      "engineering_notes": "23 GB uncompressed behind a Google Drive link that returns 403 to programmatic fetches; compressed size UNVERIFIED. The one genuinely interesting property -- that the Mathematica portion is generator-backed and could therefore produce FRESH, uncontaminated items -- is undercut by the fact that the paper never states the 100 generator scripts ship with the tarball. Treat generator availability as UNVERIFIED until someone inspects it. The Khan portion IS regenerable from github.com/Khan/khan-exercises.",
+      "arena_roles": [
+        "future_SFT_RL_data",
+        "D_task_distribution"
+      ],
+      "trust_tier": "UNVERIFIED",
+      "trust_tier_arena": "D_ANNOTATION",
+      "default_split_category": "TRAINING_CANDIDATE",
+      "never_train": false,
+      "notes": "Only worth revisiting if the Mathematica generators turn out to ship. Templated generated items have very low per-item information, and 23 GB for that is a bad trade against a 4.6 MB file of real Lean tactic transitions.",
+      "licence_blocker": false
+    },
+    {
+      "source": "DeepSeek-Prover-V1 synthetic dataset",
+      "official_location": "https://hf.co/datasets/deepseek-ai/DeepSeek-Prover-V1",
+      "version": "Hub revision last updated 2024-09-12 (created 2024-08-16); paper arXiv:2405.14333",
+      "version_date": "2024-09-12",
+      "licence": "UNVERIFIED. The Hub card is tagged 'license:other'. The card's own License section states only that 'This code repository is licensed under the MIT License' and that model use is subject to a separate Model License; it does not state a licence for the DATASET. Treat redistribution as blocked until resolved.",
+      "licence_verified": false,
+      "size_items": 27500,
+      "size_bytes": 6200000,
+      "size_estimated": false,
+      "domains": [
+        "high-school and undergraduate competition mathematics, autoformalised"
+      ],
+      "formality": "formal",
+      "has_proof_states": false,
+      "has_transitions": false,
+      "verifier": "Lean 4 (proofs were Lean-checked during construction)",
+      "has_natural_solutions": false,
+      "steps_decomposed": false,
+      "contamination_risk": "HIGH",
+      "contamination_notes": "Published prover training data; also autoformalised, so FW-6 applies to its semantics.",
+      "engineering_effort": "LOW",
+      "engineering_notes": "Fields: name, split, formal_statement, goal, header, formal_proof. Whole proofs, not per-step states -- so it gives no transitions.",
+      "arena_roles": [
+        "future_SFT_RL_data",
+        "D_task_distribution"
+      ],
+      "trust_tier": "MODEL_GENERATED",
+      "trust_tier_arena": "C_CANDIDATE_SEMANTICS",
+      "default_split_category": "TRAINING_CANDIDATE",
+      "never_train": false,
+      "notes": "Blocked on licence. Contributes whole proofs but no before/after states, which is precisely what this project needs, so the value is low even once unblocked.",
+      "licence_blocker": false
+    },
+    {
+      "source": "DeepSeek-ProverBench",
+      "official_location": "https://hf.co/datasets/deepseek-ai/DeepSeek-ProverBench",
+      "version": "Hub revision 2025-04-30",
+      "version_date": "2025-04-30",
+      "licence": "UNVERIFIED -- no licence tag on the dataset repo; the card shows only code (MIT) and model licence badges inherited from the DeepSeek-V3 template.",
+      "licence_verified": false,
+      "size_items": 325,
+      "size_bytes": 82200,
+      "size_estimated": false,
+      "domains": [
+        "competition and undergraduate mathematics, formalised"
+      ],
+      "formality": "formal",
+      "has_proof_states": false,
+      "has_transitions": false,
+      "verifier": "Lean 4",
+      "has_natural_solutions": false,
+      "steps_decomposed": false,
+      "contamination_risk": "MEDIUM",
+      "contamination_notes": "Published April 2025 as an evaluation benchmark; design-clean but licence-blocked.",
+      "engineering_effort": "LOW",
+      "engineering_notes": "Fields: name, area, header, formal_statement. Statements only.",
+      "arena_roles": [
+        "evaluation_OOD",
+        "D_task_distribution"
+      ],
+      "trust_tier": "VERIFIED_FORMAL",
+      "trust_tier_arena": "A_NATIVE_VERIFIED",
+      "default_split_category": "RESERVED_EVAL",
+      "never_train": true,
+      "notes": "Small and clean-ish as an eval, but licence-blocked and it duplicates PutnamBench/miniCTX coverage. Low priority.",
+      "licence_blocker": false
+    },
+    {
+      "source": "FormL4 (Process-Driven Autoformalization in Lean 4)",
+      "official_location": "https://github.com/rookie-joe/PDA (data/FormL4/). No Hugging Face release exists.",
+      "version": "repo last pushed 2025-01-10; paper arXiv:2406.01940 v2 2024-10-14",
+      "version_date": "2025-01-10",
+      "licence": "UNVERIFIED. The repo has NO LICENSE file and GitHub's licence field is null. 'CC BY 4.0' appears as prose in the README only, unbacked by a licence file. Treat as unlicensed for redistribution purposes.",
+      "licence_verified": false,
+      "licence_blocker": true,
+      "size_items": "17,137 (train 14,250 / basic_test 970 / random_test 950 / real_test 967)",
+      "size_bytes": 67377643,
+      "size_estimated": false,
+      "domains": [
+        "mathlib-derived theorems, informalised by Gemini-1.5-Pro"
+      ],
+      "formality": "hybrid",
+      "has_proof_states": false,
+      "has_transitions": false,
+      "verifier": "Lean 4 compiler, but applied on the fly by the paper's process-supervised verifier",
+      "has_natural_solutions": true,
+      "steps_decomposed": true,
+      "contamination_risk": "HIGH",
+      "contamination_notes": "Informalised mathlib, so it inherits mathlib's design exposure under FW-1, and its English side is model-generated so FW-6 caps its semantic trust at Tier C.",
+      "engineering_effort": "MED",
+      "engineering_notes": "File sizes: train.json 58,843,843 B, basic_test.json 3,714,656 B, random_test.json 3,897,681 B, real_test.json 921,463 B, plus raw.zip 9,431,388 B. Items carry the NL question and answer, the Lean 4 statement and proof, and a 'Theorem Environment' listing dependencies and premises. UNVERIFIED whether compiler error strings are stored per item -- the paper implies feedback is generated at run time, not persisted; this was inferred from the paper and not byte-verified.",
+      "arena_roles": [
+        "natural_language_alignment",
+        "future_SFT_RL_data"
+      ],
+      "trust_tier": "MODEL_GENERATED",
+      "trust_tier_arena": "C_CANDIDATE_SEMANTICS",
+      "default_split_category": "TRAINING_CANDIDATE",
+      "never_train": false,
+      "notes": "Licence-blocked and low value: mathlib in a costume with a model-written English side. Cannot supply Sigma, cannot be OOD."
+    },
+    {
+      "source": "Goedel-Prover Lean-workbook-proofs",
+      "official_location": "https://hf.co/datasets/Goedel-LM/Lean-workbook-proofs",
+      "version": "Hub revision last updated 2025-03-24 (created 2025-01-29); paper arXiv:2502.07640",
+      "version_date": "2025-03-24",
+      "licence": "UNVERIFIED -- the Hub repo carries no licence tag. Note the underlying problems are Lean Workbook (apache-2.0) but the generated proofs are not covered by that.",
+      "licence_verified": false,
+      "size_items": 29800,
+      "size_bytes": 16200000,
+      "size_estimated": false,
+      "domains": [
+        "contest mathematics (Lean Workbook problem base)"
+      ],
+      "formality": "formal",
+      "has_proof_states": false,
+      "has_transitions": false,
+      "verifier": "Lean 4 (proofs found and checked by Goedel-Prover-SFT)",
+      "has_natural_solutions": false,
+      "steps_decomposed": false,
+      "contamination_risk": "MEDIUM",
+      "contamination_notes": "Model-generated proofs over an already-public problem base.",
+      "engineering_effort": "LOW",
+      "engineering_notes": "Only two fields: problem_id and full_proof. Whole proofs, no states. To get transitions you would have to replay every proof through Lean yourself.",
+      "arena_roles": [
+        "future_SFT_RL_data"
+      ],
+      "trust_tier": "MODEL_GENERATED",
+      "trust_tier_arena": "C_CANDIDATE_SEMANTICS",
+      "default_split_category": "TRAINING_CANDIDATE",
+      "never_train": false,
+      "notes": "Marginal. Its one real use would be as replay fodder to manufacture transitions locally, which the local mathlib build already does more cheaply.",
+      "licence_blocker": false
+    },
+    {
+      "source": "GSM1K",
+      "official_location": "https://hf.co/datasets/ScaleAI/gsm1k (verified official Scale AI organisation)",
+      "version": "full release, 1,205 rows, single test split",
+      "version_date": "2025-04-01 (last modified; created 2025-03-31)",
+      "licence": "UNVERIFIED. The released repo carries NO licence tag and an empty README. The paper (arXiv:2405.00332) states intent to release under MIT, but that promise is not reflected in the artifact's own metadata. Licence of record does not exist.",
+      "licence_verified": false,
+      "licence_blocker": true,
+      "size_items": 1205,
+      "size_bytes": 393000,
+      "size_estimated": false,
+      "domains": [
+        "grade-school arithmetic word problems, constructed to mirror GSM8K's distribution"
+      ],
+      "formality": "informal",
+      "has_proof_states": false,
+      "has_transitions": false,
+      "verifier": "exact-answer match",
+      "has_natural_solutions": true,
+      "steps_decomposed": false,
+      "contamination_risk": "LOW",
+      "contamination_notes": "Purpose-built as a contamination control: freshly authored problems matching GSM8K's distribution, withheld at publication and released 2025-03-31 once the paper's release condition fired. Only ~18 months of exposure. Design-clean. Note the stale companion repo github.com/scaleapi/gsm1k_eval still advertises only 50 public examples and has not been updated -- reading only that repo would wrongly suggest GSM1K is still withheld.",
+      "engineering_effort": "LOW",
+      "engineering_notes": "Two columns, question / answer. 226 KB parquet. Item count is 1,205 per arXiv v4; the widely-cited 1,250 figure comes from v1 and is stale.",
+      "arena_roles": [
+        "evaluation_OOD",
+        "D_task_distribution"
+      ],
+      "trust_tier": "HUMAN_ANNOTATED",
+      "trust_tier_arena": "D_ANNOTATION",
+      "default_split_category": "RESERVED_EVAL",
+      "never_train": true,
+      "notes": "The only source in this registry built specifically to measure a contamination gap. Its scientific use here is narrow but real: GSM8K vs GSM1K is a MATCHED pair at identical difficulty differing only in exposure, so it can calibrate how much of any Arena effect is memorisation. It cannot support the decision-rich task families the project needs, because grade-school arithmetic does not require choosing a theorem, a rewrite target or a subgoal. Licence must be resolved before any redistribution."
+    },
+    {
+      "source": "GSM8K",
+      "official_location": "https://github.com/openai/grade-school-math (canonical); https://hf.co/datasets/openai/gsm8k (official mirror)",
+      "version": "main and socratic configs; repo archived, code as-is",
+      "version_date": "2021 (repo); Hub revision 2026-03-23",
+      "licence": "MIT ('Copyright (c) 2021 OpenAI'); the official HF mirror is also tagged mit",
+      "licence_verified": true,
+      "size_items": "8,792 (main: 7,473 train / 1,319 test; socratic config has identical counts)",
+      "size_bytes": 5900000,
+      "size_estimated": false,
+      "domains": [
+        "grade-school arithmetic word problems, 2-8 reasoning steps"
+      ],
+      "formality": "informal",
+      "has_proof_states": false,
+      "has_transitions": false,
+      "verifier": "exact numeric match on the final line after ####",
+      "has_natural_solutions": true,
+      "steps_decomposed": true,
+      "contamination_risk": "MAXIMAL",
+      "contamination_notes": "The most-reported LLM math benchmark in existence and effectively saturated. Assume total pretraining overlap. Design-clean.",
+      "engineering_effort": "LOW",
+      "engineering_notes": "Fields: question, answer. Solutions carry inline calculator annotations in << >> delimiters, strippable. A socratic variant decomposes into sub-questions.",
+      "arena_roles": [
+        "D_task_distribution",
+        "development"
+      ],
+      "trust_tier": "HUMAN_ANNOTATED",
+      "trust_tier_arena": "D_ANNOTATION",
+      "default_split_category": "ASSURANCE_ONLY",
+      "never_train": true,
+      "notes": "The decision content is arithmetic sequencing, not mathematical choice. For a project asking whether representation causes capability, GSM8K's representation space is essentially one-dimensional. Keep only as the paired contaminated arm against GSM1K.",
+      "licence_blocker": false
+    },
+    {
+      "source": "Hefferon, Linear Algebra (4th edition)",
+      "official_location": "Author site https://hefferon.net/linearalgebra/ ; PDFs served directly from the mirror https://jheffero.w3.uvm.edu/linearalgebra/ ; canonical source repo is GITLAB, not GitHub: https://gitlab.com/jim.hefferon/linear-algebra. The GitHub copies (gfrubi, ifduyue) are unofficial forks.",
+      "version": "4th edition, described by the author as the final edition; src/publicationdate.tex = 2021-Oct-12",
+      "version_date": "2021-10-12 (source); published PDFs Last-Modified 2023-09-21; GitLab last activity 2022-11-07",
+      "licence": "Dual: GNU Free Documentation License OR a Creative Commons Attribution-ShareAlike licence, at the user's discretion. PRIMARY SOURCES DISAGREE ON THE CC VERSION: the repo LICENSE file (signed Jim Hefferon, 2016-Nov-30) and the UVM mirror both say CC BY-SA 2.5, while hefferon.net/source.html says CC BY-SA 3.0 United States. The GFDL VERSION NUMBER IS STATED NOWHERE (1.2 vs 1.3 is UNVERIFIED). Both branches of the dual licence are share-alike copyleft.",
+      "licence_verified": false,
+      "size_items": "UNVERIFIED item count; book.pdf 7,626,685 B, jhanswer.pdf 1,789,766 B, lab.pdf 13,121,660 B",
+      "size_bytes": 22538111,
+      "size_estimated": false,
+      "domains": [
+        "undergraduate linear algebra: vector spaces, linear maps, determinants, eigenvalues, Jordan form"
+      ],
+      "formality": "informal",
+      "has_proof_states": false,
+      "has_transitions": false,
+      "verifier": "none (a symbolic checker could verify computational exercises only)",
+      "has_natural_solutions": true,
+      "steps_decomposed": false,
+      "contamination_risk": "HIGH",
+      "contamination_notes": "A freely downloadable textbook online for two decades; certainly in web-scale pretraining. Design-clean.",
+      "engineering_effort": "MED",
+      "engineering_notes": "Complete LaTeX source is public. Answers are CO-LOCATED with exercises as \\begin{exercises} ... \\item ... \\begin{answer} ... \\end{answer}, so (exercise, solution) pairs are mechanically extractable without NLP. Solutions are prose/LaTeX paragraphs, NOT atomic labelled steps. Note hefferon.net gates the main PDF behind an openintro.org registration redirect; the UVM mirror serves the PDFs directly.",
+      "arena_roles": [
+        "D_task_distribution",
+        "natural_language_alignment"
+      ],
+      "trust_tier": "HUMAN_ANNOTATED",
+      "trust_tier_arena": "D_ANNOTATION",
+      "default_split_category": "TRAINING_CANDIDATE",
+      "never_train": false,
+      "notes": "Its one real virtue is that every exercise has a completely-worked solution including proofs, in extractable LaTeX. But there is no verifier and no proof states, so it cannot supply Sigma or measurement truth. Resolve the CC version with the author before any redistribution; share-alike applies either way.",
+      "licence_blocker": false
+    },
+    {
+      "source": "Hendrycks MATH",
+      "official_location": "https://github.com/hendrycks/math (canonical repo). The original HF dataset hendrycks/competition_math is DISABLED. Live mirrors: https://hf.co/datasets/EleutherAI/hendrycks_math, https://hf.co/datasets/qwedsacf/competition_math",
+      "version": "no versioned releases; repo README changed 2025-09-06 (commit 985bdc1) to remove the first-party tarball link and point at a third-party HF mirror",
+      "version_date": "2025-09-06 (last material README change)",
+      "licence": "MIT per the repo LICENSE file ('Copyright (c) 2021 Dan Hendrycks'). BUT THIS IS DISPUTED: Art of Problem Solving (AoPS Inc.) filed a DMCA takedown accepted by Hugging Face on 2025-01-02, asserting that over 10,000 of the 12,500 problems match its proprietary Alcumus content at a similarity score of 95+, that AoPS staff wrote some problems and ALL of the solutions, and requesting removal of derivative datasets. The canonical HF copy is disabled as a result. MIT is asserted by a LICENSE file whose author's right to grant it is contested.",
+      "licence_verified": true,
+      "licence_blocker": true,
+      "size_items": "12,500 (7,500 train / 5,000 test), confirmed by per-subject row counts",
+      "size_bytes": null,
+      "size_estimated": true,
+      "domains": [
+        "competition mathematics: algebra, intermediate algebra, precalculus, prealgebra, geometry, number theory, counting and probability"
+      ],
+      "formality": "informal",
+      "has_proof_states": false,
+      "has_transitions": false,
+      "verifier": "exact-answer match against a boxed final answer",
+      "has_natural_solutions": true,
+      "steps_decomposed": false,
+      "contamination_risk": "MAXIMAL",
+      "contamination_notes": "In essentially every pretraining and post-training corpus since 2021. Additionally, PRM800K's training set contains 4,500 of the 5,000 MATH test problems, so the MATH test split is compromised for any model touched by PRM800K; only the 500-problem MATH-500 split remains clean for such models. Design-clean for Arena (named, not read).",
+      "engineering_effort": "LOW",
+      "engineering_notes": "Fields: problem, level, type, solution. Nothing structural to adapt.",
+      "arena_roles": [
+        "D_task_distribution",
+        "future_SFT_RL_data"
+      ],
+      "trust_tier": "HUMAN_ANNOTATED",
+      "trust_tier_arena": "D_ANNOTATION",
+      "default_split_category": "ASSURANCE_ONLY",
+      "never_train": true,
+      "notes": "Recommended never_train on LEGAL grounds as much as scientific ones: with an accepted DMCA notice outstanding and derivative removal requested, training on it or redistributing it creates exposure that a research project gains nothing from. The surviving mirrors being live is not the same as the content being cleared."
+    },
+    {
+      "source": "Isabelle Archive of Formal Proofs (AFP)",
+      "official_location": "https://www.isa-afp.org/ ; Mercurial repos at https://foss.heptapod.net/isa-afp (devel: afp-devel)",
+      "version": "current stable tracks Isabelle2025-2 (confirmed at isa-afp.org/browser_info/current/AFP/); forked per Isabelle release",
+      "version_date": "2026-09-02 (Last-Modified of afp-current.tar.gz); newest entries listed August 2026",
+      "licence": "PER-ENTRY, and it genuinely varies. isa-afp.org/about: all entries are under a BSD-style licence OR the GNU LGPL, with authors retaining copyright. Verified examples: Propositional_Proof_Systems = BSD; Decreasing-Diagrams = LGPL; Safe_OCL = LGPL. BSD is the metadata default. There is NO blanket AFP licence -- each entry's License field must be read, and a BSD-only subset is the safe filter.",
+      "licence_verified": true,
+      "size_items": "1,025 entries, 607 authors, approximately 325,500 lemmas, approximately 5,422,400 lines of code (live statistics page, which carries NO as-of date stamp)",
+      "size_bytes": 106373225,
+      "size_estimated": false,
+      "domains": [
+        "very broad: logic, algebra, analysis, computer science, security protocols, program verification"
+      ],
+      "formality": "formal",
+      "has_proof_states": false,
+      "has_transitions": false,
+      "verifier": "Isabelle/HOL",
+      "has_natural_solutions": false,
+      "steps_decomposed": true,
+      "contamination_risk": "MEDIUM",
+      "contamination_notes": "Public source, in pretraining. Design-clean for Arena.",
+      "engineering_effort": "HIGH",
+      "engineering_notes": "AFP ships .thy theory sources plus generated browser_info HTML/PDF. The TACTIC TEXT is verbatim in the sources, but INTERMEDIATE PROOF STATES ARE NOT DISTRIBUTED -- reproducing them requires building and running Isabelle with prebuilt heap images. That is a whole second proof-assistant toolchain to install and maintain, against a Lean installation that already exists and works. The afp-current.tar.gz download page claim of ~70 MB is stale; the real size is 106 MB.",
+      "arena_roles": [
+        "Sigma_canonical_semantics",
+        "U_library",
+        "evaluation_OOD"
+      ],
+      "trust_tier": "VERIFIED_FORMAL",
+      "trust_tier_arena": "A_NATIVE_VERIFIED",
+      "default_split_category": "SCOUT",
+      "never_train": false,
+      "notes": "Explicitly DEFERRED. As a second formal system it is strictly dominated by Metamath set.mm on effort (one CC0 flat file versus a full Isabelle installation) while offering no advantage this project can currently use. Revisit only if a Lean-versus-Metamath cross-check produces a result worth triangulating a third time.",
+      "licence_blocker": false
+    },
+    {
+      "source": "Lean Workbook",
+      "official_location": "https://hf.co/datasets/internlm/Lean-Workbook (code: https://github.com/InternLM/InternLM-Math)",
+      "version": "Hub revision last updated 2024-10-09; built against Lean v4.8.0-rc1 with the matching mathlib4 tag",
+      "version_date": "2024-10-09",
+      "licence": "apache-2.0",
+      "licence_verified": true,
+      "size_items": "README claims 57,231 (Lean Workbook) + 82,893 (Lean Workbook Plus) problems; the repo ships lean_workbook.json (94,484,955 bytes) and wkbk_1009.parquet (4,600,174 bytes, 25,200 tactic-state rows)",
+      "size_bytes": 99085129,
+      "size_estimated": false,
+      "domains": [
+        "contest / competition mathematics, autoformalised from natural language"
+      ],
+      "formality": "hybrid",
+      "has_proof_states": true,
+      "has_transitions": true,
+      "verifier": "Lean 4 v4.8.0-rc1 with matching mathlib (NOT the local v4.10.0-rc1 pin -- a version gap to bridge)",
+      "has_natural_solutions": false,
+      "steps_decomposed": true,
+      "contamination_risk": "MEDIUM-HIGH",
+      "contamination_notes": "Widely used as prover training data since mid-2024, so the Solver has plausibly seen it. Design-clean (named in the gap report, not read). Semantically it is autoformalised, so firewall rule FW-6 applies: the Lean side type-checks but NL-formal equivalence is Tier C.",
+      "engineering_effort": "LOW",
+      "engineering_notes": "The tactic-state transitions live in wkbk_1009.parquet ONLY -- 4.6 MB with columns id, status, tactic, state_before, state_after, natural_language_statement, answer, formal_statement. That single small file is the useful artifact; lean_workbook.json (94.5 MB) is the statement pool and is not needed for transition work.",
+      "arena_roles": [
+        "verified_trajectories",
+        "D_task_distribution",
+        "reasoning_operation_discovery",
+        "future_SFT_RL_data"
+      ],
+      "trust_tier": "VERIFIED_FORMAL",
+      "trust_tier_arena": "A_NATIVE_VERIFIED",
+      "default_split_category": "DEVELOPMENT",
+      "never_train": false,
+      "notes": "The best available NON-mathlib source of before/after proof states. Its value to this project is as an independent distribution: if a representation effect appears on mathlib transitions but not on Lean Workbook transitions, the effect is mathlib-specific.",
+      "licence_blocker": false
+    },
+    {
+      "source": "LeanDojo Benchmark 4 (data release)",
+      "official_location": "Canonical: Zenodo. Tool: https://github.com/lean-dojo/LeanDojo (MIT). TWO concept DOIs exist for Benchmark 4 and the repo README points at the older one: old concept 10.5281/zenodo.8040109 (CC-BY-2.0), new concept 10.5281/zenodo.15372179 (CC-BY-4.0). HF mirror cat-searcher/leandojo-benchmark-4-random is partial.",
+      "version": "v10 = 10.5281/zenodo.12740403 (2024-07-14, leandojo_benchmark_4.tar.gz, 68,141,936 bytes) under the old concept DOI. Newer: 10.5281/zenodo.15372180 (2025-05-09, 86,097,703 bytes, Lean v4.19.0, MD5 f8efc1bc40c617001c66caadb0dcfd10) and 10.5281/zenodo.18815372 (2026-02-28, filename changed to mathlib4.tar.gz, 136,493,161 bytes).",
+      "version_date": "2026-02-28 (most recent record); 2024-07-14 (v10, the one the HF mirror derives from)",
+      "licence": "CC-BY-2.0 for every release under the old concept DOI 10.5281/zenodo.8040109; CC-BY-4.0 for the 2025+ re-releases under concept DOI 10.5281/zenodo.15372179. The licence CHANGED between concept DOIs, so the licence of record depends on which tarball is pulled. The LeanDojo tool code is separately MIT. The HF mirror carries no licence tag at all.",
+      "licence_verified": true,
+      "size_items": "Lean 4: 122,517 theorems; 259,580 traced tactics (random split: 118,517 theorems / 250,814 tactics train, 2,000 / 4,260 val, 2,000 / 4,506 test). Premise corpus: 180,973 theorems and definitions across 5,674 files. NOTE the widely-quoted 98,734 theorems is the LEAN 3 benchmark, not Lean 4.",
+      "size_bytes": 68141936,
+      "size_estimated": false,
+      "domains": [
+        "mathlib mathematics, all areas"
+      ],
+      "formality": "formal",
+      "has_proof_states": true,
+      "has_transitions": true,
+      "verifier": "Lean 4 kernel via LeanDojo interaction",
+      "has_natural_solutions": false,
+      "steps_decomposed": true,
+      "contamination_risk": "HIGH",
+      "contamination_notes": "Traced mathlib, so it inherits mathlib's Arena design exposure under firewall rule FW-1 and can never be OOD. Also the standard training set for published Lean provers.",
+      "engineering_effort": "MED",
+      "engineering_notes": "DECISIVE FINDING: the benchmark generation notebook (scripts/generate-benchmark-lean4.ipynb, main branch) is pinned at mathlib4 commit 29dcec074de168ac2bf835a77ef68bbe069194c5 -- the SAME commit as the project's local mathlib build (docs/PROJECT_STATUS.md: mathlib4 @ 29dcec07). Traces from that release are therefore replayable against the local Lean v4.10.0-rc1 + Lean4Repl.olean installation, which turns imported transitions from Tier B into locally re-verifiable Tier A. Schema per theorem: url, commit, file_path, full_name, start, end, traced_tactics; each traced tactic carries tactic, annotated_tactic (with premise annotations naming WHICH premise was used and where it is defined), state_before and state_after. The HF mirror DROPS annotated_tactic and the premise corpus -- pull the Zenodo tarball, not the mirror, if premises are wanted.",
+      "arena_roles": [
+        "verified_trajectories",
+        "reasoning_operation_discovery",
+        "U_library",
+        "development",
+        "future_SFT_RL_data"
+      ],
+      "trust_tier": "VERIFIED_FORMAL",
+      "trust_tier_arena": "A_NATIVE_VERIFIED",
+      "default_split_category": "HISTORICALLY_EXPOSED",
+      "never_train": false,
+      "notes": "The novel_premises split is the single most on-target artifact in this registry for the project's stated need for tasks requiring a genuine mathematical decision: its val/test theorems have proofs using at least one premise NEVER used in any training proof, so premise selection cannot be solved by recall. Combined with annotated_tactic, this yields ready-made theorem-selection, rewrite-target and instantiation items with ground truth.",
+      "licence_blocker": false
+    },
+    {
+      "source": "Levin, Discrete Mathematics: An Open Introduction (4th edition)",
+      "official_location": "https://discrete.openmathbooks.org/ (redirects to dmoi4.html); source https://github.com/oscarlevin/discrete-book ; also on Runestone. NOTE: discretetext.oscarlevin.com DOES NOT RESOLVE -- do not cite it.",
+      "version": "4th edition (front matter says Fall 2024; site copyright 2025)",
+      "version_date": "2025-09-04 (Last-Modified of dmoi4.pdf)",
+      "licence": "4th edition is CC BY-NC-SA 4.0 -- NON-COMMERCIAL. Confirmed twice: the book's own colophon on dmoi4.html and the PreTeXt source source/frontmatter.ptx. THE REPOSITORY LICENSE FILE IS STALE on both the main and edition branches and still says CC BY-SA 4.0; the book is authoritative. The 3rd edition IS genuinely CC BY-SA 4.0 and is the licence-clean alternative.",
+      "licence_verified": true,
+      "licence_blocker": true,
+      "size_items": "over 750 exercises, many (not all) with solutions and hints",
+      "size_bytes": 2484666,
+      "size_estimated": false,
+      "domains": [
+        "discrete mathematics: counting, sequences, symbolic logic and proofs, graph theory, number theory"
+      ],
+      "formality": "informal",
+      "has_proof_states": false,
+      "has_transitions": false,
+      "verifier": "none in-source; interactive/WeBWorK exercise answers live in Runestone/OPL, not in the .ptx source",
+      "has_natural_solutions": true,
+      "steps_decomposed": false,
+      "contamination_risk": "HIGH",
+      "contamination_notes": "Free and widely mirrored since 2013; in web-scale pretraining. Design-clean.",
+      "engineering_effort": "MED",
+      "engineering_notes": "Source is PreTeXt XML under source/ (dmoi.ptx, ch_*.ptx, sec_*.ptx, exercises/, ch_solutions.ptx), which is cleanly structured and far easier to parse than raw LaTeX. The repo is 182 MB, inflated by assets and history. 'Many with' solutions, not all.",
+      "arena_roles": [
+        "D_task_distribution",
+        "natural_language_alignment"
+      ],
+      "trust_tier": "HUMAN_ANNOTATED",
+      "trust_tier_arena": "D_ANNOTATION",
+      "default_split_category": "TRAINING_CANDIDATE",
+      "never_train": false,
+      "notes": "USE THE 3RD EDITION, NOT THE 4TH, unless the non-commercial term is acceptable forever. The 4th edition's NC clause is a permanent restriction on anything derived from it, and the stale repo LICENSE file makes it easy to adopt the wrong licence by accident. Low priority either way: no verifier, no states."
+    },
+    {
+      "source": "Magnushammer premise selection in Isabelle (AFP-derived)",
+      "official_location": "https://hf.co/datasets/Simontwice/premise_selection_in_isabelle ; generation code https://github.com/Simontwice/MagnusData",
+      "version": "built from Isabelle 2021-1 plus AFP; paper arXiv:2303.04488 (ICLR 2024)",
+      "version_date": "UNVERIFIED",
+      "licence": "apache-2.0 per the HF dataset card. NOTE the tension: the underlying AFP entries carry per-entry BSD or LGPL terms, so LGPL entries propagate into any derivative and the blanket Apache-2.0 claim should not be relied on without checking which entries were included. The MagnusData generation repo has NO LICENSE file (UNVERIFIED).",
+      "licence_verified": false,
+      "size_items": "over 4 million records",
+      "size_bytes": 11700000000,
+      "size_estimated": true,
+      "domains": [
+        "Isabelle/HOL and AFP: logic, algebra, analysis, computer science"
+      ],
+      "formality": "formal",
+      "has_proof_states": true,
+      "has_transitions": true,
+      "verifier": "Isabelle/HOL (during extraction)",
+      "has_natural_solutions": false,
+      "steps_decomposed": true,
+      "contamination_risk": "MEDIUM",
+      "contamination_notes": "Published dataset since 2023; design-clean for Arena.",
+      "engineering_effort": "HIGH",
+      "engineering_notes": "Record schema is literally {'state': str, 'step': str, 'premises': {...}} -- explicit (proof state, step, premises) triples, the closest off-the-shelf premise-selection corpus for a NON-Lean system. Two problems: it is 11.7 GB, which blows any small-pilot budget; and its own README warns that including the 'step' field in the state representation LEAKS premise names, so a naive adapter would build a task that is trivially solvable by string matching -- exactly the class of instrument defect that invalidated Fitness V3/V4.",
+      "arena_roles": [
+        "reasoning_operation_discovery",
+        "verified_trajectories",
+        "evaluation_OOD"
+      ],
+      "trust_tier": "VERIFIED_FORMAL",
+      "trust_tier_arena": "B_INDEPENDENTLY_REVERIFIED",
+      "default_split_category": "SCOUT",
+      "never_train": false,
+      "notes": "The strongest single argument for eventually touching Isabelle: it supplies premise selection -- the project's canonical 'genuine mathematical decision' -- in a second formal system, already extracted. Out of scope for the pilot on size alone. Related: PISA / Portal-to-ISAbelle (github.com/albertqjiang/Portal-to-ISAbelle, code BSD-3-Clause; extracted corpus at archive.org, state-only files 8.1 GB, data licence UNVERIFIED).",
+      "licence_blocker": false
+    },
+    {
+      "source": "mathlib4",
+      "official_location": "https://github.com/leanprover-community/mathlib4",
+      "version": "local build pinned at commit 29dcec07 (per docs/PROJECT_STATUS.md); upstream master is a moving target",
+      "version_date": "UNVERIFIED (local pin date not recorded in repo docs)",
+      "licence": "Apache-2.0",
+      "licence_verified": true,
+      "size_items": "UNVERIFIED exact declaration count; 5680 .olean files in the local build",
+      "size_bytes": null,
+      "size_estimated": true,
+      "domains": [
+        "essentially all of undergraduate and much of graduate mathematics",
+        "algebra",
+        "analysis",
+        "topology",
+        "category theory",
+        "number theory",
+        "combinatorics"
+      ],
+      "formality": "formal",
+      "has_proof_states": true,
+      "has_transitions": true,
+      "verifier": "Lean 4 kernel (local: Lean v4.10.0-rc1, Lean4Repl.olean compiled, offline replay available)",
+      "has_natural_solutions": false,
+      "steps_decomposed": true,
+      "contamination_risk": "MAXIMAL",
+      "contamination_notes": "Both axes are contaminated. Pretraining: mathlib is in essentially every code and math pretraining corpus. Design history: mathlib goal states were read and used to build the Fitness V5 formal_expression_depth mechanism (461 eligible states filtered to 104 across 95 files). Also carries a measured confound: the dumb rule more_frequent_in_state scores 0.72 on the DEV pool because deeper identifiers genuinely recur more in real Lean terms.",
+      "engineering_effort": "LOW",
+      "engineering_notes": "Already built locally with a compiled REPL; no download required. This is the project's cheapest source of new verified transitions.",
+      "arena_roles": [
+        "Sigma_canonical_semantics",
+        "U_library",
+        "verified_trajectories",
+        "development",
+        "reasoning_operation_discovery"
+      ],
+      "trust_tier": "VERIFIED_FORMAL",
+      "trust_tier_arena": "A_NATIVE_VERIFIED",
+      "default_split_category": "HISTORICALLY_EXPOSED",
+      "never_train": false,
+      "notes": "The project should generate its own transitions from the local mathlib build rather than downloading any mathlib-derived dataset: same semantics, exact commit control, no mirror licence ambiguity, and it avoids importing another group's split boundaries.",
+      "licence_blocker": false
+    },
+    {
+      "source": "Metamath set.mm",
+      "official_location": "https://github.com/metamath/set.mm (default branch 'develop'); mirror https://us.metamath.org/metamath/set.mm; browser https://us.metamath.org/mpeuni/mmset.html",
+      "version": "No GitHub releases and effectively no version tags -- a continuously-committed rolling database (~17,856 commits on develop; last push 2026-09-05). A commit SHA MUST be pinned; the Metamath Proof Explorer web build does exactly this.",
+      "version_date": "2026-09-06 (Last-Modified on the us.metamath.org copy); most recent proof listed 2026-08-31",
+      "licence": "CC0 1.0 Universal for set.mm itself (repo LICENSE file verified; us.metamath.org/copyright.html waives all rights in the .mm databases under CC0). GitHub's detector reports NOASSERTION -- ignore it, the file is CC0 1.0. COMPONENTS DIFFER: peano.mm in the same repo is copyright Robert Solovay under the GNU GPL and must be excluded from a pure-CC0 corpus; the Metamath software (metamath-exe, Java, Python) is GPL v2+; website pages are GFDL 1.2+ or CC BY 2.5+.",
+      "licence_verified": true,
+      "size_items": "Metamath Proof Explorer statement numbering runs to #50,831 (mmtheorems509.html, p.509 of 509), spanning syntax constructions, axioms, definitions and proved theorems. A milestone post to the Metamath list (Alexander van der Vekens, 2026-03-09) confirms set.mm passed 50,000 theorems. An exact proved-theorem-only count is UNVERIFIED -- it needs metamath-exe 'show statistics'. The counts on mmset.html (26,000 / 41,000) are badly stale.",
+      "size_bytes": 51367012,
+      "size_estimated": false,
+      "domains": [
+        "ZFC set theory upward: logic, set theory, number theory, real and complex analysis, algebra, topology, Hilbert space"
+      ],
+      "formality": "formal",
+      "has_proof_states": true,
+      "has_transitions": true,
+      "verifier": "Many independent verifiers: metamath-exe (C), mmj2 (Java), smetamath-rs/smm (Rust), checkmm (C++), mmverify.py (Python); the site states over a dozen exist. Every change to set.mm is checked by several of them, and mmj2 additionally checks definition soundness.",
+      "has_natural_solutions": false,
+      "steps_decomposed": true,
+      "contamination_risk": "MEDIUM",
+      "contamination_notes": "Public and web-indexed, so its text is in pretraining, but it is far less represented in instruction and prover training data than Lean or competition maths. Design-clean for Arena: named once in docs/PHASE5_SCHEDULED_DIRECTIVE.md as a cheap second Tier-A cross-check, never ingested.",
+      "engineering_effort": "MED",
+      "engineering_notes": "One 51 MB flat file, no build system, no toolchain to install, and multiple tiny independent verifiers -- by far the lowest-friction second formal system available. Proofs are stored on disk in compressed RPN; metamath-exe 'show proof' expands them into the Step | Hyp | Ref | Expression table where Expression is the state at that step, Ref is the axiom or theorem applied (the transition), and Hyp names which earlier steps feed it. Cost is writing an RPN decompressor or shelling out to a verifier.",
+      "arena_roles": [
+        "Sigma_canonical_semantics",
+        "verified_trajectories",
+        "reasoning_operation_discovery",
+        "U_library",
+        "evaluation_OOD"
+      ],
+      "trust_tier": "VERIFIED_FORMAL",
+      "trust_tier_arena": "A_NATIVE_VERIFIED",
+      "default_split_category": "DEVELOPMENT",
+      "never_train": false,
+      "notes": "Strategically the most interesting non-Lean source in this registry. Metamath's operation algebra is deliberately minimal -- substitution plus modus ponens -- so it is a genuinely DIFFERENT representation of the same mathematics. If a representation effect measured on Lean states replicates on Metamath states, that is strong evidence the effect is about representation rather than about Lean; if it does not replicate, that is equally informative. CC0 removes every redistribution question.",
+      "licence_blocker": false
+    },
+    {
+      "source": "miniCTX-v2",
+      "official_location": "https://hf.co/datasets/l3lab/miniCTX-v2 (project page: https://cmu-l3.github.io/minictx/)",
+      "version": "miniCTX-v2, last updated on the Hub 2025-07-22 (created 2025-03-22)",
+      "version_date": "2025-07-22",
+      "licence": "apache-2.0 (Hub metadata tag; a LICENSE file of 11,358 bytes is present in the repo)",
+      "licence_verified": true,
+      "size_items": 668,
+      "size_bytes": 7719000,
+      "size_estimated": false,
+      "domains": [
+        "Carleson operators (carleson)",
+        "set theory (ConNF)",
+        "Fermat's Last Theorem project (FLT)",
+        "logic/foundations",
+        "physics formalisation (HepLean)",
+        "matroid theory (Seymour)",
+        "mathlib"
+      ],
+      "formality": "formal",
+      "has_proof_states": false,
+      "has_transitions": false,
+      "verifier": "Lean 4 via the Lean REPL (cmu-l3/minictx-eval harness)",
+      "has_natural_solutions": false,
+      "steps_decomposed": false,
+      "contamination_risk": "LOW-MEDIUM (the lowest of any source in this registry)",
+      "contamination_notes": "Deliberately constructed as a temporal holdout: theorems committed AFTER 2024-11-28. Not read in any Arena design document. BUT see firewall rule FW-5: the Arena Solver is gemma4:12b whose training cutoff is UNVERIFIED here, so the temporal guarantee is unproven for THIS model. The 'mathlib' config is exposed by FW-1 and must be dropped before any OOD use; the other six configs are clean.",
+      "engineering_effort": "MED",
+      "engineering_notes": "Entries are theorem statement + preceding file context (contexts can span tens of thousands of tokens, which collides directly with the Arena length-fairness constraint of 30,000 rendered characters per surface). dependencyMetadata gives numInFilePremises / numRepositoryPremises / numPremises, so decision difficulty can be stratified without running Lean. Full proof text is in proofMetadata.proof.",
+      "arena_roles": [
+        "evaluation_OOD",
+        "D_task_distribution",
+        "reasoning_operation_discovery"
+      ],
+      "trust_tier": "VERIFIED_FORMAL",
+      "trust_tier_arena": "A_NATIVE_VERIFIED",
+      "default_split_category": "RESERVED_EVAL",
+      "never_train": true,
+      "notes": "The single most valuable external source in this registry for the project's OOD problem, and the one most easily destroyed by carelessness. Seal minictx-test/ now. Non-mathlib configs only. Predecessor l3lab/miniCTX (Apache-2.0, 662 rows, cutoff pre-Nov-2024) is the appropriate DEVELOPMENT counterpart.",
+      "licence_blocker": false
+    },
+    {
+      "source": "miniF2F (Lean 4 port)",
+      "official_location": "Original: https://github.com/openai/miniF2F (ARCHIVED 2023-08-16). Best-maintained Lean 4 port: https://github.com/google-deepmind/miniF2F. Other ports: yangky11/miniF2F-lean4 (self-described as not regularly maintained), facebookresearch/miniF2F (Lean 3, v2, adds informal statements and proofs for all 488), roozbeh-yz/miniF2F_v2. HF: cat-searcher/minif2f-lean4.",
+      "version": "google-deepmind/miniF2F on leanprover/lean4:v4.27.0, pushed 2026-04-23; original v1 frozen 2021-08 on the v1 branch",
+      "version_date": "2026-04-23",
+      "licence": "The ORIGINAL openai/miniF2F has NO repo-level LICENSE; licensing is per-directory: lean/ Apache-2.0 (no copyright holder filled in), metamath/ MIT (Copyright (c) 2021 OpenAI), hollight/ BSD-2-Clause (Copyright Meta Platforms, Inc. 2021 -- inside an OpenAI repo), isabelle/ Apache-2.0 (no holder). google-deepmind/miniF2F is Apache-2.0. cat-searcher/minif2f-lean4 is MIT. UDACA/minif2f-lean4 declares NO licence and is unusable as-is.",
+      "licence_verified": true,
+      "size_items": "488 for Lean / Metamath / Isabelle (244 test + 244 valid); 330 for HOL Light (165 + 165)",
+      "size_bytes": 225600,
+      "size_estimated": false,
+      "domains": [
+        "olympiad and high-school competition mathematics: algebra, number theory, induction"
+      ],
+      "formality": "hybrid",
+      "has_proof_states": false,
+      "has_transitions": false,
+      "verifier": "Lean 4 (and Metamath / Isabelle / HOL Light in the original)",
+      "has_natural_solutions": true,
+      "steps_decomposed": false,
+      "contamination_risk": "MAXIMAL",
+      "contamination_notes": "The most-reported formal theorem proving benchmark of the last five years; public since May 2021, mirrored into dozens of HF datasets and public training corpora. facebookresearch/miniF2F explicitly refuses PRs adding proofs specifically to limit test set contamination. SEPARATELY QUALITY-SUSPECT: arXiv:2511.03108 (miniF2F-Lean Revisited, 2025-11-05) reports formal/informal discrepancies in MORE THAN HALF the problems, with end-to-end accuracy of 36% on original miniF2F versus 70% on their corrected v2.",
+      "engineering_effort": "LOW",
+      "engineering_notes": "cat-searcher fields: id, split, formal_statement, header, informal_stmt, informal_proof. google-deepmind port imports all of mathlib and adds NL docstrings.",
+      "arena_roles": [
+        "development"
+      ],
+      "trust_tier": "VERIFIED_FORMAL",
+      "trust_tier_arena": "A_NATIVE_VERIFIED",
+      "default_split_category": "ASSURANCE_ONLY",
+      "never_train": true,
+      "notes": "Downgraded to pure plumbing. It is contaminated AND its informal/formal alignment is broken for over half the items, so it cannot support a natural-language alignment claim either. If a Lean 4 miniF2F is needed at all, use google-deepmind/miniF2F (Apache-2.0, false statements removed) rather than any older port.",
+      "licence_blocker": false
+    },
+    {
+      "source": "NaturalProofs",
+      "official_location": "Code: https://github.com/wellecks/naturalproofs (MIT). DATA: Zenodo concept DOI 10.5281/zenodo.4632538, current version 10.5281/zenodo.4902289 (v2.0.0, 2021-06-04).",
+      "version": "v2.0.0",
+      "version_date": "2021-06-04",
+      "licence": "SPLIT, AND THE MIT TAG IS MISLEADING. MIT covers the CODE only. The Zenodo data release ships a LICENSE file assigning per-file licences: naturalproofs_proofwiki.json = CC BY-SA 4.0; naturalproofs_stacks.json = GNU FDL v1.2; naturalproofs_trench.json = CC BY-NC-SA 4.0 (NON-COMMERCIAL); naturalproofs_stein.py = MIT. Three copyleft sources and one non-commercial source. Any mixed derivative inherits copyleft and the NC restriction.",
+      "licence_verified": true,
+      "licence_blocker": true,
+      "size_items": "32,579 theorems, 14,230 definitions, 32,012 proofs, 1,974 other pages (ProofWiki 19,734 thm; Stacks 12,479; Trench 298; Stein 68)",
+      "size_bytes": 167575230,
+      "size_estimated": false,
+      "domains": [
+        "ProofWiki (broad pure mathematics)",
+        "Stacks Project (algebraic geometry)",
+        "Trench real analysis",
+        "Stein number theory"
+      ],
+      "formality": "informal",
+      "has_proof_states": false,
+      "has_transitions": false,
+      "verifier": "NONE -- entirely natural language, no proof assistant, no mechanical checking; evaluation is retrieval and generation metrics only",
+      "has_natural_solutions": true,
+      "steps_decomposed": false,
+      "contamination_risk": "HIGH",
+      "contamination_notes": "ProofWiki and the Stacks Project are public web corpora and are in web-scale pretraining. Design-clean for Arena.",
+      "engineering_effort": "MED",
+      "engineering_notes": "Unified schema across sources with REFERENCE LINKS -- which prior theorems and definitions each proof cites. That reference-retrieval structure is the one genuinely decision-shaped signal here, and it is the informal analogue of premise selection. NaturalProofs-Gen (HF wellecks/naturalproofs-gen, ProofWiki-only, 29.4K rows) is a generation-task variant; its card says MIT but that is UNVERIFIED for the data and it most likely inherits CC BY-SA 4.0.",
+      "arena_roles": [
+        "natural_language_alignment",
+        "reasoning_operation_discovery",
+        "D_task_distribution"
+      ],
+      "trust_tier": "HUMAN_ANNOTATED",
+      "trust_tier_arena": "D_ANNOTATION",
+      "default_split_category": "TRAINING_CANDIDATE",
+      "never_train": false,
+      "notes": "Do not treat as MIT. If anything derived from the Trench portion is ever published or used commercially, the CC BY-NC-SA 4.0 term bites; the Stacks GFDL v1.2 term is awkward for ML data generally. Filter to the ProofWiki portion (CC BY-SA 4.0) if used at all. No verifier means it cannot ground Sigma."
+    },
+    {
+      "source": "NuminaMath (CoT and 1.5)",
+      "official_location": "https://hf.co/datasets/AI-MO/NuminaMath-CoT and https://hf.co/datasets/AI-MO/NuminaMath-1.5",
+      "version": "NuminaMath-CoT Hub revision 2024-11-25; NuminaMath-1.5 Hub revision 2026-01-29",
+      "version_date": "2026-01-29 (1.5)",
+      "licence": "apache-2.0 (both)",
+      "licence_verified": true,
+      "size_items": "CoT: 859,600 (859.5K train + 100 test). 1.5: 896,200 train",
+      "size_bytes": 1731400000,
+      "size_estimated": false,
+      "domains": [
+        "Chinese high-school exercises through international olympiad problems"
+      ],
+      "formality": "informal",
+      "has_proof_states": false,
+      "has_transitions": false,
+      "verifier": "final-answer matching only (1.5 adds problem_is_valid / solution_is_valid flags and a 'synthetic' boolean)",
+      "has_natural_solutions": true,
+      "steps_decomposed": true,
+      "contamination_risk": "MAXIMAL",
+      "contamination_notes": "One of the most heavily used math post-training corpora in existence. Any model of the gemma4:12b generation has plausibly been trained on it or on its descendants. Also OCR-derived from exam PDFs, so item quality is uneven -- which is why v1.5 ships validity flags.",
+      "engineering_effort": "LOW",
+      "engineering_notes": "Trivial to load; 1.2 GB (CoT) and 531 MB (1.5) of parquet. Nothing to adapt because there is no structure to adapt.",
+      "arena_roles": [
+        "future_SFT_RL_data",
+        "D_task_distribution"
+      ],
+      "trust_tier": "MODEL_GENERATED",
+      "trust_tier_arena": "C_CANDIDATE_SEMANTICS",
+      "default_split_category": "TRAINING_CANDIDATE",
+      "never_train": false,
+      "notes": "Big, cheap, permissively licensed and nearly useless for Game R: no states, no transitions, no verifier beyond answer match, and maximal contamination.",
+      "licence_blocker": false
+    },
+    {
+      "source": "OpenWebMath",
+      "official_location": "https://hf.co/datasets/open-web-math/open-web-math (code: https://github.com/keirp/OpenWebMath)",
+      "version": "Hub revision 2023-10-17",
+      "version_date": "2023-10-17",
+      "licence": "ODC-By 1.0, AND users must additionally abide by the Common Crawl Terms of Use. The underlying documents keep their own licences, which are not altered or cleared.",
+      "licence_verified": true,
+      "size_items": 6315233,
+      "size_bytes": 56651995057,
+      "size_estimated": false,
+      "domains": [
+        "general mathematical web text: forums, blogs, course pages, arXiv-adjacent content, physics, statistics, CS"
+      ],
+      "formality": "informal",
+      "has_proof_states": false,
+      "has_transitions": false,
+      "verifier": "none",
+      "has_natural_solutions": false,
+      "steps_decomposed": false,
+      "contamination_risk": "MAXIMAL",
+      "contamination_notes": "It IS a pretraining corpus, derived from Common Crawl. Assume complete overlap with the Solver's pretraining.",
+      "engineering_effort": "HIGH",
+      "engineering_notes": "16.4 GB compressed download, 56.7 GB uncompressed, 27.4 GB as parquet. Nothing but url/text/date/metadata.",
+      "arena_roles": [
+        "future_SFT_RL_data"
+      ],
+      "trust_tier": "UNVERIFIED",
+      "trust_tier_arena": "D_ANNOTATION",
+      "default_split_category": "TRAINING_CANDIDATE",
+      "never_train": false,
+      "notes": "Explicitly NOT recommended. The project is not pretraining a model, and this source supplies zero verified structure at very high storage cost. Its per-document licences are not cleared, which is a real redistribution hazard if anything derived from it is published.",
+      "licence_blocker": false
+    },
+    {
+      "source": "PRM800K",
+      "official_location": "https://github.com/openai/prm800k (ARCHIVED, read-only; last push 2023-06-01)",
+      "version": "phase1 and phase2 jsonl releases accompanying arXiv:2305.20050",
+      "version_date": "2023-06-01 (last push)",
+      "licence": "MIT ('Copyright (c) 2023 OpenAI'), but the underlying MATH problems carry the unresolved AoPS copyright claim, which propagates to this derivative.",
+      "licence_verified": true,
+      "licence_blocker": true,
+      "size_items": "800,000 step-level labels across 75,000 solutions to 12,000 problems (1,085,590 labels over 101,599 samples before quality filtering)",
+      "size_bytes": 466000000,
+      "size_estimated": false,
+      "domains": [
+        "competition mathematics (MATH problem base)"
+      ],
+      "formality": "informal",
+      "has_proof_states": false,
+      "has_transitions": true,
+      "verifier": "human annotation (screened labellers held to 75%+ agreement with gold QC labels); no mechanical verifier",
+      "has_natural_solutions": true,
+      "steps_decomposed": true,
+      "contamination_risk": "MAXIMAL",
+      "contamination_notes": "Contains 4,500 of the 5,000 MATH test problems in its own training data -- OpenAI evaluated only on the remaining 500 (published as MATH-500, prm800k/math_splits/test.jsonl). Any MATH number from a PRM800K-trained model is invalid unless restricted to MATH-500. Design-clean for Arena.",
+      "engineering_effort": "MED",
+      "engineering_notes": "phase2_train.jsonl alone is 435 MB; phase1_train.jsonl is a manageable 7.53 MB and phase1_test.jsonl 810 KB. Labels are -1 (incorrect) / 0 (no progress) / +1 (correct) with labeller UUID, timestamp, QC flags and time-spent. This is the richest HUMAN step-quality signal available anywhere, and the only genuinely step-level human-labelled corpus in this registry.",
+      "arena_roles": [
+        "reasoning_operation_discovery",
+        "D_task_distribution",
+        "future_SFT_RL_data"
+      ],
+      "trust_tier": "HUMAN_ANNOTATED",
+      "trust_tier_arena": "C_CANDIDATE_SEMANTICS",
+      "default_split_category": "HISTORICALLY_EXPOSED",
+      "never_train": true,
+      "notes": "Scientifically interesting -- a step is or is not progress, which is a real mathematical decision -- but doubly compromised: the AoPS claim on its problem base, and its own 4,500/5,000 test overlap. Classified HISTORICALLY_EXPOSED rather than DEVELOPMENT because it has already leaked the MATH test set into the public training pool; nothing built on it can be held out cleanly."
+    },
+    {
+      "source": "ProofNet (original)",
+      "official_location": "https://hf.co/datasets/hoskinson-center/proofnet (the zhangir-azerbayev/proofnet dataset id no longer resolves on the Hub)",
+      "version": "Hub revision last updated 2023-03-17",
+      "version_date": "2023-03-17",
+      "licence": "mit",
+      "licence_verified": true,
+      "size_items": 371,
+      "size_bytes": 211500,
+      "size_estimated": false,
+      "domains": [
+        "undergraduate mathematics: real analysis, abstract algebra, topology, linear algebra"
+      ],
+      "formality": "hybrid (paired NL and formal statements)",
+      "has_proof_states": false,
+      "has_transitions": false,
+      "verifier": "Lean (Lean 3 era for this release)",
+      "has_natural_solutions": true,
+      "steps_decomposed": false,
+      "contamination_risk": "HIGH",
+      "contamination_notes": "A standard published autoformalization benchmark since 2023; near-certainly in the Solver's pretraining. Design-clean (named but not read in Arena docs).",
+      "engineering_effort": "LOW",
+      "engineering_notes": "Fields: id, nl_statement, nl_proof, formal_statement, src_header. Trivial to adapt. Lean 3 syntax makes it stale for a Lean 4 harness -- use ProofNet# instead.",
+      "arena_roles": [
+        "natural_language_alignment",
+        "D_task_distribution",
+        "evaluation_OOD"
+      ],
+      "trust_tier": "HUMAN_ANNOTATED",
+      "trust_tier_arena": "B_INDEPENDENTLY_REVERIFIED",
+      "default_split_category": "ASSURANCE_ONLY",
+      "never_train": true,
+      "notes": "Superseded for practical use by ProofNet# (Lean 4). Kept in the registry because it is the provenance root of ProofNet# and ProofNetVerif.",
+      "licence_blocker": false
+    },
+    {
+      "source": "ProofNet# (ProofNetSharp)",
+      "official_location": "https://hf.co/datasets/PAug/ProofNetSharp",
+      "version": "Hub revision last updated 2025-03-24 (created 2025-02-05); compatible with Lean v4.7.0 through v4.16.0-rc2",
+      "version_date": "2025-03-24",
+      "licence": "mit",
+      "licence_verified": true,
+      "size_items": 371,
+      "size_bytes": 208200,
+      "size_estimated": false,
+      "domains": [
+        "undergraduate mathematics: analysis, algebra, topology, linear algebra"
+      ],
+      "formality": "hybrid",
+      "has_proof_states": false,
+      "has_transitions": false,
+      "verifier": "Lean 4 (compatible with the local v4.10.0-rc1 toolchain, which sits inside the stated v4.7.0-v4.16.0-rc2 window)",
+      "has_natural_solutions": true,
+      "steps_decomposed": false,
+      "contamination_risk": "HIGH",
+      "contamination_notes": "Lean 4 port of a widely-published benchmark. Pretraining-contaminated; design-clean.",
+      "engineering_effort": "LOW",
+      "engineering_notes": "Fields: id, nl_statement, nl_proof, lean4_src_header, lean4_formalization. Directly type-checkable against the local Lean toolchain.",
+      "arena_roles": [
+        "natural_language_alignment",
+        "D_task_distribution",
+        "evaluation_OOD"
+      ],
+      "trust_tier": "VERIFIED_FORMAL",
+      "trust_tier_arena": "A_NATIVE_VERIFIED",
+      "default_split_category": "RESERVED_EVAL",
+      "never_train": true,
+      "notes": "The correct modern ProofNet to use. Its Lean version window contains the locally installed toolchain, which is unusual and valuable.",
+      "licence_blocker": false
+    },
+    {
+      "source": "ProofNet-Verified",
+      "official_location": "https://hf.co/datasets/marcusm117/ProofNet-Verified (code: github.com/marcusm117/ProofNet-Verified)",
+      "version": "single release; Lean v4.28.0",
+      "version_date": "2026-07-21",
+      "licence": "apache-2.0",
+      "licence_verified": true,
+      "size_items": 367,
+      "size_bytes": null,
+      "size_estimated": true,
+      "domains": [
+        "undergraduate mathematics (ProofNet textbook base: Rudin, Munkres, Dummit-Foote, Axler, Herstein)"
+      ],
+      "formality": "hybrid",
+      "has_proof_states": false,
+      "has_transitions": false,
+      "verifier": "Lean v4.28.0",
+      "has_natural_solutions": true,
+      "steps_decomposed": false,
+      "contamination_risk": "MEDIUM",
+      "contamination_notes": "Problem base is ProofNet (contaminated); the verified FORMAL PROOFS are new and recent (2026-07). Design-clean.",
+      "engineering_effort": "MED",
+      "engineering_notes": "Distinct from ProofNetVerif despite the near-identical name. Fields: index, name, textbook, header, helper, informal_stmt, formal_stmt, informal_proof, formal_proof. It is the only ProofNet variant that ships FORMAL PROOFS, which makes it the only one from which transitions could be extracted by replay. Requires Lean v4.28.0, well ahead of the local v4.10.0-rc1 -- a real toolchain gap.",
+      "arena_roles": [
+        "verified_trajectories",
+        "natural_language_alignment",
+        "evaluation_OOD"
+      ],
+      "trust_tier": "VERIFIED_FORMAL",
+      "trust_tier_arena": "A_NATIVE_VERIFIED",
+      "default_split_category": "RESERVED_EVAL",
+      "never_train": true,
+      "notes": "Do not confuse with PAug/ProofNetVerif. Attractive because it pairs informal proof with formal proof on the same statement, but the Lean v4.28.0 requirement means it cannot be replayed on the local toolchain without an upgrade.",
+      "licence_blocker": false
+    },
+    {
+      "source": "ProofNetVerif",
+      "official_location": "https://hf.co/datasets/PAug/ProofNetVerif",
+      "version": "Hub revision last updated 2025-03-24 (created 2025-02-05); compatible with Lean v4.8.0",
+      "version_date": "2025-03-24",
+      "licence": "mit",
+      "licence_verified": true,
+      "size_items": 3752,
+      "size_bytes": 406549,
+      "size_estimated": false,
+      "domains": [
+        "undergraduate mathematics (ProofNet problem base)"
+      ],
+      "formality": "hybrid",
+      "has_proof_states": false,
+      "has_transitions": false,
+      "verifier": "Lean 4 type checking plus human semantic-equivalence labels (the 'correct' boolean)",
+      "has_natural_solutions": false,
+      "steps_decomposed": false,
+      "contamination_risk": "MEDIUM",
+      "contamination_notes": "The problem base is ProofNet (contaminated), but the ITEMS are model-generated formalization attempts paired with equivalence labels, published 2025. The label -- is this Lean statement semantically equivalent to this English statement -- is very unlikely to have been memorised as a label. Design-clean.",
+      "engineering_effort": "LOW",
+      "engineering_notes": "Fields: id, nl_statement, lean4_src_header, lean4_formalization, lean4_prediction, correct (bool). A binary decision with a clean 0.5 chance baseline, which fits the EXISTING Arena controller C (single greedy JSON A/B answer, no reasoning, no search) with essentially no new machinery. 406 KB total.",
+      "arena_roles": [
+        "natural_language_alignment",
+        "D_task_distribution",
+        "evaluation_OOD",
+        "development"
+      ],
+      "trust_tier": "HUMAN_ANNOTATED",
+      "trust_tier_arena": "B_INDEPENDENTLY_REVERIFIED",
+      "default_split_category": "DEVELOPMENT",
+      "never_train": true,
+      "notes": "Highest information-value-per-byte source found. Use the 'valid' split (2,300 items) as DEVELOPMENT and seal 'test' (1,452 items) as RESERVED_EVAL. Directly attacks the V5 residual risk: unlike depth probes, there is no surface frequency heuristic that predicts semantic equivalence, so a dumb-rule ceiling near 0.72 should not recur.",
+      "licence_blocker": false
+    },
+    {
+      "source": "PutnamBench",
+      "official_location": "https://github.com/trishullab/PutnamBench (HF mirror amitayusht/PutnamBench is partial: 522 rows, no licence tag)",
+      "version": "UNVERIFIED exact release tag; paper arXiv:2407.11214 (2024)",
+      "version_date": "UNVERIFIED",
+      "licence": "Apache-2.0 for the Lean 4 and Isabelle formalizations; MIT for the Coq formalizations. IMPORTANT: the informal statements are used with permission from the Mathematical Association of America, which is a redistribution constraint, not an open licence.",
+      "licence_verified": true,
+      "size_items": "672 Lean 4 + 640 Isabelle + 412 Coq formalizations (over 1300 aggregated); Putnam 1965-2023",
+      "size_bytes": null,
+      "size_estimated": true,
+      "domains": [
+        "Putnam competition mathematics: analysis, algebra, number theory, combinatorics, linear algebra, geometry"
+      ],
+      "formality": "hybrid",
+      "has_proof_states": false,
+      "has_transitions": false,
+      "verifier": "Lean 4 / Isabelle / Coq",
+      "has_natural_solutions": true,
+      "steps_decomposed": false,
+      "contamination_risk": "HIGH for the informal problems (Putnam problems are extremely widely published), MEDIUM for the formalizations",
+      "contamination_notes": "Standard published eval since 2024. Design-clean. Never train on it -- doing so destroys comparability with every published PutnamBench number.",
+      "engineering_effort": "MED",
+      "engineering_notes": "Sparse checkout of the lean4/ directory is small. The unique structural feature is that the SAME problem is formalised in three different formal systems, so it is a natural held-fixed-Sigma, varied-R comparison -- unusually well matched to Game R's design.",
+      "arena_roles": [
+        "evaluation_OOD",
+        "D_task_distribution",
+        "Sigma_canonical_semantics"
+      ],
+      "trust_tier": "VERIFIED_FORMAL",
+      "trust_tier_arena": "A_NATIVE_VERIFIED",
+      "default_split_category": "RESERVED_EVAL",
+      "never_train": true,
+      "notes": "Do NOT redistribute the informal statements: they are MAA-permissioned to PutnamBench, and that permission does not transfer. The Lean/Isabelle/Coq triples are the interesting part for this project and are cleanly licensed.",
+      "licence_blocker": false
+    }
+  ],
+  "split_categories": {
+    "DEVELOPMENT": {
+      "definition": "May be read, inspected, plotted, tuned against and iterated on freely while building instruments and adapters. Reading a DEVELOPMENT item is what burns it: once looked at, it can never be promoted to OOD or RESERVED_EVAL.",
+      "permits": [
+        "read",
+        "inspect",
+        "tune_instrument",
+        "adapter_debug",
+        "power_analysis"
+      ],
+      "forbids": [
+        "report_as_headline_result",
+        "later_reclassification_as_held_out"
+      ]
+    },
+    "TRAINING_CANDIDATE": {
+      "definition": "Eligible to enter SFT/RL data for a future Solver, subject to licence and to the never_train list. Entering training is irreversible for evaluation purposes: a TRAINING_CANDIDATE that is actually trained on becomes HISTORICALLY_EXPOSED.",
+      "permits": [
+        "sft",
+        "rl",
+        "curriculum",
+        "distillation_targets"
+      ],
+      "forbids": [
+        "use_as_evaluation_after_training",
+        "use_as_OOD"
+      ]
+    },
+    "SCOUT": {
+      "definition": "A small, cheap slice pulled only to answer a structural question about the source itself (does the schema fit, what operations occur, what is the length distribution). Bounded by an explicit item cap declared before the pull. The SCOUT slice is burned; the remainder of the source keeps its own category.",
+      "permits": [
+        "schema_probe",
+        "operation_mining",
+        "length_and_cost_measurement"
+      ],
+      "forbids": [
+        "accuracy_measurement",
+        "unbounded_expansion"
+      ],
+      "requires": [
+        "declared_item_cap_before_pull",
+        "recorded_item_ids_so_the_remainder_stays_clean"
+      ]
+    },
+    "PROMOTION": {
+      "definition": "The single pool on which a candidate representation is scored to decide whether it beats the incumbent. Disjoint from DEVELOPMENT by construction and by group-aware splitting (theorem-level, not item-level, or near-duplicate leakage is guaranteed). Read only at a preregistered decision point, then retired.",
+      "permits": [
+        "one_preregistered_scoring_pass"
+      ],
+      "forbids": [
+        "iteration",
+        "repeated_scoring",
+        "post_hoc_filtering"
+      ]
+    },
+    "OOD": {
+      "definition": "Distribution-shifted relative to DEVELOPMENT along a named, auditable axis (different Lean project, different formal system, later commit date, different problem provenance). Establishes that a representation effect is not an artifact of the development distribution. Requires the shift axis to be stated, not assumed.",
+      "permits": [
+        "generalisation_check_at_a_preregistered_point"
+      ],
+      "forbids": [
+        "instrument_tuning",
+        "any_prior_reading"
+      ],
+      "requires": [
+        "named_shift_axis",
+        "no_shared_provenance_with_DEVELOPMENT"
+      ]
+    },
+    "ASSURANCE_ONLY": {
+      "definition": "Used solely to check that the harness is not broken -- smoke tests, adapter round-trips, verifier plumbing, encoding checks. Never contributes a scientific number. Contaminated sources are acceptable here precisely because no claim rests on them.",
+      "permits": [
+        "smoke_test",
+        "round_trip_check",
+        "verifier_plumbing"
+      ],
+      "forbids": [
+        "any_reported_accuracy",
+        "any_causal_claim"
+      ]
+    },
+    "HISTORICALLY_EXPOSED": {
+      "definition": "Already consumed by this project's own design history -- inspected, used to build or calibrate an instrument, or trained on. Permanently disqualified from OOD, PROMOTION and RESERVED_EVAL. Exposure is TRANSITIVE: any dataset derived from an exposed source inherits the exposure (e.g. every mathlib-derived corpus inherits mathlib's exposure, because mathlib goal states were read during Fitness V5 design).",
+      "permits": [
+        "development",
+        "training_if_licence_allows",
+        "assurance"
+      ],
+      "forbids": [
+        "ood",
+        "promotion",
+        "reserved_eval"
+      ]
+    },
+    "RESERVED_EVAL": {
+      "definition": "Sealed. Not read, not sampled, not previewed, not summarised, by human or agent, until a preregistered unsealing condition fires (a qualified instrument plus a declared hypothesis). The strongest guarantee the project can offer, and the only one that survives an adversarial reading of the record. Unsealing is a one-way door and must be logged in docs/PROJECT_LEDGER.md.",
+      "permits": [
+        "nothing_until_unsealed"
+      ],
+      "forbids": [
+        "reading",
+        "sampling",
+        "preview",
+        "tuning",
+        "training"
+      ],
+      "requires": [
+        "preregistered_unsealing_condition",
+        "ledger_entry_on_unseal"
+      ]
+    }
+  },
+  "split_category_assignment_notes": [
+    "No source carries PROMOTION or OOD as a DEFAULT category, and that is deliberate, not an omission. PROMOTION and OOD are DERIVED pools carved out of a source under a preregistered split, never properties a whole corpus is born with. Assigning a source to OOD wholesale would beg the very question OOD is supposed to answer.",
+    "Intended derivation path for OOD: miniCTX-v2, non-mathlib configs only. Its valid split becomes DEVELOPMENT once an adapter exists; its test split stays RESERVED_EVAL and is promoted to OOD only at a preregistered decision point, and only once the Solver's training cutoff has been pinned (firewall FW-5).",
+    "Intended derivation path for PROMOTION: a theorem-grouped split of LeanDojo Benchmark 4 novel_premises, disjoint from whatever was read during development. Firewall FW-4 applies -- split at the theorem, never at the item, or the same theorem leaks across pools.",
+    "A default category is the STRICTEST posture consistent with what is currently known. Sources move down the ladder (RESERVED_EVAL to OOD to DEVELOPMENT to burned) and never back up."
+  ],
+  "contamination_firewall_rules": [
+    {
+      "id": "FW-1",
+      "rule": "Exposure is transitive through derivation.",
+      "detail": "mathlib4 goal states were read during Fitness V5 instrument design (docs/FITNESS_V5_SPEC.md: 461 eligible states, 104 used, across 95 mathlib files, via donor MoheetBrain/HML_V3 @ 95e8a26). Therefore mathlib4 is HISTORICALLY_EXPOSED, and so is every corpus derived from it: LeanDojo Benchmark 4 (traced mathlib), miniCTX / miniCTX-v2 'mathlib' config, FormL4 (informalised mathlib theorems), and any mathlib premise-selection extraction. None of these can serve as clean OOD."
+    },
+    {
+      "id": "FW-2",
+      "rule": "Naming a dataset in a design document is weaker exposure than reading it.",
+      "detail": "docs/CANONICAL_VNEXT_GAP_REPORT.md names miniF2F, ProofNet, FormL4, Lean Workbook, MATH, AMPS, NuminaMath, LeanDojo and Goedel/Nemotron datasets, but states 'No corpus was downloaded' and that its claims are recalled rather than verified. These are therefore NOT design-exposed by ingestion. They remain exposed by the separate pretraining axis (FW-3)."
+    },
+    {
+      "id": "FW-3",
+      "rule": "Separate pretraining contamination from design contamination; they have different remedies.",
+      "detail": "Pretraining contamination (the Solver has memorised the items) is not fixed by holding data out -- it is only bounded by temporal cutoff, by novel provenance, or by perturbation. Design contamination (we tuned against it) is fixed only by never having looked. A source can be clean on one axis and filthy on the other. miniF2F is design-clean and pretraining-filthy; mathlib is both."
+    },
+    {
+      "id": "FW-4",
+      "rule": "Split at the theorem/problem group, never at the item.",
+      "detail": "Proof-state corpora emit many rows per theorem. Item-level random splitting leaks the same theorem across DEVELOPMENT and PROMOTION and silently inflates every effect. The group-aware splitter already built in hml-reasoning-corpus (claude/max-ev-representation-experiment-v1) should be reused rather than rewritten."
+    },
+    {
+      "id": "FW-5",
+      "rule": "A temporal-cutoff OOD claim is only as good as the Solver's stated cutoff.",
+      "detail": "miniCTX-v2 draws theorems committed after 2024-11-28, which is the field's current best temporal-holdout construction. But the Arena Solver is gemma4:12b and its training cutoff is UNVERIFIED in this repository. Until that cutoff is pinned and recorded, miniCTX-v2's OOD status for THIS Solver is a hypothesis, not a fact."
+    },
+    {
+      "id": "FW-6",
+      "rule": "Formal verification of a mistranslated statement is not semantic equivalence.",
+      "detail": "Already encoded in arena/provenance.py. Any NL-to-formal source (FormL4, Lean Workbook, NuminaMath-derived formalisations, autoformalised statements generally) is at best Tier C on the semantic-alignment axis even when the Lean side type-checks. Such sources may supply D and training material; they may never supply Sigma."
+    }
+  ],
+  "never_train_list": [
+    "DeepSeek-ProverBench",
+    "GSM1K",
+    "GSM8K",
+    "Hendrycks MATH",
+    "PRM800K",
+    "ProofNet (original)",
+    "ProofNet# (ProofNetSharp)",
+    "ProofNet-Verified",
+    "ProofNetVerif",
+    "PutnamBench",
+    "miniCTX-v2",
+    "miniF2F (Lean 4 port)"
+  ],
+  "licence_blocked": [
+    "FormL4 (Process-Driven Autoformalization in Lean 4)",
+    "GSM1K",
+    "Hendrycks MATH",
+    "Levin, Discrete Mathematics: An Open Introduction (4th edition)",
+    "NaturalProofs",
+    "PRM800K"
+  ],
+  "recommended_next": [
+    {
+      "rank": 1,
+      "source": "LeanDojo Benchmark 4 (data release)",
+      "what_to_take": "Zenodo v10 (DOI 10.5281/zenodo.12740403), the full 68 MB tarball including corpus.jsonl and the novel_premises split",
+      "why": "It is the only external source that directly manufactures the task families the project says it needs. Every traced tactic carries state_before, state_after, tactic and annotated_tactic, and annotated_tactic names WHICH premise was used and where it is defined. That yields theorem-selection, rewrite-target and instantiation items with mechanical ground truth, rather than hand-built synthetic mechanisms. Decisively, its generation notebook is pinned at mathlib4 commit 29dcec074de168ac2bf835a77ef68bbe069194c5 -- the SAME commit already built locally with Lean v4.10.0-rc1 and Lean4Repl.olean -- so imported transitions are replayable against the local kernel and rise from Tier B to a locally re-verified Tier A. The novel_premises split additionally guarantees that val/test proofs use at least one premise never seen in any training proof, which is the cleanest available defence against solving premise selection by recall.",
+      "information_value": "Highest. It converts the project's central open question -- can a Solver make a real mathematical choice -- from a synthetic-probe design problem into a data-extraction problem, and it does so at a commit the project can independently verify.",
+      "caveats": [
+        "HISTORICALLY_EXPOSED via mathlib (firewall FW-1): usable for DEVELOPMENT and PROMOTION, never for OOD.",
+        "Licence is CC-BY-2.0 on the old concept DOI and CC-BY-4.0 on the 2025 re-release; pin which tarball was used.",
+        "Do NOT use the HF mirror -- it drops annotated_tactic and the premise corpus."
+      ]
+    },
+    {
+      "rank": 2,
+      "source": "miniCTX-v2",
+      "what_to_take": "the six NON-mathlib configs (carleson, ConNF, FLT, foundation, HepLean, Seymour); valid split for development, test split SEALED",
+      "why": "The project has no credible out-of-distribution set at all, and this is the field's best available construction of one: theorems committed after 2024-11-28, drawn from seven real Lean projects rather than from mathlib or competition maths. Apache-2.0, 7.7 MB, and it ships dependencyMetadata (numInFilePremises, numRepositoryPremises, numPremises) so decision difficulty can be stratified without running Lean at all. Independent corroboration of its standing: the 2025 LeanHammer premise-selection work evaluates on mathlib held-out plus miniCTX-v2-test precisely because it is the recognised OOD set.",
+      "information_value": "Very high, and asymmetric: it is the only thing that can distinguish a real representation effect from an artifact of the mathlib development distribution. It is also the most fragile asset here -- one careless preview destroys it permanently.",
+      "caveats": [
+        "Drop the 'mathlib' config before any OOD use; it inherits mathlib exposure under FW-1.",
+        "Firewall FW-5: the OOD guarantee is temporal, and gemma4:12b's training cutoff is UNVERIFIED in this repo, so the guarantee is a hypothesis until that cutoff is pinned.",
+        "Contexts span tens of thousands of tokens and collide with the 30,000-rendered-character length-fairness constraint from Fitness V5; budget for truncation policy work."
+      ]
+    },
+    {
+      "rank": 3,
+      "source": "ProofNetVerif",
+      "what_to_take": "the whole 406 KB dataset; valid split (2,300 items) as DEVELOPMENT, test split (1,452) sealed",
+      "why": "Best information value per unit of engineering effort in the entire registry, by a wide margin. It is a balanced binary decision -- is this Lean 4 statement semantically equivalent to this English statement -- with a clean 0.5 chance baseline, and it fits the EXISTING Arena controller (single greedy JSON A/B answer, no reasoning, no search) with essentially no new machinery. Critically, it attacks the specific defect that weakened Fitness V5: on real mathlib depth probes the dumb rule more_frequent_in_state already scores 0.72 against a 0.75 threshold, because deeper identifiers genuinely recur more. Semantic equivalence has no comparable surface proxy, so a representation effect measured here is much harder to explain away as a token-frequency artifact.",
+      "information_value": "High per byte and per engineer-hour. 406 KB, MIT, and it can plausibly produce a measurable band on the current Solver in a single afternoon, which is exactly what the zero-band result calls for.",
+      "caveats": [
+        "The problem base is ProofNet, which is contaminated; the equivalence LABELS are not, but do not report it as a clean benchmark.",
+        "Do not confuse PAug/ProofNetVerif with marcusm117/ProofNet-Verified -- different datasets, different licences, different content."
+      ]
+    },
+    {
+      "rank": 4,
+      "source": "Metamath set.mm",
+      "what_to_take": "the single 51 MB set.mm file at a pinned commit SHA; exclude peano.mm (GPL)",
+      "why": "The cheapest possible second formal system, and the only route to the strongest claim the project could make. Game R asks whether representation causes capability; a result measured only on Lean states is always open to the objection that it is a fact about Lean. Metamath encodes the same mathematics with a deliberately minimal operation algebra -- substitution plus modus ponens -- and its proofs expand to explicit Step / Hyp / Ref / Expression tables, i.e. native state transitions with the applied theorem named. One flat CC0 file, no toolchain to install, and a dozen independent verifiers to check against.",
+      "information_value": "High but deferred: this is the replication instrument, valuable only once a Lean-side effect exists to replicate. Its cost is low enough that it should be scoped now rather than after.",
+      "caveats": [
+        "Proofs are stored in compressed RPN; expanding them means writing a decompressor or shelling out to metamath-exe.",
+        "Rolling database with no releases -- a commit SHA must be pinned or the corpus is unreproducible.",
+        "peano.mm in the same repo is GPL and breaks a pure-CC0 corpus."
+      ]
+    },
+    {
+      "rank": 5,
+      "source": "Lean Workbook",
+      "what_to_take": "wkbk_1009.parquet ONLY (4.6 MB, 25,200 rows); do not pull lean_workbook.json (94.5 MB)",
+      "why": "The best available NON-mathlib source of before/after Lean proof states, at 4.6 MB and Apache-2.0. Its role is a control, not a headline: if a representation effect appears on mathlib transitions but vanishes on contest-problem transitions, the effect is a fact about mathlib's writing conventions rather than about representation. That is a cheap and genuinely falsifying check.",
+      "information_value": "Moderate but well targeted -- it buys a distributional control that no amount of extra mathlib data can buy.",
+      "caveats": [
+        "Built at Lean v4.8.0-rc1, not the local v4.10.0-rc1; replay will need a version bridge.",
+        "Autoformalised, so firewall FW-6 applies: the Lean side type-checks but NL-to-formal equivalence is Tier C.",
+        "The HF card's 57,231 + 82,893 problem figures describe the JSON statement pool, not the 25,200-row transition parquet."
+      ]
+    }
+  ],
+  "low_value_for_us": [
+    {
+      "source": "OpenWebMath",
+      "verdict": "AVOID",
+      "why": "16.4 GB compressed and 56.7 GB uncompressed of unverified web text with no structure, no states, no transitions and no verifier. It IS a pretraining corpus, so contamination is total by construction, and the project is not pretraining a model. Its per-document licences are explicitly not cleared (ODC-By 1.0 plus Common Crawl ToU, underlying licences unaltered), which is a live redistribution hazard for no scientific return."
+    },
+    {
+      "source": "NuminaMath (CoT and 1.5)",
+      "verdict": "AVOID as measurement; marginal as future SFT",
+      "why": "1.7 GB and roughly 900,000 informal problems with no proof states, no transitions and no verifier beyond final-answer matching. It is one of the most heavily used math post-training corpora in existence, so a 12B-class Solver has plausibly been trained on it or its descendants. Popularity here is precisely the disqualifier."
+    },
+    {
+      "source": "GSM8K",
+      "verdict": "AVOID except as the contaminated arm of a GSM8K/GSM1K contamination probe",
+      "why": "Saturated, universally memorised, and its reasoning content is arithmetic sequencing rather than mathematical choice. There is no theorem to select, no rewrite target, no instantiation and no subgoal -- so it cannot exercise the very capability the next experiments are designed to measure. Its representation space is effectively one-dimensional."
+    },
+    {
+      "source": "Hendrycks MATH",
+      "verdict": "AVOID -- scientific AND legal",
+      "why": "Maximal contamination, plus an accepted DMCA takedown from Art of Problem Solving (2025-01-02) asserting that over 10,000 of the 12,500 problems match its proprietary Alcumus content and that AoPS staff wrote ALL the solutions, with removal of derivatives requested. The canonical HF copy is disabled. Nominal MIT does not settle a contested right to grant. A research project gains nothing here worth that exposure."
+    },
+    {
+      "source": "AMPS",
+      "verdict": "AVOID at current information",
+      "why": "23 GB uncompressed of largely templated Mathematica-generated items behind a Google Drive link, with only 37 of 100 generator scripts producing step-by-step solutions and no AMPS-specific licence. Its single interesting property -- generator-backing, which could yield fresh uncontaminated items -- is UNVERIFIED, because the paper never states the generators ship. 23 GB of templates is a poor trade against 4.6 MB of real Lean tactic transitions."
+    },
+    {
+      "source": "NaturalProofs",
+      "verdict": "AVOID -- licence and no verifier",
+      "why": "Widely cited and commonly mislabelled MIT: MIT covers only the code, while the data is CC BY-SA 4.0 (ProofWiki) plus GFDL v1.2 (Stacks) plus CC BY-NC-SA 4.0 (Trench, NON-COMMERCIAL). Three copyleft sources and one non-commercial source in one release. And it has no verifier at all -- it is entirely natural language -- so it can never ground Sigma or supply measurement truth."
+    },
+    {
+      "source": "miniF2F (Lean 4 port)",
+      "verdict": "PLUMBING ONLY",
+      "why": "Doubly disqualified. Contamination: the most-reported formal proving benchmark of the last five years, mirrored into countless training corpora. Quality: arXiv:2511.03108 (2025-11) finds formal/informal discrepancies in MORE THAN HALF the problems, with end-to-end accuracy of 36% on the original versus 70% on a corrected version. So it cannot support a capability claim or a natural-language alignment claim. Keep 488 well-formed statements as harness smoke tests and nothing else."
+    },
+    {
+      "source": "Isabelle AFP (direct)",
+      "verdict": "DEFER",
+      "why": "Strictly dominated by Metamath set.mm as a second formal system: AFP distributes no intermediate proof states, so extracting them means installing and running a whole second proof assistant, against per-entry BSD/LGPL licences that must be filtered one by one. Metamath gives the same cross-system replication for one CC0 flat file."
+    },
+    {
+      "source": "FormL4",
+      "verdict": "AVOID",
+      "why": "mathlib informalised by Gemini-1.5-Pro: it inherits mathlib's design exposure under FW-1 so it can never be OOD, and its English side is model-generated so under FW-6 its semantics are capped at Tier C. On top of that the repo has no LICENSE file and the CC BY 4.0 claim is README prose only."
+    },
+    {
+      "source": "Goedel-Prover Lean-workbook-proofs / DeepSeek-Prover-V1",
+      "verdict": "AVOID",
+      "why": "Both ship WHOLE PROOFS, not per-step states, which is exactly the wrong granularity for a project whose unit of analysis is the transition. Extracting states would mean replaying every proof through Lean -- which the local mathlib build already does more cheaply and at a commit the project controls. Both also have unresolved dataset licences."
+    },
+    {
+      "source": "PRM800K",
+      "verdict": "AVOID -- structurally poisoned",
+      "why": "Scientifically the most interesting informal source here (800,000 human step-level -1/0/+1 labels), but its training data contains 4,500 of the 5,000 MATH test problems, so it has already leaked the standard test set into the public pool; and its problem base carries the AoPS claim. Nothing built on it can be held out cleanly."
+    }
+  ],
+  "proposed_pilot": [
+    {
+      "source": "ProofNetVerif",
+      "slice": "entire dataset (valid 2,300 + test 1,452); use valid only, seal test on arrival",
+      "est_bytes": 406549,
+      "command_or_hf_id": "huggingface-cli download PAug/ProofNetVerif --repo-type dataset --local-dir data/pilot/proofnetverif",
+      "licence_blocker": null,
+      "purpose": "Prove out the A/B decision adapter against the EXISTING controller C. First thing to run; smallest and most likely to yield a measurable band."
+    },
+    {
+      "source": "miniCTX-v2",
+      "slice": "minictx-valid/ only, EXCLUDING mathlib.jsonl (i.e. carleson, ConNF, FLT, foundation, HepLean, Seymour)",
+      "est_bytes": 2983046,
+      "command_or_hf_id": "huggingface-cli download l3lab/miniCTX-v2 --repo-type dataset --include \"minictx-valid/*\" --exclude \"minictx-valid/mathlib.jsonl\" --local-dir data/pilot/minictx_v2_valid",
+      "licence_blocker": null,
+      "purpose": "OOD adapter development. minictx-test/ MUST NOT be fetched by this pilot; it is RESERVED_EVAL."
+    },
+    {
+      "source": "Lean Workbook",
+      "slice": "wkbk_1009.parquet only (25,200 tactic-state rows); explicitly NOT lean_workbook.json",
+      "est_bytes": 4600174,
+      "command_or_hf_id": "huggingface-cli download internlm/Lean-Workbook --repo-type dataset --include \"wkbk_1009.parquet\" --local-dir data/pilot/lean_workbook",
+      "licence_blocker": null,
+      "purpose": "Non-mathlib before/after state transitions, for the distributional control and for mining operation classes."
+    },
+    {
+      "source": "LeanDojo Benchmark 4 (data release)",
+      "slice": "full v10 tarball (needed for corpus.jsonl premises and the novel_premises split); extract only novel_premises/val.json + corpus.jsonl for the pilot",
+      "est_bytes": 68141936,
+      "command_or_hf_id": "curl -L -o data/pilot/leandojo_benchmark_4.tar.gz https://zenodo.org/records/12740403/files/leandojo_benchmark_4.tar.gz",
+      "licence_blocker": "CC-BY-2.0 on this DOI (the 2025 re-release under concept DOI 10.5281/zenodo.15372179 is CC-BY-4.0). Attribution required; record which DOI was used.",
+      "purpose": "The premise-selection / rewrite-target / instantiation task family, replayable against local mathlib @ 29dcec07. Largest pilot item and the highest-value one."
+    },
+    {
+      "source": "Metamath set.mm",
+      "slice": "set.mm only, at a pinned commit SHA; exclude peano.mm and all other .mm databases",
+      "est_bytes": 51367012,
+      "command_or_hf_id": "git clone --filter=blob:none --no-checkout https://github.com/metamath/set.mm data/pilot/setmm && git -C data/pilot/setmm sparse-checkout set --no-cone set.mm LICENSE && git -C data/pilot/setmm checkout develop && git -C data/pilot/setmm rev-parse HEAD",
+      "licence_blocker": null,
+      "purpose": "Second formal system scouting: expand a few hundred proofs to Step/Hyp/Ref/Expression tables and check whether the Arena canonical schema survives a substitution-based state model."
+    },
+    {
+      "source": "PutnamBench",
+      "slice": "lean4/ directory only via sparse checkout; do NOT redistribute informal/",
+      "est_bytes": 2000000,
+      "command_or_hf_id": "git clone --filter=blob:none --sparse https://github.com/trishullab/PutnamBench data/pilot/putnambench && git -C data/pilot/putnambench sparse-checkout set lean4",
+      "licence_blocker": "Lean 4 formalizations are Apache-2.0 (fine). The INFORMAL statements are used by permission of the Mathematical Association of America and that permission does NOT transfer -- do not pull or redistribute informal/.",
+      "purpose": "Scout the Lean/Isabelle/Coq parallel formalizations as a naturally-occurring held-Sigma-fixed, varied-R comparison. Statements only; sealed as RESERVED_EVAL after scouting."
+    },
+    {
+      "source": "miniF2F (Lean 4 port)",
+      "slice": "full 488 statements",
+      "est_bytes": 225600,
+      "command_or_hf_id": "huggingface-cli download cat-searcher/minif2f-lean4 --repo-type dataset --local-dir data/pilot/minif2f",
+      "licence_blocker": null,
+      "purpose": "ASSURANCE_ONLY harness smoke test. Never scored, never trained on. If a Lean 4 miniF2F is needed for real, prefer google-deepmind/miniF2F (Apache-2.0, false statements removed)."
+    },
+    {
+      "source": "GSM1K",
+      "slice": "full 1,205 items -- FETCH AND SEAL WITHOUT OPENING",
+      "est_bytes": 393000,
+      "command_or_hf_id": "huggingface-cli download ScaleAI/gsm1k --repo-type dataset --local-dir data/pilot/_sealed/gsm1k",
+      "licence_blocker": "UNVERIFIED -- the released repo has no licence tag and an empty README; MIT is stated only in arXiv:2405.00332. Resolve before any redistribution.",
+      "purpose": "Sealed contamination-gap control (GSM8K vs GSM1K at matched difficulty). Fetch now while it is cheap; do not inspect."
+    }
+  ],
+  "proposed_pilot_total_bytes": 130117317,
+  "proposed_pilot_budget_bytes": 2147483648,
+  "proposed_pilot_notes": [
+    "Total pilot footprint is 130,117,317 bytes, about 6.1% of the 2 GB ceiling.",
+    "Every slice is either a sparse/filtered fetch or a single file. No full-repository clone, no full-dataset pull.",
+    "Ordering matters: run ProofNetVerif first (406 KB, fits the existing controller). Only expand if it produces a measurable band.",
+    "SEALED items (minictx-test, GSM1K, PutnamBench informal/) must not be opened by whoever executes this pilot. Fetching GSM1K without inspecting it is deliberate: it is cheap now and its sealed status is the whole point.",
+    "huggingface-cli is the pre-0.34 CLI name; newer huggingface_hub versions use 'hf download' with the same arguments.",
+    "This pilot is a DESIGN. No download is authorised by this artifact."
+  ],
+  "unverified": [
+    "Hendrycks MATH tarball byte size -- the first-party Berkeley URL was removed from the README in commit 985bdc1 (2025-09-06) and replaced by a third-party HF mirror.",
+    "AMPS compressed tarball byte size -- the Google Drive link returns HTTP 403 to programmatic fetches; only the paper's '23GB uncompressed' figure is confirmed.",
+    "Whether the AMPS tarball ships the 100 Mathematica generator scripts. The paper shows example code but never states they are distributed. The Khan Academy half IS regenerable from github.com/Khan/khan-exercises.",
+    "Whether the AMPS tarball contains its own LICENSE file; there is no AMPS-specific licence statement anywhere.",
+    "Licence of the released ScaleAI/gsm1k artifact -- no licence tag, empty README; MIT is a paper promise only.",
+    "Licence of the deepseek-ai/DeepSeek-Prover-V1 DATASET -- card tagged 'license:other'; the card's License section covers code (MIT) and models only.",
+    "Licence of deepseek-ai/DeepSeek-ProverBench -- no licence tag on the dataset repo.",
+    "Licence of Goedel-LM/Lean-workbook-proofs -- no licence tag; the Apache-2.0 of the underlying Lean Workbook problems does not cover the generated proofs.",
+    "Licence of the FormL4 release -- github.com/rookie-joe/PDA has NO LICENSE file and GitHub's licence field is null; 'CC BY 4.0' is README prose only.",
+    "Whether FormL4 JSON items literally store Lean compiler error strings -- inferred negative from the paper (feedback appears to be generated at run time), NOT byte-verified.",
+    "Hefferon Linear Algebra: the Creative Commons VERSION is contradictory across primary sources -- repo LICENSE and the UVM mirror say CC BY-SA 2.5, hefferon.net/source.html says CC BY-SA 3.0 United States.",
+    "Hefferon Linear Algebra: the GFDL version number (1.2 vs 1.3) is stated nowhere.",
+    "Hefferon Linear Algebra: repository byte size (GitLab API does not expose it unauthenticated) and item/exercise count.",
+    "Licence of wellecks/naturalproofs-gen as DATA -- the card says MIT, but that is the code licence; being ProofWiki-only it most likely inherits CC BY-SA 4.0.",
+    "Licence of the PISA / Portal-to-ISAbelle EXTRACTED corpus (the code is BSD-3-Clause; the archive.org extraction carries no licence statement).",
+    "Licence of the MagnusData generation repo (no LICENSE file); and whether the Apache-2.0 claim on Simontwice/premise_selection_in_isabelle survives the per-entry LGPL terms of the AFP entries it was built from.",
+    "Metamath set.mm exact PROVED-THEOREM count excluding syntax constructions, axioms and definitions -- requires running metamath-exe 'show statistics'. The MPE numbering reaches #50,831 and mmset.html's 26,000/41,000 figures are stale.",
+    "AFP statistics page (1,025 entries / ~325,500 lemmas / ~5,422,400 LOC) carries no as-of date stamp.",
+    "Isabelle2025 / 2025-1 / 2025-2 release dates -- from secondary sources, not confirmed on isabelle.in.tum.de.",
+    "LeanDojo Benchmark 4 premise count discrepancy: the generation notebook reports 180,973 corpus entries, a secondary source reports 167,779 premises for the v4.19.0 release; likely different measures or commits, not settled without downloading a tarball.",
+    "mathlib4 local pin: the commit 29dcec07 is recorded in docs/PROJECT_STATUS.md but its DATE is not recorded anywhere in this repository.",
+    "Training-data cutoff of the Arena Solver (gemma4:12b). This is load-bearing for every temporal-holdout OOD claim (firewall FW-5) and is not recorded in this repository.",
+    "PutnamBench exact release tag and date; the HF mirror amitayusht/PutnamBench (522 rows, no licence tag) is partial relative to the 672 Lean 4 formalizations in the canonical repo.",
+    "ProofNet-Verified (marcusm117) byte size.",
+    "Exact date the openai/prm800k repository was archived (the blob page renders 'May 29, 2026'; the API confirms archived:true but exposes no timestamp)."
+  ]
+}

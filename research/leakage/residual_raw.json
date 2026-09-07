@@ -1,0 +1,339 @@
+{
+ "none": {
+  "TIER_B_no_arithmetic": {
+   "rule_for_action_id": "affix_from('object', 0, 'object_id')",
+   "heldout96_per_field": {
+    "action_id": 1.0,
+    "operation": 1.0,
+    "target_ids": 1.0,
+    "arguments": 0.791667,
+    "warrant": 1.0,
+    "preconditions": 1.0,
+    "generated_obligations": 1.0,
+    "expected_usefulness": 1.0
+   },
+   "heldout96_whole_target": 0.791667,
+   "heldout96_target_minus_action_id": 0.791667,
+   "all676_whole_target": 0.819527
+  },
+  "TIER_C_with_arithmetic": {
+   "rule_for_action_id": "affix_from('object', 0, 'object_id')",
+   "heldout96_per_field": {
+    "action_id": 1.0,
+    "operation": 1.0,
+    "target_ids": 1.0,
+    "arguments": 1.0,
+    "warrant": 1.0,
+    "preconditions": 1.0,
+    "generated_obligations": 1.0,
+    "expected_usefulness": 1.0
+   },
+   "heldout96_whole_target": 1.0,
+   "heldout96_target_minus_action_id": 1.0,
+   "all676_whole_target": 1.0
+  }
+ },
+ "state_id_only": {
+  "TIER_B_no_arithmetic": {
+   "rule_for_action_id": "affix_from('object', 0, 'object_id')",
+   "heldout96_per_field": {
+    "action_id": 1.0,
+    "operation": 1.0,
+    "target_ids": 1.0,
+    "arguments": 0.791667,
+    "warrant": 1.0,
+    "preconditions": 1.0,
+    "generated_obligations": 1.0,
+    "expected_usefulness": 1.0
+   },
+   "heldout96_whole_target": 0.791667,
+   "heldout96_target_minus_action_id": 0.791667,
+   "all676_whole_target": 0.819527
+  },
+  "TIER_C_with_arithmetic": {
+   "rule_for_action_id": "affix_from('object', 0, 'object_id')",
+   "heldout96_per_field": {
+    "action_id": 1.0,
+    "operation": 1.0,
+    "target_ids": 1.0,
+    "arguments": 1.0,
+    "warrant": 1.0,
+    "preconditions": 1.0,
+    "generated_obligations": 1.0,
+    "expected_usefulness": 1.0
+   },
+   "heldout96_whole_target": 1.0,
+   "heldout96_target_minus_action_id": 1.0,
+   "all676_whole_target": 1.0
+  }
+ },
+ "all_ids_observation_only": {
+  "TIER_B_no_arithmetic": {
+   "rule_for_action_id": "lookup('object', 0, 'object_id')",
+   "heldout96_per_field": {
+    "action_id": 0.0,
+    "operation": 1.0,
+    "target_ids": 1.0,
+    "arguments": 0.791667,
+    "warrant": 1.0,
+    "preconditions": 1.0,
+    "generated_obligations": 1.0,
+    "expected_usefulness": 1.0
+   },
+   "heldout96_whole_target": 0.0,
+   "heldout96_target_minus_action_id": 0.791667,
+   "all676_whole_target": 0.707101
+  },
+  "TIER_C_with_arithmetic": {
+   "rule_for_action_id": "lookup('object', 0, 'object_id')",
+   "heldout96_per_field": {
+    "action_id": 0.0,
+    "operation": 1.0,
+    "target_ids": 1.0,
+    "arguments": 1.0,
+    "warrant": 1.0,
+    "preconditions": 1.0,
+    "generated_obligations": 1.0,
+    "expected_usefulness": 1.0
+   },
+   "heldout96_whole_target": 0.0,
+   "heldout96_target_minus_action_id": 1.0,
+   "all676_whole_target": 0.857988
+  }
+ },
+ "all_ids_consistent_both_sides": {
+  "TIER_B_no_arithmetic": {
+   "rule_for_action_id": "affix_from('object', 0, 'object_id')",
+   "heldout96_per_field": {
+    "action_id": 1.0,
+    "operation": 1.0,
+    "target_ids": 1.0,
+    "arguments": 0.791667,
+    "warrant": 1.0,
+    "preconditions": 1.0,
+    "generated_obligations": 1.0,
+    "expected_usefulness": 1.0
+   },
+   "heldout96_whole_target": 0.791667,
+   "heldout96_target_minus_action_id": 0.791667,
+   "all676_whole_target": 0.819527
+  },
+  "TIER_C_with_arithmetic": {
+   "rule_for_action_id": "affix_from('object', 0, 'object_id')",
+   "heldout96_per_field": {
+    "action_id": 1.0,
+    "operation": 1.0,
+    "target_ids": 1.0,
+    "arguments": 1.0,
+    "warrant": 1.0,
+    "preconditions": 1.0,
+    "generated_obligations": 1.0,
+    "expected_usefulness": 1.0
+   },
+   "heldout96_whole_target": 1.0,
+   "heldout96_target_minus_action_id": 1.0,
+   "all676_whole_target": 1.0
+  }
+ },
+ "tier_b_residual": {
+  "by_group": {
+   "algebra/eq": 52,
+   "arithmetic/add": 52,
+   "partial_operations/div": 9,
+   "partial_operations/sqrt": 9
+  },
+  "total": 122,
+  "fraction": 0.180473
+ },
+ "arithmetic_magnitude": {
+  "add": {
+   "n": 52,
+   "min": 4,
+   "max": 28,
+   "distinct": 22
+  },
+  "eq": {
+   "n": 52,
+   "min": 2,
+   "max": 18,
+   "distinct": 17
+  },
+  "div": {
+   "n": 9,
+   "min": 3,
+   "max": 17,
+   "distinct": 8
+  },
+  "sqrt": {
+   "n": 9,
+   "min": 2,
+   "max": 17,
+   "distinct": 8
+  }
+ },
+ "example_fully_leaked": {
+  "index": 624,
+  "domain": "reasoning_evidence",
+  "state_id": "state:reasoning-evidence:0000:0000:initial",
+  "goal": {
+   "op": "derive",
+   "sort": "Proposition",
+   "args": [
+    {
+     "op": "implies",
+     "sort": "Proposition",
+     "args": [
+      {
+       "op": "symbol",
+       "sort": "Proposition",
+       "value": "premise_0"
+      },
+      {
+       "op": "symbol",
+       "sort": "Proposition",
+       "value": "conclusion_0"
+      }
+     ]
+    },
+    {
+     "op": "symbol",
+     "sort": "Proposition",
+     "value": "premise_0"
+    }
+   ]
+  },
+  "gold_target": {
+   "action_id": "action:reasoning-evidence:0000:0000:valid",
+   "operation": "replay_verified_derivation",
+   "target_ids": [
+    "goal"
+   ],
+   "arguments": [
+    {
+     "op": "symbol",
+     "sort": "Proposition",
+     "value": "conclusion_0"
+    }
+   ],
+   "warrant": "arena-world-v0 exact template",
+   "preconditions": [
+    {
+     "op": "implies",
+     "sort": "Proposition",
+     "args": [
+      {
+       "op": "symbol",
+       "sort": "Proposition",
+       "value": "premise_0"
+      },
+      {
+       "op": "symbol",
+       "sort": "Proposition",
+       "value": "conclusion_0"
+      }
+     ]
+    },
+    {
+     "op": "symbol",
+     "sort": "Proposition",
+     "value": "premise_0"
+    }
+   ],
+   "generated_obligations": [],
+   "expected_usefulness": 1.0
+  },
+  "tier_b_prediction": {
+   "action_id": "action:reasoning-evidence:0000:0000:valid",
+   "operation": "replay_verified_derivation",
+   "target_ids": [
+    "goal"
+   ],
+   "arguments": [
+    {
+     "op": "symbol",
+     "sort": "Proposition",
+     "value": "conclusion_0"
+    }
+   ],
+   "warrant": "arena-world-v0 exact template",
+   "preconditions": [
+    {
+     "op": "implies",
+     "sort": "Proposition",
+     "args": [
+      {
+       "op": "symbol",
+       "sort": "Proposition",
+       "value": "premise_0"
+      },
+      {
+       "op": "symbol",
+       "sort": "Proposition",
+       "value": "conclusion_0"
+      }
+     ]
+    },
+    {
+     "op": "symbol",
+     "sort": "Proposition",
+     "value": "premise_0"
+    }
+   ],
+   "generated_obligations": [],
+   "expected_usefulness": 1.0
+  },
+  "tier_b_correct": true
+ },
+ "example_residual": {
+  "index": 0,
+  "domain": "arithmetic",
+  "state_id": "state:arithmetic:0000:0000:initial",
+  "goal": {
+   "op": "add",
+   "sort": "Integer",
+   "args": [
+    {
+     "op": "integer",
+     "sort": "Integer",
+     "value": 2
+    },
+    {
+     "op": "integer",
+     "sort": "Integer",
+     "value": 6
+    }
+   ]
+  },
+  "gold_target": {
+   "action_id": "action:arithmetic:0000:0000:valid",
+   "operation": "evaluate",
+   "target_ids": [
+    "goal"
+   ],
+   "arguments": [
+    {
+     "op": "integer",
+     "sort": "Integer",
+     "value": 8
+    }
+   ],
+   "warrant": "arena-world-v0 exact template",
+   "preconditions": [],
+   "generated_obligations": [],
+   "expected_usefulness": 1.0
+  },
+  "tier_b_prediction": {
+   "action_id": "action:arithmetic:0000:0000:valid",
+   "operation": "evaluate",
+   "target_ids": [
+    "goal"
+   ],
+   "arguments": null,
+   "warrant": "arena-world-v0 exact template",
+   "preconditions": [],
+   "generated_obligations": [],
+   "expected_usefulness": 1.0
+  },
+  "tier_b_correct": false
+ }
+}

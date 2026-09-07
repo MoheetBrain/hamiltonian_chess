@@ -1,0 +1,5758 @@
+{
+ "generated_utc": "2026-09-07T05:54:17Z",
+ "schema_version": "operation-inventory-v1",
+ "question": "Which reasoning operations recur across human solutions, informal model solutions, and formal proof states?",
+ "headline": "Nine operations are attested in all three source kinds -- human solutions, model-generated solutions, and formal proof states: APPLY_THEOREM, CASE_SPLIT, INTRODUCE (declare/binder/witness), SUBSTITUTE/REWRITE, INDUCT, CONTRADICTION, DISCHARGE, APPLY_DEFINITION and TRANSFORM. Only two of the nine survive an adversarial alignment check with high confidence (INDUCT, CASE_SPLIT); three more are medium (APPLY_THEOREM, CONTRADICTION, INTRODUCE); and four are same-name-different-operation (DISCHARGE, TRANSFORM, APPLY_DEFINITION, SUBSTITUTE/REWRITE). Five informal operations (VERIFY, COUNT, BOUND, EVALUATE, SELECT) have no canonical formal counterpart at all, and two formal categories (AUTOMATION 20.5%, GOAL_MANAGEMENT 0.4%) have no informal counterpart. The recurrence result is REAL BUT WEAK: it rests on 769 annotated human steps, and on a lexical proxy whose measured precision on those same 769 steps ranges from 0.08 to 1.00.",
+ "limits_read_first": [
+  "1. SAMPLE SIZE. The only corpus with per-step operation labels, warrants, preconditions, obligations and typed dependencies is 769 Gold-125/Gold-25 transitions plus 23 hand-authored Gold-10 actions = 792 steps. Everything else in this study is either unlabelled text or single-operation formal traces.",
+  "2. 17.7% OF THE ANNOTATED CORPUS HAS NO OPERATION. 136/769 gold steps are core_operation=UNRESOLVED, 125 of them from observed_operation=OTHER. The richest corpus in the estate declines to name the operation for one step in six.",
+  "3. ONE OPERATION DOMINATES. TRANSFORM is 305/769 (39.7%) of the gold corpus and 3,074/3,978 (77.3%) of the synthetic corpus. Recurrence of a sink category is close to uninformative.",
+  "4. SINGLE DOMAIN, AND CONTAMINATED. Every richly-annotated step is Hendrycks MATH competition mathematics, and MATH is in the training data of every model this project evaluates. No held-out claim can be made from it.",
+  "5. GOLD-10 SHOWS NO RECURRENCE AT ALL. 23 hand-authored actions carry 22 distinct operation names. It is a near-bijection between steps and operation names, so it provides zero evidence that operations recur; it is a specification exercise, not a sample.",
+  "6. THE FORMAL CORPORA HAVE ONE OPERATION LABEL. action.operation == 'LEAN_TACTIC' on all 56,000 hml_50k_final records and all vnext_10k records, with all five effect maps empty. Tactic text is recoverable, operation semantics are not.",
+  "7. NO NEGATIVE EXAMPLES IN ANY FORMAL CORPUS. A Lean trace holds only the steps that were kept. PRM800K's 262,146 -1-rated steps are the only large source of failed reasoning on disk, and they are unverified and MATH-contaminated.",
+  "8. THE 1,150-TRANSITION HML_V3 CORPUS IS DELIBERATELY UNREPRESENTATIVE. The goal-management block is over-sampled 27x versus LeanDojo (11.72% vs 0.44%); individual combinators run 38-49x (exacts 7.7% vs 0.18%, all_goals 4.4% vs 0.09%, swap 3.4% vs 0.09%). Its tactic mix must never be quoted as a fact about mathematics.",
+  "9. THE MODEL ARM IS A LEXICAL PROXY, NOT AN OPERATION COUNT. Nothing on disk labels operations on model-generated steps. The detector used here was calibrated on the 769 gold spans and its precision ranges from 0.077 (EVALUATE) to 1.000 (INDUCT); 334/769 = 43.4% of gold spans fire no cue at all. Treat every column-B and column-C number as an upper-bounded surface statistic.",
+  "10. ANNOTATION IS NOT VERIFICATION. Every operation label in this study was asserted by a human or by a deterministic extractor over human text. To promote any of it, each labelled step would need (a) an independent second annotator with a measured inter-annotator agreement, and (b) for the mathematical content, a machine check -- a SymPy equivalence, or a Lean replay of the corresponding formal step. Neither exists today for any of the 769.",
+  "11. THE TWO FORMAL SOURCES ARE NOT INDEPENDENT. lean_canonical_records (241,265) is BUILT FROM LeanDojo Benchmark 4 v10 (source_family=LEANDOJO_BENCHMARK_4_V10). The 8-class replication reported here therefore validates the labelling function, not the generality of the vocabulary."
+ ],
+ "method": {
+  "mode": "Read-only measurement over local artifacts. No model call, no network, no Lean, no GPU. Every count below was produced by a script in research/operations/ and can be re-run.",
+  "commands": [
+   "python -m research.operations.measure_annotated",
+   "python -m research.operations.measure_formal",
+   "python -m research.operations.measure_informal_proxy",
+   "python -m research.operations.build_inventory"
+  ],
+  "sampling": {
+   "gold125_ontology_v1": "EXACT -- all 769 s*.json records.",
+   "gold_10": "EXACT -- all 23 actions in 10 files.",
+   "synthetic_math": "EXACT -- all 3,978 lines.",
+   "lean_canonical_241k": "EXACT -- all 241,265 lines, scanned by line-local regex, validated against full json.loads on the first 2,000 lines (0 mismatches).",
+   "leandojo": "random/val.json + random/test.json = 4,000 theorems, 8,766 traced tactics. These are LeanDojo's own uniformly random theorem-level splits from the same pool as train, so this is a random sample, not a prefix.",
+   "math_reference_solutions": "EXACT -- all 12,500 problems of prm800k/math_splits, sentence-segmented into 42,963 steps.",
+   "prm800k_model_steps": "SUBSAMPLE -- phase1_train + phase1_test + phase2_test = 3,817 records, 1,359 distinct problems, 81,908 rated model steps, 2,598 human-written steps. phase2_train (456 MB, 97,782 records) was NOT scanned, to keep load low during a concurrent live experiment. The sample is therefore ~11% of the corpus and is split-biased toward phase 1 / test.",
+   "micromath_lab_v2": "EXACT -- all 611 items.",
+   "hmlv3_1150": "Row count and null-field claims re-verified here (918+232=1,150, tactic_family null in all, recorded_effect_class null in all). The tactic-head counts are the PRIOR AGENT's measurement, recovered from source spans against a built mathlib tree; NOT re-derived here."
+  },
+  "effect_class_rule_recovery": "The 8-class Lean effect vocabulary is documented nowhere as a rule. It was recovered here by tabulating effect_signature -> effect_class over all 241,265 records: 198 of 199 distinct signature tails map to a single class. The recovered rule reproduces 179/179 decidable tails with 0 mismatches, and the one ambiguous tail (dg-1|T0|A0|R0|B0) is resolved by n_goals_after == 0."
+ },
+ "sources": {
+  "A_human_solutions_annotated": {
+   "id": "gold125_ontology_v1",
+   "path": "/Users/moheet/Documents/ChatGPT/hmlt-reasoning-corpus/data/derived/gold125_ontology_v1",
+   "n": 769,
+   "trust": "ANNOTATION_UNVERIFIED",
+   "contamination": "Hendrycks MATH",
+   "what_it_gives": "the only per-step operation labels in the estate"
+  },
+  "A2_hand_authored": {
+   "id": "gold_10",
+   "path": "/Users/moheet/Documents/ChatGPT/hmlt-reasoning-corpus/data/gold_10",
+   "n": 23,
+   "distinct_operations": 22,
+   "trust": "DETERMINISTICALLY_CHECKED",
+   "what_it_gives": "nothing about recurrence: 22 operation names for 23 actions"
+  },
+  "A3_synthetic_informal": {
+   "id": "synthetic_math_transitions",
+   "path": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/synthetic_math/transitions.jsonl",
+   "n": 3978,
+   "trust": "DETERMINISTICALLY_CHECKED (867 SymPy-verified) / ANNOTATION_UNVERIFIED (rest)",
+   "note": "77.3% TRANSFORM. Vocabulary is a collapsed subset of reasoning_ontology_v1.core_operation."
+  },
+  "B_human_solutions_raw": {
+   "id": "MATH reference solutions",
+   "path": "/Users/moheet/Documents/ChatGPT/prm800k/prm800k/math_splits",
+   "n_problems": 12500,
+   "n_steps": 42963,
+   "trust": "ANNOTATION_UNVERIFIED (no operation labels at all)"
+  },
+  "C_model_generated": {
+   "id": "PRM800K model completions",
+   "path": "/Users/moheet/Documents/ChatGPT/prm800k/prm800k/data",
+   "n_model_steps": 81908,
+   "by_rating": {
+    "1": 39201,
+    "0": 13103,
+    "-1": 27706,
+    "unrated": 1898
+   },
+   "n_human_written_steps": 2598,
+   "trust": "ANNOTATION_UNVERIFIED; ratings are human step labels, not operation labels"
+  },
+  "D_formal_representative": {
+   "id": "LeanDojo Benchmark 4 v10 (random val+test)",
+   "path": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo_raw/leandojo_benchmark_4",
+   "n_theorems": 4000,
+   "n_tactics": 8766,
+   "distinct_heads": 146,
+   "trust": "VERIFIED_FORMAL"
+  },
+  "D2_formal_census": {
+   "id": "lean_canonical_records (lean_domino_v2)",
+   "path": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/lean_domino_v2/lean_canonical_records.jsonl",
+   "n": 241265,
+   "effect_class": {
+    "CLOSE": 107006,
+    "TRANSFORM_TARGET": 58669,
+    "INTRODUCE": 27304,
+    "INTRODUCE_AND_TRANSFORM": 24248,
+    "REWRITE_CONTEXT": 13479,
+    "REWRITE_CONTEXT_AND_TARGET": 6881,
+    "NO_VISIBLE_CHANGE": 2263,
+    "ELIMINATE": 1415
+   },
+   "trust": "VERIFIED_FORMAL substrate, deterministic labels",
+   "warning": "goal-creating transitions (18,315 of 259,580) were EXCLUDED when this corpus was built"
+  },
+  "D3_formal_biased": {
+   "id": "HML_V3 sealed corpus",
+   "n": 1150,
+   "spotcheck": {
+    "search_pool_v2": {
+     "rows": 918,
+     "tactic_family": {
+      "None": 918
+     },
+     "recorded_effect_class": {
+      "None": 918
+     }
+    },
+    "sealed_final_v2": {
+     "rows": 232,
+     "tactic_family": {
+      "None": 232
+     },
+     "recorded_effect_class": {
+      "None": 232
+     }
+    },
+    "partition_a_total": 1150
+   },
+   "trust": "VERIFIED_FORMAL",
+   "warning": "deliberately unrepresentative tactic mix"
+  },
+  "E_relation_probes": {
+   "id": "MicroMath lab v2",
+   "n": 611,
+   "stress_axes": {
+    "ACTION_ARGUMENT": 96,
+    "BINDER": 96,
+    "DEPENDENCY": 96,
+    "PREMISE": 96,
+    "TYPE": 96,
+    "EXPRESSION_DEPTH": 96,
+    "SCOPE": 35
+   },
+   "trust": "DETERMINISTICALLY_CHECKED",
+   "note": "NOT an operation taxonomy. It probes what a representation exposes (TYPE, BINDER, SCOPE, PREMISE, DEPENDENCY, ACTION_ARGUMENT, EXPRESSION_DEPTH). MULTI_GOAL carries zero items in every split, by design (failure-memory lesson FM-044)."
+  }
+ },
+ "canonical_vs_controller": {
+  "definition": {
+   "CANONICAL": "changes the mathematics; a mathematician would name it as a proof step",
+   "CONTROLLER": "drives the prover: search, automation, goal management, environment plumbing"
+  },
+  "judgement_not_measurement": "This split is a stated judgement. Every contested call is listed in contested_calls.",
+  "contested_calls": {
+   "simp": "By far the largest single head (13% of LeanDojo). Classified CONTROLLER because the tactic name does not say which lemmas fired; but a large fraction of `simp` calls are doing what a human would call 'simplify' or 'apply a definition'. This one call moves ~13 points of mass between the two layers.",
+   "have": "Classified CANONICAL (ASSERT_SUBGOAL). It is also the main vehicle for search-driven forward chaining, i.e. controller behaviour with canonical form.",
+   "gcongr": "Congruence automation. CANONICAL content, CONTROLLER form.",
+   "filter_upwards": "A Mathlib domain macro that also introduces binders.",
+   "haveI letI": "Instance introduction: CANONICAL syntax, plumbing purpose.",
+   "linarith positivity omega decide": "These discharge real mathematical obligations (an inequality, a decidable proposition). Classified CONTROLLER because the proof object is produced by search, not named by the author.",
+   "rfl": "Classified CANONICAL DISCHARGE, but `rfl` also silently runs definitional unfolding of unbounded depth."
+  },
+  "per_corpus": {
+   "leandojo_random_val_test_8766": {
+    "total_steps": 8766,
+    "by_layer": {
+     "CANONICAL": 6826,
+     "CONTROLLER": 1938,
+     "UNCLASSIFIED": 2
+    },
+    "by_layer_pct": {
+     "CANONICAL": 77.87,
+     "CONTROLLER": 22.11,
+     "UNCLASSIFIED": 0.02
+    },
+    "by_operation": {
+     "CANONICAL:REWRITE": 1958,
+     "CANONICAL:APPLY_THEOREM": 1924,
+     "CONTROLLER:AUTOMATION": 1799,
+     "CANONICAL:ASSERT_SUBGOAL": 688,
+     "CANONICAL:INTRODUCE_BINDER": 672,
+     "CANONICAL:CASE_SPLIT": 439,
+     "CANONICAL:INTRODUCE_WITNESS": 286,
+     "CANONICAL:CONGRUENCE": 159,
+     "CANONICAL:DISCHARGE": 141,
+     "CANONICAL:DECLARE": 132,
+     "CANONICAL:TRANSFORM_TARGET": 125,
+     "CANONICAL:APPLY_CONSTRUCTOR": 118,
+     "CONTROLLER:ENVIRONMENT": 100,
+     "CANONICAL:INDUCT": 86,
+     "CANONICAL:CONTRADICTION": 46,
+     "CONTROLLER:GOAL_MANAGEMENT": 39,
+     "CANONICAL:SUBSTITUTE": 26,
+     "CANONICAL:SCOPE_CHANGE": 26,
+     "UNCLASSIFIED:UNKNOWN": 2
+    },
+    "unclassified_heads": {
+     "(apply": 1,
+     "if": 1
+    }
+   },
+   "lean_canonical_241k_top60_heads": {
+    "total_steps": 232165,
+    "by_layer": {
+     "CANONICAL": 178549,
+     "CONTROLLER": 53616
+    },
+    "by_layer_pct": {
+     "CANONICAL": 76.91,
+     "CONTROLLER": 23.09
+    },
+    "by_operation": {
+     "CANONICAL:REWRITE": 56568,
+     "CANONICAL:APPLY_THEOREM": 52596,
+     "CONTROLLER:AUTOMATION": 50234,
+     "CANONICAL:ASSERT_SUBGOAL": 19849,
+     "CANONICAL:INTRODUCE_BINDER": 19435,
+     "CANONICAL:INTRODUCE_WITNESS": 7320,
+     "CANONICAL:CASE_SPLIT": 6564,
+     "CANONICAL:DISCHARGE": 3926,
+     "CANONICAL:CONGRUENCE": 3884,
+     "CANONICAL:DECLARE": 3195,
+     "CONTROLLER:ENVIRONMENT": 3037,
+     "CANONICAL:TRANSFORM_TARGET": 1990,
+     "CANONICAL:INDUCT": 1007,
+     "CANONICAL:CONTRADICTION": 886,
+     "CANONICAL:SUBSTITUTE": 756,
+     "CONTROLLER:GOAL_MANAGEMENT": 345,
+     "CANONICAL:SCOPE_CHANGE": 292,
+     "CANONICAL:APPLY_CONSTRUCTOR": 281
+    },
+    "unclassified_heads": {}
+   },
+   "hmlv3_1150_top25_heads_PRIOR_AGENT_MEASUREMENT": {
+    "total_steps": 1015,
+    "by_layer": {
+     "CANONICAL": 767,
+     "CONTROLLER": 248
+    },
+    "by_layer_pct": {
+     "CANONICAL": 75.57,
+     "CONTROLLER": 24.43
+    },
+    "by_operation": {
+     "CANONICAL:APPLY_THEOREM": 232,
+     "CANONICAL:REWRITE": 205,
+     "CONTROLLER:AUTOMATION": 129,
+     "CONTROLLER:GOAL_MANAGEMENT": 119,
+     "CANONICAL:ASSERT_SUBGOAL": 90,
+     "CANONICAL:INTRODUCE_BINDER": 88,
+     "CANONICAL:SCOPE_CHANGE": 40,
+     "CANONICAL:INTRODUCE_WITNESS": 35,
+     "CANONICAL:CASE_SPLIT": 31,
+     "CANONICAL:SUBSTITUTE": 25,
+     "CANONICAL:INDUCT": 11,
+     "CANONICAL:CONGRUENCE": 10
+    },
+    "unclassified_heads": {}
+   },
+   "gold125_769_annotated_MATH": {
+    "total_steps": 769,
+    "by_layer": {
+     "CANONICAL": 633,
+     "UNRESOLVED": 136
+    },
+    "by_layer_pct": {
+     "CANONICAL": 82.31,
+     "UNRESOLVED": 17.69
+    },
+    "note": "The core_operation axis contains no controller value at all. Controller behaviour is carried on the ORTHOGONAL reasoning_mode axis: {\"EXECUTION\": 571, \"GOAL_MANAGEMENT\": 113, \"SEARCH_META\": 57, \"VERIFICATION\": 28}"
+   }
+  }
+ },
+ "recurrence_matrix": [
+  {
+   "operation": "APPLY_THEOREM",
+   "A_human_MATH_annotated_gold125": {
+    "n": 29,
+    "of": 769,
+    "pct": 3.77,
+    "evidence": "gold core_operation label"
+   },
+   "B_human_MATH_reference_solutions": {
+    "n": 1444,
+    "of": 42963,
+    "pct": 3.36,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "C_model_generated_PRM800K": {
+    "n": 1048,
+    "of": 81908,
+    "pct": 1.28,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "D_formal_LeanDojo_representative": {
+    "n": 1874,
+    "of": 8766,
+    "pct": 21.38,
+    "heads": [
+     "exact",
+     "exacts",
+     "apply",
+     "refine",
+     "refine'",
+     "exact_mod_cast",
+     "apply_mod_cast",
+     "specialize"
+    ],
+    "status": "present"
+   },
+   "note": "Present in all four. The strongest genuine recurrence."
+  },
+  {
+   "operation": "CASE_SPLIT",
+   "A_human_MATH_annotated_gold125": {
+    "n": 15,
+    "of": 769,
+    "pct": 1.95,
+    "evidence": "gold core_operation label"
+   },
+   "B_human_MATH_reference_solutions": {
+    "n": 1287,
+    "of": 42963,
+    "pct": 3.0,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "C_model_generated_PRM800K": {
+    "n": 2056,
+    "of": 81908,
+    "pct": 2.51,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "D_formal_LeanDojo_representative": {
+    "n": 437,
+    "of": 8766,
+    "pct": 4.99,
+    "heads": [
+     "cases",
+     "cases'",
+     "rcases",
+     "by_cases",
+     "split",
+     "split_ifs",
+     "fin_cases",
+     "match"
+    ],
+    "status": "present"
+   },
+   "note": "Present in all four."
+  },
+  {
+   "operation": "INTRODUCE (declare/binder/witness)",
+   "A_human_MATH_annotated_gold125": {
+    "n": 5,
+    "of": 769,
+    "pct": 0.65,
+    "evidence": "gold core_operation label"
+   },
+   "B_human_MATH_reference_solutions": {
+    "n": 2276,
+    "of": 42963,
+    "pct": 5.3,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "C_model_generated_PRM800K": {
+    "n": 933,
+    "of": 81908,
+    "pct": 1.14,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "D_formal_LeanDojo_representative": {
+    "n": 1102,
+    "of": 8766,
+    "pct": 12.57,
+    "heads": [
+     "intro",
+     "intros",
+     "rintro",
+     "introv",
+     "obtain",
+     "use",
+     "set",
+     "let",
+     "choose",
+     "existsi",
+     "exists",
+     "lift",
+     "ext",
+     "ext1",
+     "funext"
+    ],
+    "status": "present"
+   },
+   "note": "Present in all four, but the informal side splits it into DECLARE + CONSTRUCT and the formal side collapses it to one INTRODUCE effect."
+  },
+  {
+   "operation": "SUBSTITUTE / REWRITE",
+   "A_human_MATH_annotated_gold125": {
+    "n": 7,
+    "of": 769,
+    "pct": 0.91,
+    "evidence": "gold core_operation label"
+   },
+   "B_human_MATH_reference_solutions": {
+    "n": 907,
+    "of": 42963,
+    "pct": 2.11,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "C_model_generated_PRM800K": {
+    "n": 2410,
+    "of": 81908,
+    "pct": 2.94,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "D_formal_LeanDojo_representative": {
+    "n": 1982,
+    "of": 8766,
+    "pct": 22.61,
+    "heads": [
+     "rw",
+     "rewrite",
+     "erw",
+     "rwa",
+     "simp_rw",
+     "nth_rw",
+     "subst",
+     "substs",
+     "subst_vars"
+    ],
+    "status": "present"
+   },
+   "note": "Present in all four. The largest formal category (rw+subst families = 22.64% of LeanDojo) and one of the smallest annotated ones (0.9%): the informal scheme folds rewriting into TRANSFORM."
+  },
+  {
+   "operation": "INDUCT",
+   "A_human_MATH_annotated_gold125": {
+    "n": 7,
+    "of": 769,
+    "pct": 0.91,
+    "evidence": "gold core_operation label"
+   },
+   "B_human_MATH_reference_solutions": {
+    "n": 24,
+    "of": 42963,
+    "pct": 0.06,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "C_model_generated_PRM800K": {
+    "n": 34,
+    "of": 81908,
+    "pct": 0.04,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "D_formal_LeanDojo_representative": {
+    "n": 86,
+    "of": 8766,
+    "pct": 0.98,
+    "heads": [
+     "induction",
+     "induction'"
+    ],
+    "status": "present"
+   },
+   "note": "Present in all four. The only operation whose lexical proxy is exact (precision 1.00, recall 1.00 on the 769 gold spans)."
+  },
+  {
+   "operation": "CONTRADICTION",
+   "A_human_MATH_annotated_gold125": {
+    "n": 6,
+    "of": 769,
+    "pct": 0.78,
+    "evidence": "gold core_operation label"
+   },
+   "B_human_MATH_reference_solutions": {
+    "n": 253,
+    "of": 42963,
+    "pct": 0.59,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "C_model_generated_PRM800K": {
+    "n": 215,
+    "of": 81908,
+    "pct": 0.26,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "D_formal_LeanDojo_representative": {
+    "n": 46,
+    "of": 8766,
+    "pct": 0.52,
+    "heads": [
+     "by_contra",
+     "by_contra!",
+     "exfalso",
+     "contradiction",
+     "contrapose",
+     "contrapose!",
+     "push_neg"
+    ],
+    "status": "present"
+   },
+   "note": "Present in all four, everywhere rare (0.4-1.0%)."
+  },
+  {
+   "operation": "DISCHARGE",
+   "A_human_MATH_annotated_gold125": {
+    "n": 90,
+    "of": 769,
+    "pct": 11.7,
+    "evidence": "gold core_operation label"
+   },
+   "B_human_MATH_reference_solutions": {
+    "n": 12708,
+    "of": 42963,
+    "pct": 29.58,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "C_model_generated_PRM800K": {
+    "n": 1359,
+    "of": 81908,
+    "pct": 1.66,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "D_formal_LeanDojo_representative": {
+    "n": 141,
+    "of": 8766,
+    "pct": 1.61,
+    "heads": [
+     "rfl",
+     "ac_rfl",
+     "assumption",
+     "assumption'",
+     "trivial"
+    ],
+    "status": "present"
+   },
+   "note": "Present in all four but MEANS DIFFERENT THINGS: informal DISCHARGE = 'state the final answer'; formal CLOSE = 'this branch is finished' (107,006 times in the 241k census)."
+  },
+  {
+   "operation": "APPLY_DEFINITION",
+   "A_human_MATH_annotated_gold125": {
+    "n": 19,
+    "of": 769,
+    "pct": 2.47,
+    "evidence": "gold core_operation label"
+   },
+   "B_human_MATH_reference_solutions": {
+    "n": 516,
+    "of": 42963,
+    "pct": 1.2,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "C_model_generated_PRM800K": {
+    "n": 1730,
+    "of": 81908,
+    "pct": 2.11,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "D_formal_LeanDojo_representative": {
+    "n": 161,
+    "of": 8766,
+    "pct": 1.84,
+    "heads": [
+     "unfold",
+     "delta",
+     "change",
+     "show",
+     "dsimp"
+    ],
+    "status": "present"
+   },
+   "note": "Present in all four, but the formal count is a severe undercount: definitional unfolding mostly happens inside simp and rfl and is never recorded as a step."
+  },
+  {
+   "operation": "TRANSFORM",
+   "A_human_MATH_annotated_gold125": {
+    "n": 305,
+    "of": 769,
+    "pct": 39.66,
+    "evidence": "gold core_operation label"
+   },
+   "B_human_MATH_reference_solutions": {
+    "n": 3539,
+    "of": 42963,
+    "pct": 8.24,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "C_model_generated_PRM800K": {
+    "n": 6779,
+    "of": 81908,
+    "pct": 8.28,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "D_formal_LeanDojo_representative": {
+    "n": 265,
+    "of": 8766,
+    "pct": 3.02,
+    "heads": [
+     "conv",
+     "conv_lhs",
+     "conv_rhs",
+     "slice_lhs",
+     "slice_rhs",
+     "apply_fun",
+     "convert",
+     "convert_to",
+     "congr",
+     "congr!",
+     "calc",
+     "trans",
+     "symm"
+    ],
+    "status": "present"
+   },
+   "note": "Present in all four but is a sink category: 39.7% of the gold corpus and 77.3% of the synthetic corpus. Low information."
+  },
+  {
+   "operation": "VERIFY",
+   "A_human_MATH_annotated_gold125": {
+    "n": 28,
+    "of": 769,
+    "pct": 3.64,
+    "evidence": "gold core_operation label"
+   },
+   "B_human_MATH_reference_solutions": {
+    "n": 489,
+    "of": 42963,
+    "pct": 1.14,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "C_model_generated_PRM800K": {
+    "n": 894,
+    "of": 81908,
+    "pct": 1.09,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "D_formal_LeanDojo_representative": {
+    "n": 0,
+    "of": 8766,
+    "pct": 0.0,
+    "heads": [],
+    "status": "absent_by_construction"
+   },
+   "note": "ABSENT FROM FORMAL BY CONSTRUCTION. The kernel verifies, so verification is never a proof step. Genuine domain difference."
+  },
+  {
+   "operation": "COUNT",
+   "A_human_MATH_annotated_gold125": {
+    "n": 23,
+    "of": 769,
+    "pct": 2.99,
+    "evidence": "gold core_operation label"
+   },
+   "B_human_MATH_reference_solutions": {
+    "n": 3414,
+    "of": 42963,
+    "pct": 7.95,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "C_model_generated_PRM800K": {
+    "n": 4093,
+    "of": 81908,
+    "pct": 5.0,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "D_formal_LeanDojo_representative": {
+    "n": 0,
+    "of": 8766,
+    "pct": 0.0,
+    "heads": [],
+    "status": "absorbed_by_automation"
+   },
+   "note": "No canonical formal counterpart; absorbed by decide/norm_num automation. Domain difference (competition combinatorics) plus annotation-scheme artifact."
+  },
+  {
+   "operation": "BOUND",
+   "A_human_MATH_annotated_gold125": {
+    "n": 23,
+    "of": 769,
+    "pct": 2.99,
+    "evidence": "gold core_operation label"
+   },
+   "B_human_MATH_reference_solutions": {
+    "n": 2029,
+    "of": 42963,
+    "pct": 4.72,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "C_model_generated_PRM800K": {
+    "n": 2435,
+    "of": 81908,
+    "pct": 2.97,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "D_formal_LeanDojo_representative": {
+    "n": 0,
+    "of": 8766,
+    "pct": 0.0,
+    "heads": [],
+    "status": "absorbed_by_automation"
+   },
+   "note": "No canonical formal counterpart; absorbed by linarith/positivity/gcongr automation."
+  },
+  {
+   "operation": "EVALUATE",
+   "A_human_MATH_annotated_gold125": {
+    "n": 50,
+    "of": 769,
+    "pct": 6.5,
+    "evidence": "gold core_operation label"
+   },
+   "B_human_MATH_reference_solutions": {
+    "n": 2398,
+    "of": 42963,
+    "pct": 5.58,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "C_model_generated_PRM800K": {
+    "n": 7972,
+    "of": 81908,
+    "pct": 9.73,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "D_formal_LeanDojo_representative": {
+    "n": 0,
+    "of": 8766,
+    "pct": 0.0,
+    "heads": [],
+    "status": "absorbed_by_automation"
+   },
+   "note": "No canonical formal counterpart; absorbed by norm_num/decide."
+  },
+  {
+   "operation": "SELECT",
+   "A_human_MATH_annotated_gold125": {
+    "n": 4,
+    "of": 769,
+    "pct": 0.52,
+    "evidence": "gold core_operation label"
+   },
+   "B_human_MATH_reference_solutions": {
+    "n": 2103,
+    "of": 42963,
+    "pct": 4.89,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "C_model_generated_PRM800K": {
+    "n": 2293,
+    "of": 81908,
+    "pct": 2.8,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "D_formal_LeanDojo_representative": {
+    "n": 0,
+    "of": 8766,
+    "pct": 0.0,
+    "heads": [],
+    "status": "absent"
+   },
+   "note": "No canonical formal counterpart."
+  },
+  {
+   "operation": "ENUMERATE",
+   "A_human_MATH_annotated_gold125": {
+    "n": 2,
+    "of": 769,
+    "pct": 0.26,
+    "evidence": "gold core_operation label"
+   },
+   "B_human_MATH_reference_solutions": {
+    "n": 506,
+    "of": 42963,
+    "pct": 1.18,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "C_model_generated_PRM800K": {
+    "n": 756,
+    "of": 81908,
+    "pct": 0.92,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "D_formal_LeanDojo_representative": {
+    "n": 1,
+    "of": 8766,
+    "pct": 0.01,
+    "heads": [
+     "fin_cases",
+     "interval_cases"
+    ],
+    "status": "near_absent"
+   },
+   "note": "Near-absent everywhere."
+  },
+  {
+   "operation": "CONSTRUCT",
+   "A_human_MATH_annotated_gold125": {
+    "n": 12,
+    "of": 769,
+    "pct": 1.56,
+    "evidence": "gold core_operation label"
+   },
+   "B_human_MATH_reference_solutions": {
+    "n": 1720,
+    "of": 42963,
+    "pct": 4.0,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "C_model_generated_PRM800K": {
+    "n": 725,
+    "of": 81908,
+    "pct": 0.89,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "D_formal_LeanDojo_representative": {
+    "n": 285,
+    "of": 8766,
+    "pct": 3.25,
+    "heads": [
+     "obtain",
+     "choose",
+     "use",
+     "existsi",
+     "exists",
+     "lift"
+    ],
+    "status": "present"
+   },
+   "note": "Present in all four; overlaps INTRODUCE on the formal side."
+  },
+  {
+   "operation": "ASSERT_SUBGOAL",
+   "A_human_MATH_annotated_gold125": {
+    "n": 0,
+    "of": 769,
+    "pct": 0.0,
+    "evidence": "gold core_operation label"
+   },
+   "B_human_MATH_reference_solutions": {
+    "n": 0,
+    "of": 42963,
+    "pct": 0.0,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "C_model_generated_PRM800K": {
+    "n": 0,
+    "of": 81908,
+    "pct": 0.0,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "D_formal_LeanDojo_representative": {
+    "n": 654,
+    "of": 8766,
+    "pct": 7.46,
+    "heads": [
+     "have",
+     "suffices",
+     "replace"
+    ],
+    "status": "present"
+   },
+   "note": "PRESENT FORMALLY (have/suffices/replace = 654/8,766 = 7.46% of LeanDojo; `have` alone is the 4th most frequent head at 6.61%), ABSENT from the core_operation axis of the informal ontology (it lives on the goal_effect axis as CREATE_SUBGOAL), and DELETED from the 241,265-record Lean corpus, which drops all goal-creating transitions. Not a domain difference: a schema decision."
+  },
+  {
+   "operation": "PLAN / SEARCH_META",
+   "A_human_MATH_annotated_gold125": {
+    "n": 0,
+    "of": 769,
+    "pct": 0.0,
+    "evidence": "gold core_operation label"
+   },
+   "B_human_MATH_reference_solutions": {
+    "n": 1563,
+    "of": 42963,
+    "pct": 3.64,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "C_model_generated_PRM800K": {
+    "n": 9672,
+    "of": 81908,
+    "pct": 11.81,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "D_formal_LeanDojo_representative": {
+    "n": 0,
+    "of": 8766,
+    "pct": 0.0,
+    "heads": [],
+    "status": "absent"
+   },
+   "note": "11.8% of model-generated steps, 3.6% of human MATH reference sentences, 0 of the formal corpus. Model-specific."
+  },
+  {
+   "operation": "BACKTRACK",
+   "A_human_MATH_annotated_gold125": {
+    "n": 0,
+    "of": 769,
+    "pct": 0.0,
+    "evidence": "gold core_operation label"
+   },
+   "B_human_MATH_reference_solutions": {
+    "n": 62,
+    "of": 42963,
+    "pct": 0.14,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "C_model_generated_PRM800K": {
+    "n": 323,
+    "of": 81908,
+    "pct": 0.39,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "D_formal_LeanDojo_representative": {
+    "n": 0,
+    "of": 8766,
+    "pct": 0.0,
+    "heads": [],
+    "status": "absent_by_construction"
+   },
+   "note": "0.39% of model steps overall; 0.51% of steps rated -1 vs 0.23% of steps rated +1 (2.2x). ZERO in every formal corpus: a Lean trace holds only steps that were kept."
+  },
+  {
+   "operation": "GOAL_MANAGEMENT",
+   "A_human_MATH_annotated_gold125": {
+    "n": 0,
+    "of": 769,
+    "pct": 0.0,
+    "evidence": "gold core_operation label"
+   },
+   "B_human_MATH_reference_solutions": {
+    "n": 0,
+    "of": 42963,
+    "pct": 0.0,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "C_model_generated_PRM800K": {
+    "n": 0,
+    "of": 81908,
+    "pct": 0.0,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "D_formal_LeanDojo_representative": {
+    "n": 39,
+    "of": 8766,
+    "pct": 0.44,
+    "heads": [
+     "all_goals",
+     "any_goals",
+     "swap",
+     "on_goal",
+     "case",
+     "focus",
+     "next",
+     "iterate",
+     "repeat",
+     "repeat'",
+     "rotate_left",
+     "pick_goal",
+     "first",
+     "try"
+    ],
+    "status": "formal_only"
+   },
+   "note": "Formal only. 0.44% of LeanDojo vs 11.72% of the HML_V3 1,150 corpus -- a 27x sampling artifact, not a fact about proofs."
+  },
+  {
+   "operation": "AUTOMATION",
+   "A_human_MATH_annotated_gold125": {
+    "n": 0,
+    "of": 769,
+    "pct": 0.0,
+    "evidence": "gold core_operation label"
+   },
+   "B_human_MATH_reference_solutions": {
+    "n": 0,
+    "of": 42963,
+    "pct": 0.0,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "C_model_generated_PRM800K": {
+    "n": 0,
+    "of": 81908,
+    "pct": 0.0,
+    "evidence": "LEXICAL PROXY (see calibration)"
+   },
+   "D_formal_LeanDojo_representative": {
+    "n": 1793,
+    "of": 8766,
+    "pct": 20.45,
+    "heads": [
+     "simp",
+     "simpa",
+     "dsimp",
+     "simp_all",
+     "simp?",
+     "norm_num",
+     "norm_num1",
+     "norm_cast",
+     "push_cast",
+     "ring",
+     "ring1",
+     "ring_nf",
+     "linarith",
+     "nlinarith",
+     "positivity",
+     "omega",
+     "decide",
+     "tauto",
+     "aesop",
+     "aesop_cat",
+     "field_simp",
+     "abel",
+     "abel1",
+     "group",
+     "gcongr",
+     "filter_upwards",
+     "mfld_set_tac",
+     "fun_prop",
+     "coherence",
+     "solve_by_elim",
+     "apply_rules"
+    ],
+    "status": "formal_only"
+   },
+   "note": "Formal only, and large. The single largest block of the formal corpus after rw/exact."
+  }
+ ],
+ "reconciled_operations": [
+  {
+   "operation": "DECLARE",
+   "layer": "CANONICAL",
+   "definition": "Introduce a new named object or abbreviation into the state without asserting anything about it.",
+   "in_taxonomies": {
+    "reasoning_ontology_v1.core_operation": "DECLARE",
+    "gold125_registry_v1": "INTRODUCE_VARIABLE",
+    "gold25_registry_v0": "INTRODUCE_VARIABLE",
+    "minilang (arXiv:2507.18885)": "INTRO (partly)",
+    "lean_effect_class": "INTRODUCE (partly)",
+    "reasoning_stages": "2 symbol/object identification"
+   },
+   "disagreements": [
+    "reasoning_ontology_v1 separates DECLARE (name an object) from CONSTRUCT (build an object with properties); the gold125 registry has only INTRODUCE_VARIABLE and does not make the distinction.",
+    "The Lean effect vocabulary cannot separate DECLARE from INTRODUCE_WITNESS or INTRODUCE_BINDER: all three are INTRODUCE."
+   ]
+  },
+  {
+   "operation": "CONSTRUCT",
+   "layer": "CANONICAL",
+   "definition": "Build a new mathematical object, witness or configuration and put it in the state.",
+   "in_taxonomies": {
+    "reasoning_ontology_v1.core_operation": "CONSTRUCT",
+    "gold125_registry_v1": "CONSTRUCT",
+    "gold25_registry_v0": "CONSTRUCT",
+    "minilang": "CHOOSE / CONSIDER_EXISTS",
+    "lean_effect_class": "INTRODUCE"
+   },
+   "disagreements": [
+    "minilang splits witness selection (CHOOSE) from existential elimination (CONSIDER_EXISTS); no HML taxonomy does."
+   ]
+  },
+  {
+   "operation": "ASSERT_SUBGOAL",
+   "layer": "CANONICAL",
+   "definition": "State a new proposition and open the obligation to prove it (forward chaining).",
+   "in_taxonomies": {
+    "reasoning_ontology_v1": "goal_effect=CREATE_SUBGOAL (an EFFECT axis value, not a core_operation)",
+    "gold125_registry_v1": "-- absent",
+    "minilang": "HAVE",
+    "lean_effect_class": "-- absent (goal-creating transitions were EXCLUDED from the 241,265-record corpus)",
+    "reasoning_stages": "9 subgoal decomposition"
+   },
+   "disagreements": [
+    "THIS IS THE CLEAREST TAXONOMY DISAGREEMENT IN THE ESTATE. minilang makes HAVE one of its 10 operations; reasoning_ontology_v1 demotes it to an effect on an orthogonal axis; and the Lean corpus deletes the phenomenon entirely (18,315 of 259,580 transitions dropped as goal-creating). `have` is nevertheless the 4th most frequent tactic in LeanDojo."
+   ]
+  },
+  {
+   "operation": "SUBSTITUTE",
+   "layer": "CANONICAL",
+   "definition": "Replace an occurrence by an equal term, or eliminate a variable using an equation.",
+   "in_taxonomies": {
+    "reasoning_ontology_v1.core_operation": "SUBSTITUTE",
+    "gold125_registry_v1": "SUBSTITUTE",
+    "gold25_registry_v0": "SUBSTITUTE",
+    "lean tactic heads": "subst, substs, subst_vars",
+    "master_synthetic": "SUBSTITUTE"
+   },
+   "disagreements": [
+    "Informal SUBSTITUTE covers what Lean splits into `subst` (variable elimination) and `rw` (directed rewriting). The informal taxonomies have no REWRITE at all, yet `rw` is the single most frequent formal operation (rw alone = 18.91% of LeanDojo)."
+   ]
+  },
+  {
+   "operation": "REWRITE",
+   "layer": "CANONICAL",
+   "definition": "Directed replacement of a subterm using a named equation or iff, left-to-right or right-to-left.",
+   "in_taxonomies": {
+    "reasoning_ontology_v1": "-- absent (collapsed into TRANSFORM)",
+    "gold125_registry_v1": "APPLY_IDENTITY (partly)",
+    "lean tactic heads": "rw, erw, rwa, simp_rw, nth_rw, rewrite",
+    "lean_effect_class": "TRANSFORM_TARGET / REWRITE_CONTEXT"
+   },
+   "disagreements": [
+    "A first-class formal operation with no first-class informal counterpart. This is an annotation-scheme artifact, not a domain difference: human MATH solutions rewrite constantly, but the informal registries fold it into TRANSFORM."
+   ]
+  },
+  {
+   "operation": "TRANSFORM",
+   "layer": "CANONICAL",
+   "definition": "Any truth-preserving restatement of the current expression or goal.",
+   "in_taxonomies": {
+    "reasoning_ontology_v1.core_operation": "TRANSFORM",
+    "gold125_registry_v1": "TRANSFORM plus ~20 domain-specific children (EXPAND, FACTOR, CROSS_MULTIPLY, CLEAR_DENOMINATOR, ADD_BOTH_SIDES, ...)",
+    "gold25_registry_v0": "family EQUATION_TRANSFORMATION",
+    "lean_effect_class": "TRANSFORM_TARGET",
+    "master_synthetic": "TRANSFORM (77% of all transitions)"
+   },
+   "disagreements": [
+    "TRANSFORM is a sink. It absorbs 305/769 (39.7%) of the annotated gold corpus and 3,074/3,978 (77.3%) of the synthetic corpus. Any claim that it 'recurs' is close to vacuous."
+   ]
+  },
+  {
+   "operation": "APPLY_THEOREM",
+   "layer": "CANONICAL",
+   "definition": "Discharge or reduce the goal by invoking a named external result.",
+   "in_taxonomies": {
+    "reasoning_ontology_v1.core_operation": "APPLY_THEOREM",
+    "gold125_registry_v1": "APPLY_THEOREM",
+    "gold25_registry_v0": "APPLY_THEOREM",
+    "minilang": "RULE",
+    "lean tactic heads": "exact, apply, refine, exacts",
+    "master_synthetic": "APPLY_THEOREM"
+   },
+   "disagreements": [
+    "In Lean the premise is always named and machine-checked; in the informal corpora the warrant field may be UNKNOWN. Same name, different epistemic status."
+   ]
+  },
+  {
+   "operation": "APPLY_DEFINITION",
+   "layer": "CANONICAL",
+   "definition": "Unfold or invoke a definition.",
+   "in_taxonomies": {
+    "reasoning_ontology_v1.core_operation": "APPLY_DEFINITION",
+    "gold125_registry_v1": "APPLY_DEFINITION",
+    "lean tactic heads": "unfold, delta, change, show, dsimp",
+    "master_synthetic": "APPLY_DEFINITION (9 / 3,978)"
+   },
+   "disagreements": [
+    "In Lean, definitional unfolding is mostly INVISIBLE: it happens inside `simp`, `rfl` and elaboration. Its measured formal frequency (unfold+delta = 31/8,766 = 0.35%) is therefore a severe undercount, not a real rarity."
+   ]
+  },
+  {
+   "operation": "CASE_SPLIT",
+   "layer": "CANONICAL",
+   "definition": "Replace one goal by an exhaustive family of goals.",
+   "in_taxonomies": {
+    "reasoning_ontology_v1.core_operation": "CASE_SPLIT",
+    "gold125_registry_v1": "CASE_SPLIT, SOLVE_CASE, COMBINE_CASES, COUNT_CASES, COMBINE_CASE_COUNTS",
+    "gold25_registry_v0": "CASE_SPLIT",
+    "minilang": "CASE_SPLIT / CONSIDER_OR",
+    "lean tactic heads": "cases, rcases, by_cases, split_ifs",
+    "master_synthetic": "CASE_SPLIT",
+    "gold125_gap_registry": "MATH-GAP-0001 'Case coverage and branch joins', severity high, recurrence 22"
+   },
+   "disagreements": [
+    "The informal registries also need a JOIN (combine the branch results); Lean needs no join, because the goal stack does it. gold125_gap_registry records this as an unrepresentable gap."
+   ]
+  },
+  {
+   "operation": "INDUCT",
+   "layer": "CANONICAL",
+   "definition": "Structural or well-founded induction.",
+   "in_taxonomies": {
+    "reasoning_ontology_v1.core_operation": "INDUCT",
+    "gold125_registry_v1": "INDUCT",
+    "minilang": "INDUCT",
+    "lean tactic heads": "induction, induction'",
+    "master_synthetic": "INDUCT (4 / 3,978)"
+   },
+   "disagreements": []
+  },
+  {
+   "operation": "CONTRADICTION",
+   "layer": "CANONICAL",
+   "definition": "Argue from the negation of the goal, or derive a falsehood.",
+   "in_taxonomies": {
+    "reasoning_ontology_v1.core_operation": "CONTRADICTION",
+    "gold125_registry_v1": "CONTRADICTION",
+    "minilang": "-- absent",
+    "lean tactic heads": "by_contra, exfalso, contrapose!, push_neg",
+    "master_synthetic": "CONTRADICTION (2 / 3,978)"
+   },
+   "disagreements": [
+    "minilang has no contradiction operation at all; it is folded into RULE."
+   ]
+  },
+  {
+   "operation": "DISCHARGE",
+   "layer": "CANONICAL",
+   "definition": "Close the current goal.",
+   "in_taxonomies": {
+    "reasoning_ontology_v1.core_operation": "DISCHARGE",
+    "gold125_registry_v1": "DISCHARGE, DISCHARGE_GOAL",
+    "minilang": "END_OR_NEXT",
+    "lean_effect_class": "CLOSE (44.4% of 241,265)",
+    "reasoning_stages": "16 termination/goal discharge"
+   },
+   "disagreements": [
+    "In the informal corpora DISCHARGE means 'here is the final answer' (90/769, and 89/90 of those contain \\boxed{}). In Lean CLOSE means 'this branch of the goal stack is finished' and happens 107,006 times. The two are not the same event."
+   ]
+  },
+  {
+   "operation": "VERIFY",
+   "layer": "CANONICAL",
+   "definition": "Check a candidate result against a constraint already in the state.",
+   "in_taxonomies": {
+    "reasoning_ontology_v1.core_operation": "VERIFY",
+    "gold125_registry_v1": "VERIFY, VERIFY_CANDIDATE",
+    "gold25_registry_v0": "VERIFY",
+    "minilang": "-- absent",
+    "lean tactic heads": "-- ABSENT BY CONSTRUCTION"
+   },
+   "disagreements": [
+    "VERIFY has NO formal counterpart and cannot have one: in a proof assistant the kernel verifies, so verification never appears as a step. This is a genuine domain difference, not an artifact."
+   ]
+  },
+  {
+   "operation": "EVALUATE / COUNT / BOUND / ENUMERATE / SELECT",
+   "layer": "CANONICAL",
+   "definition": "Numeric evaluation; cardinality computation; establishing an inequality; listing a finite family; choosing among candidates.",
+   "in_taxonomies": {
+    "reasoning_ontology_v1.core_operation": "EVALUATE, COUNT, BOUND, ENUMERATE, SELECT",
+    "gold125_registry_v1": "~25 of the 66 entries",
+    "lean tactic heads": "norm_num, decide, positivity, linarith (all CONTROLLER-classified)"
+   },
+   "disagreements": [
+    "These five are first-class in every informal taxonomy and have no first-class formal counterpart: in Lean they are absorbed by automation. The clean statement is that they map to CONTROLLER tactics, not to canonical ones."
+   ]
+  },
+  {
+   "operation": "GOAL_MANAGEMENT",
+   "layer": "CONTROLLER",
+   "definition": "Reorder, select or replicate work across the goal stack.",
+   "in_taxonomies": {
+    "reasoning_ontology_v1": "reasoning_mode=GOAL_MANAGEMENT",
+    "lean tactic heads": "all_goals, any_goals, swap, on_goal, case, focus, next, iterate"
+   },
+   "disagreements": [
+    "Present as a MODE in the informal ontology and as concrete TACTICS in Lean, but never as an operation in either. It is 0.44% of LeanDojo and 11.72% of the HML_V3 1,150 corpus, purely because that corpus was sampled for multi-goal states."
+   ]
+  },
+  {
+   "operation": "AUTOMATION",
+   "layer": "CONTROLLER",
+   "definition": "Invoke a search or normalisation procedure whose internal steps are not recorded.",
+   "in_taxonomies": {
+    "reasoning_ontology_v1": "knowledge_layer=SYMBOLIC_BACKEND / NUMERIC_BACKEND",
+    "minilang": "SIMPLIFY",
+    "lean tactic heads": "simp, simpa, dsimp, ring, linarith, norm_num, omega, aesop, field_simp, ..."
+   },
+   "disagreements": [
+    "minilang gives SIMPLIFY operation status; reasoning_ontology_v1 puts it on the knowledge_layer axis instead. This is the second clear taxonomy disagreement."
+   ]
+  },
+  {
+   "operation": "SEARCH_META / PLAN",
+   "layer": "CONTROLLER",
+   "definition": "Announce or revise a strategy without changing the mathematical state.",
+   "in_taxonomies": {
+    "reasoning_ontology_v1": "reasoning_mode=SEARCH_META",
+    "gold125_registry_v1": "SEARCH_META, BOUND_SEARCH",
+    "lean": "-- absent by construction (a trace holds only kept steps)"
+   },
+   "disagreements": [
+    "Dominant in model-generated chains (PLAN cue fires on 11.8% of 81,908 PRM800K model steps) and essentially invisible in both the annotated MATH corpus and every formal corpus."
+   ]
+  },
+  {
+   "operation": "BACKTRACK",
+   "layer": "CONTROLLER",
+   "definition": "Abandon a line of work and resume from an earlier state.",
+   "in_taxonomies": {
+    "reasoning_ontology_v1": "epistemic_effect=REJECT_CANDIDATE",
+    "lean": "-- ABSENT BY CONSTRUCTION. A Lean trace records only steps that were kept.",
+    "PRM800K": "the only large source: 262,146 steps rated -1"
+   },
+   "disagreements": [
+    "No formal corpus on disk contains a single backtracking step. This is a hard structural limit on any cross-source claim about failure or revision."
+   ]
+  }
+ ],
+ "taxonomy_reconciliation_summary": {
+  "n_taxonomies_reconciled": 13,
+  "only_computed_one": "lean_effect_class_vocabulary (8 classes over 241,265 verified transitions). Every other taxonomy in the estate was asserted, not computed.",
+  "no_taxonomy_in_arena_repo": true,
+  "three_kinds_of_object_conflated_across_the_13": [
+   "OPERATION vocabularies (what the step does): ontology_v1 core_operation 19, gold125 registry 66, gold25 registry 48, minilang 10, master_synthetic 15",
+   "EFFECT vocabularies (what changed in the state): lean_effect_class 8, hmlv3_effect_class 8 (stratified, not natural)",
+   "NEITHER: reasoning_stages 16 (pipeline phases), micromath relations 8 (representational exposure), representation_genome 42 (design axes, RETIRED), arena_world_dimensions 12 (task difficulty), gold125_gap_registry 13 (expressibility failures)"
+  ],
+  "headline_disagreements": [
+   "OPERATION COUNT SPREAD IS 8 to 66 with no convergence: 8 (Lean effect), 10 (minilang), 15 (master synthetic), 19 (ontology v1 core), 48 (gold25 registry), 66 (gold125 registry). These are not refinements of one another; they are counts of different things.",
+   "ASSERT_SUBGOAL / HAVE: an operation in minilang, an EFFECT axis value in ontology_v1, and DELETED from the 241k Lean corpus. Yet `have` is the 4th most frequent LeanDojo tactic (6.6%).",
+   "SIMPLIFY: an operation in minilang; a knowledge_layer value (SYMBOLIC_BACKEND) in ontology_v1; the largest single automation block in Lean (simp+simpa+dsimp = 1,426/8,766 = 16.27% of LeanDojo).",
+   "REWRITE: absent from every informal taxonomy (folded into TRANSFORM); the single most frequent formal operation (rw family = 22.34% of LeanDojo).",
+   "VERIFY: first-class in ontology_v1 and both gold registries; absent from minilang and structurally impossible in Lean.",
+   "The gold25 registry (48 ops) carries typed required_inputs, allowed_types, a warrant_type and an hml_rule per operation; the gold125 registry (66 ops) carries none of that but has frequencies and examples. They are not a v0/v1 pair of the same artifact; the 'older' one is the richer specification."
+  ]
+ },
+ "alignment_confidence": {
+  "question": "For an operation that appears to recur, does the same name mean the same thing across sources?",
+  "verdict_scale": "HIGH / MEDIUM / LOW-SAME-NAME-DIFFERENT-OPERATION",
+  "per_operation": [
+   {
+    "operation": "INDUCT",
+    "confidence": "HIGH",
+    "human_MATH": "\"Let's prove by induction that the $n$th term of the sequence is $2^{n-2}$ ... The base case $n=2$ holds\"",
+    "formal_Lean": "`induction n with | zero => .. | succ n ih => ..`",
+    "why": "Same schema (base case + step), same obligations created, same discharge condition. The lexical proxy is exact on the gold set: precision 1.000, recall 1.000, 7/7."
+   },
+   {
+    "operation": "CASE_SPLIT",
+    "confidence": "HIGH",
+    "human_MATH": "\"We can split the expression $|5x-1|=x+3$ into two separate cases.\"",
+    "formal_Lean": "`rcases le_or_lt a b with h | h`",
+    "why": "Both replace one goal with an exhaustive family. CAVEAT: the informal version additionally needs an explicit JOIN step to combine branch results (gold125_gap_registry MATH-GAP-0001, recurrence 22, severity high); Lean needs none, because the goal stack joins implicitly. So the operation matches but its obligations do not."
+   },
+   {
+    "operation": "APPLY_THEOREM",
+    "confidence": "MEDIUM",
+    "human_MATH": "\"By AM-GM,\"",
+    "formal_Lean": "`exact div_add_div_same a b c`",
+    "why": "Same move. But in Lean the premise is named, type-checked and its hypotheses are discharged; in the MATH corpus 'By AM-GM' names no instance and checks no side condition. The reasoning_ontology_v1 warrant axis exists precisely to record this gap, and its UNKNOWN value is used."
+   },
+   {
+    "operation": "CONTRADICTION",
+    "confidence": "MEDIUM",
+    "human_MATH": "\"which cannot be equal to 1, contradiction\"",
+    "formal_Lean": "`by_contra h` / `exfalso`",
+    "why": "Same logical shape. But the informal instances are mostly LOCAL contradictions inside a case analysis, while `by_contra` is a GLOBAL goal transformation. 6 gold instances is too few to separate them."
+   },
+   {
+    "operation": "INTRODUCE",
+    "confidence": "MEDIUM",
+    "human_MATH": "\"Let $k$ be a positive integer.\" / \"Call the two integers $x$ and $y$.\"",
+    "formal_Lean": "`intro k` / `obtain \u27e8x, hx\u27e9 := h`",
+    "why": "The informal side distinguishes DECLARE (name a thing) from CONSTRUCT (build a witness); Lean distinguishes intro (binder) from obtain (existential elimination) from set/let (abbreviation). The two three-way splits DO NOT LINE UP. The Lean effect vocabulary collapses all of them to INTRODUCE."
+   },
+   {
+    "operation": "DISCHARGE",
+    "confidence": "LOW-SAME-NAME-DIFFERENT-OPERATION",
+    "human_MATH": "\"Thus, Brenda is $\\boxed{3}$ years old.\"",
+    "formal_Lean": "effect_class CLOSE, 107,006 / 241,265",
+    "why": "The informal event is 'the final answer of the whole problem' and happens ~once per trajectory (90 times in 125 trajectories). The formal event is 'this branch of the goal stack is finished' and happens 44.4% of all steps. Matching them by name would manufacture a 44%-vs-12% 'recurrence' out of two unrelated events."
+   },
+   {
+    "operation": "TRANSFORM",
+    "confidence": "LOW-SAME-NAME-DIFFERENT-OPERATION",
+    "why": "Informal TRANSFORM is a residual sink (39.7% gold, 77.3% synthetic) covering everything from 'subtract 7 from both sides' to modular reasoning to trig identities. Formal TRANSFORM_TARGET is a precisely defined state delta (the focused goal's target string changed, nothing else did). Equal names, incomparable definitions."
+   },
+   {
+    "operation": "APPLY_DEFINITION",
+    "confidence": "LOW-SAME-NAME-DIFFERENT-OPERATION",
+    "why": "Informally an explicit, citable step (19/769). Formally, definitional unfolding is mostly invisible: it is performed by `simp`, `rfl` and elaboration and never recorded. Measured formal frequency (unfold+delta = 31/8,766 = 0.35%) is an artifact of what Lean logs, not of what proofs do."
+   },
+   {
+    "operation": "SUBSTITUTE / REWRITE",
+    "confidence": "LOW-SAME-NAME-DIFFERENT-OPERATION",
+    "why": "Informal SUBSTITUTE (7/769 = 0.9%) means 'put the value you derived into the other equation'. Formal `rw` (18.91% of LeanDojo alone) means 'replace a subterm using a directed equation, anywhere in the goal'. The 21x frequency gap is an annotation-scheme artifact: the informal scheme has no REWRITE, so rewriting is filed as TRANSFORM."
+   }
+  ],
+  "proxy_calibration_headline": {
+   "spans": 769,
+   "spans_firing_no_cue": 334,
+   "spans_firing_no_cue_pct": 43.4,
+   "precision_range": "0.077 (EVALUATE) to 1.000 (INDUCT)",
+   "reading": "Any operation whose only cross-source evidence is the lexical proxy, and whose proxy precision is below ~0.5, should be treated as UNMEASURED rather than as recurring. That is: DECLARE (0.098), EVALUATE (0.077), COUNT (0.169), SELECT (0.087), CONSTRUCT (0.250), CASE_SPLIT (0.220), APPLY_DEFINITION (0.333), SUBSTITUTE (0.333), BOUND (0.380)."
+  }
+ },
+ "lexical_proxy_calibration": {
+  "n_spans": 769,
+  "spans_with_no_cue": 334,
+  "gold_core_operation": {
+   "TRANSFORM": 305,
+   "UNRESOLVED": 136,
+   "DISCHARGE": 90,
+   "EVALUATE": 50,
+   "APPLY_THEOREM": 29,
+   "VERIFY": 28,
+   "COUNT": 23,
+   "BOUND": 23,
+   "APPLY_DEFINITION": 19,
+   "CASE_SPLIT": 15,
+   "CONSTRUCT": 12,
+   "MODEL": 7,
+   "SUBSTITUTE": 7,
+   "INDUCT": 7,
+   "CONTRADICTION": 6,
+   "DECLARE": 5,
+   "SELECT": 4,
+   "ENUMERATE": 2,
+   "RECORD": 1
+  },
+  "per_cue": {
+   "APPLY_DEFINITION": {
+    "calibratable": true,
+    "gold_n": 19,
+    "cue_fired_n": 21,
+    "precision": 0.333,
+    "recall": 0.368,
+    "top_gold_labels_when_fired": {
+     "APPLY_DEFINITION": 7,
+     "TRANSFORM": 5,
+     "DISCHARGE": 3,
+     "APPLY_THEOREM": 2,
+     "COUNT": 1
+    },
+    "reasoning_mode_when_fired": {
+     "EXECUTION": 16,
+     "GOAL_MANAGEMENT": 3,
+     "SEARCH_META": 2
+    },
+    "example_misses": [
+     {
+      "gold": "TRANSFORM",
+      "span": "That means that $\\frac{3}{2}\\log_2 x=6."
+     },
+     {
+      "gold": "APPLY_THEOREM",
+      "span": "We know that the prime factorization of 18 is $2\\cdot 3^2$, so in order for the four digit number to be divisible by 18 it must also be divisible by 9"
+     },
+     {
+      "gold": "APPLY_THEOREM",
+      "span": "In order for a number to be divisible by 9, the sum of its digits must be divisible by 9 as well."
+     }
+    ]
+   },
+   "APPLY_THEOREM": {
+    "calibratable": true,
+    "gold_n": 29,
+    "cue_fired_n": 18,
+    "precision": 0.611,
+    "recall": 0.379,
+    "top_gold_labels_when_fired": {
+     "APPLY_THEOREM": 11,
+     "TRANSFORM": 6,
+     "MODEL": 1
+    },
+    "reasoning_mode_when_fired": {
+     "EXECUTION": 16,
+     "SEARCH_META": 2
+    },
+    "example_misses": [
+     {
+      "gold": "TRANSFORM",
+      "span": "so by the quadratic formula,"
+     },
+     {
+      "gold": "MODEL",
+      "span": "Using the Pythagorean Theorem, we write the equation $x^2 + (x + 1)^2 = 29^2$"
+     },
+     {
+      "gold": "TRANSFORM",
+      "span": "The given expression can be rewritten as \\[9x\\sin x + \\frac{4}{x \\sin x}\\]or $9y + \\frac{4}{y},$ where $y = x \\sin x.$ By the AM-GM inequality, we hav"
+     }
+    ]
+   },
+   "BACKTRACK": {
+    "calibratable": false,
+    "gold_n": 0,
+    "cue_fired_n": 3,
+    "precision": 0.0,
+    "recall": null,
+    "top_gold_labels_when_fired": {
+     "VERIFY": 2,
+     "APPLY_THEOREM": 1
+    },
+    "reasoning_mode_when_fired": {
+     "VERIFICATION": 2,
+     "EXECUTION": 1
+    },
+    "example_misses": [
+     {
+      "gold": "APPLY_THEOREM",
+      "span": "So I seem to have $6\\cdot 4 = 24$ choices -- but this actually overcounts the possible results by a factor of $2$, because in the end, it doesn't matt"
+     },
+     {
+      "gold": "VERIFY",
+      "span": "Actually, we don't have to check every such integer: it's enough to check divisibility by 2, 3, 5, 7, 11, and 13."
+     },
+     {
+      "gold": "VERIFY",
+      "span": "We deal with the first inequality merely to show that there actually are integers satisfying both inequalities!)"
+     }
+    ]
+   },
+   "BOUND": {
+    "calibratable": true,
+    "gold_n": 23,
+    "cue_fired_n": 50,
+    "precision": 0.38,
+    "recall": 0.826,
+    "top_gold_labels_when_fired": {
+     "BOUND": 19,
+     "DISCHARGE": 9,
+     "TRANSFORM": 8,
+     "UNRESOLVED": 4,
+     "VERIFY": 2
+    },
+    "reasoning_mode_when_fired": {
+     "GOAL_MANAGEMENT": 27,
+     "EXECUTION": 15,
+     "SEARCH_META": 6,
+     "VERIFICATION": 2
+    },
+    "example_misses": [
+     {
+      "gold": "COUNT",
+      "span": "Now we subtract from 1 to find the probability that at least one woman is selected. The probability is $1-\\frac{7}{24}=\\boxed{\\frac{17}{24}}$."
+     },
+     {
+      "gold": "SELECT",
+      "span": "Since 18 is the smallest multiple of 9 that is greater than 10, $14+n=18$, and $n=18-14=\\boxed{4}$."
+     },
+     {
+      "gold": "VERIFY",
+      "span": "$\\boxed{34}$ is the smallest solution since it is a lower bound of $a$ and satisfies both original congruences."
+     }
+    ]
+   },
+   "CASE_SPLIT": {
+    "calibratable": true,
+    "gold_n": 15,
+    "cue_fired_n": 41,
+    "precision": 0.22,
+    "recall": 0.6,
+    "top_gold_labels_when_fired": {
+     "TRANSFORM": 16,
+     "CASE_SPLIT": 9,
+     "EVALUATE": 5,
+     "COUNT": 3,
+     "UNRESOLVED": 3
+    },
+    "reasoning_mode_when_fired": {
+     "EXECUTION": 29,
+     "SEARCH_META": 10,
+     "VERIFICATION": 1,
+     "GOAL_MANAGEMENT": 1
+    },
+    "example_misses": [
+     {
+      "gold": "APPLY_DEFINITION",
+      "span": "For the piecewise function to be continuous, the cases must \"meet\" at $2$ and $-2$."
+     },
+     {
+      "gold": "EVALUATE",
+      "span": "So, the probability of this case is $3(1/216) = 1/72$."
+     },
+     {
+      "gold": "COUNT",
+      "span": "Adding the probabilities of these two cases gives us a total probability of $\\frac{1}{72} + \\frac{1}{72} = \\boxed{\\frac{1}{36}}$."
+     }
+    ]
+   },
+   "CONSTRUCT": {
+    "calibratable": true,
+    "gold_n": 12,
+    "cue_fired_n": 12,
+    "precision": 0.25,
+    "recall": 0.25,
+    "top_gold_labels_when_fired": {
+     "TRANSFORM": 4,
+     "CONSTRUCT": 3,
+     "UNRESOLVED": 3,
+     "COUNT": 1,
+     "APPLY_THEOREM": 1
+    },
+    "reasoning_mode_when_fired": {
+     "EXECUTION": 6,
+     "SEARCH_META": 6
+    },
+    "example_misses": [
+     {
+      "gold": "TRANSFORM",
+      "span": "The first congruence means that there exists a non-negative integer $n$ such that $a=4+5n$."
+     },
+     {
+      "gold": "TRANSFORM",
+      "span": "Without loss of generality, let the right angle be at $b.$  Let $x = |b - c|$ and $y = |a - b|.$  The magnitudes of $a$, $b$, and $c$ are just $\\frac{"
+     },
+     {
+      "gold": "UNRESOLVED",
+      "span": "Half of the $2^8$ draw sequences will produce a result with argument equivalent to $0$ and the other half will have an argument equivalent to $\\pi$."
+     }
+    ]
+   },
+   "CONTRADICTION": {
+    "calibratable": true,
+    "gold_n": 6,
+    "cue_fired_n": 9,
+    "precision": 0.667,
+    "recall": 1.0,
+    "top_gold_labels_when_fired": {
+     "CONTRADICTION": 6,
+     "TRANSFORM": 2,
+     "UNRESOLVED": 1
+    },
+    "reasoning_mode_when_fired": {
+     "EXECUTION": 9
+    },
+    "example_misses": [
+     {
+      "gold": "UNRESOLVED",
+      "span": "There are 9 options for the first/last digit (1 through 9 -- the first digit cannot be 0)"
+     },
+     {
+      "gold": "TRANSFORM",
+      "span": "Therefore, it is impossible for $g(x)$ to equal $3$ for any value of $x$."
+     },
+     {
+      "gold": "TRANSFORM",
+      "span": "Since $x+n = 25$ is impossible, the simplest possibilities are $x-n = 50$ and $x + n = 50$."
+     }
+    ]
+   },
+   "COUNT": {
+    "calibratable": true,
+    "gold_n": 23,
+    "cue_fired_n": 77,
+    "precision": 0.169,
+    "recall": 0.565,
+    "top_gold_labels_when_fired": {
+     "EVALUATE": 20,
+     "DISCHARGE": 17,
+     "COUNT": 13,
+     "TRANSFORM": 9,
+     "UNRESOLVED": 6
+    },
+    "reasoning_mode_when_fired": {
+     "EXECUTION": 49,
+     "GOAL_MANAGEMENT": 18,
+     "SEARCH_META": 8,
+     "VERIFICATION": 2
+    },
+    "example_misses": [
+     {
+      "gold": "UNRESOLVED",
+      "span": "$\\binom{4}{2}=6$ results"
+     },
+     {
+      "gold": "EVALUATE",
+      "span": "Then the probability that the second person selected is male is reduced to $\\frac{6}{9}=\\frac{2}{3}$."
+     },
+     {
+      "gold": "EVALUATE",
+      "span": "For the third person, the probability is $\\frac{5}{8}$."
+     }
+    ]
+   },
+   "DECLARE": {
+    "calibratable": true,
+    "gold_n": 5,
+    "cue_fired_n": 51,
+    "precision": 0.098,
+    "recall": 1.0,
+    "top_gold_labels_when_fired": {
+     "TRANSFORM": 21,
+     "CONSTRUCT": 11,
+     "UNRESOLVED": 7,
+     "DECLARE": 5,
+     "APPLY_DEFINITION": 3
+    },
+    "reasoning_mode_when_fired": {
+     "EXECUTION": 31,
+     "SEARCH_META": 17,
+     "GOAL_MANAGEMENT": 3
+    },
+    "example_misses": [
+     {
+      "gold": "CONSTRUCT",
+      "span": "Let $k$ be a positive integer."
+     },
+     {
+      "gold": "TRANSFORM",
+      "span": "Then for $k^2 \\le x < (k + 1)^2,$\n\\[x \\lfloor \\sqrt{x} \\rfloor = kx.\\]Thus, on this interval, the graph of $0 \\le y \\le x \\lfloor \\sqrt{x} \\rfloor$ is"
+     },
+     {
+      "gold": "TRANSFORM",
+      "span": "Note that $n = 1000 = 2^{3}5^{3}.$\nLet $S = \\{1,2,3,\\ldots, 1000\\}$, and $A_{i}= \\{i \\in S \\mid i\\, \\textrm{ divides }\\,1000\\}$."
+     }
+    ]
+   },
+   "DISCHARGE": {
+    "calibratable": true,
+    "gold_n": 90,
+    "cue_fired_n": 128,
+    "precision": 0.695,
+    "recall": 0.989,
+    "top_gold_labels_when_fired": {
+     "DISCHARGE": 89,
+     "TRANSFORM": 17,
+     "EVALUATE": 8,
+     "COUNT": 4,
+     "VERIFY": 4
+    },
+    "reasoning_mode_when_fired": {
+     "GOAL_MANAGEMENT": 93,
+     "EXECUTION": 31,
+     "VERIFICATION": 4
+    },
+    "example_misses": [
+     {
+      "gold": "EVALUATE",
+      "span": "So $a+b=-3+3=\\boxed{0}$."
+     },
+     {
+      "gold": "TRANSFORM",
+      "span": "Taking the square root of 144, we see that $x + y = \\boxed{12}$."
+     },
+     {
+      "gold": "TRANSFORM",
+      "span": "and dividing by 2 gives $x = \\boxed{11}$."
+     }
+    ]
+   },
+   "ENUMERATE": {
+    "calibratable": true,
+    "gold_n": 2,
+    "cue_fired_n": 4,
+    "precision": 0.0,
+    "recall": 0.0,
+    "top_gold_labels_when_fired": {
+     "UNRESOLVED": 2,
+     "VERIFY": 1,
+     "TRANSFORM": 1
+    },
+    "reasoning_mode_when_fired": {
+     "EXECUTION": 3,
+     "VERIFICATION": 1
+    },
+    "example_misses": [
+     {
+      "gold": "UNRESOLVED",
+      "span": "There are 9 options for the first/last digit (1 through 9 -- the first digit cannot be 0)"
+     },
+     {
+      "gold": "UNRESOLVED",
+      "span": "and there are 10 options for the second/third digit (0 through 9)."
+     },
+     {
+      "gold": "VERIFY",
+      "span": "To double check, we can work out $A$ and $B$ for each value of $A_1$ and reconvert them to dollars to make sure that the price and the amount of chang"
+     }
+    ]
+   },
+   "EVALUATE": {
+    "calibratable": true,
+    "gold_n": 50,
+    "cue_fired_n": 39,
+    "precision": 0.077,
+    "recall": 0.06,
+    "top_gold_labels_when_fired": {
+     "TRANSFORM": 20,
+     "DISCHARGE": 8,
+     "EVALUATE": 3,
+     "UNRESOLVED": 3,
+     "INDUCT": 2
+    },
+    "reasoning_mode_when_fired": {
+     "EXECUTION": 28,
+     "GOAL_MANAGEMENT": 9,
+     "SEARCH_META": 2
+    },
+    "example_misses": [
+     {
+      "gold": "TRANSFORM",
+      "span": "This can be simplified to $2x^2 + 2x = 840$, or $x^2 + x = 420$."
+     },
+     {
+      "gold": "TRANSFORM",
+      "span": "Then for $k^2 \\le x < (k + 1)^2,$\n\\[x \\lfloor \\sqrt{x} \\rfloor = kx.\\]Thus, on this interval, the graph of $0 \\le y \\le x \\lfloor \\sqrt{x} \\rfloor$ is"
+     },
+     {
+      "gold": "TRANSFORM",
+      "span": "We compute $k[2k(n^2 - k^4) + k - 1]$ modulo 4 for $0 \\le k \\le 3$ and $0 \\le n \\le 3,$ and obtain the following results:"
+     }
+    ]
+   },
+   "INDUCT": {
+    "calibratable": true,
+    "gold_n": 7,
+    "cue_fired_n": 7,
+    "precision": 1.0,
+    "recall": 1.0,
+    "top_gold_labels_when_fired": {
+     "INDUCT": 7
+    },
+    "reasoning_mode_when_fired": {
+     "EXECUTION": 7
+    },
+    "example_misses": []
+   },
+   "PLAN": {
+    "calibratable": false,
+    "gold_n": 0,
+    "cue_fired_n": 25,
+    "precision": 0.0,
+    "recall": null,
+    "top_gold_labels_when_fired": {
+     "TRANSFORM": 7,
+     "UNRESOLVED": 5,
+     "VERIFY": 3,
+     "EVALUATE": 2,
+     "APPLY_THEOREM": 2
+    },
+    "reasoning_mode_when_fired": {
+     "EXECUTION": 20,
+     "VERIFICATION": 3,
+     "GOAL_MANAGEMENT": 2
+    },
+    "example_misses": [
+     {
+      "gold": "COUNT",
+      "span": "Now we subtract from 1 to find the probability that at least one woman is selected. The probability is $1-\\frac{7}{24}=\\boxed{\\frac{17}{24}}$."
+     },
+     {
+      "gold": "DECLARE",
+      "span": "Let's call the length of the shorter leg $x$. Then the length of the longer leg is $x + 1$."
+     },
+     {
+      "gold": "EVALUATE",
+      "span": "First, we perform all cases of multiplication and division from left to right to obtain"
+     }
+    ]
+   },
+   "RETRIEVE": {
+    "calibratable": false,
+    "gold_n": 0,
+    "cue_fired_n": 20,
+    "precision": 0.0,
+    "recall": null,
+    "top_gold_labels_when_fired": {
+     "TRANSFORM": 7,
+     "APPLY_THEOREM": 3,
+     "DISCHARGE": 3,
+     "RECORD": 1,
+     "SUBSTITUTE": 1
+    },
+    "reasoning_mode_when_fired": {
+     "EXECUTION": 15,
+     "GOAL_MANAGEMENT": 4,
+     "VERIFICATION": 1
+    },
+    "example_misses": [
+     {
+      "gold": "RECORD",
+      "span": "We are given that $x^2 + y^2 = 90$ and that $xy = 27$."
+     },
+     {
+      "gold": "SUBSTITUTE",
+      "span": "Since $A=J$, we know that $3B=B+6$."
+     },
+     {
+      "gold": "APPLY_THEOREM",
+      "span": "We know that the prime factorization of 18 is $2\\cdot 3^2$, so in order for the four digit number to be divisible by 18 it must also be divisible by 9"
+     }
+    ]
+   },
+   "SELECT": {
+    "calibratable": true,
+    "gold_n": 4,
+    "cue_fired_n": 23,
+    "precision": 0.087,
+    "recall": 0.5,
+    "top_gold_labels_when_fired": {
+     "DISCHARGE": 5,
+     "VERIFY": 3,
+     "UNRESOLVED": 3,
+     "TRANSFORM": 3,
+     "EVALUATE": 3
+    },
+    "reasoning_mode_when_fired": {
+     "GOAL_MANAGEMENT": 9,
+     "EXECUTION": 9,
+     "VERIFICATION": 3,
+     "SEARCH_META": 2
+    },
+    "example_misses": [
+     {
+      "gold": "VERIFY",
+      "span": "$\\boxed{34}$ is the smallest solution since it is a lower bound of $a$ and satisfies both original congruences."
+     },
+     {
+      "gold": "UNRESOLVED",
+      "span": "The smallest integer $x$ such that $400 < x$ is $401$."
+     },
+     {
+      "gold": "TRANSFORM",
+      "span": "We number the vertices of this $n$-gon in a counterclockwise direction: $0, 1, 2, 3, \\ldots, n-1.$\nA regular $n$-star will be formed if we choose a ve"
+     }
+    ]
+   },
+   "SUBSTITUTE": {
+    "calibratable": true,
+    "gold_n": 7,
+    "cue_fired_n": 15,
+    "precision": 0.333,
+    "recall": 0.714,
+    "top_gold_labels_when_fired": {
+     "SUBSTITUTE": 5,
+     "DISCHARGE": 5,
+     "BOUND": 2,
+     "TRANSFORM": 1,
+     "VERIFY": 1
+    },
+    "reasoning_mode_when_fired": {
+     "EXECUTION": 7,
+     "GOAL_MANAGEMENT": 7,
+     "VERIFICATION": 1
+    },
+    "example_misses": [
+     {
+      "gold": "TRANSFORM",
+      "span": "Substituting, we get $-2-5=2(-2)-b$, which implies $b=3$."
+     },
+     {
+      "gold": "VERIFY",
+      "span": "If we plug this value of $x$ back into the original equation in order to check our answer, we see that $|5(1)-1|=1+3$ or $4=4$."
+     },
+     {
+      "gold": "APPLY_DEFINITION",
+      "span": "Substituting $-x$ for $x$ gives us $f(g(-x^3)) = f(-g(x^3)) = f(g(x^3))$"
+     }
+    ]
+   },
+   "TRANSFORM": {
+    "calibratable": true,
+    "gold_n": 305,
+    "cue_fired_n": 58,
+    "precision": 0.672,
+    "recall": 0.128,
+    "top_gold_labels_when_fired": {
+     "TRANSFORM": 39,
+     "VERIFY": 4,
+     "APPLY_DEFINITION": 3,
+     "APPLY_THEOREM": 3,
+     "DISCHARGE": 3
+    },
+    "reasoning_mode_when_fired": {
+     "EXECUTION": 44,
+     "GOAL_MANAGEMENT": 6,
+     "SEARCH_META": 4,
+     "VERIFICATION": 4
+    },
+    "example_misses": [
+     {
+      "gold": "APPLY_DEFINITION",
+      "span": "A positive integer is a factor of 72 if and only if the exponents in its prime factorization are less than or equal to the corresponding exponents in "
+     },
+     {
+      "gold": "UNRESOLVED",
+      "span": "Therefore, in forming a perfect cube factor of 72"
+     },
+     {
+      "gold": "SELECT",
+      "span": "We note that 80 can be factored as $8\\cdot 10$. Therefore, $r = \\boxed{8}$."
+     }
+    ]
+   },
+   "VERIFY": {
+    "calibratable": true,
+    "gold_n": 28,
+    "cue_fired_n": 30,
+    "precision": 0.7,
+    "recall": 0.75,
+    "top_gold_labels_when_fired": {
+     "VERIFY": 21,
+     "DISCHARGE": 6,
+     "SELECT": 1,
+     "UNRESOLVED": 1,
+     "EVALUATE": 1
+    },
+    "reasoning_mode_when_fired": {
+     "VERIFICATION": 21,
+     "GOAL_MANAGEMENT": 7,
+     "EXECUTION": 2
+    },
+    "example_misses": [
+     {
+      "gold": "SELECT",
+      "span": "Indeed, $20 \\times 21 = 420$, so the legs must be 20 and 21."
+     },
+     {
+      "gold": "DISCHARGE",
+      "span": "We can easily verify that these will yield nondegenerate prisms, so the answer is $\\boxed{40}$."
+     },
+     {
+      "gold": "UNRESOLVED",
+      "span": "We can also confirm that all of the pairs in this case are different from the pairs in the previous case."
+     }
+    ]
+   }
+  }
+ },
+ "raw_measurements": {
+  "annotated": {
+   "gold125_ontology_v1": {
+    "n_step_records": 769,
+    "n_trajectories": 125,
+    "core_operation_by_split": {
+     "gold25": {
+      "TRANSFORM": 32,
+      "EVALUATE": 18,
+      "COUNT": 9,
+      "APPLY_DEFINITION": 8,
+      "MODEL": 7,
+      "UNRESOLVED": 7,
+      "DECLARE": 5,
+      "CASE_SPLIT": 5,
+      "APPLY_THEOREM": 5,
+      "VERIFY": 4,
+      "SELECT": 4,
+      "SUBSTITUTE": 4,
+      "BOUND": 4,
+      "DISCHARGE": 3,
+      "ENUMERATE": 2,
+      "RECORD": 1
+     },
+     "gold125_extension": {
+      "TRANSFORM": 273,
+      "UNRESOLVED": 129,
+      "DISCHARGE": 87,
+      "EVALUATE": 32,
+      "APPLY_THEOREM": 24,
+      "VERIFY": 24,
+      "BOUND": 19,
+      "COUNT": 14,
+      "CONSTRUCT": 12,
+      "APPLY_DEFINITION": 11,
+      "CASE_SPLIT": 10,
+      "INDUCT": 7,
+      "CONTRADICTION": 6,
+      "SUBSTITUTE": 3
+     }
+    },
+    "axes": {
+     "core_operation": {
+      "TRANSFORM": 305,
+      "UNRESOLVED": 136,
+      "DISCHARGE": 90,
+      "EVALUATE": 50,
+      "APPLY_THEOREM": 29,
+      "VERIFY": 28,
+      "COUNT": 23,
+      "BOUND": 23,
+      "APPLY_DEFINITION": 19,
+      "CASE_SPLIT": 15,
+      "CONSTRUCT": 12,
+      "MODEL": 7,
+      "SUBSTITUTE": 7,
+      "INDUCT": 7,
+      "CONTRADICTION": 6,
+      "DECLARE": 5,
+      "SELECT": 4,
+      "ENUMERATE": 2,
+      "RECORD": 1
+     },
+     "reasoning_mode": {
+      "EXECUTION": 571,
+      "GOAL_MANAGEMENT": 113,
+      "SEARCH_META": 57,
+      "VERIFICATION": 28
+     },
+     "warrant": {
+      "SOURCE_GROUNDED": 238,
+      "ALGEBRAIC_PRESERVATION": 212,
+      "UNKNOWN": 125,
+      "NUMERIC_EVALUATION": 31,
+      "THEOREM": 29,
+      "MODULAR_ARITHMETIC": 26,
+      "SEQUENCE_RULE": 23,
+      "TRIGONOMETRY_IDENTITY": 23,
+      "DEFINITION": 19,
+      "HEURISTIC_OR_REPRESENTATION_CHOICE": 16,
+      "PROBABILITY_LAW": 12,
+      "SYMBOLIC_NORMALIZATION": 9,
+      "IDENTITY": 2,
+      "COUNTING_RULE": 2,
+      "CALCULUS_RULE": 2
+     },
+     "knowledge_layer": {
+      "CORE": 478,
+      "UNKNOWN": 125,
+      "DOMAIN_LIBRARY": 86,
+      "THEOREM_LIBRARY": 33,
+      "NUMERIC_BACKEND": 31,
+      "SYMBOLIC_BACKEND": 9,
+      "SEARCH_META": 7
+     },
+     "goal_effect": {
+      "ADVANCE": 494,
+      "NONE": 134,
+      "DISCHARGE": 129,
+      "CREATE_SUBGOAL": 12
+     },
+     "scope_effect": {
+      "NONE": 734,
+      "OPEN_BRANCH": 35
+     },
+     "epistemic_effect": {
+      "DERIVE": 595,
+      "UNKNOWN": 136,
+      "VERIFY_CANDIDATE": 28,
+      "REJECT_CANDIDATE": 6,
+      "PROPOSE_CANDIDATE": 4
+     },
+     "atomicity": {
+      "ATOMIC": 564,
+      "UNCERTAIN": 124,
+      "COMPOUND_MACRO": 81
+     },
+     "uncertainty": {
+      "CERTAIN": 632,
+      "UNRESOLVED": 132,
+      "SOURCE_AMBIGUOUS": 4,
+      "ANNOTATION_REVIEW": 1
+     },
+     "_has_preconditions": {
+      "false": 450,
+      "true": 319
+     },
+     "_has_obligations_created": {
+      "false": 512,
+      "true": 257
+     },
+     "_has_obligations_discharged": {
+      "false": 660,
+      "true": 109
+     },
+     "_has_dependencies": {
+      "true": 756,
+      "false": 13
+     }
+    },
+    "observed_operation": {
+     "TRANSFORM": 200,
+     "OTHER": 125,
+     "DISCHARGE": 87,
+     "EVALUATE": 30,
+     "APPLY_THEOREM": 29,
+     "MODULAR_REASONING": 26,
+     "VERIFY": 24,
+     "SEQUENCE_RECURRENCE": 23,
+     "TRIG_IDENTITY": 23,
+     "APPLY_DEFINITION": 19,
+     "OPTIMIZE": 17,
+     "CASE_SPLIT": 15,
+     "PROBABILITY": 12,
+     "COUNT": 12,
+     "CONSTRUCT": 9,
+     "SUBSTITUTE": 7,
+     "SEARCH_META": 7,
+     "INDUCT": 7,
+     "FORMULATE_EQUATION": 6,
+     "SOLVE": 6,
+     "CONTRADICTION": 6,
+     "INTRODUCE_VARIABLE": 5,
+     "EXPAND": 4,
+     "VERIFY_CANDIDATE": 4,
+     "COUNT_CASES": 4,
+     "DISCHARGE_GOAL": 3,
+     "FACTOR": 3,
+     "COMBINE_CASE_COUNTS": 3,
+     "CONDITIONAL_PROBABILITY": 3,
+     "SELECT_CANDIDATE": 3,
+     "APPLY_IDENTITY": 2,
+     "ADD_BOTH_SIDES": 2,
+     "SOLVE_CASE": 2,
+     "COMPLEMENT_COUNT": 2,
+     "BOUND_REASONING": 2,
+     "ENUMERATE": 2,
+     "COUNT_PERMUTATIONS": 2,
+     "EVALUATE_PROBABILITY": 2,
+     "BOUND_SEARCH": 2,
+     "INCLUSION_EXCLUSION": 2,
+     "BOUND": 2,
+     "RECORD_GIVEN": 1,
+     "EXTRACT_ROOT": 1,
+     "CROSS_MULTIPLY": 1,
+     "DIVIDE_BOTH_SIDES": 1,
+     "SELECT_EXTREMUM": 1,
+     "COMBINE_LIKE_TERMS": 1,
+     "RECORD_EQUALITY_CONDITION": 1,
+     "MULTIPLY_CONDITIONALS": 1,
+     "CONSTRAINT_PROPAGATION": 1,
+     "MULTIPLY_COUNTS": 1,
+     "PARAMETERIZE_CONGRUENCE": 1,
+     "COUNT_EXCLUDED": 1,
+     "INDEX_TRANSLATION": 1,
+     "ADVANCE_SEQUENCE": 1,
+     "PRIME_FACTORIZE": 1,
+     "RATIONALIZE": 1,
+     "CLEAR_DENOMINATOR": 1,
+     "COMBINE_CASES": 1,
+     "CANCEL_SYMMETRIC_TERMS": 1,
+     "APPLY_PRECEDENCE": 1,
+     "FORMULATE_INEQUALITY": 1,
+     "SUBTRACT_BOTH_SIDES": 1,
+     "ROUND_TO_DOMAIN": 1,
+     "DIFFERENTIATE": 1,
+     "TAKE_LIMIT": 1
+    },
+    "observed_to_core": {
+     "APPLY_DEFINITION": {
+      "APPLY_DEFINITION": 19
+     },
+     "FORMULATE_EQUATION": {
+      "MODEL": 6
+     },
+     "SOLVE": {
+      "TRANSFORM": 6
+     },
+     "EVALUATE": {
+      "EVALUATE": 30
+     },
+     "INTRODUCE_VARIABLE": {
+      "DECLARE": 5
+     },
+     "RECORD_GIVEN": {
+      "RECORD": 1
+     },
+     "APPLY_IDENTITY": {
+      "TRANSFORM": 2
+     },
+     "EXTRACT_ROOT": {
+      "TRANSFORM": 1
+     },
+     "CROSS_MULTIPLY": {
+      "TRANSFORM": 1
+     },
+     "EXPAND": {
+      "TRANSFORM": 4
+     },
+     "ADD_BOTH_SIDES": {
+      "TRANSFORM": 2
+     },
+     "DIVIDE_BOTH_SIDES": {
+      "TRANSFORM": 1
+     },
+     "CASE_SPLIT": {
+      "CASE_SPLIT": 15
+     },
+     "SOLVE_CASE": {
+      "TRANSFORM": 2
+     },
+     "VERIFY_CANDIDATE": {
+      "VERIFY": 4
+     },
+     "SELECT_EXTREMUM": {
+      "SELECT": 1
+     },
+     "SUBSTITUTE": {
+      "SUBSTITUTE": 7
+     },
+     "DISCHARGE_GOAL": {
+      "DISCHARGE": 3
+     },
+     "COMBINE_LIKE_TERMS": {
+      "TRANSFORM": 1
+     },
+     "FACTOR": {
+      "TRANSFORM": 3
+     },
+     "APPLY_THEOREM": {
+      "APPLY_THEOREM": 29
+     },
+     "RECORD_EQUALITY_CONDITION": {
+      "UNRESOLVED": 1
+     },
+     "COUNT_CASES": {
+      "UNRESOLVED": 4
+     },
+     "COMBINE_CASE_COUNTS": {
+      "COUNT": 3
+     },
+     "COMPLEMENT_COUNT": {
+      "COUNT": 2
+     },
+     "CONDITIONAL_PROBABILITY": {
+      "EVALUATE": 3
+     },
+     "MULTIPLY_CONDITIONALS": {
+      "EVALUATE": 1
+     },
+     "BOUND_REASONING": {
+      "BOUND": 2
+     },
+     "CONSTRAINT_PROPAGATION": {
+      "TRANSFORM": 1
+     },
+     "ENUMERATE": {
+      "ENUMERATE": 2
+     },
+     "COUNT_PERMUTATIONS": {
+      "COUNT": 2
+     },
+     "EVALUATE_PROBABILITY": {
+      "EVALUATE": 2
+     },
+     "MULTIPLY_COUNTS": {
+      "COUNT": 1
+     },
+     "BOUND_SEARCH": {
+      "BOUND": 2
+     },
+     "SELECT_CANDIDATE": {
+      "SELECT": 3
+     },
+     "PARAMETERIZE_CONGRUENCE": {
+      "TRANSFORM": 1
+     },
+     "COUNT_EXCLUDED": {
+      "COUNT": 1
+     },
+     "INDEX_TRANSLATION": {
+      "TRANSFORM": 1
+     },
+     "ADVANCE_SEQUENCE": {
+      "TRANSFORM": 1
+     },
+     "PRIME_FACTORIZE": {
+      "TRANSFORM": 1
+     },
+     "RATIONALIZE": {
+      "TRANSFORM": 1
+     },
+     "CLEAR_DENOMINATOR": {
+      "TRANSFORM": 1
+     },
+     "COMBINE_CASES": {
+      "UNRESOLVED": 1
+     },
+     "CANCEL_SYMMETRIC_TERMS": {
+      "TRANSFORM": 1
+     },
+     "APPLY_PRECEDENCE": {
+      "EVALUATE": 1
+     },
+     "FORMULATE_INEQUALITY": {
+      "MODEL": 1
+     },
+     "SUBTRACT_BOTH_SIDES": {
+      "TRANSFORM": 1
+     },
+     "ROUND_TO_DOMAIN": {
+      "UNRESOLVED": 1
+     },
+     "OTHER": {
+      "UNRESOLVED": 125
+     },
+     "TRANSFORM": {
+      "TRANSFORM": 200
+     },
+     "DISCHARGE": {
+      "DISCHARGE": 87
+     },
+     "CONSTRUCT": {
+      "CONSTRUCT": 9
+     },
+     "SEQUENCE_RECURRENCE": {
+      "TRANSFORM": 23
+     },
+     "MODULAR_REASONING": {
+      "TRANSFORM": 26
+     },
+     "INCLUSION_EXCLUSION": {
+      "COUNT": 2
+     },
+     "OPTIMIZE": {
+      "BOUND": 17
+     },
+     "TRIG_IDENTITY": {
+      "TRANSFORM": 23
+     },
+     "VERIFY": {
+      "VERIFY": 24
+     },
+     "SEARCH_META": {
+      "CONSTRUCT": 3,
+      "UNRESOLVED": 4
+     },
+     "PROBABILITY": {
+      "EVALUATE": 12
+     },
+     "COUNT": {
+      "COUNT": 12
+     },
+     "DIFFERENTIATE": {
+      "TRANSFORM": 1
+     },
+     "TAKE_LIMIT": {
+      "EVALUATE": 1
+     },
+     "CONTRADICTION": {
+      "CONTRADICTION": 6
+     },
+     "INDUCT": {
+      "INDUCT": 7
+     },
+     "BOUND": {
+      "BOUND": 2
+     }
+    },
+    "core_to_observed": {
+     "APPLY_DEFINITION": {
+      "APPLY_DEFINITION": 19
+     },
+     "MODEL": {
+      "FORMULATE_EQUATION": 6,
+      "FORMULATE_INEQUALITY": 1
+     },
+     "TRANSFORM": {
+      "TRANSFORM": 200,
+      "MODULAR_REASONING": 26,
+      "SEQUENCE_RECURRENCE": 23,
+      "TRIG_IDENTITY": 23,
+      "SOLVE": 6,
+      "EXPAND": 4,
+      "FACTOR": 3,
+      "APPLY_IDENTITY": 2,
+      "ADD_BOTH_SIDES": 2,
+      "SOLVE_CASE": 2,
+      "EXTRACT_ROOT": 1,
+      "CROSS_MULTIPLY": 1,
+      "DIVIDE_BOTH_SIDES": 1,
+      "COMBINE_LIKE_TERMS": 1,
+      "CONSTRAINT_PROPAGATION": 1,
+      "PARAMETERIZE_CONGRUENCE": 1,
+      "INDEX_TRANSLATION": 1,
+      "ADVANCE_SEQUENCE": 1,
+      "PRIME_FACTORIZE": 1,
+      "RATIONALIZE": 1,
+      "CLEAR_DENOMINATOR": 1,
+      "CANCEL_SYMMETRIC_TERMS": 1,
+      "SUBTRACT_BOTH_SIDES": 1,
+      "DIFFERENTIATE": 1
+     },
+     "EVALUATE": {
+      "EVALUATE": 30,
+      "PROBABILITY": 12,
+      "CONDITIONAL_PROBABILITY": 3,
+      "EVALUATE_PROBABILITY": 2,
+      "MULTIPLY_CONDITIONALS": 1,
+      "APPLY_PRECEDENCE": 1,
+      "TAKE_LIMIT": 1
+     },
+     "DECLARE": {
+      "INTRODUCE_VARIABLE": 5
+     },
+     "RECORD": {
+      "RECORD_GIVEN": 1
+     },
+     "CASE_SPLIT": {
+      "CASE_SPLIT": 15
+     },
+     "VERIFY": {
+      "VERIFY": 24,
+      "VERIFY_CANDIDATE": 4
+     },
+     "SELECT": {
+      "SELECT_CANDIDATE": 3,
+      "SELECT_EXTREMUM": 1
+     },
+     "SUBSTITUTE": {
+      "SUBSTITUTE": 7
+     },
+     "DISCHARGE": {
+      "DISCHARGE": 87,
+      "DISCHARGE_GOAL": 3
+     },
+     "APPLY_THEOREM": {
+      "APPLY_THEOREM": 29
+     },
+     "UNRESOLVED": {
+      "OTHER": 125,
+      "COUNT_CASES": 4,
+      "SEARCH_META": 4,
+      "RECORD_EQUALITY_CONDITION": 1,
+      "COMBINE_CASES": 1,
+      "ROUND_TO_DOMAIN": 1
+     },
+     "COUNT": {
+      "COUNT": 12,
+      "COMBINE_CASE_COUNTS": 3,
+      "COMPLEMENT_COUNT": 2,
+      "COUNT_PERMUTATIONS": 2,
+      "INCLUSION_EXCLUSION": 2,
+      "MULTIPLY_COUNTS": 1,
+      "COUNT_EXCLUDED": 1
+     },
+     "BOUND": {
+      "OPTIMIZE": 17,
+      "BOUND_REASONING": 2,
+      "BOUND_SEARCH": 2,
+      "BOUND": 2
+     },
+     "ENUMERATE": {
+      "ENUMERATE": 2
+     },
+     "CONSTRUCT": {
+      "CONSTRUCT": 9,
+      "SEARCH_META": 3
+     },
+     "CONTRADICTION": {
+      "CONTRADICTION": 6
+     },
+     "INDUCT": {
+      "INDUCT": 7
+     }
+    },
+    "example_spans_by_core_operation": {
+     "APPLY_DEFINITION": [
+      "For the piecewise function to be continuous, the cases must \"meet\" at $2$ and $-2$.",
+      "to turn $\\log_4 x$ into",
+      "Substituting $-x$ for $x$ gives us $f(g(-x^3)) = f(-g(x^3)) = f(g(x^3))$",
+      "In a four-digit palindrome, the first digit is the same as the last, and the second digit is the same as the third digit."
+     ],
+     "MODEL": [
+      "For example, $ax+3$ and $x-5$ must be equal when $x=2$.",
+      "Similarly, $x-5$ and $2x-b$ must be equal when $x=-2$.",
+      "Then, from the statements given, we have the following system of equations:",
+      "Using the Pythagorean Theorem, we write the equation $x^2 + (x + 1)^2 = 29^2$"
+     ],
+     "TRANSFORM": [
+      "This implies $a(2)+3=2-5$, which we solve to get $2a=-6 \\Rightarrow a=-3$.",
+      "Substituting, we get $-2-5=2(-2)-b$, which implies $b=3$.",
+      "Note that $(x + y)^2 = x^2 + y^2 + 2xy = 90 + 2\\cdot 27 = 144$.",
+      "Taking the square root of 144, we see that $x + y = \\boxed{12}$."
+     ],
+     "EVALUATE": [
+      "So $a+b=-3+3=\\boxed{0}$.",
+      "Thus, $x = \\boxed{16}",
+      "Either way, $xy = \\boxed{-3}$.",
+      "= 3 \\sqrt[3]{8xyz} = 3 \\sqrt[3]{8 \\cdot 8} = 12."
+     ],
+     "DECLARE": [
+      "Call the two integers $x$ and $y$.",
+      "First, let $A = $ Addison's age, $B = $ Brenda's age, and $J = $ Janet's age.",
+      "Let the desired number be $a$.",
+      "Let's call the length of the shorter leg $x$. Then the length of the longer leg is $x + 1$."
+     ],
+     "RECORD": [
+      "We are given that $x^2 + y^2 = 90$ and that $xy = 27$."
+     ],
+     "CASE_SPLIT": [
+      "We can split the expression $|5x-1|=x+3$ into two separate cases.",
+      "Therefore, either $y=-1$ and $x=y+4=3$, or $y=-3$ and $x=y+4=1$.",
+      "There are two cases here: either Tom chooses two yellow marbles (1 result), or he chooses two marbles of different colors",
+      "If $x = e^{\\pi i/6}$, then"
+     ],
+     "VERIFY": [
+      "If we plug this value of $x$ back into the original equation in order to check our answer, we see that $|5(1)-1|=1+3$ or $4=4$.",
+      "If we plug $-\\frac13$ back into the initial equation, we get that",
+      "$\\boxed{34}$ is the smallest solution since it is a lower bound of $a$ and satisfies both original congruences.",
+      "Therefore, Bob must use at least"
+     ],
+     "SELECT": [
+      "the final answer is the larger of the two",
+      "Since 18 is the smallest multiple of 9 that is greater than 10, $14+n=18$, and $n=18-14=\\boxed{4}$.",
+      "Indeed, $20 \\times 21 = 420$, so the legs must be 20 and 21.",
+      "We note that 80 can be factored as $8\\cdot 10$. Therefore, $r = \\boxed{8}$."
+     ],
+     "SUBSTITUTE": [
+      "Since $A=J$, we know that $3B=B+6$.",
+      "Substituting into the second equation, we get",
+      "Substituting this into the second congruence yields \\[4+5n\\equiv 6\\pmod 7\\implies n\\equiv 6\\pmod 7\\]",
+      "= \\frac{1 + \\frac{1}{\\sqrt{3}}}{1 - \\frac{1}{\\sqrt{3}}}"
+     ],
+     "DISCHARGE": [
+      "Thus, Brenda is $\\boxed{3}$ years old.",
+      "so $f(g(x^3))$ is $\\boxed{\\text{even}}$.",
+      "&=\\boxed{20}.",
+      "The probability that I chose one of the numbers 7, 8, 9, or 10 is $\\boxed{\\frac{2}{5}}$."
+     ],
+     "APPLY_THEOREM": [
+      "By AM-GM,",
+      "We know that the prime factorization of 18 is $2\\cdot 3^2$, so in order for the four digit number to be divisible by 18 it must also be divisible by 9 and 2.",
+      "In order for a number to be divisible by 9, the sum of its digits must be divisible by 9 as well.",
+      "From the angle addition formula,"
+     ],
+     "UNRESOLVED": [
+      "Equality occurs when $x = 2y = 4z$ and $xyz = 8.$",
+      "$\\binom{4}{2}=6$ results",
+      "There are 9 options for the first/last digit (1 through 9 -- the first digit cannot be 0)",
+      "and there are 10 options for the second/third digit (0 through 9)."
+     ],
+     "COUNT": [
+      "The total number of distinct pairs of marbles Tom can choose is",
+      "We can find the probability that no women are selected and subtract it from 1",
+      "Now we subtract from 1 to find the probability that at least one woman is selected. The probability is $1-\\frac{7}{24}=\\boxed{\\frac{17}{24}}$.",
+      "A) The dice are 6, 6, 4."
+     ],
+     "BOUND": [
+      "At least one of the dice must come up 6, since otherwise the best we can do is 15.",
+      "Thus, $3+7+4+n$, or $14+n$, must be divisible by 9.",
+      "So $n$ has a lower bound of $6$.",
+      "Then $n\\ge 6\\implies a=4+5n\\ge 34$."
+     ],
+     "ENUMERATE": [
+      "There are two ways two dice add to 10: $4+6$ and $5+5$.",
+      "so $n$ can be any integer from $5$ to $13,$ inclusive."
+     ],
+     "CONSTRUCT": [
+      "Let $k$ be a positive integer.",
+      "Let $P'$ be the prism similar to $P$, and let the sides of $P'$ be of length $x,y,z$, such that $x \\le y \\le z$.",
+      "Without loss of generality, let the first point $A$ be in the bottom-left segment.",
+      "Let $a, b$ represent the number of marbles in each box, and without loss of generality let $a>b$."
+     ],
+     "CONTRADICTION": [
+      "A little thought makes it clear that at least one of these 5's appears as the last digit in its number (that is, $A_3=5$ or $B_3=5$) since if neither of them appears as the last digit in a number, the",
+      "If $wz = 1,$ then from the equation $x = z + w + zwx,$\n\\[z + w = 0.\\]Then $wz = -w^2,$ which cannot be equal to 1, contradiction.",
+      "If $a = 9,$ then $\\angle A = \\angle C,$ which implies $A + B + C = 4C = 180^\\circ.$  Then $B = 2C = 90^\\circ,$ contradiction, because a triangle with sides 9, 9, and 15 is not a right triangle.",
+      "However, since $b$ must be a positive integer, $2^{b-1}+b$ must also be an integer, and we have a contradiction."
+     ],
+     "INDUCT": [
+      "\\]It follows by induction that $x_n = \\cot \\theta_n$.",
+      "Let's prove by induction that the $n$th term of the sequence is $2^{n-2}$ for all integers $n\\geq 2$.",
+      "The base case $n=2$ holds since the second term of the sequence is the sum of all the terms before it, which is just 1.",
+      "For the induction step, let $n>2$ and suppose that the $(n-1)$st term is $2^{n-1-2}=2^{n-3}$."
+     ]
+    },
+    "disagreements": {
+     "{'trajectory': 'MATH-GOLD-027', 'step': 's23', 'category': 'Intermediate Algebra": 1,
+     "{'trajectory': 'MATH-GOLD-028', 'step': 's3', 'category': 'Counting & Probabilit": 1,
+     "{'trajectory': 'MATH-GOLD-028', 'step': 's7', 'category': 'Counting & Probabilit": 1,
+     "{'trajectory': 'MATH-GOLD-028', 'step': 's9', 'category': 'Counting & Probabilit": 1,
+     "{'trajectory': 'MATH-GOLD-030', 'step': 's1', 'category': 'Precalculus', 'source": 1,
+     "{'trajectory': 'MATH-GOLD-030', 'step': 's12', 'category': 'Precalculus', 'sourc": 1,
+     "{'trajectory': 'MATH-GOLD-030', 'step': 's18', 'category': 'Precalculus', 'sourc": 1,
+     "{'trajectory': 'MATH-GOLD-030', 'step': 's2', 'category': 'Precalculus', 'source": 1,
+     "{'trajectory': 'MATH-GOLD-030', 'step': 's20', 'category': 'Precalculus', 'sourc": 1,
+     "{'trajectory': 'MATH-GOLD-030', 'step': 's3', 'category': 'Precalculus', 'source": 1,
+     "{'trajectory': 'MATH-GOLD-030', 'step': 's4', 'category': 'Precalculus', 'source": 1,
+     "{'trajectory': 'MATH-GOLD-030', 'step': 's5', 'category': 'Precalculus', 'source": 1,
+     "{'trajectory': 'MATH-GOLD-031', 'step': 's2', 'category': 'Geometry', 'source_sp": 1,
+     "{'trajectory': 'MATH-GOLD-031', 'step': 's3', 'category': 'Geometry', 'source_sp": 1,
+     "{'trajectory': 'MATH-GOLD-031', 'step': 's4', 'category': 'Geometry', 'source_sp": 1,
+     "{'trajectory': 'MATH-GOLD-031', 'step': 's8', 'category': 'Geometry', 'source_sp": 1,
+     "{'trajectory': 'MATH-GOLD-033', 'step': 's1', 'category': 'Algebra', 'source_spa": 1,
+     "{'trajectory': 'MATH-GOLD-033', 'step': 's11', 'category': 'Algebra', 'source_sp": 1,
+     "{'trajectory': 'MATH-GOLD-033', 'step': 's15', 'category': 'Algebra', 'source_sp": 1,
+     "{'trajectory': 'MATH-GOLD-033', 'step': 's16', 'category': 'Algebra', 'source_sp": 1,
+     "{'trajectory': 'MATH-GOLD-033', 'step': 's6', 'category': 'Algebra', 'source_spa": 1,
+     "{'trajectory': 'MATH-GOLD-037', 'step': 's1', 'category': 'Precalculus', 'source": 1,
+     "{'trajectory': 'MATH-GOLD-037', 'step': 's4', 'category': 'Precalculus', 'source": 1,
+     "{'trajectory': 'MATH-GOLD-037', 'step': 's5', 'category': 'Precalculus', 'source": 1,
+     "{'trajectory': 'MATH-GOLD-037', 'step': 's6', 'category': 'Precalculus', 'source": 1,
+     "{'trajectory': 'MATH-GOLD-043', 'step': 's1', 'category': 'Number Theory', 'sour": 1,
+     "{'trajectory': 'MATH-GOLD-043', 'step': 's10', 'category': 'Number Theory', 'sou": 1,
+     "{'trajectory': 'MATH-GOLD-043', 'step': 's23', 'category': 'Number Theory', 'sou": 1,
+     "{'trajectory': 'MATH-GOLD-044', 'step': 's1', 'category': 'Precalculus', 'source": 1,
+     "{'trajectory': 'MATH-GOLD-044', 'step': 's2', 'category': 'Precalculus', 'source": 1,
+     "{'trajectory': 'MATH-GOLD-044', 'step': 's3', 'category': 'Precalculus', 'source": 1,
+     "{'trajectory': 'MATH-GOLD-048', 'step': 's14', 'category': 'Intermediate Algebra": 1,
+     "{'trajectory': 'MATH-GOLD-048', 'step': 's6', 'category': 'Intermediate Algebra'": 1,
+     "{'trajectory': 'MATH-GOLD-069', 'step': 's10', 'category': 'Intermediate Algebra": 1,
+     "{'trajectory': 'MATH-GOLD-086', 'step': 's6', 'category': 'Precalculus', 'source": 1,
+     "{'trajectory': 'MATH-GOLD-092', 'step': 's16', 'category': 'Number Theory', 'sou": 1,
+     "{'trajectory': 'MATH-GOLD-092', 'step': 's17', 'category': 'Number Theory', 'sou": 1,
+     "{'trajectory': 'MATH-GOLD-100', 'step': 's1', 'category': 'Precalculus', 'source": 1,
+     "{'trajectory': 'MATH-GOLD-100', 'step': 's2', 'category': 'Precalculus', 'source": 1,
+     "{'trajectory': 'MATH-GOLD-100', 'step': 's3', 'category': 'Precalculus', 'source": 1,
+     "{'trajectory': 'MATH-GOLD-100', 'step': 's4', 'category': 'Precalculus', 'source": 1,
+     "{'trajectory': 'MATH-GOLD-100', 'step': 's5', 'category': 'Precalculus', 'source": 1,
+     "{'trajectory': 'MATH-GOLD-107', 'step': 's6', 'category': 'Precalculus', 'source": 1
+    }
+   },
+   "gold10": {
+    "n_files": 10,
+    "n_actions": 23,
+    "operations": {
+     "discharge_goal": 2,
+     "segment_and_resolve_domain": 1,
+     "subtract_same_term_from_both_sides": 1,
+     "normalize_and_evaluate_arithmetic": 1,
+     "substitute_established_value": 1,
+     "evaluate_numeric_expression": 1,
+     "evaluate_leaf_function": 1,
+     "propagate_function_dependency": 1,
+     "evaluate_function_result": 1,
+     "check_order_preserving_precondition": 1,
+     "multiply_inequality": 1,
+     "modus_ponens": 1,
+     "construct_non_entailment_countermodel": 1,
+     "assign_undetermined_epistemic_status": 1,
+     "resolve_quantifier_binder": 1,
+     "apply_identity_law_under_quantifier": 1,
+     "modus_tollens": 1,
+     "construct_conditional_product": 1,
+     "evaluate_probability_product": 1,
+     "check_derivative_domain_precondition": 1,
+     "differentiate_reciprocal": 1,
+     "evaluate_derivative_at_point": 1
+    },
+    "reasoning_stage_coverage": {
+     "1": 10,
+     "2": 10,
+     "3": 10,
+     "4": 1,
+     "5": 9,
+     "6": 9,
+     "7": 2,
+     "8": 4,
+     "9": 1,
+     "10": 17,
+     "11": 8,
+     "12": 6,
+     "13": 17,
+     "14": 21,
+     "15": 21,
+     "16": 10
+    },
+    "warrant_kinds": {
+     "arithmetic_evaluation": 5,
+     "logical_inference": 2,
+     "goal_adjudication": 2,
+     "problem_analysis": 1,
+     "equality_preservation": 1,
+     "equality_substitution": 1,
+     "function_application": 1,
+     "dependency_substitution": 1,
+     "order_precondition": 1,
+     "order_preservation": 1,
+     "logical_countermodel": 1,
+     "epistemic_adjudication": 1,
+     "scope_resolution": 1,
+     "theorem_application": 1,
+     "probability_rule": 1,
+     "partial_operation_guard": 1,
+     "calculus_rule": 1
+    },
+    "hml_support": {
+     "EXPRESSIBLE_CURRENT_HML": 11,
+     "EXPRESSIBLE_WITH_LIBRARY": 8,
+     "REQUIRES_NEW_CORE_SEMANTIC": 3,
+     "AMBIGUOUS_OR_HUMAN_IMPLICIT": 1
+    },
+    "examples": {
+     "segment_and_resolve_domain": [
+      "Identify x as the real-valued unknown in the equation."
+     ],
+     "subtract_same_term_from_both_sides": [
+      "Subtracting the same term from both sides preserves equality."
+     ],
+     "normalize_and_evaluate_arithmetic": [
+      "Normalize x - 0 = 5 - 2 to x = 3."
+     ],
+     "substitute_established_value": [
+      "Replace a by its established equal value in the definition of b."
+     ],
+     "evaluate_numeric_expression": [
+      "Evaluate 2 + 3 to obtain b = 5."
+     ],
+     "evaluate_leaf_function": [
+      "Apply f(x) = x + 1 at x = 3."
+     ],
+     "propagate_function_dependency": [
+      "Use f(3) inside the definition of g."
+     ],
+     "evaluate_function_result": [
+      "Evaluate 2 * 4 to obtain 8."
+     ],
+     "check_order_preserving_precondition": [
+      "A positive multiplier preserves the direction of a strict inequality."
+     ],
+     "multiply_inequality": [
+      "Multiply both sides by 3 while preserving the strict direction."
+     ],
+     "modus_ponens": [
+      "P and P implies Q entail Q."
+     ],
+     "discharge_goal": [
+      "The verified derivation conclusion matches the open goal.",
+      "The verified contrapositive conclusion matches the goal."
+     ],
+     "construct_non_entailment_countermodel": [
+      "Assign P=false and Q=true; both premises remain true while P is false."
+     ],
+     "assign_undetermined_epistemic_status": [
+      "A countermodel blocks entailment; no valuation analysis establishes negation either."
+     ],
+     "resolve_quantifier_binder": [
+      "Bind n over Natural and limit its scope to the body proposition."
+     ],
+     "apply_identity_law_under_quantifier": [
+      "Apply n + 0 = n uniformly to an arbitrary natural n and close the forall goal."
+     ],
+     "modus_tollens": [
+      "not Q and P implies Q entail not P."
+     ],
+     "construct_conditional_product": [
+      "Use P(A and B) = P(A)P(B | A)."
+     ],
+     "evaluate_probability_product": [
+      "Evaluate 0.5 * 0.8 to obtain 0.4."
+     ],
+     "check_derivative_domain_precondition": [
+      "The reciprocal and its derivative require a nonzero evaluation point."
+     ],
+     "differentiate_reciprocal": [
+      "Differentiate 1/x to obtain -1/x^2 under x != 0."
+     ],
+     "evaluate_derivative_at_point": [
+      "Substitute x = 2 into -1/x^2 and simplify to -1/4."
+     ]
+    }
+   },
+   "synthetic_math": {
+    "n_transitions": 3978,
+    "operations": {
+     "TRANSFORM": 3074,
+     "SELECT": 196,
+     "CASE_SPLIT": 169,
+     "APPLY_THEOREM": 140,
+     "SUBSTITUTE": 137,
+     "EVALUATE": 97,
+     "BOUND": 62,
+     "VERIFY": 43,
+     "COUNT": 29,
+     "APPLY_DEFINITION": 9,
+     "MODEL": 7,
+     "CONSTRUCT": 7,
+     "INDUCT": 4,
+     "CONTRADICTION": 2,
+     "DECLARE": 2
+    },
+    "mechanisms": {
+     "algebraic_or_logical_transformation": 2271,
+     "squaring_or_roots": 229,
+     "matrix_or_vector": 208,
+     "domain_restriction": 149,
+     "substitution": 128,
+     "case_split": 114,
+     "theorem_application": 106,
+     "division_or_cancellation": 101,
+     "candidate_reasoning": 84,
+     "differentiation": 63,
+     "approximation": 51,
+     "probability_model": 41,
+     "domain_restriction, division_or_cancellation": 38,
+     "squaring_or_roots, candidate_reasoning": 37,
+     "limit_or_convergence": 30,
+     "squaring_or_roots, theorem_application": 26,
+     "squaring_or_roots, inequality_sign": 18,
+     "inequality_sign": 16,
+     "squaring_or_roots, matrix_or_vector": 15,
+     "differentiation, integration": 13,
+     "domain_restriction, matrix_or_vector": 13,
+     "candidate_reasoning, matrix_or_vector": 12,
+     "squaring_or_roots, approximation": 11,
+     "squaring_or_roots, case_split": 11,
+     "integration": 11,
+     "squaring_or_roots, substitution": 10,
+     "domain_restriction, case_split": 10,
+     "domain_restriction, squaring_or_roots": 9,
+     "domain_restriction, candidate_reasoning": 8,
+     "approximation, probability_model": 8,
+     "inequality_sign, case_split": 6,
+     "division_or_cancellation, case_split": 6,
+     "squaring_or_roots, inequality_sign, candidate_reasoning": 6,
+     "substitution, case_split": 4,
+     "domain_restriction, theorem_application": 4,
+     "division_or_cancellation, inequality_sign": 4,
+     "theorem_application, differentiation": 4,
+     "domain_restriction, differentiation": 4,
+     "division_or_cancellation, approximation": 4,
+     "squaring_or_roots, approximation, probability_model": 4,
+     "domain_restriction, division_or_cancellation, case_split": 3,
+     "squaring_or_roots, inequality_sign, case_split": 3,
+     "substitution, candidate_reasoning": 3,
+     "squaring_or_roots, candidate_reasoning, theorem_application": 3,
+     "domain_restriction, inequality_sign": 3,
+     "domain_restriction, squaring_or_roots, candidate_reasoning": 3,
+     "theorem_application, limit_or_convergence": 3,
+     "theorem_application, approximation": 3,
+     "substitution, matrix_or_vector": 3,
+     "case_split, matrix_or_vector": 3,
+     "squaring_or_roots, matrix_or_vector, construction": 3,
+     "induction": 3,
+     "division_or_cancellation, squaring_or_roots": 2,
+     "division_or_cancellation, squaring_or_roots, candidate_reasoning": 2,
+     "domain_restriction, substitution": 2,
+     "squaring_or_roots, candidate_reasoning, case_split": 2,
+     "theorem_application, integration": 2,
+     "squaring_or_roots, differentiation": 2,
+     "domain_restriction, division_or_cancellation, squaring_or_roots": 2,
+     "domain_restriction, division_or_cancellation, matrix_or_vector": 2,
+     "domain_restriction, theorem_application, matrix_or_vector": 2,
+     "matrix_or_vector, probability_model": 2,
+     "matrix_or_vector, construction": 2,
+     "squaring_or_roots, candidate_reasoning, matrix_or_vector": 2,
+     "squaring_or_roots, substitution, theorem_application": 1,
+     "inequality_sign, candidate_reasoning, case_split": 1,
+     "division_or_cancellation, candidate_reasoning": 1,
+     "domain_restriction, inequality_sign, case_split": 1,
+     "candidate_reasoning, limit_or_convergence": 1,
+     "candidate_reasoning, case_split": 1,
+     "squaring_or_roots, case_split, theorem_application": 1,
+     "domain_restriction, division_or_cancellation, inequality_sign": 1,
+     "domain_restriction, division_or_cancellation, limit_or_convergence": 1,
+     "theorem_application, differentiation, integration": 1,
+     "inequality_sign, integration": 1,
+     "domain_restriction, theorem_application, differentiation": 1,
+     "squaring_or_roots, limit_or_convergence": 1,
+     "case_split, differentiation": 1,
+     "domain_restriction, division_or_cancellation, candidate_reasoning": 1,
+     "substitution, theorem_application, probability_model": 1,
+     "substitution, differentiation": 1,
+     "domain_restriction, approximation": 1,
+     "squaring_or_roots, substitution, approximation, probability_model": 1,
+     "division_or_cancellation, approximation, probability_model": 1,
+     "theorem_application, matrix_or_vector": 1,
+     "domain_restriction, matrix_or_vector, construction": 1,
+     "domain_restriction, case_split, matrix_or_vector": 1,
+     "domain_restriction, candidate_reasoning, matrix_or_vector": 1,
+     "construction": 1,
+     "candidate_reasoning, differentiation, matrix_or_vector": 1,
+     "case_split, probability_model, induction": 1,
+     "domain_restriction, theorem_application, limit_or_convergence": 1,
+     "probability_model, induction": 1,
+     "squaring_or_roots, probability_model": 1,
+     "domain_restriction, matrix_or_vector, probability_model": 1
+    },
+    "status": {
+     "REPRESENTABLE_BUT_CURRENTLY_UNVERIFIABLE": 2640,
+     "GENUINE_HML_SEMANTIC_GAP": 811,
+     "FULLY_REPRESENTABLE_AND_BACKEND_VERIFIED": 453,
+     "REQUIRES_EXISTING_TRUSTED_BACKEND_OR_LIBRARY": 74
+    },
+    "backend": {
+     "UNSUPPORTED_FRAGMENT": 3116,
+     "SYMPY_VERIFIED": 551,
+     "SYMPY_MISMATCH": 209,
+     "NOT_APPLICABLE": 102
+    },
+    "examples": {
+     "TRANSFORM": [
+      "TRANSFORM` \u2014 Subtract $7$ from **both sides**",
+      "TRANSFORM` \u2014 Cancel $+7-7$",
+      "TRANSFORM` \u2014 No explicit warrant text occurs between the two source states."
+     ],
+     "VERIFY": [
+      "VERIFY` \u2014 Check",
+      "VERIFY` \u2014 Check",
+      "VERIFY` \u2014 Check"
+     ],
+     "COUNT": [
+      "COUNT` \u2014 Choose",
+      "COUNT` \u2014 Choose $5,-4$",
+      "COUNT` \u2014 Choose"
+     ],
+     "CASE_SPLIT": [
+      "CASE_SPLIT` \u2014 Split $7x$",
+      "CASE_SPLIT` \u2014 Split",
+      "CASE_SPLIT` \u2014 Split"
+     ],
+     "SUBSTITUTE": [
+      "SUBSTITUTE` \u2014 Substitute",
+      "SUBSTITUTE` \u2014 Substitute into",
+      "SUBSTITUTE` \u2014 Substitute into"
+     ],
+     "EVALUATE": [
+      "EVALUATE` \u2014 Calculate $4^2$",
+      "EVALUATE` \u2014 Calculate",
+      "EVALUATE` \u2014 Evaluate exponent"
+     ],
+     "APPLY_THEOREM": [
+      "APPLY_THEOREM` \u2014 Equivalent exponent rule",
+      "APPLY_THEOREM` \u2014 The rule for $f$ is",
+      "APPLY_THEOREM` \u2014 by the logarithm product rule. Thus"
+     ],
+     "SELECT": [
+      "SELECT` \u2014 A square root is non-negative. Therefore right side must satisfy",
+      "SELECT` \u2014 Therefore candidates",
+      "SELECT` \u2014 Since the square root is non-negative"
+     ],
+     "BOUND": [
+      "BOUND` \u2014 because adding the same real number to both sides preserves inequality direction.",
+      "BOUND` \u2014 because division by a **positive** quantity preserves inequality direction.",
+      "BOUND` \u2014 Boundary $x=4$"
+     ],
+     "CONTRADICTION": [
+      "CONTRADICTION` \u2014 a contradiction. Therefore $y=2$ is not in the original range. Hence",
+      "CONTRADICTION` \u2014 Contradiction. Therefore"
+     ],
+     "APPLY_DEFINITION": [
+      "APPLY_DEFINITION` \u2014 which is satisfied. CANDIDATE GENERATION Definition",
+      "APPLY_DEFINITION` \u2014 Expression is undefined. Reject. Candidate $3$: Numerator",
+      "APPLY_DEFINITION` \u2014 Correlation definition"
+     ],
+     "MODEL": [
+      "MODEL` \u2014 Log-likelihood",
+      "MODEL` \u2014 Likelihood given no disease",
+      "MODEL` \u2014 Likelihood"
+     ],
+     "CONSTRUCT": [
+      "CONSTRUCT` \u2014 Construct matching diagonal matrix",
+      "CONSTRUCT` \u2014 $P^{-1}$ exists. Construct",
+      "CONSTRUCT` \u2014 Construct"
+     ],
+     "DECLARE": [
+      "DECLARE` \u2014 Define",
+      "DECLARE` \u2014 So two real intersection points. Now define system functions"
+     ],
+     "INDUCT": [
+      "INDUCT` \u2014 Base case holds. INDUCTIVE HYPOTHESIS: Assume for some $k\\ge1$",
+      "INDUCT` \u2014 INDUCTIVE STEP: Need prove",
+      "INDUCT` \u2014 edges. INDUCTIVE HYPOTHESIS: Every tree with $k$ vertices has $k-1$ edges. INDUCTIVE STEP: Take a tree with $k+1$ vertices. A fini"
+     ]
+    }
+   }
+  },
+  "formal": {
+   "micromath_lab_v2": {
+    "n_items": 611,
+    "relation": {
+     "ACTION_ARG": 96,
+     "USE_OWNER": 96,
+     "ACTION_REQUIRES": 96,
+     "DEEPEST_REFERENCE": 96,
+     "DEPENDS_ON(v19)": 17,
+     "TYPE_OF(v43)": 10,
+     "TYPE_OF(v91)": 10,
+     "TYPE_OF(v36)": 7,
+     "TYPE_OF(v49)": 7,
+     "TYPE_OF(v35)": 7,
+     "TYPE_OF(v34)": 7,
+     "DEPENDS_ON(v69)": 6,
+     "TYPE_OF(v78)": 5,
+     "SCOPE_OWNER(h93)": 5,
+     "DEPENDS_ON(v57)": 5,
+     "TYPE_OF(v58)": 4,
+     "DEPENDS_ON(v45)": 4,
+     "DEPENDS_ON(v22)": 4,
+     "DEPENDS_ON(v15)": 4,
+     "DEPENDS_ON(h91)": 4,
+     "DEPENDS_ON(v40)": 4,
+     "DEPENDS_ON(v14)": 3,
+     "DEPENDS_ON(v59)": 3,
+     "DEPENDS_ON(h32)": 3,
+     "TYPE_OF(h46)": 3,
+     "DEPENDS_ON(v43)": 3,
+     "DEPENDS_ON(v82)": 3,
+     "TYPE_OF(v73)": 2,
+     "TYPE_OF(h14)": 2,
+     "SCOPE_OWNER(h71)": 2,
+     "TYPE_OF(v50)": 2,
+     "DEPENDS_ON(v63)": 2,
+     "DEPENDS_ON(h34)": 2,
+     "DEPENDS_ON(v41)": 2,
+     "DEPENDS_ON(h79)": 2,
+     "TYPE_OF(h50)": 2,
+     "DEPENDS_ON(h75)": 2,
+     "TYPE_OF(h92)": 2,
+     "DEPENDS_ON(v39)": 2,
+     "DEPENDS_ON(h74)": 2,
+     "TYPE_OF(v93)": 2,
+     "SCOPE_OWNER(h16)": 2,
+     "DEPENDS_ON(h86)": 2,
+     "TYPE_OF(v33)": 2,
+     "TYPE_OF(v27)": 2,
+     "SCOPE_OWNER(v16)": 2,
+     "SCOPE_OWNER(v40)": 2,
+     "DEPENDS_ON(v123)": 1,
+     "SCOPE_OWNER(v107)": 1,
+     "DEPENDS_ON(h10)": 1,
+     "TYPE_OF(h127)": 1,
+     "SCOPE_OWNER(v18)": 1,
+     "SCOPE_OWNER(h76)": 1,
+     "SCOPE_OWNER(h104)": 1,
+     "SCOPE_OWNER(v137)": 1,
+     "DEPENDS_ON(h56)": 1,
+     "TYPE_OF(h72)": 1,
+     "TYPE_OF(v81)": 1,
+     "TYPE_OF(h29)": 1,
+     "SCOPE_OWNER(h19)": 1,
+     "SCOPE_OWNER(h63)": 1,
+     "SCOPE_OWNER(v87)": 1,
+     "SCOPE_OWNER(h22)": 1,
+     "TYPE_OF(v186)": 1,
+     "TYPE_OF(h76)": 1,
+     "DEPENDS_ON(v80)": 1,
+     "SCOPE_OWNER(h30)": 1,
+     "DEPENDS_ON(v79)": 1,
+     "SCOPE_OWNER(h80)": 1,
+     "TYPE_OF(v67)": 1,
+     "TYPE_OF(h67)": 1,
+     "TYPE_OF(v57)": 1,
+     "DEPENDS_ON(v62)": 1,
+     "TYPE_OF(v96)": 1,
+     "DEPENDS_ON(v75)": 1,
+     "SCOPE_OWNER(v88)": 1,
+     "SCOPE_OWNER(h34)": 1,
+     "TYPE_OF(v95)": 1,
+     "TYPE_OF(v119)": 1,
+     "DEPENDS_ON(h71)": 1,
+     "TYPE_OF(v75)": 1,
+     "SCOPE_OWNER(h10)": 1,
+     "DEPENDS_ON(v89)": 1,
+     "SCOPE_OWNER(v24)": 1,
+     "DEPENDS_ON(v38)": 1,
+     "DEPENDS_ON(v67)": 1,
+     "DEPENDS_ON(h38)": 1,
+     "SCOPE_OWNER(h26)": 1,
+     "TYPE_OF(h82)": 1,
+     "SCOPE_OWNER(h148)": 1,
+     "TYPE_OF(h12)": 1,
+     "SCOPE_OWNER(h82)": 1,
+     "SCOPE_OWNER(h59)": 1,
+     "DEPENDS_ON(v68)": 1,
+     "DEPENDS_ON(v70)": 1,
+     "SCOPE_OWNER(v48)": 1,
+     "TYPE_OF(h68)": 1,
+     "SCOPE_OWNER(h39)": 1,
+     "TYPE_OF(v21)": 1,
+     "TYPE_OF(v79)": 1,
+     "TYPE_OF(v40)": 1,
+     "SCOPE_OWNER(h38)": 1,
+     "DEPENDS_ON(v95)": 1,
+     "TYPE_OF(v61)": 1,
+     "DEPENDS_ON(v97)": 1,
+     "DEPENDS_ON(v120)": 1
+    },
+    "stress": {
+     "ACTION_ARGUMENT": 96,
+     "BINDER": 96,
+     "DEPENDENCY": 96,
+     "PREMISE": 96,
+     "TYPE": 96,
+     "EXPRESSION_DEPTH": 96,
+     "SCOPE": 35
+    },
+    "by_split": {
+     "micro_dev_v2": {
+      "ACTION_ARG": 48,
+      "USE_OWNER": 47,
+      "ACTION_REQUIRES": 46,
+      "DEEPEST_REFERENCE": 45,
+      "DEPENDS_ON(v19)": 7,
+      "TYPE_OF(v43)": 5,
+      "TYPE_OF(v78)": 5,
+      "SCOPE_OWNER(h93)": 5,
+      "TYPE_OF(v91)": 5,
+      "DEPENDS_ON(v15)": 4,
+      "TYPE_OF(v36)": 3,
+      "DEPENDS_ON(v45)": 3,
+      "TYPE_OF(v35)": 3,
+      "SCOPE_OWNER(h71)": 2,
+      "TYPE_OF(v49)": 2,
+      "TYPE_OF(v58)": 2,
+      "DEPENDS_ON(v14)": 2,
+      "DEPENDS_ON(v57)": 2,
+      "DEPENDS_ON(v59)": 2,
+      "DEPENDS_ON(v63)": 2,
+      "DEPENDS_ON(v41)": 2,
+      "TYPE_OF(h50)": 2,
+      "DEPENDS_ON(h32)": 2,
+      "TYPE_OF(h46)": 2,
+      "DEPENDS_ON(v39)": 2,
+      "DEPENDS_ON(v43)": 2,
+      "TYPE_OF(v34)": 2,
+      "DEPENDS_ON(v69)": 2,
+      "DEPENDS_ON(v123)": 1,
+      "TYPE_OF(v73)": 1,
+      "TYPE_OF(h14)": 1,
+      "SCOPE_OWNER(v107)": 1,
+      "DEPENDS_ON(h10)": 1,
+      "TYPE_OF(v50)": 1,
+      "TYPE_OF(h127)": 1,
+      "SCOPE_OWNER(v18)": 1,
+      "SCOPE_OWNER(h76)": 1,
+      "SCOPE_OWNER(h104)": 1,
+      "SCOPE_OWNER(v137)": 1,
+      "DEPENDS_ON(h56)": 1,
+      "TYPE_OF(h72)": 1,
+      "TYPE_OF(v81)": 1,
+      "TYPE_OF(h29)": 1,
+      "DEPENDS_ON(v22)": 1,
+      "SCOPE_OWNER(h19)": 1,
+      "SCOPE_OWNER(h63)": 1,
+      "DEPENDS_ON(h34)": 1,
+      "SCOPE_OWNER(v87)": 1,
+      "SCOPE_OWNER(h22)": 1,
+      "TYPE_OF(v186)": 1,
+      "TYPE_OF(h76)": 1,
+      "DEPENDS_ON(v80)": 1,
+      "DEPENDS_ON(h79)": 1,
+      "DEPENDS_ON(h75)": 1,
+      "SCOPE_OWNER(h30)": 1,
+      "TYPE_OF(h92)": 1,
+      "DEPENDS_ON(v79)": 1,
+      "SCOPE_OWNER(h80)": 1,
+      "TYPE_OF(v67)": 1,
+      "TYPE_OF(h67)": 1,
+      "DEPENDS_ON(h74)": 1,
+      "DEPENDS_ON(h91)": 1,
+      "TYPE_OF(v57)": 1,
+      "DEPENDS_ON(v62)": 1,
+      "TYPE_OF(v96)": 1,
+      "DEPENDS_ON(v75)": 1,
+      "SCOPE_OWNER(v88)": 1,
+      "SCOPE_OWNER(h34)": 1,
+      "TYPE_OF(v95)": 1,
+      "TYPE_OF(v119)": 1,
+      "TYPE_OF(v93)": 1,
+      "DEPENDS_ON(h71)": 1,
+      "SCOPE_OWNER(h16)": 1
+     },
+     "micro_hidden_v2": {
+      "ACTION_REQUIRES": 31,
+      "DEEPEST_REFERENCE": 29,
+      "USE_OWNER": 29,
+      "ACTION_ARG": 24,
+      "DEPENDS_ON(v19)": 6,
+      "TYPE_OF(v35)": 4,
+      "TYPE_OF(v36)": 4,
+      "TYPE_OF(v34)": 4,
+      "TYPE_OF(v49)": 3,
+      "DEPENDS_ON(v69)": 3,
+      "DEPENDS_ON(v22)": 3,
+      "TYPE_OF(v91)": 3,
+      "DEPENDS_ON(v82)": 3,
+      "DEPENDS_ON(v40)": 2,
+      "DEPENDS_ON(v57)": 2,
+      "DEPENDS_ON(h91)": 2,
+      "TYPE_OF(v43)": 2,
+      "TYPE_OF(v73)": 1,
+      "DEPENDS_ON(h86)": 1,
+      "TYPE_OF(v75)": 1,
+      "TYPE_OF(v33)": 1,
+      "SCOPE_OWNER(h10)": 1,
+      "DEPENDS_ON(h74)": 1,
+      "DEPENDS_ON(v89)": 1,
+      "TYPE_OF(v58)": 1,
+      "DEPENDS_ON(h79)": 1,
+      "TYPE_OF(h14)": 1,
+      "SCOPE_OWNER(v24)": 1,
+      "DEPENDS_ON(v38)": 1,
+      "DEPENDS_ON(h34)": 1,
+      "DEPENDS_ON(v67)": 1,
+      "DEPENDS_ON(h38)": 1,
+      "SCOPE_OWNER(h26)": 1,
+      "TYPE_OF(h82)": 1,
+      "SCOPE_OWNER(h148)": 1,
+      "TYPE_OF(h92)": 1,
+      "TYPE_OF(h12)": 1,
+      "TYPE_OF(v50)": 1
+     },
+     "micro_shadow_v2": {
+      "ACTION_ARG": 24,
+      "DEEPEST_REFERENCE": 22,
+      "USE_OWNER": 20,
+      "ACTION_REQUIRES": 19,
+      "DEPENDS_ON(v19)": 4,
+      "TYPE_OF(v43)": 3,
+      "DEPENDS_ON(v40)": 2,
+      "TYPE_OF(v91)": 2,
+      "TYPE_OF(v49)": 2,
+      "TYPE_OF(v27)": 2,
+      "SCOPE_OWNER(v16)": 2,
+      "SCOPE_OWNER(v40)": 2,
+      "TYPE_OF(h46)": 1,
+      "SCOPE_OWNER(h82)": 1,
+      "DEPENDS_ON(v59)": 1,
+      "DEPENDS_ON(h91)": 1,
+      "DEPENDS_ON(v14)": 1,
+      "SCOPE_OWNER(h59)": 1,
+      "DEPENDS_ON(v57)": 1,
+      "TYPE_OF(v93)": 1,
+      "DEPENDS_ON(v68)": 1,
+      "DEPENDS_ON(v70)": 1,
+      "DEPENDS_ON(v45)": 1,
+      "SCOPE_OWNER(v48)": 1,
+      "TYPE_OF(v33)": 1,
+      "TYPE_OF(h68)": 1,
+      "SCOPE_OWNER(h39)": 1,
+      "SCOPE_OWNER(h16)": 1,
+      "TYPE_OF(v21)": 1,
+      "DEPENDS_ON(h75)": 1,
+      "TYPE_OF(v34)": 1,
+      "TYPE_OF(v79)": 1,
+      "DEPENDS_ON(h32)": 1,
+      "TYPE_OF(v40)": 1,
+      "DEPENDS_ON(v69)": 1,
+      "DEPENDS_ON(v43)": 1,
+      "TYPE_OF(v58)": 1,
+      "SCOPE_OWNER(h38)": 1,
+      "DEPENDS_ON(v95)": 1,
+      "DEPENDS_ON(h86)": 1,
+      "TYPE_OF(v61)": 1,
+      "DEPENDS_ON(v97)": 1,
+      "DEPENDS_ON(v120)": 1
+     }
+    }
+   },
+   "hmlv3_1150_spotcheck": {
+    "search_pool_v2": {
+     "rows": 918,
+     "tactic_family": {
+      "None": 918
+     },
+     "recorded_effect_class": {
+      "None": 918
+     }
+    },
+    "sealed_final_v2": {
+     "rows": 232,
+     "tactic_family": {
+      "None": 232
+     },
+     "recorded_effect_class": {
+      "None": 232
+     }
+    },
+    "partition_a_total": 1150
+   },
+   "leandojo_random_val_test": {
+    "files": [
+     "random/val.json",
+     "random/test.json"
+    ],
+    "n_theorems": 4000,
+    "n_tactics": 8766,
+    "distinct_tactic_heads": 146,
+    "tactic_head_all": {
+     "rw": 1658,
+     "simp": 1113,
+     "exact": 1066,
+     "have": 579,
+     "refine": 478,
+     "apply": 291,
+     "intro": 291,
+     "simpa": 215,
+     "obtain": 215,
+     "rintro": 177,
+     "rcases": 174,
+     "ext": 160,
+     "simp_rw": 148,
+     "let": 132,
+     "rfl": 124,
+     "rwa": 107,
+     "convert": 100,
+     "dsimp": 98,
+     "by_cases": 90,
+     "constructor": 85,
+     "cases": 75,
+     "congr": 57,
+     "use": 52,
+     "gcongr": 49,
+     "induction'": 48,
+     "cases'": 47,
+     "suffices": 46,
+     "ring": 44,
+     "filter_upwards": 39,
+     "induction": 38,
+     "erw": 34,
+     "linarith": 33,
+     "positivity": 32,
+     "calc": 32,
+     "haveI": 32,
+     "norm_num": 30,
+     "letI": 29,
+     "replace": 29,
+     "change": 29,
+     "unfold": 26,
+     "split_ifs": 24,
+     "ext1": 22,
+     "norm_cast": 21,
+     "subst": 21,
+     "classical": 20,
+     "field_simp": 19,
+     "split": 19,
+     "slice_rhs": 19,
+     "slice_lhs": 18,
+     "tfae_have": 17,
+     "set": 16,
+     "decide": 16,
+     "exacts": 16,
+     "revert": 15,
+     "contrapose!": 15,
+     "injection": 13,
+     "omega": 13,
+     "push_neg": 11,
+     "specialize": 11,
+     "conv_lhs": 11,
+     "infer_instance": 11,
+     "assumption": 11,
+     "right": 10,
+     "exact_mod_cast": 10,
+     "push_cast": 9,
+     "clear": 9,
+     "aesop_cat": 9,
+     "intros": 9,
+     "next": 9,
+     "left": 8,
+     "all_goals": 8,
+     "simp_all": 8,
+     "swap": 8,
+     "funext": 7,
+     "by_contra": 7,
+     "trans": 7,
+     "match": 7,
+     "aesop": 7,
+     "ring1": 7,
+     "choose": 6,
+     "lift": 6,
+     "nth_rw": 6,
+     "symm": 6,
+     "conv_rhs": 6,
+     "case": 6,
+     "mfld_set_tac": 6,
+     "simp?": 5,
+     "linear_combination": 5,
+     "delta": 5,
+     "by_contra!": 4,
+     "exfalso": 4,
+     "ac_rfl": 4,
+     "tauto": 4,
+     "contrapose": 3,
+     "repeat'": 3,
+     "apply_fun": 3,
+     "existsi": 3,
+     "exists": 3,
+     "rewrite": 3,
+     "nontriviality": 3,
+     "fun_prop": 3,
+     "introv": 3,
+     "tfae_finish": 3,
+     "subst_vars": 3,
+     "conv": 3,
+     "rename_i": 3,
+     "show": 3,
+     "ring_nf": 2,
+     "borelize": 2,
+     "coherence": 2,
+     "abel": 2,
+     "apply_rules": 2,
+     "fconstructor": 2,
+     "contradiction": 2,
+     "group": 2,
+     "substs": 2,
+     "wlog": 2,
+     "congr!": 2,
+     "nth_rewrite": 2,
+     "subst_hom_lift": 1,
+     "refine'": 1,
+     "repeat": 1,
+     "convert_to": 1,
+     "first": 1,
+     "refold_let": 1,
+     "rotate_left": 1,
+     "witt_truncateFun_tac": 1,
+     "trivial": 1,
+     "isBoundedDefault": 1,
+     "rsuffices": 1,
+     "set_option": 1,
+     "any_goals": 1,
+     "norm_num1": 1,
+     "fin_cases": 1,
+     "solve_by_elim": 1,
+     "generalize": 1,
+     "clear_value": 1,
+     "eval_simp": 1,
+     "choose!": 1,
+     "assumption'": 1,
+     "iterate": 1,
+     "abel1": 1,
+     "apply_mod_cast": 1,
+     "(apply": 1,
+     "inhabit": 1,
+     "if": 1
+    },
+    "recomputed_effect_class": {
+     "CLOSE": 3551,
+     "TRANSFORM_TARGET": 2330,
+     "INTRODUCE": 1059,
+     "INTRODUCE_AND_TRANSFORM": 866,
+     "REWRITE_CONTEXT": 499,
+     "REWRITE_CONTEXT_AND_TARGET": 312,
+     "ELIMINATE": 108,
+     "NO_VISIBLE_CHANGE": 41
+    },
+    "goal_creating_steps_excluded": 615,
+    "recomputed_effect_class_matched_to_241k_exclusion": {
+     "CLOSE": 3551,
+     "TRANSFORM_TARGET": 2061,
+     "INTRODUCE": 929,
+     "INTRODUCE_AND_TRANSFORM": 786,
+     "REWRITE_CONTEXT": 464,
+     "REWRITE_CONTEXT_AND_TARGET": 257,
+     "ELIMINATE": 64,
+     "NO_VISIBLE_CHANGE": 39
+    },
+    "tactic_head_matched_top40": {
+     "rw": 1603,
+     "simp": 1113,
+     "exact": 1066,
+     "have": 575,
+     "refine": 378,
+     "intro": 291,
+     "apply": 253,
+     "simpa": 215,
+     "obtain": 196,
+     "rintro": 172,
+     "ext": 157,
+     "simp_rw": 148,
+     "let": 132,
+     "rfl": 124,
+     "rcases": 110,
+     "rwa": 107,
+     "dsimp": 98,
+     "convert": 80,
+     "cases": 64,
+     "congr": 52,
+     "use": 51,
+     "suffices": 45,
+     "gcongr": 44,
+     "ring": 44,
+     "filter_upwards": 39,
+     "induction": 35,
+     "erw": 34,
+     "linarith": 33,
+     "positivity": 32,
+     "haveI": 32,
+     "calc": 31,
+     "norm_num": 30,
+     "letI": 29,
+     "replace": 29,
+     "change": 29,
+     "unfold": 26,
+     "ext1": 22,
+     "norm_cast": 21,
+     "subst": 21,
+     "cases'": 20
+    },
+    "delta_goals_distribution": {
+     "-6": 1,
+     "-5": 2,
+     "-4": 3,
+     "-3": 3,
+     "-2": 23,
+     "-1": 3530,
+     "0": 4589,
+     "1": 530,
+     "2": 55,
+     "3": 24,
+     "4": 5,
+     "6": 1
+    },
+    "head_x_effect_top40": {
+     "rw": {
+      "TRANSFORM_TARGET": 874,
+      "CLOSE": 512,
+      "REWRITE_CONTEXT": 232,
+      "REWRITE_CONTEXT_AND_TARGET": 23,
+      "NO_VISIBLE_CHANGE": 7,
+      "ELIMINATE": 6,
+      "INTRODUCE_AND_TRANSFORM": 2,
+      "INTRODUCE": 2
+     },
+     "simp": {
+      "CLOSE": 813,
+      "TRANSFORM_TARGET": 233,
+      "REWRITE_CONTEXT": 41,
+      "REWRITE_CONTEXT_AND_TARGET": 14,
+      "ELIMINATE": 5,
+      "NO_VISIBLE_CHANGE": 4,
+      "INTRODUCE": 3
+     },
+     "exact": {
+      "CLOSE": 1065,
+      "ELIMINATE": 1
+     },
+     "have": {
+      "INTRODUCE": 524,
+      "REWRITE_CONTEXT": 38,
+      "NO_VISIBLE_CHANGE": 16,
+      "REWRITE_CONTEXT_AND_TARGET": 1
+     },
+     "refine": {
+      "TRANSFORM_TARGET": 301,
+      "INTRODUCE_AND_TRANSFORM": 164,
+      "CLOSE": 9,
+      "REWRITE_CONTEXT_AND_TARGET": 4
+     },
+     "apply": {
+      "TRANSFORM_TARGET": 203,
+      "CLOSE": 82,
+      "INTRODUCE_AND_TRANSFORM": 4,
+      "ELIMINATE": 1,
+      "REWRITE_CONTEXT_AND_TARGET": 1
+     },
+     "intro": {
+      "INTRODUCE_AND_TRANSFORM": 254,
+      "REWRITE_CONTEXT_AND_TARGET": 32,
+      "CLOSE": 5
+     },
+     "simpa": {
+      "CLOSE": 215
+     },
+     "obtain": {
+      "INTRODUCE": 124,
+      "REWRITE_CONTEXT_AND_TARGET": 42,
+      "REWRITE_CONTEXT": 27,
+      "INTRODUCE_AND_TRANSFORM": 13,
+      "CLOSE": 4,
+      "ELIMINATE": 3,
+      "NO_VISIBLE_CHANGE": 2
+     },
+     "rintro": {
+      "INTRODUCE_AND_TRANSFORM": 117,
+      "REWRITE_CONTEXT_AND_TARGET": 43,
+      "ELIMINATE": 12,
+      "CLOSE": 4,
+      "TRANSFORM_TARGET": 1
+     },
+     "rcases": {
+      "INTRODUCE": 90,
+      "REWRITE_CONTEXT_AND_TARGET": 35,
+      "REWRITE_CONTEXT": 18,
+      "INTRODUCE_AND_TRANSFORM": 17,
+      "ELIMINATE": 8,
+      "CLOSE": 6
+     },
+     "ext": {
+      "INTRODUCE_AND_TRANSFORM": 129,
+      "TRANSFORM_TARGET": 18,
+      "CLOSE": 7,
+      "REWRITE_CONTEXT_AND_TARGET": 6
+     },
+     "simp_rw": {
+      "TRANSFORM_TARGET": 77,
+      "CLOSE": 59,
+      "REWRITE_CONTEXT": 8,
+      "REWRITE_CONTEXT_AND_TARGET": 3,
+      "NO_VISIBLE_CHANGE": 1
+     },
+     "let": {
+      "INTRODUCE": 125,
+      "REWRITE_CONTEXT": 7
+     },
+     "rfl": {
+      "CLOSE": 124
+     },
+     "rwa": {
+      "CLOSE": 101,
+      "TRANSFORM_TARGET": 5,
+      "REWRITE_CONTEXT_AND_TARGET": 1
+     },
+     "convert": {
+      "TRANSFORM_TARGET": 62,
+      "CLOSE": 23,
+      "INTRODUCE_AND_TRANSFORM": 15
+     },
+     "dsimp": {
+      "TRANSFORM_TARGET": 75,
+      "REWRITE_CONTEXT": 12,
+      "REWRITE_CONTEXT_AND_TARGET": 5,
+      "NO_VISIBLE_CHANGE": 3,
+      "INTRODUCE_AND_TRANSFORM": 2,
+      "ELIMINATE": 1
+     },
+     "by_cases": {
+      "INTRODUCE": 80,
+      "CLOSE": 6,
+      "REWRITE_CONTEXT": 3,
+      "INTRODUCE_AND_TRANSFORM": 1
+     },
+     "constructor": {
+      "TRANSFORM_TARGET": 65,
+      "INTRODUCE_AND_TRANSFORM": 10,
+      "CLOSE": 8,
+      "REWRITE_CONTEXT_AND_TARGET": 2
+     },
+     "cases": {
+      "CLOSE": 26,
+      "REWRITE_CONTEXT_AND_TARGET": 22,
+      "INTRODUCE": 9,
+      "INTRODUCE_AND_TRANSFORM": 8,
+      "ELIMINATE": 5,
+      "REWRITE_CONTEXT": 5
+     },
+     "congr": {
+      "TRANSFORM_TARGET": 34,
+      "CLOSE": 13,
+      "INTRODUCE_AND_TRANSFORM": 10
+     },
+     "use": {
+      "TRANSFORM_TARGET": 48,
+      "CLOSE": 4
+     },
+     "gcongr": {
+      "TRANSFORM_TARGET": 30,
+      "CLOSE": 13,
+      "INTRODUCE_AND_TRANSFORM": 6
+     },
+     "induction'": {
+      "ELIMINATE": 24,
+      "REWRITE_CONTEXT_AND_TARGET": 12,
+      "INTRODUCE_AND_TRANSFORM": 7,
+      "REWRITE_CONTEXT": 2,
+      "INTRODUCE": 2,
+      "TRANSFORM_TARGET": 1
+     },
+     "cases'": {
+      "INTRODUCE": 24,
+      "REWRITE_CONTEXT_AND_TARGET": 9,
+      "REWRITE_CONTEXT": 8,
+      "ELIMINATE": 4,
+      "INTRODUCE_AND_TRANSFORM": 1,
+      "CLOSE": 1
+     },
+     "suffices": {
+      "TRANSFORM_TARGET": 45,
+      "INTRODUCE_AND_TRANSFORM": 1
+     },
+     "ring": {
+      "CLOSE": 44
+     },
+     "filter_upwards": {
+      "INTRODUCE_AND_TRANSFORM": 27,
+      "CLOSE": 6,
+      "TRANSFORM_TARGET": 4,
+      "REWRITE_CONTEXT_AND_TARGET": 2
+     },
+     "induction": {
+      "CLOSE": 29,
+      "INTRODUCE_AND_TRANSFORM": 6,
+      "TRANSFORM_TARGET": 2,
+      "REWRITE_CONTEXT_AND_TARGET": 1
+     },
+     "erw": {
+      "TRANSFORM_TARGET": 21,
+      "CLOSE": 9,
+      "REWRITE_CONTEXT": 3,
+      "REWRITE_CONTEXT_AND_TARGET": 1
+     },
+     "linarith": {
+      "CLOSE": 33
+     },
+     "positivity": {
+      "CLOSE": 32
+     },
+     "calc": {
+      "CLOSE": 31,
+      "TRANSFORM_TARGET": 1
+     },
+     "haveI": {
+      "INTRODUCE": 23,
+      "REWRITE_CONTEXT": 8,
+      "NO_VISIBLE_CHANGE": 1
+     },
+     "norm_num": {
+      "CLOSE": 30
+     },
+     "letI": {
+      "INTRODUCE": 18,
+      "REWRITE_CONTEXT": 11
+     },
+     "replace": {
+      "REWRITE_CONTEXT": 28,
+      "NO_VISIBLE_CHANGE": 1
+     },
+     "change": {
+      "TRANSFORM_TARGET": 26,
+      "REWRITE_CONTEXT": 2,
+      "NO_VISIBLE_CHANGE": 1
+     },
+     "unfold": {
+      "TRANSFORM_TARGET": 20,
+      "REWRITE_CONTEXT": 4,
+      "ELIMINATE": 2
+     }
+    },
+    "premise_annotation": {
+     "tactics_citing_at_least_one_premise": 5517,
+     "total_premise_references": 13422
+    }
+   },
+   "lean_canonical_241k": {
+    "n_records": 241265,
+    "regex_validation": {
+     "lines_fully_parsed": 2000,
+     "mismatches": 0
+    },
+    "official_splits": {
+     "train": 233114,
+     "val": 3937,
+     "test": 4214
+    },
+    "effect_class": {
+     "CLOSE": 107006,
+     "TRANSFORM_TARGET": 58669,
+     "INTRODUCE": 27304,
+     "INTRODUCE_AND_TRANSFORM": 24248,
+     "REWRITE_CONTEXT": 13479,
+     "REWRITE_CONTEXT_AND_TARGET": 6881,
+     "NO_VISIBLE_CHANGE": 2263,
+     "ELIMINATE": 1415
+    },
+    "tactic_head_top60": {
+     "rw": 47431,
+     "simp": 33298,
+     "exact": 30785,
+     "have": 16772,
+     "refine": 11410,
+     "apply": 8691,
+     "intro": 8321,
+     "simpa": 7321,
+     "obtain": 5741,
+     "ext": 5038,
+     "simp_rw": 4802,
+     "rintro": 4737,
+     "rfl": 3926,
+     "rcases": 3382,
+     "rwa": 3210,
+     "let": 3195,
+     "dsimp": 2518,
+     "convert": 2260,
+     "cases": 2089,
+     "congr": 1624,
+     "suffices": 1533,
+     "haveI": 1248,
+     "use": 1232,
+     "erw": 1125,
+     "filter_upwards": 1077,
+     "induction": 1007,
+     "change": 982,
+     "calc": 942,
+     "ring": 942,
+     "replace": 903,
+     "cases'": 763,
+     "subst": 756,
+     "classical": 744,
+     "norm_num": 703,
+     "positivity": 684,
+     "unfold": 674,
+     "omega": 672,
+     "linarith": 653,
+     "set": 641,
+     "ext1": 630,
+     "letI": 626,
+     "gcongr": 607,
+     "contrapose!": 553,
+     "norm_cast": 483,
+     "exacts": 427,
+     "infer_instance": 419,
+     "intros": 405,
+     "field_simp": 353,
+     "lift": 347,
+     "swap": 345,
+     "specialize": 341,
+     "decide": 338,
+     "conv_rhs": 334,
+     "by_contra": 333,
+     "split_ifs": 330,
+     "funext": 304,
+     "aesop": 298,
+     "revert": 292,
+     "simp_all": 287,
+     "constructor": 281
+    },
+    "distinct_tactic_heads": 250,
+    "head_x_effect_top40": {
+     "rw": {
+      "TRANSFORM_TARGET": 23377,
+      "CLOSE": 16899,
+      "REWRITE_CONTEXT": 5504,
+      "REWRITE_CONTEXT_AND_TARGET": 754,
+      "NO_VISIBLE_CHANGE": 669,
+      "INTRODUCE": 117,
+      "ELIMINATE": 90,
+      "INTRODUCE_AND_TRANSFORM": 21
+     },
+     "simp": {
+      "CLOSE": 24238,
+      "TRANSFORM_TARGET": 6728,
+      "REWRITE_CONTEXT": 1496,
+      "REWRITE_CONTEXT_AND_TARGET": 396,
+      "NO_VISIBLE_CHANGE": 290,
+      "INTRODUCE": 99,
+      "ELIMINATE": 38,
+      "INTRODUCE_AND_TRANSFORM": 13
+     },
+     "exact": {
+      "CLOSE": 30772,
+      "TRANSFORM_TARGET": 3,
+      "ELIMINATE": 3,
+      "INTRODUCE_AND_TRANSFORM": 3,
+      "REWRITE_CONTEXT_AND_TARGET": 3,
+      "REWRITE_CONTEXT": 1
+     },
+     "have": {
+      "INTRODUCE": 14906,
+      "REWRITE_CONTEXT": 1448,
+      "NO_VISIBLE_CHANGE": 394,
+      "REWRITE_CONTEXT_AND_TARGET": 15,
+      "INTRODUCE_AND_TRANSFORM": 9
+     },
+     "refine": {
+      "TRANSFORM_TARGET": 6552,
+      "INTRODUCE_AND_TRANSFORM": 4142,
+      "CLOSE": 349,
+      "REWRITE_CONTEXT_AND_TARGET": 282,
+      "NO_VISIBLE_CHANGE": 37,
+      "INTRODUCE": 37,
+      "REWRITE_CONTEXT": 9,
+      "ELIMINATE": 2
+     },
+     "apply": {
+      "TRANSFORM_TARGET": 5615,
+      "CLOSE": 2865,
+      "INTRODUCE_AND_TRANSFORM": 167,
+      "NO_VISIBLE_CHANGE": 19,
+      "REWRITE_CONTEXT_AND_TARGET": 12,
+      "REWRITE_CONTEXT": 11,
+      "INTRODUCE": 1,
+      "ELIMINATE": 1
+     },
+     "intro": {
+      "INTRODUCE_AND_TRANSFORM": 7651,
+      "REWRITE_CONTEXT_AND_TARGET": 640,
+      "CLOSE": 16,
+      "TRANSFORM_TARGET": 12,
+      "REWRITE_CONTEXT": 2
+     },
+     "simpa": {
+      "CLOSE": 7319,
+      "REWRITE_CONTEXT_AND_TARGET": 1,
+      "TRANSFORM_TARGET": 1
+     },
+     "obtain": {
+      "INTRODUCE": 3873,
+      "REWRITE_CONTEXT_AND_TARGET": 916,
+      "REWRITE_CONTEXT": 569,
+      "INTRODUCE_AND_TRANSFORM": 288,
+      "CLOSE": 65,
+      "ELIMINATE": 24,
+      "NO_VISIBLE_CHANGE": 5,
+      "TRANSFORM_TARGET": 1
+     },
+     "ext": {
+      "INTRODUCE_AND_TRANSFORM": 4350,
+      "TRANSFORM_TARGET": 283,
+      "CLOSE": 216,
+      "REWRITE_CONTEXT_AND_TARGET": 178,
+      "INTRODUCE": 10,
+      "NO_VISIBLE_CHANGE": 1
+     },
+     "simp_rw": {
+      "TRANSFORM_TARGET": 2412,
+      "CLOSE": 1759,
+      "REWRITE_CONTEXT": 366,
+      "NO_VISIBLE_CHANGE": 133,
+      "REWRITE_CONTEXT_AND_TARGET": 100,
+      "INTRODUCE": 23,
+      "INTRODUCE_AND_TRANSFORM": 6,
+      "ELIMINATE": 3
+     },
+     "rintro": {
+      "INTRODUCE_AND_TRANSFORM": 3443,
+      "REWRITE_CONTEXT_AND_TARGET": 911,
+      "ELIMINATE": 197,
+      "CLOSE": 157,
+      "TRANSFORM_TARGET": 28,
+      "NO_VISIBLE_CHANGE": 1
+     },
+     "rfl": {
+      "CLOSE": 3921,
+      "TRANSFORM_TARGET": 4,
+      "INTRODUCE_AND_TRANSFORM": 1
+     },
+     "rcases": {
+      "INTRODUCE": 2062,
+      "REWRITE_CONTEXT_AND_TARGET": 440,
+      "REWRITE_CONTEXT": 440,
+      "INTRODUCE_AND_TRANSFORM": 257,
+      "CLOSE": 168,
+      "ELIMINATE": 12,
+      "TRANSFORM_TARGET": 3
+     },
+     "rwa": {
+      "CLOSE": 3107,
+      "TRANSFORM_TARGET": 78,
+      "REWRITE_CONTEXT_AND_TARGET": 23,
+      "INTRODUCE_AND_TRANSFORM": 2
+     },
+     "let": {
+      "INTRODUCE": 2967,
+      "REWRITE_CONTEXT": 206,
+      "REWRITE_CONTEXT_AND_TARGET": 15,
+      "INTRODUCE_AND_TRANSFORM": 7
+     },
+     "dsimp": {
+      "TRANSFORM_TARGET": 1985,
+      "REWRITE_CONTEXT": 236,
+      "NO_VISIBLE_CHANGE": 169,
+      "REWRITE_CONTEXT_AND_TARGET": 54,
+      "CLOSE": 42,
+      "INTRODUCE": 17,
+      "ELIMINATE": 9,
+      "INTRODUCE_AND_TRANSFORM": 6
+     },
+     "convert": {
+      "TRANSFORM_TARGET": 1420,
+      "CLOSE": 539,
+      "INTRODUCE_AND_TRANSFORM": 280,
+      "NO_VISIBLE_CHANGE": 11,
+      "REWRITE_CONTEXT_AND_TARGET": 9,
+      "INTRODUCE": 1
+     },
+     "cases": {
+      "CLOSE": 1092,
+      "REWRITE_CONTEXT_AND_TARGET": 294,
+      "INTRODUCE_AND_TRANSFORM": 267,
+      "INTRODUCE": 217,
+      "REWRITE_CONTEXT": 109,
+      "ELIMINATE": 100,
+      "TRANSFORM_TARGET": 10
+     },
+     "congr": {
+      "TRANSFORM_TARGET": 1096,
+      "CLOSE": 310,
+      "INTRODUCE_AND_TRANSFORM": 210,
+      "REWRITE_CONTEXT_AND_TARGET": 4,
+      "NO_VISIBLE_CHANGE": 3,
+      "INTRODUCE": 1
+     },
+     "suffices": {
+      "TRANSFORM_TARGET": 1526,
+      "NO_VISIBLE_CHANGE": 5,
+      "REWRITE_CONTEXT_AND_TARGET": 2
+     },
+     "haveI": {
+      "INTRODUCE": 916,
+      "REWRITE_CONTEXT": 331,
+      "NO_VISIBLE_CHANGE": 1
+     },
+     "use": {
+      "TRANSFORM_TARGET": 1156,
+      "CLOSE": 75,
+      "REWRITE_CONTEXT_AND_TARGET": 1
+     },
+     "erw": {
+      "TRANSFORM_TARGET": 637,
+      "CLOSE": 277,
+      "NO_VISIBLE_CHANGE": 111,
+      "REWRITE_CONTEXT": 83,
+      "INTRODUCE": 9,
+      "REWRITE_CONTEXT_AND_TARGET": 5,
+      "ELIMINATE": 3
+     },
+     "filter_upwards": {
+      "INTRODUCE_AND_TRANSFORM": 699,
+      "CLOSE": 221,
+      "TRANSFORM_TARGET": 111,
+      "REWRITE_CONTEXT_AND_TARGET": 46
+     },
+     "induction": {
+      "CLOSE": 824,
+      "INTRODUCE_AND_TRANSFORM": 112,
+      "REWRITE_CONTEXT_AND_TARGET": 59,
+      "REWRITE_CONTEXT": 7,
+      "INTRODUCE": 3,
+      "ELIMINATE": 2
+     },
+     "change": {
+      "TRANSFORM_TARGET": 834,
+      "REWRITE_CONTEXT": 117,
+      "NO_VISIBLE_CHANGE": 23,
+      "INTRODUCE": 4,
+      "ELIMINATE": 2,
+      "REWRITE_CONTEXT_AND_TARGET": 2
+     },
+     "calc": {
+      "CLOSE": 882,
+      "TRANSFORM_TARGET": 56,
+      "INTRODUCE_AND_TRANSFORM": 4
+     },
+     "ring": {
+      "CLOSE": 940,
+      "TRANSFORM_TARGET": 2
+     },
+     "replace": {
+      "REWRITE_CONTEXT": 826,
+      "INTRODUCE": 33,
+      "NO_VISIBLE_CHANGE": 19,
+      "ELIMINATE": 18,
+      "REWRITE_CONTEXT_AND_TARGET": 7
+     },
+     "cases'": {
+      "INTRODUCE": 373,
+      "REWRITE_CONTEXT_AND_TARGET": 130,
+      "REWRITE_CONTEXT": 103,
+      "CLOSE": 83,
+      "INTRODUCE_AND_TRANSFORM": 72,
+      "ELIMINATE": 2
+     },
+     "subst": {
+      "REWRITE_CONTEXT_AND_TARGET": 302,
+      "ELIMINATE": 271,
+      "REWRITE_CONTEXT": 180,
+      "INTRODUCE_AND_TRANSFORM": 3
+     },
+     "classical": {
+      "CLOSE": 736,
+      "TRANSFORM_TARGET": 6,
+      "INTRODUCE": 2
+     },
+     "norm_num": {
+      "CLOSE": 623,
+      "TRANSFORM_TARGET": 59,
+      "REWRITE_CONTEXT": 14,
+      "NO_VISIBLE_CHANGE": 4,
+      "INTRODUCE": 2,
+      "REWRITE_CONTEXT_AND_TARGET": 1
+     },
+     "positivity": {
+      "CLOSE": 684
+     },
+     "unfold": {
+      "TRANSFORM_TARGET": 590,
+      "REWRITE_CONTEXT": 48,
+      "REWRITE_CONTEXT_AND_TARGET": 12,
+      "NO_VISIBLE_CHANGE": 10,
+      "ELIMINATE": 6,
+      "INTRODUCE": 5,
+      "INTRODUCE_AND_TRANSFORM": 3
+     },
+     "omega": {
+      "CLOSE": 672
+     },
+     "linarith": {
+      "CLOSE": 653
+     },
+     "set": {
+      "INTRODUCE": 417,
+      "INTRODUCE_AND_TRANSFORM": 120,
+      "REWRITE_CONTEXT": 66,
+      "REWRITE_CONTEXT_AND_TARGET": 38
+     },
+     "ext1": {
+      "INTRODUCE_AND_TRANSFORM": 485,
+      "TRANSFORM_TARGET": 111,
+      "REWRITE_CONTEXT_AND_TARGET": 27,
+      "CLOSE": 4,
+      "INTRODUCE": 3
+     }
+    },
+    "signature_tail_to_class": {
+     "dg-10|T0|A0|R3|B0": {
+      "CLOSE": 1
+     },
+     "dg-10|T1|A1|R1|B1": {
+      "REWRITE_CONTEXT_AND_TARGET": 1
+     },
+     "dg-12|T0|A0|R3|B0": {
+      "CLOSE": 1
+     },
+     "dg-16|T0|A0|R3|B0": {
+      "CLOSE": 1
+     },
+     "dg-1|T0|A0|R0|B0": {
+      "CLOSE": 593,
+      "NO_VISIBLE_CHANGE": 41
+     },
+     "dg-1|T0|A0|R0|B1": {
+      "REWRITE_CONTEXT": 12
+     },
+     "dg-1|T0|A0|R1|B0": {
+      "CLOSE": 1334
+     },
+     "dg-1|T0|A0|R1|B1": {
+      "REWRITE_CONTEXT": 1
+     },
+     "dg-1|T0|A0|R1|B2": {
+      "REWRITE_CONTEXT": 1
+     },
+     "dg-1|T0|A0|R2|B0": {
+      "CLOSE": 2449
+     },
+     "dg-1|T0|A0|R3|B0": {
+      "CLOSE": 101886
+     },
+     "dg-1|T0|A1|R1|B1": {
+      "REWRITE_CONTEXT": 1
+     },
+     "dg-1|T0|A1|R1|B2": {
+      "REWRITE_CONTEXT": 1
+     },
+     "dg-1|T0|A2|R0|B1": {
+      "REWRITE_CONTEXT": 1
+     },
+     "dg-1|T0|A3|R2|B1": {
+      "REWRITE_CONTEXT": 1
+     },
+     "dg-1|T1|A0|R0|B0": {
+      "TRANSFORM_TARGET": 109
+     },
+     "dg-1|T1|A0|R0|B1": {
+      "REWRITE_CONTEXT_AND_TARGET": 17
+     },
+     "dg-1|T1|A0|R0|B2": {
+      "REWRITE_CONTEXT_AND_TARGET": 1
+     },
+     "dg-1|T1|A0|R1|B0": {
+      "ELIMINATE": 2
+     },
+     "dg-1|T1|A0|R1|B1": {
+      "REWRITE_CONTEXT_AND_TARGET": 1
+     },
+     "dg-1|T1|A0|R2|B0": {
+      "ELIMINATE": 3
+     },
+     "dg-1|T1|A0|R2|B1": {
+      "REWRITE_CONTEXT_AND_TARGET": 2
+     },
+     "dg-1|T1|A0|R2|B2": {
+      "REWRITE_CONTEXT_AND_TARGET": 4
+     },
+     "dg-1|T1|A1|R0|B0": {
+      "INTRODUCE_AND_TRANSFORM": 9
+     },
+     "dg-1|T1|A1|R0|B1": {
+      "REWRITE_CONTEXT_AND_TARGET": 4
+     },
+     "dg-1|T1|A1|R0|B3": {
+      "REWRITE_CONTEXT_AND_TARGET": 2
+     },
+     "dg-1|T1|A1|R1|B0": {
+      "INTRODUCE_AND_TRANSFORM": 1
+     },
+     "dg-1|T1|A1|R1|B1": {
+      "REWRITE_CONTEXT_AND_TARGET": 2
+     },
+     "dg-1|T1|A2|R0|B0": {
+      "INTRODUCE_AND_TRANSFORM": 6
+     },
+     "dg-1|T1|A2|R0|B1": {
+      "REWRITE_CONTEXT_AND_TARGET": 1
+     },
+     "dg-1|T1|A2|R0|B2": {
+      "REWRITE_CONTEXT_AND_TARGET": 1
+     },
+     "dg-1|T1|A2|R1|B3": {
+      "REWRITE_CONTEXT_AND_TARGET": 1
+     },
+     "dg-1|T1|A2|R2|B0": {
+      "INTRODUCE_AND_TRANSFORM": 1
+     },
+     "dg-1|T1|A3|R0|B0": {
+      "INTRODUCE_AND_TRANSFORM": 4
+     },
+     "dg-1|T1|A3|R0|B1": {
+      "REWRITE_CONTEXT_AND_TARGET": 3
+     },
+     "dg-1|T1|A3|R1|B0": {
+      "INTRODUCE_AND_TRANSFORM": 1
+     },
+     "dg-2|T0|A0|R0|B0": {
+      "NO_VISIBLE_CHANGE": 6
+     },
+     "dg-2|T0|A0|R0|B1": {
+      "REWRITE_CONTEXT": 1
+     },
+     "dg-2|T0|A0|R1|B0": {
+      "CLOSE": 4
+     },
+     "dg-2|T0|A0|R2|B0": {
+      "CLOSE": 7
+     },
+     "dg-2|T0|A0|R3|B0": {
+      "CLOSE": 527
+     },
+     "dg-2|T0|A1|R1|B0": {
+      "INTRODUCE": 1
+     },
+     "dg-2|T1|A0|R0|B0": {
+      "TRANSFORM_TARGET": 20
+     },
+     "dg-2|T1|A0|R0|B1": {
+      "REWRITE_CONTEXT_AND_TARGET": 3
+     },
+     "dg-2|T1|A1|R0|B0": {
+      "INTRODUCE_AND_TRANSFORM": 1
+     },
+     "dg-2|T1|A2|R1|B0": {
+      "INTRODUCE_AND_TRANSFORM": 1
+     },
+     "dg-2|T1|A3|R0|B0": {
+      "INTRODUCE_AND_TRANSFORM": 3
+     },
+     "dg-3|T0|A0|R1|B0": {
+      "CLOSE": 1
+     },
+     "dg-3|T0|A0|R2|B0": {
+      "CLOSE": 4
+     },
+     "dg-3|T0|A0|R3|B0": {
+      "CLOSE": 102
+     },
+     "dg-3|T1|A0|R0|B0": {
+      "TRANSFORM_TARGET": 1
+     },
+     "dg-3|T1|A0|R0|B1": {
+      "REWRITE_CONTEXT_AND_TARGET": 1
+     },
+     "dg-3|T1|A0|R0|B3": {
+      "REWRITE_CONTEXT_AND_TARGET": 1
+     },
+     "dg-3|T1|A0|R1|B0": {
+      "ELIMINATE": 1
+     },
+     "dg-3|T1|A1|R1|B3": {
+      "REWRITE_CONTEXT_AND_TARGET": 1
+     },
+     "dg-3|T1|A2|R0|B3": {
+      "REWRITE_CONTEXT_AND_TARGET": 1
+     },
+     "dg-4|T0|A0|R0|B0": {
+      "NO_VISIBLE_CHANGE": 1
+     },
+     "dg-4|T0|A0|R3|B0": {
+      "CLOSE": 63
+     },
+     "dg-4|T1|A0|R0|B0": {
+      "TRANSFORM_TARGET": 2
+     },
+     "dg-4|T1|A0|R3|B2": {
+      "REWRITE_CONTEXT_AND_TARGET": 1
+     },
+     "dg-4|T1|A1|R0|B2": {
+      "REWRITE_CONTEXT_AND_TARGET": 1
+     },
+     "dg-4|T1|A3|R0|B1": {
+      "REWRITE_CONTEXT_AND_TARGET": 2
+     },
+     "dg-5|T0|A0|R2|B0": {
+      "CLOSE": 1
+     },
+     "dg-5|T0|A0|R3|B0": {
+      "CLOSE": 13
+     },
+     "dg-5|T1|A0|R0|B0": {
+      "TRANSFORM_TARGET": 1
+     },
+     "dg-6|T0|A0|R0|B0": {
+      "NO_VISIBLE_CHANGE": 1
+     },
+     "dg-6|T0|A0|R3|B0": {
+      "CLOSE": 10
+     },
+     "dg-7|T0|A0|R3|B0": {
+      "CLOSE": 5
+     },
+     "dg-7|T1|A2|R0|B0": {
+      "INTRODUCE_AND_TRANSFORM": 1
+     },
+     "dg-8|T0|A0|R3|B0": {
+      "CLOSE": 3
+     },
+     "dg-9|T0|A0|R3|B0": {
+      "CLOSE": 1
+     },
+     "dg0|T0|A0|R0|B0": {
+      "NO_VISIBLE_CHANGE": 2214
+     },
+     "dg0|T0|A0|R0|B1": {
+      "REWRITE_CONTEXT": 8916
+     },
+     "dg0|T0|A0|R0|B2": {
+      "REWRITE_CONTEXT": 466
+     },
+     "dg0|T0|A0|R0|B3": {
+      "REWRITE_CONTEXT": 131
+     },
+     "dg0|T0|A0|R1|B0": {
+      "ELIMINATE": 348
+     },
+     "dg0|T0|A0|R1|B1": {
+      "REWRITE_CONTEXT": 47
+     },
+     "dg0|T0|A0|R1|B2": {
+      "REWRITE_CONTEXT": 46
+     },
+     "dg0|T0|A0|R1|B3": {
+      "REWRITE_CONTEXT": 59
+     },
+     "dg0|T0|A0|R2|B0": {
+      "ELIMINATE": 88
+     },
+     "dg0|T0|A0|R2|B1": {
+      "REWRITE_CONTEXT": 93
+     },
+     "dg0|T0|A0|R2|B2": {
+      "REWRITE_CONTEXT": 68
+     },
+     "dg0|T0|A0|R2|B3": {
+      "REWRITE_CONTEXT": 55
+     },
+     "dg0|T0|A0|R3|B0": {
+      "ELIMINATE": 66
+     },
+     "dg0|T0|A0|R3|B1": {
+      "REWRITE_CONTEXT": 9
+     },
+     "dg0|T0|A0|R3|B2": {
+      "REWRITE_CONTEXT": 18
+     },
+     "dg0|T0|A0|R3|B3": {
+      "REWRITE_CONTEXT": 20
+     },
+     "dg0|T0|A1|R0|B0": {
+      "INTRODUCE": 19749
+     },
+     "dg0|T0|A1|R0|B1": {
+      "REWRITE_CONTEXT": 1667
+     },
+     "dg0|T0|A1|R0|B2": {
+      "REWRITE_CONTEXT": 376
+     },
+     "dg0|T0|A1|R0|B3": {
+      "REWRITE_CONTEXT": 278
+     },
+     "dg0|T0|A1|R1|B0": {
+      "INTRODUCE": 77
+     },
+     "dg0|T0|A1|R1|B1": {
+      "REWRITE_CONTEXT": 30
+     },
+     "dg0|T0|A1|R1|B2": {
+      "REWRITE_CONTEXT": 48
+     },
+     "dg0|T0|A1|R1|B3": {
+      "REWRITE_CONTEXT": 23
+     },
+     "dg0|T0|A1|R2|B0": {
+      "INTRODUCE": 41
+     },
+     "dg0|T0|A1|R2|B1": {
+      "REWRITE_CONTEXT": 17
+     },
+     "dg0|T0|A1|R2|B2": {
+      "REWRITE_CONTEXT": 10
+     },
+     "dg0|T0|A1|R2|B3": {
+      "REWRITE_CONTEXT": 7
+     },
+     "dg0|T0|A1|R3|B0": {
+      "INTRODUCE": 35
+     },
+     "dg0|T0|A1|R3|B1": {
+      "REWRITE_CONTEXT": 12
+     },
+     "dg0|T0|A1|R3|B2": {
+      "REWRITE_CONTEXT": 7
+     },
+     "dg0|T0|A1|R3|B3": {
+      "REWRITE_CONTEXT": 8
+     },
+     "dg0|T0|A2|R0|B0": {
+      "INTRODUCE": 2562
+     },
+     "dg0|T0|A2|R0|B1": {
+      "REWRITE_CONTEXT": 200
+     },
+     "dg0|T0|A2|R0|B2": {
+      "REWRITE_CONTEXT": 37
+     },
+     "dg0|T0|A2|R0|B3": {
+      "REWRITE_CONTEXT": 25
+     },
+     "dg0|T0|A2|R1|B0": {
+      "INTRODUCE": 674
+     },
+     "dg0|T0|A2|R1|B1": {
+      "REWRITE_CONTEXT": 68
+     },
+     "dg0|T0|A2|R1|B2": {
+      "REWRITE_CONTEXT": 51
+     },
+     "dg0|T0|A2|R1|B3": {
+      "REWRITE_CONTEXT": 27
+     },
+     "dg0|T0|A2|R2|B0": {
+      "INTRODUCE": 11
+     },
+     "dg0|T0|A2|R2|B1": {
+      "REWRITE_CONTEXT": 16
+     },
+     "dg0|T0|A2|R2|B2": {
+      "REWRITE_CONTEXT": 8
+     },
+     "dg0|T0|A2|R2|B3": {
+      "REWRITE_CONTEXT": 12
+     },
+     "dg0|T0|A2|R3|B0": {
+      "INTRODUCE": 5
+     },
+     "dg0|T0|A2|R3|B1": {
+      "REWRITE_CONTEXT": 4
+     },
+     "dg0|T0|A2|R3|B2": {
+      "REWRITE_CONTEXT": 2
+     },
+     "dg0|T0|A2|R3|B3": {
+      "REWRITE_CONTEXT": 4
+     },
+     "dg0|T0|A3|R0|B0": {
+      "INTRODUCE": 3395
+     },
+     "dg0|T0|A3|R0|B1": {
+      "REWRITE_CONTEXT": 300
+     },
+     "dg0|T0|A3|R0|B2": {
+      "REWRITE_CONTEXT": 92
+     },
+     "dg0|T0|A3|R0|B3": {
+      "REWRITE_CONTEXT": 41
+     },
+     "dg0|T0|A3|R1|B0": {
+      "INTRODUCE": 725
+     },
+     "dg0|T0|A3|R1|B1": {
+      "REWRITE_CONTEXT": 62
+     },
+     "dg0|T0|A3|R1|B2": {
+      "REWRITE_CONTEXT": 45
+     },
+     "dg0|T0|A3|R1|B3": {
+      "REWRITE_CONTEXT": 23
+     },
+     "dg0|T0|A3|R2|B0": {
+      "INTRODUCE": 15
+     },
+     "dg0|T0|A3|R2|B1": {
+      "REWRITE_CONTEXT": 5
+     },
+     "dg0|T0|A3|R2|B2": {
+      "REWRITE_CONTEXT": 4
+     },
+     "dg0|T0|A3|R2|B3": {
+      "REWRITE_CONTEXT": 4
+     },
+     "dg0|T0|A3|R3|B0": {
+      "INTRODUCE": 14
+     },
+     "dg0|T0|A3|R3|B1": {
+      "REWRITE_CONTEXT": 6
+     },
+     "dg0|T0|A3|R3|B2": {
+      "REWRITE_CONTEXT": 6
+     },
+     "dg0|T0|A3|R3|B3": {
+      "REWRITE_CONTEXT": 7
+     },
+     "dg0|T1|A0|R0|B0": {
+      "TRANSFORM_TARGET": 58536
+     },
+     "dg0|T1|A0|R0|B1": {
+      "REWRITE_CONTEXT_AND_TARGET": 1752
+     },
+     "dg0|T1|A0|R0|B2": {
+      "REWRITE_CONTEXT_AND_TARGET": 327
+     },
+     "dg0|T1|A0|R0|B3": {
+      "REWRITE_CONTEXT_AND_TARGET": 90
+     },
+     "dg0|T1|A0|R1|B0": {
+      "ELIMINATE": 418
+     },
+     "dg0|T1|A0|R1|B1": {
+      "REWRITE_CONTEXT_AND_TARGET": 431
+     },
+     "dg0|T1|A0|R1|B2": {
+      "REWRITE_CONTEXT_AND_TARGET": 212
+     },
+     "dg0|T1|A0|R1|B3": {
+      "REWRITE_CONTEXT_AND_TARGET": 115
+     },
+     "dg0|T1|A0|R2|B0": {
+      "ELIMINATE": 387
+     },
+     "dg0|T1|A0|R2|B1": {
+      "REWRITE_CONTEXT_AND_TARGET": 219
+     },
+     "dg0|T1|A0|R2|B2": {
+      "REWRITE_CONTEXT_AND_TARGET": 109
+     },
+     "dg0|T1|A0|R2|B3": {
+      "REWRITE_CONTEXT_AND_TARGET": 75
+     },
+     "dg0|T1|A0|R3|B0": {
+      "ELIMINATE": 102
+     },
+     "dg0|T1|A0|R3|B1": {
+      "REWRITE_CONTEXT_AND_TARGET": 44
+     },
+     "dg0|T1|A0|R3|B2": {
+      "REWRITE_CONTEXT_AND_TARGET": 31
+     },
+     "dg0|T1|A0|R3|B3": {
+      "REWRITE_CONTEXT_AND_TARGET": 16
+     },
+     "dg0|T1|A1|R0|B0": {
+      "INTRODUCE_AND_TRANSFORM": 10658
+     },
+     "dg0|T1|A1|R0|B1": {
+      "REWRITE_CONTEXT_AND_TARGET": 610
+     },
+     "dg0|T1|A1|R0|B2": {
+      "REWRITE_CONTEXT_AND_TARGET": 174
+     },
+     "dg0|T1|A1|R0|B3": {
+      "REWRITE_CONTEXT_AND_TARGET": 80
+     },
+     "dg0|T1|A1|R1|B0": {
+      "INTRODUCE_AND_TRANSFORM": 464
+     },
+     "dg0|T1|A1|R1|B1": {
+      "REWRITE_CONTEXT_AND_TARGET": 303
+     },
+     "dg0|T1|A1|R1|B2": {
+      "REWRITE_CONTEXT_AND_TARGET": 102
+     },
+     "dg0|T1|A1|R1|B3": {
+      "REWRITE_CONTEXT_AND_TARGET": 34
+     },
+     "dg0|T1|A1|R2|B0": {
+      "INTRODUCE_AND_TRANSFORM": 172
+     },
+     "dg0|T1|A1|R2|B1": {
+      "REWRITE_CONTEXT_AND_TARGET": 60
+     },
+     "dg0|T1|A1|R2|B2": {
+      "REWRITE_CONTEXT_AND_TARGET": 11
+     },
+     "dg0|T1|A1|R2|B3": {
+      "REWRITE_CONTEXT_AND_TARGET": 6
+     },
+     "dg0|T1|A1|R3|B0": {
+      "INTRODUCE_AND_TRANSFORM": 10
+     },
+     "dg0|T1|A1|R3|B1": {
+      "REWRITE_CONTEXT_AND_TARGET": 2
+     },
+     "dg0|T1|A1|R3|B2": {
+      "REWRITE_CONTEXT_AND_TARGET": 2
+     },
+     "dg0|T1|A1|R3|B3": {
+      "REWRITE_CONTEXT_AND_TARGET": 2
+     },
+     "dg0|T1|A2|R0|B0": {
+      "INTRODUCE_AND_TRANSFORM": 6713
+     },
+     "dg0|T1|A2|R0|B1": {
+      "REWRITE_CONTEXT_AND_TARGET": 319
+     },
+     "dg0|T1|A2|R0|B2": {
+      "REWRITE_CONTEXT_AND_TARGET": 99
+     },
+     "dg0|T1|A2|R0|B3": {
+      "REWRITE_CONTEXT_AND_TARGET": 66
+     },
+     "dg0|T1|A2|R1|B0": {
+      "INTRODUCE_AND_TRANSFORM": 402
+     },
+     "dg0|T1|A2|R1|B1": {
+      "REWRITE_CONTEXT_AND_TARGET": 277
+     },
+     "dg0|T1|A2|R1|B2": {
+      "REWRITE_CONTEXT_AND_TARGET": 108
+     },
+     "dg0|T1|A2|R1|B3": {
+      "REWRITE_CONTEXT_AND_TARGET": 65
+     },
+     "dg0|T1|A2|R2|B0": {
+      "INTRODUCE_AND_TRANSFORM": 87
+     },
+     "dg0|T1|A2|R2|B1": {
+      "REWRITE_CONTEXT_AND_TARGET": 26
+     },
+     "dg0|T1|A2|R2|B2": {
+      "REWRITE_CONTEXT_AND_TARGET": 13
+     },
+     "dg0|T1|A2|R2|B3": {
+      "REWRITE_CONTEXT_AND_TARGET": 7
+     },
+     "dg0|T1|A2|R3|B0": {
+      "INTRODUCE_AND_TRANSFORM": 7
+     },
+     "dg0|T1|A2|R3|B1": {
+      "REWRITE_CONTEXT_AND_TARGET": 5
+     },
+     "dg0|T1|A2|R3|B2": {
+      "REWRITE_CONTEXT_AND_TARGET": 1
+     },
+     "dg0|T1|A2|R3|B3": {
+      "REWRITE_CONTEXT_AND_TARGET": 5
+     },
+     "dg0|T1|A3|R0|B0": {
+      "INTRODUCE_AND_TRANSFORM": 5262
+     },
+     "dg0|T1|A3|R0|B1": {
+      "REWRITE_CONTEXT_AND_TARGET": 393
+     },
+     "dg0|T1|A3|R0|B2": {
+      "REWRITE_CONTEXT_AND_TARGET": 152
+     },
+     "dg0|T1|A3|R0|B3": {
+      "REWRITE_CONTEXT_AND_TARGET": 152
+     },
+     "dg0|T1|A3|R1|B0": {
+      "INTRODUCE_AND_TRANSFORM": 308
+     },
+     "dg0|T1|A3|R1|B1": {
+      "REWRITE_CONTEXT_AND_TARGET": 132
+     },
+     "dg0|T1|A3|R1|B2": {
+      "REWRITE_CONTEXT_AND_TARGET": 70
+     },
+     "dg0|T1|A3|R1|B3": {
+      "REWRITE_CONTEXT_AND_TARGET": 47
+     },
+     "dg0|T1|A3|R2|B0": {
+      "INTRODUCE_AND_TRANSFORM": 113
+     },
+     "dg0|T1|A3|R2|B1": {
+      "REWRITE_CONTEXT_AND_TARGET": 34
+     },
+     "dg0|T1|A3|R2|B2": {
+      "REWRITE_CONTEXT_AND_TARGET": 13
+     },
+     "dg0|T1|A3|R2|B3": {
+      "REWRITE_CONTEXT_AND_TARGET": 17
+     },
+     "dg0|T1|A3|R3|B0": {
+      "INTRODUCE_AND_TRANSFORM": 24
+     },
+     "dg0|T1|A3|R3|B1": {
+      "REWRITE_CONTEXT_AND_TARGET": 5
+     },
+     "dg0|T1|A3|R3|B2": {
+      "REWRITE_CONTEXT_AND_TARGET": 7
+     },
+     "dg0|T1|A3|R3|B3": {
+      "REWRITE_CONTEXT_AND_TARGET": 10
+     }
+    },
+    "effect_rule_verification": {
+     "signature_tails_reproduced": 179,
+     "mismatched": 0,
+     "ambiguous_tails_skipped": 1,
+     "failures": []
+    }
+   }
+  },
+  "informal_proxy": {
+   "calibration_gold125": {
+    "n_spans": 769,
+    "spans_with_no_cue": 334,
+    "gold_core_operation": {
+     "TRANSFORM": 305,
+     "UNRESOLVED": 136,
+     "DISCHARGE": 90,
+     "EVALUATE": 50,
+     "APPLY_THEOREM": 29,
+     "VERIFY": 28,
+     "COUNT": 23,
+     "BOUND": 23,
+     "APPLY_DEFINITION": 19,
+     "CASE_SPLIT": 15,
+     "CONSTRUCT": 12,
+     "MODEL": 7,
+     "SUBSTITUTE": 7,
+     "INDUCT": 7,
+     "CONTRADICTION": 6,
+     "DECLARE": 5,
+     "SELECT": 4,
+     "ENUMERATE": 2,
+     "RECORD": 1
+    },
+    "per_cue": {
+     "APPLY_DEFINITION": {
+      "calibratable": true,
+      "gold_n": 19,
+      "cue_fired_n": 21,
+      "precision": 0.333,
+      "recall": 0.368,
+      "top_gold_labels_when_fired": {
+       "APPLY_DEFINITION": 7,
+       "TRANSFORM": 5,
+       "DISCHARGE": 3,
+       "APPLY_THEOREM": 2,
+       "COUNT": 1
+      },
+      "reasoning_mode_when_fired": {
+       "EXECUTION": 16,
+       "GOAL_MANAGEMENT": 3,
+       "SEARCH_META": 2
+      },
+      "example_misses": [
+       {
+        "gold": "TRANSFORM",
+        "span": "That means that $\\frac{3}{2}\\log_2 x=6."
+       },
+       {
+        "gold": "APPLY_THEOREM",
+        "span": "We know that the prime factorization of 18 is $2\\cdot 3^2$, so in order for the four digit number to be divisible by 18 it must also be divisible by 9"
+       },
+       {
+        "gold": "APPLY_THEOREM",
+        "span": "In order for a number to be divisible by 9, the sum of its digits must be divisible by 9 as well."
+       }
+      ]
+     },
+     "APPLY_THEOREM": {
+      "calibratable": true,
+      "gold_n": 29,
+      "cue_fired_n": 18,
+      "precision": 0.611,
+      "recall": 0.379,
+      "top_gold_labels_when_fired": {
+       "APPLY_THEOREM": 11,
+       "TRANSFORM": 6,
+       "MODEL": 1
+      },
+      "reasoning_mode_when_fired": {
+       "EXECUTION": 16,
+       "SEARCH_META": 2
+      },
+      "example_misses": [
+       {
+        "gold": "TRANSFORM",
+        "span": "so by the quadratic formula,"
+       },
+       {
+        "gold": "MODEL",
+        "span": "Using the Pythagorean Theorem, we write the equation $x^2 + (x + 1)^2 = 29^2$"
+       },
+       {
+        "gold": "TRANSFORM",
+        "span": "The given expression can be rewritten as \\[9x\\sin x + \\frac{4}{x \\sin x}\\]or $9y + \\frac{4}{y},$ where $y = x \\sin x.$ By the AM-GM inequality, we hav"
+       }
+      ]
+     },
+     "BACKTRACK": {
+      "calibratable": false,
+      "gold_n": 0,
+      "cue_fired_n": 3,
+      "precision": 0.0,
+      "recall": null,
+      "top_gold_labels_when_fired": {
+       "VERIFY": 2,
+       "APPLY_THEOREM": 1
+      },
+      "reasoning_mode_when_fired": {
+       "VERIFICATION": 2,
+       "EXECUTION": 1
+      },
+      "example_misses": [
+       {
+        "gold": "APPLY_THEOREM",
+        "span": "So I seem to have $6\\cdot 4 = 24$ choices -- but this actually overcounts the possible results by a factor of $2$, because in the end, it doesn't matt"
+       },
+       {
+        "gold": "VERIFY",
+        "span": "Actually, we don't have to check every such integer: it's enough to check divisibility by 2, 3, 5, 7, 11, and 13."
+       },
+       {
+        "gold": "VERIFY",
+        "span": "We deal with the first inequality merely to show that there actually are integers satisfying both inequalities!)"
+       }
+      ]
+     },
+     "BOUND": {
+      "calibratable": true,
+      "gold_n": 23,
+      "cue_fired_n": 50,
+      "precision": 0.38,
+      "recall": 0.826,
+      "top_gold_labels_when_fired": {
+       "BOUND": 19,
+       "DISCHARGE": 9,
+       "TRANSFORM": 8,
+       "UNRESOLVED": 4,
+       "VERIFY": 2
+      },
+      "reasoning_mode_when_fired": {
+       "GOAL_MANAGEMENT": 27,
+       "EXECUTION": 15,
+       "SEARCH_META": 6,
+       "VERIFICATION": 2
+      },
+      "example_misses": [
+       {
+        "gold": "COUNT",
+        "span": "Now we subtract from 1 to find the probability that at least one woman is selected. The probability is $1-\\frac{7}{24}=\\boxed{\\frac{17}{24}}$."
+       },
+       {
+        "gold": "SELECT",
+        "span": "Since 18 is the smallest multiple of 9 that is greater than 10, $14+n=18$, and $n=18-14=\\boxed{4}$."
+       },
+       {
+        "gold": "VERIFY",
+        "span": "$\\boxed{34}$ is the smallest solution since it is a lower bound of $a$ and satisfies both original congruences."
+       }
+      ]
+     },
+     "CASE_SPLIT": {
+      "calibratable": true,
+      "gold_n": 15,
+      "cue_fired_n": 41,
+      "precision": 0.22,
+      "recall": 0.6,
+      "top_gold_labels_when_fired": {
+       "TRANSFORM": 16,
+       "CASE_SPLIT": 9,
+       "EVALUATE": 5,
+       "COUNT": 3,
+       "UNRESOLVED": 3
+      },
+      "reasoning_mode_when_fired": {
+       "EXECUTION": 29,
+       "SEARCH_META": 10,
+       "VERIFICATION": 1,
+       "GOAL_MANAGEMENT": 1
+      },
+      "example_misses": [
+       {
+        "gold": "APPLY_DEFINITION",
+        "span": "For the piecewise function to be continuous, the cases must \"meet\" at $2$ and $-2$."
+       },
+       {
+        "gold": "EVALUATE",
+        "span": "So, the probability of this case is $3(1/216) = 1/72$."
+       },
+       {
+        "gold": "COUNT",
+        "span": "Adding the probabilities of these two cases gives us a total probability of $\\frac{1}{72} + \\frac{1}{72} = \\boxed{\\frac{1}{36}}$."
+       }
+      ]
+     },
+     "CONSTRUCT": {
+      "calibratable": true,
+      "gold_n": 12,
+      "cue_fired_n": 12,
+      "precision": 0.25,
+      "recall": 0.25,
+      "top_gold_labels_when_fired": {
+       "TRANSFORM": 4,
+       "CONSTRUCT": 3,
+       "UNRESOLVED": 3,
+       "COUNT": 1,
+       "APPLY_THEOREM": 1
+      },
+      "reasoning_mode_when_fired": {
+       "EXECUTION": 6,
+       "SEARCH_META": 6
+      },
+      "example_misses": [
+       {
+        "gold": "TRANSFORM",
+        "span": "The first congruence means that there exists a non-negative integer $n$ such that $a=4+5n$."
+       },
+       {
+        "gold": "TRANSFORM",
+        "span": "Without loss of generality, let the right angle be at $b.$  Let $x = |b - c|$ and $y = |a - b|.$  The magnitudes of $a$, $b$, and $c$ are just $\\frac{"
+       },
+       {
+        "gold": "UNRESOLVED",
+        "span": "Half of the $2^8$ draw sequences will produce a result with argument equivalent to $0$ and the other half will have an argument equivalent to $\\pi$."
+       }
+      ]
+     },
+     "CONTRADICTION": {
+      "calibratable": true,
+      "gold_n": 6,
+      "cue_fired_n": 9,
+      "precision": 0.667,
+      "recall": 1.0,
+      "top_gold_labels_when_fired": {
+       "CONTRADICTION": 6,
+       "TRANSFORM": 2,
+       "UNRESOLVED": 1
+      },
+      "reasoning_mode_when_fired": {
+       "EXECUTION": 9
+      },
+      "example_misses": [
+       {
+        "gold": "UNRESOLVED",
+        "span": "There are 9 options for the first/last digit (1 through 9 -- the first digit cannot be 0)"
+       },
+       {
+        "gold": "TRANSFORM",
+        "span": "Therefore, it is impossible for $g(x)$ to equal $3$ for any value of $x$."
+       },
+       {
+        "gold": "TRANSFORM",
+        "span": "Since $x+n = 25$ is impossible, the simplest possibilities are $x-n = 50$ and $x + n = 50$."
+       }
+      ]
+     },
+     "COUNT": {
+      "calibratable": true,
+      "gold_n": 23,
+      "cue_fired_n": 77,
+      "precision": 0.169,
+      "recall": 0.565,
+      "top_gold_labels_when_fired": {
+       "EVALUATE": 20,
+       "DISCHARGE": 17,
+       "COUNT": 13,
+       "TRANSFORM": 9,
+       "UNRESOLVED": 6
+      },
+      "reasoning_mode_when_fired": {
+       "EXECUTION": 49,
+       "GOAL_MANAGEMENT": 18,
+       "SEARCH_META": 8,
+       "VERIFICATION": 2
+      },
+      "example_misses": [
+       {
+        "gold": "UNRESOLVED",
+        "span": "$\\binom{4}{2}=6$ results"
+       },
+       {
+        "gold": "EVALUATE",
+        "span": "Then the probability that the second person selected is male is reduced to $\\frac{6}{9}=\\frac{2}{3}$."
+       },
+       {
+        "gold": "EVALUATE",
+        "span": "For the third person, the probability is $\\frac{5}{8}$."
+       }
+      ]
+     },
+     "DECLARE": {
+      "calibratable": true,
+      "gold_n": 5,
+      "cue_fired_n": 51,
+      "precision": 0.098,
+      "recall": 1.0,
+      "top_gold_labels_when_fired": {
+       "TRANSFORM": 21,
+       "CONSTRUCT": 11,
+       "UNRESOLVED": 7,
+       "DECLARE": 5,
+       "APPLY_DEFINITION": 3
+      },
+      "reasoning_mode_when_fired": {
+       "EXECUTION": 31,
+       "SEARCH_META": 17,
+       "GOAL_MANAGEMENT": 3
+      },
+      "example_misses": [
+       {
+        "gold": "CONSTRUCT",
+        "span": "Let $k$ be a positive integer."
+       },
+       {
+        "gold": "TRANSFORM",
+        "span": "Then for $k^2 \\le x < (k + 1)^2,$\n\\[x \\lfloor \\sqrt{x} \\rfloor = kx.\\]Thus, on this interval, the graph of $0 \\le y \\le x \\lfloor \\sqrt{x} \\rfloor$ is"
+       },
+       {
+        "gold": "TRANSFORM",
+        "span": "Note that $n = 1000 = 2^{3}5^{3}.$\nLet $S = \\{1,2,3,\\ldots, 1000\\}$, and $A_{i}= \\{i \\in S \\mid i\\, \\textrm{ divides }\\,1000\\}$."
+       }
+      ]
+     },
+     "DISCHARGE": {
+      "calibratable": true,
+      "gold_n": 90,
+      "cue_fired_n": 128,
+      "precision": 0.695,
+      "recall": 0.989,
+      "top_gold_labels_when_fired": {
+       "DISCHARGE": 89,
+       "TRANSFORM": 17,
+       "EVALUATE": 8,
+       "COUNT": 4,
+       "VERIFY": 4
+      },
+      "reasoning_mode_when_fired": {
+       "GOAL_MANAGEMENT": 93,
+       "EXECUTION": 31,
+       "VERIFICATION": 4
+      },
+      "example_misses": [
+       {
+        "gold": "EVALUATE",
+        "span": "So $a+b=-3+3=\\boxed{0}$."
+       },
+       {
+        "gold": "TRANSFORM",
+        "span": "Taking the square root of 144, we see that $x + y = \\boxed{12}$."
+       },
+       {
+        "gold": "TRANSFORM",
+        "span": "and dividing by 2 gives $x = \\boxed{11}$."
+       }
+      ]
+     },
+     "ENUMERATE": {
+      "calibratable": true,
+      "gold_n": 2,
+      "cue_fired_n": 4,
+      "precision": 0.0,
+      "recall": 0.0,
+      "top_gold_labels_when_fired": {
+       "UNRESOLVED": 2,
+       "VERIFY": 1,
+       "TRANSFORM": 1
+      },
+      "reasoning_mode_when_fired": {
+       "EXECUTION": 3,
+       "VERIFICATION": 1
+      },
+      "example_misses": [
+       {
+        "gold": "UNRESOLVED",
+        "span": "There are 9 options for the first/last digit (1 through 9 -- the first digit cannot be 0)"
+       },
+       {
+        "gold": "UNRESOLVED",
+        "span": "and there are 10 options for the second/third digit (0 through 9)."
+       },
+       {
+        "gold": "VERIFY",
+        "span": "To double check, we can work out $A$ and $B$ for each value of $A_1$ and reconvert them to dollars to make sure that the price and the amount of chang"
+       }
+      ]
+     },
+     "EVALUATE": {
+      "calibratable": true,
+      "gold_n": 50,
+      "cue_fired_n": 39,
+      "precision": 0.077,
+      "recall": 0.06,
+      "top_gold_labels_when_fired": {
+       "TRANSFORM": 20,
+       "DISCHARGE": 8,
+       "EVALUATE": 3,
+       "UNRESOLVED": 3,
+       "INDUCT": 2
+      },
+      "reasoning_mode_when_fired": {
+       "EXECUTION": 28,
+       "GOAL_MANAGEMENT": 9,
+       "SEARCH_META": 2
+      },
+      "example_misses": [
+       {
+        "gold": "TRANSFORM",
+        "span": "This can be simplified to $2x^2 + 2x = 840$, or $x^2 + x = 420$."
+       },
+       {
+        "gold": "TRANSFORM",
+        "span": "Then for $k^2 \\le x < (k + 1)^2,$\n\\[x \\lfloor \\sqrt{x} \\rfloor = kx.\\]Thus, on this interval, the graph of $0 \\le y \\le x \\lfloor \\sqrt{x} \\rfloor$ is"
+       },
+       {
+        "gold": "TRANSFORM",
+        "span": "We compute $k[2k(n^2 - k^4) + k - 1]$ modulo 4 for $0 \\le k \\le 3$ and $0 \\le n \\le 3,$ and obtain the following results:"
+       }
+      ]
+     },
+     "INDUCT": {
+      "calibratable": true,
+      "gold_n": 7,
+      "cue_fired_n": 7,
+      "precision": 1.0,
+      "recall": 1.0,
+      "top_gold_labels_when_fired": {
+       "INDUCT": 7
+      },
+      "reasoning_mode_when_fired": {
+       "EXECUTION": 7
+      },
+      "example_misses": []
+     },
+     "PLAN": {
+      "calibratable": false,
+      "gold_n": 0,
+      "cue_fired_n": 25,
+      "precision": 0.0,
+      "recall": null,
+      "top_gold_labels_when_fired": {
+       "TRANSFORM": 7,
+       "UNRESOLVED": 5,
+       "VERIFY": 3,
+       "EVALUATE": 2,
+       "APPLY_THEOREM": 2
+      },
+      "reasoning_mode_when_fired": {
+       "EXECUTION": 20,
+       "VERIFICATION": 3,
+       "GOAL_MANAGEMENT": 2
+      },
+      "example_misses": [
+       {
+        "gold": "COUNT",
+        "span": "Now we subtract from 1 to find the probability that at least one woman is selected. The probability is $1-\\frac{7}{24}=\\boxed{\\frac{17}{24}}$."
+       },
+       {
+        "gold": "DECLARE",
+        "span": "Let's call the length of the shorter leg $x$. Then the length of the longer leg is $x + 1$."
+       },
+       {
+        "gold": "EVALUATE",
+        "span": "First, we perform all cases of multiplication and division from left to right to obtain"
+       }
+      ]
+     },
+     "RETRIEVE": {
+      "calibratable": false,
+      "gold_n": 0,
+      "cue_fired_n": 20,
+      "precision": 0.0,
+      "recall": null,
+      "top_gold_labels_when_fired": {
+       "TRANSFORM": 7,
+       "APPLY_THEOREM": 3,
+       "DISCHARGE": 3,
+       "RECORD": 1,
+       "SUBSTITUTE": 1
+      },
+      "reasoning_mode_when_fired": {
+       "EXECUTION": 15,
+       "GOAL_MANAGEMENT": 4,
+       "VERIFICATION": 1
+      },
+      "example_misses": [
+       {
+        "gold": "RECORD",
+        "span": "We are given that $x^2 + y^2 = 90$ and that $xy = 27$."
+       },
+       {
+        "gold": "SUBSTITUTE",
+        "span": "Since $A=J$, we know that $3B=B+6$."
+       },
+       {
+        "gold": "APPLY_THEOREM",
+        "span": "We know that the prime factorization of 18 is $2\\cdot 3^2$, so in order for the four digit number to be divisible by 18 it must also be divisible by 9"
+       }
+      ]
+     },
+     "SELECT": {
+      "calibratable": true,
+      "gold_n": 4,
+      "cue_fired_n": 23,
+      "precision": 0.087,
+      "recall": 0.5,
+      "top_gold_labels_when_fired": {
+       "DISCHARGE": 5,
+       "VERIFY": 3,
+       "UNRESOLVED": 3,
+       "TRANSFORM": 3,
+       "EVALUATE": 3
+      },
+      "reasoning_mode_when_fired": {
+       "GOAL_MANAGEMENT": 9,
+       "EXECUTION": 9,
+       "VERIFICATION": 3,
+       "SEARCH_META": 2
+      },
+      "example_misses": [
+       {
+        "gold": "VERIFY",
+        "span": "$\\boxed{34}$ is the smallest solution since it is a lower bound of $a$ and satisfies both original congruences."
+       },
+       {
+        "gold": "UNRESOLVED",
+        "span": "The smallest integer $x$ such that $400 < x$ is $401$."
+       },
+       {
+        "gold": "TRANSFORM",
+        "span": "We number the vertices of this $n$-gon in a counterclockwise direction: $0, 1, 2, 3, \\ldots, n-1.$\nA regular $n$-star will be formed if we choose a ve"
+       }
+      ]
+     },
+     "SUBSTITUTE": {
+      "calibratable": true,
+      "gold_n": 7,
+      "cue_fired_n": 15,
+      "precision": 0.333,
+      "recall": 0.714,
+      "top_gold_labels_when_fired": {
+       "SUBSTITUTE": 5,
+       "DISCHARGE": 5,
+       "BOUND": 2,
+       "TRANSFORM": 1,
+       "VERIFY": 1
+      },
+      "reasoning_mode_when_fired": {
+       "EXECUTION": 7,
+       "GOAL_MANAGEMENT": 7,
+       "VERIFICATION": 1
+      },
+      "example_misses": [
+       {
+        "gold": "TRANSFORM",
+        "span": "Substituting, we get $-2-5=2(-2)-b$, which implies $b=3$."
+       },
+       {
+        "gold": "VERIFY",
+        "span": "If we plug this value of $x$ back into the original equation in order to check our answer, we see that $|5(1)-1|=1+3$ or $4=4$."
+       },
+       {
+        "gold": "APPLY_DEFINITION",
+        "span": "Substituting $-x$ for $x$ gives us $f(g(-x^3)) = f(-g(x^3)) = f(g(x^3))$"
+       }
+      ]
+     },
+     "TRANSFORM": {
+      "calibratable": true,
+      "gold_n": 305,
+      "cue_fired_n": 58,
+      "precision": 0.672,
+      "recall": 0.128,
+      "top_gold_labels_when_fired": {
+       "TRANSFORM": 39,
+       "VERIFY": 4,
+       "APPLY_DEFINITION": 3,
+       "APPLY_THEOREM": 3,
+       "DISCHARGE": 3
+      },
+      "reasoning_mode_when_fired": {
+       "EXECUTION": 44,
+       "GOAL_MANAGEMENT": 6,
+       "SEARCH_META": 4,
+       "VERIFICATION": 4
+      },
+      "example_misses": [
+       {
+        "gold": "APPLY_DEFINITION",
+        "span": "A positive integer is a factor of 72 if and only if the exponents in its prime factorization are less than or equal to the corresponding exponents in "
+       },
+       {
+        "gold": "UNRESOLVED",
+        "span": "Therefore, in forming a perfect cube factor of 72"
+       },
+       {
+        "gold": "SELECT",
+        "span": "We note that 80 can be factored as $8\\cdot 10$. Therefore, $r = \\boxed{8}$."
+       }
+      ]
+     },
+     "VERIFY": {
+      "calibratable": true,
+      "gold_n": 28,
+      "cue_fired_n": 30,
+      "precision": 0.7,
+      "recall": 0.75,
+      "top_gold_labels_when_fired": {
+       "VERIFY": 21,
+       "DISCHARGE": 6,
+       "SELECT": 1,
+       "UNRESOLVED": 1,
+       "EVALUATE": 1
+      },
+      "reasoning_mode_when_fired": {
+       "VERIFICATION": 21,
+       "GOAL_MANAGEMENT": 7,
+       "EXECUTION": 2
+      },
+      "example_misses": [
+       {
+        "gold": "SELECT",
+        "span": "Indeed, $20 \\times 21 = 420$, so the legs must be 20 and 21."
+       },
+       {
+        "gold": "DISCHARGE",
+        "span": "We can easily verify that these will yield nondegenerate prisms, so the answer is $\\boxed{40}$."
+       },
+       {
+        "gold": "UNRESOLVED",
+        "span": "We can also confirm that all of the pairs in this case are different from the pairs in the previous case."
+       }
+      ]
+     }
+    }
+   },
+   "math_reference_solutions_human": {
+    "n_problems": 12500,
+    "n_steps": 42963,
+    "cue_fired": {
+     "DISCHARGE": 12708,
+     "TRANSFORM": 3539,
+     "COUNT": 3414,
+     "EVALUATE": 2398,
+     "DECLARE": 2276,
+     "SELECT": 2103,
+     "BOUND": 2029,
+     "CONSTRUCT": 1720,
+     "PLAN": 1563,
+     "APPLY_THEOREM": 1444,
+     "CASE_SPLIT": 1287,
+     "RETRIEVE": 1061,
+     "SUBSTITUTE": 907,
+     "APPLY_DEFINITION": 516,
+     "ENUMERATE": 506,
+     "VERIFY": 489,
+     "CONTRADICTION": 253,
+     "BACKTRACK": 62,
+     "INDUCT": 24
+    },
+    "cue_fired_rate": {
+     "DISCHARGE": 0.2958,
+     "TRANSFORM": 0.0824,
+     "COUNT": 0.0795,
+     "EVALUATE": 0.0558,
+     "DECLARE": 0.053,
+     "SELECT": 0.0489,
+     "BOUND": 0.0472,
+     "CONSTRUCT": 0.04,
+     "PLAN": 0.0364,
+     "APPLY_THEOREM": 0.0336,
+     "CASE_SPLIT": 0.03,
+     "RETRIEVE": 0.0247,
+     "SUBSTITUTE": 0.0211,
+     "APPLY_DEFINITION": 0.012,
+     "ENUMERATE": 0.0118,
+     "VERIFY": 0.0114,
+     "CONTRADICTION": 0.0059,
+     "BACKTRACK": 0.0014,
+     "INDUCT": 0.0006
+    },
+    "steps_per_subject": {
+     "Algebra": 9486,
+     "Prealgebra": 6474,
+     "Number Theory": 6421,
+     "Geometry": 6342,
+     "Intermediate Algebra": 6070,
+     "Counting & Probability": 5440,
+     "Precalculus": 2730
+    }
+   },
+   "prm800k_completions": {
+    "files": [
+     "phase1_train.jsonl",
+     "phase1_test.jsonl",
+     "phase2_test.jsonl"
+    ],
+    "n_records": 3817,
+    "n_distinct_problems": 1359,
+    "n_model_steps_by_rating": {
+     "1": 39201,
+     "0": 13103,
+     "-1": 27706,
+     "unrated": 1898
+    },
+    "n_human_written_steps": 2598,
+    "model_cue_fired_by_rating": {
+     "0": {
+      "PLAN": 2878,
+      "TRANSFORM": 1006,
+      "EVALUATE": 838,
+      "RETRIEVE": 589,
+      "COUNT": 472,
+      "BOUND": 437,
+      "SUBSTITUTE": 412,
+      "SELECT": 334,
+      "CASE_SPLIT": 291,
+      "DECLARE": 235,
+      "VERIFY": 231,
+      "APPLY_DEFINITION": 175,
+      "APPLY_THEOREM": 170,
+      "CONSTRUCT": 157,
+      "ENUMERATE": 114,
+      "DISCHARGE": 89,
+      "BACKTRACK": 85,
+      "CONTRADICTION": 28,
+      "INDUCT": 13
+     },
+     "1": {
+      "PLAN": 4184,
+      "EVALUATE": 4176,
+      "TRANSFORM": 3699,
+      "COUNT": 2208,
+      "SUBSTITUTE": 1276,
+      "RETRIEVE": 1095,
+      "BOUND": 1059,
+      "SELECT": 996,
+      "CASE_SPLIT": 920,
+      "APPLY_DEFINITION": 900,
+      "APPLY_THEOREM": 589,
+      "DECLARE": 504,
+      "DISCHARGE": 451,
+      "VERIFY": 388,
+      "ENUMERATE": 388,
+      "CONSTRUCT": 353,
+      "BACKTRACK": 92,
+      "CONTRADICTION": 71,
+      "INDUCT": 14
+     },
+     "-1": {
+      "EVALUATE": 2774,
+      "PLAN": 2389,
+      "TRANSFORM": 1943,
+      "COUNT": 1348,
+      "RETRIEVE": 919,
+      "SELECT": 901,
+      "BOUND": 895,
+      "CASE_SPLIT": 800,
+      "DISCHARGE": 775,
+      "SUBSTITUTE": 653,
+      "APPLY_DEFINITION": 599,
+      "VERIFY": 252,
+      "APPLY_THEOREM": 251,
+      "ENUMERATE": 233,
+      "CONSTRUCT": 186,
+      "DECLARE": 161,
+      "BACKTRACK": 141,
+      "CONTRADICTION": 111,
+      "INDUCT": 7
+     },
+     "unrated": {
+      "PLAN": 221,
+      "EVALUATE": 184,
+      "TRANSFORM": 131,
+      "SUBSTITUTE": 69,
+      "COUNT": 65,
+      "SELECT": 62,
+      "APPLY_DEFINITION": 56,
+      "RETRIEVE": 55,
+      "CASE_SPLIT": 45,
+      "DISCHARGE": 44,
+      "BOUND": 44,
+      "APPLY_THEOREM": 38,
+      "DECLARE": 33,
+      "CONSTRUCT": 29,
+      "VERIFY": 23,
+      "ENUMERATE": 21,
+      "BACKTRACK": 5,
+      "CONTRADICTION": 5
+     }
+    },
+    "human_cue_fired": {
+     "PLAN": 517,
+     "EVALUATE": 190,
+     "TRANSFORM": 132,
+     "COUNT": 120,
+     "BOUND": 79,
+     "BACKTRACK": 79,
+     "CASE_SPLIT": 78,
+     "RETRIEVE": 71,
+     "DECLARE": 54,
+     "SUBSTITUTE": 54,
+     "SELECT": 48,
+     "VERIFY": 36,
+     "DISCHARGE": 29,
+     "CONSTRUCT": 27,
+     "APPLY_DEFINITION": 21,
+     "APPLY_THEOREM": 18,
+     "ENUMERATE": 14,
+     "CONTRADICTION": 13,
+     "INDUCT": 7
+    },
+    "n_model_steps_total": 81908,
+    "model_cue_fired_rate_all": {
+     "PLAN": 0.1181,
+     "EVALUATE": 0.0973,
+     "TRANSFORM": 0.0828,
+     "COUNT": 0.05,
+     "RETRIEVE": 0.0325,
+     "BOUND": 0.0297,
+     "SUBSTITUTE": 0.0294,
+     "SELECT": 0.028,
+     "CASE_SPLIT": 0.0251,
+     "APPLY_DEFINITION": 0.0211,
+     "DISCHARGE": 0.0166,
+     "APPLY_THEOREM": 0.0128,
+     "DECLARE": 0.0114,
+     "VERIFY": 0.0109,
+     "ENUMERATE": 0.0092,
+     "CONSTRUCT": 0.0089,
+     "BACKTRACK": 0.0039,
+     "CONTRADICTION": 0.0026,
+     "INDUCT": 0.0004
+    },
+    "human_cue_fired_rate": {
+     "PLAN": 0.199,
+     "EVALUATE": 0.0731,
+     "TRANSFORM": 0.0508,
+     "COUNT": 0.0462,
+     "BOUND": 0.0304,
+     "BACKTRACK": 0.0304,
+     "CASE_SPLIT": 0.03,
+     "RETRIEVE": 0.0273,
+     "DECLARE": 0.0208,
+     "SUBSTITUTE": 0.0208,
+     "SELECT": 0.0185,
+     "VERIFY": 0.0139,
+     "DISCHARGE": 0.0112,
+     "CONSTRUCT": 0.0104,
+     "APPLY_DEFINITION": 0.0081,
+     "APPLY_THEOREM": 0.0069,
+     "ENUMERATE": 0.0054,
+     "CONTRADICTION": 0.005,
+     "INDUCT": 0.0027
+    },
+    "model_cue_fired_rate_by_rating": {
+     "0": {
+      "PLAN": 0.2196,
+      "TRANSFORM": 0.0768,
+      "EVALUATE": 0.064,
+      "RETRIEVE": 0.045,
+      "COUNT": 0.036,
+      "BOUND": 0.0334,
+      "SUBSTITUTE": 0.0314,
+      "SELECT": 0.0255,
+      "CASE_SPLIT": 0.0222,
+      "DECLARE": 0.0179,
+      "VERIFY": 0.0176,
+      "APPLY_DEFINITION": 0.0134,
+      "APPLY_THEOREM": 0.013,
+      "CONSTRUCT": 0.012,
+      "ENUMERATE": 0.0087,
+      "DISCHARGE": 0.0068,
+      "BACKTRACK": 0.0065,
+      "CONTRADICTION": 0.0021,
+      "INDUCT": 0.001
+     },
+     "1": {
+      "PLAN": 0.1067,
+      "EVALUATE": 0.1065,
+      "TRANSFORM": 0.0944,
+      "COUNT": 0.0563,
+      "SUBSTITUTE": 0.0326,
+      "RETRIEVE": 0.0279,
+      "BOUND": 0.027,
+      "SELECT": 0.0254,
+      "CASE_SPLIT": 0.0235,
+      "APPLY_DEFINITION": 0.023,
+      "APPLY_THEOREM": 0.015,
+      "DECLARE": 0.0129,
+      "DISCHARGE": 0.0115,
+      "VERIFY": 0.0099,
+      "ENUMERATE": 0.0099,
+      "CONSTRUCT": 0.009,
+      "BACKTRACK": 0.0023,
+      "CONTRADICTION": 0.0018,
+      "INDUCT": 0.0004
+     },
+     "-1": {
+      "EVALUATE": 0.1001,
+      "PLAN": 0.0862,
+      "TRANSFORM": 0.0701,
+      "COUNT": 0.0487,
+      "RETRIEVE": 0.0332,
+      "SELECT": 0.0325,
+      "BOUND": 0.0323,
+      "CASE_SPLIT": 0.0289,
+      "DISCHARGE": 0.028,
+      "SUBSTITUTE": 0.0236,
+      "APPLY_DEFINITION": 0.0216,
+      "VERIFY": 0.0091,
+      "APPLY_THEOREM": 0.0091,
+      "ENUMERATE": 0.0084,
+      "CONSTRUCT": 0.0067,
+      "DECLARE": 0.0058,
+      "BACKTRACK": 0.0051,
+      "CONTRADICTION": 0.004,
+      "INDUCT": 0.0003
+     },
+     "unrated": {
+      "PLAN": 0.1164,
+      "EVALUATE": 0.0969,
+      "TRANSFORM": 0.069,
+      "SUBSTITUTE": 0.0364,
+      "COUNT": 0.0342,
+      "SELECT": 0.0327,
+      "APPLY_DEFINITION": 0.0295,
+      "RETRIEVE": 0.029,
+      "CASE_SPLIT": 0.0237,
+      "DISCHARGE": 0.0232,
+      "BOUND": 0.0232,
+      "APPLY_THEOREM": 0.02,
+      "DECLARE": 0.0174,
+      "CONSTRUCT": 0.0153,
+      "VERIFY": 0.0121,
+      "ENUMERATE": 0.0111,
+      "BACKTRACK": 0.0026,
+      "CONTRADICTION": 0.0026
+     }
+    }
+   }
+  }
+ },
+ "what_would_settle_it": [
+  {
+   "rank": 1,
+   "measurement": "Second-annotator agreement on the 769 gold steps.",
+   "corpus": "gold125_ontology_v1, all 769 records, core_operation axis.",
+   "size": "769 steps; a 200-step stratified subset would already give a usable Cohen's kappa.",
+   "independent_check": "A second annotator (human or a model run blind, adjudicated by a human) labels the same spans from the 19-value axis. Report kappa per operation.",
+   "why_it_settles_something": "Every recurrence claim in this document rests on one annotator's labels. Without kappa there is no error bar at all. It is also the cheapest thing on this list.",
+   "cost": "hours, no GPU"
+  },
+  {
+   "rank": 2,
+   "measurement": "Machine-check the mathematical content of the 769.",
+   "corpus": "the 769 gold state_delta pairs.",
+   "size": "769, or the ~450 that are algebraic.",
+   "independent_check": "SymPy equivalence of state_before -> state_after for every step that is an equation transformation, exactly as was already done for 867 of the 3,978 synthetic transitions.",
+   "why_it_settles_something": "Promotes part of the corpus from ANNOTATION_UNVERIFIED to DETERMINISTICALLY_CHECKED, which is the only way anything in the rich corpus stops being an assertion. The machinery already exists.",
+   "cost": "hours, CPU only"
+  },
+  {
+   "rank": 3,
+   "measurement": "Annotate the informal operation on aligned formal steps.",
+   "corpus": "miniF2F (500) or ProofNet-lean4 (371): both already local, and BOTH carry a natural-language statement AND a Lean proof of the same theorem.",
+   "size": "500 theorem pairs; ~3,000 aligned steps.",
+   "independent_check": "Label each Lean step with the informal operation vocabulary, then measure how often the informal label and the tactic head agree. This is the ONLY way to measure alignment directly rather than by name-matching.",
+   "why_it_settles_something": "It converts every 'LOW-SAME-NAME-DIFFERENT-OPERATION' verdict in this document from an argument into a number.",
+   "cost": "days; no new data acquisition"
+  },
+  {
+   "rank": 4,
+   "measurement": "A negative-example formal corpus.",
+   "corpus": "Lean replay with deliberately wrong tactics on the existing 1,150 sealed states.",
+   "size": "1,150 states x 3 distractors = 3,450 rejected steps.",
+   "independent_check": "The Lean kernel itself: a rejected tactic is a VERIFIED negative. The counterfactual transition factory (stage100, 100 pairs) is already a working prototype of exactly this.",
+   "why_it_settles_something": "It is the only route to a corpus that is BOTH verified AND contains failure. Today verification and failure are disjoint across the whole estate.",
+   "cost": "GPU-free but needs a Lean toolchain and a mathlib build; the build already exists on this machine."
+  },
+  {
+   "rank": 5,
+   "measurement": "Reweight, do not resample, the 1,150 corpus.",
+   "corpus": "HML_V3 sealed corpus, 1,150 transitions.",
+   "size": "1,150.",
+   "independent_check": "Importance weights w(head) = p_LeanDojo(head) / p_1150(head), computed from the 8,766-tactic representative sample measured here.",
+   "why_it_settles_something": "Makes every existing result on that corpus quotable without re-running the campaign. Costs one script.",
+   "cost": "minutes"
+  },
+  {
+   "rank": 6,
+   "measurement": "Stop expecting PRM800K to yield new operations.",
+   "corpus": "n/a -- this is a negative recommendation.",
+   "size": "n/a",
+   "independent_check": "The prior discovery pilot measured 0/1000 = 0.00% marginal semantic discovery over 858 distinct MATH problems. The cue-firing profile measured here is consistent with saturation: PRM800K model steps and MATH reference sentences fire the same cues in nearly the same order.",
+   "why_it_settles_something": "It is already settled. Budget spent there buys nothing.",
+   "cost": "zero"
+  }
+ ]
+}

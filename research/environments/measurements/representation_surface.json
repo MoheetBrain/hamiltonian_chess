@@ -1,0 +1,74 @@
+{
+ "populations": {
+  "random": {
+   "items": 2487,
+   "n_hypotheses": {
+    "p10": 4,
+    "p50": 12,
+    "p90": 30,
+    "mean": 14.802
+   },
+   "goal_symbolic_tokens": {
+    "p10": 5,
+    "p50": 16,
+    "p90": 50,
+    "mean": 28.162
+   },
+   "context_symbolic_tokens": {
+    "p10": 24,
+    "p50": 81,
+    "p90": 252,
+    "mean": 114.776
+   },
+   "context_share_of_state": {
+    "p10": 0.507,
+    "p50": 0.835,
+    "p90": 0.958,
+    "mean": 0.78
+   },
+   "goal_parenthesis_nesting_depth": {
+    "p10": 0,
+    "p50": 1,
+    "p90": 2,
+    "mean": 1.141
+   },
+   "items_with_zero_hypotheses": 4,
+   "items_with_ge5_hypotheses": 2215
+  },
+  "novel_premises": {
+   "items": 3586,
+   "n_hypotheses": {
+    "p10": 5,
+    "p50": 12,
+    "p90": 24,
+    "mean": 13.754
+   },
+   "goal_symbolic_tokens": {
+    "p10": 5,
+    "p50": 18,
+    "p90": 65,
+    "mean": 32.233
+   },
+   "context_symbolic_tokens": {
+    "p10": 25,
+    "p50": 86,
+    "p90": 244,
+    "mean": 120.247
+   },
+   "context_share_of_state": {
+    "p10": 0.47,
+    "p50": 0.819,
+    "p90": 0.961,
+    "mean": 0.761
+   },
+   "goal_parenthesis_nesting_depth": {
+    "p10": 0,
+    "p50": 1,
+    "p90": 3,
+    "mean": 1.313
+   },
+   "items_with_zero_hypotheses": 2,
+   "items_with_ge5_hypotheses": 3251
+  }
+ }
+}

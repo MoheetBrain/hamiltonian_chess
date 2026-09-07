@@ -1,0 +1,1358 @@
+{
+ "generated_utc": "2026-09-07T05:25:57Z",
+ "method": "Read-only audit. Every count was produced by decompressing and parsing the real files on disk (gzcat|wc -l, python json parsing) or by re-executing the Arena loader arena.environments.formal_structural.load_formal_states with PYTHONPATH=. . No Lean, lake or mathlib build was run; no model/LLM call was made; nothing outside the Arena parallel worktree was written. Tactic text was recovered offline by slicing the byte range action.source_location.start.raw..end.raw out of the pinned local mathlib/Batteries source file named by corpus_metadata.source_file.",
+ "claims_verified": [
+  {
+   "claim": "(a) ~1,150 real elaborated Lean transitions exist locally",
+   "status": "CONFIRMED",
+   "real_value": 1150,
+   "evidence": {
+    "path": "/Users/moheet/Documents/ChatGPT/HML_V3/data/corpus/lean_runtime_v2_full.canonical.part-{000..004}.jsonl.gz",
+    "command": "gzcat lean_runtime_v2_full.canonical.part-*.jsonl.gz | wc -l -> 1150",
+    "per_part_rows": {
+     "part-000": 279,
+     "part-001": 317,
+     "part-002": 242,
+     "part-003": 296,
+     "part-004": 16
+    },
+    "per_part_bytes": {
+     "part-000": 4206418,
+     "part-001": 4206012,
+     "part-002": 4195720,
+     "part-003": 4200536,
+     "part-004": 233441
+    },
+    "distinct_transition_ids": 1150,
+    "schema_version": "canonical-math-transition-v2.0.0 (all 1150 rows)",
+    "composition": "608 rows from the campaign500/500b run + 542 from campaign_targeted; audits at /Users/moheet/Documents/ChatGPT/HML_V3/reports/audits/LEAN_RUNTIME_V2_CORPUS.json (608 recovered of 1000 selected) and LEAN_RUNTIME_V2_TARGETED.json (542 of 1125 selected)",
+    "sibling_corpora_rows": {
+     "lean_runtime_v2.canonical": 608,
+     "targeted_v2.canonical": 542,
+     "search_pool_v2": 918,
+     "sealed_final_v2": 232
+    },
+    "sealed_holdout": "SEALED_V2_MANIFEST.json declares 126 sealed mathlib source files / 232 transitions; verified: 126 distinct source_file values, 232 rows, and all 232 transition_ids are a subset of the 1150. Excluding by file name leaves exactly 918 = search_pool_v2."
+   },
+   "caveats": [
+    "Elaboration-time capture, not tactic replay. Every row carries reference_completeness=PARTIAL_TACTICS_WITHOUT_TERMINFO_MAY_HIDE_INTERNAL_USE, so premise references are lower bounds.",
+    "The 1,150 figure understates what is on disk: a full LeanDojo Benchmark 4 trace with 259,580 tactic transitions is also present locally (see datasets)."
+   ]
+  },
+  {
+   "claim": "(b) ~461 structurally eligible proof states, of which ~104 are length-fair, with Tier A provenance",
+   "status": "CONFIRMED",
+   "real_value": {
+    "eligible": 461,
+    "length_fair": 104
+   },
+   "evidence": {
+    "command": "PYTHONPATH=. python3 -c 'from arena.environments.formal_structural import load_formal_states; len(load_formal_states())' -> 461 (1.5 s)",
+    "eligibility_rule": "single goal in state_before, unique deepest lean.local_reference with depth_lead>=1, target max_depth>=4, max_recurrence>=2, sealed source files excluded",
+    "eligible_distinct_source_files": 364,
+    "eligible_distinct_theorem_ids": 447,
+    "eligible_depth_lead_hist": {
+     "1": 366,
+     "2": 27,
+     "3": 29,
+     "4": 14,
+     "5": 9,
+     "6": 1,
+     "7": 4,
+     "8": 4,
+     "9": 3,
+     "10": 1,
+     "11": 1,
+     "12": 2
+    },
+    "eligible_one_level_lead_share": 0.7939,
+    "eligible_median_max_depth": 12,
+    "eligible_median_node_count": 91,
+    "length_fair_command": "render each eligible state through the 8 V5E founder surfaces (L0_STRUCTURED_ENGLISH..L7_HYBRID_ROLE_LABELLED) and keep those where every surface renders <= 30,000 chars -> 104 (7.0 s)",
+    "length_fair_distinct_source_files": 95,
+    "length_fair_one_level_lead_share": 0.75,
+    "length_fair_strata": {
+     "shallow": 34,
+     "medium": 34,
+     "deep": 36
+    },
+    "surface_length_ratio_unrestricted": {
+     "median": 6.49,
+     "max": 23.71,
+     "n": 461
+    },
+    "surface_length_ratio_restricted": {
+     "median": 4.62,
+     "max": 5.68,
+     "n": 104
+    },
+    "docs_claimed": {
+     "median_ratio": 6.5,
+     "max_ratio": 23.7,
+     "restricted_ratio": 4.6,
+     "files": 95,
+     "one_level_lead": 0.75
+    },
+    "tier_a": "arena/provenance.py TrustTier.A_NATIVE_VERIFIED is assigned to every FormalState in arena/environments/formal_structural.py:load_formal_states, with extraction_path 'Lean 4 v4.10.0-rc1 elaborator via HML_V3 LeanRuntimeExtractV2' and verifier 'arena structural re-derivation (identifier_depths)'. require_oracle_grade() enforces the tier."
+   },
+   "caveats": [
+    "Tier A applies to the STATES only. The structural answer (which identifier is deepest) is Tier B: Arena recomputes it. Nothing in the record certifies that the tactic step was replayed."
+   ]
+  },
+  {
+   "claim": "(c) A full mathlib is built locally and Lean replay works OFFLINE (no network needed)",
+   "status": "CONFIRMED (build + offline capability); the replay YIELD claim is only PARTIALLY CONFIRMED",
+   "real_value": {
+    "olean_files_under_dot_lake": 5680,
+    "mathlib_module_oleans": 4447,
+    "mathlib_lean_sources": 4447,
+    "packages_oleans": 1230,
+    "fresh_replay_pass_rate_historical": "32/100 attestation rows"
+   },
+   "evidence": {
+    "built_tree": "/Users/moheet/Documents/ChatGPT/HML_V3/external/runtime_work/leanprover-community-mathlib4-29dcec074de168ac2bf835a77ef68bbe069194c5/mathlib4",
+    "lean_toolchain_file": "leanprover/lean4:v4.10.0-rc1",
+    "git_head": "29dcec074de168ac2bf835a77ef68bbe069194c5",
+    "olean_counts": {
+     "find .lake -name '*.olean' | wc -l": 5680,
+     ".lake/build/lib": 4449,
+     ".lake/build/lib/Mathlib": 4447,
+     ".lake/packages": 1230
+    },
+    "root_module_built": ".lake/build/lib/Mathlib.olean present (453,832 bytes)",
+    "lean4repl": ".lake/build/lib/Lean4Repl.olean present (1,248,008 bytes); source Lean4Repl.lean present",
+    "lake_manifest_vs_packages": {
+     "manifest": [
+      "batteries",
+      "Qq",
+      "aesop",
+      "proofwidgets",
+      "Cli",
+      "importGraph"
+     ],
+     "present": [
+      "Cli",
+      "Qq",
+      "aesop",
+      "batteries",
+      "importGraph",
+      "lean4",
+      "proofwidgets"
+     ],
+     "verdict": "every manifest dependency is already vendored under .lake/packages"
+    },
+    "installed_toolchains": [
+     "leanprover--lean4---v4.10.0-rc1",
+     "leanprover--lean4---v4.32.2",
+     "leanprover--lean4---v4.33.0",
+     "leanprover--lean4---v4.33.1"
+    ],
+    "replay_driver": "/Users/moheet/Documents/ChatGPT/HML_V3/scripts/replay/run_lean_runtime_campaign_v2.py",
+    "replay_command": "lake env lean --run scripts/extract/LeanRuntimeExtractV2.lean SOURCE TARGETS.tsv OUTPUT.json (run_job(), line 85), executed with cwd=runtime_root",
+    "environment_pin_gate": "environment_identity() runs 'lake env lean --version' and raises ENVIRONMENT_MISMATCH unless the output contains v4.10.0-rc1 and build commit 3b58e0649156",
+    "extractor": "/Users/moheet/Documents/ChatGPT/HML_V3/scripts/extract/LeanRuntimeExtractV2.lean (26,361 bytes)",
+    "network_assessment": "No download step exists in the replay driver (no curl/wget/http/clone/fetch). All dependencies, oleans and toolchains are already on disk, so 'lake env' resolves locally. NOT EXECUTED in this audit (forbidden), so this is a static assessment, not an observed run.",
+    "second_mathlib_checkout": {
+     "path": "/Users/moheet/Documents/ChatGPT/HML_V3/external/checkouts/mathlib4-29dcec0",
+     "status": "NOT BUILT - only 38 .olean files, no Mathlib.olean, no Lean4Repl"
+    },
+    "timing_evidence": "run_job() records elapsed_seconds per job, but no elapsed_seconds survive in the retained audits (reports/audits/LEAN_RUNTIME_V2_*.json keep only counters, job_process_status and file_outcomes). NO RECORDED PER-JOB TIMING WAS FOUND, so no honest replay-duration estimate can be given from logs. The only scale facts are: 751 file-level jobs for campaign500/500b (744 PROCESS_PASS / 7 PROCESS_FAIL) and 655 jobs for campaign_targeted (652 PASS / 3 FAIL); raw capture output totals ~102 GB across the three campaign directories."
+   },
+   "caveats": [
+    "'Replay' here means re-elaborating a source file and re-capturing the tactic state, not proving anything new.",
+    "Historic fresh-replay certification, from /Users/moheet/Documents/ChatGPT/HML_V3/data/manifests/lean_pipeline_v1.json: REPLAY_PASS 32, REPLAY_STATE_MISMATCH 11, REPLAY_TACTIC_FAIL 1, UNSUPPORTED 56 over 100 attestation rows; 900 of 1000 rows carry no fresh replay certificate at all. The Arena docs' '~44% reproducible execution' matches the 44 SUPPORTED attempts (32+11+1), not the pass rate; the true fresh-replay pass rate is 32/100 = 32%.",
+    "Capture yield is separately lossy: 608/1000 and 542/1125 selected transitions were recovered, mostly because 272 + 399 captures exceeded the 262,144-byte canonical budget."
+   ]
+  },
+  {
+   "claim": "(d) These feed an Arena environment used by the formal_expression_depth mechanism",
+   "status": "CONFIRMED",
+   "real_value": {
+    "dev_pool_probes": 864,
+    "instrument_qualified": false
+   },
+   "evidence": {
+    "environment_module": "/Users/moheet/Documents/ChatGPT/hamiltonian_chess/.claude/worktrees/phase-6-parallel-setup-9c6068/arena/environments/formal_structural.py (ENVIRONMENT_VERSION arena-formal-structural-v1.0.0)",
+    "consumer": "/Users/moheet/Documents/ChatGPT/hamiltonian_chess/.claude/worktrees/phase-6-parallel-setup-9c6068/arena/experiments/fitness_v5.py:_formal_pool (line ~868) -> build_dev_pool (line ~893)",
+    "executed_result": "/Users/moheet/Documents/ChatGPT/hamiltonian_chess/.claude/worktrees/phase-6-parallel-setup-9c6068/artifacts/experiments/fitness_v5/development/result.json",
+    "result_fields": {
+     "environment_version": "arena-formal-structural-v1.0.0",
+     "dev_pool_probes": 864,
+     "dev_pool_hash": "f804e0d998f1cfac20559728cae29733602990ed801430c1398db798b84a9c8b",
+     "instrument_qualified": false,
+     "qualified_mechanisms": [],
+     "selected_levels": {},
+     "control_candidate": "V5E_L3_JSON_AST",
+     "model": {
+      "name": "gemma4:12b",
+      "parameter_size": "11.9B",
+      "quantization": "Q4_K_M"
+     }
+    },
+    "family_id_shape": "v5:dev:formal_expression_depth:l0:fs:<16 hex> - the fs: suffix is the FormalState item_id",
+    "measured_outcome": {
+     "explicit_positive_L0": 0.917,
+     "L1": 0.875,
+     "L2": 0.542,
+     "L3": 0.542,
+     "positive_accuracy_at_frontier": 0.5417,
+     "negative_target_accuracy": 0.5,
+     "positive_negative_gap": 0.0417,
+     "largest_answer_share": 0.625,
+     "position_invariance": 0.5,
+     "verdict": "VOID_NEGATIVE_CONTROL + VOID_SHORTCUT"
+    }
+   },
+   "caveats": [
+    "The mechanism ran and VOIDED. It is infrastructure that works, not a validated instrument."
+   ]
+  }
+ ],
+ "datasets": [
+  {
+   "id": "hmlv3_lean_runtime_v2_full",
+   "role": "Arena's Tier-A formal state source (the '1,150 transitions')",
+   "paths": [
+    "/Users/moheet/Documents/ChatGPT/HML_V3/data/corpus/lean_runtime_v2_full.canonical.part-000.jsonl.gz",
+    "/Users/moheet/Documents/ChatGPT/HML_V3/data/corpus/lean_runtime_v2_full.canonical.part-001.jsonl.gz",
+    "/Users/moheet/Documents/ChatGPT/HML_V3/data/corpus/lean_runtime_v2_full.canonical.part-002.jsonl.gz",
+    "/Users/moheet/Documents/ChatGPT/HML_V3/data/corpus/lean_runtime_v2_full.canonical.part-003.jsonl.gz",
+    "/Users/moheet/Documents/ChatGPT/HML_V3/data/corpus/lean_runtime_v2_full.canonical.part-004.jsonl.gz"
+   ],
+   "rows": 1150,
+   "compressed_bytes_total": 17042127,
+   "canonical_bytes_per_record": {
+    "min": 26536,
+    "p10": 67793,
+    "p25": 90518,
+    "p50": 128288,
+    "p75": 176686,
+    "p90": 221093,
+    "p95": 239373,
+    "max": 261847,
+    "mean": 136647.91,
+    "n": 1150
+   },
+   "top_level_keys": [
+    "action",
+    "corpus_metadata",
+    "provenance",
+    "schema_version",
+    "source_specific_reference",
+    "state_after",
+    "state_before",
+    "state_delta",
+    "transition_id"
+   ],
+   "record_schema": {
+    "transition_id": "<source_file>::<theorem_id>::<transition_index>",
+    "action": {
+     "kind": "LEAN_ELABORATED_TACTIC_OCCURRENCE (all 1150)",
+     "external_premise_refs": "list[str] of mathlib constant names used by the step",
+     "local_context_refs": "list of {canonical_id, resolved, source_fvar_id}",
+     "reference_completeness": "PARTIAL_TACTICS_WITHOUT_TERMINFO_MAY_HIDE_INTERNAL_USE (all 1150)",
+     "reference_mechanism": "DIRECT_TRAVERSAL_OF_ELABORATED_TERMINFO_EXPRS",
+     "source_location": "{start:{line,column,raw}, end:{line,column,raw}, info_tree_path:[int]}",
+     "NO_TACTIC_NAME_OR_SYNTAX_FIELD": true
+    },
+    "state_before/state_after": {
+     "goals": "[{identity, local_context[], local_instances[], target}]",
+     "focus_order": "[mvar identity]",
+     "metavariables": "[{identity, kind, assigned, assignment, type}]",
+     "universe_assignments": "[]",
+     "source_reference": "{raw_fvar_to_canonical, raw_mvar_to_canonical, runtime_state_sha256, full_metavariable_inventory_count, full_assigned_expression_count, ...}",
+     "information_accounting": "seven PRESERVED/DELEGATED/UNEXPOSED declarations",
+     "state_id": "<file>::<theorem>::<idx>:before|after"
+    },
+    "goal.local_context entry": "{identity:'f<N>', binder_role:EXPLICIT|IMPLICIT|STRICT_IMPLICIT|INSTANCE_IMPLICIT, declaration_role:cdecl|ldecl, type:<Expr tree>}",
+    "goal.local_instances entry": "{class_identity, term}",
+    "expression node kinds": "application{function,argument}, lambda/dependent_function{binder_name,binder_role,binder_type,body}, annotated{expression}, local_reference{identity}, metavariable_reference, symbol{name,universe_arguments}, bound_variable{index} (de Bruijn), literal{value}, sort{level{constructor,of,name}}, let",
+    "state_delta": "goals_created/solved/preserved/modified, goals_reordered, focus_before/after/changed, local_declarations_added/removed/changed, metavariables_created/assigned/changed/removed_from_inventory, external_premises_used, local_context_refs_used, expression_changes.goal_targets_changed, delta_source",
+    "corpus_metadata": "{source_file, domain, theorem_family, raw_file, canonical_bytes, canonical_sha256, official_split:null, tactic_family:null, recorded_effect_class:null}",
+    "provenance": "{source_file, direct_imports[], lean_runtime_snapshot{environment_main_module, parent_declaration, current_namespace, open_declarations, options, transitive_import_modules[]}}"
+   },
+   "what_is_present": {
+    "goal_term": "yes, full elaborated Expr tree",
+    "hypotheses_context": "yes, ordered local_context with types as Expr trees",
+    "tactic_applied": "NOT as a name or string; only a byte range into the source file (recoverable - see tactic_frequency)",
+    "resulting_goals": "yes, state_after with full goal list",
+    "metavariables": "yes, with identity/kind/assigned/assignment/type and full inventory counts",
+    "universe_levels": "yes, on sort nodes (level{constructor,of,param name}) and symbol.universe_arguments (21,340 symbol nodes carry universe args); state.universe_assignments is empty in 572 of 1150 records and non-empty in 578",
+    "implicit_instance_arguments": "yes, binder_role on every local_context entry and every binder node",
+    "binder_info": "yes; bound_variable carries a de Bruijn index",
+    "dependencies": "partial - external_premise_refs and local_context_refs; NOT a full dependency DAG",
+    "source_theorem_and_file": "yes (theorem_id, source_file, theorem_family, domain)",
+    "mathlib_revision": "not in the row itself; pinned in the pipeline as 29dcec074de168ac2bf835a77ef68bbe069194c5 with Lean v4.10.0-rc1 (build commit 3b58e0649156); provenance.lean_runtime_snapshot records the module environment and transitive imports instead"
+   },
+   "measured": {
+    "distinct_source_files": 738,
+    "distinct_theorem_ids": 1085,
+    "distinct_theorem_families": 576,
+    "domains": {
+     "packages": 19,
+     "Algebra": 122,
+     "AlgebraicGeometry": 9,
+     "Analysis": 115,
+     "CategoryTheory": 35,
+     "Combinatorics": 36,
+     "Computability": 42,
+     "Control": 1,
+     "Data": 162,
+     "Deprecated": 1,
+     "Dynamics": 8,
+     "FieldTheory": 12,
+     "Geometry": 20,
+     "GroupTheory": 25,
+     "Init": 7,
+     "LinearAlgebra": 36,
+     "Logic": 4,
+     "MeasureTheory": 119,
+     "ModelTheory": 7,
+     "NumberTheory": 67,
+     "Order": 59,
+     "Probability": 22,
+     "RingTheory": 63,
+     "SetTheory": 65,
+     "Tactic": 9,
+     "Testing": 1,
+     "Topology": 84
+    },
+    "both_state_before_and_after": 1150,
+    "goals_before_hist": {
+     "1": 892,
+     "2": 157,
+     "3": 65,
+     "4": 22,
+     "5": 8,
+     "6": 3,
+     "7": 1,
+     "8": 1,
+     "12": 1
+    },
+    "goals_after_hist": {
+     "0": 420,
+     "1": 645,
+     "2": 61,
+     "3": 18,
+     "4": 4,
+     "5": 2
+    },
+    "metavars_before": {
+     "min": 1,
+     "p10": 1,
+     "p25": 1,
+     "p50": 3,
+     "p75": 6,
+     "p90": 12,
+     "p95": 19,
+     "max": 69,
+     "mean": 5.19,
+     "n": 1150
+    },
+    "metavars_after": {
+     "min": 0,
+     "p10": 0,
+     "p25": 0,
+     "p50": 1,
+     "p75": 4,
+     "p90": 9,
+     "p95": 15,
+     "max": 50,
+     "mean": 3.31,
+     "n": 1150
+    },
+    "universe_assignments_nonempty": 578,
+    "external_premise_refs_per_transition": {
+     "min": 0,
+     "p10": 0,
+     "p25": 0,
+     "p50": 1,
+     "p75": 3,
+     "p90": 5,
+     "p95": 7,
+     "max": 38,
+     "mean": 1.95,
+     "n": 1150
+    },
+    "transitions_with_ge1_premise": 749,
+    "distinct_external_premises": 1782,
+    "local_context_size": {
+     "min": 1,
+     "p10": 5,
+     "p25": 8,
+     "p50": 12,
+     "p75": 17,
+     "p90": 22,
+     "p95": 33,
+     "max": 86,
+     "mean": 13.74,
+     "n": 1574
+    },
+    "local_context_binder_roles": {
+     "EXPLICIT": 9151,
+     "IMPLICIT": 8772,
+     "INSTANCE_IMPLICIT": 3648,
+     "STRICT_IMPLICIT": 49
+    },
+    "local_context_decl_roles": {
+     "cdecl": 21443,
+     "ldecl": 177
+    },
+    "local_instances_per_goal": {
+     "min": 0,
+     "p10": 0,
+     "p25": 0,
+     "p50": 1,
+     "p75": 3,
+     "p90": 6,
+     "p95": 9,
+     "max": 38,
+     "mean": 2.57,
+     "n": 1574
+    },
+    "target_node_count": {
+     "min": 1,
+     "p10": 1,
+     "p25": 11,
+     "p50": 38,
+     "p75": 99,
+     "p90": 206,
+     "p95": 293,
+     "max": 1353,
+     "mean": 81.24,
+     "n": 1574
+    },
+    "target_max_depth": {
+     "min": 0,
+     "p10": 0,
+     "p25": 4,
+     "p50": 8,
+     "p75": 12,
+     "p90": 16,
+     "p95": 18,
+     "max": 56,
+     "mean": 8.55,
+     "n": 1574
+    },
+    "target_json_chars": {
+     "min": 42,
+     "p10": 50,
+     "p25": 593,
+     "p50": 2283,
+     "p75": 5921,
+     "p90": 12336,
+     "p95": 18225,
+     "max": 93037,
+     "mean": 4916.45,
+     "n": 1574
+    },
+    "targets_depth_ge4": 1217,
+    "target_node_kinds": {
+     "application": 59816,
+     "symbol": 31727,
+     "local_reference": 25093,
+     "bound_variable": 3388,
+     "metavariable_reference": 3061,
+     "lambda": 2229,
+     "literal": 1114,
+     "dependent_function": 1008,
+     "sort": 248,
+     "annotated": 189,
+     "let": 2
+    },
+    "distinct_global_symbols_in_goals": 2240,
+    "binder_roles_in_targets": {
+     "EXPLICIT": 3215,
+     "INSTANCE_IMPLICIT": 5,
+     "IMPLICIT": 7,
+     "STRICT_IMPLICIT": 10
+    },
+    "symbol_nodes_with_universe_args": 21340,
+    "metavariable_reference_nodes": 3061,
+    "elaborated_external_constant_refs": {
+     "min": 0,
+     "p10": 0,
+     "p25": 0,
+     "p50": 2,
+     "p75": 6,
+     "p90": 15,
+     "p95": 27,
+     "max": 123,
+     "mean": 5.62,
+     "n": 1150
+    },
+    "delta_goals_created": {
+     "min": 0,
+     "p10": 0,
+     "p25": 0,
+     "p50": 1,
+     "p75": 1,
+     "p90": 1,
+     "p95": 1,
+     "max": 4,
+     "mean": 0.6,
+     "n": 1150
+    },
+    "delta_goals_solved": {
+     "min": 0,
+     "p10": 1,
+     "p25": 1,
+     "p50": 1,
+     "p75": 1,
+     "p90": 2,
+     "p95": 3,
+     "max": 12,
+     "mean": 1.23,
+     "n": 1150
+    },
+    "delta_goals_modified": {
+     "min": 0,
+     "p10": 0,
+     "p25": 0,
+     "p50": 0,
+     "p75": 0,
+     "p90": 0,
+     "p95": 0,
+     "max": 0,
+     "mean": 0.0,
+     "n": 1150
+    },
+    "delta_goals_preserved": {
+     "min": 0,
+     "p10": 0,
+     "p25": 0,
+     "p50": 0,
+     "p75": 0,
+     "p90": 0,
+     "p95": 1,
+     "max": 4,
+     "mean": 0.14,
+     "n": 1150
+    },
+    "delta_metavariables_assigned": {
+     "min": 0,
+     "p10": 1,
+     "p25": 3,
+     "p50": 10,
+     "p75": 21,
+     "p90": 42,
+     "p95": 61,
+     "max": 482,
+     "mean": 18.15,
+     "n": 1150
+    },
+    "delta_local_decls_added": {
+     "min": 0,
+     "p10": 0,
+     "p25": 0,
+     "p50": 0,
+     "p75": 1,
+     "p90": 2,
+     "p95": 3,
+     "max": 19,
+     "mean": 0.62,
+     "n": 1150
+    },
+    "delta_local_decls_removed": {
+     "min": 0,
+     "p10": 0,
+     "p25": 0,
+     "p50": 1,
+     "p75": 10,
+     "p90": 18,
+     "p95": 28,
+     "max": 86,
+     "mean": 6.29,
+     "n": 1150
+    },
+    "delta_focus_changed_true": 1138,
+    "delta_goals_reordered_true": 39,
+    "records_with_goal_targets_changed": 0
+   },
+   "transition_usability": {
+    "rows_with_both_before_and_after_goal_lists": 1150,
+    "rows_where_after_has_zero_goals_step_closes_the_goal": 420,
+    "rows_1_goal_before_and_1_goal_after": 616,
+    "  of_those_target_actually_changed": 461,
+    "  of_those_target_identical_context_only_change": 155,
+    "  of_those_local_context_grew": 235,
+    "  of_those_local_context_shrank": 104,
+    "  target_changed_and_step_cites_at_least_one_premise": 255,
+    "rows_1_goal_before_and_many_goals_after_branching": 16,
+    "rows_with_more_than_one_goal_before": 258,
+    "note": "The 461 here is a coincidence: it is computed from raw before/after target JSON equality and is unrelated to the 461 structurally eligible states from load_formal_states().",
+    "expression_changes.goal_targets_changed_is_empty_in_all_1150": true
+   }
+  },
+  {
+   "id": "hmlv3_sibling_corpora",
+   "paths": {
+    "/Users/moheet/Documents/ChatGPT/HML_V3/data/corpus/sealed_final_v2.part-000.jsonl.gz": 232,
+    "/Users/moheet/Documents/ChatGPT/HML_V3/data/corpus/search_pool_v2.part-{000..003}.jsonl.gz": 918,
+    "/Users/moheet/Documents/ChatGPT/HML_V3/data/corpus/targeted_v2.canonical.part-{000,001}.jsonl.gz": 542,
+    "/Users/moheet/Documents/ChatGPT/HML_V3/data/corpus/lean_runtime_v2.canonical.part-{000..002}.jsonl.gz": 608
+   },
+   "manifest": "/Users/moheet/Documents/ChatGPT/HML_V3/data/corpus/SEALED_V2_MANIFEST.json",
+   "note": "sealed(232) + search(918) = 1150 = the full corpus; sealed and search are a partition of it by mathlib source file. targeted(542) + lean_runtime_v2(608) = 1150 is the same corpus partitioned by extraction campaign."
+  },
+  {
+   "id": "hmlv3_lean_pipeline_v1",
+   "role": "RICHER, EARLIER dataset not currently used by Arena - the highest-value unused local asset",
+   "paths": {
+    "/Users/moheet/Documents/ChatGPT/HML_V3/data/samples/lean_pipeline_v1.source.jsonl.gz": {
+     "rows": 1000,
+     "bytes": 616838
+    },
+    "/Users/moheet/Documents/ChatGPT/HML_V3/data/samples/lean_pipeline_v1.canonical.jsonl.gz": {
+     "rows": 1000,
+     "bytes": 2178836
+    },
+    "/Users/moheet/Documents/ChatGPT/HML_V3/data/manifests/lean_pipeline_v1.json": "manifest"
+   },
+   "source": {
+    "dataset": "LeanDojo Benchmark 4 (random split)",
+    "leandojo_version": "2.0.0",
+    "lean_version": "v4.10.0-rc1",
+    "mathlib_commit": "29dcec074de168ac2bf835a77ef68bbe069194c5",
+    "formal_trace_transitions_available": 241265
+   },
+   "top_level_keys": [
+    "compatibility",
+    "example_id",
+    "lean",
+    "lean_official_split",
+    "observed_action",
+    "proof_depth",
+    "proof_length",
+    "source_family",
+    "source_file",
+    "state_after",
+    "state_before",
+    "theorem_id",
+    "transition_index",
+    "v3_formal_source_enrichment"
+   ],
+   "fields_arena_does_not_currently_have": {
+    "lean.raw_tactic": "the literal tactic text",
+    "v3_formal_source_enrichment.annotated_tactic": "tactic text with <a>premise</a> spans",
+    "v3_formal_source_enrichment.premises / premise_full_names": "resolved premise names + def positions",
+    "observed_action.effect_class": "8 balanced classes: CLOSE 127, ELIMINATE 125, INTRODUCE 125, INTRODUCE_AND_TRANSFORM 125, NO_VISIBLE_CHANGE 124, REWRITE_CONTEXT 124, REWRITE_CONTEXT_AND_TARGET 124, TRANSFORM_TARGET 126",
+    "observed_action.effect_signature / delta_goals / names_added / names_removed / names_rebound / target_changed": "yes",
+    "lean.raw_state_before / raw_state_after": "pretty-printed Lean goal states",
+    "lean_official_split": "train 995 / val 3 / test 2",
+    "proof_depth, proof_length": "position of the step within the proof",
+    "theorem_declaration_and_proof (+sha256)": "the whole source proof"
+   },
+   "counts": {
+    "transitions": 1000,
+    "states": 2000,
+    "unique_theorem_ids": 1000,
+    "premise_references": 1353,
+    "transitions_with_premises": 578,
+    "states_before_with_multiple_goals": 11,
+    "states_after_with_multiple_goals": 6,
+    "fresh_replay_pass": 32,
+    "fresh_replay_nonpass": 68,
+    "without_fresh_replay_certificate": 900,
+    "source_structured_projection_disagreements": 659
+   }
+  },
+  {
+   "id": "leandojo_benchmark_4_raw",
+   "role": "THE LARGE ASSET. Full traced mathlib. Not referenced by any Arena module.",
+   "path": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo_raw/leandojo_benchmark_4",
+   "size_on_disk": "795 MB extracted (+ a 68 MB leandojo_benchmark_4.tar.gz beside it)",
+   "metadata": {
+    "dataset_name": "LeanDojo Benchmark 4",
+    "leandojo_version": "2.0.0",
+    "from_repo": "https://github.com/leanprover-community/mathlib4",
+    "commit": "29dcec074de168ac2bf835a77ef68bbe069194c5",
+    "creation_time": "2024-07-02"
+   },
+   "splits": {
+    "random/train.json": {
+     "bytes": 373077058,
+     "tactic_transitions": 250814
+    },
+    "random/val.json": {
+     "bytes": 6456932,
+     "tactic_transitions": 4260
+    },
+    "random/test.json": {
+     "bytes": 7129686,
+     "tactic_transitions": 4506
+    },
+    "novel_premises/train.json": {
+     "bytes": 364899019,
+     "note": "same theorems, premise-generalisation OOD split"
+    },
+    "novel_premises/val.json": {
+     "bytes": 10314569
+    },
+    "novel_premises/test.json": {
+     "bytes": 11450088
+    }
+   },
+   "total_tactic_transitions_random_split": 259580,
+   "premise_corpus": {
+    "path": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo_raw/leandojo_benchmark_4/corpus.jsonl",
+    "bytes": 60420959,
+    "files": 5674,
+    "declarations": 180973,
+    "record": "{path, imports[], premises:[{full_name, code, start, end, kind}]}"
+   },
+   "theorem_record_schema": "{url, commit, file_path, full_name, start, end, traced_tactics:[{tactic, annotated_tactic:[text,[{full_name,def_path,def_pos,def_end_pos}]], state_before, state_after}]}",
+   "measured_on_val_plus_test": {
+    "theorems": 4000,
+    "transitions": 8766,
+    "distinct_tactic_heads": 145,
+    "premises_per_tactic": {
+     "p50": 1,
+     "p75": 2,
+     "p90": 4,
+     "p95": 5,
+     "max": 56,
+     "mean": 1.5
+    },
+    "transitions_with_ge1_premise": 5517,
+    "share": 0.629,
+    "transitions_with_ge2_premises": 3030,
+    "distinct_premise_full_names": 6624,
+    "state_before_chars": {
+     "p25": 172,
+     "p50": 292,
+     "p75": 507,
+     "p90": 809,
+     "p95": 1016,
+     "max": 4653
+    },
+    "state_after_chars": {
+     "p25": 8,
+     "p50": 172,
+     "p75": 432,
+     "p90": 784,
+     "p95": 1056,
+     "max": 5866
+    },
+    "tactic_chars": {
+     "p25": 16,
+     "p50": 33,
+     "p75": 59,
+     "p90": 96,
+     "p95": 138,
+     "max": 3272
+    },
+    "share_of_steps_closing_the_goal_no_goals_after": 0.405,
+    "share_multi_goal_state_before": 0.006
+   },
+   "pool_manifest_evidence": {
+    "path": "/Users/moheet/Documents/ChatGPT/HML_V3/data/manifests/targeted_pool_v2.manifest.json",
+    "total_transitions_scanned": 250814,
+    "pool_size": 245984,
+    "traced_files_available": 4756,
+    "selected": 1134,
+    "excluded": 1000,
+    "distributions": {
+     "goal_count": {
+      "1": 569,
+      "2": 262,
+      "3-5": 260,
+      ">5": 43
+     },
+     "premises": {
+      "0": 350,
+      "1-2": 282,
+      "3-5": 287,
+      "6+": 215
+     },
+     "binder_depth": {
+      "0-3": 970,
+      "4-8": 103,
+      "9+": 61
+     },
+     "context_size": {
+      "0-5": 74,
+      "6-15": 303,
+      "16-30": 270,
+      "31+": 487
+     }
+    },
+    "sample_file": "/Users/moheet/Documents/ChatGPT/HML_V3/data/manifests/targeted_pool_v2.source.jsonl.gz (1134 rows)"
+   }
+  },
+  {
+   "id": "mathlib4_built_tree",
+   "path": "/Users/moheet/Documents/ChatGPT/HML_V3/external/runtime_work/leanprover-community-mathlib4-29dcec074de168ac2bf835a77ef68bbe069194c5/mathlib4",
+   "git_head": "29dcec074de168ac2bf835a77ef68bbe069194c5",
+   "lean_toolchain": "leanprover/lean4:v4.10.0-rc1",
+   "olean_files_under_dot_lake": 5680,
+   "mathlib_module_oleans": 4447,
+   "mathlib_lean_sources": 4447,
+   "package_oleans": 1230,
+   "root_module": ".lake/build/lib/Mathlib.olean (453,832 bytes)",
+   "lean4repl": ".lake/build/lib/Lean4Repl.olean (1,248,008 bytes)",
+   "vendored_packages": [
+    "Cli",
+    "Qq",
+    "aesop",
+    "batteries",
+    "importGraph",
+    "lean4",
+    "proofwidgets"
+   ],
+   "unbuilt_sibling": "/Users/moheet/Documents/ChatGPT/HML_V3/external/checkouts/mathlib4-29dcec0 (38 oleans, not built)"
+  }
+ ],
+ "tactic_frequency": {
+  "how_derived": "The corpus stores NO tactic name (corpus_metadata.tactic_family is null in all 1150 rows and the campaign audits record tactic_families={'null':608} / {'null':542}). Tactic text was recovered offline for 1150/1150 rows by slicing bytes [action.source_location.start.raw : end.raw] out of the pinned source file corpus_metadata.source_file inside the built mathlib tree. 0 source files were missing.",
+  "hmlv3_v2_corpus_n": 1150,
+  "distinct_tactic_heads": 88,
+  "tactic_text_chars": {
+   "min": 3,
+   "p10": 7,
+   "p25": 17,
+   "p50": 42,
+   "p75": 79,
+   "p90": 141,
+   "p95": 195,
+   "max": 1551,
+   "mean": 64.33,
+   "n": 1150
+  },
+  "head_counts": {
+   "rw": 189,
+   "simp": 108,
+   "exacts": 88,
+   "exact": 80,
+   "have": 77,
+   "all_goals": 51,
+   "rintro": 41,
+   "swap": 39,
+   "obtain": 35,
+   "refine": 34,
+   "intro": 32,
+   "apply": 30,
+   "subst": 23,
+   "revert": 19,
+   "simpa": 19,
+   "case": 18,
+   "clear": 17,
+   "rcases": 17,
+   "simp_rw": 16,
+   "ext": 15,
+   "cases": 14,
+   "suffices": 11,
+   "on_goal": 11,
+   "induction": 10,
+   "convert": 9,
+   "classical": 8,
+   "lift": 7,
+   "contrapose!": 7,
+   "subst_vars": 7,
+   "calc": 6,
+   "replace": 6,
+   "let": 6,
+   "rwa": 5,
+   "any_goals": 5,
+   "rfl": 5,
+   "cases'": 5,
+   "dsimp": 4,
+   "haveI": 4,
+   "funext": 3,
+   "specialize": 3
+  },
+  "full_head_counts": {
+   "rw": 189,
+   "simp": 108,
+   "exacts": 88,
+   "exact": 80,
+   "have": 77,
+   "all_goals": 51,
+   "rintro": 41,
+   "swap": 39,
+   "obtain": 35,
+   "refine": 34,
+   "intro": 32,
+   "apply": 30,
+   "subst": 23,
+   "revert": 19,
+   "simpa": 19,
+   "case": 18,
+   "clear": 17,
+   "rcases": 17,
+   "simp_rw": 16,
+   "ext": 15,
+   "cases": 14,
+   "suffices": 11,
+   "on_goal": 11,
+   "induction": 10,
+   "convert": 9,
+   "classical": 8,
+   "lift": 7,
+   "contrapose!": 7,
+   "subst_vars": 7,
+   "calc": 6,
+   "replace": 6,
+   "let": 6,
+   "rwa": 5,
+   "any_goals": 5,
+   "rfl": 5,
+   "cases'": 5,
+   "dsimp": 4,
+   "haveI": 4,
+   "funext": 3,
+   "specialize": 3,
+   "congr": 3,
+   "choose": 3,
+   "induction'": 3,
+   "simp_all": 3,
+   "apply_fun": 2,
+   "change": 2,
+   "split_ifs": 2,
+   "conv_lhs": 2,
+   "push_cast": 2,
+   "norm_cast": 2,
+   "unfold": 2,
+   "letI": 2,
+   "zify": 2,
+   "iterate": 2,
+   "split": 1,
+   "push_neg": 1,
+   "exact_mod_cast": 1,
+   "nontriviality": 1,
+   "field_simp": 1,
+   "apply_rules": 1,
+   "infer_instance": 1,
+   "tauto": 1,
+   "conv_rhs": 1,
+   "assumption": 1,
+   "by_contra!": 1,
+   "positivity": 1,
+   "assumption'": 1,
+   "norm_num1": 1,
+   "simp_arith": 1,
+   "generalize_proofs": 1,
+   "decide": 1,
+   "focus": 1,
+   "norm_num": 1,
+   "constructor": 1,
+   "next": 1,
+   "try": 1,
+   "by_cases": 1,
+   "gcongr": 1,
+   "filter_upwards": 1,
+   "set": 1,
+   "show": 1,
+   "use": 1,
+   "rename_i": 1,
+   "intros": 1,
+   "ext1": 1,
+   "generalize": 1,
+   "ac_rfl": 1,
+   "conv": 1
+  },
+  "leandojo_val_plus_test_reference": {
+   "n": 8766,
+   "distinct_heads": 145,
+   "top30": {
+    "rw": 1658,
+    "simp": 1113,
+    "exact": 1066,
+    "have": 579,
+    "refine": 478,
+    "apply": 292,
+    "intro": 291,
+    "simpa": 215,
+    "obtain": 215,
+    "rintro": 177,
+    "rcases": 174,
+    "ext": 160,
+    "simp_rw": 148,
+    "let": 132,
+    "rfl": 124,
+    "rwa": 107,
+    "convert": 100,
+    "dsimp": 98,
+    "by_cases": 90,
+    "constructor": 85,
+    "cases": 75,
+    "congr": 57,
+    "use": 52,
+    "gcongr": 49,
+    "induction'": 48,
+    "cases'": 47,
+    "suffices": 46,
+    "ring": 44,
+    "filter_upwards": 39,
+    "induction": 38
+   }
+  },
+  "selection_bias_warning": "The V2 corpus tactic mix is NOT representative of mathlib. Goal-management combinators are hugely over-represented relative to the LeanDojo reference: exacts 88/1150 = 7.7% (vs ~0.1% in LeanDojo val+test), all_goals 51 = 4.4%, swap 39 = 3.4%, case 18, on_goal 11. This follows from the targeted campaign, which deliberately over-sampled multi-goal and heavy-context states (targeted_pool_v2.manifest.json requests goal_count 2/3-5/>5 and context_size 31+). Any 'which reasoning operation' claim built on this corpus must be reweighted or drawn from LeanDojo instead.",
+  "head_counts_top25": {
+   "rw": 189,
+   "simp": 108,
+   "exacts": 88,
+   "exact": 80,
+   "have": 77,
+   "all_goals": 51,
+   "rintro": 41,
+   "swap": 39,
+   "obtain": 35,
+   "refine": 34,
+   "intro": 32,
+   "apply": 30,
+   "subst": 23,
+   "revert": 19,
+   "simpa": 19,
+   "case": 18,
+   "clear": 17,
+   "rcases": 17,
+   "simp_rw": 16,
+   "ext": 15,
+   "cases": 14,
+   "suffices": 11,
+   "on_goal": 11,
+   "induction": 10,
+   "convert": 9
+  }
+ },
+ "offline_replay": {
+  "verdict": "OFFLINE-CAPABLE: CONFIRMED by static evidence. NOT EXECUTED (running Lean/lake was forbidden).",
+  "built_mathlib": {
+   "path": "/Users/moheet/Documents/ChatGPT/HML_V3/external/runtime_work/leanprover-community-mathlib4-29dcec074de168ac2bf835a77ef68bbe069194c5/mathlib4",
+   "olean_files": 5680,
+   "mathlib_modules_built": "4447/4447",
+   "root_Mathlib_olean": true,
+   "Lean4Repl_olean": true
+  },
+  "lean_toolchain_file": "/Users/moheet/Documents/ChatGPT/HML_V3/external/runtime_work/leanprover-community-mathlib4-29dcec074de168ac2bf835a77ef68bbe069194c5/mathlib4/lean-toolchain -> leanprover/lean4:v4.10.0-rc1",
+  "pinned_commit": "29dcec074de168ac2bf835a77ef68bbe069194c5",
+  "installed_toolchains": [
+   "v4.10.0-rc1",
+   "v4.32.2",
+   "v4.33.0",
+   "v4.33.1"
+  ],
+  "replay_script": "/Users/moheet/Documents/ChatGPT/HML_V3/scripts/replay/run_lean_runtime_campaign_v2.py",
+  "lean_extractor": "/Users/moheet/Documents/ChatGPT/HML_V3/scripts/extract/LeanRuntimeExtractV2.lean",
+  "invocation": "lake env lean --run <extractor> <source.lean> <targets.tsv> <output.json>, cwd=runtime_root",
+  "network_required": "No. The driver contains no download/clone/fetch call; all six manifest dependencies are already vendored in .lake/packages, all oleans are built, and the pinned toolchain is installed under ~/.elan/toolchains. Assessment is static.",
+  "environment_gate": "run_lean_runtime_campaign_v2.environment_identity() aborts with ENVIRONMENT_MISMATCH unless 'lake env lean --version' reports v4.10.0-rc1 + build commit 3b58e0649156.",
+  "duration_estimate": "NOT AVAILABLE FROM LOGS. run_job() measures elapsed_seconds but the retained audits keep only counters/status/file_outcomes. Scale: 751 + 655 = 1,406 file-level jobs, each a full re-elaboration of one mathlib file with 'lake env lean --run'; raw capture output across the three campaign directories totals ~102 GB (campaign500 54G, campaign_targeted 36G, campaign500b 12G), and one capture file reached 350 MB. Any replay budget must be measured, not guessed.",
+  "historical_yield": {
+   "file_jobs_campaign500_500b": {
+    "PROCESS_PASS": 744,
+    "PROCESS_FAIL": 7
+   },
+   "file_jobs_campaign_targeted": {
+    "PROCESS_PASS": 652,
+    "PROCESS_FAIL": 3
+   },
+   "transition_recovery": {
+    "campaign500_500b": "608 of 1000 selected",
+    "targeted": "542 of 1125 selected"
+   },
+   "loss_causes": {
+    "over_size_budget": 671,
+    "over_element_budget": 260,
+    "duplicate_record_id": 78,
+    "files_truncated": 2
+   },
+   "fresh_replay_certification_lean_pipeline_v1": {
+    "REPLAY_PASS": 32,
+    "REPLAY_STATE_MISMATCH": 11,
+    "REPLAY_TACTIC_FAIL": 1,
+    "UNSUPPORTED": 56,
+    "of_rows": 100,
+    "rows_without_certificate": 900,
+    "note": "the docs' '~44% reproducible execution' equals the 44 SUPPORTED attempts; the actual pass rate is 32%."
+   }
+  },
+  "attestation_bridge_status": "NOT FOUND as a Lean bridge. /Users/moheet/Documents/ChatGPT/hmlt-reasoning-corpus-lean-attestation @ b4e2d9856c584ec53727b501bc0372bf3f867a65 contains no 'lake env' or 'lean --run' invocation anywhere, and its hml_core submodule directory is EMPTY (uninitialised). The only working Lean replay path on this machine is the HML_V3 campaign driver."
+ },
+ "corroborating_prior_audit": {
+  "path": "/Users/moheet/Documents/ChatGPT/hamiltonian-lang-final-signal/reports/artifacts/LEAN_WITNESS_ADJUDICATION.json",
+  "steps_total": 259580,
+  "note": "Independently reproduces this audit's LeanDojo transition count exactly.",
+  "licence_of_leandojo_benchmark_4": "CC BY 2.0, DOI 10.5281/zenodo.12740403, v10",
+  "key_measurements_over_all_259580_steps": {
+   "MI(tactic_head; state_effect)/H(tactic_head)": 0.24,
+   "goal_creating_steps": 18315,
+   "multi_goal_after": 18901,
+   "multi_goal_before": 1592,
+   "context_pure_growth": 63243,
+   "context_transformed_add_and_remove": 5788,
+   "context_pure_removal": 3011,
+   "transform_with_target_change": 3846,
+   "in_place_rebinding_same_name_new_type": "462 of a 5,000-step sample = 9.24%"
+  },
+  "implication": "A tactic NAME carries only 24% of the information about what the step does to the state. Any task family keyed on tactic identity is a weak proxy for the underlying reasoning operation; state-delta-keyed families are strictly better grounded."
+ },
+ "candidate_task_families": [
+  {
+   "rank": 1,
+   "family": "theorem/premise selection (choose the lemma that advances the goal)",
+   "constructible": "YES - largest and best-grounded family available",
+   "required_field_present": {
+    "goal state before": "YES - LeanDojo traced_tactics[].state_before (pretty-printed) and, for the 1,150 V2 rows, a full elaborated Expr tree",
+    "premise actually used": "YES - annotated_tactic[1] gives {full_name, def_path, def_pos, def_end_pos} per cited premise; V2 rows give action.external_premise_refs",
+    "candidate library": "YES - /Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo_raw/leandojo_benchmark_4/corpus.jsonl: 180,973 declarations over 5,674 files, each with full_name, source code, position and kind"
+   },
+   "usable_items": {
+    "leandojo_all_random_split": "~163,300 transitions cite >=1 premise (measured 5,517/8,766 = 62.9% on val+test, applied to 259,580)",
+    "leandojo_held_out_only": "val 4,260 + test 4,506 -> 5,517 with >=1 premise (exact count on those files)",
+    "distinct_premise_names_in_val_test": 6624,
+    "hmlv3_v2_corpus": "749 of 1,150 transitions have >=1 external_premise_ref; 1,782 distinct premise names",
+    "lean_pipeline_v1": "578 of 1,000 rows, 1,353 premise references"
+   },
+   "distractors": "REAL, not invented. Four ready sources, in increasing hardness: (1) uniform draw from the 180,973-declaration corpus; (2) same-file declarations (corpus.jsonl groups by path); (3) same-namespace / shared name prefix; (4) HARD - premises cited at OTHER steps of the SAME theorem, which are all genuinely relevant to the proof but wrong here.",
+   "shortcut_leak_risks": [
+    "LEXICAL OVERLAP: the correct premise name usually shares tokens with the goal (e.g. goal mentions Finset.sum_Ico, answer is Finset.sum_Ico_eq_sub). A pure string-overlap baseline must be measured FIRST and distractors matched on overlap, or the mechanism measures string matching.",
+    "FREQUENCY PRIOR: the head of the premise distribution is extremely skewed (rfl 140, Max.max 81, mul_assoc 71 in val+test alone). Frequency-match the distractors.",
+    "MEMORISATION: mathlib @29dcec07 (2024-07) is public. Use the novel_premises split and the obfuscation arm.",
+    "PROOF-POSITION: proof_depth/proof_length are available in lean_pipeline_v1 and correlate with premise class."
+   ],
+   "verdict": "Build this first. It is the only family with six-figure sample size, real distractors, and a genuine mathematical decision."
+  },
+  {
+   "rank": 2,
+   "family": "legal vs. illegal transformation discrimination",
+   "constructible": "YES at Tier B; Tier A needs Lean execution",
+   "required_field_present": {
+    "real (before, action, after) triple": "YES - all 1,150 V2 rows have both states; 616 are single-goal -> single-goal, 461 of those actually change the target; 259,580 LeanDojo steps have text before/after",
+    "structure-preserving corruption operator": "ALREADY IMPLEMENTED - /Users/moheet/Documents/ChatGPT/hamiltonian_chess/.claude/worktrees/phase-6-parallel-setup-9c6068/arena/environments/formal_structural.py provides relabel() (swaps two local-reference identities, preserving tree shape and the exact token multiset) and destroy_depth_relation()"
+   },
+   "usable_items": {
+    "structured Expr pairs (V2)": 616,
+    "of those with a changed target": 461,
+    "with a changed target AND a cited premise": 255,
+    "text pairs (LeanDojo)": 259580,
+    "branching steps (1 goal -> many)": "16 in V2; 18,315 goal-creating steps in LeanDojo"
+   },
+   "distractors": "REAL-DERIVED. Mutations of a genuine after-state: swap two local references (multiset-preserving), permute application arguments, flip a binder_role, substitute a sibling symbol drawn from the same file's declarations. Never hand-authored.",
+   "shortcut_leak_risks": [
+    "Non-multiset-preserving mutations are detectable by token counting alone. Only use operators proven to preserve the token multiset, as relabel() does.",
+    "Ill-typed mutants may be detectable by shallow syntactic cues (arity, coercion shape).",
+    "Truth grade: a mutant labelled 'illegal' is Tier B unless the Lean kernel refuses it. With the built mathlib a real certificate is obtainable, but budget the historic 32% fresh-replay pass rate."
+   ],
+   "verdict": "Strong second. Cheap at Tier B, upgradeable to Tier A with the local mathlib."
+  },
+  {
+   "rank": 3,
+   "family": "rewrite target selection - DIRECTION variant",
+   "constructible": "YES, large and naturally balanced",
+   "required_field_present": {
+    "rewrite steps": "YES - 1,658 of 8,766 val+test tactics are rw (18.9%)",
+    "direction label": "YES - derived from the presence of the reverse arrow in the tactic text; measured 612 of 1,658 = 36.9% reverse, so the binary label is non-degenerate",
+    "before and after states": "YES"
+   },
+   "usable_items": {
+    "leandojo_rw_steps_estimated_full_split": 49100,
+    "leandojo_rw_steps_val_test_exact": 1658,
+    "reverse_direction_val_test_exact": 612,
+    "multi_lemma_rw_val_test": 960,
+    "hmlv3_v2_rw_family": "rw 189 + simp_rw 16 + rwa 5 = 210 of 1,150"
+   },
+   "distractors": "REAL: the opposite direction of the SAME real lemma. No fabrication at all; the task is a forced binary on a real rewrite.",
+   "shortcut_leak_risks": [
+    "The tactic text must NEVER be shown - the arrow is the answer.",
+    "The lemma's own name can hint at direction (…_eq_… vs …_symm).",
+    "Class prior is 63/37, so accuracy must be read against 0.63, not 0.5."
+   ],
+   "verdict": "Best value-for-effort after premise selection: real, large, binary, and needs no Lean."
+  },
+  {
+   "rank": 4,
+   "family": "proof-state progress - REDUCED variant (effect classification / does this step close the goal)",
+   "constructible": "PARTIALLY. The full version is BLOCKED.",
+   "required_field_present": {
+    "successor state": "YES",
+    "effect label": "YES - lean_pipeline_v1.observed_action.effect_class, 8 classes deliberately balanced (CLOSE 127, ELIMINATE 125, INTRODUCE 125, INTRODUCE_AND_TRANSFORM 125, NO_VISIBLE_CHANGE 124, REWRITE_CONTEXT 124, REWRITE_CONTEXT_AND_TARGET 124, TRANSFORM_TARGET 126)",
+    "ALTERNATIVE candidate actions with known outcomes": "ABSENT EVERYWHERE. Neither corpus records a second action for any state, a failed attempt, a repair, or a counterexample. Every row has exactly one action."
+   },
+   "usable_items": {
+    "effect_class_labelled": 1000,
+    "does_this_step_close_the_goal (V2)": "420 of 1,150 close; 730 do not",
+    "does_this_step_close_the_goal (LeanDojo)": "40.5% of 259,580 ~ 105,100 closing steps",
+    "delta-derived progress signals (V2)": "goals_solved p50=1 mean=1.23; goals_created mean=0.60; metavariables_assigned p50=10; local_declarations_removed p50=1"
+   },
+   "distractors": "For the true version, alternative actions would have to be GENERATED and then EXECUTED in Lean to learn their outcome. This is the one family that genuinely requires the offline replay capability, at ~32% historical yield.",
+   "shortcut_leak_risks": [
+    "'Does it close the goal' correlates strongly with tactic identity (exact/rfl/simp) and with a short state_before; the tactic must be hidden and length must be matched.",
+    "MI(head; effect)/H(head) = 0.240 measured over all 259,580 steps means effect is only weakly a function of the tactic name - which is good for the task but means name-based distractors are poor."
+   ],
+   "verdict": "Do the reduced version now (n=1,000 balanced, or ~105k for the binary). Do NOT claim the full 'which action is better' version without Lean execution - the required data does not exist."
+  },
+  {
+   "rank": 5,
+   "family": "premise-set sufficiency without answer leakage",
+   "constructible": "PARTIALLY - as 'was this premise CITED', not as true sufficiency",
+   "required_field_present": {
+    "cited premise set": "YES - 3,030 of 8,766 val+test steps cite >=2 premises (~89,700 across 259,580)",
+    "TRUE sufficiency": "NO. Both corpora undercount. The V2 rows carry reference_completeness=PARTIAL_TACTICS_WITHOUT_TERMINFO_MAY_HIDE_INTERNAL_USE, so premise lists are explicit LOWER BOUNDS; LeanDojo annotates only premises named in the tactic SYNTAX, so everything simp or a typeclass instance pulled in is invisible. Labelling a set 'sufficient' from either source is unsound."
+   },
+   "usable_items": {
+    "steps_with_>=2_cited_premises_val_test": 3030,
+    "estimated_full_split": 89700,
+    "hmlv3_v2": "premise counts p50=1 p75=3 p90=5 max=38; 749 rows with >=1"
+   },
+   "distractors": "REAL: drop one truly cited premise (claimed-insufficient) vs. add one uncited real premise from the same file (claimed-still-sufficient). Cardinality must be matched exactly.",
+   "shortcut_leak_risks": [
+    "SET SIZE is the obvious leak - match cardinality exactly.",
+    "The dropped premise's name usually still appears in the goal.",
+    "The ground-truth defect above is the real blocker: without Lean, 'sufficient' is an assumption, not a fact."
+   ],
+   "verdict": "Do not ship as 'sufficiency'. Ship as 'premise attribution' or verify each label with Lean."
+  },
+  {
+   "rank": 6,
+   "family": "subgoal selection (which obligation to attack next)",
+   "constructible": "WEAKLY - the ground truth is convention, not correctness",
+   "required_field_present": {
+    "multi-goal states": "YES - 258 of 1,150 V2 rows have >1 goal before (the corpus was deliberately enriched: targeted_pool_v2 requested goal_count strata 2/3-5/>5 at 260 each and the 1,134-row pool holds 262 + 260 + 43 = 565 multi-goal rows). In LeanDojo, 1,592 of 259,580 (0.61%) show >1 goal before, because LeanDojo reports the focused goal.",
+    "which goal was attacked": "ONLY IMPLICITLY - via focus_before/focus_after (focus_changed true in 1,138 of 1,150 V2 rows) and via explicit reordering tactics"
+   },
+   "usable_items": {
+    "v2_multi_goal_before": 258,
+    "v2_explicit_reordering_steps": "swap 39 + all_goals 51 + case 18 + on_goal 11 + any_goals 5 + focus 1 + next 1 = 126",
+    "v2_goals_reordered_flag_true": 39,
+    "leandojo_multi_goal_before": 1592,
+    "leandojo_goal_creating_steps": 18315
+   },
+   "distractors": "REAL - the other open goals in the same state.",
+   "shortcut_leak_risks": [
+    "'Pick the first goal' is correct by Lean's own focusing convention in the overwhelming majority of steps, so the family collapses unless restricted to the ~126 deviation steps.",
+    "Even on deviations, mathlib's ordering is stylistic. There is NO evidence in the data that the chosen goal was the OPTIMAL one, so the label is 'what the author did', not 'what was right'."
+   ],
+   "verdict": "Low priority. Small honest subset, weak ground truth."
+  },
+  {
+   "rank": 7,
+   "family": "quantifier instantiation (choose the witness/term)",
+   "constructible": "MARGINALLY - smallest and most Lean-dependent",
+   "required_field_present": {
+    "witness-providing steps": "PARTIAL - no field names a witness anywhere. It must be parsed out of tactic text.",
+    "candidate terms": "YES - the local context (V2 median 12 entries, p90 22, max 86)"
+   },
+   "usable_items": {
+    "use_steps_val_test": 52,
+    "estimated_full_split": 1540,
+    "obtain_steps_val_test": 215,
+    "estimated_full_split_obtain": 6370,
+    "refine_with_holes_val_test": 472,
+    "estimated_full_split_refine": 14000,
+    "v2_corpus": "use 1, specialize 3, choose 3, lift 7 of 1,150"
+   },
+   "distractors": "REAL context terms, but the set must be filtered to type-compatible ones - which requires the elaborator, i.e. Lean execution.",
+   "shortcut_leak_risks": [
+    "TYPE UNIQUENESS is the dominant leak: in most real goals only one context term has the right type, so the task degenerates into type matching rather than mathematical choice. Filtering to >=2 type-compatible candidates is mandatory and is exactly what needs Lean.",
+    "Witness terms are often literally 0, 1 or a bound variable - a constant-answer baseline must be measured."
+   ],
+   "verdict": "Do not build without Lean. Expect low hundreds of genuinely ambiguous items."
+  }
+ ],
+ "memorisation_risk": {
+  "exposure": {
+   "corpus_is_public": "mathlib4 @29dcec074de168ac2bf835a77ef68bbe069194c5 (2024-07-02) is public on GitHub and LeanDojo Benchmark 4 v10 is on Zenodo under CC BY 2.0 (DOI 10.5281/zenodo.12740403). Both predate any plausible pretraining cutoff for the models under test.",
+   "what_reaches_the_prompt_today": "arena/environments/formal_structural.build_state() renders ONLY the transcribed goal target plus the local-context identities. theorem_id, source_file, theorem_family and the tactic are NOT rendered."
+  },
+  "identifier_channels": {
+   "local_references": {
+    "risk": "NONE - verified",
+    "evidence": "All 2,701 local_reference identities across the 461 eligible states match the regex f\\d+ with zero exceptions. Lean's fvar names are already normalised to f0, f1, ... by the extractor, so the ANSWER OPTIONS of formal_expression_depth carry no memorisable mathlib name."
+   },
+   "global_symbols": {
+    "risk": "HIGH - this is the real channel",
+    "evidence": "The goal trees contain 31,727 lean.symbol nodes over 2,240 distinct REAL mathlib constant names (top: Nat 2507, Real 2034, SetTheory.PGame 1031, OfNat.ofNat 715, ENNReal 701, Eq 616, Set 572, CommSemiring.toSemiring 363). A model that recognises the constellation of constants can identify the source theorem and recall its shape without reading the tree."
+   },
+   "universe_and_instance_names": {
+    "risk": "MEDIUM",
+    "evidence": "21,340 symbol nodes carry universe_arguments with parameter names like u_1/u_2; local_instances carry class_identity (e.g. Monad). These are also recognisable."
+   },
+   "leandojo_pretty_printed_states": {
+    "risk": "VERY HIGH",
+    "evidence": "state_before/state_after are literal Lean pretty-printed text with the AUTHOR'S OWN hypothesis names (hp, R, hab), full notation and coercions - i.e. verbatim substrings that plausibly occur in pretraining."
+   }
+  },
+  "obfuscation_arm_feasibility": {
+   "verdict": "FEASIBLE AND STRUCTURALLY SUPPORTED for the STRUCTURED corpus; NOT cleanly feasible for the pretty-printed LeanDojo text.",
+   "why_structured_works": "transcribe() puts each symbol's name in CanonicalExpression.value with the tree shape held separately in .args. A per-item salted bijection over the 2,240 distinct symbol names (and the sort-level parameter names and local_instances.class_identity) rewrites value fields only. Tree shape, node count, depth, arity, binder roles, de Bruijn indices and the token multiset are all invariant, so EVERY structural answer is preserved by construction. arena/environments/formal_structural.relabel() already implements exactly this discipline for local references and is the template.",
+   "why_text_is_harder": "Renaming inside rendered Lean syntax has to survive notation, unicode operators, coercion arrows and implicit-argument elision without changing what the state MEANS. Doing it soundly amounts to re-pretty-printing from the elaborated term, i.e. re-running Lean.",
+   "recommended_design": "Three arms on the same items: REAL names / CONSISTENT-BIJECTION names / SHUFFLED-INCONSISTENT names. A drop from arm 1 to arm 2 measures name-recall; a drop from arm 2 to arm 3 measures whether the model is using name consistency at all."
+  },
+  "non_memorisation_leaks_measured_here": {
+   "note": "Recomputed directly from the 461 eligible / 104 length-fair states. These are STRUCTURAL leaks, not memorisation, and they are WORSE than the figure published in docs/FITNESS_V5_SPEC.md.",
+   "first_mentioned_in_state": {
+    "all_461": 0.8829,
+    "length_fair_104": 0.9135,
+    "by_stratum": {
+     "shallow": 1.0,
+     "medium": 0.8824,
+     "deep": 0.8611
+    },
+    "published_figure": "0.833, measured only on the selected 12-family L2 cell (24 positives)"
+   },
+   "more_frequent_in_state": {
+    "all_461": 0.8308,
+    "length_fair_104": 0.7981,
+    "published_figure": "0.72 pool-wide in FITNESS_V5_SPEC.md; ties counted as 0.5 here"
+   },
+   "earlier_in_local_context": {
+    "all_461": 0.9,
+    "length_fair_104": 0.904,
+    "definition": "1 - P(deepest identifier appears LATER in the local context than the runner-up)"
+   },
+   "consequence": "In the shallow stratum the first-mentioned rule is correct 34/34 times. A shortcut-clean formal_expression_depth instrument cannot be built from these states by filtering alone; option ordering, first-mention balancing and a frequency control are all required, and even then the residual is large. This corroborates and strengthens the existing 'do not reuse formal_expression_depth as-is' warning."
+  }
+ },
+ "not_found": [
+  {
+   "item": "tactic name / tactic family field in the HML_V3 V2 canonical corpus",
+   "status": "NOT FOUND",
+   "evidence": "corpus_metadata.tactic_family is null in all 1,150 rows; reports/audits/LEAN_RUNTIME_V2_CORPUS.json and _TARGETED.json record tactic_families = {\"null\": 608} and {\"null\": 542}. action carries only kind=LEAN_ELABORATED_TACTIC_OCCURRENCE and a byte range.",
+   "mitigation": "Recovered offline for 1,150/1,150 rows by slicing the source byte range out of the pinned local mathlib checkout. 88 distinct tactic heads."
+  },
+  {
+   "item": "expression_changes.goal_targets_changed content",
+   "status": "PRESENT BUT EMPTY in all 1,150 rows",
+   "evidence": "state_delta.expression_changes.goal_targets_changed has length 0 for every record; the before/after target difference must be recomputed (616 single-goal pairs, 461 with a changed target)."
+  },
+  {
+   "item": "per-job replay timings",
+   "status": "NOT FOUND",
+   "evidence": "run_lean_runtime_campaign_v2.run_job() computes elapsed_seconds but the retained audits keep only counters, job_process_status and file_outcomes. No replay-duration estimate is defensible."
+  },
+  {
+   "item": "a Lean attestation bridge in hmlt-reasoning-corpus-lean-attestation",
+   "status": "REFUTED",
+   "evidence": "Repo @b4e2d9856c584ec53727b501bc0372bf3f867a65 contains no 'lake env' or 'lean --run' invocation anywhere; its hml_core submodule directory is EMPTY (uninitialised, .gitmodules points at MoheetBrain/hamiltonian-lang). The Arena docs cite it as the pinned attestation bridge; the only working Lean path on this machine is HML_V3/scripts/replay/run_lean_runtime_campaign_v2.py."
+  },
+  {
+   "item": "alternative / failed / counterfactual actions for any proof state",
+   "status": "NOT FOUND ANYWHERE",
+   "evidence": "Every row in every corpus records exactly one action. There are no failed alternatives, repairs, counterexamples, warrants, preconditions or search decisions (the GOAL.md section 22 wish list). This is the binding constraint on any 'which action is better' task family."
+  },
+  {
+   "item": "artifacts/ imported formal state data in the Arena worktree",
+   "status": "NOT FOUND (by design)",
+   "evidence": "artifacts/corpus/ was empty before this audit. The environment reads the donor corpus directly from DONOR_ROOT=/Users/moheet/Documents/ChatGPT/HML_V3 at load time; no formal state is vendored into the Arena repository. Only the derived experiment output artifacts/experiments/fitness_v5/development/result.json exists."
+  },
+  {
+   "item": "second built mathlib at external/checkouts/mathlib4-29dcec0",
+   "status": "PRESENT BUT NOT BUILT",
+   "evidence": "38 .olean files, no Mathlib.olean, no Lean4Repl.lean. Only the runtime_work copy is usable."
+  },
+  {
+   "item": "formal/Lean corpora in hmlt-reasoning-corpus and hamiltonian-lang-final-signal",
+   "status": "NOT FOUND as data",
+   "evidence": "hmlt-reasoning-corpus holds only scanner scripts (scripts/structural_final/scan_lean_raw.py, scan_lean_structure.py). hamiltonian-lang-final-signal holds two ANALYSIS artifacts over LeanDojo (reports/artifacts/LEANDOJO_ARTIFACT_MANIFEST.json, LEAN_WITNESS_ADJUDICATION.json) and Lean backend tests, but no proof-state corpus."
+  }
+ ],
+ "headline_corrections_to_project_documentation": [
+  "The '1,150 transitions' figure is exact but is NOT the ceiling: a full LeanDojo Benchmark 4 trace with 259,580 tactic transitions and a 180,973-declaration premise corpus is on the same machine at /Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo_raw/leandojo_benchmark_4 and is referenced by no Arena module.",
+  "'~44% reproducible execution' is a misreading of /Users/moheet/Documents/ChatGPT/HML_V3/data/manifests/lean_pipeline_v1.json: 44 of 100 attestation rows were SUPPORTED; only 32 passed. The fresh-replay pass rate is 32%.",
+  "The mathlib olean count 5,680 is right, but it is the count under the whole .lake tree (4,449 build/lib + 1,230 packages); mathlib's own module count is 4,447 of 4,447 sources.",
+  "The formal_expression_depth shortcut is worse than published: first_mentioned_in_state is 0.913 on the 104 length-fair states and 1.000 on the shallow stratum, not 0.833.",
+  "The V2 corpus tactic mix is not representative of mathlib - goal-management combinators are over-sampled by roughly an order of magnitude relative to LeanDojo, a direct consequence of the targeted campaign's strata."
+ ]
+}

@@ -1,0 +1,34 @@
+{
+ "question": "Given before-state, after-state and the lemma identity (tactic text hidden), was the rewrite applied forward or in reverse?",
+ "population": "random/val+test, `rw [L]` with exactly one lemma and no `at` clause",
+ "items": 541,
+ "reverse": 144,
+ "reverse_rate": 0.2662,
+ "majority_class_baseline": 0.7338,
+ "train_lemmas_with_direction_evidence": 8056,
+ "shortcuts": {
+  "state_grew_chars": 0.5739,
+  "state_shrank_chars": 0.4261,
+  "state_grew_bytes4_proxy": 0.5601,
+  "state_grew_symbolic_tokens": 0.5702,
+  "goal_grew_symbolic_tokens": 0.5786,
+  "best_fitted_threshold_symtok": [
+   0.7338,
+   353.0
+  ],
+  "best_fitted_threshold_chars": [
+   0.7338,
+   1054.0
+  ],
+  "lemma_name_morphology_cue": 0.525,
+  "train_fitted_per_lemma_direction_prior": {
+   "coverage": 0.5767,
+   "accuracy_on_covered": 0.8365,
+   "accuracy_with_majority_backoff": 0.7931
+  }
+ },
+ "best_shortcut": [
+  "train_fitted_per_lemma_direction_prior",
+  0.7931
+ ]
+}

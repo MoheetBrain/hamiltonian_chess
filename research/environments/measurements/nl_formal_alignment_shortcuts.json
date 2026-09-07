@@ -1,0 +1,38 @@
+{
+ "source": "/Users/moheet/Documents/ChatGPT/HML_V3/external/checkouts/proofnet-lean4/data/proofnet.jsonl",
+ "note": "PROXY MEASUREMENT.  PAug/ProofNetVerif is not on this machine and no network call was made; these numbers characterise the FAMILY using the local ProofNet pairs, not that dataset.",
+ "items": 371,
+ "splits": {
+  "valid": 185,
+  "test": 186
+ },
+ "sources": 91,
+ "A_kway_alignment": {
+  "k": 4,
+  "policies": {
+   "random_distractors": {
+    "items_used": 371,
+    "chance": 0.25,
+    "nl_lean_token_jaccard": 0.9077,
+    "closest_length_to_english": 0.3774
+   },
+   "same_source_distractors": {
+    "items_used": 270,
+    "chance": 0.25,
+    "nl_lean_token_jaccard": 0.8034,
+    "closest_length_to_english": 0.3685
+   }
+  }
+ },
+ "B_binary_hardest_lexical_negative": {
+  "items": 371,
+  "chance": 0.5,
+  "lexical_overlap_accuracy": 0.465,
+  "gold_minus_hardest_negative_jaccard": {
+   "p10": -0.0833,
+   "p50": -0.0013,
+   "p90": 0.0727
+  },
+  "interpretation": "This is the ceiling for a purely lexical solver when the negative is the most confusable REAL Lean statement available.  A ProofNetVerif negative is a near-miss formalisation of the SAME English statement, so its lexical overlap is higher still and this number is an OVER-estimate of how far lexical overlap gets there."
+ }
+}

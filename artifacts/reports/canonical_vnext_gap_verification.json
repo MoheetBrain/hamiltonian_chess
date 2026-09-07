@@ -1,0 +1,977 @@
+{
+  "classification_table": {
+    "BACKEND_EXTENSION": [
+      "G4 universe levels",
+      "G5 implicit/instance/strict-implicit binder kinds",
+      "N3 external premise references"
+    ],
+    "DEFER": [
+      "G7 distinct-variable conditions"
+    ],
+    "NOT_CANONICAL": [
+      "G8 definitional-equality step type",
+      "N5 native verifier blindness to imported states"
+    ],
+    "REQUIRED": [
+      "G1 multiple goals (with N1 goal identity/focus and N4 obligation scope)",
+      "G2 metavariable context and assignment (same structure as G6)",
+      "G3 binder types as terms",
+      "G6 substitution map - counted as one addition with G2",
+      "N2 let-bound local declarations"
+    ]
+  },
+  "explicitly_not_recommended": {
+    "evidence_bearing_on_them": [
+      {
+        "evidence": "The only equality machinery measured is alpha_normalize (arena/canonical/equivalence.py). Nothing in the sample required congruence closure; the measured failures are cardinality and typing, not equality saturation.",
+        "hypothesis": "Typed E-Graph core",
+        "settling_experiment": "Import a corpus of defeq/rewrite steps with tactic names (this corpus has none) and measure how many transitions the native structural checker cannot decide but an e-graph could."
+      },
+      {
+        "evidence": "Probe D shows a lossless backend-native STRING field already suffices for G4, G5 and N3. The three REQUIRED gaps (G1/G2/G6, G3, N2) are not backend-specific: multiple goals, typed contexts and let-bindings exist in Lean, Isabelle, Coq and HOL alike.",
+        "hypothesis": "Lean-native or Metamath-native IR",
+        "settling_experiment": "Attempt the same mapping against a second, non-Lean backend and see whether its unmappable classes coincide with G1/G2/G3/N2 or diverge."
+      },
+      {
+        "evidence": "Untestable on this corpus: action.kind is the single constant LEAN_ELABORATED_TACTIC_OCCURRENCE with no tactic name, so 0/184 records expose an action vocabulary to decompose.",
+        "hypothesis": "Universal micro-action decomposition",
+        "settling_experiment": "Re-extract with tactic syntax captured, then measure whether a fixed micro-action set covers the observed tactic distribution."
+      },
+      {
+        "evidence": "No evidence gathered; out of scope of this measurement.",
+        "hypothesis": "MMT/OMDoc",
+        "settling_experiment": "None proposed."
+      }
+    ],
+    "losslessness_over_elegance": "For G4, G5 and N3 a lossless backend-native field (or even the existing attributes/warrant strings) preserves every byte at zero blast radius. Only G1/G2/G6, G3 and N2 genuinely require the universal core to change, and G3/N2 do so only because Binding uniquely lacks any escape hatch.",
+    "note": "Typed E-Graph core, MMT/OMDoc, a Lean-native IR, a Metamath-native IR and universal micro-action decomposition are all treated as UNPROVEN HYPOTHESES and none is recommended here."
+  },
+  "gap_adjudication": {
+    "G1": {
+      "claim": "Only ONE mandatory goal is supported; real proof states have multiple open goals.",
+      "classification": "REQUIRED",
+      "classification_justification": "64/368 states (17.4%) have zero goals and are UNMAPPABLE outright; 42/368 (11.4%) have more than one. 66/184 records (35.9%) contain at least one UNMAPPABLE state. This is the only measured class that blocks import rather than degrading it.",
+      "code_evidence": [
+        "arena/canonical/schema.py:204 - goal: CanonicalExpression (single, no default, mandatory)",
+        "arena/canonical/schema.py:255 - from_dict does raw['goal']; probe A raised KeyError",
+        "arena/languages/_wire.py:147-163,205 - 'goal' is a required exact key; probe A2 rejected the payload",
+        "arena/environments/formal_structural.py:291-293 - the EXISTING production Lean adapter discards every record whose goal list length != 1",
+        "arena/canonical/schema.py:115-119 - Obligation has no scope_id, so goals 2..n moved into obligations lose their local context"
+      ],
+      "concrete_example": "Lean `constructor` on `A / B` yields two goals sharing a context (representable, lossy); `induction n` yields a zero case with context {n:Nat} absent and a successor case with {n:Nat, ih:P n} present - two goals, two different contexts, one binding table.",
+      "measurements": [
+        {
+          "loss_class": "ZERO_GOAL_MANDATORY_SLOT",
+          "pct_of_records": 34.8,
+          "pct_of_states": 17.4,
+          "records": 64,
+          "states": 64
+        },
+        {
+          "loss_class": "MULTI_GOAL_SINGLE_SLOT",
+          "pct_of_records": 18.5,
+          "pct_of_states": 11.4,
+          "records": 34,
+          "states": 42
+        },
+        {
+          "loss_class": "PER_GOAL_LOCAL_CONTEXT_COLLISION",
+          "pct_of_records": 6.0,
+          "pct_of_states": 3.3,
+          "records": 11,
+          "states": 12
+        },
+        {
+          "loss_class": "GOAL_IDENTITY_DROPPED",
+          "pct_of_records": 100.0,
+          "pct_of_states": 82.6,
+          "records": 184,
+          "states": 304
+        }
+      ],
+      "verdict": "CONFIRMED",
+      "what_cannot_be_expressed": "A closed proof state (0 goals) has nothing to put in the mandatory goal slot. A branching state (>1 goal) can put goals 2..n into obligations, but bindings and local_scope are state-global and Obligation carries no scope, so a state whose goals have different local contexts cannot be represented without inventing structure."
+    },
+    "G2": {
+      "claim": "No metavariable assignment map.",
+      "classification": "REQUIRED",
+      "classification_justification": "100% of records (184/184) carry a metavariable inventory and 62.0% carry at least one assigned metavariable with a term. Goal identity is metavariable identity, so G1 cannot be fixed correctly without this; the two are one structure.",
+      "code_evidence": [
+        "arena/canonical/schema.py:196-212 - CanonicalState has no metavariable collection",
+        "arena/canonical/schema.py:115-119 - Obligation is the nearest analogue and has no type, no kind, no assignment",
+        "the source records carry state.metavariables[] with identity/kind/type/assigned/assignment and state_delta.metavariables_assigned[]"
+      ],
+      "concrete_example": "`refine f ?a ?b` creates two SYNTHETIC metavariables and assigns the parent goal to an application mentioning them. The canonical state can hold the new goals' propositions but not the fact that they are holes in one partially built term.",
+      "extra_counts": {
+        "metavariables_seen": 1375,
+        "of_which_assigned_with_a_term": 992
+      },
+      "measurements": [
+        {
+          "loss_class": "METAVARIABLE_CONTEXT_DROPPED",
+          "pct_of_records": 100.0,
+          "pct_of_states": 82.6,
+          "records": 184,
+          "states": 304
+        },
+        {
+          "loss_class": "METAVARIABLE_ASSIGNMENT_DROPPED",
+          "pct_of_records": 62.0,
+          "pct_of_states": 44.6,
+          "records": 114,
+          "states": 164
+        }
+      ],
+      "verdict": "CONFIRMED",
+      "what_cannot_be_expressed": "The identity of the goal itself. In Lean a goal IS a metavariable; the corpus stores goal.identity = 'm0' and a matching metavariables entry with its type and kind (NATURAL / SYNTHETIC / SYNTHETIC_OPAQUE). None of identity, kind, type or assignment has a slot."
+    },
+    "G3": {
+      "claim": "Binding.type_name is a plain string, losing dependent-type structure.",
+      "classification": "REQUIRED",
+      "classification_justification": "100% of records (184/184) and 84.6% of individual local-context entries are affected, and Binding is the one record with no string escape hatch, so not even a lossless backend-native blob can rescue it without a schema change.",
+      "code_evidence": [
+        "arena/canonical/schema.py:110 - type_name: str",
+        "arena/canonical/schema.py:245 - Binding(**item); probe C shows an extra key is a TypeError",
+        "arena/languages/_wire.py:89-92 - every Binding field must be a string, exactly five keys",
+        "Binding has no attributes and no value field, so unlike CanonicalExpression it has NO string escape hatch for structure"
+      ],
+      "concrete_example": "`h : SatisfiesM p (x >>= f)` becomes type_name='lean.type#<sha16>'. The fact that the type mentions the earlier binders x, f and p is gone, so no reader and no verifier can see the dependency the proof turns on.",
+      "extra_counts": {
+        "local_context_entries": 5071,
+        "pct_compound": 84.6,
+        "with_compound_type": 4288
+      },
+      "measurements": [
+        {
+          "loss_class": "DEPENDENT_TYPE_FLATTENED",
+          "pct_of_records": 100.0,
+          "pct_of_states": 82.6,
+          "records": 184,
+          "states": 304
+        }
+      ],
+      "verdict": "CONFIRMED",
+      "what_cannot_be_expressed": "Any local hypothesis whose type is a term rather than a name. 4288 of 5071 local-context entries in the sample (84.6%) have a compound type tree. Under the current schema the only faithful move is to name the type by a content hash, which destroys every dependency between binders."
+    },
+    "G4": {
+      "claim": "No universe levels.",
+      "classification": "BACKEND_EXTENSION",
+      "classification_justification": "Universe data is ubiquitous (100% of records, 34781 symbol occurrences) but nothing in the Arena reasons about it, and CanonicalExpression.value/attributes already hold it losslessly as text. A typed level algebra in the universal core would buy nothing measurable today; a lossless lean-native field is enough. Revisit only if a task ever requires level equality, which no current fitness mechanism does.",
+      "code_evidence": [
+        "arena/canonical/schema.py:49 - sort: str = 'Unknown' is a flat tag with no level structure",
+        "arena/environments/formal_structural.py:128-129 - the production transcriber already stores a level as canonical_json(...) TEXT in value",
+        "arena/environments/formal_structural.py:118-124 - symbol nodes drop universe_arguments entirely today",
+        "probe D - a JSON-encoded level in attributes passes the strict wire validator and round-trips byte-identically",
+        "nothing in arena/ reads, compares or reasons about universe levels"
+      ],
+      "concrete_example": "`Sort (succ (param u_1))` and `Sort (succ (param u_2))` differ only in a level. As opaque strings they compare unequal, which is correct here but accidental: `max u v` vs `max v u` would also compare unequal though they denote the same level.",
+      "extra_counts": {
+        "level_constructors_observed": [
+          "zero",
+          "succ",
+          "param",
+          "max",
+          "imax",
+          "mvar"
+        ],
+        "sort_nodes_with_nontrivial_level": 1968,
+        "symbol_occurrences_carrying_universe_arguments": 34781
+      },
+      "measurements": [
+        {
+          "loss_class": "UNIVERSE_LEVEL_NONTRIVIAL",
+          "pct_of_records": 91.3,
+          "pct_of_states": 74.2,
+          "records": 168,
+          "states": 273
+        },
+        {
+          "loss_class": "UNIVERSE_ARGUMENTS_ON_SYMBOL",
+          "pct_of_records": 100.0,
+          "pct_of_states": 82.6,
+          "records": 184,
+          "states": 304
+        },
+        {
+          "loss_class": "UNIVERSE_ASSIGNMENTS_DROPPED",
+          "pct_of_records": 57.6,
+          "pct_of_states": 41.0,
+          "records": 106,
+          "states": 151
+        }
+      ],
+      "verdict": "CONFIRMED as a structural gap, REFUTED as a losslessness gap",
+      "what_cannot_be_expressed": "A universe level as structure that alpha_normalize, expressions_equivalent or the native verifier can see. As bytes it is expressible today."
+    },
+    "G5": {
+      "claim": "No implicit / instance / strict-implicit argument kinds.",
+      "classification": "BACKEND_EXTENSION",
+      "classification_justification": "94.0% of records contain a non-EXPLICIT binder, but the field to hold the value already exists and the wire form already accepts it. The measured defect is in arena/verifier/native.py:136, not in the shape of Sigma, so this is a backend/verifier fix, not a universal-core field. A separate free/declared predicate would decouple it.",
+      "code_evidence": [
+        "arena/canonical/schema.py:112 - binder_kind: str = 'free' EXISTS and is unconstrained, so the VALUE is expressible",
+        "arena/verifier/native.py:136 - only binder_kind == 'free' declares a name; probe F shows binder_kind='implicit' or 'instance' makes the native verifier raise UNBOUND_VARIABLE on arena-native var terms",
+        "arena/environments/formal_structural.py:130-132 - the production transcriber already stores binder_role as an expression attribute string",
+        "expression-level binder nodes (lean.lambda / lean.dependent_function) have no binder_kind field of their own; only the string attributes map",
+        "goal.local_instances (the instance cache) has no slot anywhere"
+      ],
+      "concrete_example": "`theorem foo {a : A} [inst : Monad m] (x : M a)` mixes IMPLICIT, INSTANCE_IMPLICIT and EXPLICIT. All four Lean roles occur in the sample (EXPLICIT, IMPLICIT, STRICT_IMPLICIT, INSTANCE_IMPLICIT). Recording them faithfully in binder_kind makes NativeVerifier reject the state.",
+      "extra_counts": {
+        "binder_roles_observed": [
+          "EXPLICIT",
+          "IMPLICIT",
+          "INSTANCE_IMPLICIT",
+          "STRICT_IMPLICIT"
+        ],
+        "distinct_binder_x_type_structures_observed": 28
+      },
+      "measurements": [
+        {
+          "loss_class": "NONEXPLICIT_BINDER_KIND",
+          "pct_of_records": 94.0,
+          "pct_of_states": 77.7,
+          "records": 173,
+          "states": 286
+        },
+        {
+          "loss_class": "LOCAL_INSTANCES_DROPPED",
+          "pct_of_records": 69.6,
+          "pct_of_states": 57.1,
+          "records": 128,
+          "states": 210
+        }
+      ],
+      "verdict": "PARTIALLY CONFIRMED",
+      "what_cannot_be_expressed": "Nothing, at the byte level. What is broken is semantics: the one field that names a binder kind is overloaded to mean 'is this name declared?', so using it for Lean's four roles silently disables the verifier's scope checking."
+    },
+    "G6": {
+      "claim": "No substitution map.",
+      "classification": "REQUIRED",
+      "classification_justification": "100% of records carry assignment data. It is however the SAME structure as G2: in Lean the substitution map is the metavariable assignment map, so G2 and G6 must be counted as one required addition, not two. The distinct term-rewriting reading of 'substitution map' has no evidence in this single-source sample.",
+      "code_evidence": [
+        "arena/canonical/schema.py:154 - CanonicalAction.arguments is a POSITIONAL tuple, not a name->term map",
+        "arena/canonical/schema.py:50 - attributes is string->string, so it cannot hold terms as structure",
+        "no CanonicalState field holds a variable->term mapping"
+      ],
+      "concrete_example": "`exact \u27e8x, hx\u27e9` assigns the goal metavariable to an anonymous constructor term. The canonical transition can show the goal disappearing but not the witness that closed it, which is exactly the evidence a Refuter needs to distinguish a real close from laundering.",
+      "measurements": [
+        {
+          "loss_class": "MVAR_SUBSTITUTION_MAP_DROPPED",
+          "pct_of_records": 100.0,
+          "pct_of_states": 68.5,
+          "records": 184,
+          "states": 252
+        }
+      ],
+      "verdict": "CONFIRMED for metavariable assignment; UNTESTED for term-rewriting substitution",
+      "what_cannot_be_expressed": "Which metavariable was assigned which term by a step. The corpus records it twice (metavariables[].assignment and state_delta.metavariables_assigned); neither has a slot."
+    },
+    "G7": {
+      "claim": "No distinct-variable conditions (Metamath-style).",
+      "classification": "DEFER",
+      "classification_justification": "Zero occurrences in 368 real proof states. Adding a DV structure to the universal core on the strength of a hypothetical second backend would be cost with no measured benefit. Re-open only if a Metamath/set.mm import is actually planned; that import is the experiment that would settle it.",
+      "code_evidence": [
+        "0 of 368 sampled states contain any distinct-variable, disjoint-variable or dv payload",
+        "Lean 4 has no distinct-variable conditions; it uses de Bruijn indices and free-variable identities, both of which the corpus records",
+        "arena/canonical/equivalence.py:10-48 - alpha_normalize already gives depth-indexed bound identities, which is the mechanism DV conditions substitute for"
+      ],
+      "measurements": [
+        {
+          "loss_class": "DISTINCT_VARIABLE_CONDITION",
+          "pct_of_records": 0.0,
+          "pct_of_states": 0.0,
+          "records": 0,
+          "states": 0
+        }
+      ],
+      "verdict": "REFUTED on the available evidence / NOT APPLICABLE to this source",
+      "what_cannot_be_expressed": "Nothing that this evidence base contains. The claim is neither confirmed nor refuted for a Metamath source, because no Metamath data was examined."
+    },
+    "G8": {
+      "claim": "No definitional-equality step type.",
+      "classification": "NOT_CANONICAL",
+      "classification_justification": "The step type is already expressible; only its truth is not checkable natively. This belongs to the verification/authority layer (VerificationRecord + an external adapter), not to Sigma.",
+      "code_evidence": [
+        "arena/canonical/schema.py:152 - CanonicalAction.operation is an unconstrained str; probe G constructed operation='defeq_unfold' and it serialised cleanly",
+        "no operation whitelist exists anywhere in arena/ (grep found none)",
+        "arena/canonical/schema.py:293-300 - VerificationRecord already carries verifier/authority/certificate_hash, which is where a kernel-checked defeq belongs",
+        "arena/verifier/native.py has no defeq rule, and cannot have one: it is a structural checker with no reduction machinery",
+        "the corpus cannot test this: action.kind is the constant LEAN_ELABORATED_TACTIC_OCCURRENCE and carries NO tactic name, so 0/184 records expose a defeq step to measure"
+      ],
+      "concrete_example": "`show 2 + 2 = 4 from rfl` is representable today as CanonicalAction(operation='defeq', target_ids=('goal',)) with a VerificationRecord whose authority is the Lean kernel. Nothing in the schema blocks it.",
+      "measurements": [
+        {
+          "loss_class": "DEFEQ_STEP_TYPE",
+          "pct_of_records": 0.0,
+          "pct_of_states": 0.0,
+          "records": 0,
+          "states": 0
+        }
+      ],
+      "verdict": "REFUTED as a schema gap; the real gap is in the verifier, not in Sigma",
+      "what_cannot_be_expressed": "Nothing about the step type. What is missing is an authority able to certify that two canonical expressions are definitionally equal, and that is a verifier, not a field."
+    }
+  },
+  "generated_for": "arena-canonical-v0.1.0",
+  "method": {
+    "adjudication": "direct reading of arena/canonical/**, arena/languages/_wire.py, arena/languages/phenotype.py, arena/verifier/native.py, arena/environments/formal_structural.py, plus executed probes A-H",
+    "executed_probes": {
+      "A": "CanonicalState.from_dict without goal -> KeyError('goal')",
+      "A2": "wire validator without goal -> WireValidationError missing=['goal']",
+      "B": "wire validator with an extra top-level 'goals' key -> WireValidationError unknown=['goals']",
+      "C": "Binding(**{... 'universe': 'u'}) -> TypeError (no escape hatch on Binding)",
+      "D": "JSON-encoded universe level in CanonicalExpression.attributes -> ACCEPTED, bytes recovered",
+      "E": "changing schema_version alone changes mathematical_hash -> True",
+      "F": "binder_kind 'free' accepted; 'implicit' and 'instance' -> UNBOUND_VARIABLE from NativeVerifier",
+      "G": "CanonicalAction(operation='defeq_unfold') constructs and serialises cleanly",
+      "H": "field inventories of Obligation / Binding / CanonicalState"
+    },
+    "pressure_test": "research/canonical_vnext/pressure_test.py, run against real Lean 4 proof states, importing the canonical schema read-only"
+  },
+  "new_gaps_discovered": {
+    "N1_goal_identity_and_focus_order": {
+      "classification": "REQUIRED",
+      "classification_justification": "Subsumed by a correct G1+G2 fix; 100% / 18.5% of records respectively.",
+      "description": "Goals have identities (metavariable ids) and states have a focus_order. Neither has a slot, so goal order and which goal is in focus cannot be recovered.",
+      "measurements": [
+        {
+          "loss_class": "GOAL_IDENTITY_DROPPED",
+          "pct_of_records": 100.0,
+          "pct_of_states": 82.6,
+          "records": 184,
+          "states": 304
+        },
+        {
+          "loss_class": "FOCUS_ORDER_DROPPED",
+          "pct_of_records": 18.5,
+          "pct_of_states": 11.4,
+          "records": 34,
+          "states": 42
+        }
+      ],
+      "verdict": "CONFIRMED (new)"
+    },
+    "N2_let_bound_local_declarations": {
+      "classification": "REQUIRED",
+      "classification_justification": "9.2% of records. Low frequency, but the loss is silent and unrecoverable: a state with `x := 3` becomes a state with an opaque `x`, changing what is provable. Since Binding must be reopened for G3 anyway, the marginal cost is near zero.",
+      "code_evidence": [
+        "arena/canonical/schema.py:106-112",
+        "arena/languages/_wire.py:89-92"
+      ],
+      "description": "Local declarations come in two roles: cdecl (a hypothesis) and ldecl (a let-binding with a definition). Binding has neither a value field nor an attributes map, so an ldecl's definition is unrecoverable and the cdecl/ldecl distinction itself is lost.",
+      "measurements": [
+        {
+          "loss_class": "LET_VALUE_DROPPED",
+          "pct_of_records": 9.2,
+          "pct_of_states": 7.3,
+          "records": 17,
+          "states": 27
+        },
+        {
+          "loss_class": "DECLARATION_ROLE_DROPPED",
+          "pct_of_records": 9.2,
+          "pct_of_states": 7.3,
+          "records": 17,
+          "states": 27
+        }
+      ],
+      "verdict": "CONFIRMED (new; not in G1-G8)"
+    },
+    "N3_external_premise_references": {
+      "classification": "BACKEND_EXTENSION",
+      "classification_justification": "65.8% of records carry premise references, but they are properties of the step's provenance rather than of the mathematical state, and warrant (a free string) can hold them losslessly today. Promote to REQUIRED only if premise selection becomes a task.",
+      "description": "CanonicalAction has no field for the library lemmas a step used. target_ids cannot be reused because arena/verifier/native.py:231-241 rejects any target not in object_ids | {'goal'}.",
+      "measurements": [
+        {
+          "loss_class": "PREMISE_REFS_UNPLACEABLE",
+          "pct_of_records": 65.8,
+          "pct_of_states": 32.9,
+          "records": 121,
+          "states": 121
+        }
+      ],
+      "verdict": "CONFIRMED (new; the prior report mentions it only inside its 'tactic actions' item)"
+    },
+    "N4_obligations_have_no_scope": {
+      "classification": "REQUIRED",
+      "classification_justification": "It is the reason G1 cannot be worked around; it is part of the same fix.",
+      "code_evidence": [
+        "arena/canonical/schema.py:115-137"
+      ],
+      "description": "Obligation(obligation_id, proposition, status, source) has no scope_id and no binding list, so the only available multi-goal workaround cannot attach a local context to the extra goals. Obligation.source is a free string and could smuggle a scope id, which is exactly the kind of untyped convention a vNext should replace.",
+      "verdict": "CONFIRMED (new; the mechanism behind G1)"
+    },
+    "N5_native_verifier_is_blind_to_imports": {
+      "classification": "NOT_CANONICAL",
+      "classification_justification": "This is a verifier-coverage fact, not a Sigma shape. It matters because it means a vNext import cannot be validated by the native verifier and MUST be gated by an external authority (VerificationRecord) to be worth anything.",
+      "description": "All 304 constructed states passed the strict wire validator AND NativeVerifier with ZERO issue codes, because every operator was namespaced lean.* and none matches BINDER_OPERATORS, PARTIAL_OPERATORS or the arithmetic arity/sort rules in arena/verifier/native.py:12-13,147-230. 'The verifier accepts it' therefore carries no information about imported Lean states.",
+      "measured": {
+        "constructed_states": 304,
+        "native_issue_codes_raised": {}
+      },
+      "verdict": "CONFIRMED (new; measurement artefact of high importance)"
+    }
+  },
+  "novelty_and_saturation": {
+    "binder_and_type_structures": {
+      "blocks": [
+        {
+          "cumulative_distinct": 19,
+          "new_in_block": 19,
+          "per_100_records": 38.0,
+          "records": "1-50"
+        },
+        {
+          "cumulative_distinct": 24,
+          "new_in_block": 5,
+          "per_100_records": 10.0,
+          "records": "51-100"
+        },
+        {
+          "cumulative_distinct": 27,
+          "new_in_block": 3,
+          "per_100_records": 6.0,
+          "records": "101-150"
+        },
+        {
+          "cumulative_distinct": 28,
+          "new_in_block": 1,
+          "per_100_records": 2.9,
+          "records": "151-184"
+        }
+      ],
+      "items": [
+        "dependent_function|EXPLICIT|application",
+        "dependent_function|EXPLICIT|bound_variable",
+        "dependent_function|EXPLICIT|dependent_function",
+        "dependent_function|EXPLICIT|local_reference",
+        "dependent_function|EXPLICIT|metavariable_reference",
+        "dependent_function|EXPLICIT|sort",
+        "dependent_function|EXPLICIT|symbol",
+        "dependent_function|IMPLICIT|application",
+        "dependent_function|IMPLICIT|bound_variable",
+        "dependent_function|IMPLICIT|dependent_function",
+        "dependent_function|IMPLICIT|local_reference",
+        "dependent_function|IMPLICIT|sort",
+        "dependent_function|IMPLICIT|symbol",
+        "dependent_function|INSTANCE_IMPLICIT|application",
+        "dependent_function|INSTANCE_IMPLICIT|dependent_function",
+        "dependent_function|STRICT_IMPLICIT|application",
+        "dependent_function|STRICT_IMPLICIT|local_reference",
+        "dependent_function|STRICT_IMPLICIT|symbol",
+        "lambda|EXPLICIT|application",
+        "lambda|EXPLICIT|bound_variable",
+        "lambda|EXPLICIT|dependent_function",
+        "lambda|EXPLICIT|local_reference",
+        "lambda|EXPLICIT|metavariable_reference",
+        "lambda|EXPLICIT|sort",
+        "lambda|EXPLICIT|symbol",
+        "lambda|IMPLICIT|application",
+        "lambda|IMPLICIT|local_reference",
+        "lambda|IMPLICIT|symbol"
+      ],
+      "total_distinct": 28
+    },
+    "caveat": "This is ONE source: the Lean 4.10.0-rc1 elaborator applied to mathlib4 and Batteries, through one extractor. Saturation of a node vocabulary fixed by Lean's own Expr type is close to tautological and says nothing about heterogeneous sources. A second source is needed before any saturation claim: specifically a backend whose primitives differ, e.g. a Metamath/set.mm export (the only thing that can test G7 at all), or the gold125 trajectory schema in hmlt-reasoning-corpus-lean-attestation/schemas/, or Arena's own symbolic/numeric domain states. Until then treat 55 as a lower bound on the universal construct count, not an estimate of it.",
+    "reading": "Semantic-construct novelty saturates fast: 54 new constructs in records 1-50 (108 per 100), 1 in records 51-100 (2 per 100), 0 thereafter; 55 distinct in total. Binder x type structures are still climbing: 19, then 5, then 3, then 1 new (38.0 / 10.0 / 6.0 / 2.9 per 100 records), 28 distinct of a plausible ~64-cell product space (2 binder node kinds x 4 binder roles x ~8 binder-type node kinds).",
+    "semantic_constructs": {
+      "blocks": [
+        {
+          "cumulative_distinct": 54,
+          "new_in_block": 54,
+          "per_100_records": 108.0,
+          "records": "1-50"
+        },
+        {
+          "cumulative_distinct": 55,
+          "new_in_block": 1,
+          "per_100_records": 2.0,
+          "records": "51-100"
+        },
+        {
+          "cumulative_distinct": 55,
+          "new_in_block": 0,
+          "per_100_records": 0.0,
+          "records": "101-150"
+        },
+        {
+          "cumulative_distinct": 55,
+          "new_in_block": 0,
+          "per_100_records": 0.0,
+          "records": "151-184"
+        }
+      ],
+      "items": [
+        "binder_role:EXPLICIT",
+        "binder_role:IMPLICIT",
+        "binder_role:INSTANCE_IMPLICIT",
+        "binder_role:STRICT_IMPLICIT",
+        "declaration_role:cdecl",
+        "declaration_role:ldecl",
+        "field:annotated.expression",
+        "field:annotated.node",
+        "field:annotated.source_metadata_delegated",
+        "field:application.argument",
+        "field:application.function",
+        "field:application.node",
+        "field:bound_variable.index",
+        "field:bound_variable.node",
+        "field:dependent_function.binder_name",
+        "field:dependent_function.binder_role",
+        "field:dependent_function.binder_type",
+        "field:dependent_function.body",
+        "field:dependent_function.node",
+        "field:lambda.binder_name",
+        "field:lambda.binder_role",
+        "field:lambda.binder_type",
+        "field:lambda.body",
+        "field:lambda.node",
+        "field:literal.literal_kind",
+        "field:literal.node",
+        "field:literal.value",
+        "field:local_reference.identity",
+        "field:local_reference.node",
+        "field:metavariable_reference.identity",
+        "field:metavariable_reference.node",
+        "field:sort.level",
+        "field:sort.node",
+        "field:symbol.identity",
+        "field:symbol.node",
+        "field:symbol.universe_arguments",
+        "level:imax",
+        "level:max",
+        "level:mvar",
+        "level:param",
+        "level:succ",
+        "level:zero",
+        "mvar_kind:NATURAL",
+        "mvar_kind:SYNTHETIC",
+        "mvar_kind:SYNTHETIC_OPAQUE",
+        "node:annotated",
+        "node:application",
+        "node:bound_variable",
+        "node:dependent_function",
+        "node:lambda",
+        "node:literal",
+        "node:local_reference",
+        "node:metavariable_reference",
+        "node:sort",
+        "node:symbol"
+      ],
+      "total_distinct": 55
+    }
+  },
+  "pressure_test_results": {
+    "aggregate_counts": {
+      "local_context_entries": 5071,
+      "local_context_entries_with_compound_type": 4288,
+      "metavariables_assigned_total": 992,
+      "metavariables_total": 1375,
+      "sort_nodes_with_nontrivial_level": 1968,
+      "symbols_with_universe_arguments": 34781
+    },
+    "byte_lossless_note": "Every LOSSY_STRUCTURAL state could be made byte-lossless today by JSON-encoding the missing data into CanonicalExpression.attributes (probe D). That is NOT true for Binding (probe C) nor for the UNMAPPABLE cardinality cases.",
+    "failure_class_frequency_by_record": {
+      "DECLARATION_ROLE_DROPPED": {
+        "gap": "N2",
+        "pct_of_records": 9.2,
+        "records": 17
+      },
+      "DEPENDENT_TYPE_FLATTENED": {
+        "gap": "G3",
+        "pct_of_records": 100.0,
+        "records": 184
+      },
+      "FOCUS_ORDER_DROPPED": {
+        "gap": "N1",
+        "pct_of_records": 18.5,
+        "records": 34
+      },
+      "GOAL_IDENTITY_DROPPED": {
+        "gap": "G1",
+        "pct_of_records": 100.0,
+        "records": 184
+      },
+      "LET_VALUE_DROPPED": {
+        "gap": "N2",
+        "pct_of_records": 9.2,
+        "records": 17
+      },
+      "LOCAL_INSTANCES_DROPPED": {
+        "gap": "G5",
+        "pct_of_records": 69.6,
+        "records": 128
+      },
+      "METAVARIABLE_ASSIGNMENT_DROPPED": {
+        "gap": "G2",
+        "pct_of_records": 62.0,
+        "records": 114
+      },
+      "METAVARIABLE_CONTEXT_DROPPED": {
+        "gap": "G2",
+        "pct_of_records": 100.0,
+        "records": 184
+      },
+      "MULTI_GOAL_SINGLE_SLOT": {
+        "gap": "G1",
+        "pct_of_records": 18.5,
+        "records": 34
+      },
+      "MVAR_SUBSTITUTION_MAP_DROPPED": {
+        "gap": "G6",
+        "pct_of_records": 100.0,
+        "records": 184
+      },
+      "NONEXPLICIT_BINDER_KIND": {
+        "gap": "G5",
+        "pct_of_records": 94.0,
+        "records": 173
+      },
+      "PER_GOAL_LOCAL_CONTEXT_COLLISION": {
+        "gap": "G1",
+        "pct_of_records": 6.0,
+        "records": 11
+      },
+      "PREMISE_REFS_UNPLACEABLE": {
+        "gap": "N3",
+        "pct_of_records": 65.8,
+        "records": 121
+      },
+      "UNIVERSE_ARGUMENTS_ON_SYMBOL": {
+        "gap": "G4",
+        "pct_of_records": 100.0,
+        "records": 184
+      },
+      "UNIVERSE_ASSIGNMENTS_DROPPED": {
+        "gap": "G4",
+        "pct_of_records": 57.6,
+        "records": 106
+      },
+      "UNIVERSE_LEVEL_NONTRIVIAL": {
+        "gap": "G4",
+        "pct_of_records": 91.3,
+        "records": 168
+      },
+      "ZERO_GOAL_MANDATORY_SLOT": {
+        "gap": "G1",
+        "pct_of_records": 34.8,
+        "records": 64
+      }
+    },
+    "failure_class_frequency_by_state": {
+      "DECLARATION_ROLE_DROPPED": {
+        "gap": "N2",
+        "pct_of_states": 7.3,
+        "states": 27
+      },
+      "DEPENDENT_TYPE_FLATTENED": {
+        "gap": "G3",
+        "pct_of_states": 82.6,
+        "states": 304
+      },
+      "FOCUS_ORDER_DROPPED": {
+        "gap": "N1",
+        "pct_of_states": 11.4,
+        "states": 42
+      },
+      "GOAL_IDENTITY_DROPPED": {
+        "gap": "G1",
+        "pct_of_states": 82.6,
+        "states": 304
+      },
+      "LET_VALUE_DROPPED": {
+        "gap": "N2",
+        "pct_of_states": 7.3,
+        "states": 27
+      },
+      "LOCAL_INSTANCES_DROPPED": {
+        "gap": "G5",
+        "pct_of_states": 57.1,
+        "states": 210
+      },
+      "METAVARIABLE_ASSIGNMENT_DROPPED": {
+        "gap": "G2",
+        "pct_of_states": 44.6,
+        "states": 164
+      },
+      "METAVARIABLE_CONTEXT_DROPPED": {
+        "gap": "G2",
+        "pct_of_states": 82.6,
+        "states": 304
+      },
+      "MULTI_GOAL_SINGLE_SLOT": {
+        "gap": "G1",
+        "pct_of_states": 11.4,
+        "states": 42
+      },
+      "MVAR_SUBSTITUTION_MAP_DROPPED": {
+        "gap": "G6",
+        "pct_of_states": 68.5,
+        "states": 252
+      },
+      "NONEXPLICIT_BINDER_KIND": {
+        "gap": "G5",
+        "pct_of_states": 77.7,
+        "states": 286
+      },
+      "PER_GOAL_LOCAL_CONTEXT_COLLISION": {
+        "gap": "G1",
+        "pct_of_states": 3.3,
+        "states": 12
+      },
+      "PREMISE_REFS_UNPLACEABLE": {
+        "gap": "N3",
+        "pct_of_states": 32.9,
+        "states": 121
+      },
+      "UNIVERSE_ARGUMENTS_ON_SYMBOL": {
+        "gap": "G4",
+        "pct_of_states": 82.6,
+        "states": 304
+      },
+      "UNIVERSE_ASSIGNMENTS_DROPPED": {
+        "gap": "G4",
+        "pct_of_states": 41.0,
+        "states": 151
+      },
+      "UNIVERSE_LEVEL_NONTRIVIAL": {
+        "gap": "G4",
+        "pct_of_states": 74.2,
+        "states": 273
+      },
+      "ZERO_GOAL_MANDATORY_SLOT": {
+        "gap": "G1",
+        "pct_of_states": 17.4,
+        "states": 64
+      }
+    },
+    "goal_count_distribution": {
+      "0": 64,
+      "1": 262,
+      "2": 18,
+      "3": 15,
+      "4": 5,
+      "5": 2,
+      "6": 1,
+      "7": 1
+    },
+    "lossless_states": 0,
+    "native_verifier_issue_codes_raised": {},
+    "never_observed": [
+      "DEFEQ_STEP_TYPE",
+      "DISTINCT_VARIABLE_CONDITION"
+    ],
+    "states_analysed": 368,
+    "verdict_definitions": {
+      "LOSSLESS": "every source information item has a first-class typed slot",
+      "LOSSY_STRUCTURAL": "a state can be built and passes the wire validator and the native verifier, but some information survives only as an opaque string or is dropped",
+      "UNMAPPABLE": "a hard cardinality or typing constraint is violated; no faithful state exists at any encoding"
+    },
+    "verdicts_by_record": {
+      "LOSSY_STRUCTURAL": 118,
+      "UNMAPPABLE": 66
+    },
+    "verdicts_by_state": {
+      "LOSSY_STRUCTURAL": 292,
+      "UNMAPPABLE": 76
+    }
+  },
+  "report_id": "canonical-vnext-gap-verification",
+  "sample_provenance": {
+    "corpus_glob": "data/corpus/lean_runtime_v2_full.canonical.part-*.jsonl.gz",
+    "donor_root": "/Users/moheet/Documents/ChatGPT/HML_V3",
+    "parts": [
+      "lean_runtime_v2_full.canonical.part-000.jsonl.gz",
+      "lean_runtime_v2_full.canonical.part-001.jsonl.gz",
+      "lean_runtime_v2_full.canonical.part-002.jsonl.gz",
+      "lean_runtime_v2_full.canonical.part-003.jsonl.gz",
+      "lean_runtime_v2_full.canonical.part-004.jsonl.gz"
+    ],
+    "records_eligible": 918,
+    "records_in_universe": 1150,
+    "records_sampled": 184,
+    "records_skipped_sealed_source_file": 232,
+    "sealed_shard_treatment": "only corpus_metadata.source_file read from sealed shard; no sealed state loaded",
+    "selection_rule": "every 5th eligible record in part order, capped at 200",
+    "source_schema_version": "canonical-math-transition-v2.0.0",
+    "unit_of_analysis": "one proof state (state_before and state_after per record)"
+  },
+  "schema_description": {
+    "blast_radius_of_any_field_addition": [
+      "every CanonicalState.mathematical_hash changes if SCHEMA_VERSION changes (probe E)",
+      "arena/languages/_wire.py:_STATE_FIELDS and STATE_FIELD_ORDER must change or every payload is rejected",
+      "arena/languages/phenotype.py:_KNOWN_KEYS is INDEX-ADDRESSED (_role_map, phenotype.py:78-99 builds 'r{index:x}' / '@{index:x}' labels), so inserting a key renames the compressed and symbolic role labels of EVERY candidate language",
+      "3 committed artifacts embed the literal 'arena-canonical-v0.1.0': artifacts/experiments/fitness_v3/frozen_manifest.json, artifacts/experiments/fitness_v2/probe_manifest.json, artifacts/worlds/arena-world-v0.jsonl",
+      "hash-pinned tests: tests/canonical/test_schema.py, tests/languages/test_seed_roundtrip.py, tests/experiments/test_fitness_v3.py, tests/experiments/test_fitness_v4.py, tests/experiments/test_game_r_mutant_audit.py, tests/model_view/test_model_view.py, tests/compiler/test_facade.py"
+    ],
+    "closed_wire_contract": {
+      "behaviour": "_dict() rejects BOTH missing and unknown keys at every level; _STATE_FIELDS is an exact set",
+      "roundtrip": "payload_to_state re-serialises and demands byte equality with the input (_wire.py:233-241)",
+      "site": "arena/languages/_wire.py:20-29, 147-216",
+      "verified": "adding a top-level 'goals' key is rejected as unknown (executed probe B)"
+    },
+    "escape_hatches_that_already_exist": [
+      "CanonicalExpression.attributes accepts any string->string map, so arbitrary JSON can be smuggled losslessly as text (probe D: accepted by the wire validator, bytes recovered)",
+      "CanonicalExpression.value accepts any JSON scalar; the production Lean transcriber already stores a universe level as canonical_json text (arena/environments/formal_structural.py:128-129)",
+      "CanonicalAction.operation and Obligation.status/source are unconstrained strings",
+      "Binding has NO escape hatch: no attributes, no value, and from_dict does Binding(**item)"
+    ],
+    "hashing": {
+      "CanonicalState.artifact_hash": "arena/canonical/schema.py:285-287 - full to_dict including state_id and execution_metadata",
+      "CanonicalState.mathematical_hash": {
+        "excludes": [
+          "state_id",
+          "execution_metadata"
+        ],
+        "includes": [
+          "schema_version",
+          "objects",
+          "bindings",
+          "assumptions",
+          "established_facts",
+          "propositions",
+          "goal",
+          "obligations",
+          "evidence_dependencies",
+          "local_scope",
+          "legal_actions",
+          "plausible_invalid_actions",
+          "terminal_status"
+        ],
+        "site": "arena/canonical/schema.py:281-283",
+        "verified": "replacing schema_version alone changes mathematical_hash (executed probe E)"
+      },
+      "CanonicalTrajectory.content_hash": "arena/canonical/schema.py:346-350 - full dict minus trajectory_id",
+      "canonical_json": "arena/canonical/schema.py:30-35 - sort_keys=True, separators=(',',':'), ensure_ascii=False",
+      "stable_hash": "arena/canonical/schema.py:38-39 - sha256 over canonical_json"
+    },
+    "types": {
+      "Binding": {
+        "fields": {
+          "binder_id": "str",
+          "binder_kind": "str = 'free' - free-form, but only the literal 'free' has semantics",
+          "scope_id": "str - must appear in CanonicalState.local_scope",
+          "type_name": "str - FLAT STRING, cannot hold a term",
+          "variable": "str"
+        },
+        "invariants": [
+          "no to_dict/from_dict: serialised with dataclasses.asdict via _dataclass_records (schema.py:192-193)",
+          "CanonicalState.from_dict does Binding(**item) (schema.py:245): an unknown key is a TypeError",
+          "native verifier collects free names only from bindings whose binder_kind == 'free' (arena/verifier/native.py:136)",
+          "no value field: a let-bound (ldecl) local cannot carry its definition",
+          "no attributes field: nothing can be smuggled onto a Binding at all"
+        ],
+        "site": "arena/canonical/schema.py:106-112"
+      },
+      "CanonicalAction": {
+        "fields": {
+          "action_id": "str",
+          "arguments": "tuple[CanonicalExpression, ...] - POSITIONAL, not a name->term map",
+          "expected_usefulness": "float",
+          "generated_obligations": "tuple[Obligation, ...]",
+          "operation": "str - UNCONSTRAINED; no operation whitelist exists in arena/",
+          "preconditions": "tuple[CanonicalExpression, ...]",
+          "target_ids": "tuple[str, ...] - must be a subset of object_ids | {'goal'} (native.py:231-241)",
+          "warrant": "str"
+        },
+        "invariants": [
+          "no premise-reference field: external library lemmas have no slot"
+        ],
+        "site": "arena/canonical/schema.py:149-189"
+      },
+      "CanonicalExpression": {
+        "fields": {
+          "args": "tuple[CanonicalExpression, ...] - ordered children",
+          "attributes": "tuple[tuple[str, str], ...] - string->string only (to_dict emits a dict)",
+          "op": "str - free-form operator name, no whitelist anywhere in arena/",
+          "sort": "str = 'Unknown' - a flat sort tag, no structure, no levels",
+          "value": "str | int | float | bool | None - a single JSON scalar leaf"
+        },
+        "invariants": [
+          "to_dict omits empty args / None value / empty attributes (schema.py:52-60), so encoding is canonical-by-omission",
+          "from_dict sorts attributes (schema.py:70), so attribute order is not identity-bearing",
+          "content_hash = sha256 of canonical_json(to_dict()) (schema.py:73-75)"
+        ],
+        "site": "arena/canonical/schema.py:42-75"
+      },
+      "CanonicalState": {
+        "fields": [
+          "state_id",
+          "objects",
+          "bindings",
+          "assumptions",
+          "established_facts",
+          "propositions",
+          "goal",
+          "obligations",
+          "evidence_dependencies",
+          "local_scope",
+          "legal_actions",
+          "plausible_invalid_actions",
+          "terminal_status",
+          "schema_version",
+          "execution_metadata"
+        ],
+        "invariants": [
+          "goal is a SINGLE mandatory CanonicalExpression (schema.py:204); from_dict raises KeyError without it (schema.py:255) and the wire validator rejects the payload",
+          "bindings/local_scope are state-global: there is no per-goal context",
+          "ids must be unique per collection (native.py:66-80, _wire.py:219-230)",
+          "every binding.scope_id must be present in local_scope (native.py:82-91)"
+        ],
+        "site": "arena/canonical/schema.py:196-290"
+      },
+      "CanonicalTrajectory": {
+        "fields": {
+          "provenance": "tuple[tuple[str, str], ...] - free string map, untyped"
+        },
+        "site": "arena/canonical/schema.py:321-350"
+      },
+      "CanonicalTransition": {
+        "site": "arena/canonical/schema.py:303-318"
+      },
+      "EvidenceNode": {
+        "fields": {
+          "authority": "str = 'native'",
+          "certificate_hash": "str | None",
+          "dependencies": "tuple[str, ...]",
+          "evidence_id": "str",
+          "status": "str"
+        },
+        "invariants": [
+          "dependencies must resolve inside the state and must be acyclic (native.py:93-114)"
+        ],
+        "site": "arena/canonical/schema.py:140-146"
+      },
+      "MathObject": {
+        "fields": {
+          "object_id": "str",
+          "shape": "tuple[int | str, ...]",
+          "type_name": "str - flat string",
+          "unit": "str | None",
+          "value": "CanonicalExpression | None"
+        },
+        "site": "arena/canonical/schema.py:78-103"
+      },
+      "Obligation": {
+        "fields": {
+          "obligation_id": "str",
+          "proposition": "CanonicalExpression",
+          "source": "str = 'canonical' - free-form",
+          "status": "str = 'OPEN' - free-form; 'OPEN'/'DISCHARGED' have meaning in native.py:134"
+        },
+        "invariants": [
+          "no scope_id and no binding list: an obligation cannot be tied to a local context"
+        ],
+        "site": "arena/canonical/schema.py:115-137"
+      },
+      "VerificationRecord": {
+        "site": "arena/canonical/schema.py:293-300"
+      }
+    },
+    "version_constant": {
+      "note": "carried on CanonicalState.schema_version (schema.py:211) and therefore inside every mathematical_hash",
+      "site": "arena/canonical/schema.py:15",
+      "value": "arena-canonical-v0.1.0"
+    }
+  },
+  "status": "ANALYSIS ONLY - no production schema, artifact, verifier or experiment was modified"
+}

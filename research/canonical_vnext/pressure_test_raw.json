@@ -1,0 +1,372 @@
+{
+  "aggregate_notes": {
+    "local_context_entries": 5071,
+    "local_context_entries_with_compound_type": 4288,
+    "metavariables_assigned_total": 992,
+    "metavariables_total": 1375,
+    "sort_nodes_with_nontrivial_level": 1968,
+    "symbols_with_universe_arguments": 34781
+  },
+  "goal_count_distribution": {
+    "0": 64,
+    "1": 262,
+    "2": 18,
+    "3": 15,
+    "4": 5,
+    "5": 2,
+    "6": 1,
+    "7": 1
+  },
+  "loss_class_frequency_by_record": {
+    "DECLARATION_ROLE_DROPPED": {
+      "gap": "N2",
+      "pct_of_records": 9.2,
+      "records": 17
+    },
+    "DEPENDENT_TYPE_FLATTENED": {
+      "gap": "G3",
+      "pct_of_records": 100.0,
+      "records": 184
+    },
+    "FOCUS_ORDER_DROPPED": {
+      "gap": "N1",
+      "pct_of_records": 18.5,
+      "records": 34
+    },
+    "GOAL_IDENTITY_DROPPED": {
+      "gap": "G1",
+      "pct_of_records": 100.0,
+      "records": 184
+    },
+    "LET_VALUE_DROPPED": {
+      "gap": "N2",
+      "pct_of_records": 9.2,
+      "records": 17
+    },
+    "LOCAL_INSTANCES_DROPPED": {
+      "gap": "G5",
+      "pct_of_records": 69.6,
+      "records": 128
+    },
+    "METAVARIABLE_ASSIGNMENT_DROPPED": {
+      "gap": "G2",
+      "pct_of_records": 62.0,
+      "records": 114
+    },
+    "METAVARIABLE_CONTEXT_DROPPED": {
+      "gap": "G2",
+      "pct_of_records": 100.0,
+      "records": 184
+    },
+    "MULTI_GOAL_SINGLE_SLOT": {
+      "gap": "G1",
+      "pct_of_records": 18.5,
+      "records": 34
+    },
+    "MVAR_SUBSTITUTION_MAP_DROPPED": {
+      "gap": "G6",
+      "pct_of_records": 100.0,
+      "records": 184
+    },
+    "NONEXPLICIT_BINDER_KIND": {
+      "gap": "G5",
+      "pct_of_records": 94.0,
+      "records": 173
+    },
+    "PER_GOAL_LOCAL_CONTEXT_COLLISION": {
+      "gap": "G1",
+      "pct_of_records": 6.0,
+      "records": 11
+    },
+    "PREMISE_REFS_UNPLACEABLE": {
+      "gap": "N3",
+      "pct_of_records": 65.8,
+      "records": 121
+    },
+    "UNIVERSE_ARGUMENTS_ON_SYMBOL": {
+      "gap": "G4",
+      "pct_of_records": 100.0,
+      "records": 184
+    },
+    "UNIVERSE_ASSIGNMENTS_DROPPED": {
+      "gap": "G4",
+      "pct_of_records": 57.6,
+      "records": 106
+    },
+    "UNIVERSE_LEVEL_NONTRIVIAL": {
+      "gap": "G4",
+      "pct_of_records": 91.3,
+      "records": 168
+    },
+    "ZERO_GOAL_MANDATORY_SLOT": {
+      "gap": "G1",
+      "pct_of_records": 34.8,
+      "records": 64
+    }
+  },
+  "loss_class_frequency_by_state": {
+    "DECLARATION_ROLE_DROPPED": {
+      "gap": "N2",
+      "pct_of_states": 7.3,
+      "states": 27
+    },
+    "DEPENDENT_TYPE_FLATTENED": {
+      "gap": "G3",
+      "pct_of_states": 82.6,
+      "states": 304
+    },
+    "FOCUS_ORDER_DROPPED": {
+      "gap": "N1",
+      "pct_of_states": 11.4,
+      "states": 42
+    },
+    "GOAL_IDENTITY_DROPPED": {
+      "gap": "G1",
+      "pct_of_states": 82.6,
+      "states": 304
+    },
+    "LET_VALUE_DROPPED": {
+      "gap": "N2",
+      "pct_of_states": 7.3,
+      "states": 27
+    },
+    "LOCAL_INSTANCES_DROPPED": {
+      "gap": "G5",
+      "pct_of_states": 57.1,
+      "states": 210
+    },
+    "METAVARIABLE_ASSIGNMENT_DROPPED": {
+      "gap": "G2",
+      "pct_of_states": 44.6,
+      "states": 164
+    },
+    "METAVARIABLE_CONTEXT_DROPPED": {
+      "gap": "G2",
+      "pct_of_states": 82.6,
+      "states": 304
+    },
+    "MULTI_GOAL_SINGLE_SLOT": {
+      "gap": "G1",
+      "pct_of_states": 11.4,
+      "states": 42
+    },
+    "MVAR_SUBSTITUTION_MAP_DROPPED": {
+      "gap": "G6",
+      "pct_of_states": 68.5,
+      "states": 252
+    },
+    "NONEXPLICIT_BINDER_KIND": {
+      "gap": "G5",
+      "pct_of_states": 77.7,
+      "states": 286
+    },
+    "PER_GOAL_LOCAL_CONTEXT_COLLISION": {
+      "gap": "G1",
+      "pct_of_states": 3.3,
+      "states": 12
+    },
+    "PREMISE_REFS_UNPLACEABLE": {
+      "gap": "N3",
+      "pct_of_states": 32.9,
+      "states": 121
+    },
+    "UNIVERSE_ARGUMENTS_ON_SYMBOL": {
+      "gap": "G4",
+      "pct_of_states": 82.6,
+      "states": 304
+    },
+    "UNIVERSE_ASSIGNMENTS_DROPPED": {
+      "gap": "G4",
+      "pct_of_states": 41.0,
+      "states": 151
+    },
+    "UNIVERSE_LEVEL_NONTRIVIAL": {
+      "gap": "G4",
+      "pct_of_states": 74.2,
+      "states": 273
+    },
+    "ZERO_GOAL_MANDATORY_SLOT": {
+      "gap": "G1",
+      "pct_of_states": 17.4,
+      "states": 64
+    }
+  },
+  "native_verifier_issue_codes": {},
+  "never_observed_loss_classes": [
+    "DEFEQ_STEP_TYPE",
+    "DISTINCT_VARIABLE_CONDITION"
+  ],
+  "novelty_binder_structures": {
+    "blocks": [
+      {
+        "cumulative_distinct": 19,
+        "new_in_block": 19,
+        "per_100_records": 38.0,
+        "records": "1-50"
+      },
+      {
+        "cumulative_distinct": 24,
+        "new_in_block": 5,
+        "per_100_records": 10.0,
+        "records": "51-100"
+      },
+      {
+        "cumulative_distinct": 27,
+        "new_in_block": 3,
+        "per_100_records": 6.0,
+        "records": "101-150"
+      },
+      {
+        "cumulative_distinct": 28,
+        "new_in_block": 1,
+        "per_100_records": 2.9,
+        "records": "151-184"
+      }
+    ],
+    "items": [
+      "dependent_function|EXPLICIT|application",
+      "dependent_function|EXPLICIT|bound_variable",
+      "dependent_function|EXPLICIT|dependent_function",
+      "dependent_function|EXPLICIT|local_reference",
+      "dependent_function|EXPLICIT|metavariable_reference",
+      "dependent_function|EXPLICIT|sort",
+      "dependent_function|EXPLICIT|symbol",
+      "dependent_function|IMPLICIT|application",
+      "dependent_function|IMPLICIT|bound_variable",
+      "dependent_function|IMPLICIT|dependent_function",
+      "dependent_function|IMPLICIT|local_reference",
+      "dependent_function|IMPLICIT|sort",
+      "dependent_function|IMPLICIT|symbol",
+      "dependent_function|INSTANCE_IMPLICIT|application",
+      "dependent_function|INSTANCE_IMPLICIT|dependent_function",
+      "dependent_function|STRICT_IMPLICIT|application",
+      "dependent_function|STRICT_IMPLICIT|local_reference",
+      "dependent_function|STRICT_IMPLICIT|symbol",
+      "lambda|EXPLICIT|application",
+      "lambda|EXPLICIT|bound_variable",
+      "lambda|EXPLICIT|dependent_function",
+      "lambda|EXPLICIT|local_reference",
+      "lambda|EXPLICIT|metavariable_reference",
+      "lambda|EXPLICIT|sort",
+      "lambda|EXPLICIT|symbol",
+      "lambda|IMPLICIT|application",
+      "lambda|IMPLICIT|local_reference",
+      "lambda|IMPLICIT|symbol"
+    ],
+    "total_distinct": 28
+  },
+  "novelty_semantic_constructs": {
+    "blocks": [
+      {
+        "cumulative_distinct": 54,
+        "new_in_block": 54,
+        "per_100_records": 108.0,
+        "records": "1-50"
+      },
+      {
+        "cumulative_distinct": 55,
+        "new_in_block": 1,
+        "per_100_records": 2.0,
+        "records": "51-100"
+      },
+      {
+        "cumulative_distinct": 55,
+        "new_in_block": 0,
+        "per_100_records": 0.0,
+        "records": "101-150"
+      },
+      {
+        "cumulative_distinct": 55,
+        "new_in_block": 0,
+        "per_100_records": 0.0,
+        "records": "151-184"
+      }
+    ],
+    "items": [
+      "binder_role:EXPLICIT",
+      "binder_role:IMPLICIT",
+      "binder_role:INSTANCE_IMPLICIT",
+      "binder_role:STRICT_IMPLICIT",
+      "declaration_role:cdecl",
+      "declaration_role:ldecl",
+      "field:annotated.expression",
+      "field:annotated.node",
+      "field:annotated.source_metadata_delegated",
+      "field:application.argument",
+      "field:application.function",
+      "field:application.node",
+      "field:bound_variable.index",
+      "field:bound_variable.node",
+      "field:dependent_function.binder_name",
+      "field:dependent_function.binder_role",
+      "field:dependent_function.binder_type",
+      "field:dependent_function.body",
+      "field:dependent_function.node",
+      "field:lambda.binder_name",
+      "field:lambda.binder_role",
+      "field:lambda.binder_type",
+      "field:lambda.body",
+      "field:lambda.node",
+      "field:literal.literal_kind",
+      "field:literal.node",
+      "field:literal.value",
+      "field:local_reference.identity",
+      "field:local_reference.node",
+      "field:metavariable_reference.identity",
+      "field:metavariable_reference.node",
+      "field:sort.level",
+      "field:sort.node",
+      "field:symbol.identity",
+      "field:symbol.node",
+      "field:symbol.universe_arguments",
+      "level:imax",
+      "level:max",
+      "level:mvar",
+      "level:param",
+      "level:succ",
+      "level:zero",
+      "mvar_kind:NATURAL",
+      "mvar_kind:SYNTHETIC",
+      "mvar_kind:SYNTHETIC_OPAQUE",
+      "node:annotated",
+      "node:application",
+      "node:bound_variable",
+      "node:dependent_function",
+      "node:lambda",
+      "node:literal",
+      "node:local_reference",
+      "node:metavariable_reference",
+      "node:sort",
+      "node:symbol"
+    ],
+    "total_distinct": 55
+  },
+  "provenance": {
+    "corpus_glob": "data/corpus/lean_runtime_v2_full.canonical.part-*.jsonl.gz",
+    "donor_root": "/Users/moheet/Documents/ChatGPT/HML_V3",
+    "parts": [
+      "lean_runtime_v2_full.canonical.part-000.jsonl.gz",
+      "lean_runtime_v2_full.canonical.part-001.jsonl.gz",
+      "lean_runtime_v2_full.canonical.part-002.jsonl.gz",
+      "lean_runtime_v2_full.canonical.part-003.jsonl.gz",
+      "lean_runtime_v2_full.canonical.part-004.jsonl.gz"
+    ],
+    "records_eligible": 918,
+    "records_in_universe": 1150,
+    "records_sampled": 184,
+    "records_skipped_sealed_source_file": 232,
+    "sealed_shard_treatment": "only corpus_metadata.source_file read from sealed shard; no sealed state loaded",
+    "selection_rule": "every 5th eligible record in part order, capped at 200",
+    "source_schema_version": "canonical-math-transition-v2.0.0",
+    "unit_of_analysis": "one proof state (state_before and state_after per record)"
+  },
+  "states_analysed": 368,
+  "verdicts_by_record": {
+    "LOSSY_STRUCTURAL": 118,
+    "UNMAPPABLE": 66
+  },
+  "verdicts_by_state": {
+    "LOSSY_STRUCTURAL": 292,
+    "UNMAPPABLE": 76
+  }
+}

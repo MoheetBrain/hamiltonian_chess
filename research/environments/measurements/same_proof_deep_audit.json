@@ -1,0 +1,298 @@
+{
+ "configuration": "premise selection, k=4, distractors = premises cited at OTHER steps of the SAME theorem (real, all genuinely relevant to this proof)",
+ "seed": 20260907,
+ "splits": {
+  "random/same_proof": {
+   "policy": "same_proof",
+   "items_used": 1786,
+   "k": 4,
+   "chance": 0.25,
+   "answer_position_distribution": {
+    "0": 482,
+    "1": 431,
+    "2": 440,
+    "3": 433
+   },
+   "largest_answer_share": 0.2699,
+   "solver_observable_heuristics": {
+    "char3gram_vs_full_state": 0.3142,
+    "NEG_char3gram_vs_full_state": 0.2079,
+    "char3gram_vs_goal": 0.368,
+    "NEG_char3gram_vs_goal": 0.1996,
+    "last_component_substring": 0.2397,
+    "NEG_last_component_substring": 0.2613,
+    "lex_overlap_count": 0.3334,
+    "NEG_lex_overlap_count": 0.2054,
+    "lex_overlap_jaccard": 0.3325,
+    "NEG_lex_overlap_jaccard": 0.2076,
+    "shortest_name": 0.2109,
+    "NEG_shortest_name": 0.3044,
+    "train_citation_frequency": 0.2104,
+    "NEG_train_citation_frequency": 0.2989
+   },
+   "construction_diagnostics_not_in_the_prompt": {
+    "cited_at_adjacent_other_step": 0.1838,
+    "NEG_cited_at_adjacent_other_step": 0.3291,
+    "defined_in_theorem_own_file": 0.2814,
+    "NEG_defined_in_theorem_own_file": 0.2333,
+    "earlier_definition_line": 0.2251,
+    "NEG_earlier_definition_line": 0.2654,
+    "within_proof_citation_count_excl_this_step": 0.108,
+    "NEG_within_proof_citation_count_excl_this_step": 0.7123
+   },
+   "best_solver_observable_shortcut": [
+    "char3gram_vs_goal",
+    0.368
+   ],
+   "worst_construction_imbalance": [
+    "NEG_within_proof_citation_count_excl_this_step",
+    0.7123
+   ],
+   "state_before_length": {
+    "chars": {
+     "p10": 122,
+     "p50": 356,
+     "p90": 913,
+     "max": 2728
+    },
+    "arena_bytes4_token_proxy": {
+     "p10": 35,
+     "p50": 103,
+     "p90": 265,
+     "max": 730
+    },
+    "symbolic_tokens": {
+     "p10": 46,
+     "p50": 128,
+     "p90": 340,
+     "max": 860
+    },
+    "over_30000_chars": 0
+   },
+   "length_fair_survivors": {
+    "band_+-25pct_of_median_tokens": 440,
+    "band_+-50pct": 905,
+    "band_+-100pct": 1448
+   }
+  },
+  "random/same_proof_multiplicity_matched": {
+   "policy": "same_proof_multiplicity_matched",
+   "items_used": 1314,
+   "k": 4,
+   "chance": 0.25,
+   "answer_position_distribution": {
+    "0": 323,
+    "1": 317,
+    "2": 329,
+    "3": 345
+   },
+   "largest_answer_share": 0.2626,
+   "solver_observable_heuristics": {
+    "char3gram_vs_full_state": 0.356,
+    "NEG_char3gram_vs_full_state": 0.2024,
+    "char3gram_vs_goal": 0.3737,
+    "NEG_char3gram_vs_goal": 0.2092,
+    "last_component_substring": 0.2341,
+    "NEG_last_component_substring": 0.2628,
+    "lex_overlap_count": 0.3574,
+    "NEG_lex_overlap_count": 0.1944,
+    "lex_overlap_jaccard": 0.3579,
+    "NEG_lex_overlap_jaccard": 0.1982,
+    "shortest_name": 0.1992,
+    "NEG_shortest_name": 0.3319,
+    "train_citation_frequency": 0.214,
+    "NEG_train_citation_frequency": 0.3228
+   },
+   "construction_diagnostics_not_in_the_prompt": {
+    "cited_at_adjacent_other_step": 0.144,
+    "NEG_cited_at_adjacent_other_step": 0.3637,
+    "defined_in_theorem_own_file": 0.2885,
+    "NEG_defined_in_theorem_own_file": 0.2336,
+    "earlier_definition_line": 0.2549,
+    "NEG_earlier_definition_line": 0.2515,
+    "within_proof_citation_count_excl_this_step": 0.0,
+    "NEG_within_proof_citation_count_excl_this_step": 1.0
+   },
+   "best_solver_observable_shortcut": [
+    "char3gram_vs_goal",
+    0.3737
+   ],
+   "worst_construction_imbalance": [
+    "NEG_within_proof_citation_count_excl_this_step",
+    1.0
+   ],
+   "state_before_length": {
+    "chars": {
+     "p10": 113,
+     "p50": 327,
+     "p90": 870,
+     "max": 2351
+    },
+    "arena_bytes4_token_proxy": {
+     "p10": 33,
+     "p50": 94,
+     "p90": 255,
+     "max": 657
+    },
+    "symbolic_tokens": {
+     "p10": 42,
+     "p50": 118,
+     "p90": 320,
+     "max": 860
+    },
+    "over_30000_chars": 0
+   },
+   "length_fair_survivors": {
+    "band_+-25pct_of_median_tokens": 351,
+    "band_+-50pct": 674,
+    "band_+-100pct": 1055
+   }
+  },
+  "novel_premises/same_proof": {
+   "policy": "same_proof",
+   "items_used": 2837,
+   "k": 4,
+   "chance": 0.25,
+   "answer_position_distribution": {
+    "0": 722,
+    "1": 732,
+    "2": 684,
+    "3": 699
+   },
+   "largest_answer_share": 0.258,
+   "solver_observable_heuristics": {
+    "char3gram_vs_full_state": 0.3429,
+    "NEG_char3gram_vs_full_state": 0.1987,
+    "char3gram_vs_goal": 0.3685,
+    "NEG_char3gram_vs_goal": 0.19,
+    "last_component_substring": 0.2561,
+    "NEG_last_component_substring": 0.2496,
+    "lex_overlap_count": 0.3484,
+    "NEG_lex_overlap_count": 0.1959,
+    "lex_overlap_jaccard": 0.349,
+    "NEG_lex_overlap_jaccard": 0.1933,
+    "shortest_name": 0.221,
+    "NEG_shortest_name": 0.2945,
+    "train_citation_frequency": 0.2294,
+    "NEG_train_citation_frequency": 0.2845
+   },
+   "construction_diagnostics_not_in_the_prompt": {
+    "cited_at_adjacent_other_step": 0.192,
+    "NEG_cited_at_adjacent_other_step": 0.331,
+    "defined_in_theorem_own_file": 0.2883,
+    "NEG_defined_in_theorem_own_file": 0.2312,
+    "earlier_definition_line": 0.2473,
+    "NEG_earlier_definition_line": 0.2494,
+    "within_proof_citation_count_excl_this_step": 0.1238,
+    "NEG_within_proof_citation_count_excl_this_step": 0.6801
+   },
+   "best_solver_observable_shortcut": [
+    "char3gram_vs_goal",
+    0.3685
+   ],
+   "worst_construction_imbalance": [
+    "NEG_within_proof_citation_count_excl_this_step",
+    0.6801
+   ],
+   "state_before_length": {
+    "chars": {
+     "p10": 143,
+     "p50": 354,
+     "p90": 861,
+     "max": 5362
+    },
+    "arena_bytes4_token_proxy": {
+     "p10": 40,
+     "p50": 100,
+     "p90": 244,
+     "max": 1488
+    },
+    "symbolic_tokens": {
+     "p10": 49,
+     "p50": 125,
+     "p90": 331,
+     "max": 1909
+    },
+    "over_30000_chars": 0
+   },
+   "length_fair_survivors": {
+    "band_+-25pct_of_median_tokens": 872,
+    "band_+-50pct": 1623,
+    "band_+-100pct": 2400
+   }
+  },
+  "novel_premises/same_proof_multiplicity_matched": {
+   "policy": "same_proof_multiplicity_matched",
+   "items_used": 2045,
+   "k": 4,
+   "chance": 0.25,
+   "answer_position_distribution": {
+    "0": 499,
+    "1": 507,
+    "2": 516,
+    "3": 523
+   },
+   "largest_answer_share": 0.2557,
+   "solver_observable_heuristics": {
+    "char3gram_vs_full_state": 0.3466,
+    "NEG_char3gram_vs_full_state": 0.2146,
+    "char3gram_vs_goal": 0.3555,
+    "NEG_char3gram_vs_goal": 0.1977,
+    "last_component_substring": 0.2529,
+    "NEG_last_component_substring": 0.2523,
+    "lex_overlap_count": 0.3548,
+    "NEG_lex_overlap_count": 0.2064,
+    "lex_overlap_jaccard": 0.3558,
+    "NEG_lex_overlap_jaccard": 0.203,
+    "shortest_name": 0.226,
+    "NEG_shortest_name": 0.3,
+    "train_citation_frequency": 0.2231,
+    "NEG_train_citation_frequency": 0.3089
+   },
+   "construction_diagnostics_not_in_the_prompt": {
+    "cited_at_adjacent_other_step": 0.1502,
+    "NEG_cited_at_adjacent_other_step": 0.3612,
+    "defined_in_theorem_own_file": 0.2944,
+    "NEG_defined_in_theorem_own_file": 0.2322,
+    "earlier_definition_line": 0.2597,
+    "NEG_earlier_definition_line": 0.246,
+    "within_proof_citation_count_excl_this_step": 0.0,
+    "NEG_within_proof_citation_count_excl_this_step": 1.0
+   },
+   "best_solver_observable_shortcut": [
+    "lex_overlap_jaccard",
+    0.3558
+   ],
+   "worst_construction_imbalance": [
+    "NEG_within_proof_citation_count_excl_this_step",
+    1.0
+   ],
+   "state_before_length": {
+    "chars": {
+     "p10": 145,
+     "p50": 345,
+     "p90": 823,
+     "max": 3461
+    },
+    "arena_bytes4_token_proxy": {
+     "p10": 41,
+     "p50": 99,
+     "p90": 236,
+     "max": 870
+    },
+    "symbolic_tokens": {
+     "p10": 50,
+     "p50": 121,
+     "p90": 310,
+     "max": 978
+    },
+    "over_30000_chars": 0
+   },
+   "length_fair_survivors": {
+    "band_+-25pct_of_median_tokens": 612,
+    "band_+-50pct": 1166,
+    "band_+-100pct": 1741
+   }
+  }
+ }
+}

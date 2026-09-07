@@ -466,3 +466,93 @@ hazards are now on the remote ahead of the results.
 
 **Next intended step.** When the run finishes, compare at fixed levels, write
 `docs/FITNESS_V6_SOLVER_SUBSTITUTION_RESULT.md`, update the handoff, commit and push.
+
+---
+
+## 2026-09-07 — Parallel next-stage preparation while Phase 6 ran
+
+**Branch.** `claude/phase-6-parallel-setup-9c6068`, based on `b82f8ed` (the pushed tip of
+`codex/arena-v0-fitness` at the time Phase 6 started). The worktree was originally created from
+the stale `codex/arena-v0` (`c1dd586`) and was reset onto `b82f8ed` before any work began.
+
+**Project stage.** Game R blocked at
+`CURRENT_SOLVER_OR_TASK_FAMILY_CANNOT_SUPPORT_GAME_R_MEASUREMENT`. Phase 6 (solver substitution)
+was executing throughout this session and finished at 07:07:17 BST; **its classification belongs
+to the Phase-6 session and is not made here.**
+
+**Objective of the change.** Build the next layer of work that is useful under *either* Phase-6
+outcome, without duplicating, interrupting or contaminating the live experiment. Explicitly: no
+model call, no GPU minute, no download, no change to any frozen artifact.
+
+**Files and systems changed.** All additive. New: `arena/training/route_b_data.py`,
+`arena/training/verified_eval.py`, `arena/training/gpu_authorisation.py`,
+`arena/corpus/{__init__,trace,contamination,provenance}.py`, `tests/corpus/*`,
+`tests/training/test_{route_b_data,gpu_authorisation,verified_eval}.py`, eight documents under
+`docs/`, four reports under `artifacts/reports/`, four inventories under `artifacts/corpus/`, and
+reproduction scripts under `research/`. Modified: `arena/training/prepare_matched_data.py`
+(additive flags only; CLI defaults reproduce the historical output byte-for-byte) and
+`pyproject.toml` (excludes `research/` from the lint gate).
+
+**What was completed.** Sixteen subagents were dispatched (fifteen completed; one was terminated
+by a session rate limit and its deliverable was written directly instead, using only measurements
+made by other agents). Principal measured results:
+
+- `WORLD_V0_NEXT_ACTION` is degenerate: a model-free predictor fitted on train reproduces the whole
+  gold target on 676/676 tasks and 96/96 held out; 0.8195 with zero arithmetic; 7 of 8 fields
+  mechanical; identifier obfuscation does not repair it. `assert_no_answer_leakage` could not have
+  caught this — its signature never receives the gold target.
+- The five Route-B arms are hand-written codecs that ignore the genome; five of fourteen gene
+  families are inert. Six further parity defects recorded, including opposite-side train/eval
+  truncation and a length-dependent label mask.
+- The V5 frontier selector aims at 0.625 while the gate requires ≥ 0.70. Traced to `gap_min` rising
+  0.10 → 0.20 in V5 without moving the target. It changed nothing about the Phase-5 outcome, and
+  both naive repairs score above an oracle (they convert noise into passes).
+- Canonical schema against 368 real Lean states: 0 lossless, 20.7% unmappable; G7 and G8 refuted;
+  four new gaps found; no schema change made.
+- The richly-annotated reasoning corpus is 792 steps, not ~300k; verification and richness are
+  anti-correlated. A full LeanDojo Benchmark 4 trace is already local and unused.
+- Two defects were found and fixed in this branch's own new code before commit: the quality floor
+  was applied to train only (leaving 12 of 48 dev and 15 of 48 fresh sub-GOLD under the seeded
+  split — now filtered before splitting, with a regression test), and a docstring wrongly asserted
+  that `HML_V3/data/registry/datasets.yaml` was absent (it exists, 40 KB).
+
+**Decisions made and why.** (1) Do not duplicate Phase 6 — two sessions editing the same instrument
+and caches would make it impossible to say which experiment was frozen. (2) Do not create Fitness
+V6 — the preregistered rule admits a new version only for a change of frozen variable class.
+(3) Do not re-score V5 under any alternative selector — that is protocol shopping; the analysis is
+labelled exploratory and is admissible only as a preregistration input to a future version.
+(4) Preserve the inert-seed `stratified_split` as an explicit legacy path rather than fixing it in
+place, because `artifacts/experiments/tier2_sprint/` depends on its exact ordering. (5) Exclude
+`research/` from the lint gate rather than lint one-off analysis scripts, so `ruff check .`
+continues to mean "the shipped code is clean".
+
+**Tests and verification actually executed.** From the worktree with the shared venv, via
+`python -m` (a bare `pytest` console script imports the main checkout instead, because the editable
+`.pth` points there — verified): `python -m pytest` → **470 passed in 13.77s** (baseline 190);
+`python -m ruff check .` → **All checks passed!**; `python -m ruff format --check .` → **223 files
+already formatted**; `python -m mypy arena` → **Success: no issues found in 125 source files**.
+Frozen artifacts re-verified unchanged: `GOAL.md` sha256 `43d8fcdb…0117b`, Phase-5 `result.json`
+sha256 `0c5b3271…97579`. Canonical validation and the assurance suite were **not** re-run: no
+canonical, verifier, language-surface or experiment code changed.
+
+**Failures and unresolved uncertainty.** One subagent (future-environment ranking) was terminated
+by a session rate limit; its document was written from other agents' measurements only, and this is
+stated in the document. The `gpu_authorisation` gate is **inert** — it is not wired into
+`gpu_matched_runner.py`, which was out of scope for this branch. `verified ≡ exact` on both
+candidate Route-B slices, because World v0 offers exactly one legal action per state; the verifier
+alone accepts a hollow legal-id action on 676/676 tasks, so a content-match guard was added and its
+non-verifier status documented. Route B's replacement task slice has **not** passed a headroom
+check, so Route B is not launchable today. No claim is made about whether the historical sprint's
+models actually exploited the leak — only that the task permits it.
+
+**Effect on the overall project.** No scientific claim changes and no sentinel is reinterpreted.
+`RSTAR_NOT_IDENTIFIED` stands. The practical effect is that the previously-planned "if Phase 6
+fails, run Route B" path is now known to be blocked on a degenerate task family, and a better-
+evidenced alternative (premise selection from a local, premise-annotated, OOD-split corpus) is
+specified and costs no download.
+
+**Next intended step.** Let the Phase-6 session publish its own classification. Do not launch the
+founder tournament — the frozen gate requires ≥ 2 qualified mechanisms and nothing has met it, and
+the threshold must not be lowered. Then adopt the fail-fast shortcut check as a precondition on
+every future task family, and build premise selection from the local LeanDojo trace, sealing
+`novel_premises/{val,test}.json` first.

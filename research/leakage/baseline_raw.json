@@ -1,0 +1,764 @@
+{
+ "TIER_B_no_arithmetic": {
+  "rules": {
+   "action_id": "affix_from('object', 0, 'object_id')",
+   "operation": "lookup('sid_seg', 1)[13 entries]",
+   "warrant": "constant[1 entries]",
+   "expected_usefulness": "constant[1 entries]",
+   "target_ids": "constant",
+   "preconditions": "copy_observation.assumptions",
+   "generated_obligations": "constant",
+   "arguments": "per-goal-op induced template"
+  },
+  "arguments_groups": {
+   "eq": {
+    "n_train": 44,
+    "domain": [
+     "algebra"
+    ],
+    "rule": null,
+    "families": [],
+    "train_exact": 0.0
+   },
+   "add": {
+    "n_train": 44,
+    "domain": [
+     "arithmetic"
+    ],
+    "rule": null,
+    "families": [],
+    "train_exact": 0.0
+   },
+   "forall": {
+    "n_train": 44,
+    "domain": [
+     "binding"
+    ],
+    "rule": "skeleton_with_induced_holes",
+    "families": [
+     "string_rewrite"
+    ],
+    "train_exact": 1.0
+   },
+   "derivative": {
+    "n_train": 44,
+    "domain": [
+     "calculus"
+    ],
+    "rule": "skeleton_with_induced_holes",
+    "families": [
+     "scalar_copy"
+    ],
+    "train_exact": 1.0
+   },
+   "dimension": {
+    "n_train": 44,
+    "domain": [
+     "linear_algebra"
+    ],
+    "rule": "constant",
+    "families": [
+     "constant"
+    ],
+    "train_exact": 1.0
+   },
+   "and": {
+    "n_train": 44,
+    "domain": [
+     "logic"
+    ],
+    "rule": "subtree_copy",
+    "families": [
+     "subtree_copy"
+    ],
+    "train_exact": 1.0
+   },
+   "argmin": {
+    "n_train": 44,
+    "domain": [
+     "optimization"
+    ],
+    "rule": "subtree_copy",
+    "families": [
+     "subtree_copy"
+    ],
+    "train_exact": 1.0
+   },
+   "log": {
+    "n_train": 8,
+    "domain": [
+     "partial_operations"
+    ],
+    "rule": "constant",
+    "families": [
+     "constant"
+    ],
+    "train_exact": 1.0
+   },
+   "quantity_divide": {
+    "n_train": 44,
+    "domain": [
+     "physical_dimensions"
+    ],
+    "rule": "constant",
+    "families": [
+     "constant"
+    ],
+    "train_exact": 1.0
+   },
+   "conditional_probability": {
+    "n_train": 46,
+    "domain": [
+     "probability"
+    ],
+    "rule": "skeleton_with_induced_holes",
+    "families": [
+     "scalar_copy"
+    ],
+    "train_exact": 1.0
+   },
+   "derive": {
+    "n_train": 46,
+    "domain": [
+     "reasoning_evidence"
+    ],
+    "rule": "subtree_copy",
+    "families": [
+     "subtree_copy"
+    ],
+    "train_exact": 1.0
+   },
+   "member": {
+    "n_train": 46,
+    "domain": [
+     "sets"
+    ],
+    "rule": "constant",
+    "families": [
+     "constant"
+    ],
+    "train_exact": 1.0
+   },
+   "sample_mean": {
+    "n_train": 46,
+    "domain": [
+     "statistics"
+    ],
+    "rule": "subtree_copy",
+    "families": [
+     "subtree_copy"
+    ],
+    "train_exact": 1.0
+   },
+   "inverse": {
+    "n_train": 8,
+    "domain": [
+     "partial_operations"
+    ],
+    "rule": "constant",
+    "families": [
+     "constant"
+    ],
+    "train_exact": 1.0
+   },
+   "index": {
+    "n_train": 7,
+    "domain": [
+     "partial_operations"
+    ],
+    "rule": "subtree_copy",
+    "families": [
+     "subtree_copy"
+    ],
+    "train_exact": 1.0
+   },
+   "condition": {
+    "n_train": 7,
+    "domain": [
+     "partial_operations"
+    ],
+    "rule": "skeleton_with_induced_holes",
+    "families": [
+     "string_join"
+    ],
+    "train_exact": 1.0
+   },
+   "div": {
+    "n_train": 7,
+    "domain": [
+     "partial_operations"
+    ],
+    "rule": null,
+    "families": [],
+    "train_exact": 0.0
+   },
+   "sqrt": {
+    "n_train": 7,
+    "domain": [
+     "partial_operations"
+    ],
+    "rule": null,
+    "families": [],
+    "train_exact": 0.0
+   }
+  },
+  "all676": {
+   "n": 676,
+   "per_field_exact": {
+    "action_id": 1.0,
+    "operation": 1.0,
+    "target_ids": 1.0,
+    "arguments": 0.819527,
+    "warrant": 1.0,
+    "preconditions": 1.0,
+    "generated_obligations": 1.0,
+    "expected_usefulness": 1.0
+   },
+   "whole_target_exact": 0.819527,
+   "failures": {
+    "arguments": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23,
+     24,
+     25,
+     26,
+     27,
+     28,
+     29,
+     30,
+     31,
+     32,
+     33,
+     34,
+     35,
+     36,
+     37,
+     38,
+     39,
+     40,
+     41,
+     42,
+     43,
+     44,
+     45,
+     46,
+     47,
+     48,
+     49,
+     50,
+     51,
+     52,
+     53,
+     54,
+     55,
+     56,
+     57,
+     58,
+     59,
+     60,
+     61,
+     62,
+     63,
+     64,
+     65,
+     66,
+     67,
+     68,
+     69,
+     70,
+     71,
+     72,
+     73,
+     74,
+     75,
+     76,
+     77,
+     78,
+     79,
+     80,
+     81,
+     82,
+     83,
+     84,
+     85,
+     86,
+     87,
+     88,
+     89,
+     90,
+     91,
+     92,
+     93,
+     94,
+     95,
+     96,
+     97,
+     98,
+     99,
+     100,
+     101,
+     102,
+     103,
+     572,
+     573,
+     578,
+     579,
+     584,
+     585,
+     590,
+     591,
+     596,
+     597,
+     602,
+     603,
+     608,
+     609,
+     614,
+     615,
+     620,
+     621
+    ]
+   }
+  },
+  "heldout96": {
+   "n": 96,
+   "per_field_exact": {
+    "action_id": 1.0,
+    "operation": 1.0,
+    "target_ids": 1.0,
+    "arguments": 0.791667,
+    "warrant": 1.0,
+    "preconditions": 1.0,
+    "generated_obligations": 1.0,
+    "expected_usefulness": 1.0
+   },
+   "whole_target_exact": 0.791667,
+   "failures": {
+    "arguments": [
+     52,
+     0,
+     572,
+     53,
+     1,
+     573,
+     54,
+     2,
+     55,
+     3,
+     56,
+     4,
+     57,
+     5,
+     58,
+     6,
+     578,
+     59,
+     7,
+     579
+    ]
+   }
+  },
+  "train600": {
+   "n": 580,
+   "per_field_exact": {
+    "action_id": 1.0,
+    "operation": 1.0,
+    "target_ids": 1.0,
+    "arguments": 0.824138,
+    "warrant": 1.0,
+    "preconditions": 1.0,
+    "generated_obligations": 1.0,
+    "expected_usefulness": 1.0
+   },
+   "whole_target_exact": 0.824138,
+   "failures": {
+    "arguments": [
+     60,
+     8,
+     61,
+     9,
+     62,
+     10,
+     63,
+     11,
+     64,
+     12,
+     584,
+     65,
+     13,
+     585,
+     66,
+     14,
+     67,
+     15,
+     68,
+     16,
+     69,
+     17,
+     70,
+     18,
+     590,
+     71,
+     19,
+     591,
+     72,
+     20,
+     73,
+     21,
+     74,
+     22,
+     75,
+     23,
+     76,
+     24,
+     596,
+     77,
+     25,
+     597,
+     78,
+     26,
+     79,
+     27,
+     80,
+     28,
+     81,
+     29,
+     82,
+     30,
+     602,
+     83,
+     31,
+     603,
+     84,
+     32,
+     85,
+     33,
+     86,
+     34,
+     87,
+     35,
+     88,
+     36,
+     608,
+     89,
+     37,
+     609,
+     90,
+     38,
+     91,
+     39,
+     92,
+     40,
+     93,
+     41,
+     94,
+     42,
+     614,
+     95,
+     43,
+     615,
+     96,
+     44,
+     97,
+     45,
+     98,
+     46,
+     99,
+     47,
+     100,
+     48,
+     620,
+     101,
+     49,
+     621,
+     102,
+     50,
+     103,
+     51
+    ]
+   }
+  },
+  "all676_minus_action_id": 0.819527
+ },
+ "TIER_C_with_arithmetic": {
+  "rules": {
+   "action_id": "affix_from('object', 0, 'object_id')",
+   "operation": "lookup('sid_seg', 1)[13 entries]",
+   "warrant": "constant[1 entries]",
+   "expected_usefulness": "constant[1 entries]",
+   "target_ids": "constant",
+   "preconditions": "copy_observation.assumptions",
+   "generated_obligations": "constant",
+   "arguments": "per-goal-op induced template"
+  },
+  "arguments_groups": {
+   "eq": {
+    "n_train": 44,
+    "domain": [
+     "algebra"
+    ],
+    "rule": "skeleton_with_induced_holes",
+    "families": [
+     "arithmetic",
+     "scalar_copy"
+    ],
+    "train_exact": 1.0
+   },
+   "add": {
+    "n_train": 44,
+    "domain": [
+     "arithmetic"
+    ],
+    "rule": "skeleton_with_induced_holes",
+    "families": [
+     "arithmetic"
+    ],
+    "train_exact": 1.0
+   },
+   "forall": {
+    "n_train": 44,
+    "domain": [
+     "binding"
+    ],
+    "rule": "skeleton_with_induced_holes",
+    "families": [
+     "string_rewrite"
+    ],
+    "train_exact": 1.0
+   },
+   "derivative": {
+    "n_train": 44,
+    "domain": [
+     "calculus"
+    ],
+    "rule": "skeleton_with_induced_holes",
+    "families": [
+     "scalar_copy"
+    ],
+    "train_exact": 1.0
+   },
+   "dimension": {
+    "n_train": 44,
+    "domain": [
+     "linear_algebra"
+    ],
+    "rule": "constant",
+    "families": [
+     "constant"
+    ],
+    "train_exact": 1.0
+   },
+   "and": {
+    "n_train": 44,
+    "domain": [
+     "logic"
+    ],
+    "rule": "subtree_copy",
+    "families": [
+     "subtree_copy"
+    ],
+    "train_exact": 1.0
+   },
+   "argmin": {
+    "n_train": 44,
+    "domain": [
+     "optimization"
+    ],
+    "rule": "subtree_copy",
+    "families": [
+     "subtree_copy"
+    ],
+    "train_exact": 1.0
+   },
+   "log": {
+    "n_train": 8,
+    "domain": [
+     "partial_operations"
+    ],
+    "rule": "constant",
+    "families": [
+     "constant"
+    ],
+    "train_exact": 1.0
+   },
+   "quantity_divide": {
+    "n_train": 44,
+    "domain": [
+     "physical_dimensions"
+    ],
+    "rule": "constant",
+    "families": [
+     "constant"
+    ],
+    "train_exact": 1.0
+   },
+   "conditional_probability": {
+    "n_train": 46,
+    "domain": [
+     "probability"
+    ],
+    "rule": "skeleton_with_induced_holes",
+    "families": [
+     "scalar_copy"
+    ],
+    "train_exact": 1.0
+   },
+   "derive": {
+    "n_train": 46,
+    "domain": [
+     "reasoning_evidence"
+    ],
+    "rule": "subtree_copy",
+    "families": [
+     "subtree_copy"
+    ],
+    "train_exact": 1.0
+   },
+   "member": {
+    "n_train": 46,
+    "domain": [
+     "sets"
+    ],
+    "rule": "constant",
+    "families": [
+     "constant"
+    ],
+    "train_exact": 1.0
+   },
+   "sample_mean": {
+    "n_train": 46,
+    "domain": [
+     "statistics"
+    ],
+    "rule": "subtree_copy",
+    "families": [
+     "subtree_copy"
+    ],
+    "train_exact": 1.0
+   },
+   "inverse": {
+    "n_train": 8,
+    "domain": [
+     "partial_operations"
+    ],
+    "rule": "constant",
+    "families": [
+     "constant"
+    ],
+    "train_exact": 1.0
+   },
+   "index": {
+    "n_train": 7,
+    "domain": [
+     "partial_operations"
+    ],
+    "rule": "subtree_copy",
+    "families": [
+     "subtree_copy"
+    ],
+    "train_exact": 1.0
+   },
+   "condition": {
+    "n_train": 7,
+    "domain": [
+     "partial_operations"
+    ],
+    "rule": "skeleton_with_induced_holes",
+    "families": [
+     "string_join"
+    ],
+    "train_exact": 1.0
+   },
+   "div": {
+    "n_train": 7,
+    "domain": [
+     "partial_operations"
+    ],
+    "rule": "skeleton_with_induced_holes",
+    "families": [
+     "arithmetic"
+    ],
+    "train_exact": 1.0
+   },
+   "sqrt": {
+    "n_train": 7,
+    "domain": [
+     "partial_operations"
+    ],
+    "rule": "skeleton_with_induced_holes",
+    "families": [
+     "arithmetic"
+    ],
+    "train_exact": 1.0
+   }
+  },
+  "all676": {
+   "n": 676,
+   "per_field_exact": {
+    "action_id": 1.0,
+    "operation": 1.0,
+    "target_ids": 1.0,
+    "arguments": 1.0,
+    "warrant": 1.0,
+    "preconditions": 1.0,
+    "generated_obligations": 1.0,
+    "expected_usefulness": 1.0
+   },
+   "whole_target_exact": 1.0,
+   "failures": {}
+  },
+  "heldout96": {
+   "n": 96,
+   "per_field_exact": {
+    "action_id": 1.0,
+    "operation": 1.0,
+    "target_ids": 1.0,
+    "arguments": 1.0,
+    "warrant": 1.0,
+    "preconditions": 1.0,
+    "generated_obligations": 1.0,
+    "expected_usefulness": 1.0
+   },
+   "whole_target_exact": 1.0,
+   "failures": {}
+  },
+  "train600": {
+   "n": 580,
+   "per_field_exact": {
+    "action_id": 1.0,
+    "operation": 1.0,
+    "target_ids": 1.0,
+    "arguments": 1.0,
+    "warrant": 1.0,
+    "preconditions": 1.0,
+    "generated_obligations": 1.0,
+    "expected_usefulness": 1.0
+   },
+   "whole_target_exact": 1.0,
+   "failures": {}
+  },
+  "all676_minus_action_id": 1.0
+ }
+}
