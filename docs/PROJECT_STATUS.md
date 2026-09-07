@@ -314,6 +314,10 @@ audits shortcuts only at the selected frontier and reports only `failures[0]`.
 visited once per run, so nothing was re-called from stale state; **resume capability only** was
 lost (~10 min of Solver time if interrupted). The run holds the final module and continued.
 
+**Specifications frozen.** `docs/GAME_R_FORMAL_ARENA_V1_SPEC.md` (three families, sources,
+ladders, shortcut protocol, every rejection with its number) and `docs/TRAINING_DATA_FACTORY.md`
+(the `tl0-training-record-v1` pipeline, per-source trust tiers, and the real Tier-A replay cost).
+
 **Sealed before any sprint work began.** `artifacts/manifests/SEALED_SPLITS.json` records sha256
 and byte counts for four held-out LeanDojo splits. Permitted development sources are only
 `random/train.json`, `corpus.jsonl`, and `steps.jsonl` filtered to `split == "train"`.

@@ -1106,3 +1106,45 @@ stands.
 
 **Next intended step.** Let V7 finish, report its actual result against the preregistered sentinels,
 and run the founder tournament only if it qualifies ≥ 2 mechanisms.
+
+---
+
+## 2026-09-07 — Formal Arena V1 spec and Training Data Factory documented
+
+**Branch.** `claude/phase-6-parallel-setup-9c6068`. **Stage.** 72-hour sprint, hours 8–9.
+V7 still running; **no V7 result in this entry.**
+
+**Objective of the change.** Freeze the specification of the three task families and document the
+training-data pipeline, both before any Solver is run against them.
+
+**Files changed.** New: `docs/GAME_R_FORMAL_ARENA_V1_SPEC.md`, `docs/TRAINING_DATA_FACTORY.md`.
+No code.
+
+**What was completed.** The arena spec records frozen sources, per-family item counts, the
+difficulty ladders, the shortcut-gate protocol and every rejection with its measured number. The
+factory document records the `tl0-training-record-v1` schema, what can be generated today and at
+what trust tier, and the honest cost of Tier-A promotion.
+
+**Decisions made and why.** (1) The arena spec **leads with the blocking constraint** rather than
+burying it: the three families carry raw Lean pretty-printed strings and cannot carry Game R,
+because a pre-rendered string fixes R. The document keeps its "Game-R" filename only so
+cross-references resolve, and says so. (2) The spec fixes "one named control per breached axis,
+re-measured once" as the protocol, so the record shows the rule was set before the rejections
+rather than after. (3) The factory documents the Tier-A cost as a real number
+(≈3,100 replays per 1,000 verified items at the historical 32/100 yield; ≈130 worker-hours for
+100k) rather than assuming it away, and names the **built** mathlib path explicitly to prevent the
+recurring confusion with the 349 MB source-only checkout that cannot replay.
+
+**Tests and verification actually executed.** None — documentation only. `python -m pytest` was
+904 passed, 1 skipped at the previous commit and no code changed since.
+
+**Failures and unresolved uncertainty.** Family C is 100% `TIER_B_CONSTRUCTED` with zero
+Lean-verified items; a negative there means "constructed to be invalid", not "the kernel rejects
+it". `wrong_rewrite_direction` sits 0.003 under its ceiling with SE ≈ 0.013 and is flagged AT RISK
+rather than accepted. Converting any family to Game-R capability requires a canonical projection
+that is known to be **lossy**: `docs/CANONICAL_VNEXT_PILOT.md` measured 0 of 368 real Lean states
+mapping losslessly into `arena-canonical-v0.1.0`.
+
+**Effect on the overall project.** No representation scored. `RSTAR_NOT_IDENTIFIED` stands.
+
+**Next intended step.** Report V7's actual result against its preregistered sentinels.
