@@ -33,6 +33,52 @@ without affecting any recorded result.
 - **Do not merge the Codex audit branch from here.** It is labelled `REPORT_ONLY` /
   `DO_NOT_MERGE` by its own author and contains no production patch.
 
+## 0b. Verified discrepancy in the Phase-6 artifact — for the Phase-6 session to resolve
+
+**Added after Phase 6 published.** `docs/FITNESS_V6_SOLVER_SUBSTITUTION_RESULT.md` declares
+**`SOLVER_SPECIFIC_FAILURE_SUPPORTED`** and its invalidation table records **`cache hits on the
+alternate solver | 0`**.
+
+**That figure does not match the artifact it describes.** Counted read-only from
+`artifacts/experiments/fitness_v5/development/result-qwen38-rvn_latest-bare.json`:
+
+| location | rows | `cache_hit == true` |
+|---|---|---|
+| `ladder_rows` | 288 | **13** |
+| `mechanisms.formal_expression_depth.rows` | 72 | **24** |
+| `mechanisms.transitive_dependency.rows` | 72 | **24** |
+| **total** | | **61** |
+
+An independent forensic audit (`codex/forensic-audit-20260907`) reports the same split — 13 ladder
+resume hits plus 48 within-run reuse hits — reached by a different route. Two independent counts
+agree.
+
+**What this does and does not mean.**
+
+- The preregistered `INVALIDATION_RULE` in `docs/PHASE6_PREREGISTRATION.md` reads: Phase 6 is
+  `PHASE6_INVALID` if "cache hits > 0 for the alternate solver". Taken literally, 61 > 0 fires it.
+- **But the hazard that rule was written to catch does not appear to be present.** That hazard was
+  cache/model decoupling — replaying Phase-5 gemma answers as the new solver's. The artifact's
+  `model.digest` is qwen's (`25eb57cb…`), the runtime is the bare condition with its own cache
+  namespace, the 13 ladder hits are consistent with the documented 06:16 relaunch (the same solver
+  resuming its own rows), and the 48 mechanism hits are consistent with full-family rows reusing
+  ladder answers for identical (model, prompt) pairs within one run.
+- So this reads as **a reporting error plus a rule stricter than its own rationale**, not as
+  contaminated science. The measured ladders may well stand.
+
+**This branch does not adjudicate it.** The choices — correct the table and argue the rule's
+intent, or accept the literal reading and classify `PHASE6_INVALID` while keeping the solver-effect
+observation as descriptive — belong to the Phase-6 session and the project owner. What must not
+happen is that the discrepancy goes unrecorded, or that the rule is quietly reinterpreted *after* a
+favourable result: the preregistration exists precisely to prevent that.
+
+**Caveat on the benign reading.** It is inference from the digest, the cache namespace and the
+documented relaunch. No append-only per-call ledger exists that could prove each row's provenance
+directly.
+
+**Either way, §5 (Branch D) applies:** every deliverable on this branch remains independently
+valid, because nothing here depends on any Phase-6 number.
+
 ## 0. Read this first — provenance and the non-duplication rule
 
 Phase 6 (branch `claude/hamiltonian-arena-takeover-caa2eb`, pushed to `codex/arena-v0-fitness`)

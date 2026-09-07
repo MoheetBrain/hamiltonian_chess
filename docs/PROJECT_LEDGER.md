@@ -556,3 +556,62 @@ founder tournament — the frozen gate requires ≥ 2 qualified mechanisms and n
 the threshold must not be lowered. Then adopt the fail-fast shortcut check as a precondition on
 every future task family, and build premise selection from the local LeanDojo trace, sealing
 `novel_premises/{val,test}.json` first.
+
+---
+
+## 2026-09-07 — Cache-hit discrepancy recorded in the published Phase-6 artifact
+
+**Branch.** `claude/phase-6-parallel-setup-9c6068` (parallel next-stage preparation), following
+commit `a6e8ddf`.
+
+**Project stage.** Phase 6 published `SOLVER_SPECIFIC_FAILURE_SUPPORTED` at
+`b3717c3` on `claude/hamiltonian-arena-takeover-caa2eb` after this branch's main commit. This
+branch remains preparation only and makes no Phase-6 classification.
+
+**Objective of the change.** Record, without adjudicating, a factual discrepancy between the
+Phase-6 result document and the artifact it describes, on the single field that determines
+Phase-6 validity. Leaving it unrecorded was not acceptable; resolving it here would have usurped
+the Phase-6 session's own preregistered decision.
+
+**Files and systems changed.** `docs/PHASE6_INTEGRATION_MAP.md` (new §0b), plus this ledger entry
+and the corresponding paragraph in `docs/PROJECT_STATUS.md`. No code changed. Nothing in the
+Phase-6 worktree was touched; it was read read-only throughout.
+
+**What was completed.** `docs/FITNESS_V6_SOLVER_SUBSTITUTION_RESULT.md` records `cache hits on the
+alternate solver | 0`. Counting directly from
+`artifacts/experiments/fitness_v5/development/result-qwen38-rvn_latest-bare.json` gives **61** rows
+with `cache_hit == true`: 13 of 288 in `ladder_rows`, 24 of 72 in `formal_expression_depth`, 24 of
+72 in `transitive_dependency`. An independent forensic audit (`codex/forensic-audit-20260907`)
+reports the same 13 + 48 split by a different route; two independent counts agree.
+
+**Decisions made and why.** Record both readings rather than pick one. The literal preregistered
+`INVALIDATION_RULE` ("cache hits > 0 for the alternate solver") fires at 61. But the hazard that
+rule was written to catch — cache/model decoupling replaying gemma's answers as qwen's — does not
+appear present: the artifact's `model.digest` is qwen's `25eb57cb…`, the bare condition has its own
+cache namespace, the 13 ladder hits are consistent with the documented 06:16 relaunch resuming the
+same solver's own rows, and the 48 mechanism hits are consistent with full-family rows reusing
+ladder answers for identical (model, prompt) pairs inside one run. This reads as a reporting error
+plus a rule stricter than its rationale, not as contaminated science. Choosing between "correct the
+table and argue intent" and "accept the literal reading and classify `PHASE6_INVALID` with the
+solver effect retained descriptively" is the Phase-6 session's and the owner's call.
+
+**Tests and verification actually executed.** `python -m pytest` — 470 passed (unchanged; this is a
+documentation-only change). The cache-hit count was produced by a read-only JSON traversal of the
+artifact; the per-location breakdown is recorded in `docs/PHASE6_INTEGRATION_MAP.md` §0b. No model
+call, no write to the Phase-6 worktree.
+
+**Failures and unresolved uncertainty.** The characterisation of the 61 hits as benign is
+*inference* from the digest, the runtime cache namespace and the documented relaunch — no
+append-only per-call ledger exists that could prove each row's provenance directly. That
+uncertainty is stated in the document rather than resolved. Whether Phase 6 stands is not
+determined here.
+
+**Effect on the overall project.** No scientific claim on this branch changes; every deliverable
+here is independent of any Phase-6 number by construction. The practical effect is that the
+discrepancy is now on the record before any downstream decision is taken on the strength of
+`SOLVER_SPECIFIC_FAILURE_SUPPORTED`.
+
+**Next intended step.** The Phase-6 session resolves the discrepancy under its own
+preregistration. The rule must not be reinterpreted after seeing a favourable result. Regardless of
+outcome, do not launch the founder tournament: the frozen gate requires ≥ 2 qualified mechanisms
+and one was qualified.

@@ -213,6 +213,18 @@ into `HML_V3` at `arena/environments/formal_structural.py:49`) and confirmed emp
 **Not done, deliberately:** no Fitness V6, no founder tournament, no mutation campaign, no Route-B
 run, no schema change, no mass ingestion, no reinterpretation of any recorded sentinel.
 
+**Verified discrepancy in the published Phase-6 artifact (recorded, not adjudicated).**
+`docs/FITNESS_V6_SOLVER_SUBSTITUTION_RESULT.md` declares `SOLVER_SPECIFIC_FAILURE_SUPPORTED` and
+records `cache hits on the alternate solver | 0`. Counted read-only from
+`result-qwen38-rvn_latest-bare.json`, the artifact contains **61** rows with `cache_hit == true`
+(13 of 288 `ladder_rows`; 24 of 72 `formal_expression_depth`; 24 of 72 `transitive_dependency`).
+An independent forensic audit reports the same 13 + 48 split. The literal preregistered
+`INVALIDATION_RULE` ("cache hits > 0") therefore fires, though the hazard it was written to catch
+— cache/model decoupling — does not appear present (the artifact carries qwen's digest, the bare
+runtime has its own cache namespace, and the counts match the documented 06:16 relaunch plus
+within-run reuse). Resolution belongs to the Phase-6 session and the project owner; see
+`docs/PHASE6_INTEGRATION_MAP.md` §0b.
+
 ## Current Blockers
 
 A new experiment version (V4.1 calibration or V5) requires explicit authorisation before any
