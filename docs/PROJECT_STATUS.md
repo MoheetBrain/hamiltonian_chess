@@ -291,6 +291,17 @@ can carry Game R today. Converting them to canonical form is a specified, separa
 (2.4 MB, derived, regenerable, unvalidated) was swept in by `git add -A` at `cf1b07f` and removed
 immediately afterwards; it is now gitignored.
 
+**TRAINING_LANGUAGE_V0 SHIPPED (Deliverable A).** `releases/TRAINING_LANGUAGE_V0/`,
+`package_hash` `443c8f7950147b82…`, evidence level **`TRAINING_LANGUAGE_V0_BASELINE`**. Small
+extensible core (ten record kinds + an action block); domains are library *values*, not grammar.
+Every REQUIRED canonical-vNext gap handled natively (multi-goal with per-goal context, obligation
+scope, metavariable/substitution, structured types, let-values); G7 explicitly deferred. Targets
+render through the **same surface as inputs**, removing parity defect D3 (JSON's
+input-grammar = output-grammar advantage) by construction. 279 release tests pass; determinism
+measured by AST scan, attribute-order rotation and `PYTHONHASHSEED` variation; round-trip exact.
+The `HONEST` profile is **rejected** by the frozen `NativeVerifier` with `UNBOUND_VARIABLE` /
+`UNKNOWN_ACTION_TARGET` / `UNKNOWN_SCOPE` — a property of the verifier, carried not fixed.
+
 **Sealed before any sprint work began.** `artifacts/manifests/SEALED_SPLITS.json` records sha256
 and byte counts for four held-out LeanDojo splits. Permitted development sources are only
 `random/train.json`, `corpus.jsonl`, and `steps.jsonl` filtered to `split == "train"`.

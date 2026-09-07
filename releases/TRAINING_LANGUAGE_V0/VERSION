@@ -1,0 +1,19 @@
+TRAINING_LANGUAGE_V0
+language_id: TL0
+language_version: 0.1.0
+record_schema_version: tl0-training-record-v1
+carrier_version: tl0-canonical-carrier-v1
+canonical_substrate: arena-canonical-v0.1.0 (unmodified)
+evidence_level: TRAINING_LANGUAGE_V0_BASELINE
+
+EVIDENCE LEVEL
+This release is packaging and interfaces. It is NOT a Game-R result and carries no claim
+that any representation trains better than any other. It was built independently of the
+tournament so that whichever surface the integrator selects can be plugged in at
+integration time (see surfaces.py). Nothing here may be labelled R*.
+
+WHAT WAS ACTUALLY VERIFIED
+Round-trip, determinism, status enforcement, canonical-adapter fidelity and the frozen
+NativeVerifier's response to both compatibility profiles are covered by
+tests/releases/. No model was called, no GPU was used, no network was touched, no Lean
+was built, and no file listed in artifacts/manifests/SEALED_SPLITS.json was read.

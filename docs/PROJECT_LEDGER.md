@@ -969,3 +969,73 @@ correction, not a rewrite of it.
 **Effect.** No scientific claim changes.
 
 **Next intended step.** Await V7; ship `TRAINING_LANGUAGE_V0`.
+
+---
+
+## 2026-09-07 — TRAINING_LANGUAGE_V0 shipped (Deliverable A)
+
+**Branch.** `claude/phase-6-parallel-setup-9c6068`. **Stage.** 72-hour sprint, hours 5–7.
+V7 still running.
+
+**Objective of the change.** Ship a complete, executable, training-ready mathematical language
+package. This deliverable is **independent of any Game-R result** and was built without waiting on
+one.
+
+**Files and systems changed.** New: `releases/TRAINING_LANGUAGE_V0/**` (12 modules plus SPEC,
+VERSION, ACQUISITION_GUIDE, HASHES), `tests/releases/**` (13 files),
+`docs/TRAINING_LANGUAGE_V0.md`. **Nothing else touched** — `arena/canonical`, `arena/verifier`,
+`arena/languages`, `arena/genome`, `GOAL.md` and `artifacts/experiments` are all clean.
+
+**What was completed.** A small extensible core: ten record kinds
+(`scope · decl · claim · goal · oblig · evid · subst · dep · ext · lib`) plus an `act` block, with
+domains carried as *library values* rather than grammar. A test pins the extension rule: registering
+a new library changes what `check_vocabulary` reports and changes **no rendered byte**.
+
+Every REQUIRED gap from `docs/CANONICAL_VNEXT_PILOT.md` is handled **natively**: multi-goal with
+per-goal context over a scope forest (G1+N1), `Obligation.scope_id` (N4), one
+metavariable/substitution structure (G2≡G6), `Type` as a tree so `[Fun [Nat] [Prop]]` and
+`[Fun [Nat [Prop]]]` are distinguished (G3), and `Decl.value` for let-bindings (N2). G4/G5/N3 are
+byte-lossless carriers, as the pilot classified them. **G7 is explicitly deferred**, matching the
+pilot, and recorded in SPEC §12 rather than papered over.
+
+**Decisions made and why.** (1) Targets are rendered through the **same surface as inputs** via an
+`action_envelope`. This removes defect **D3** from `docs/ROUTE_B_PARITY_AUDIT.md` by construction —
+the historical sprint always rendered targets as JSON, which gave `L3_JSON_AST` alone
+input-grammar = output-grammar, a live alternative explanation for its win. (2) `state_t` *is* the
+lossless TL0 text: one serialization, one hashing scheme (`stable_hash`). (3) The acquisition
+guide's `PREAMBLE` and `CLOSING` are frozen byte-identical across all ten surfaces and the syntax
+section is *generated* from each surface's own descriptor, so no hand-written per-candidate prompt
+exists to tune — the §1 failure mode of the historical arms. (4) Default surface is `NativeSurface`
+on expressiveness grounds only; a test forbids `RSTAR_*` tokens anywhere in shipped files.
+
+**Tests and verification actually executed.** `python -m pytest tests/releases` → **279 passed,
+1 skipped**. Full suite `python -m pytest` → **904 passed, 1 skipped in 61.32s**.
+`python -m ruff check .` → All checks passed. `python -m ruff format --check .` → 278 files already
+formatted. `python -m mypy arena` → Success, 129 source files. `verify_hashes()` → **no
+mismatches**; `package_hash` `443c8f7950147b82…` reproduced independently after consolidation.
+Determinism was measured, not asserted: an AST scan of all 12 modules found no
+`random/time/datetime/uuid/secrets/os`; attribute insertion order rotated four ways gives one
+rendering; rendering under `PYTHONHASHSEED` 0/1/12345 in subprocesses is byte-identical; and
+`parse_state(render_state(s)) == s` holds exactly across quotes, newlines, tabs, control
+characters, unicode, every value kind, and 0/1/2/5 goals.
+
+**Failures and unresolved uncertainty.** Running the **real frozen** `NativeVerifier`, the
+`HONEST` compatibility profile is **rejected** with exactly `UNBOUND_VARIABLE`,
+`UNKNOWN_ACTION_TARGET` and `UNKNOWN_SCOPE` — reproducing `arena/verifier/native.py:136`,
+`:231-232`, `:82-84`. These are properties of the frozen verifier, already flagged in the vNext
+pilot; TL0 carries the truth and does **not** fix them. The default `ARENA_VERIFIER` profile is
+accepted with zero issues but trades honesty for acceptance (`binder_kind`→`free`,
+goal-targets→`"goal"`, `local_scope` widened) — truth is carried and the reverse map is exact, but a
+consumer ignoring carriers sees a less specific state. Carriers perturb `mathematical_hash`, so one
+policy must be chosen per experiment. Gap N5 stands: verifier acceptance carries little information
+about imported `lean.*` data, and TL0 does not treat it as evidence. Identical guide text
+guarantees identical content, not identical helpfulness — pretraining familiarity is uncorrectable
+statically.
+
+**Effect on the overall project.** **Deliverable A is met.** The project can now render verified
+mathematical trajectories into a versioned, hashed, round-trip-tested language and emit
+fine-tuning shards. Evidence level is **`TRAINING_LANGUAGE_V0_BASELINE`** — no training claim is
+made anywhere, and `RSTAR_NOT_IDENTIFIED` still stands.
+
+**Next intended step.** Await V7. Wire the selection seam to whichever surface the evidence
+supports, if any.

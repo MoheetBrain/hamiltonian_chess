@@ -1,0 +1,35 @@
+{
+  "components": {
+    "acquisition": "80b2bfe02786921987760a77a8d792296a93d8e0cc5b6d520e20301b87bbb0b1",
+    "canonical_adapter": "89eedad90389c9901773fd22e0945df59e3fb522006ea3cdabcf2585d3e927bf",
+    "core": "c105937d1b813bba3281f00edfe270f8738da857957a7b71ead14a410c5c21d3",
+    "human_renderer": "9fa99cb3eed0d57b3ac0af55796ce26d8df13aa0e2206802cc0ac866918a2980",
+    "parser": "ecf547e98da30dbd117b31afe6debbe6725158c510f65ecb287288abfa5d7a93",
+    "renderer": "dd9d4a449d1697025af29702a203f15023b058459e6c91c9dd8f5cd8c5710ae0",
+    "spec": "0c4a2def26734d0bd5532f154ac466b39a0f40e3024f9e10b0da511b68f4fba2",
+    "surfaces": "f709456a1d3078c334390518658a7b723399012519df1e4ba54cb770ac18d269",
+    "training_schema": "1e2d13c7dd968fc62ab86fea1e08ff37a761f3cda34ec0f5fa34e9924c64a6bc"
+  },
+  "evidence_level": "TRAINING_LANGUAGE_V0_BASELINE",
+  "files": {
+    "ACQUISITION_GUIDE.md": "84f8260c0b746b8d1307b671156d661e0b17c377eb6cc2f6700dbe9b276cbc83",
+    "SPEC.md": "4988422c0457d51699c150cbb16cc0cdb7ddde5557e529f036a2d7c9d1685cb1",
+    "VERSION": "2109106be01beed3028c36c2b6d4050163450c953b31df3c876fac1f94d49dbc",
+    "__init__.py": "d9f060d58c40e55c4a9a0f4f46cd6931d4deb210b393312da3c3c3d5d3da8786",
+    "acquisition.py": "a21852a1e533936bc8362afdb6986446d991b9d69b735d07406c852655725141",
+    "canonical_adapter.py": "ff85c053ab8b7c6f47961617490890f0982c5ed3c76a97994fadbfd09be538fa",
+    "core.py": "b14ef66cab47635854621aea67691f9e8cf3ca134a99ba1938012a9d4ce57002",
+    "hashes.py": "f6f5db40d68f9351241e36566d37f03afc5f61b19a3ea3659378b7bd0d95d8d5",
+    "human.py": "22004a0a88acbf14a1127d58cbab1244a2909c7e60699ed52bb0782e2e62688c",
+    "libraries.py": "d4157832e0f8e93412d651a4deab90dd41bab61c1cbeaba40fa0cc7bbb678ffc",
+    "parser.py": "1b0035685c1d89afc9affb16a938132bd6cc4d932e3d2bede96f29a39263ac3c",
+    "renderer.py": "5f89ee04cfdb8373213576b7afbf19a0d48fb8268b692ce55e7fed2776e158e6",
+    "surfaces.py": "049959a3ec4e11f0f1f390c6002214cbec39f4307be7ff89677a1bef3e02836b",
+    "syntax.py": "72a4de9678899bddc2cd3ef7730c25c17d8a1e6b07c5e8ae79e45269ef799034",
+    "training_schema.py": "e38895d2ddd4f349c397eadba94c841af450770bae765165b225deaa0b03c68e"
+  },
+  "language_id": "TL0",
+  "language_version": "0.1.0",
+  "package_hash": "443c8f7950147b826797e409ed36ffbed1bf1d08482365f6db57349fca161135",
+  "schema_version": "tl0-hashes-v1"
+}
