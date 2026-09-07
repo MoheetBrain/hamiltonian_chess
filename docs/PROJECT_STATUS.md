@@ -254,6 +254,13 @@ the true accuracy — they convert sampling noise into passes
 (`artifacts/reports/v5_selector_analysis.json`). The admissible route is: derive the target from
 the gate arithmetic, preregister it, and **re-run fresh**.
 
+**Fitness V7 preregistered (before any V7 call).** `docs/FITNESS_V7_PREREGISTRATION.md` corrects
+two measured instrument defects as a package: the frontier target becomes a quantity derived from
+the gate arithmetic (0.775, inside the [0.70, 0.85] window) instead of a stranded constant at
+0.625, and the shortcut audit runs at every level with a new `positive − best_shortcut ≥ 0.10`
+gate. V7 is **strictly stricter** than V5 and may qualify fewer mechanisms; the honest expectation
+is recorded in the spec. Compute ledger: `docs/SPRINT_COMPUTE_LEDGER.md`.
+
 **Sealed before any sprint work began.** `artifacts/manifests/SEALED_SPLITS.json` records sha256
 and byte counts for four held-out LeanDojo splits. Permitted development sources are only
 `random/train.json`, `corpus.jsonl`, and `steps.jsonl` filtered to `split == "train"`.

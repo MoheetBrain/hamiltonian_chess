@@ -805,3 +805,59 @@ status; the conservative reading is adopted.
 
 **Next intended step.** Preregister the derived-target selector correction; re-run the frozen
 instrument against qwen fresh; build the three formal task families behind a shortcut gate.
+
+---
+
+## 2026-09-07 — Fitness V7 preregistered: derived frontier target + per-level shortcut audit
+
+**Branch.** `claude/phase-6-parallel-setup-9c6068`. **Stage.** 72-hour sprint, hour 0–4.
+**Committed BEFORE any V7 model call.**
+
+**Objective of the change.** Correct two measured defects in the frozen instrument, as a package,
+and register the correction before running so it cannot be mistaken for post-hoc tuning.
+
+**Files and systems changed.** `docs/FITNESS_V7_PREREGISTRATION.md` (new),
+`docs/SPRINT_COMPUTE_LEDGER.md` (new), `artifacts/manifests/SEALED_SPLITS.json` (new). No code in
+this commit; `arena/experiments/fitness_v7.py` is being implemented separately and lands only after
+this spec is frozen.
+
+**What was completed.** Defect 1: the frontier selector minimises `|accuracy − 0.625|` while the
+destroyed control is a mathematical constant at 0.5000, so `gap ≥ 0.20` reduces to
+`positive ≥ 0.70` and the qualifying window is [0.70, 0.85] — the selector aims 0.075 below its own
+floor, and `destroyed ≤ 0.60` is a dead gate. Traced to V5 raising `gap_min` 0.10 → 0.20 without
+moving the target. Defect 2: the shortcut audit runs only at the selected frontier, leaving every
+other level unmeasured. V7 derives the target from the gate arithmetic
+(`(0.70 + 0.85)/2 = 0.775`), drops the dead gate, runs the shortcut audit at every level, and adds
+`positive − best_shortcut ≥ 0.10` as a qualification gate.
+
+**Decisions made and why.** (1) The two corrections are registered as a **package**: correcting the
+selector alone would move `formal_expression_depth` onto L2 (.792) where the measured shortcut
+`first_mentioned_in_state` is ≈ 0.8125 pooled — that would manufacture a qualification, so the
+shortcut gate is mandatory. (2) `SHORTCUT_MARGIN = 0.10` is justified independently of outcome: at
+n = 24 the binomial SE near 0.8 is ≈ 0.082, so a smaller margin cannot separate a solver from its
+own shortcut. (3) Phase 6's cache rule is replaced by a `cache_scope` distinction
+(FRESH / SAME_CONDITION_REUSE / CROSS_CONDITION) because a rule that cannot distinguish benign
+same-solver reuse from cross-condition contamination is wrong on its own stated rationale — this is
+registered before V7 runs, not adopted after a result. (4) No cloud instance was started: the
+sprint's current work is CPU-and-Ollama bound and an idle 88-vCPU or A100 box is pure cost.
+
+**Tests and verification actually executed.** `GOAL.md` sha256 re-verified
+`43d8fcdb…0117b`. Solver availability and identity verified read-only: `ollama list` shows
+`qwen38-rvn:latest` ID `25eb57cb8173`, matching the digest recorded in the preregistration. No
+model call was made. `python -m pytest`: 470 passed (recorded at the previous commit; no code
+changed here).
+
+**Failures and unresolved uncertainty.** V7 is **strictly stricter** than V5 and may qualify fewer
+mechanisms. The preregistration records the honest expectation: `transitive_dependency` should
+re-qualify, `precondition_conjunction` should return `VOID_CEILING`, and
+`formal_expression_depth` **may void on the new shortcut gate**, giving
+`V7_ONE_MECHANISM_QUALIFIED` and no founder tournament. That is a legitimate outcome and no
+threshold may be reinterpreted to avoid it. The dominant limitation is unfixed: at n = 24 the
+qualifying window is ≈ 1.76 standard errors wide and both ladders step across it in one move, so
+granularity — not the aim point — is the binding constraint.
+
+**Effect on the overall project.** No scientific claim changes yet; V7 has not run.
+`RSTAR_NOT_IDENTIFIED` stands.
+
+**Next intended step.** Land `arena/experiments/fitness_v7.py` with its offline tests, verify it
+cannot touch any V5 or Phase-6 artifact, then run 392 calls against `qwen38-rvn` bare.

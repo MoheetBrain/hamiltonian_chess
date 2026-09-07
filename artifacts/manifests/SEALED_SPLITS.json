@@ -1,0 +1,26 @@
+{
+  "schema": "arena-sealed-splits-v1",
+  "sealed_utc": "2026-09-07T11:09:59Z",
+  "sealed_by": "claude/arena-72h-rstar-sprint",
+  "rule": "These files MUST NOT be read, sampled, inspected, or used for development. They are the PROMOTION / OOD pools. Only their sha256 was computed. Any experiment that reads them without an explicit preregistered promotion step is INVALID.",
+  "dataset": {
+    "name": "LeanDojo Benchmark 4",
+    "leandojo_version": "2.0.0",
+    "mathlib4_commit": "29dcec074de168ac2bf835a77ef68bbe069194c5",
+    "creation_time": "2024-07-02 13:14:48.804567",
+    "root": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo_raw/leandojo_benchmark_4"
+  },
+  "sealed": [
+    {"path": "novel_premises/val.json",  "bytes": 10314569, "sha256": "ac1ea13995be17553e56bbf60d088c9e9ddf13c2045dade2c8474c1a44c983cf", "role": "PROMOTION_OOD", "reason": "novel-premise split: val/test proofs use at least one premise never seen in training. The only defence against solving premise selection by recall."},
+    {"path": "novel_premises/test.json", "bytes": 11450088, "sha256": "6c001d1cacd141a4301965fa03cb3c756c19aa09fb30daf9cb2ccb48396ff3fe", "role": "PROMOTION_OOD", "reason": "as above; final promotion only"},
+    {"path": "random/val.json",          "bytes": 6456932,  "sha256": "8ef9d5fbc1c6c8293e77a655fb888b687da804f1da9e02d6714569c49e905c70", "role": "RESERVED_EVAL", "reason": "held-out; a prior audit reports random/val+test were already read (8,766 transitions), so this is HISTORICALLY_EXPOSED and is reserved, not clean OOD"},
+    {"path": "random/test.json",         "bytes": 7129686,  "sha256": "9f84ac4cbd5ea9031ab335d172e7a5b1873e4ac773721e60cb1a4cc5b4e2a0ae", "role": "RESERVED_EVAL", "reason": "as above"}
+  ],
+  "development_source": {
+    "path": "random/train.json",
+    "bytes": 373077058,
+    "role": "DEVELOPMENT",
+    "note": "All task-family construction and shortcut auditing uses ONLY this file plus corpus.jsonl."
+  },
+  "contamination_note": "mathlib4 is HISTORICALLY_EXPOSED (its goal states were read during Fitness V5 design) and exposure is transitive, so no LeanDojo split can serve as clean OOD with respect to the Solver's pretraining. The novel_premises split controls recall of PREMISES within this experiment; it does not establish pretraining-cleanliness. gemma4:12b's and qwen38-rvn's training cutoffs are UNRECORDED."
+}
