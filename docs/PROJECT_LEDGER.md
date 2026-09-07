@@ -469,6 +469,115 @@ hazards are now on the remote ahead of the results.
 
 ---
 
+## 2026-09-07 — Phase 6 write-path defect: Phase 5's artifact was overwritten and restored
+
+**Date and time.** 2026-09-07, 06:14–06:16 BST. **Branch.**
+`claude/hamiltonian-arena-takeover-caa2eb`. **Project stage.** unchanged.
+
+**Objective.** Record a defect that fired during the Phase-6 run, the damage, and the recovery.
+
+**What happened.** `ArtifactStore.write_json` overwrites unconditionally, and
+`run_development`'s write call was still hardcoded to
+`experiments/fitness_v5/development/result.json`. The intended parameterisation had been
+applied by string substitution, but a `ruff format` pass had already split that call across two
+lines, so the match silently failed and the edit was never applied. The gemma-bare run
+therefore **overwrote Phase 5's frozen `result.json` on disk** (on-disk hash
+`c35a316f…`, `prompt_condition: "bare"`).
+
+**Damage and recovery.** No data was lost. Phase 5's artifact was committed at `2c61fdb`; it
+was restored with `git checkout --` and re-verified at its exact hash
+`0c5b3271c772bcaf304af65ae469d615572022d18ac81f3083b27a88b0097579`, with its sentinel
+`CURRENT_SOLVER_OR_TASK_FAMILY_CANNOT_SUPPORT_GAME_R_MEASUREMENT` intact. Every gemma-bare row
+was already in the model-call cache, so the correct artifact regenerated in 5.7 s with zero
+model calls. The in-flight qwen run was stopped three minutes in (a restart is nearly free
+because of the cache), the write path was fixed to
+`development_artifact_path(solver, bare)`, the fix was verified by reading the emitted line,
+and qwen was relaunched at 06:16.
+
+**Decisions made and why.** Stopping the qwen run was chosen over letting it finish, because it
+would otherwise have overwritten the restored Phase-5 artifact a second time, and because the
+cache made the restart cost negligible. This is recorded rather than quietly repaired, since a
+silently overwritten frozen artifact is exactly the class of error the project's protocol
+exists to prevent.
+
+**Tests and verification actually executed.** `ruff check` / `ruff format --check` / `mypy
+arena` clean after the fix; the emitted write line was re-read to confirm the substitution
+applied; Phase-5 hash and sentinel re-verified; gemma-bare artifact regenerated and its
+sentinel read (`FITNESS_V5_NOT_QUALIFIED`, zero explicit arms passing).
+
+**Failures and unresolved uncertainty.** The generalisable lesson: a patch applied by string
+substitution must be verified by re-reading the target line, because a formatter can defeat the
+match and leave the change unapplied while every other check still passes.
+
+**Effect on the overall project.** No scientific result changed. Gemma bare is complete and
+recorded; the qwen run is in flight.
+
+**Next intended step.** On qwen completion, compare at fixed levels across three conditions
+(gemma framed, gemma bare, qwen bare) and write the Phase-6 result document.
+
+---
+
+## 2026-09-07 — Phase 6 complete: the Phase-5 blocker was the Solver
+
+**Date and time.** 2026-09-07, 05:42–07:07 BST. **Branch.**
+`claude/hamiltonian-arena-takeover-caa2eb`. **Project stage.**
+`CURRENT_SOLVER_OR_TASK_FAMILY_CANNOT_SUPPORT_GAME_R_MEASUREMENT` →
+`SOLVER_SPECIFIC_FAILURE_SUPPORTED`.
+
+**Objective.** Run the frozen V5 instrument against a materially different competent solver,
+changing nothing else, to separate "this Solver cannot expose the mechanisms" from "this task
+family has no measurable structure".
+
+**Files and systems changed.** New: `docs/FITNESS_V6_SOLVER_SUBSTITUTION_RESULT.md`,
+`artifacts/experiments/fitness_v5/development/result-qwen38-rvn_latest-bare.json`. Updated:
+`docs/GAME_R_STATUS.md`, `docs/PROJECT_STATUS.md`. Removed: `docs/PHASE6_IN_PROGRESS.md` (the
+run is over). Phase-5 artifact unchanged at `0c5b3271…`; no probe, gate, prompt or scoring rule
+altered.
+
+**What was completed.** Three conditions, 392 calls each for gemma-framed (Phase 5) and
+qwen-bare, 288 scored rows for gemma-bare: gemma with its renderer, gemma bare, and qwen bare.
+Ten read-only subagents audited the design beforehand; all writes were the integrator's.
+
+**Results.** On the preregistered primary endpoint — paired exact McNemar on the degeneracy
+indicator over the three cells where gemma reached answer share 1.000, n=72 — qwen goes from
+72/72 degenerate to 36/72, b=36, c=0, **p = 2.9e-11**. 36/72 is exactly chance against a fixed
+modal answer, so qwen shows no residual degeneracy. Answer entropy on those cells: gemma 0.00
+bits at all three, qwen 1.00 at all three. Accuracy there: gemma .500/.500/.500, qwen
+1.000/1.000/.750. Pooled positive accuracy over 288 rows: gemma-framed .7118, gemma-bare .6319,
+qwen .9062. `transitive_dependency` **QUALIFIED** for qwen at L3 — the first mechanism ever to
+qualify in this programme. All three explicit arms passed for qwen (gemma: two, then zero bare).
+
+**Decisions made and why.** Two defects were found and handled before or during the run rather
+than silently. First, `BUG_FOUND`: Ollama applies gemma's Modelfile renderer on
+`/api/generate` (+12 tokens, and it changed an answer) while qwen carries none, so the design
+was re-preregistered to run both solvers bare. Second, the artifact write path was still
+hardcoded because a formatter had defeated an earlier patch's string match; the gemma-bare run
+overwrote Phase 5's artifact, which was restored from git to its exact hash and regenerated
+from cache with zero model calls.
+
+**Tests and verification actually executed.** `pytest` 190 passed; `ruff check`,
+`ruff format --check` (201 files) and `mypy arena` (118 files) clean. Zero schema errors, parser
+errors or truncations across all 1,056 scored rows; Q0 1.000 in every condition; zero cache hits
+for the alternate solver; digest verified against the live model before the run.
+
+**Failures and unresolved uncertainty.** The frozen abort clause still labels qwen
+`CURRENT_SOLVER_OR_TASK_FAMILY_CANNOT_SUPPORT_GAME_R_MEASUREMENT`, which is wrong for this
+solver; it was written for a floor failure and cannot recognise a ceiling one. Reported as
+computed, and interpreted correctly alongside. Two instrument defects are now demonstrable: the
+destroyed-twin negative control is a mathematical constant at 0.500, making the effective
+qualifying window [0.70, 0.85] while the selector targets 0.625, so it prefers unqualifiable
+levels — this alone cost `formal_expression_depth` its qualification, since its L1 (.833) and
+L2 (.792) would both have passed. One alternate solver only; it is a fine-tune and larger than
+the baseline, so family and scale move together.
+
+**Effect on the overall project.** The central Phase-5 ambiguity is resolved: the failure was
+the Solver, not the task family. Two of three mechanisms are demonstrably measurable by a
+competent solver. Game R is still not authorised (the gate needs two qualified mechanisms and
+got one), so `GAME_R_NOT_RUN` and `RSTAR_NOT_IDENTIFIED` stand.
+
+**Next intended step.** Fix the frontier target into the achievable [0.70, 0.85] window, extend
+the ladder upward, and re-run qwen only (~400 calls). Under that correction alone two
+mechanisms would qualify and the founder tournament would be authorised.
 ## 2026-09-07 — Parallel next-stage preparation while Phase 6 ran
 
 **Branch.** `claude/phase-6-parallel-setup-9c6068`, based on `b82f8ed` (the pushed tip of
@@ -615,3 +724,51 @@ discrepancy is now on the record before any downstream decision is taken on the 
 preregistration. The rule must not be reinterpreted after seeing a favourable result. Regardless of
 outcome, do not launch the founder tournament: the frozen gate requires ≥ 2 qualified mechanisms
 and one was qualified.
+
+---
+
+## 2026-09-07 — 72-hour sprint base: Phase-6 result and forensic audit reconciled
+
+**Branch.** `claude/phase-6-parallel-setup-9c6068` (continuing as the sprint working branch;
+the working directory is pinned to this worktree, so sprint work is consolidated here rather than
+in a second worktree). **Project stage.** 72-hour sprint, hour 0–4.
+
+**Objective of the change.** One base carrying the Phase-6 experimental record, the parallel
+next-stage machinery already on this branch, and the independent forensic audit, without rewriting
+any of them.
+
+**Files and systems changed.** Merges only. `docs/PROJECT_LEDGER.md` conflicted exactly as
+predicted in `docs/PHASE6_INTEGRATION_MAP.md` §9 and was resolved by keeping **both** sides in
+wall-clock order (12 entries after resolution, none rewritten or deleted).
+`docs/PROJECT_STATUS.md` auto-merged and gained a sprint section.
+
+**What was completed.** `GOAL.md` re-verified at
+`43d8fcdb5db39b1841b9f620d939e13c47014d98ecba0d09fdd84f699d20117b`. Four held-out LeanDojo splits
+sealed by sha256 into `artifacts/manifests/SEALED_SPLITS.json` **before any agent was spawned**.
+LeanDojo assets verified directly: 259,580 rows (train 250,814 / val 4,260 / test 4,506), 167,779
+rows citing ≥1 premise, `rw` head 48,991, mathlib4 commit `29dcec07…`. GCP inventory taken: three
+instances exist (`h3-standard-88`, `a2-ultragpu-1g`, `a2-highgpu-1g`), **all TERMINATED**; none
+started, because the sprint's current work is CPU-and-Ollama bound and starting an idle GPU would
+be pure cost.
+
+**Decisions made and why.** (1) Consolidate the sprint into this worktree: the commit-continuity
+hook resolves the repository from the session's working directory, which cannot be moved, so a
+second worktree could not be committed from. (2) Treat Phase 6 as formally contested and use no
+Phase-6 number as confirmatory input, while accepting `qwen38-rvn` as the scout Solver — a design
+choice, not a result. (3) Any selector correction must be preregistered and **re-run**, never used
+to re-score frozen data.
+
+**Tests and verification actually executed.** None for this commit beyond the merge checks: it is a
+merge introducing no new importable code. The audit merge was verified additive
+(`docs/codex_audit/`, `research/codex_audit/` only). The full suite is run and recorded once sprint
+code lands.
+
+**Failures and unresolved uncertainty.** Phase 6's formal status is contested (61 cache-hit rows
+against a "cache hits > 0" rule). Whether a corrected-selector re-run will qualify two mechanisms
+is unknown and must not be assumed from the post-hoc observation that it would have.
+
+**Effect on the overall project.** No scientific claim changes. `RSTAR_NOT_IDENTIFIED` stands.
+
+**Next intended step.** Preregister the selector correction as a derived quantity, re-run the
+frozen instrument against qwen fresh, and in parallel build premise-selection, rewrite-direction
+and legal-transformation families behind a model-free shortcut gate.

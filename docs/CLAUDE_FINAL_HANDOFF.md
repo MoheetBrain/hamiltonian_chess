@@ -4,7 +4,7 @@ Read this first. It assumes no chat history, no knowledge of HML, and no knowled
 Arena. Every number below is taken from a committed artifact named beside it. Where a claim
 could not be verified, it says so.
 
-Current sentinel: **`CURRENT_SOLVER_OR_TASK_FAMILY_CANNOT_SUPPORT_GAME_R_MEASUREMENT`**.
+Current sentinel: **`SOLVER_SPECIFIC_FAILURE_SUPPORTED`** (Phase 6).
 
 ---
 
@@ -331,7 +331,7 @@ nothing else automatically, so check `ollama show gemma4:12b` before any run.
 
 ---
 
-Final sentinel: **`CURRENT_SOLVER_OR_TASK_FAMILY_CANNOT_SUPPORT_GAME_R_MEASUREMENT`**.
+Final sentinel: **`SOLVER_SPECIFIC_FAILURE_SUPPORTED`** (Phase 6). See §26 below.
 
 ---
 
@@ -494,4 +494,81 @@ so forces fresh calls without touching probes, gates or prompts:
 .venv/bin/python -m arena.experiments.fitness_v5 develop
 ```
 
-Final sentinel: **`CURRENT_SOLVER_OR_TASK_FAMILY_CANNOT_SUPPORT_GAME_R_MEASUREMENT`**.
+Final sentinel: **`SOLVER_SPECIFIC_FAILURE_SUPPORTED`** (Phase 6). See §26 below.
+
+
+---
+
+# PHASE 6 ADDENDUM (2026-09-07) — the blocker was the Solver
+
+Supersedes the sentinel and next-step sections above.
+
+## 26. What Phase 6 did
+
+Ran the **frozen** V5 instrument against a materially different solver, changing nothing else.
+Preregistration: `docs/PHASE6_PREREGISTRATION.md`, committed before any experimental call.
+Full result: `docs/FITNESS_V6_SOLVER_SUBSTITUTION_RESULT.md`.
+
+| Condition | Solver | Prompt | Artifact sha256 |
+|---|---|---|---|
+| gemma-framed | `gemma4:12b` 11.9B | model renderer (Phase 5) | `0c5b3271…0097579` |
+| gemma-bare | `gemma4:12b` | verbatim bytes | `6deead58…2838418` |
+| qwen-bare | `qwen38-rvn` 27.3B, family `qwen35` | verbatim (its native handling) | `e753de98…8be4916a` |
+
+## 27. Result
+
+**Primary endpoint** (preregistered): paired exact McNemar on the degeneracy indicator over the
+three cells where gemma reached answer share 1.000, n=72. Gemma 72/72 degenerate → qwen 36/72,
+b=36, c=0, **p = 2.9e-11**. 36/72 is chance against a fixed modal answer, so qwen has **no
+residual degeneracy**. Removing gemma's framing does not rescue it (p = 0.0625).
+
+Answer entropy on those cells: gemma 0.00/0.00/0.00 bits; qwen **1.00/1.00/1.00**.
+Accuracy there: gemma .500/.500/.500; qwen **1.000/1.000/.750**.
+Pooled positive accuracy (n=288): gemma-framed .7118, gemma-bare .6319, **qwen .9062**.
+
+`transitive_dependency` **QUALIFIED** for qwen at L3 — the first mechanism ever to qualify.
+All three explicit arms passed for qwen; gemma passed two framed and none bare.
+
+**The failure mode inverted.** Qwen's two non-qualifying mechanisms fail for the opposite
+reason to gemma's floor collapse: `precondition_conjunction` is `VOID_CEILING` (1.000 at every
+level), and `formal_expression_depth` is `VOID_NEGATIVE_CONTROL` through a **selector
+miscalibration**, not a reading failure.
+
+## 28. Two instrument defects now demonstrable
+
+1. **The negative control is a mathematical constant.** Destroyed twins are information-
+   identical with opposite targets, so any deterministic solver scores exactly 0.500. With
+   `gap >= 0.20` the effective qualifying window is `[0.70, 0.85]`, but frontier selection
+   targets **0.625** — it prefers levels that cannot qualify. Qwen landed L3 at exactly .625 and
+   was voided, while its L1 (.833) and L2 (.792) would both have passed. This alone cost a
+   second qualification and therefore the founder tournament.
+2. **The prompt path is not solver-neutral.** Ollama applies a model's Modelfile `RENDERER` on
+   `/api/generate`; gemma has one (+12 tokens, and it changed an answer), qwen does not.
+   `ollama show --template` returns `{{ .Prompt }}` for both and is **not** a valid neutrality
+   test — use the default-versus-`raw:true` prompt-token delta.
+
+Also recorded: the abort clause labels qwen
+`CURRENT_SOLVER_OR_TASK_FAMILY_CANNOT_SUPPORT_GAME_R_MEASUREMENT`, which is wrong for it. The
+clause was written for a floor failure and cannot recognise a ceiling one.
+
+## 29. Status
+
+`GAME_R_NOT_RUN` — the frozen gate needs 2 qualified mechanisms and got 1; no threshold was
+reinterpreted. `RSTAR_NOT_IDENTIFIED` — no representation has been scored at any point.
+
+## 30. Highest-EV next action
+
+**Fix the frontier target into `[0.70, 0.85]` (≈0.775), extend the ladder upward, re-run qwen
+only (~400 calls).** Under the target fix alone, `formal_expression_depth` selects L2 (.792),
+passes the gap and share gates, and two mechanisms qualify — which authorises the founder
+tournament, the first time Game R would actually run. Do not run a third solver; the Phase-6
+question is answered.
+
+Commands:
+
+```bash
+.venv/bin/python -m arena.experiments.fitness_v5 status --solver qwen38-rvn --bare
+.venv/bin/python -m arena.experiments.fitness_v5 develop --solver qwen38-rvn --bare
+```
+
+Final sentinel: **`SOLVER_SPECIFIC_FAILURE_SUPPORTED`**.

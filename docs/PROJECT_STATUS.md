@@ -10,7 +10,7 @@ first controlled game. No language is assumed to win; a negative result is valid
 
 ## Current Stage
 
-`CURRENT_SOLVER_OR_TASK_FAMILY_CANNOT_SUPPORT_GAME_R_MEASUREMENT`. Fitness V5 repaired the two
+`SOLVER_SPECIFIC_FAILURE_SUPPORTED` (Phase 6). Fitness V5 repaired the two
 instrument defects that invalidated V3 and V4 (input truncation, then a 64-token output cap
 plus a representation-specific character guard) using grammar-constrained decoding and real
 Lean-derived probe states. The repair is complete and measured: 0 malformed rows in 432,
@@ -156,18 +156,17 @@ attestation are possible offline with no download. Four local Solver families ar
 (`gemma4:12b`, `gemma4:31b`, `qwen38-rvn`, `qwen36-huihui`), which is what the next action
 needs.
 
-## Phase 6 in progress (2026-09-07) — LIVE RUN, see docs/PHASE6_IN_PROGRESS.md
+## Phase 6 complete (2026-09-07) — SOLVER_SPECIFIC_FAILURE_SUPPORTED
 
-**A background experiment is running as of this commit.** Any concurrent session must read
-`docs/PHASE6_IN_PROGRESS.md` before touching `arena/experiments/fitness_v5.py`,
-`arena/environments/`, `artifacts/`, or issuing any model call.
+Frozen-V5 solver substitution. `qwen38-rvn` escapes the Phase-5 degeneracy completely
+(paired exact McNemar p = 2.9e-11), qualifies `transitive_dependency` — the first mechanism
+ever to qualify — and passes all three explicit-positive arms. Its two non-qualifying
+mechanisms fail for the *opposite* reason to gemma's: one saturates at 1.000 at every level
+(`VOID_CEILING`), the other is voided by a frontier-selector miscalibration rather than a
+reading failure. The founder tournament is still not authorised (gate needs 2 qualified
+mechanisms, got 1), so `GAME_R_NOT_RUN` and `RSTAR_NOT_IDENTIFIED` stand.
 
-
-Frozen-V5 solver substitution. A pre-run audit found that Ollama applies gemma's built-in
-renderer on `/api/generate` (+12 framing tokens, and it can change the answer) while
-qwen38-rvn receives bare bytes, so Phase 6 runs **both** solvers under a `bare` condition that
-delivers exactly the instrument's bytes. Preregistered in `docs/PHASE6_PREREGISTRATION.md`
-before any experimental call. Phase-5 artifacts and sentinel are untouched.
+Full result: `docs/FITNESS_V6_SOLVER_SUBSTITUTION_RESULT.md`.
 
 ## Parallel next-stage branch (2026-09-07) — preparation, no experiment
 
@@ -224,6 +223,45 @@ An independent forensic audit reports the same 13 + 48 split. The literal prereg
 runtime has its own cache namespace, and the counts match the documented 06:16 relaunch plus
 within-run reuse). Resolution belongs to the Phase-6 session and the project owner; see
 `docs/PHASE6_INTEGRATION_MAP.md` §0b.
+
+## 72-hour sprint (2026-09-07) — branch base reconciliation
+
+This worktree now carries the Phase-6 result (`b3717c3`), the parallel next-stage machinery, and
+the forensic-audit namespaces. The append-only ledger conflict was resolved by keeping **both**
+sides in wall-clock order; no entry was rewritten.
+
+**Phase 6 outcome, as published:** `SOLVER_SPECIFIC_FAILURE_SUPPORTED`. Substituting `qwen38-rvn`
+for `gemma4:12b` on the frozen instrument escapes the degeneracy (paired exact McNemar
+p = 2.9e-11 on the preregistered endpoint) and qualifies `transitive_dependency` — **the first
+mechanism ever to qualify**. The failure mode inverts from floor to ceiling.
+
+**Contested validity, recorded not resolved:** the qwen artifact carries 61 `cache_hit == true`
+rows (13 ladder + 48 within-run reuse) against an invalidation rule of "cache hits > 0", verified
+independently by two audits. This sprint therefore uses **no Phase-6 number as confirmatory
+input**; the Qwen solver-escape is treated as descriptive evidence that qwen is the right scout
+Solver, which is a design choice, not a result.
+
+**The selector defect is now load-bearing.** Both the Phase-6 session and this project's own
+frozen-data analysis independently found that the frontier selector minimises |accuracy − 0.625|
+while the gap gate (destroyed control a constant 0.5000, `gap ≥ 0.20`) admits only
+`positive ∈ [0.70, 0.85]`. The selector therefore prefers levels that cannot qualify. Phase 6
+records that under a corrected target `formal_expression_depth` would have selected L2 (0.792) and
+passed — giving two qualified mechanisms and authorising the founder tournament.
+
+**This must not be done by re-scoring.** Re-aiming a selector after seeing the data is protocol
+shopping, and simulation shows both naive re-aimed selectors score *above* an oracle that knows
+the true accuracy — they convert sampling noise into passes
+(`artifacts/reports/v5_selector_analysis.json`). The admissible route is: derive the target from
+the gate arithmetic, preregister it, and **re-run fresh**.
+
+**Sealed before any sprint work began.** `artifacts/manifests/SEALED_SPLITS.json` records sha256
+and byte counts for four held-out LeanDojo splits. Permitted development sources are only
+`random/train.json`, `corpus.jsonl`, and `steps.jsonl` filtered to `split == "train"`.
+
+**Primary data asset verified.** LeanDojo Benchmark 4, leandojo 2.0.0, mathlib4
+`29dcec074de168ac2bf835a77ef68bbe069194c5`. `steps.jsonl` = 259,580 rows (train 250,814 / val
+4,260 / test 4,506); 167,779 (64.6%) cite ≥1 premise; `rw` commonest head at 48,991. A built
+mathlib at that commit exists locally (18 GB, 5,680 `.olean`).
 
 ## Current Blockers
 

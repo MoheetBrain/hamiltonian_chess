@@ -1121,9 +1121,7 @@ def run_development(
         >= int(QUALIFICATION_RULE["minimum_qualified_mechanisms"]),
         "ladder_rows": ladder_rows,
     }
-    ArtifactStore(root / "artifacts").write_json(
-        "experiments/fitness_v5/development/result.json", payload
-    )
+    ArtifactStore(root / "artifacts").write_json(development_artifact_path(solver, bare), payload)
     return payload
 
 
