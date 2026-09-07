@@ -1,0 +1,296 @@
+{
+  "all_levels": {
+    "answer_index_counts": {
+      "0": 48,
+      "1": 48
+    },
+    "n": 96,
+    "rules": {
+      "canonical_object_declaration_order": {
+        "accuracy": 0.5,
+        "correct": 48,
+        "n": 96
+      },
+      "first_mentioned_in_serialized_state": {
+        "accuracy": 0.8125,
+        "correct": 78,
+        "n": 96
+      },
+      "identifier_length_shorter": {
+        "accuracy": 0.5,
+        "correct": 48,
+        "n": 96
+      },
+      "identifier_lexical_order": {
+        "accuracy": 0.5,
+        "correct": 48,
+        "n": 96
+      },
+      "last_mentioned_in_serialized_state": {
+        "accuracy": 0.5,
+        "correct": 48,
+        "n": 96
+      },
+      "occurrence_count_more_frequent": {
+        "accuracy": 0.7708333333333334,
+        "correct": 74,
+        "n": 96
+      },
+      "option_order_always_A": {
+        "accuracy": 0.5,
+        "correct": 48,
+        "n": 96
+      },
+      "option_order_always_B": {
+        "accuracy": 0.5,
+        "correct": 48,
+        "n": 96
+      },
+      "target_source_order_preorder": {
+        "accuracy": 0.8958333333333334,
+        "correct": 86,
+        "n": 96
+      }
+    }
+  },
+  "bank": "V5 formal_expression_depth DEV positive arms",
+  "by_level": {
+    "0": {
+      "answer_index_counts": {
+        "0": 12,
+        "1": 12
+      },
+      "n": 24,
+      "rules": {
+        "canonical_object_declaration_order": {
+          "accuracy": 0.5,
+          "correct": 12,
+          "n": 24
+        },
+        "first_mentioned_in_serialized_state": {
+          "accuracy": 0.5,
+          "correct": 12,
+          "n": 24
+        },
+        "identifier_length_shorter": {
+          "accuracy": 0.5,
+          "correct": 12,
+          "n": 24
+        },
+        "identifier_lexical_order": {
+          "accuracy": 0.5,
+          "correct": 12,
+          "n": 24
+        },
+        "last_mentioned_in_serialized_state": {
+          "accuracy": 0.5,
+          "correct": 12,
+          "n": 24
+        },
+        "occurrence_count_more_frequent": {
+          "accuracy": 0.6666666666666666,
+          "correct": 16,
+          "n": 24
+        },
+        "option_order_always_A": {
+          "accuracy": 0.5,
+          "correct": 12,
+          "n": 24
+        },
+        "option_order_always_B": {
+          "accuracy": 0.5,
+          "correct": 12,
+          "n": 24
+        },
+        "target_source_order_preorder": {
+          "accuracy": 0.8333333333333334,
+          "correct": 20,
+          "n": 24
+        }
+      }
+    },
+    "1": {
+      "answer_index_counts": {
+        "0": 12,
+        "1": 12
+      },
+      "n": 24,
+      "rules": {
+        "canonical_object_declaration_order": {
+          "accuracy": 0.5,
+          "correct": 12,
+          "n": 24
+        },
+        "first_mentioned_in_serialized_state": {
+          "accuracy": 1.0,
+          "correct": 24,
+          "n": 24
+        },
+        "identifier_length_shorter": {
+          "accuracy": 0.5,
+          "correct": 12,
+          "n": 24
+        },
+        "identifier_lexical_order": {
+          "accuracy": 0.5,
+          "correct": 12,
+          "n": 24
+        },
+        "last_mentioned_in_serialized_state": {
+          "accuracy": 0.5,
+          "correct": 12,
+          "n": 24
+        },
+        "occurrence_count_more_frequent": {
+          "accuracy": 0.875,
+          "correct": 21,
+          "n": 24
+        },
+        "option_order_always_A": {
+          "accuracy": 0.5,
+          "correct": 12,
+          "n": 24
+        },
+        "option_order_always_B": {
+          "accuracy": 0.5,
+          "correct": 12,
+          "n": 24
+        },
+        "target_source_order_preorder": {
+          "accuracy": 1.0,
+          "correct": 24,
+          "n": 24
+        }
+      }
+    },
+    "2": {
+      "answer_index_counts": {
+        "0": 12,
+        "1": 12
+      },
+      "n": 24,
+      "rules": {
+        "canonical_object_declaration_order": {
+          "accuracy": 0.5,
+          "correct": 12,
+          "n": 24
+        },
+        "first_mentioned_in_serialized_state": {
+          "accuracy": 0.8333333333333334,
+          "correct": 20,
+          "n": 24
+        },
+        "identifier_length_shorter": {
+          "accuracy": 0.5,
+          "correct": 12,
+          "n": 24
+        },
+        "identifier_lexical_order": {
+          "accuracy": 0.5,
+          "correct": 12,
+          "n": 24
+        },
+        "last_mentioned_in_serialized_state": {
+          "accuracy": 0.5,
+          "correct": 12,
+          "n": 24
+        },
+        "occurrence_count_more_frequent": {
+          "accuracy": 0.6666666666666666,
+          "correct": 16,
+          "n": 24
+        },
+        "option_order_always_A": {
+          "accuracy": 0.5,
+          "correct": 12,
+          "n": 24
+        },
+        "option_order_always_B": {
+          "accuracy": 0.5,
+          "correct": 12,
+          "n": 24
+        },
+        "target_source_order_preorder": {
+          "accuracy": 0.8333333333333334,
+          "correct": 20,
+          "n": 24
+        }
+      }
+    },
+    "3": {
+      "answer_index_counts": {
+        "0": 12,
+        "1": 12
+      },
+      "n": 24,
+      "rules": {
+        "canonical_object_declaration_order": {
+          "accuracy": 0.5,
+          "correct": 12,
+          "n": 24
+        },
+        "first_mentioned_in_serialized_state": {
+          "accuracy": 0.9166666666666666,
+          "correct": 22,
+          "n": 24
+        },
+        "identifier_length_shorter": {
+          "accuracy": 0.5,
+          "correct": 12,
+          "n": 24
+        },
+        "identifier_lexical_order": {
+          "accuracy": 0.5,
+          "correct": 12,
+          "n": 24
+        },
+        "last_mentioned_in_serialized_state": {
+          "accuracy": 0.5,
+          "correct": 12,
+          "n": 24
+        },
+        "occurrence_count_more_frequent": {
+          "accuracy": 0.875,
+          "correct": 21,
+          "n": 24
+        },
+        "option_order_always_A": {
+          "accuracy": 0.5,
+          "correct": 12,
+          "n": 24
+        },
+        "option_order_always_B": {
+          "accuracy": 0.5,
+          "correct": 12,
+          "n": 24
+        },
+        "target_source_order_preorder": {
+          "accuracy": 0.9166666666666666,
+          "correct": 22,
+          "n": 24
+        }
+      }
+    }
+  },
+  "evidence_tag": "VERIFIED_BY_CODE",
+  "repair_assessment": {
+    "identifier_obfuscation_alone": "INSUFFICIENT",
+    "matched_counterfactuals": "REQUIRED_BUT_NOT_SUFFICIENT",
+    "order_randomisation_alone": "INSUFFICIENT",
+    "recommended_disposition": "REBUILD_THEN_REAUDIT; retire if no construction can jointly balance order, frequency, and target traversal cues while preserving depth truth."
+  },
+  "reported_numbers_reconciled": {
+    "approximately_0_913": {
+      "accuracy": 0.9166666666666666,
+      "correct": 22,
+      "n": 24
+    },
+    "note": "The reported ~0.913 is the deep L3 stratum (22/24 = 0.9167), not the pooled four-level bank (78/96 = 0.8125).",
+    "shallow_1_0": {
+      "accuracy": 1.0,
+      "correct": 24,
+      "n": 24
+    }
+  },
+  "schema_version": "codex-audit-formal-depth-shortcuts-v1"
+}

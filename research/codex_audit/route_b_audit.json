@@ -1,0 +1,1287 @@
+{
+  "causal_verdict": "NOT_A_CLEAN_REPRESENTATION_LEARNABILITY_ESTIMATE",
+  "classification": "HISTORICAL_GUIDANCE",
+  "headline_overlap": {
+    "at_224_answer_or_problem": {
+      "count": 21,
+      "indices": [
+        0,
+        416,
+        520,
+        572,
+        468,
+        208,
+        1,
+        417,
+        521,
+        573,
+        469,
+        209,
+        2,
+        418,
+        574,
+        470,
+        210,
+        314,
+        419,
+        575,
+        471
+      ],
+      "rate": 0.4375
+    },
+    "interpretation": "21/48 DEV items repeat an exact final answer or exact canonical problem seen in the first 224 training items; IDs and full actions remain disjoint."
+  },
+  "invalid_claims": [
+    "verified accuracy proves mathematical verification",
+    "the split seed randomised membership",
+    "cross-arm per-token loss ranks representation learnability",
+    "Stage-A accuracy is free of answer/problem recurrence",
+    "a genome gene caused the observed arm difference"
+  ],
+  "loss_comparability": {
+    "cross_arm_loss_is_comparable": false,
+    "max_len": 1536,
+    "reason": "Loss is averaged over representation-dependent token sequences, while the run is example-matched rather than token-matched and input truncation keeps only the final max_len tokens.",
+    "recorded_train_tokens": {
+      "L0_STRUCTURED_ENGLISH": {
+        "stage_a": 101850,
+        "stage_b": 262339
+      },
+      "L1_CURRENT_HML": {
+        "stage_a": 103642
+      },
+      "L2_SEXPR": {
+        "stage_a": 130507
+      },
+      "L3_JSON_AST": {
+        "stage_a": 101920,
+        "stage_b": 262516,
+        "stage_c": 262516
+      },
+      "L5_COMPACT_SYMBOLIC": {
+        "stage_a": 94080,
+        "stage_b": 242356,
+        "stage_c": 242356
+      }
+    }
+  },
+  "metric_audit": {
+    "finding": "verified is a key-presence/schema proxy, not NativeVerifier acceptance, optimality, or mathematical correctness.",
+    "verified_implementation": "schema_valid and presence of action_id, operation, arguments",
+    "wrong_action_demo": {
+      "prediction": {
+        "action_id": "wrong",
+        "arguments": [],
+        "operation": "wrong"
+      },
+      "score": {
+        "exact": 0,
+        "schema_valid": 1,
+        "verified": 1
+      }
+    }
+  },
+  "overlap_audit_dev_48": {
+    "128": {
+      "action_exact": {
+        "count": 0,
+        "indices": [],
+        "rate": 0.0
+      },
+      "action_without_ids": {
+        "count": 15,
+        "indices": [
+          416,
+          468,
+          208,
+          417,
+          521,
+          469,
+          209,
+          418,
+          574,
+          470,
+          210,
+          314,
+          419,
+          575,
+          471
+        ],
+        "rate": 0.3125
+      },
+      "answer_exact": {
+        "count": 17,
+        "indices": [
+          0,
+          416,
+          468,
+          208,
+          417,
+          521,
+          469,
+          209,
+          2,
+          418,
+          574,
+          470,
+          210,
+          314,
+          419,
+          575,
+          471
+        ],
+        "rate": 0.3541666666666667
+      },
+      "answer_or_problem": {
+        "count": 17,
+        "indices": [
+          0,
+          416,
+          468,
+          208,
+          417,
+          521,
+          469,
+          209,
+          2,
+          418,
+          574,
+          470,
+          210,
+          314,
+          419,
+          575,
+          471
+        ],
+        "rate": 0.3541666666666667
+      },
+      "operation": {
+        "count": 48,
+        "indices": [
+          52,
+          0,
+          156,
+          364,
+          416,
+          104,
+          520,
+          572,
+          468,
+          260,
+          624,
+          208,
+          312,
+          53,
+          1,
+          157,
+          365,
+          417,
+          105,
+          521,
+          573,
+          469,
+          261,
+          625,
+          209,
+          313,
+          54,
+          2,
+          158,
+          366,
+          418,
+          106,
+          522,
+          574,
+          470,
+          262,
+          626,
+          210,
+          314,
+          55,
+          3,
+          159,
+          367,
+          419,
+          107,
+          523,
+          575,
+          471
+        ],
+        "rate": 1.0
+      },
+      "problem_exact": {
+        "count": 4,
+        "indices": [
+          208,
+          574,
+          314,
+          575
+        ],
+        "rate": 0.08333333333333333
+      },
+      "task_id": {
+        "count": 0,
+        "indices": [],
+        "rate": 0.0
+      },
+      "trajectory_id": {
+        "count": 0,
+        "indices": [],
+        "rate": 0.0
+      }
+    },
+    "16": {
+      "action_exact": {
+        "count": 0,
+        "indices": [],
+        "rate": 0.0
+      },
+      "action_without_ids": {
+        "count": 13,
+        "indices": [
+          416,
+          468,
+          208,
+          417,
+          469,
+          209,
+          418,
+          574,
+          470,
+          210,
+          314,
+          419,
+          471
+        ],
+        "rate": 0.2708333333333333
+      },
+      "answer_exact": {
+        "count": 14,
+        "indices": [
+          0,
+          416,
+          468,
+          208,
+          417,
+          469,
+          209,
+          418,
+          574,
+          470,
+          210,
+          314,
+          419,
+          471
+        ],
+        "rate": 0.2916666666666667
+      },
+      "answer_or_problem": {
+        "count": 14,
+        "indices": [
+          0,
+          416,
+          468,
+          208,
+          417,
+          469,
+          209,
+          418,
+          574,
+          470,
+          210,
+          314,
+          419,
+          471
+        ],
+        "rate": 0.2916666666666667
+      },
+      "operation": {
+        "count": 48,
+        "indices": [
+          52,
+          0,
+          156,
+          364,
+          416,
+          104,
+          520,
+          572,
+          468,
+          260,
+          624,
+          208,
+          312,
+          53,
+          1,
+          157,
+          365,
+          417,
+          105,
+          521,
+          573,
+          469,
+          261,
+          625,
+          209,
+          313,
+          54,
+          2,
+          158,
+          366,
+          418,
+          106,
+          522,
+          574,
+          470,
+          262,
+          626,
+          210,
+          314,
+          55,
+          3,
+          159,
+          367,
+          419,
+          107,
+          523,
+          575,
+          471
+        ],
+        "rate": 1.0
+      },
+      "problem_exact": {
+        "count": 2,
+        "indices": [
+          574,
+          314
+        ],
+        "rate": 0.041666666666666664
+      },
+      "task_id": {
+        "count": 0,
+        "indices": [],
+        "rate": 0.0
+      },
+      "trajectory_id": {
+        "count": 0,
+        "indices": [],
+        "rate": 0.0
+      }
+    },
+    "224": {
+      "action_exact": {
+        "count": 0,
+        "indices": [],
+        "rate": 0.0
+      },
+      "action_without_ids": {
+        "count": 19,
+        "indices": [
+          416,
+          520,
+          572,
+          468,
+          208,
+          1,
+          417,
+          521,
+          573,
+          469,
+          209,
+          418,
+          574,
+          470,
+          210,
+          314,
+          419,
+          575,
+          471
+        ],
+        "rate": 0.3958333333333333
+      },
+      "answer_exact": {
+        "count": 21,
+        "indices": [
+          0,
+          416,
+          520,
+          572,
+          468,
+          208,
+          1,
+          417,
+          521,
+          573,
+          469,
+          209,
+          2,
+          418,
+          574,
+          470,
+          210,
+          314,
+          419,
+          575,
+          471
+        ],
+        "rate": 0.4375
+      },
+      "answer_or_problem": {
+        "count": 21,
+        "indices": [
+          0,
+          416,
+          520,
+          572,
+          468,
+          208,
+          1,
+          417,
+          521,
+          573,
+          469,
+          209,
+          2,
+          418,
+          574,
+          470,
+          210,
+          314,
+          419,
+          575,
+          471
+        ],
+        "rate": 0.4375
+      },
+      "operation": {
+        "count": 48,
+        "indices": [
+          52,
+          0,
+          156,
+          364,
+          416,
+          104,
+          520,
+          572,
+          468,
+          260,
+          624,
+          208,
+          312,
+          53,
+          1,
+          157,
+          365,
+          417,
+          105,
+          521,
+          573,
+          469,
+          261,
+          625,
+          209,
+          313,
+          54,
+          2,
+          158,
+          366,
+          418,
+          106,
+          522,
+          574,
+          470,
+          262,
+          626,
+          210,
+          314,
+          55,
+          3,
+          159,
+          367,
+          419,
+          107,
+          523,
+          575,
+          471
+        ],
+        "rate": 1.0
+      },
+      "problem_exact": {
+        "count": 5,
+        "indices": [
+          208,
+          209,
+          574,
+          314,
+          575
+        ],
+        "rate": 0.10416666666666667
+      },
+      "task_id": {
+        "count": 0,
+        "indices": [],
+        "rate": 0.0
+      },
+      "trajectory_id": {
+        "count": 0,
+        "indices": [],
+        "rate": 0.0
+      }
+    },
+    "32": {
+      "action_exact": {
+        "count": 0,
+        "indices": [],
+        "rate": 0.0
+      },
+      "action_without_ids": {
+        "count": 14,
+        "indices": [
+          416,
+          468,
+          208,
+          417,
+          469,
+          209,
+          418,
+          574,
+          470,
+          210,
+          314,
+          419,
+          575,
+          471
+        ],
+        "rate": 0.2916666666666667
+      },
+      "answer_exact": {
+        "count": 15,
+        "indices": [
+          0,
+          416,
+          468,
+          208,
+          417,
+          469,
+          209,
+          418,
+          574,
+          470,
+          210,
+          314,
+          419,
+          575,
+          471
+        ],
+        "rate": 0.3125
+      },
+      "answer_or_problem": {
+        "count": 15,
+        "indices": [
+          0,
+          416,
+          468,
+          208,
+          417,
+          469,
+          209,
+          418,
+          574,
+          470,
+          210,
+          314,
+          419,
+          575,
+          471
+        ],
+        "rate": 0.3125
+      },
+      "operation": {
+        "count": 48,
+        "indices": [
+          52,
+          0,
+          156,
+          364,
+          416,
+          104,
+          520,
+          572,
+          468,
+          260,
+          624,
+          208,
+          312,
+          53,
+          1,
+          157,
+          365,
+          417,
+          105,
+          521,
+          573,
+          469,
+          261,
+          625,
+          209,
+          313,
+          54,
+          2,
+          158,
+          366,
+          418,
+          106,
+          522,
+          574,
+          470,
+          262,
+          626,
+          210,
+          314,
+          55,
+          3,
+          159,
+          367,
+          419,
+          107,
+          523,
+          575,
+          471
+        ],
+        "rate": 1.0
+      },
+      "problem_exact": {
+        "count": 3,
+        "indices": [
+          574,
+          314,
+          575
+        ],
+        "rate": 0.0625
+      },
+      "task_id": {
+        "count": 0,
+        "indices": [],
+        "rate": 0.0
+      },
+      "trajectory_id": {
+        "count": 0,
+        "indices": [],
+        "rate": 0.0
+      }
+    },
+    "576": {
+      "action_exact": {
+        "count": 0,
+        "indices": [],
+        "rate": 0.0
+      },
+      "action_without_ids": {
+        "count": 25,
+        "indices": [
+          416,
+          520,
+          572,
+          468,
+          208,
+          312,
+          1,
+          417,
+          521,
+          573,
+          469,
+          209,
+          313,
+          2,
+          418,
+          522,
+          574,
+          470,
+          210,
+          314,
+          3,
+          419,
+          523,
+          575,
+          471
+        ],
+        "rate": 0.5208333333333334
+      },
+      "answer_exact": {
+        "count": 26,
+        "indices": [
+          0,
+          416,
+          520,
+          572,
+          468,
+          208,
+          312,
+          1,
+          417,
+          521,
+          573,
+          469,
+          209,
+          313,
+          2,
+          418,
+          522,
+          574,
+          470,
+          210,
+          314,
+          3,
+          419,
+          523,
+          575,
+          471
+        ],
+        "rate": 0.5416666666666666
+      },
+      "answer_or_problem": {
+        "count": 26,
+        "indices": [
+          0,
+          416,
+          520,
+          572,
+          468,
+          208,
+          312,
+          1,
+          417,
+          521,
+          573,
+          469,
+          209,
+          313,
+          2,
+          418,
+          522,
+          574,
+          470,
+          210,
+          314,
+          3,
+          419,
+          523,
+          575,
+          471
+        ],
+        "rate": 0.5416666666666666
+      },
+      "operation": {
+        "count": 48,
+        "indices": [
+          52,
+          0,
+          156,
+          364,
+          416,
+          104,
+          520,
+          572,
+          468,
+          260,
+          624,
+          208,
+          312,
+          53,
+          1,
+          157,
+          365,
+          417,
+          105,
+          521,
+          573,
+          469,
+          261,
+          625,
+          209,
+          313,
+          54,
+          2,
+          158,
+          366,
+          418,
+          106,
+          522,
+          574,
+          470,
+          262,
+          626,
+          210,
+          314,
+          55,
+          3,
+          159,
+          367,
+          419,
+          107,
+          523,
+          575,
+          471
+        ],
+        "rate": 1.0
+      },
+      "problem_exact": {
+        "count": 8,
+        "indices": [
+          208,
+          312,
+          209,
+          313,
+          574,
+          210,
+          314,
+          575
+        ],
+        "rate": 0.16666666666666666
+      },
+      "task_id": {
+        "count": 0,
+        "indices": [],
+        "rate": 0.0
+      },
+      "trajectory_id": {
+        "count": 0,
+        "indices": [],
+        "rate": 0.0
+      }
+    },
+    "580": {
+      "action_exact": {
+        "count": 0,
+        "indices": [],
+        "rate": 0.0
+      },
+      "action_without_ids": {
+        "count": 25,
+        "indices": [
+          416,
+          520,
+          572,
+          468,
+          208,
+          312,
+          1,
+          417,
+          521,
+          573,
+          469,
+          209,
+          313,
+          2,
+          418,
+          522,
+          574,
+          470,
+          210,
+          314,
+          3,
+          419,
+          523,
+          575,
+          471
+        ],
+        "rate": 0.5208333333333334
+      },
+      "answer_exact": {
+        "count": 26,
+        "indices": [
+          0,
+          416,
+          520,
+          572,
+          468,
+          208,
+          312,
+          1,
+          417,
+          521,
+          573,
+          469,
+          209,
+          313,
+          2,
+          418,
+          522,
+          574,
+          470,
+          210,
+          314,
+          3,
+          419,
+          523,
+          575,
+          471
+        ],
+        "rate": 0.5416666666666666
+      },
+      "answer_or_problem": {
+        "count": 26,
+        "indices": [
+          0,
+          416,
+          520,
+          572,
+          468,
+          208,
+          312,
+          1,
+          417,
+          521,
+          573,
+          469,
+          209,
+          313,
+          2,
+          418,
+          522,
+          574,
+          470,
+          210,
+          314,
+          3,
+          419,
+          523,
+          575,
+          471
+        ],
+        "rate": 0.5416666666666666
+      },
+      "operation": {
+        "count": 48,
+        "indices": [
+          52,
+          0,
+          156,
+          364,
+          416,
+          104,
+          520,
+          572,
+          468,
+          260,
+          624,
+          208,
+          312,
+          53,
+          1,
+          157,
+          365,
+          417,
+          105,
+          521,
+          573,
+          469,
+          261,
+          625,
+          209,
+          313,
+          54,
+          2,
+          158,
+          366,
+          418,
+          106,
+          522,
+          574,
+          470,
+          262,
+          626,
+          210,
+          314,
+          55,
+          3,
+          159,
+          367,
+          419,
+          107,
+          523,
+          575,
+          471
+        ],
+        "rate": 1.0
+      },
+      "problem_exact": {
+        "count": 8,
+        "indices": [
+          208,
+          312,
+          209,
+          313,
+          574,
+          210,
+          314,
+          575
+        ],
+        "rate": 0.16666666666666666
+      },
+      "task_id": {
+        "count": 0,
+        "indices": [],
+        "rate": 0.0
+      },
+      "trajectory_id": {
+        "count": 0,
+        "indices": [],
+        "rate": 0.0
+      }
+    },
+    "64": {
+      "action_exact": {
+        "count": 0,
+        "indices": [],
+        "rate": 0.0
+      },
+      "action_without_ids": {
+        "count": 15,
+        "indices": [
+          416,
+          468,
+          208,
+          417,
+          521,
+          469,
+          209,
+          418,
+          574,
+          470,
+          210,
+          314,
+          419,
+          575,
+          471
+        ],
+        "rate": 0.3125
+      },
+      "answer_exact": {
+        "count": 17,
+        "indices": [
+          0,
+          416,
+          468,
+          208,
+          417,
+          521,
+          469,
+          209,
+          2,
+          418,
+          574,
+          470,
+          210,
+          314,
+          419,
+          575,
+          471
+        ],
+        "rate": 0.3541666666666667
+      },
+      "answer_or_problem": {
+        "count": 17,
+        "indices": [
+          0,
+          416,
+          468,
+          208,
+          417,
+          521,
+          469,
+          209,
+          2,
+          418,
+          574,
+          470,
+          210,
+          314,
+          419,
+          575,
+          471
+        ],
+        "rate": 0.3541666666666667
+      },
+      "operation": {
+        "count": 48,
+        "indices": [
+          52,
+          0,
+          156,
+          364,
+          416,
+          104,
+          520,
+          572,
+          468,
+          260,
+          624,
+          208,
+          312,
+          53,
+          1,
+          157,
+          365,
+          417,
+          105,
+          521,
+          573,
+          469,
+          261,
+          625,
+          209,
+          313,
+          54,
+          2,
+          158,
+          366,
+          418,
+          106,
+          522,
+          574,
+          470,
+          262,
+          626,
+          210,
+          314,
+          55,
+          3,
+          159,
+          367,
+          419,
+          107,
+          523,
+          575,
+          471
+        ],
+        "rate": 1.0
+      },
+      "problem_exact": {
+        "count": 4,
+        "indices": [
+          208,
+          574,
+          314,
+          575
+        ],
+        "rate": 0.08333333333333333
+      },
+      "task_id": {
+        "count": 0,
+        "indices": [],
+        "rate": 0.0
+      },
+      "trajectory_id": {
+        "count": 0,
+        "indices": [],
+        "rate": 0.0
+      }
+    }
+  },
+  "renderer_audit": {
+    "finding": "The sprint compares five concrete codec implementations. Their render methods are hard-coded and their genome class attributes label the codec; the output is not mechanically generated from all declared genome genes. This does not erase byte-level arm differences, but it prevents gene-level causal attribution.",
+    "seed_registry_uses_specialized_fixed_codecs": true,
+    "specialized_codecs": [
+      "StructuredEnglishLanguage",
+      "CurrentHMLCompatibilityLanguage",
+      "SExpressionLanguage",
+      "JsonAstLanguage",
+      "CompactSymbolicLanguage"
+    ]
+  },
+  "schema_version": "codex-audit-route-b-v1",
+  "source_artifact": {
+    "budget_mode": "EXAMPLE_MATCHED",
+    "config": {
+      "batch": 4,
+      "lora": {
+        "alpha": 32,
+        "dropout": 0.0,
+        "r": 16,
+        "targets": [
+          "q_proj",
+          "k_proj",
+          "v_proj",
+          "o_proj"
+        ]
+      },
+      "lr": 0.0001,
+      "max_len": 1536,
+      "optimizer": "AdamW",
+      "seed": 0
+    },
+    "model": "Qwen/Qwen2.5-7B-Instruct",
+    "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "path": "artifacts/experiments/tier2_sprint/gpu_sprint_results.json",
+    "sha256": "d9aacf49529197410f330a010e5fac2dff667b5ea2285ba064565a60383b08d0"
+  },
+  "split_audit": {
+    "actual_sizes": {
+      "dev": 48,
+      "fresh": 48,
+      "train": 580
+    },
+    "finding": "The seed changes generated task contents but not split allocation indices; stratified_split never reads its seed parameter.",
+    "id_disjoint": true,
+    "quality_counts": {
+      "available_train_580": {
+        "GOLD": 424,
+        "REJECT": 52,
+        "SILVER": 104
+      },
+      "dev": {
+        "GOLD": 48
+      },
+      "fresh": {
+        "GOLD": 48
+      },
+      "stage_a_first_224": {
+        "GOLD": 224
+      },
+      "stage_b_first_576": {
+        "GOLD": 424,
+        "REJECT": 48,
+        "SILVER": 104
+      }
+    },
+    "requested_sizes": {
+      "dev": 48,
+      "fresh": 48,
+      "train": 600
+    },
+    "seed_argument_loaded_inside_stratified_split": false,
+    "seed_trials": {
+      "0": {
+        "index_hashes": [
+          "11675ab1ec94463bcbfc2f3145393115d584c22dd50c8056417ae69280140745",
+          "6cd33870a2f9fb93cd48a0da173add50d9c558b9bc6e44bcf489cf811ccbac72",
+          "43486db1375b8b75fb750cf851486d7d78969acf90098304b6423f6fe9434866"
+        ],
+        "world_hash": "5c6179159b77c323bca7c37609a724d0cbe1301debd23475892786aafca5085a"
+      },
+      "1": {
+        "index_hashes": [
+          "11675ab1ec94463bcbfc2f3145393115d584c22dd50c8056417ae69280140745",
+          "6cd33870a2f9fb93cd48a0da173add50d9c558b9bc6e44bcf489cf811ccbac72",
+          "43486db1375b8b75fb750cf851486d7d78969acf90098304b6423f6fe9434866"
+        ],
+        "world_hash": "c60e4655348a276c014b8c3b7222e1d06a6630840ba77413b8bf18e6a8992a39"
+      },
+      "17": {
+        "index_hashes": [
+          "11675ab1ec94463bcbfc2f3145393115d584c22dd50c8056417ae69280140745",
+          "6cd33870a2f9fb93cd48a0da173add50d9c558b9bc6e44bcf489cf811ccbac72",
+          "43486db1375b8b75fb750cf851486d7d78969acf90098304b6423f6fe9434866"
+        ],
+        "world_hash": "24382bbeb061db05bafcfa7021ade6e883b6ac80ee1377b65a5db185afdbe1f6"
+      }
+    }
+  },
+  "usable_evidence": [
+    "The run establishes that the pipeline can fit this synthetic NEXT_ACTION corpus.",
+    "Held-out exact outcomes are paired at 224 and 576 examples.",
+    "Early loss curves identify when memorisation/fitting occurs within an arm, not which R is causally superior."
+  ]
+}

@@ -772,3 +772,36 @@ is unknown and must not be assumed from the post-hoc observation that it would h
 **Next intended step.** Preregister the selector correction as a derived quantity, re-run the
 frozen instrument against qwen fresh, and in parallel build premise-selection, rewrite-direction
 and legal-transformation families behind a model-free shortcut gate.
+
+---
+
+## 2026-09-07 — Forensic audit namespaces merged (additive)
+
+**Branch.** `claude/phase-6-parallel-setup-9c6068`. **Stage.** 72-hour sprint, hour 0–4.
+
+**Objective.** Make the independent forensic audit available as sprint reference without importing
+any production change.
+
+**Files changed.** Merge only, verified additive: confined to `docs/codex_audit/` and
+`research/codex_audit/`. No file outside those namespaces touched. The audit's author labelled
+these namespaces `SAFE_TO_CHERRY_PICK`; the branch carries no production patch, which the diff
+confirms.
+
+**Decisions and why.** Merge over cherry-pick: clean, additive, preserves the audit's history. Its
+conclusions are REPORT_ONLY. Several were independently reproduced by this project's own agents
+(inert split seed, GOLD/SILVER/REJECT mix, key-presence `verified` metric, codec-not-gene problem,
+World-v0 676/676 solvability, 792-step chain count); one correction was adopted (stratified
+`first_mentioned_in_state`: 1.000 shallow / 0.9167 deep-L3 / 0.8125 pooled). Its mathlib
+disagreement was resolved: two checkouts of the same commit exist, one built (18 GB, 5,680
+`.olean`), one source-only (349 MB, 38 `.olean`).
+
+**Tests actually executed.** `git diff --cached --name-only` confirmed the change set is confined
+to the two audit namespaces. Full suite run after staging and recorded in the commit message.
+
+**Failures and uncertainty.** The audit and the Phase-6 session disagree on Phase 6's formal
+status; the conservative reading is adopted.
+
+**Effect.** No scientific claim changes. `RSTAR_NOT_IDENTIFIED` stands.
+
+**Next intended step.** Preregister the derived-target selector correction; re-run the frozen
+instrument against qwen fresh; build the three formal task families behind a shortcut gate.

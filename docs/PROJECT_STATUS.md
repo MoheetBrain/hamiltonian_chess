@@ -258,6 +258,10 @@ the gate arithmetic, preregister it, and **re-run fresh**.
 and byte counts for four held-out LeanDojo splits. Permitted development sources are only
 `random/train.json`, `corpus.jsonl`, and `steps.jsonl` filtered to `split == "train"`.
 
+**Forensic audit merged (additive).** `docs/codex_audit/` and `research/codex_audit/` from
+`codex/forensic-audit-20260907`, verified to touch no file outside those namespaces. Treated as
+REPORT_ONLY input.
+
 **Primary data asset verified.** LeanDojo Benchmark 4, leandojo 2.0.0, mathlib4
 `29dcec074de168ac2bf835a77ef68bbe069194c5`. `steps.jsonl` = 259,580 rows (train 250,814 / val
 4,260 / test 4,506); 167,779 (64.6%) cite ≥1 premise; `rw` commonest head at 48,991. A built
