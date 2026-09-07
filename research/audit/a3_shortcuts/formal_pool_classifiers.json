@@ -1,0 +1,170 @@
+{
+  "_disclaimer": "A3 DIAGNOSTIC at full-pool n. NOT a re-scoring of V7; no sentinel may be promoted, re-scored or reinterpreted from these numbers.",
+  "cells": {
+    "formal_expression_depth|L0": {
+      "best_grouped_cv": 0.7058823529411765,
+      "best_grouped_cv_model": "logistic_regression",
+      "combination_gain_over_v5_best": 0.0,
+      "explicit": true,
+      "models": {
+        "decision_stump_d1": {
+          "grouped_6fold_cv": 0.6176470588235294,
+          "in_sample": 0.7058823529411765
+        },
+        "decision_tree_d5": {
+          "grouped_6fold_cv": 0.6176470588235294,
+          "in_sample": 0.8529411764705882
+        },
+        "gradient_boosting": {
+          "grouped_6fold_cv": 0.6176470588235294,
+          "in_sample": 0.8529411764705882
+        },
+        "logistic_regression": {
+          "grouped_6fold_cv": 0.7058823529411765,
+          "in_sample": 0.7058823529411765
+        },
+        "random_forest_300": {
+          "grouped_6fold_cv": 0.6617647058823529,
+          "in_sample": 0.8529411764705882
+        }
+      },
+      "n_positives": 68,
+      "n_states_in_stratum": 34,
+      "stratum": "medium",
+      "v5_best_on_full_pool": 0.7058823529411765,
+      "v5_best_rule_on_full_pool": "more_frequent_in_state",
+      "v5_family_folded_on_full_pool": {
+        "alphabetically_first": 0.5,
+        "always_first_option": 0.5,
+        "first_mentioned_in_state": 0.5,
+        "last_mentioned_in_state": 0.5,
+        "more_frequent_in_state": 0.7058823529411765,
+        "shorter_option_text": 0.5
+      }
+    },
+    "formal_expression_depth|L1": {
+      "best_grouped_cv": 1.0,
+      "best_grouped_cv_model": "decision_stump_d1",
+      "combination_gain_over_v5_best": 0.0,
+      "explicit": false,
+      "models": {
+        "decision_stump_d1": {
+          "grouped_6fold_cv": 1.0,
+          "in_sample": 1.0
+        },
+        "decision_tree_d5": {
+          "grouped_6fold_cv": 1.0,
+          "in_sample": 1.0
+        },
+        "gradient_boosting": {
+          "grouped_6fold_cv": 1.0,
+          "in_sample": 1.0
+        },
+        "logistic_regression": {
+          "grouped_6fold_cv": 0.9705882352941176,
+          "in_sample": 1.0
+        },
+        "random_forest_300": {
+          "grouped_6fold_cv": 1.0,
+          "in_sample": 1.0
+        }
+      },
+      "n_positives": 68,
+      "n_states_in_stratum": 34,
+      "stratum": "shallow",
+      "v5_best_on_full_pool": 1.0,
+      "v5_best_rule_on_full_pool": "first_mentioned_in_state",
+      "v5_family_folded_on_full_pool": {
+        "alphabetically_first": 0.5,
+        "always_first_option": 0.5,
+        "first_mentioned_in_state": 1.0,
+        "last_mentioned_in_state": 0.5,
+        "more_frequent_in_state": 0.9117647058823529,
+        "shorter_option_text": 0.5
+      }
+    },
+    "formal_expression_depth|L2": {
+      "best_grouped_cv": 0.8823529411764706,
+      "best_grouped_cv_model": "decision_stump_d1",
+      "combination_gain_over_v5_best": 0.0,
+      "explicit": false,
+      "models": {
+        "decision_stump_d1": {
+          "grouped_6fold_cv": 0.8823529411764706,
+          "in_sample": 0.8970588235294118
+        },
+        "decision_tree_d5": {
+          "grouped_6fold_cv": 0.7941176470588235,
+          "in_sample": 0.9852941176470589
+        },
+        "gradient_boosting": {
+          "grouped_6fold_cv": 0.7941176470588235,
+          "in_sample": 1.0
+        },
+        "logistic_regression": {
+          "grouped_6fold_cv": 0.8676470588235294,
+          "in_sample": 0.8823529411764706
+        },
+        "random_forest_300": {
+          "grouped_6fold_cv": 0.8823529411764706,
+          "in_sample": 1.0
+        }
+      },
+      "n_positives": 68,
+      "n_states_in_stratum": 34,
+      "stratum": "medium",
+      "v5_best_on_full_pool": 0.8823529411764706,
+      "v5_best_rule_on_full_pool": "first_mentioned_in_state",
+      "v5_family_folded_on_full_pool": {
+        "alphabetically_first": 0.5,
+        "always_first_option": 0.5,
+        "first_mentioned_in_state": 0.8823529411764706,
+        "last_mentioned_in_state": 0.5,
+        "more_frequent_in_state": 0.7058823529411765,
+        "shorter_option_text": 0.5
+      }
+    },
+    "formal_expression_depth|L3": {
+      "best_grouped_cv": 0.8611111111111112,
+      "best_grouped_cv_model": "decision_stump_d1",
+      "combination_gain_over_v5_best": 0.0,
+      "explicit": false,
+      "models": {
+        "decision_stump_d1": {
+          "grouped_6fold_cv": 0.8611111111111112,
+          "in_sample": 0.8611111111111112
+        },
+        "decision_tree_d5": {
+          "grouped_6fold_cv": 0.8055555555555556,
+          "in_sample": 1.0
+        },
+        "gradient_boosting": {
+          "grouped_6fold_cv": 0.8611111111111112,
+          "in_sample": 1.0
+        },
+        "logistic_regression": {
+          "grouped_6fold_cv": 0.8333333333333334,
+          "in_sample": 0.9305555555555556
+        },
+        "random_forest_300": {
+          "grouped_6fold_cv": 0.8333333333333334,
+          "in_sample": 1.0
+        }
+      },
+      "n_positives": 72,
+      "n_states_in_stratum": 36,
+      "stratum": "deep",
+      "v5_best_on_full_pool": 0.8611111111111112,
+      "v5_best_rule_on_full_pool": "first_mentioned_in_state",
+      "v5_family_folded_on_full_pool": {
+        "alphabetically_first": 0.5,
+        "always_first_option": 0.5,
+        "first_mentioned_in_state": 0.8611111111111112,
+        "last_mentioned_in_state": 0.5,
+        "more_frequent_in_state": 0.7777777777777778,
+        "shorter_option_text": 0.5
+      }
+    }
+  },
+  "seed": 20260907
+}

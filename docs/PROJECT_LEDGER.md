@@ -1429,3 +1429,25 @@ the generator was missing, which would have made that evidence non-reproducible.
 
 **Next intended step.** Unchanged: the single recommended experiment in
 `docs/V7_TOTAL_FORENSIC_AUDIT.md` §22, pending the owner's decision.
+
+---
+
+## 2026-09-07 — Commit the last audit output file
+
+**Branch.** `claude/phase-6-parallel-setup-9c6068`. **Stage.** Post-audit close-out.
+
+**Objective.** Commit `research/audit/a3_shortcuts/formal_pool_classifiers.json`, the output of the
+script committed in the previous entry, so every reported audit number sits beside its generator.
+
+**Files changed.** That one JSON, plus this entry and a one-line status note.
+
+**Tests actually executed.** `python -m pytest` → 964 passed, 1 skipped (unchanged; a data file,
+not importable code).
+
+**Failures and uncertainty.** None. The file carries its own disclaimer: a diagnostic at full-pool
+n, not a re-scoring, from which no sentinel may be promoted or reinterpreted.
+
+**Effect.** No scientific claim changes. `V7_PARTIALLY_VALID_INSTRUMENT_CONFOUNDED` stands.
+
+**Next intended step.** Unchanged: the single recommended experiment in
+`docs/V7_TOTAL_FORENSIC_AUDIT.md` §22, pending the owner's decision.
