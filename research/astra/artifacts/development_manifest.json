@@ -1,0 +1,56 @@
+{
+  "adapter_version": "astra-leandojo-source-v1",
+  "admitted_items": 300,
+  "bank_path": "research/astra/artifacts/dev_bank.jsonl",
+  "bank_sha256": "8ac1a72bca88bfbf8a217444ef632054bd6159a8369ccd599738dfdb23421bb2",
+  "development_split": {
+    "heldout": 60,
+    "method": "independent seeded hash rank, 80/20",
+    "purpose": "shortcut fitting/evaluation only; not sealed scientific promotion",
+    "train": 240,
+    "unit": "theorem group"
+  },
+  "kernel_replay": false,
+  "no_model_calls": true,
+  "requested_items": 300,
+  "sampler": {
+    "extra_filters": [
+      "explicit full theorem/lemma source header",
+      "single goal",
+      "all candidate import scope",
+      "no self/future same-file declarations"
+    ],
+    "fallback": "same-module frequency-matched only; no random-global fallback",
+    "frequency_source": "first N random/train theorems, used for sampling only",
+    "level": "L3_same_module_freq_matched",
+    "ordering": "sha256(seed|task_id|premise_id); identical across representations",
+    "production_generator": "premise_selection.generator.v1",
+    "same_proof_source": "recorded citations anywhere in source proof; sampling metadata never visible"
+  },
+  "schema_version": "astra-premise-v1",
+  "seed": 20260907,
+  "source_commit": "29dcec074de168ac2bf835a77ef68bbe069194c5",
+  "source_files": [
+    {
+      "path": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo_raw/leandojo_benchmark_4/random/train.json",
+      "sha256": "eef6fb1382095ab4c28d4a0b0e2b5999a96cbef454dcf2899776957e83a40c1a",
+      "size_bytes": 373077058
+    },
+    {
+      "path": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo_raw/leandojo_benchmark_4/corpus.jsonl",
+      "sha256": "5d9f7d8321fc01380003860acc2a3ea5ffbe2f956c45a574aa29f7bb38d2ccd5",
+      "size_bytes": 60420959
+    },
+    {
+      "path": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo_raw/leandojo_benchmark_4/metadata.json",
+      "sha256": "a397544ea1bcec9d25fa8797fea0387314ec77f74e34610e9d5017dc3fec4a73",
+      "size_bytes": 244
+    }
+  ],
+  "source_pin": {
+    "dataset_name": "LeanDojo Benchmark 4",
+    "leandojo_version": "2.0.0",
+    "mathlib_commit": "29dcec074de168ac2bf835a77ef68bbe069194c5"
+  },
+  "source_theorem_limit": 5000
+}

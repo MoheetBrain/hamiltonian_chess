@@ -1,0 +1,11 @@
+# Development shortcut audit
+
+The audit is deterministic and model-free. It fits counters, lookup tables and the MDL rule on 240 development-training theorem groups and evaluates on 60 disjoint development-held-out theorem groups. No val/test source is loaded, and the audit applies no qualifying ceiling retrospectively.
+
+The six-choice bank has chance accuracy `0.1667`. The strongest measured visible rule is lexical overlap between the goal and candidate name: 25/60 = `0.4167`, with 22 ties. Token overlap is `0.4000`, identifier overlap `0.3500`, lexical statement overlap `0.3667`, and all other visible rules are at or below `0.2833`. The largest plausible visible dumb-rule result in this bounded bank is therefore `0.4167`; this is descriptive evidence, not a preregistered future ceiling. The report recommends freezing a new sampler and calibration set, then requiring a future Solver to exceed the strongest frozen rule's uncertainty bound by a declared practical delta.
+
+Measured rules include constant labels, first/last option, label frequency, premise-name frequency, declaration order, lexical/name/token/identifier overlap, shortest/longest statement and name, first mention, theorem-name clues, exact and anti-unification goal lookups, field-copy patterns, and an MDL-selected train-only rule. Private controls separately report source order, same-file, module frequency, theorem-name clue and metadata lookup. Same-proof frequency is `NOT_APPLICABLE` under theorem-disjoint fitting and is not silently treated as zero evidence.
+
+The distractor construction has a useful local shape: 750 same-proof and 750 same-module frequency-matched selections. It does not use globally random negatives in this bank. Remaining weaknesses are intrinsic to a recorded citation task: theorem and module identifiers, declaration names and source statements can carry real surface signal, and the corpus header is source-level rather than kernel-elaborated. A future promotion sampler should preserve theorem-disjoint fitting, add an independently sealed source partition, and remeasure all rules before any model call.
+
+Artifact: `research/astra/artifacts/shortcut_results.json`. Status: `DEVELOPMENT_DIAGNOSTIC_ONLY`.
