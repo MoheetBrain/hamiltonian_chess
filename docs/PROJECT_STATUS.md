@@ -399,6 +399,7 @@ pool is spent, at design level.
 
 **Diagnosis:** flat landscape 0.02 · instruments confounded / untested **0.88** · mixed 0.10.
 
+Audit tree closed (110 files, all under `research/audit/`).
 Audit tree is complete and self-consistent: every reported number sits beside its generator.
 Audit working files are under `research/audit/` (108 files, reproducible, zero model calls); three
 large regenerable intermediates are gitignored and named in `research/audit/README.md`.

@@ -1451,3 +1451,30 @@ n, not a re-scoring, from which no sentinel may be promoted or reinterpreted.
 
 **Next intended step.** Unchanged: the single recommended experiment in
 `docs/V7_TOTAL_FORENSIC_AUDIT.md` §22, pending the owner's decision.
+
+---
+
+## 2026-09-07 — Final audit stragglers; audit tree closed
+
+**Branch.** `claude/phase-6-parallel-setup-9c6068`. **Stage.** Post-audit close-out, final.
+
+**Objective.** Commit the last three files written by the shortcut auditor after its report
+returned, closing the audit tree.
+
+**Files changed.** `research/audit/a3_shortcuts/{CONSOLIDATED.json, consolidate.py,
+untested_classes.json}`, plus this entry and a one-line status note. All confined to
+`research/audit/`; nothing outside it.
+
+**Tests actually executed.** `python -m pytest` → 964 passed, 1 skipped (research data and
+standalone scripts, imported by no production module).
+
+**Failures and uncertainty.** These files arrived in several waves as the auditor finished writing,
+which is why several close-out commits were needed rather than one. No content was lost:
+`docs/V7_TOTAL_FORENSIC_AUDIT.md` was written from the auditors' returned reports, not from these
+files, so no conclusion depended on their arrival.
+
+**Effect.** No scientific claim changes. `V7_PARTIALLY_VALID_INSTRUMENT_CONFOUNDED` stands.
+
+**Next intended step.** The single recommended experiment in
+`docs/V7_TOTAL_FORENSIC_AUDIT.md` §22, pending the owner's decision. **Phase 8 as originally scoped
+is not launched**, because the audit falsifies its premise.
