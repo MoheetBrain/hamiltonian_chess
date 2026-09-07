@@ -424,3 +424,45 @@ control is a mathematical constant at 0.500, which makes the effective qualifyin
 Phase 5 remains valid: all its comparisons were within one solver under one framing.
 
 **Next intended step.** Run gemma bare and qwen bare (392 calls each), then classify.
+
+---
+
+## 2026-09-07 — Phase 6 run launched; concurrency notice committed
+
+**Date and time.** 2026-09-07, 06:10 BST. **Branch.**
+`claude/hamiltonian-arena-takeover-caa2eb`. **Project stage.** unchanged
+(`CURRENT_SOLVER_OR_TASK_FAMILY_CANNOT_SUPPORT_GAME_R_MEASUREMENT`) until Phase 6 completes.
+
+**Objective.** Commit and push mid-experiment so that a concurrent session can work without
+corrupting a live run, and so the run's design is on the remote before its results exist.
+
+**Files and systems changed.** New `docs/PHASE6_IN_PROGRESS.md`; `docs/PROJECT_STATUS.md` and
+this ledger updated to point at it. No code, probe, gate or artifact changed.
+
+**What was completed.** The Phase-6 dual-condition run was launched at 05:42 BST
+(`/tmp/phase6_run.sh`, log `artifacts/tmp/phase6.log`): gemma4:12b bare, then qwen38-rvn bare,
+392 calls each. At the time of this commit gemma bare has finished two of three mechanisms and
+the qwen run has not started. Expected completion ~08:45 BST.
+
+**Decisions made and why.** Committing mid-run rather than waiting, because the user is opening
+a parallel session and an uninformed edit to the V5 instrument, the artifact tree, or the
+Ollama server would destroy hours of compute and silently invalidate the comparison. The notice
+states explicitly what is safe to touch and what is not, and records the two hazards already
+closed so they are not reintroduced.
+
+**Tests and verification actually executed.** None new in this commit; it is documentation
+only. The last full verification was at commit `cbf811e` (pytest 190 passed; ruff, format and
+mypy clean). Interim gemma-bare ladder readings are recorded in the notice and explicitly
+labelled as not results.
+
+**Failures and unresolved uncertainty.** The run may still fail or be interrupted; the notice
+tells the next reader to report a partial run rather than analyse it as complete. An emerging
+observation, not yet a finding: gemma's explicit arms score lower without its renderer framing,
+so the write-up will have to report three conditions (gemma framed, gemma bare, qwen bare)
+rather than two.
+
+**Effect on the overall project.** No scientific claim changes. The design and its two closed
+hazards are now on the remote ahead of the results.
+
+**Next intended step.** When the run finishes, compare at fixed levels, write
+`docs/FITNESS_V6_SOLVER_SUBSTITUTION_RESULT.md`, update the handoff, commit and push.

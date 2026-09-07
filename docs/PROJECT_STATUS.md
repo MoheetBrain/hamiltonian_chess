@@ -144,7 +144,12 @@ attestation are possible offline with no download. Four local Solver families ar
 (`gemma4:12b`, `gemma4:31b`, `qwen38-rvn`, `qwen36-huihui`), which is what the next action
 needs.
 
-## Phase 6 in progress (2026-09-07)
+## Phase 6 in progress (2026-09-07) — LIVE RUN, see docs/PHASE6_IN_PROGRESS.md
+
+**A background experiment is running as of this commit.** Any concurrent session must read
+`docs/PHASE6_IN_PROGRESS.md` before touching `arena/experiments/fitness_v5.py`,
+`arena/environments/`, `artifacts/`, or issuing any model call.
+
 
 Frozen-V5 solver substitution. A pre-run audit found that Ollama applies gemma's built-in
 renderer on `/api/generate` (+12 framing tokens, and it can change the answer) while
