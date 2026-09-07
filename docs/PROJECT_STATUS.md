@@ -387,6 +387,16 @@ optimal strategy is *representation-invariant*. `transitive_dependency`'s void i
 `precondition_conjunction` is **balanced by construction** (verified in source) and failed on
 ceiling alone.
 
+**Sharpened by the ninth auditor, at population scale:** `transitive_dependency`'s voiding rule is
+at **chance (0.5175)** on 800 positives; its true margin is 0.149, or 0.110 against the strongest
+adversary — **both clear the 0.10 gate**. Conversely `formal_expression_depth` sits at 1.000/0.882/
+0.861, so that void is **robust and understated**. The same instrument was simultaneously too
+lenient on one mechanism and too harsh on another. The shortcut family is also effectively **two
+rules, not seven** (four are structurally pinned at 0.5000), and Arena's port **deleted the
+Bonferroni + Clopper–Pearson correction its own cited ancestor used** — leaving a 0.75 threshold
+that sits *below* the null mean of a max-over-7 and is crossed by noise 67% of the time.
+A correction note has been appended to `docs/FITNESS_V7_RESULT.md`.
+
 **The instrument audits a string the Solver never receives** (`canonical_json` vs the rendered
 surface); the gated cue is at exact chance on the real input in all twelve cells. The dominant
 error mode is **position anchoring** (56.5%), which the gates cannot detect. 67% of probes are

@@ -1478,3 +1478,51 @@ files, so no conclusion depended on their arrival.
 **Next intended step.** The single recommended experiment in
 `docs/V7_TOTAL_FORENSIC_AUDIT.md` §22, pending the owner's decision. **Phase 8 as originally scoped
 is not launched**, because the audit falsifies its premise.
+
+---
+
+## 2026-09-07 — Ninth auditor lands: `transitive_dependency`'s void is REFUTED at population scale
+
+**Branch.** `claude/phase-6-parallel-setup-9c6068`. **Stage.** Forensic audit, addendum.
+No experiment run, no threshold changed, no result re-scored.
+
+**Objective.** Integrate the shortcut-audit auditor, which returned after the audit document was
+committed, and correct two claims — one of them this project's own.
+
+**Files changed.** `docs/V7_TOTAL_FORENSIC_AUDIT.md` (findings C3b–C3f; §22 sharpened),
+`docs/FITNESS_V7_RESULT.md` (**correction appended additively** — recorded verdict, sentinel and
+artifact untouched), `docs/PROJECT_STATUS.md`, `research/audit/a3_shortcut_audit.md`.
+
+**What changed.** At population scale (400 synthetic families = 800 positives, vs the 24-item cell):
+`transitive_dependency`'s voiding rule `first_mentioned_in_state` is at **chance, 0.5175**. The
+cell's true best single rule is `more_frequent` at 0.601; the best obtainable surface predictor is
+0.640. Margin **0.149** against population and **0.110** against the strongest adversary — **both
+clear the 0.10 gate.** Upgraded from "not supported" to **REFUTED**. Conversely
+`formal_expression_depth` sits at 1.000/0.882/0.861, so that void is **robust and understated**.
+
+**Self-correction.** `docs/FITNESS_V7_RESULT.md` §6 claimed "a richer adversary would only lower
+these margins further, not raise them." **Refuted.** I wrote that sentence; the correction is
+appended to that document rather than the text silently edited.
+
+**Three further confirmed defects.** The family is effectively **two rules, not seven** (four
+pinned at 0.5000 by the twin construction, `last_mentioned` by key sort; **zero live rules on
+`precondition_conjunction`**). A **documented regression**: the cited ancestor used Bonferroni +
+Clopper–Pearson with a docstring explaining why; Arena's port added a negation fold (7→14) and
+deleted both, leaving 0.75 *below* the null mean of its own max-over-7 statistic (0.744, crossed by
+noise 67% of the time). And `first_mentioned_in_state` **is semantic** — 100% agreement with a
+preorder walk, because Lean curries.
+
+**Tests actually executed.** `python -m pytest` → 964 passed, 1 skipped. No model call, no GPU, no
+cloud.
+
+**Failures and uncertainty.** The population figures for `transitive_dependency` use 400
+**synthetic** families; the formal figures use the real 34/34/36 strata. Under V5's in-sample
+protocol an unbounded tree reaches 1.000 on transitive L1–L3, so the family cannot be strengthened
+without also fixing the evaluation — sample size, not the decision rule, is the binding defect.
+`precondition_conjunction`'s clean 0.500 is uninformative on its own.
+
+**Effect.** `V7_PARTIALLY_VALID_INSTRUMENT_CONFOUNDED` stands and is strengthened.
+`RSTAR_NOT_IDENTIFIED` stands.
+
+**Next intended step.** Unchanged: the single experiment in `docs/V7_TOTAL_FORENSIC_AUDIT.md` §22,
+pending the owner's decision.

@@ -27,7 +27,7 @@ is being consumed downstream as evidence about R. Its three sub-verdicts do not 
 | mechanism | V7 verdict | audit finding |
 |---|---|---|
 | `formal_expression_depth` | `VOID_SHORTCUT` | **Correctly voided — for a weaker reason than the true one.** Unrescuable |
-| `transitive_dependency` | `VOID_SHORTCUT` | **Not supported.** One row from qualifying; comparator is a selection artifact below its own null mean |
+| `transitive_dependency` | `VOID_SHORTCUT` | **Refuted.** The voiding rule is at chance (0.5175) at population scale; the true margin is 0.149, or 0.110 against the strongest adversary — **both clear the 0.10 gate** |
 | `precondition_conjunction` | `VOID_CEILING` | **Correct, and the most valuable finding in the run** — it is balanced by construction |
 
 The operational decision (do not spend the founder-tournament budget) was defensible. The
@@ -90,6 +90,45 @@ is **below the clustered null mean**; the winning rule scores 0.3333 raw — *an
 0.6667 is its post-hoc negation. McNemar exact **p = 0.625** on 4 discordant pairs, net 2 items.
 The mechanism is **one row** from qualifying (18/24, needs 19); P(QUALIFIED) under resampling
 **0.316**.
+
+**C3b — At population scale, `transitive_dependency`'s voiding rule is at CHANCE. CRITICAL,
+FALSE_NEGATIVE.** Re-measured on the full pool rather than the 24-item cell (400 synthetic families
+= 800 positives): `first_mentioned_in_state` — the rule that voided the mechanism — has population
+value **0.5175**. The cell's true best single rule is `more_frequent` at 0.601, and the best
+obtainable surface predictor (grouped-CV, ~30 antisymmetric features, depth-reconstructing features
+excluded) is **0.640**. So the margin is **0.149** against population and **0.110** against the
+strongest adversary — **both clear the 0.10 gate.** The recorded 0.0833 was a small-sample artifact
+of a chance-level rule.
+
+**C3c — Conversely, `formal_expression_depth`'s void is robust and understated.** Population values
+L1/L2/L3 = **1.000 / 0.882 / 0.861**, all above V5's own 0.75. C2 and C3b together are the audit's
+sharpest result: *the same instrument was simultaneously too lenient on one mechanism and too harsh
+on another, for the same structural reason.*
+
+**C3d — The shortcut family is effectively two rules, not seven. HIGH, BOTH.** Because twins share
+an option tuple and balanced targets, `always_first_option`, `always_second_option`,
+`shorter_option_text` and `alphabetically_first` are **structurally pinned at exactly 0.5000**;
+`last_mentioned_in_state` is pinned too, by `canonical_json`'s key sort. Live rules per cell:
+formal 2, transitive 2, **`precondition_conjunction` 0** — *nothing in the family can leave chance
+there*. Its clean 0.500 is therefore only weak evidence on its own; the by-construction balance
+established in C-PC below is the load-bearing evidence.
+
+**C3e — A documented regression from a known-better ancestor. HIGH.** `fitness_v4.py:1396-1402`
+cites `HML_V3/src/hml_v3/micromath/shortcut_v2.py`, which uses **Bonferroni + a Clopper–Pearson
+lower bound**, with a docstring explaining exactly why: *"A flat tolerance made the verdict a
+function of sample size … called that a leak on one split and clean on another."* Arena's port
+**added a negation fold (7 → 14 hypotheses searched) and deleted both the correction and the
+interval**, substituting the flat 0.75. Consequence: the exact twin-paired null gives
+`E[max over 7] = 0.744`, so **the 0.75 threshold sits below the null mean of its own statistic and
+is crossed by pure noise 67% of the time.** The family escapes only via its own degeneracy (2 live
+rules ⇒ null ≈ 0.66).
+
+**C3f — `first_mentioned_in_state` is not non-semantic. HIGH.** At L1–L3 it agrees with a preorder
+walk of the term on **100%** of probes. Lean curries (`f a b` → `app(app(f,a),b)`), so along a
+left-nested spine earlier arguments are simultaneously *deeper and earlier*;
+ρ(preorder rank, depth) = **0.735**. "Deepest identifier" and "earlier argument of the curried
+application" are the same question. Separately, `more_frequent` reflects a genuine corpus
+regularity: over 461 states the deepest identifier recurs more often **74.8%** of the time.
 
 **C4 — The 0.10 threshold is unrepresentable at n=24. CRITICAL.** Margins are `k/24`, so achievable
 values bracket 0.10 at 0.0833 and 0.125: **the executed gate is 0.125, 25% stricter than declared**,
@@ -349,8 +388,9 @@ the qualifying band, then run the programme's first founder tournament on it.**
 Not a V8: it changes **D** (difficulty), which is the frozen variable class V7's own
 `VOID_CEILING` names — the admissible reason for a new development ladder.
 
-**Why this mechanism.** It is the only one that is clean, and it is clean **by construction**, which
-I verified in source: `_premise_family` (`fitness_v4.py:762-800`) builds `objects` and `propositions`
+**Why this mechanism.** It is the only one that is clean, and — importantly — its cleanliness does
+**not** rest on the shortcut audit, which is powerless there (zero live rules, C3d). It rests on
+construction, which I verified in source: `_premise_family` (`fitness_v4.py:762-800`) builds `objects` and `propositions`
 **once** and passes them unchanged to original, counterfactual and destroyed; only
 `assumptions=held(...)` varies. The answer identifiers never move. Measured consequence: canonical
 invariant **12/12** families in every level (vs 0/12, with 12/12 *swapped*, for the other two), and
@@ -370,7 +410,15 @@ only until control accuracy ∈ [0.70, 0.85] (PC's premise count already scales 
 shared across arms; score `always_first_option` against the **model's answers**, not the key (C6);
 independent selection and qualification pools (L1); and n sized for the decision, not 24 (C4).
 
-**Falsification attempt, stated honestly.** The strongest objection is that PC is *synthetic*
+**A second falsification attempt, from the ninth auditor.** Because no rule in V5's family can
+leave chance on this mechanism, "best shortcut 0.500" is *uninformative* there — it measures the
+family's blindness, not the task's cleanliness. This is why the by-construction evidence is
+load-bearing and why the pilot's preconditions require a **fresh, per-representation adversary on
+the rendered prompt**, not the inherited family. If a stronger adversary finds signal on the
+extended ladder, the pilot must halt rather than proceed — that is its kill condition.
+
+**The main falsification attempt, stated honestly.** The strongest objection is that PC is
+*synthetic*
 (`formal=None`), so an effect there may not generalise to real mathematics. That is a limit on
 **generalisation**, not on **validity** — and it is the correct order of operations: establish
 existence on the cheapest clean instrument before spending ≈199,000 Lean replays. The second

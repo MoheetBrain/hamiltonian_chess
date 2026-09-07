@@ -111,3 +111,38 @@ instrument version. Three such families now exist
 (`docs/GAME_R_FORMAL_ARENA_V1_SPEC.md`), and a canonical premise-selection bridge exists as a
 research prototype (`docs/astra/`) — but see that spec's §2 for why neither is yet a Game-R
 instrument.
+
+
+---
+
+## 8. CORRECTION (appended 2026-09-07 after the total forensic audit)
+
+**This section corrects §4 and §6 of the document above. The recorded V7 verdict, sentinel and
+artifact are unchanged — nothing is re-scored.**
+
+§6 states: *"a richer adversary would only lower these margins further, not raise them."*
+**That is refuted.** Re-measuring the shortcut family at population scale (400 synthetic families =
+800 positives, rather than the 24-item cell) shows:
+
+- `transitive_dependency` L3's voiding rule, `first_mentioned_in_state`, has population value
+  **0.5175 — chance.** The cell's true best single rule is `more_frequent` at 0.601, and the best
+  obtainable surface predictor is **0.640**. The margin is therefore **0.149** against population
+  and **0.110** against the strongest adversary — **both clear the preregistered 0.10 gate.**
+  The recorded 0.0833 was a small-sample artifact of a chance-level rule inflated by max-over-k
+  selection on the same 24 items.
+- `formal_expression_depth` L1/L2/L3 sit at population **1.000 / 0.882 / 0.861**, all above V5's own
+  0.75. **That void is robust and, if anything, understated** — and the deeper reason is stronger
+  still: a bracket-depth counter solves it at 1.000 on the rendered prompt across all eight
+  surfaces, so its optimal strategy is representation-invariant.
+
+So §4's two-sided framing of `transitive_dependency` ("under V5's rules it qualifies; under V7's
+stricter rule it does not") was too generous to V7. The correct statement is that **V7's stricter
+rule was applied against a comparator that does not exist at population scale.**
+
+The operational decision — not to spend the founder-tournament budget on this probe bank — remains
+defensible on other grounds (`formal_expression_depth` is genuinely degenerate;
+`precondition_conjunction` is genuinely at ceiling). The *scientific* claim in the sentinel
+`V7_SHORTCUT_DOMINATED` does not survive.
+
+Full evidence and classification: `docs/V7_TOTAL_FORENSIC_AUDIT.md` §3 (C3b, C3c, C3e) and
+`research/audit/a3_shortcuts/`.
