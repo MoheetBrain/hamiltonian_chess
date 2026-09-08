@@ -67,3 +67,26 @@ def test_all_five_measures_are_serialised_together() -> None:
         "minimal_proof_length",
     ):
         assert key in payload, key
+
+
+def test_kernel_step_count_is_assigned_not_left_at_its_default() -> None:
+    """RT-14 regression: the field existed but nothing ever set it, so it read 0 everywhere.
+
+    A cost term that is structurally zero cannot notice a macro doing fourteen steps' work, which
+    is exactly the macro-cost hiding manual section 29 lists as an attack class.
+    """
+
+    from arena.trajectory.schema import Actor, TrajectoryAction
+
+    macro = TrajectoryAction(
+        index=0,
+        from_state_id="0",
+        to_state_id="1",
+        actor=Actor.REFERENCE,
+        tactic="one_big_macro",
+        kernel_steps=14,
+    )
+    assert macro.kernel_steps == 14
+    assert macro.to_dict()["kernel_steps"] == 14
+    # One model-facing decision, fourteen kernel operations: the two must not be conflated.
+    assert macro.kernel_steps != 1

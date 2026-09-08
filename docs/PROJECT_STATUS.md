@@ -567,6 +567,76 @@ state-vs-state comparisons.
 3. **Automation.** The default tactic policy is `record_only`, so heavy tactics appear in the head
    counts. A restriction is a parameter with a hashed policy id, not a hidden constant.
 
+## Red team of HC-V0 (2026-09-08) — 21 exploits, 1 CRITICAL, 3 fixed
+
+An independent red team attacked the loop under manual §29/§47 Step 9
+(`docs/HC_V0_RED_TEAM.md`, suite `hc-v0-redteam-2026-09-08`, 9 executable attack scripts under
+`research/phase9/redteam/`). It confirmed **21 exploits, one CRITICAL**. Per manual §29 the
+standing wording is **"0 known critical exploits under attack_suite_version
+hc-v0-redteam-2026-09-08"** after the fixes below — never "unexploitable".
+
+### RT-01 (CRITICAL) — fixed, and verified against the live kernel
+
+`native_decide` closed any decidable goal, was marked `CLOSED_VERIFIED`, and received full reward.
+The axiom `Lean.ofReduceBool` **was** detected and stored in
+`KernelVerification.contains_of_reduce_bool` — and then **never consulted by the verdict**, which
+read only `returncode == 0 and not has_sorry and not errors`. Detection without a gate is not a
+gate. An evolutionary search would have found this **within minutes**, because the reward paid for
+closure and charged nothing for horizon.
+
+**Fixed with an allow-list, not another deny-list entry.** A `CLOSED_VERIFIED` trajectory may now
+depend only on `TRUSTED_AXIOMS = {propext, Classical.choice, Quot.sound}`; anything else fails
+closed and is named in `untrusted_axioms`. A deny-list would have had to anticipate the next
+exotic axiom. Confirmed against the live kernel:
+
+| proof | `#print axioms` | verdict |
+|---|---|---|
+| `by native_decide` | `[propext, Lean.ofReduceBool]` | **REFUSED** |
+| `by decide` | `[propext]` | verified |
+| `by norm_num` | `[propext]` | verified |
+
+That is the right line: kernel trust in, compiler trust out.
+
+**The committed bank survives the stricter rule.** Rebuilt and re-verified: **11
+`CLOSED_VERIFIED`**, identical histogram `{5:7, 7:1, 12:1, 13:1, 14:1}`, **zero untrusted axioms**,
+zero `native_decide`.
+
+### RT-14 (MEDIUM) — fixed
+
+`KernelStepCount` existed as a field and was **never assigned**, so it read 0 everywhere and no
+objective could notice a macro doing fourteen steps' work — manual §29 macro-cost hiding, by
+omission. Actions now carry `kernel_steps` and the horizon sums them (81 across the verified bank).
+
+### RT-15 (MEDIUM) — fixed
+
+The committed bank's stored horizon block predated the vocabulary retrofit and held 5 keys, not
+10. The bank was rebuilt; all ten are now stored, and `horizon` remains a derived property so the
+stored block cannot drift.
+
+### 18 findings remain OPEN
+
+Not fixed in this pass and recorded in `docs/HC_V0_RED_TEAM.md` with reproductions. The
+load-bearing ones: **RT-02** two unrelated theorems can be spliced into one trajectory that loads
+clean; **RT-03** `--relive` replays the *source record's* tactics, so a forged action list passes;
+**RT-04** one episode can yield both a `REFERENCE` and a `SOLVER` record, both self-consistent;
+**RT-13** a re-rolled `mutation_hash` grants the same (parent, child, condition) a second `FRESH`
+record — free extra draws, the §30.4 winner's curse; **RT-16** `league-registry.json` carries
+`J_solve: 0.75` with no `EXECUTABILITY_ONLY_NOT_A_RESULT` stamp, which lives only in
+`summary.json`. Of the open set, the red team judges **RT-13 search-reachable** on the first
+multi-generation run with a stochastic evaluator; the rest need author or operator write access.
+
+### Defences that held
+
+`sorry` is refused at three independent layers (Python policy, the REPL itself, and the kernel
+axiom check) across all ten spellings tried. **No verdict anywhere is computed by comparing two
+states** — the only state-text comparison is against the fixed literal `no goals` — so alpha-
+renaming, binder renaming and irrelevant reordering have no verification surface to attack.
+Determinism and the re-scoring guard held under `PYTHONHASHSEED` variation in separate processes.
+Dead-candidate enforcement is complete: a gated-out candidate spends zero calls and never reaches
+the archive. The sealed-split guard survived `./`, `../`, absolute and `//` evasions. The
+builder's leakage counts replicated exactly, and the committed bank has zero live-state leaks
+across 120 states.
+
 ## Current Blockers
 
 1. **The meta-game has no verified trajectory world.** Every existing environment is a

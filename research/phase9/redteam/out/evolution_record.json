@@ -1,0 +1,120 @@
+{
+  "E0_determinism_two_runs": {
+    "run_id_equal": true,
+    "record_ids_equal": true,
+    "content_hashes_equal": true,
+    "manifest_hash_a": "97b0016e4f60b18632c36d99604020815546658ff22cf39c7a55d8b7247355e4",
+    "manifest_hash_b": "97b0016e4f60b18632c36d99604020815546658ff22cf39c7a55d8b7247355e4",
+    "final_front_equal": true,
+    "outcomes": [
+      "SCORED"
+    ]
+  },
+  "E0b_run_shape": {
+    "n_records": 1,
+    "statuses": [
+      "COMPLETE"
+    ],
+    "outcomes": [
+      "SCORED"
+    ],
+    "J_solve": [
+      0.75
+    ],
+    "scientific_status_in_summary": "EXECUTABILITY_ONLY_NOT_A_RESULT"
+  },
+  "L1_parent_id_unbound_from_parent_hash": {
+    "true_parent_id": "L0_STRUCTURED_ENGLISH",
+    "true_parent_hash": "9823d4955c841681",
+    "claimed_parent_id": "a-parent-that-never-existed",
+    "record_id_unchanged": true,
+    "append_scope": "FRESH",
+    "reread_ok": true,
+    "note": "parent_genome_id is NOT part of the eleven-component evaluation identity; only parent_genome_hash is. A record can name any parent it likes and still reproduce every stored hash."
+  },
+  "L1b_parent_hash_swapped_to_a_different_seed": {
+    "accepted": "FRESH",
+    "new_record_id": true,
+    "claimed_parent_id": "L0_STRUCTURED_ENGLISH",
+    "actual_hash_belongs_to": "L1_CURRENT_HML",
+    "note": "no cross-check that parent_genome_hash is the hash of parent_genome_id"
+  },
+  "L2_mutation_hash_reroll_gives_a_free_rescore": {
+    "same_parent_hash": true,
+    "same_child_hash": true,
+    "same_condition_id": true,
+    "first_scope": "FRESH",
+    "second_scope": "FRESH",
+    "distinct_record_ids": true,
+    "records_on_disk": 2,
+    "note": "mutation_hash is caller-supplied and never derived from gene_changes, so a search that re-proposes the same edge under a new proposal id gets an independent draw under a stochastic evaluator with no multiplicity accounting"
+  },
+  "L3_gene_changes_not_cross_checked": {
+    "real_gene_changes": [
+      {
+        "gene": "token_policy",
+        "from_value": "wordlike",
+        "to_value": "compact"
+      }
+    ],
+    "declared_gene_changes": [
+      {
+        "gene": "alphabet",
+        "from_value": "ASCII_MINIMAL",
+        "to_value": "UNICODE_MATH"
+      }
+    ],
+    "real_intervention_class": "R_ONLY",
+    "declared_intervention_class": "R_ONLY",
+    "record_id_unchanged": true,
+    "append_scope": "FRESH",
+    "unknown_gene_fails_closed": "BLOCKED: no declared InterventionClass for gene(s) ['a_future_ontology_gene']. Add them to GENE_INTERVENTION_CLASS with their tru",
+    "distinct_classes_in_table": [
+      "R_ONLY"
+    ],
+    "note": "InterventionClass is derived from the DECLARED gene list, not from diffing parent_genome_hash against child_genome_hash; the derivation is only as honest as the declaration it reads. Today the table is single-valued (every gene R_ONLY) so a false declaration cannot yet change the class -- it becomes exploitable the moment a non-R_ONLY gene is added, which is exactly what the module's own comment warns about."
+  },
+  "L4_rescoring_guard": {
+    "identical_reappend": "SAME_CONDITION_REUSE",
+    "same_identity_different_result": "BLOCKED: M-0d91d015350081da8528 already has a record under this identity with a different result_hash (e4deff8304240c60 vs f25173b4b3f9a55e); the pipeline is n"
+  },
+  "L5_promoted_flag_flipped_after_the_fact": {
+    "naive_in_place_edit": "BLOCKED: record M-0d91d015350081da8528 does not reproduce its stored content_hash",
+    "resealed_edit": "ACCEPTED (promoted=True)",
+    "supersedes_used": null,
+    "note": "hashes are self-referential, not chained and not signed, so recomputing them is sufficient; there is no prev_hash, no manifest attestation and no append log"
+  },
+  "L6_delete_then_rewrite": {
+    "scope_after_deleting_the_file": "FRESH",
+    "records_now": 1,
+    "note": "the append-only guarantee is the in-memory index rebuilt from a directory glob; removing the file removes the memory. No log, no manifest, no chain."
+  },
+  "L7_rows_file_detached": {
+    "rows_path_deleted": "lfm-a373addc0bd4fadc7c1d937f26f1f94da5d7c242f869ce34d1925a7cc530a84e.rows.jsonl",
+    "record_still_readable": true,
+    "any_complaint": false,
+    "docstring_claim": "spec section 4 says a record whose rows file is absent is a summary, not a fitness record, and a summary cannot be re-analysed at a different granularity",
+    "note": "nothing on the read path checks that the rows file exists or matches the record"
+  },
+  "L8_cross_condition_pooling": {
+    "condition_ids": [
+      "4c5c1cf232a8a494b9a965f7ea76fae4f862418e4cc9cf471dc9293148512109",
+      "bc186aee0318338c5d8c728f15fb34d0164a7dc782cbaf2d36addc8ef63a9a27"
+    ],
+    "distinct_conditions": 2,
+    "records_returned_by_records()": 2,
+    "manifest_hash_pools_both": "94ad943177f658275aa8ec6e3091418eff1b19e3f6dc0aea06cc689dfbe969c3",
+    "cross_condition_scope_ever_returned": false,
+    "note": "sharding by condition_id is real, but records() globs */lfm-*.json across every shard and summary() pools them into one manifest_hash with no condition partition; the CROSS_CONDITION refusal never fires because it is keyed on record_id, which already contains the condition components"
+  },
+  "L9_dead_candidate_enforcement": {
+    "killed": [],
+    "scored": [
+      "M-0d91d015350081da8528"
+    ],
+    "killed_carry_fitness": [],
+    "killed_in_league_registry": [],
+    "scored_in_league_registry": [],
+    "league_candidate_count": 0
+  }
+}

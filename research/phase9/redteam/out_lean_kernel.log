@@ -1,0 +1,195 @@
+{
+  "K1_policy_classify": {
+    "sorry": [
+      "REFUSED_UNSOUND",
+      "tactic mentions unconditionally refused token(s) ['sorry']"
+    ],
+    "admit": [
+      "REFUSED_UNSOUND",
+      "tactic mentions unconditionally refused token(s) ['admit']"
+    ],
+    "stop": [
+      "REFUSED_UNSOUND",
+      "tactic mentions unconditionally refused token(s) ['stop']"
+    ],
+    "exact sorryAx _ _": [
+      "REFUSED_UNSOUND",
+      "tactic mentions unconditionally refused token(s) ['sorryAx']"
+    ],
+    "exact @sorryAx _ _ true": [
+      "REFUSED_UNSOUND",
+      "tactic mentions unconditionally refused token(s) ['sorryAx']"
+    ],
+    "all_goals sorry": [
+      "REFUSED_UNSOUND",
+      "tactic mentions unconditionally refused token(s) ['sorry']"
+    ],
+    "first | rfl | sorry": [
+      "REFUSED_UNSOUND",
+      "tactic mentions unconditionally refused token(s) ['sorry']"
+    ],
+    "exact (by sorry : True)": [
+      "REFUSED_UNSOUND",
+      "tactic mentions unconditionally refused token(s) ['sorry']"
+    ],
+    "«sorry»": [
+      "REFUSED_UNSOUND",
+      "tactic mentions unconditionally refused token(s) ['sorry']"
+    ],
+    "have h : True := by sorry": [
+      "REFUSED_UNSOUND",
+      "tactic mentions unconditionally refused token(s) ['sorry']"
+    ],
+    "exact hsorry": [
+      "ALLOWED",
+      ""
+    ],
+    "simp [Nat.stop_eq]": [
+      "ALLOWED",
+      ""
+    ],
+    "exact admitted_lemma": [
+      "ALLOWED",
+      ""
+    ],
+    "native_decide": [
+      "ALLOWED",
+      ""
+    ],
+    "decide": [
+      "ALLOWED",
+      ""
+    ],
+    "exact?": [
+      "ALLOWED",
+      ""
+    ],
+    "apply?": [
+      "ALLOWED",
+      ""
+    ],
+    "aesop": [
+      "ALLOWED",
+      ""
+    ]
+  },
+  "K2_repl_behind_the_python_guard": {
+    "sorry": {
+      "outcome": "TACTIC_ERROR",
+      "error": "proof contains `sorry`",
+      "tactic_state": "",
+      "closed_flag": false
+    },
+    "admit": {
+      "outcome": "TACTIC_ERROR",
+      "error": "proof contains `sorry`",
+      "tactic_state": "",
+      "closed_flag": false
+    },
+    "stop": {
+      "outcome": "TACTIC_ERROR",
+      "error": "<stdin>:1:4: unexpected end of input; expected '{'",
+      "tactic_state": "",
+      "closed_flag": false
+    }
+  },
+  "K3_verify_closed_script_with_sorry": {
+    "verified": false,
+    "print_axioms": "'probe_redteam_triv' depends on axioms: [sorryAx]",
+    "contains_sorry_ax": true,
+    "contains_of_reduce_bool": false,
+    "exit_code": 0,
+    "errors": "",
+    "wall_s": 1.3,
+    "tactics": [
+      "sorry"
+    ]
+  },
+  "K4a_native_decide_kernel": {
+    "verified": true,
+    "print_axioms": "'probe_redteam_nd' depends on axioms: [propext, Lean.ofReduceBool]",
+    "contains_sorry_ax": false,
+    "contains_of_reduce_bool": true,
+    "exit_code": 0,
+    "errors": "",
+    "wall_s": 1.3,
+    "tactics": [
+      "native_decide"
+    ]
+  },
+  "K4b_decide_kernel": {
+    "verified": true,
+    "print_axioms": "'probe_redteam_nd' depends on axioms: [propext]",
+    "contains_sorry_ax": false,
+    "contains_of_reduce_bool": false,
+    "exit_code": 0,
+    "errors": "",
+    "wall_s": 1.3,
+    "tactics": [
+      "decide"
+    ]
+  },
+  "K4c_honest_kernel": {
+    "verified": true,
+    "print_axioms": "'probe_redteam_nd' depends on axioms: [propext]",
+    "contains_sorry_ax": false,
+    "contains_of_reduce_bool": false,
+    "exit_code": 0,
+    "errors": "",
+    "wall_s": 1.3,
+    "tactics": [
+      "rfl"
+    ]
+  },
+  "K4d_arena_native_decide": {
+    "terminal_status": "CLOSED_VERIFIED",
+    "reward": 1.0,
+    "kernel": {
+      "verified": true,
+      "print_axioms": "'probe_redteam_nd' depends on axioms: [propext, Lean.ofReduceBool]",
+      "contains_sorry_ax": false,
+      "contains_of_reduce_bool": true,
+      "exit_code": 0,
+      "errors": ""
+    },
+    "CLOSED_VERIFIED": true
+  },
+  "K5_statement_not_bound_to_problem_id": {
+    "verified": false,
+    "print_axioms": "",
+    "contains_sorry_ax": false,
+    "contains_of_reduce_bool": false,
+    "exit_code": 0,
+    "errors": "'probe_redteam_liar' does not depend on any axioms\n",
+    "wall_s": 1.3,
+    "tactics": [
+      "trivial"
+    ]
+  },
+  "K6_sid_chain": {
+    "start_ok": true,
+    "forged_sid": {
+      "outcome": "UNKNOWN_STATE_ID",
+      "error": "state id '31337' was not produced by this session; known ids: ('0',)..."
+    },
+    "first_step": {
+      "outcome": "OK",
+      "to": "1"
+    },
+    "replay_root_after_advance": {
+      "outcome": "OK",
+      "to": "2",
+      "note": "a second child of the root; the session allows out-of-order re-entry by design"
+    },
+    "step_log_len": 3
+  },
+  "K7_branch_semantics": {
+    "root_state_id": "0",
+    "after_step1_state_id": "1",
+    "branch_returned_state_id": "0",
+    "next_step_applied_from": "1",
+    "next_step_outcome": "OK",
+    "expected_if_branch_rewound": "0",
+    "branch_is_cosmetic": true
+  }
+}

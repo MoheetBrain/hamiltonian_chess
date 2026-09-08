@@ -1,0 +1,16 @@
+{"correct":true,"family_id":"pl2:smoke:P05:0000","level":5,"prompt_bytes":18755,"task_id":"pl2:smoke:P05:0000:ORIGINAL","variant":"ORIGINAL"}
+{"correct":true,"family_id":"pl2:smoke:P05:0000","level":5,"prompt_bytes":18755,"task_id":"pl2:smoke:P05:0000:COUNTERFACTUAL","variant":"COUNTERFACTUAL"}
+{"correct":false,"family_id":"pl2:smoke:P05:0001","level":5,"prompt_bytes":18755,"task_id":"pl2:smoke:P05:0001:ORIGINAL","variant":"ORIGINAL"}
+{"correct":true,"family_id":"pl2:smoke:P05:0001","level":5,"prompt_bytes":18755,"task_id":"pl2:smoke:P05:0001:COUNTERFACTUAL","variant":"COUNTERFACTUAL"}
+{"correct":true,"family_id":"pl2:smoke:P05:0002","level":5,"prompt_bytes":18755,"task_id":"pl2:smoke:P05:0002:ORIGINAL","variant":"ORIGINAL"}
+{"correct":true,"family_id":"pl2:smoke:P05:0002","level":5,"prompt_bytes":18755,"task_id":"pl2:smoke:P05:0002:COUNTERFACTUAL","variant":"COUNTERFACTUAL"}
+{"correct":false,"family_id":"pl2:smoke:P05:0003","level":5,"prompt_bytes":18755,"task_id":"pl2:smoke:P05:0003:ORIGINAL","variant":"ORIGINAL"}
+{"correct":false,"family_id":"pl2:smoke:P05:0003","level":5,"prompt_bytes":18755,"task_id":"pl2:smoke:P05:0003:COUNTERFACTUAL","variant":"COUNTERFACTUAL"}
+{"correct":true,"family_id":"pl2:smoke:P05:0004","level":5,"prompt_bytes":18755,"task_id":"pl2:smoke:P05:0004:ORIGINAL","variant":"ORIGINAL"}
+{"correct":false,"family_id":"pl2:smoke:P05:0004","level":5,"prompt_bytes":18755,"task_id":"pl2:smoke:P05:0004:COUNTERFACTUAL","variant":"COUNTERFACTUAL"}
+{"correct":true,"family_id":"pl2:smoke:P05:0005","level":5,"prompt_bytes":18755,"task_id":"pl2:smoke:P05:0005:ORIGINAL","variant":"ORIGINAL"}
+{"correct":true,"family_id":"pl2:smoke:P05:0005","level":5,"prompt_bytes":18755,"task_id":"pl2:smoke:P05:0005:COUNTERFACTUAL","variant":"COUNTERFACTUAL"}
+{"correct":false,"family_id":"pl2:smoke:P05:0006","level":5,"prompt_bytes":18755,"task_id":"pl2:smoke:P05:0006:ORIGINAL","variant":"ORIGINAL"}
+{"correct":false,"family_id":"pl2:smoke:P05:0006","level":5,"prompt_bytes":18755,"task_id":"pl2:smoke:P05:0006:COUNTERFACTUAL","variant":"COUNTERFACTUAL"}
+{"correct":false,"family_id":"pl2:smoke:P05:0007","level":5,"prompt_bytes":18755,"task_id":"pl2:smoke:P05:0007:ORIGINAL","variant":"ORIGINAL"}
+{"correct":false,"family_id":"pl2:smoke:P05:0007","level":5,"prompt_bytes":18755,"task_id":"pl2:smoke:P05:0007:COUNTERFACTUAL","variant":"COUNTERFACTUAL"}

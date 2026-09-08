@@ -613,6 +613,32 @@ def is_no_goals(tactic_state: str) -> bool:
     return tactic_state.strip() == "no goals"
 
 
+#: The axioms a `CLOSED_VERIFIED` trajectory may depend on.
+#:
+#: This is an ALLOW-LIST and it is deliberately not a deny-list.  RT-01 (2026-09-08 red team) was
+#: a deny-list failure: ``ofReduceBool`` was detected, stored in a field, and then never consulted
+#: by the verdict, so ``native_decide`` closed any decidable goal with full reward.  A deny-list
+#: also has to anticipate the next exotic axiom; an allow-list fails closed on all of them.
+#:
+#: These three are Lean's standard classical base and are what a normal mathlib proof reports.
+#: ``Lean.ofReduceBool`` is excluded on purpose: it extends the trusted base from the kernel to
+#: the *compiler's* native evaluation, which is a different and much larger trust assumption
+#: (manual section 28 requires the trust assumptions of a verifier to be declared, and section 4.4
+#: forbids a candidate gaining credit by changing truth conditions).
+TRUSTED_AXIOMS: frozenset[str] = frozenset({"propext", "Classical.choice", "Quot.sound"})
+
+
+def untrusted_axioms(axioms: Iterable[str]) -> tuple[str, ...]:
+    """Axioms outside :data:`TRUSTED_AXIOMS`, in order, deduplicated."""
+
+    seen: dict[str, None] = {}
+    for axiom in axioms:
+        name = axiom.strip()
+        if name and name not in TRUSTED_AXIOMS:
+            seen.setdefault(name, None)
+    return tuple(seen)
+
+
 @dataclass(frozen=True, slots=True)
 class KernelVerification:
     """Result of re-elaborating the finished script and reading ``#print axioms``."""
@@ -623,6 +649,8 @@ class KernelVerification:
     contains_of_reduce_bool: bool
     exit_code: int
     errors: str = ""
+    axioms: tuple[str, ...] = ()
+    untrusted_axioms: tuple[str, ...] = ()
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -632,6 +660,9 @@ class KernelVerification:
             "contains_of_reduce_bool": self.contains_of_reduce_bool,
             "exit_code": self.exit_code,
             "errors": self.errors,
+            "axioms": list(self.axioms),
+            "untrusted_axioms": list(self.untrusted_axioms),
+            "trusted_axiom_allow_list": sorted(TRUSTED_AXIOMS),
         }
 
 
@@ -998,9 +1029,14 @@ def verify_closed_script(
     """Re-elaborate the accepted script from scratch and read ``#print axioms``.
 
     This is the closure authority.  ``no goals`` in the REPL says the tactic block finished; this
-    says the resulting declaration type-checks and depends on no ``sorryAx``.  A proof closed by
-    ``decide``/``native_decide`` shows ``Lean.ofReduceBool`` and is flagged rather than silently
-    accepted.
+    says the resulting declaration type-checks and depends on **no axiom outside**
+    :data:`TRUSTED_AXIOMS`.
+
+    A proof closed by ``native_decide`` reports ``Lean.ofReduceBool`` and is therefore **NOT
+    verified**: it moves the trusted base from the kernel to the compiler's native evaluation.
+    Before the 2026-09-08 red team (RT-01) that axiom was detected, stored, and never consulted,
+    so ``native_decide`` closed any decidable goal with full reward -- a defect an evolutionary
+    search would have found within minutes.
     """
 
     config = config or LeanToolchainConfig.from_env()
@@ -1053,13 +1089,18 @@ def verify_closed_script(
     axioms = [item.strip() for item in match.group("axioms").split(",") if item.strip()]
     has_sorry = any("sorryAx" in axiom for axiom in axioms)
     has_reduce_bool = any("ofReduceBool" in axiom for axiom in axioms)
+    # RT-01: the verdict consults the ALLOW-LIST.  Detecting an axiom and storing it in a field
+    # is not a gate; before this fix `native_decide` reported ofReduceBool and still verified.
+    outside = untrusted_axioms(axioms)
     return KernelVerification(
-        verified=(completed.returncode == 0 and not has_sorry and not errors),
+        verified=(completed.returncode == 0 and not errors and not outside),
         print_axioms=match.group(0),
         contains_sorry_ax=has_sorry,
         contains_of_reduce_bool=has_reduce_bool,
         exit_code=completed.returncode,
         errors=errors,
+        axioms=tuple(axioms),
+        untrusted_axioms=outside,
     )
 
 

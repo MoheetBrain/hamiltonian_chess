@@ -1,0 +1,151 @@
+{
+  "bank": {
+    "path": "artifacts/trajectory_bank_v0/h5/bank.jsonl",
+    "rows": 16,
+    "closed_verified": 9,
+    "failed": 6,
+    "state_ids_observed": [
+      "0",
+      "1",
+      "10",
+      "11",
+      "12",
+      "13",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "note": "state ids are per-session small integers; nothing binds an id to its pp bytes"
+  },
+  "T1_concatenate_two_theorems": {
+    "claim_under_attack": "ten unrelated one-step probes cannot be concatenated",
+    "source_a": "Mathlib/MeasureTheory/Integral/Bochner.lean::MeasureTheory.weightedSMul_add_measure",
+    "source_b": "Mathlib/RingTheory/MvPolynomial/Homogeneous.lean::MvPolynomial.IsHomogeneous.rename_isHomogeneous_iff",
+    "a_horizon": 5,
+    "b_horizon": 5,
+    "spliced_horizon_claimed": {
+      "achieved": 10,
+      "verified": 10,
+      "reference": 5,
+      "solver_actions": 0,
+      "reference_actions": 10,
+      "episode_length": 10,
+      "observed_trace_length": 5,
+      "kernel_step_count": 0,
+      "dependency_depth": "UNKNOWN",
+      "minimal_proof_length": "UNKNOWN"
+    },
+    "loads_without_error": true,
+    "error": "",
+    "problem_id_kept": "Mathlib/MeasureTheory/Integral/Bochner.lean::MeasureTheory.weightedSMul_add_measure"
+  },
+  "T2_reference_relabelled_as_solver": {
+    "claim_under_attack": "ALL bank actions are actor=REFERENCE (disclosed limitation)",
+    "loads_without_error": true,
+    "error": "",
+    "horizon_after": {
+      "achieved": 5,
+      "verified": 5,
+      "reference": 5,
+      "solver_actions": 5,
+      "reference_actions": 0,
+      "episode_length": 5,
+      "observed_trace_length": 5,
+      "kernel_step_count": 0,
+      "dependency_depth": "UNKNOWN",
+      "minimal_proof_length": "UNKNOWN"
+    },
+    "note": "solver_actions is DERIVED from the actor field, so relabelling turns a replay of a recorded mathlib proof into a claimed solver horizon; nothing in the record ties the actor label to who chose the tactic"
+  },
+  "T3_failed_promoted_to_closed_verified": {
+    "loads_without_error": true,
+    "error": "",
+    "horizon_after": {
+      "achieved": 7,
+      "verified": 7,
+      "reference": 12,
+      "solver_actions": 0,
+      "reference_actions": 7,
+      "episode_length": 7,
+      "observed_trace_length": 12,
+      "kernel_step_count": 0,
+      "dependency_depth": "UNKNOWN",
+      "minimal_proof_length": "UNKNOWN"
+    },
+    "original_status": "FAILED"
+  },
+  "T4_verifier_evidence_outside_content_hash": {
+    "content_hash_before": "df6444c0d18cf85549fb1cd80410f5b996946ef4d198e84c04039b49fb82e12c",
+    "content_hash_after_evidence_tamper": "df6444c0d18cf85549fb1cd80410f5b996946ef4d198e84c04039b49fb82e12c",
+    "unchanged": true,
+    "loads_without_error": true,
+    "error": "",
+    "note": "semantic_core() omits verifier_evidence entirely, so the kernel receipt is unsealed"
+  },
+  "T5_states_actions_hash_never_checked": {
+    "loads_without_error": true,
+    "error": "",
+    "note": "from_dict validates content_hash only; states_hash/actions_hash are decorative"
+  },
+  "T6_reference_horizon_unbound": {
+    "loads_without_error": true,
+    "error": "",
+    "horizon_after": {
+      "achieved": 5,
+      "verified": 5,
+      "reference": 999,
+      "solver_actions": 0,
+      "reference_actions": 5,
+      "episode_length": 5,
+      "observed_trace_length": 999,
+      "kernel_step_count": 0,
+      "dependency_depth": "UNKNOWN",
+      "minimal_proof_length": "UNKNOWN"
+    },
+    "note": "reference_horizon is a caller-supplied int; build_trajectory never checks it against len(probe.reference_tactics), and observed_trace_length is derived from it"
+  },
+  "T7_action_text_swapped_same_count": {
+    "loads_without_error": true,
+    "error": "",
+    "note": "action count and state chain preserved; only the tactic strings changed. _relive replays probe.reference_tactics from the SOURCE record, never trajectory.actions, so a relive cannot see this"
+  },
+  "T8_verify_bank_structural_verdicts": {
+    "forged_concat": {
+      "passed": true,
+      "ok": 1,
+      "failures": []
+    },
+    "forged_solver_actor": {
+      "passed": true,
+      "ok": 1,
+      "failures": []
+    },
+    "forged_closed_verified": {
+      "passed": true,
+      "ok": 1,
+      "failures": []
+    },
+    "forged_action_swap": {
+      "passed": true,
+      "ok": 1,
+      "failures": []
+    },
+    "honest_control": {
+      "passed": true,
+      "ok": 1,
+      "failures": []
+    }
+  },
+  "T9_real_bank_reloads": {
+    "loaded": 16,
+    "closed_verified": 9,
+    "all_reference": [
+      "REFERENCE"
+    ]
+  }
+}

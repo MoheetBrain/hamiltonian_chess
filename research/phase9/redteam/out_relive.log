@@ -1,0 +1,5 @@
+honest_control {"passed": true, "checked": 1, "relived": 1, "relive_matches": 1, "failures": [], "wall_s": 3.4}
+forged_action_swap {"passed": true, "checked": 1, "relived": 1, "relive_matches": 1, "failures": [], "wall_s": 3.4}
+forged_solver_actor {"passed": true, "checked": 1, "relived": 1, "relive_matches": 1, "failures": [], "wall_s": 3.4}
+forged_concat {"passed": false, "checked": 1, "relived": 1, "relive_matches": 0, "failures": ["vt-f5eb22c6c52e09fe9294f422: relive mismatch: horizon 5 != stored 10"], "wall_s": 3.4}
+forged_closed_verified {"passed": false, "checked": 1, "relived": 1, "relive_matches": 0, "failures": ["vt-beb60953245bad175e303e33: relive mismatch: terminal FAILED != stored CLOSED_VERIFIED"], "wall_s": 2.3}

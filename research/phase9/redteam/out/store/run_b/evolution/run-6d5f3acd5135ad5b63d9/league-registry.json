@@ -1,0 +1,1386 @@
+{
+  "candidates": [
+    {
+      "active": true,
+      "baseline": false,
+      "candidate_id": "L0_STRUCTURED_ENGLISH",
+      "display_name": "L0_STRUCTURED_ENGLISH",
+      "domain_ratings": {
+        "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05": {
+          "interval": {
+            "confidence": 0.95,
+            "lower": 0.3114543193420509,
+            "method": "normal",
+            "upper": 0.8135456806579491
+          },
+          "observations": 16,
+          "value": 0.5625
+        }
+      },
+      "mechanism_ratings": {
+        "level:5": {
+          "interval": {
+            "confidence": 0.95,
+            "lower": 0.3114543193420509,
+            "method": "normal",
+            "upper": 0.8135456806579491
+          },
+          "observations": 16,
+          "value": 0.5625
+        },
+        "precondition_conjunction": {
+          "interval": {
+            "confidence": 0.95,
+            "lower": 0.3114543193420509,
+            "method": "normal",
+            "upper": 0.8135456806579491
+          },
+          "observations": 16,
+          "value": 0.5625
+        },
+        "variant:COUNTERFACTUAL": {
+          "interval": {
+            "confidence": 0.95,
+            "lower": 0.26636331334578706,
+            "method": "normal",
+            "upper": 0.983636686654213
+          },
+          "observations": 8,
+          "value": 0.625
+        },
+        "variant:ORIGINAL": {
+          "interval": {
+            "confidence": 0.95,
+            "lower": 0.1296016227331268,
+            "method": "normal",
+            "upper": 0.8703983772668732
+          },
+          "observations": 8,
+          "value": 0.5
+        }
+      },
+      "objective_metrics": {
+        "J_cost": 18755.0,
+        "J_solve": 0.5625
+      },
+      "parent_ids": [],
+      "pareto_status": "PARETO_RANK_1"
+    },
+    {
+      "active": true,
+      "baseline": false,
+      "candidate_id": "L1_CURRENT_HML",
+      "display_name": "L1_CURRENT_HML",
+      "domain_ratings": {
+        "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05": {
+          "interval": {
+            "confidence": 0.95,
+            "lower": 0.18645431934205092,
+            "method": "normal",
+            "upper": 0.6885456806579491
+          },
+          "observations": 16,
+          "value": 0.4375
+        }
+      },
+      "mechanism_ratings": {
+        "level:5": {
+          "interval": {
+            "confidence": 0.95,
+            "lower": 0.18645431934205092,
+            "method": "normal",
+            "upper": 0.6885456806579491
+          },
+          "observations": 16,
+          "value": 0.4375
+        },
+        "precondition_conjunction": {
+          "interval": {
+            "confidence": 0.95,
+            "lower": 0.18645431934205092,
+            "method": "normal",
+            "upper": 0.6885456806579491
+          },
+          "observations": 16,
+          "value": 0.4375
+        },
+        "variant:COUNTERFACTUAL": {
+          "interval": {
+            "confidence": 0.95,
+            "lower": 0.1296016227331268,
+            "method": "normal",
+            "upper": 0.8703983772668732
+          },
+          "observations": 8,
+          "value": 0.5
+        },
+        "variant:ORIGINAL": {
+          "interval": {
+            "confidence": 0.95,
+            "lower": 0.016363313345787056,
+            "method": "normal",
+            "upper": 0.733636686654213
+          },
+          "observations": 8,
+          "value": 0.375
+        }
+      },
+      "objective_metrics": {
+        "J_cost": 11036.0,
+        "J_solve": 0.4375
+      },
+      "parent_ids": [],
+      "pareto_status": "PARETO_RANK_1"
+    },
+    {
+      "active": true,
+      "baseline": false,
+      "candidate_id": "L2_SEXPR",
+      "display_name": "L2_SEXPR",
+      "domain_ratings": {
+        "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05": {
+          "interval": {
+            "confidence": 0.95,
+            "lower": 0.3114543193420509,
+            "method": "normal",
+            "upper": 0.8135456806579491
+          },
+          "observations": 16,
+          "value": 0.5625
+        }
+      },
+      "mechanism_ratings": {
+        "level:5": {
+          "interval": {
+            "confidence": 0.95,
+            "lower": 0.3114543193420509,
+            "method": "normal",
+            "upper": 0.8135456806579491
+          },
+          "observations": 16,
+          "value": 0.5625
+        },
+        "precondition_conjunction": {
+          "interval": {
+            "confidence": 0.95,
+            "lower": 0.3114543193420509,
+            "method": "normal",
+            "upper": 0.8135456806579491
+          },
+          "observations": 16,
+          "value": 0.5625
+        },
+        "variant:COUNTERFACTUAL": {
+          "interval": {
+            "confidence": 0.95,
+            "lower": 0.26636331334578706,
+            "method": "normal",
+            "upper": 0.983636686654213
+          },
+          "observations": 8,
+          "value": 0.625
+        },
+        "variant:ORIGINAL": {
+          "interval": {
+            "confidence": 0.95,
+            "lower": 0.1296016227331268,
+            "method": "normal",
+            "upper": 0.8703983772668732
+          },
+          "observations": 8,
+          "value": 0.5
+        }
+      },
+      "objective_metrics": {
+        "J_cost": 9188.0,
+        "J_solve": 0.5625
+      },
+      "parent_ids": [],
+      "pareto_status": "FRONTIER"
+    },
+    {
+      "active": true,
+      "baseline": false,
+      "candidate_id": "L3_JSON_AST",
+      "display_name": "L3_JSON_AST",
+      "domain_ratings": {
+        "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05": {
+          "interval": {
+            "confidence": 0.95,
+            "lower": 0.24696973762366803,
+            "method": "normal",
+            "upper": 0.753030262376332
+          },
+          "observations": 16,
+          "value": 0.5
+        }
+      },
+      "mechanism_ratings": {
+        "level:5": {
+          "interval": {
+            "confidence": 0.95,
+            "lower": 0.24696973762366803,
+            "method": "normal",
+            "upper": 0.753030262376332
+          },
+          "observations": 16,
+          "value": 0.5
+        },
+        "precondition_conjunction": {
+          "interval": {
+            "confidence": 0.95,
+            "lower": 0.24696973762366803,
+            "method": "normal",
+            "upper": 0.753030262376332
+          },
+          "observations": 16,
+          "value": 0.5
+        },
+        "variant:COUNTERFACTUAL": {
+          "interval": {
+            "confidence": 0.95,
+            "lower": 0.26636331334578706,
+            "method": "normal",
+            "upper": 0.983636686654213
+          },
+          "observations": 8,
+          "value": 0.625
+        },
+        "variant:ORIGINAL": {
+          "interval": {
+            "confidence": 0.95,
+            "lower": 0.016363313345787056,
+            "method": "normal",
+            "upper": 0.733636686654213
+          },
+          "observations": 8,
+          "value": 0.375
+        }
+      },
+      "objective_metrics": {
+        "J_cost": 20220.0,
+        "J_solve": 0.5
+      },
+      "parent_ids": [],
+      "pareto_status": "PARETO_RANK_2"
+    },
+    {
+      "active": true,
+      "baseline": false,
+      "candidate_id": "M-0d91d015350081da8528",
+      "display_name": "M-0d91d015350081da8528",
+      "domain_ratings": {
+        "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05": {
+          "interval": {
+            "confidence": 0.95,
+            "lower": 0.5308693648558547,
+            "method": "normal",
+            "upper": 0.9691306351441453
+          },
+          "observations": 16,
+          "value": 0.75
+        }
+      },
+      "mechanism_ratings": {
+        "level:5": {
+          "interval": {
+            "confidence": 0.95,
+            "lower": 0.5308693648558547,
+            "method": "normal",
+            "upper": 0.9691306351441453
+          },
+          "observations": 16,
+          "value": 0.75
+        },
+        "precondition_conjunction": {
+          "interval": {
+            "confidence": 0.95,
+            "lower": 0.5308693648558547,
+            "method": "normal",
+            "upper": 0.9691306351441453
+          },
+          "observations": 16,
+          "value": 0.75
+        },
+        "variant:COUNTERFACTUAL": {
+          "interval": {
+            "confidence": 0.95,
+            "lower": 0.42922559576635533,
+            "method": "normal",
+            "upper": 1.0
+          },
+          "observations": 8,
+          "value": 0.75
+        },
+        "variant:ORIGINAL": {
+          "interval": {
+            "confidence": 0.95,
+            "lower": 0.42922559576635533,
+            "method": "normal",
+            "upper": 1.0
+          },
+          "observations": 8,
+          "value": 0.75
+        }
+      },
+      "objective_metrics": {
+        "J_cost": 17310.0,
+        "J_solve": 0.75
+      },
+      "parent_ids": [
+        "L0_STRUCTURED_ENGLISH"
+      ],
+      "pareto_status": "FRONTIER"
+    }
+  ],
+  "matches": [
+    "match:129552243928aaf111f8",
+    "match:bb88bae46d88a167a5f9",
+    "match:bae35a7056cf65c5a100",
+    "match:3407d7408038f91bb0a8",
+    "match:939c356d5b9a745d5952"
+  ],
+  "observations": [
+    {
+      "candidate_id": "M-0d91d015350081da8528",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": "L0_STRUCTURED_ENGLISH",
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0000:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "M-0d91d015350081da8528",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": "L0_STRUCTURED_ENGLISH",
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0000:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "M-0d91d015350081da8528",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": "L0_STRUCTURED_ENGLISH",
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0001:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "M-0d91d015350081da8528",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": "L0_STRUCTURED_ENGLISH",
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0001:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "M-0d91d015350081da8528",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": "L0_STRUCTURED_ENGLISH",
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0002:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "M-0d91d015350081da8528",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": "L0_STRUCTURED_ENGLISH",
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0002:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "M-0d91d015350081da8528",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": "L0_STRUCTURED_ENGLISH",
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0003:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "M-0d91d015350081da8528",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": "L0_STRUCTURED_ENGLISH",
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0003:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "M-0d91d015350081da8528",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": "L0_STRUCTURED_ENGLISH",
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0004:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "M-0d91d015350081da8528",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": "L0_STRUCTURED_ENGLISH",
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0004:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "M-0d91d015350081da8528",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": "L0_STRUCTURED_ENGLISH",
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0005:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "M-0d91d015350081da8528",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": "L0_STRUCTURED_ENGLISH",
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0005:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "M-0d91d015350081da8528",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": "L0_STRUCTURED_ENGLISH",
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0006:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "M-0d91d015350081da8528",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": "L0_STRUCTURED_ENGLISH",
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0006:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "M-0d91d015350081da8528",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": "L0_STRUCTURED_ENGLISH",
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0007:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "M-0d91d015350081da8528",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": "L0_STRUCTURED_ENGLISH",
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0007:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L0_STRUCTURED_ENGLISH",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0000:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L0_STRUCTURED_ENGLISH",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0000:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L0_STRUCTURED_ENGLISH",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0001:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L0_STRUCTURED_ENGLISH",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0001:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L0_STRUCTURED_ENGLISH",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0002:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L0_STRUCTURED_ENGLISH",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0002:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L0_STRUCTURED_ENGLISH",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0003:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L0_STRUCTURED_ENGLISH",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0003:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L0_STRUCTURED_ENGLISH",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0004:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L0_STRUCTURED_ENGLISH",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0004:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L0_STRUCTURED_ENGLISH",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0005:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L0_STRUCTURED_ENGLISH",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0005:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L0_STRUCTURED_ENGLISH",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0006:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L0_STRUCTURED_ENGLISH",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0006:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L0_STRUCTURED_ENGLISH",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0007:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L0_STRUCTURED_ENGLISH",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0007:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L1_CURRENT_HML",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0000:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L1_CURRENT_HML",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0000:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L1_CURRENT_HML",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0001:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L1_CURRENT_HML",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0001:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L1_CURRENT_HML",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0002:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L1_CURRENT_HML",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0002:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L1_CURRENT_HML",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0003:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L1_CURRENT_HML",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0003:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L1_CURRENT_HML",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0004:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L1_CURRENT_HML",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0004:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L1_CURRENT_HML",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0005:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L1_CURRENT_HML",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0005:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L1_CURRENT_HML",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0006:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L1_CURRENT_HML",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0006:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L1_CURRENT_HML",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0007:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L1_CURRENT_HML",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0007:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L2_SEXPR",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0000:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L2_SEXPR",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0000:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L2_SEXPR",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0001:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L2_SEXPR",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0001:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L2_SEXPR",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0002:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L2_SEXPR",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0002:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L2_SEXPR",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0003:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L2_SEXPR",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0003:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L2_SEXPR",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0004:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L2_SEXPR",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0004:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L2_SEXPR",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0005:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L2_SEXPR",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0005:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L2_SEXPR",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0006:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L2_SEXPR",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0006:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L2_SEXPR",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0007:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L2_SEXPR",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0007:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L3_JSON_AST",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0000:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L3_JSON_AST",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0000:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L3_JSON_AST",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0001:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L3_JSON_AST",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0001:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L3_JSON_AST",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0002:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L3_JSON_AST",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0002:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L3_JSON_AST",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0003:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L3_JSON_AST",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0003:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L3_JSON_AST",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0004:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L3_JSON_AST",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0004:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L3_JSON_AST",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0005:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L3_JSON_AST",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0005:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L3_JSON_AST",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0006:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L3_JSON_AST",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0006:COUNTERFACTUAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L3_JSON_AST",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0007:ORIGINAL",
+      "verified": true
+    },
+    {
+      "candidate_id": "L3_JSON_AST",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0007:COUNTERFACTUAL",
+      "verified": true
+    }
+  ],
+  "version": "arena-league-v0.1.0"
+}

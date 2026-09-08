@@ -289,6 +289,10 @@ class TrajectoryAction:
     #: LeanDojo ``traced_tactics[i].annotated_tactic`` when the action came from a reference proof.
     annotated_tactic: tuple[str, tuple[Any, ...]] | None = None
     premises_used: tuple[str, ...] = ()
+    #: Trusted backend operations this action lowered to (manual sections 6.32, 13.1).
+    #: One tactic is one elaborator step at V0's granularity; an action MACRO would lower to
+    #: many, and reporting only the model-facing count would then hide the real cost.
+    kernel_steps: int = 1
     #: Wall time.  Excluded from every content hash: it is machine load, not content.
     wall_ms: int = 0
 
@@ -304,6 +308,7 @@ class TrajectoryAction:
 
     def to_dict(self) -> dict[str, Any]:
         payload: dict[str, Any] = {
+            "kernel_steps": self.kernel_steps,
             "index": self.index,
             "from_state_id": self.from_state_id,
             "to_state_id": self.to_state_id,
@@ -692,12 +697,19 @@ class VerifiedTrajectory:
 
         achieved = len(self.actions)
         solver = sum(1 for action in self.actions if action.actor is Actor.SOLVER)
+        # RT-14: KernelStepCount must be ASSIGNED, not left at its default.  Manual sections 6.32
+        # and 13.1 require cost to be accounted AFTER lowering, so that bundling many kernel
+        # operations into one model-facing action cannot look cheap.  At V0's granularity one
+        # action lowers to exactly one elaborator step, so the two coincide -- but they are
+        # computed separately here, because the moment an action macro lands they must diverge.
+        kernel_steps = sum(action.kernel_steps for action in self.actions)
         return Horizon(
             achieved=achieved,
             verified=achieved if self.terminal_status is TerminalStatus.CLOSED_VERIFIED else 0,
             reference=self.reference_horizon,
             solver_actions=solver,
             reference_actions=achieved - solver,
+            kernel_step_count=kernel_steps,
         )
 
     @property

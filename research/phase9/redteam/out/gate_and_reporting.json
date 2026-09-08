@@ -1,0 +1,189 @@
+{
+  "G1_leaky_renderer_passes_roundtrip": {
+    "gate_passed": true,
+    "gate_outcomes": {
+      "semantic_roundtrip": "PASS",
+      "mutation_effective": "PASS",
+      "arena_parity": "PASS"
+    },
+    "failure_modes": [],
+    "rendered_tail": "erminal_status\": \"OPEN\"}\n<<<REDTEAM-SIDE-CHANNEL>>>  ANSWER: the correct option is index 0",
+    "roundtrip_hash_recovered": true,
+    "note": "check 1 (`semantic_roundtrip`) is render->parse through the SAME codec. Content the parser discards is invisible to it. What actually stops this in the loop is that the prompt is built from model_view(genome) via GenomePhenotypeLanguage, NOT from the object the gate validated -- the two are separate constructions from one genome, and nothing asserts they are the same renderer."
+  },
+  "G2_lossy_renderer_with_compensating_parser": {
+    "per_dropped_key": {
+      "assumptions": {
+        "hash_recovered": true,
+        "bytes_dropped": 1761
+      },
+      "bindings": {
+        "hash_recovered": true,
+        "bytes_dropped": 16
+      },
+      "established_facts": {
+        "hash_recovered": true,
+        "bytes_dropped": 25
+      },
+      "evidence_dependencies": {
+        "hash_recovered": true,
+        "bytes_dropped": 29
+      },
+      "execution_metadata": {
+        "hash_recovered": true,
+        "bytes_dropped": 26
+      },
+      "goal": {
+        "hash_recovered": true,
+        "bytes_dropped": 132
+      },
+      "legal_actions": {
+        "hash_recovered": true,
+        "bytes_dropped": 21
+      },
+      "local_scope": {
+        "hash_recovered": true,
+        "bytes_dropped": 31
+      },
+      "objects": {
+        "hash_recovered": true,
+        "bytes_dropped": 1406
+      },
+      "obligations": {
+        "hash_recovered": true,
+        "bytes_dropped": 19
+      },
+      "plausible_invalid_actions": {
+        "hash_recovered": true,
+        "bytes_dropped": 33
+      },
+      "propositions": {
+        "hash_recovered": true,
+        "bytes_dropped": 1788
+      },
+      "schema_version": {
+        "hash_recovered": true,
+        "bytes_dropped": 44
+      },
+      "state_id": {
+        "hash_recovered": true,
+        "bytes_dropped": 49
+      },
+      "terminal_status": {
+        "hash_recovered": true,
+        "bytes_dropped": 27
+      }
+    },
+    "any_key_round_trips_while_dropped": [
+      "assumptions",
+      "bindings",
+      "established_facts",
+      "evidence_dependencies",
+      "execution_metadata",
+      "goal",
+      "legal_actions",
+      "local_scope",
+      "objects",
+      "obligations",
+      "plausible_invalid_actions",
+      "propositions",
+      "schema_version",
+      "state_id",
+      "terminal_status"
+    ]
+  },
+  "G3_gate_fails_closed_on_a_broken_renderer": {
+    "gate_passed": false,
+    "failure_modes": [
+      "TRUTH_ALTERED"
+    ],
+    "first_detail": "pl2:smoke:P05:0000:ORIGINAL: RuntimeError: renderer exploded"
+  },
+  "G4_byte_identical_child_is_killed": {
+    "gate_passed": false,
+    "inert": true,
+    "failure_modes": [
+      "MUTATION_INERT"
+    ],
+    "evidence": "0/16 rendered prompts differ from the parent across 8 families"
+  },
+  "G5_dead_candidate_enforcement": {
+    "candidates": 12,
+    "killed": 0,
+    "scored": 12,
+    "killed_outcomes": [],
+    "killed_failure_modes": [],
+    "killed_carry_measured_fitness": [],
+    "killed_in_league": [],
+    "scored_in_league": [
+      "M-03c36afe7a1e0fc93bb8",
+      "M-0fd968e14fb39830716b",
+      "M-1b504d892d7ea71cd481",
+      "M-25223328946e11a65aa9",
+      "M-294e0095e016142fb0c3",
+      "M-2a24771f3389e55153e6",
+      "M-2f4a126abd009845506c",
+      "M-2f71301cbe77bf1fd414",
+      "M-45fc86f2d4496ce71e2f",
+      "M-4756a286a5d5752fe3a5",
+      "M-4905210d35524853314e",
+      "M-69dcbb9292695edc2703"
+    ],
+    "killed_record_status": [],
+    "killed_rows_file_sizes": [],
+    "note": "a rows file of size 0 means the killed candidate consumed no evaluation budget"
+  },
+  "G6_where_the_stub_disclaimer_is_and_is_not": {
+    "summary.json_has_stamp": true,
+    "record.json_has_stamp": false,
+    "record.json_has_prose_status": true,
+    "league-registry.json_has_stamp": false,
+    "league-registry.json_mentions_stub": false,
+    "league-registry.json_mentions_model": false,
+    "league_observations": 256,
+    "league_observations_marked_verified": 256,
+    "league_rating_method": [
+      "normal"
+    ],
+    "league_objective_metrics_sample": {
+      "J_cost": 18755.0,
+      "J_solve": 0.5625
+    },
+    "note": "the league registry is the durable archive and the only file that carries cross-candidate rankings; it carries no scientific-status stamp, no model identity, no condition id, and marks every stub row verified=true"
+  },
+  "G7_determinism_under_PYTHONHASHSEED": {
+    "results": {
+      "0": {
+        "run": "run-6d5f3acd5135ad5b63d9",
+        "m": "97b0016e4f60b18632c36d99604020815546658ff22cf39c7a55d8b7247355e4",
+        "front": [
+          "L2_SEXPR",
+          "M-0d91d015350081da8528"
+        ]
+      },
+      "1": {
+        "run": "run-6d5f3acd5135ad5b63d9",
+        "m": "97b0016e4f60b18632c36d99604020815546658ff22cf39c7a55d8b7247355e4",
+        "front": [
+          "L2_SEXPR",
+          "M-0d91d015350081da8528"
+        ]
+      },
+      "12345": {
+        "run": "run-6d5f3acd5135ad5b63d9",
+        "m": "97b0016e4f60b18632c36d99604020815546658ff22cf39c7a55d8b7247355e4",
+        "front": [
+          "L2_SEXPR",
+          "M-0d91d015350081da8528"
+        ]
+      }
+    },
+    "all_identical": true
+  },
+  "G8_prompt_source": {
+    "gate_validated_object": "CurrentHMLCompatibilityLanguage",
+    "prompt_built_from": "build_prompt(model_view(genome), item) -> GenomePhenotypeLanguage",
+    "same_bytes_today": true,
+    "model_view_surface_id": "L1_CURRENT_HML"
+  }
+}

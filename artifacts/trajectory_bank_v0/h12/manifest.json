@@ -1,6 +1,6 @@
 {
   "schema": "arena-verified-trajectory-bank-v0",
-  "generated_utc": "2026-09-08T13:07:35+00:00",
+  "generated_utc": "2026-09-08T14:04:47+00:00",
   "generator": "arena/trajectory/arena_v0.py@v0",
   "bank_file": "bank.jsonl",
   "selection": {
@@ -81,9 +81,9 @@
   },
   "timings_s": {
     "selection": 0.4,
-    "replay": 24.07,
-    "total": 24.47,
-    "mean_per_episode": 2.41
+    "replay": 22.94,
+    "total": 23.34,
+    "mean_per_episode": 2.29
   },
   "episodes": [
     {
@@ -91,8 +91,8 @@
       "terminal_status": "FAILED",
       "achieved_horizon": 0,
       "reference_horizon": 14,
-      "wall_s": 3.94,
-      "startup_s": 3.89,
+      "wall_s": 3.78,
+      "startup_s": 3.74,
       "error": ""
     },
     {
@@ -100,8 +100,8 @@
       "terminal_status": "CLOSED_VERIFIED",
       "achieved_horizon": 14,
       "reference_horizon": 15,
-      "wall_s": 2.2,
-      "startup_s": 0.96,
+      "wall_s": 2.14,
+      "startup_s": 0.93,
       "error": ""
     },
     {
@@ -109,8 +109,8 @@
       "terminal_status": "FAILED",
       "achieved_horizon": 2,
       "reference_horizon": 50,
-      "wall_s": 3.44,
-      "startup_s": 3.39,
+      "wall_s": 3.18,
+      "startup_s": 3.13,
       "error": ""
     },
     {
@@ -118,8 +118,8 @@
       "terminal_status": "FAILED",
       "achieved_horizon": 6,
       "reference_horizon": 20,
-      "wall_s": 0.97,
-      "startup_s": 0.9,
+      "wall_s": 0.91,
+      "startup_s": 0.84,
       "error": ""
     },
     {
@@ -127,8 +127,8 @@
       "terminal_status": "FAILED",
       "achieved_horizon": 1,
       "reference_horizon": 14,
-      "wall_s": 0.85,
-      "startup_s": 0.8,
+      "wall_s": 0.83,
+      "startup_s": 0.78,
       "error": ""
     },
     {
@@ -136,8 +136,8 @@
       "terminal_status": "FAILED",
       "achieved_horizon": 2,
       "reference_horizon": 12,
-      "wall_s": 0.81,
-      "startup_s": 0.77,
+      "wall_s": 0.79,
+      "startup_s": 0.74,
       "error": ""
     },
     {
@@ -145,8 +145,8 @@
       "terminal_status": "FAILED",
       "achieved_horizon": 2,
       "reference_horizon": 20,
-      "wall_s": 3.87,
-      "startup_s": 3.8,
+      "wall_s": 3.71,
+      "startup_s": 3.66,
       "error": ""
     },
     {
@@ -154,8 +154,8 @@
       "terminal_status": "FAILED",
       "achieved_horizon": 4,
       "reference_horizon": 12,
-      "wall_s": 2.22,
-      "startup_s": 2.16,
+      "wall_s": 2.13,
+      "startup_s": 2.08,
       "error": ""
     },
     {
@@ -163,8 +163,8 @@
       "terminal_status": "CLOSED_VERIFIED",
       "achieved_horizon": 12,
       "reference_horizon": 12,
-      "wall_s": 3.71,
-      "startup_s": 1.66,
+      "wall_s": 3.49,
+      "startup_s": 1.58,
       "error": ""
     },
     {
@@ -172,8 +172,8 @@
       "terminal_status": "ERROR_BACKEND",
       "achieved_horizon": 0,
       "reference_horizon": 17,
-      "wall_s": 2.05,
-      "startup_s": 2.02,
+      "wall_s": 1.98,
+      "startup_s": 1.96,
       "error": ""
     }
   ],

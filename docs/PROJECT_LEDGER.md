@@ -1814,3 +1814,79 @@ replay-mode world. No sentinel is created, retired or reinterpreted: `RSTAR_NOT_
 **Next intended step.** Red-team the loop per manual §47 Step 9 (lineage/provenance, truth
 mutation, cache identity, oracle leakage, dead-candidate enforcement, fitness-memory immutability),
 then stop and hand off with measured costs. Do **not** continue into Pilot 1.
+
+---
+
+## 2026-09-08 — Red team of HC-V0: 21 exploits, 1 CRITICAL; three fixed
+
+**Date/time.** 2026-09-08, Europe/London. **Branch.** `claude/hamiltonian-phase-8-experiment-691d22`.
+**Stage.** Mission reset, Phase C close-out (manual §47 Step 9).
+
+**Objective.** Attack HC-V0 before handing it off, per manual §29 (Refuter / Goodhart defence) and
+§47 Step 9: lineage/provenance, truth mutation, cache identity, oracle leakage, dead-candidate
+enforcement, fitness-memory immutability, and the Lean kernel path.
+
+**Files and systems changed.** New: `docs/HC_V0_RED_TEAM.md`, `research/phase9/redteam/` (9
+executable attack scripts + outputs), `tests/trajectory/test_axiom_allow_list.py` (10 tests).
+Modified: `arena/trajectory/lean_backend.py` (`TRUSTED_AXIOMS`, `untrusted_axioms`, the verdict,
+and a docstring whose claim was false), `arena/trajectory/schema.py`
+(`TrajectoryAction.kernel_steps`, `Horizon.kernel_step_count` assignment),
+`tests/trajectory/test_horizon_vocabulary.py` (+1 test). Rebuilt:
+`artifacts/trajectory_bank_v0/{h5,h12}`.
+
+**What was completed — three fixes.**
+1. **RT-01, CRITICAL.** `native_decide` produced `CLOSED_VERIFIED` with full reward. The axiom
+   `Lean.ofReduceBool` **was** detected and stored, and then **never read by the verdict**
+   (`verified = returncode == 0 and not has_sorry and not errors`). Detection without a gate is
+   not a gate. Fixed with an **allow-list**: only `{propext, Classical.choice, Quot.sound}` may
+   support a verified closure; everything else fails closed and is named. An allow-list was chosen
+   over adding `ofReduceBool` to a deny-list because a deny-list must anticipate the next exotic
+   axiom. **Verified against the live kernel**: `by native_decide` →
+   `[propext, Lean.ofReduceBool]` → refused; `by decide` → `[propext]` → verified; `by norm_num` →
+   `[propext]` → verified. Kernel trust in, compiler trust out.
+2. **RT-14, MEDIUM.** `KernelStepCount` was never assigned and read 0 everywhere, so no objective
+   could see a macro doing many steps' work (manual §29 macro-cost hiding). Actions now carry
+   `kernel_steps`; the horizon sums them.
+3. **RT-15, MEDIUM.** The committed bank's horizon block predated the vocabulary retrofit (5 keys,
+   not 10). The bank was rebuilt.
+
+**Decisions and why.** (a) Allow-list over deny-list, as above — fail closed on unknown axioms.
+(b) `decide` is *kept* verifiable while `native_decide` is refused: the first is kernel-checked,
+the second moves trust to the compiler's native evaluation, a materially larger trusted base
+(manual §28 requires trust assumptions to be declared). (c) The bank was rebuilt rather than
+annotated so the committed artifact is self-consistent and re-proves the fix on real data.
+(d) The remaining 18 findings were **not** patched in this pass: they are recorded with
+reproductions rather than fixed hastily, and all but one need author/operator write access.
+
+**Tests actually executed.** `.venv/bin/python -m pytest` → **1,286 passed, 1 skipped in 114.7 s**
+(Phase C commit: 1,275/1; +11 red-team regressions). `ruff check .` → All checks passed.
+`ruff format --check .` → 341 files already formatted. `mypy arena` → Success, 142 source files.
+Live kernel probe run directly by the integrator (output in the status document). Bank rebuilt in
+49.1 s + 23.3 s and re-read: **11 `CLOSED_VERIFIED`**, histogram `{5:7, 7:1, 12:1, 13:1, 14:1}`
+unchanged, **zero untrusted axioms**, `kernel_step_count` summing to 81.
+
+**Failures and unresolved uncertainty.**
+- **18 of 21 confirmed findings remain OPEN.** Most load-bearing: RT-02 (two unrelated theorems
+  splice into one trajectory that loads clean), RT-03 (`--relive` replays the source record's
+  tactics, so a forged action list passes — the net that would catch RT-02 has a hole), RT-04 (one
+  episode can yield both a REFERENCE and a SOLVER record), RT-13 (a re-rolled `mutation_hash`
+  grants a second `FRESH` record for the same triple — free extra draws, §30.4 winner's curse),
+  RT-16 (`league-registry.json` carries `J_solve: 0.75` with no `EXECUTABILITY_ONLY_NOT_A_RESULT`
+  stamp).
+- **RT-13 is the one an evolutionary search would find on its own**, on the first multi-generation
+  run with a stochastic evaluator. The others need write access.
+- The red team could not test anything requiring a model, the sealed splits, exhaustive Lean
+  unsoundness, `VerifiedTask` (does not exist), scale beyond 2 generations, or concurrency.
+- One correction to the trajectory builder's disclosure: its `FULL_NAME_IN_STATE` leakage
+  criterion has **never fired**; every drop was `TACTIC_IN_STATE_BEFORE`.
+
+**Effect on the overall project.** The standing assurance wording is now **"0 known critical
+exploits under attack_suite_version `hc-v0-redteam-2026-09-08`"**. No sentinel is created, retired
+or reinterpreted; `RSTAR_NOT_IDENTIFIED`, `GAME_R_INSTRUMENT_NOT_QUALIFIED`,
+`V7_PARTIALLY_VALID_INSTRUMENT_CONFOUNDED` and `TRAINING_LANGUAGE_V0_BASELINE` all stand. No
+`RSTAR` or `LSTAR` claim is made.
+
+**Next intended step.** Stop and hand off per manual §47 Step 10 with measured costs. Do **not**
+continue into Pilot 1. The next engineering priority is the open RT findings, chiefly RT-03 (make
+`--relive` replay the trajectory's own actions) and RT-13 (derive `mutation_hash` rather than
+accept it), then `VerifiedTask` so an interactive world exists at all.
