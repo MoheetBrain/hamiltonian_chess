@@ -5,7 +5,7 @@ machine-facing mathematical representations. Mathematical truth lives in a versi
 canonical IR and independent verifiers; candidate languages are reversible views over that
 IR. A syntax cannot earn fitness by changing what a mathematical state means.
 
-GOAL= Feed the system a huge verified mathematical world + agents + a space of possible language designs. Let agents repeatedly invent, test, learn, mutate and recombine mathematical languages until they discover languages that make AI better at mathematics than English.
+GOAL= Feed the system a huge verified mathematical world + agents + a space of possible language designs. Let agents repeatedly invent, test, learn, mutate and recombine mathematical languages until they discover languages that make AI better at mathematics than English. Decompose mathematical cognition into primitives specifically chosen for mathematical inference, then let an evolutionary search discover the best ontology, composition rules, grammar and morphology for AI.
 
 The repository is an isolated successor experiment. It treats Structured English,
 HML-compatible syntax, S-expressions, JSON ASTs, typed prefix forms, compact symbolic forms,
