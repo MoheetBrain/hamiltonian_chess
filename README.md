@@ -5,6 +5,10 @@ machine-facing mathematical representations. Mathematical truth lives in a versi
 canonical IR and independent verifiers; candidate languages are reversible views over that
 IR. A syntax cannot earn fitness by changing what a mathematical state means.
 
+Hypothesis: The lexical, grammatical, and semantic primitives of natural language are not} } $$
+necessarily the optimal computational basis for machine mathematical cognition.
+	​
+
 GOAL= Feed the system a huge verified mathematical world + agents + a space of possible language designs. Let agents repeatedly invent, test, learn, mutate and recombine mathematical languages until they discover languages that make AI better at mathematics than English. Decompose mathematical cognition into primitives specifically chosen for mathematical inference, then let an evolutionary search discover the best ontology, composition rules, grammar and morphology for AI.
 
 The repository is an isolated successor experiment. It treats Structured English,
