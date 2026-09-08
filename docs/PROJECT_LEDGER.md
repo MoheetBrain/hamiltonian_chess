@@ -1890,3 +1890,48 @@ or reinterpreted; `RSTAR_NOT_IDENTIFIED`, `GAME_R_INSTRUMENT_NOT_QUALIFIED`,
 continue into Pilot 1. The next engineering priority is the open RT findings, chiefly RT-03 (make
 `--relive` replay the trajectory's own actions) and RT-13 (derive `mutation_hash` rather than
 accept it), then `VerifiedTask` so an interactive world exists at all.
+
+---
+
+## 2026-09-08 — HC-V0 handoff document; mission-reset session closed
+
+**Date/time.** 2026-09-08, Europe/London. **Branch.** `claude/hamiltonian-phase-8-experiment-691d22`.
+**Stage.** Mission reset, close-out (manual §47 Step 10: stop and hand off).
+
+**Objective.** Record the measured costs, the open defects and the single highest-value next
+action, so the scientific pilot can be designed from evidence rather than from hope. Per §47
+Step 10 the session stops here and does **not** continue into Pilot 1.
+
+**Files changed.** New: `docs/HAMILTONIAN_CHESS_V0_HANDOFF.md`. Modified: `docs/PROJECT_STATUS.md`,
+this ledger. No code changed.
+
+**What it records.** Sentinel `META_GAME_V0_EXECUTABLE`. What now exists (outer loop,
+kernel-verified trajectory world, fitness memory, populated archive, `InterventionClass`, the
+`spec/` authority set, a red-team suite) and — at equal length — what HC-V0 is **not**: a stub
+evaluator whose `J_solve` is noise, a bank whose 120 actions are all `REFERENCE` with zero solver
+actions, five of seven fitness dimensions `NOT_MEASURED`, and `Δ(R_A, R_B)` still uncomputed.
+
+**Measured costs for Pilot-1 sizing.** Outer generation 0.6 s / 0 model calls; Lean startup ~3.2 s
+and ~193 steps/s warm; bank builds 3.05 s and 2.29 s per episode; **flat replay 11/26 = 42%**
+(56% at reference ≥5, **20% at ≥12**) — which supersedes the 83% a six-proof sample implied;
+13 of 35 single-gene children byte-identical; 20 mutants on disk, 10 inert.
+
+**The five constraints carried forward.** (1) The horizon thesis is partly tautological and
+metric-dependent — the absolute gap is unimodal, so only a rank reversal or super-compounding is a
+real result. (2) Prior art is `NOVEL_ONLY_IN_COMBINATION`. (3) The seed population is narrower than
+its roster (98.6% byte overlap; genome-blind codecs). (4) Contamination is unresolved, so the claim
+is *execution under kernel verification*, never reasoning. (5) The semantic gate's identity cannot
+reach Lean states (0/368 lossless) and has not been re-derived against the backend envelope — the
+largest engineering risk in the reset.
+
+**Highest-EV next action, recorded.** Build `VerifiedTask` (the interactive environment) and put a
+real Solver in it — but fix RT-03 and RT-13 first, because both corrupt the record the moment an
+evaluator makes outcomes stochastic.
+
+**Tests actually executed.** No code changed in this entry; the preceding commit's gates stand at
+**1,286 passed, 1 skipped**, ruff clean over 341 files, mypy clean over 142.
+
+**Effect.** No sentinel created, retired or reinterpreted beyond recording
+`META_GAME_V0_EXECUTABLE` for the V0 milestone itself. No `RSTAR`/`LSTAR` claim.
+
+**Next intended step.** Owner decision. The session stops here per §47 Step 10.

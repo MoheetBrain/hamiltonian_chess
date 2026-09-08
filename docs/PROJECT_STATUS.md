@@ -637,6 +637,18 @@ the archive. The sealed-split guard survived `./`, `../`, absolute and `//` evas
 builder's leakage counts replicated exactly, and the committed bank has zero live-state leaks
 across 120 states.
 
+## HC-V0 handoff (2026-09-08) — `META_GAME_V0_EXECUTABLE`
+
+`docs/HAMILTONIAN_CHESS_V0_HANDOFF.md` is the single document to read first. It records what
+exists, what HC-V0 is **not**, the measured costs for sizing Pilot 1, the open red-team findings,
+and the highest-value next action. The session stops there per manual §47 Step 10 and does **not**
+continue into Pilot 1.
+
+**Highest-EV next action:** build `VerifiedTask` — the interactive environment — and put a real
+Solver in it. Today the world is replay-only with zero solver actions, so manual §40.3's preferred
+`INTERACTIVE_TASK` mode does not exist and autonomous long-horizon claims stay blocked. Fix RT-03
+and RT-13 first: both corrupt the fitness record the moment an evaluator makes outcomes stochastic.
+
 ## Current Blockers
 
 1. **The meta-game has no verified trajectory world.** Every existing environment is a
