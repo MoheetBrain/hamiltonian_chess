@@ -144,6 +144,28 @@ and for log-odds, and *false* for absolute accuracy difference at large fixed `n
 must be preregistered before any horizon claim is made**, and a result that only appears under one
 undeclared metric choice is not a result.
 
+**Verified numerically, 2026-09-08.** Take a parent per-step hazard of 0.870 and a child of 0.905 —
+a *constant* +3.5-point edge, with **zero** representation × horizon interaction by construction:
+
+| horizon `H` | 1 | 5 | 10 | 20 | 40 | 80 |
+|---|---|---|---|---|---|---|
+| child `p^H` | 0.9050 | 0.6071 | 0.3685 | 0.1358 | 0.0184 | 0.0003 |
+| parent `q^H` | 0.8700 | 0.4984 | 0.2484 | 0.0617 | 0.0038 | 0.0000 |
+| **absolute gap** | 0.0350 | 0.1087 | **0.1201** | 0.0741 | 0.0146 | 0.0003 |
+| log-odds gap | 0.353 | 0.441 | 0.569 | 0.871 | 1.593 | 3.156 |
+
+The absolute gap **peaks at `H = 8` and decays to zero**. Comparing `H = 1` to `H = 20` gives
+**+0.039** — "advantage grows with horizon". Comparing `H = 20` to `H = 80` gives **−0.074** —
+"advantage shrinks with horizon". **Both are computed from the same null, in which nothing
+interacts with horizon at all.** Choose the buckets after seeing the curve and this statistic will
+hand you either headline. That is not a hypothetical failure mode; it is the default one.
+
+Note the last row: the **log-odds** gap is monotone and, under pure compounding, grows *linearly*
+in `H`. That is precisely why the estimand must be defined on the **per-step** log-odds hazard,
+where pure compounding predicts a **constant** — giving a real null that a real interaction can
+depart from. `docs/LONG_HORIZON_FITNESS_V0.md` fixes this as `β` (super-compounding), with rank
+reversal as the secondary endpoint and the absolute gap demoted to descriptive.
+
 The two versions worth actually winning, because compounding cannot explain either:
 
 - **A rank reversal across horizon** — representation A beats B at short horizon and loses at long

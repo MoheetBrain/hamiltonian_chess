@@ -503,6 +503,70 @@ semantic gate accepts all 8 honest surfaces and refuses a renderer that drops a 
 assumption; the 0-of-44 and 24-of-44 genome sensitivity figures; the Lean toolchain and the corpus
 counts.
 
+## Mission reset — Phase C: HC-V0 is executable (2026-09-08)
+
+**One outer generation runs end to end, and a kernel-verified trajectory world exists.** Neither
+is a scientific result; both are engineering milestones, and the code says so itself
+(`scientific_status: EXECUTABILITY_ONLY_NOT_A_RESULT`).
+
+**The governing specification** is now
+`spec/SOURCE/HAMILTONIAN_CHESS_ATOMIC_SPECIFICATION_MANUAL_v0.2.md` (owner-supplied 2026-09-08,
+stored unchanged per its §47 Step 2, sha256 `f3c04e69…1768cf`). `GOAL.md` is preserved unmodified
+and still governs local Game-R assays. The minimum authority set of manual §36.1 exists under
+`spec/`: constitution, glossary, claim ledger, task/trajectory contract, evaluator contract, outer
+loop, three JSON Schemas, manifest and acceptance tests.
+
+### The outer loop (`arena/evolution/`)
+
+One generation: population → parent → mutation → semantic gate → evaluation → fitness record →
+archive → next generation. Zero model calls, 0.6 s. Verified by the integrator across two runs:
+**`result_hash` and `record_id` identical**, only wall-clock and timestamp differ. The league
+archive received **80 `MatchObservation` rows — the first ever written**. The evaluator is a
+deterministic stub, so its `J_solve` is **noise, not evidence**; five of seven fitness dimensions
+are present and explicitly `NOT_MEASURED`.
+
+Two measured corrections to the remap: only **20** mutants exist on disk, not 120 (the larger
+figure was an in-memory audit population never persisted), and **10 of those 20 are byte-inert** —
+their rendered prompt equals their parent's, so the parity gate kills rather than scores them.
+Which gene families are live is **arena-dependent**, not a fixed nine.
+
+### The trajectory world (`arena/trajectory/`)
+
+Live Lean replay against the built mathlib4 checkout (Lean 4.10.0-rc1, 5,680 `.olean`).
+Independently confirmed from the committed bank: **11 `CLOSED_VERIFIED` trajectories**, horizon
+histogram `{5: 7, 7: 1, 12: 1, 13: 1, 14: 1}` — 11 at ≥5, 3 at ≥10, max 14. Verification is the
+Lean kernel twice over: per step the REPL accepts the tactic and returns a new state id, and at
+closure the whole script is re-elaborated in a fresh process ending in `#print axioms`, rejecting
+any proof depending on `sorryAx`. **No string equality does verification work** — an AST scan over
+the package finds five string comparisons, all whitelisted with a stated reason, and zero
+state-vs-state comparisons.
+
+**Measured correction to the data audit:** flat replay of tree-shaped proofs succeeds at
+**11/26 = 42%**, not the 5/6 = 83% a six-proof sample suggested, and it is length-dependent —
+56% at reference length ≥5, **20% at ≥12**. Anyone sizing a bank from 83% will be badly wrong.
+
+### Two manual requirements retrofitted by the integrator
+
+- **`InterventionClass`** (§6.26, §12.3, §26) now exists and is recorded on every comparison. It is
+  **derived from the genes actually changed, never stored**, so a comparison cannot claim to be
+  representation-only while carrying an ontology gene, and it **fails closed** on an undeclared
+  gene rather than defaulting to `R_ONLY`.
+- **The horizon vocabulary** (§6.30–§6.34, §17.6). `EpisodeLength`, `ObservedTraceLength`,
+  `KernelStepCount`, `DependencyDepth` and `MinimalProofLength` are now distinct, with
+  `MinimalProofLength` and `DependencyDepth` returning the literal `UNKNOWN`. That is what
+  mechanically prevents calling a 14-tactic replay a "14-step required reasoning task".
+
+### The three honest caveats on the trajectory numbers
+
+1. **All 120 recorded actions are `actor=REFERENCE`.** The bank replays mathlib's own proofs.
+   It measures the *environment*, not any policy. A single-actor guard exists so this cannot be
+   quietly reported as a solver result.
+2. **Contamination.** mathlib4 is `HISTORICALLY_EXPOSED` transitively; nothing here distinguishes
+   14 steps of reasoning from 14 steps of recall. Every trajectory carries the note verbatim: this
+   is **long-horizon execution under kernel verification**, not long-horizon discovery.
+3. **Automation.** The default tactic policy is `record_only`, so heavy tactics appear in the head
+   counts. A restriction is a parameter with a hashed policy id, not a hidden constant.
+
 ## Current Blockers
 
 1. **The meta-game has no verified trajectory world.** Every existing environment is a

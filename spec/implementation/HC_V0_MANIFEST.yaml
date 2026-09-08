@@ -1,0 +1,205 @@
+# HC-V0 MANIFEST
+#
+# Source: manual §19.3 (V0 founders), §20 (mutation operators), §32.1 (V0 smoke policy),
+# §40 (minimum vertical slice), §6.26/§26 (intervention class), §6.27 (EvaluationUniverse),
+# §18.3 (V0 engineering admission).
+# Authority rank 3 (spec/00_CONSTITUTION.md C7).
+#
+# THIS IS NOT A FROZEN EXPERIMENT MANIFEST. HC-V0 is engineering-only (§0.2) and crosses no
+# scientific exposure boundary, so §3.2's freezing rules do not yet bind it. A Pilot 1 manifest
+# is a different document and requires the §30.3 confirmatory field set.
+#
+# EVERY value this document cannot determine from evidence is the literal string UNKNOWN.
+# §1: UNKNOWN is not permission to guess.
+
+manifest_id: HC_V0
+manifest_version: "0.1.0"
+status: DRAFT_ENGINEERING_ONLY
+scientific_claim_permitted: false          # §0.2, §40.5, §40.6
+sentinel_on_completion: UNKNOWN            # exactly one of §40.6; chosen by the run, not here
+
+# ---------------------------------------------------------------------------
+# POPULATION  (§19.3, §32.1, §40.4)
+# ---------------------------------------------------------------------------
+population:
+  founders_count: 4                        # §19.3 / §32.1: 3-4 existing founders
+  children_count: UNKNOWN                  # §32.1 permits 1-4; the exact number is an
+                                           # ENGINEERING_DECISION for the implementing agent
+  children_count_allowed_range: [1, 4]     # §32.1, §40.4
+  generations: 1                           # §32.1, §40.4: exactly one generation
+  founders:
+    - candidate_id: L0_STRUCTURED_ENGLISH
+      manual_class: "Controlled mathematical English (§19.1 item 2, §19.3 recommendation 1)"
+      rationale: "§19.2 - controlled English remains in the Hall of Fame indefinitely. The incumbent organism."
+      genome_hash: 9823d4955c8416811632af0656518e84a9e23bc513cc9ce7a037e33c955c0d2f
+    - candidate_id: L3_JSON_AST
+      manual_class: "JSON AST (§19.1 item 5, §19.3 recommendation 2)"
+      rationale: "§19.3 recommended. NOTE: shares a 0.82 sequence-similarity ratio with L0 and 98.6% of state bytes with L6_GRAPH_TRIPLES at P20."
+      genome_hash: UNKNOWN
+    - candidate_id: L1_CURRENT_HML
+      manual_class: "Historical HML (§19.1 item 4, §19.3 recommendation 3)"
+      rationale: "§5.1 - an ancestral organism and semantic-engineering asset, not the predetermined answer. No founder is privileged (§19.2)."
+      genome_hash: d888b38a320d50c2c144d779dfb3aa252621e9add8671788d6d885ef4fb0a84e
+    - candidate_id: L5_COMPACT_SYMBOLIC
+      manual_class: "Compact symbolic (§19.1 item 8, §19.3 recommendation 3 alternative)"
+      rationale: "§19.3 names Historical HML OR Compact Symbolic; both are included because four founders are permitted and this is the widest available separation from L0/L3."
+      genome_hash: UNKNOWN
+  lean_like_founder:
+    included: false
+    reason: >-
+      §19.3 recommendation 4 is a Lean-like representation IF SUPPORTED BY THE CHOSEN
+      TRAJECTORY ARENA. No Lean-like seed exists in arena/languages/registry.py: the eight
+      registered seeds are L0_STRUCTURED_ENGLISH, L1_CURRENT_HML, L2_SEXPR, L3_JSON_AST,
+      L4_TYPED_PREFIX, L5_COMPACT_SYMBOLIC, L6_GRAPH_TRIPLES, L7_HYBRID_ROLE_LABELLED.
+      Adding one is not a V0 task (§48 - do not invent HML_V4 by hand); it is the natural
+      first founder to add once the backend-native envelope of §17.4 is renderable.
+  excluded_seeds_and_why:
+    L6_GRAPH_TRIPLES: "98.6% state-byte overlap with L3_JSON_AST at P20 (docs/PHASE8_SALVAGE_HANDOFF.md §3.2). Including both would inflate apparent population diversity."
+    L2_SEXPR: "Not named by §19.3. Available if a fourth non-overlapping founder is preferred over L5."
+    L4_TYPED_PREFIX: "Not named by §19.3."
+    L7_HYBRID_ROLE_LABELLED: "Not named by §19.3."
+
+# ---------------------------------------------------------------------------
+# MUTATION  (§20, §12.3, §26)
+# ---------------------------------------------------------------------------
+mutation:
+  count: 1                                 # §40.1: one controlled mutation exists
+  family: MORPHOLOGY_MUTATION              # §20.1
+  single_gene_family: true                 # §20.2: one gene family per child in early generations
+  recommended_operator: add-role-morphology
+  recommended_operator_source: "arena/genome/mutation.py MutationOperator.ADD_ROLE_MORPHOLOGY"
+  alternative_operator: change-delimiter   # INTERFACE_MUTATION (§20.1), also R_ONLY
+  crossover_enabled: false                 # §32.3: disable crossover until parent-child effects are interpretable
+  multi_gene_enabled: false                # §20.1: MULTI_GENE_MUTATION deferred to the interaction phase
+  tokenizer_mutation_enabled: false        # §20.1, §10.10, §26.6: deferred
+  meta_genome_mutation_enabled: false      # §20.1: long-term only
+
+# ---------------------------------------------------------------------------
+# INTERVENTION CLASS  (§6.26, §12.3, §26) - REQUIRED, NOT OPTIONAL
+# ---------------------------------------------------------------------------
+intervention:
+  class: R_ONLY                            # follows from a morphology-only mutation (§26.2)
+  declared_before_compilation: true        # §12.3, §40.5
+  fairness_contract: "§26.2 fixed-variable list, reproduced in spec/evaluation/HC_V0_EVALUATOR_CONTRACT.md §5"
+  causal_claim_permitted: "NONE at V0. §0.2 - no HC-V0 winner is a scientific winner. R_ONLY names the contract the comparison must satisfy; it does not license a claim."
+  parity_required: true                    # R_ONLY is the class that claims to hold information fixed (§0 correction 6)
+  blocking_defect: >-
+    InterventionClass does not exist in this repository (spec/02_CLAIM_LEDGER.jsonl
+    CLM-GAP-INTERVENTION-040). Until it is implemented, this field is a specification
+    statement that no code reads, DEAD_UNDECLARED_INTERVENTION cannot fire, and §40.5's
+    "truthful intervention classification" cannot be evidenced.
+
+# ---------------------------------------------------------------------------
+# EVALUATION  (§14.6, §25, §40.3, §40.4)
+# ---------------------------------------------------------------------------
+evaluation:
+  gates_run: [GATE_0, GATE_1]              # spec/evaluation/HC_V0_EVALUATOR_CONTRACT.md §1
+  gates_deferred: [GATE_2, GATE_3, GATE_4, GATE_5, GATE_6]
+  preferred_mode: INTERACTIVE_TASK         # §40.3
+  permitted_mode_for_v0: TRAJECTORY_REPLAY # §40.3, engineering only
+  mode_used: UNKNOWN                       # decided by which world source is actually wired
+  if_replay_only:
+    autonomous_long_horizon_claims: BLOCKED # §18.4, §40.3
+    sentinel: META_GAME_BLOCKED_BY_INTERACTIVE_TRAJECTORY_WORLD  # §40.6
+  stub_evaluator_permitted: true           # §40.4 - may validate orchestration
+  real_backend_interaction: SHOULD         # §40.4, §47 Step 8 - if practical
+  crown_a_language: false                  # §25 Gate 1: MUST NOT crown a language
+
+# ---------------------------------------------------------------------------
+# WORLD  (§17, §18, §47 Steps 5-6)
+# ---------------------------------------------------------------------------
+world:
+  verified_task_source: UNKNOWN
+  verified_task_source_blocker: "No VerifiedTask object exists in code (CLM-GAP-VERIFIEDTASK-041). Maximum horizon in the committed repository is 1 (CLM-FACT-HORIZON-010)."
+  verified_trajectory_source: UNKNOWN
+  candidate_trajectory_source:
+    dataset: "LeanDojo benchmark 4, random/train.json"
+    license: "CC BY 2.0"
+    supported_task_mode: UNKNOWN           # REPLAY | INTERACTIVE | BOTH (§18) - depends on whether the live REPL is driven
+    records: 118517
+    records_with_traced_tactics: 59557
+    steps: 250814
+    observed_trace_length_at_least_20: 1605   # §6.30 - an ObservedTraceLength, NOT a required horizon (§17.6)
+    observed_trace_length_max: 128
+    sealed_splits_not_read:
+      - "random/val.json"
+      - "random/test.json"
+      - "novel_premises/val.json"
+      - "novel_premises/test.json"
+  source_admission_record: UNKNOWN         # one §18 record per admitted source, schema at spec/world/SOURCE_ADMISSION_SCHEMA.json
+  canonical_schema_usable_for_lean: false  # 0 of 368 real Lean states map losslessly (CLM-FACT-CANONICAL-013)
+  backend_native_envelope_permitted: true  # §17.4
+  minimum_corpus_size: NOT_REQUIRED        # §18.3
+
+# ---------------------------------------------------------------------------
+# EVALUATION UNIVERSE  (§6.27) - every field is required before any fitness reading
+# ---------------------------------------------------------------------------
+evaluation_universe:
+  task_distribution: UNKNOWN
+  backend_kernel_versions: UNKNOWN
+  solver_initialization_or_checkpoint: UNKNOWN
+  tokenizer: UNKNOWN
+  controller: UNKNOWN
+  tools: UNKNOWN
+  adaptation_data: NONE                    # no adaptation at V0; Gate 2 is DEFERRED
+  adaptation_budget: NONE
+  inference_budget: UNKNOWN
+  verifier: UNKNOWN
+  seeds: UNKNOWN
+  evaluation_split: UNKNOWN
+  code_and_manifest_versions: UNKNOWN
+  solver_availability_note: >-
+    The Solver named in the prior live preregistration (qwen38-rvn, digest
+    25eb57cb8173332b43f8f07f6214e6b74f9e11afac5242392da751458fb024ae) was deleted from the
+    local Ollama on 2026-09-08 together with its manifest; the digest is unrecoverable and the
+    name is a local build that cannot be re-pulled. Any Solver choice for HC-V0 is therefore a
+    decision recorded from scratch, not an inheritance.
+
+# ---------------------------------------------------------------------------
+# BUDGETS  (§6.19, §32.2, §41.2)
+# ---------------------------------------------------------------------------
+budgets:
+  model_calls_max: UNKNOWN
+  inference_tokens_max: UNKNOWN
+  wall_clock_max_seconds: UNKNOWN
+  verifier_calls_max: UNKNOWN
+  paid_cloud_compute: FORBIDDEN            # §50 hard stops - unless separately authorised
+  must_be_measured_by_v0:                  # §32.2, §41.2 - the reason V0 exists
+    - compile_or_death_rate
+    - evaluator_latency_and_cost
+    - task_variance
+    - candidate_pair_discordance
+    - long_horizon_task_availability
+    - available_compute
+  pilot_1_values_inherited: false          # §32.2: 12 founders / 32 children / 10 generations are NOT binding defaults
+
+# ---------------------------------------------------------------------------
+# OUTPUTS  (§33, §40.5)
+# ---------------------------------------------------------------------------
+outputs:
+  fitness_records:
+    schema: spec/meta_game/LANGUAGE_FITNESS_MEMORY_SCHEMA.json
+    append_only: true                      # §3.3
+    failed_or_refused_evaluations_are_records: true   # §43
+  fitness_is_a_vector: true                # §6.22, §22.2 - no arbitrary universal scalar
+  archive_update: REQUIRED                 # §40.2, §40.5
+  next_generation_state: REQUIRED          # §40.2
+  success_criterion: >-
+    §40.5 - the loop executes end-to-end with deterministic lineage, truthful intervention
+    classification, verifier/assurance provenance, durable fitness memory and reproducible
+    archive update. No improvement is required.
+
+# ---------------------------------------------------------------------------
+# HARD STOPS  (§48, §50)
+# ---------------------------------------------------------------------------
+hard_stops:
+  - "no 120-mutant run"
+  - "no RL Architect"
+  - "no scientific founder tournament"
+  - "no LSTAR or RSTAR claim"
+  - "no giant corpus ingestion"
+  - "no universal canonical rewrite"
+  - "no exhaustive historical-spec atomization"
+  - "no hand-designed HML_V4"
+  - "no simultaneous tokenizer and language optimization"
+  - "no continuation into Pilot 1 - stop and hand off (§47 Step 10)"

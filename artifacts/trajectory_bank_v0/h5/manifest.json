@@ -1,0 +1,254 @@
+{
+  "schema": "arena-verified-trajectory-bank-v0",
+  "generated_utc": "2026-09-08T13:07:11+00:00",
+  "generator": "arena/trajectory/arena_v0.py@v0",
+  "bank_file": "bank.jsonl",
+  "selection": {
+    "train_json": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo_raw/leandojo_benchmark_4/random/train.json",
+    "seed": 7,
+    "scan_limit": 6000,
+    "min_horizon": 5,
+    "max_horizon": null,
+    "limit": 16,
+    "allow_multiline_tactics": false,
+    "records_scanned": 6000,
+    "candidates_selected": 16
+  },
+  "toolchain": {
+    "lean_version_string": "Lean (version 4.10.0-rc1, arm64-apple-darwin23.5.0, commit 3b58e0649156, Release)",
+    "toolchain": "leanprover/lean4:v4.10.0-rc1",
+    "mathlib_root": "/Users/moheet/Documents/ChatGPT/HML_V3/external/runtime_work/leanprover-community-mathlib4-29dcec074de168ac2bf835a77ef68bbe069194c5/mathlib4",
+    "olean_count": 5680,
+    "max_heartbeats": 1000000
+  },
+  "action_space": {
+    "kind": "FREE_FORM_TACTIC_STRING",
+    "enumerable": false,
+    "proposes_candidates": false,
+    "policy_name": "record_only",
+    "policy_id": "54954a450e6c9c5b",
+    "denied_heads": [],
+    "allowed_heads": null,
+    "always_refused": [
+      "admit",
+      "sorry",
+      "sorryAx",
+      "stop"
+    ],
+    "description": "The Solver proposes one Lean 4 tactic string per step. The arena neither enumerates nor ranks candidates; legality is decided by the Lean elaborator at the current metavariable context, after the caller's tactic policy has been applied. `sorry` and `admit` are refused unconditionally."
+  },
+  "results": {
+    "trajectories_written": 16,
+    "closed_verified": 9,
+    "horizon_histogram_verified": {
+      "5": 7,
+      "7": 1,
+      "13": 1
+    },
+    "max_verified_horizon": 13,
+    "terminal_status_counts": {
+      "ABANDONED": 1,
+      "CLOSED_VERIFIED": 9,
+      "FAILED": 6
+    },
+    "tactic_head_counts": {
+      "rw": 12,
+      "exact": 7,
+      "obtain": 4,
+      "have": 3,
+      "intro": 3,
+      "refine": 3,
+      "simp": 3,
+      "cases'": 2,
+      "linarith": 2,
+      "push_cast": 2,
+      "rcases": 2,
+      "simp_rw": 2,
+      "apply": 1,
+      "by_contra!": 1,
+      "convert": 1,
+      "ext1": 1,
+      "intros": 1,
+      "replace": 1,
+      "revert": 1,
+      "rw_mod_cast": 1,
+      "rwa": 1,
+      "use": 1
+    }
+  },
+  "discards": {
+    "BELOW_MIN_HORIZON": 5227,
+    "LEAKAGE_FILTER": 6,
+    "MULTILINE_TACTIC": 435,
+    "NOT_THEOREM_OR_LEMMA": 26,
+    "NO_BY_BLOCK": 22
+  },
+  "leakage": {
+    "problems_scanned": 773,
+    "steps_scanned": 8855,
+    "leaking_steps": 7,
+    "problems_dropped": 6,
+    "reasons": {
+      "TACTIC_IN_STATE_BEFORE": 7
+    }
+  },
+  "timings_s": {
+    "selection": 0.23,
+    "replay": 51.04,
+    "total": 51.27,
+    "mean_per_episode": 3.19
+  },
+  "episodes": [
+    {
+      "problem_id": "Mathlib/MeasureTheory/Integral/Bochner.lean::MeasureTheory.weightedSMul_add_measure",
+      "terminal_status": "CLOSED_VERIFIED",
+      "achieved_horizon": 5,
+      "reference_horizon": 5,
+      "wall_s": 3.1,
+      "startup_s": 1.35,
+      "error": ""
+    },
+    {
+      "problem_id": "Mathlib/Data/Part.lean::Part.assert_neg",
+      "terminal_status": "ABANDONED",
+      "achieved_horizon": 6,
+      "reference_horizon": 6,
+      "wall_s": 0.99,
+      "startup_s": 0.93,
+      "error": ""
+    },
+    {
+      "problem_id": "Mathlib/Analysis/Convex/Gauge.lean::le_gauge_of_not_mem",
+      "terminal_status": "FAILED",
+      "achieved_horizon": 7,
+      "reference_horizon": 12,
+      "wall_s": 2.11,
+      "startup_s": 1.98,
+      "error": ""
+    },
+    {
+      "problem_id": "Mathlib/RingTheory/MvPolynomial/Homogeneous.lean::MvPolynomial.IsHomogeneous.rename_isHomogeneous_iff",
+      "terminal_status": "CLOSED_VERIFIED",
+      "achieved_horizon": 5,
+      "reference_horizon": 5,
+      "wall_s": 3.78,
+      "startup_s": 1.73,
+      "error": ""
+    },
+    {
+      "problem_id": "Mathlib/Analysis/SpecialFunctions/Trigonometric/Arctan.lean::Real.arccos_eq_arctan",
+      "terminal_status": "CLOSED_VERIFIED",
+      "achieved_horizon": 5,
+      "reference_horizon": 5,
+      "wall_s": 5.12,
+      "startup_s": 2.28,
+      "error": ""
+    },
+    {
+      "problem_id": "Mathlib/RingTheory/ChainOfDivisors.lean::DivisorChain.second_of_chain_is_irreducible",
+      "terminal_status": "FAILED",
+      "achieved_horizon": 2,
+      "reference_horizon": 8,
+      "wall_s": 1.11,
+      "startup_s": 1.05,
+      "error": ""
+    },
+    {
+      "problem_id": "Mathlib/Data/Seq/Computation.lean::Computation.results_bind",
+      "terminal_status": "CLOSED_VERIFIED",
+      "achieved_horizon": 13,
+      "reference_horizon": 13,
+      "wall_s": 3.68,
+      "startup_s": 1.75,
+      "error": ""
+    },
+    {
+      "problem_id": "Mathlib/Algebra/Polynomial/FieldDivision.lean::Polynomial.lt_rootMultiplicity_of_isRoot_iterate_derivative_of_mem_nonZeroDivisors",
+      "terminal_status": "CLOSED_VERIFIED",
+      "achieved_horizon": 7,
+      "reference_horizon": 7,
+      "wall_s": 2.22,
+      "startup_s": 0.99,
+      "error": ""
+    },
+    {
+      "problem_id": "Mathlib/Analysis/LocallyConvex/WithSeminorms.lean::WithSeminorms.isVonNBounded_iff_finset_seminorm_bounded",
+      "terminal_status": "FAILED",
+      "achieved_horizon": 2,
+      "reference_horizon": 20,
+      "wall_s": 3.84,
+      "startup_s": 3.76,
+      "error": ""
+    },
+    {
+      "problem_id": "Mathlib/SetTheory/Ordinal/Topology.lean::Ordinal.isClosed_iff_sup",
+      "terminal_status": "CLOSED_VERIFIED",
+      "achieved_horizon": 5,
+      "reference_horizon": 5,
+      "wall_s": 2.03,
+      "startup_s": 0.91,
+      "error": ""
+    },
+    {
+      "problem_id": "Mathlib/MeasureTheory/Function/ConditionalExpectation/Basic.lean::MeasureTheory.stronglyMeasurable_condexp",
+      "terminal_status": "FAILED",
+      "achieved_horizon": 2,
+      "reference_horizon": 14,
+      "wall_s": 1.54,
+      "startup_s": 1.46,
+      "error": ""
+    },
+    {
+      "problem_id": "Mathlib/Geometry/Manifold/IntegralCurve.lean::IsIntegralCurveOn.comp_mul",
+      "terminal_status": "CLOSED_VERIFIED",
+      "achieved_horizon": 5,
+      "reference_horizon": 5,
+      "wall_s": 6.28,
+      "startup_s": 2.81,
+      "error": ""
+    },
+    {
+      "problem_id": "Mathlib/LinearAlgebra/Matrix/ZPow.lean::Matrix.zpow_add_of_nonpos",
+      "terminal_status": "CLOSED_VERIFIED",
+      "achieved_horizon": 5,
+      "reference_horizon": 5,
+      "wall_s": 3.61,
+      "startup_s": 1.64,
+      "error": ""
+    },
+    {
+      "problem_id": "Mathlib/SetTheory/Cardinal/Ordinal.lean::Cardinal.mk_equiv_eq_arrow_of_lift_eq",
+      "terminal_status": "CLOSED_VERIFIED",
+      "achieved_horizon": 5,
+      "reference_horizon": 5,
+      "wall_s": 5.92,
+      "startup_s": 2.9,
+      "error": ""
+    },
+    {
+      "problem_id": "Mathlib/Topology/UniformSpace/UniformConvergence.lean::tendsto_comp_of_locally_uniform_limit_within",
+      "terminal_status": "FAILED",
+      "achieved_horizon": 1,
+      "reference_horizon": 6,
+      "wall_s": 2.42,
+      "startup_s": 2.37,
+      "error": ""
+    },
+    {
+      "problem_id": "Mathlib/RingTheory/MvPowerSeries/Basic.lean::MvPowerSeries.X_pow_dvd_iff",
+      "terminal_status": "FAILED",
+      "achieved_horizon": 2,
+      "reference_horizon": 50,
+      "wall_s": 3.29,
+      "startup_s": 3.24,
+      "error": ""
+    }
+  ],
+  "sealed_splits_not_read": [
+    "novel_premises/val.json",
+    "novel_premises/test.json",
+    "random/val.json",
+    "random/test.json"
+  ],
+  "contamination": "mathlib4 is HISTORICALLY_EXPOSED and exposure is transitive: no LeanDojo split establishes pretraining-cleanliness. This measures long-horizon EXECUTION under kernel verification, not long-horizon discovery."
+}

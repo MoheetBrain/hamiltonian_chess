@@ -82,3 +82,28 @@ Per founder arm, using the frozen adversary set of the selected stratum: (a) bes
 ## 8. Tournament-pool evaluation
 
 _Appended after the pool is frozen._
+
+---
+
+## 9. CORRECTION (appended 2026-09-08, after the long-horizon fitness design)
+
+**The proposed gate in §7 was under-powered, and the headline number in §4 must not be read as
+passing it.**
+
+`docs/LONG_HORIZON_FITNESS_V0.md` computed the operating characteristic of a leakage gate that §7
+only asserted. Two results change how this document must be cited:
+
+- **A 0.55 threshold at n = 400 false-voids a clean language with probability 0.9937.** That is the
+  mirror image of the V7 forensic audit's C3e failure (a threshold set below the null mean of its
+  own max-over-k statistic), reappearing in the replacement gate. §7's proposal of 0.60 was closer,
+  but its sample size was never derived.
+- **The corrected V0 operating point is `n_EVAL = 800` with a threshold of `0.60`**: false-void
+  probability **0.0019**, and detection of a genuine 0.60 leak **1.000**.
+
+**Therefore the "best frozen adversary 0.5625 at n = 400" in §4 is a descriptive measurement, not a
+gate pass.** It was never evaluated against a powered threshold, because the tournament it was
+built for was stood down before any founder call. Cite it as "the best surface adversary reached
+0.5625 against a chance level of 0.500 on fresh data", never as "the mechanism passed the shortcut
+gate".
+
+The measurements in §§1–6 are unaffected; only the never-enacted gate in §7 is corrected.

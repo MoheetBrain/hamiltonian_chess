@@ -1,0 +1,270 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hamiltonian-chess/spec/language/language_genome_v0.schema.json",
+  "title": "LanguageMetaGenomeV0",
+  "description": "Machine-checkable form of manual §10.1's canonical object, with the gene families of §10.2-§10.9 and the §11 cross-field constraints that a JSON Schema can carry. The meta-genome defines the generative search space; it does not enumerate the mathematical-language universe (§10).",
+  "$comment": "AUTHORITY: manual §10, §11. WHAT THIS SCHEMA CANNOT ENFORCE, and which therefore MUST be code-enforced and MUST fail as DEAD_GENOME_CONSTRAINT (§11, §12.4) before any Solver compute is spent (§12.4 'No dead candidate receives Solver compute'): (1) that a declared derivation_algorithm, index_assignment_procedure, node_identity_procedure, morpheme_grammar_ref or state_delta_validator_ref is DETERMINISTIC - schema can require the declaration, never its semantics; (2) that an executable grammar actually emits a machine-readable grammar/validator (§10.6); (3) that an ontology concept set to ABSENT is genuinely deterministically derivable from what remains; (4) that a projection feature's admissibility flags are truthful, i.e. that it really does not read an answer label, a future state, a hidden solution, a minimum proof path, or a candidate-correctness label (§27 - a P3 feature is forbidden in candidate input and is DEAD_LEAKAGE, §12.4); (5) that the renderer for a declared grammar family exists rather than silently aliasing another family - the repository has measured this exact failure, two seed surfaces sharing 98.6% of state bytes (docs/PHASE8_SALVAGE_HANDOFF.md §3.2). DIVERGENCE FROM docs/LANGUAGE_META_GENOME_V0.md: that document adds families W (workspace) and tau (tokenizer) as first-class containers; manual §10.1 has neither, placing candidate-specific tokenizer training in §10.10 deferred_features. The manual wins (§3.1). This schema therefore carries W and tau only inside deferred_features. Ontology gene DOMAIN: §10.2 requires only that each concept be 'optional/searchable'; the four-valued ordinal below is imported from docs/LANGUAGE_META_GENOME_V0.md §3.1 as an ENGINEERING_DECISION that refines optionality (ABSENT satisfies it) rather than contradicting it. VERSIONING: §11 - the meta-genome MUST be versioned, and a change to this schema requires an ADR, a new schema version, and a migration policy (§44.2). INTERVENTION CLASS is NOT a genome field: it belongs to LanguageCandidate (§12.1) because it types a COMPARISON, not a genome.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "genome_version",
+    "ontology",
+    "projection",
+    "topology",
+    "typing_binding",
+    "grammar",
+    "morphology",
+    "action_protocol",
+    "interface",
+    "deferred_features"
+  ],
+  "$defs": {
+    "ontology_presence": {
+      "enum": ["ABSENT", "IMPLICIT", "EXPLICIT_TAGGED", "EXPLICIT_CONTAINER"],
+      "description": "§10.2. ABSENT is legal only if the concept is deterministically derivable from what remains (code-enforced)."
+    },
+    "projection_feature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "enabled",
+        "projection_id",
+        "source_fields",
+        "derivation_algorithm",
+        "maximum_derivation_budget",
+        "projection_class",
+        "uses_answer_label",
+        "uses_future_state",
+        "uses_hidden_solution",
+        "uses_minimum_proof_path",
+        "uses_candidate_correctness"
+      ],
+      "description": "§10.3: every projection feature MUST declare a deterministic derivation procedure and an admissibility audit. Field set is §27 verbatim.",
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "projection_id": { "type": "string", "minLength": 1 },
+        "source_fields": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "derivation_algorithm": { "type": "string", "minLength": 1 },
+        "maximum_derivation_budget": { "type": "string", "minLength": 1 },
+        "projection_class": {
+          "enum": ["P0", "P1", "P2", "P3"],
+          "description": "§27. P0 direct relations; P1 local deterministic structure; P2 bounded derived summaries; P3 solution-dependent/future-dependent and FORBIDDEN in candidate input."
+        },
+        "uses_answer_label": { "const": false },
+        "uses_future_state": { "const": false },
+        "uses_hidden_solution": { "const": false },
+        "uses_minimum_proof_path": { "const": false },
+        "uses_candidate_correctness": { "const": false }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "enabled": { "const": true } }, "required": ["enabled"] },
+          "then": {
+            "properties": { "projection_class": { "enum": ["P0", "P1", "P2"] } },
+            "$comment": "§27: P3 is forbidden in candidate input."
+          }
+        }
+      ]
+    }
+  },
+  "properties": {
+    "genome_version": {
+      "type": "string",
+      "minLength": 1,
+      "description": "§10.1, §11. The meta-genome MUST be versioned."
+    },
+    "ontology": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "§10.2 O. Each concept SHALL be optional/searchable unless kernel requirements force otherwise. V0 SHALL NOT declare every concept mandatory.",
+      "required": [],
+      "properties": {
+        "explicit_facts": { "$ref": "#/$defs/ontology_presence" },
+        "assumptions": { "$ref": "#/$defs/ontology_presence" },
+        "definitions": { "$ref": "#/$defs/ontology_presence" },
+        "active_goals": { "$ref": "#/$defs/ontology_presence" },
+        "subgoals": { "$ref": "#/$defs/ontology_presence" },
+        "obligations": { "$ref": "#/$defs/ontology_presence" },
+        "dependencies": { "$ref": "#/$defs/ontology_presence" },
+        "warrants": { "$ref": "#/$defs/ontology_presence" },
+        "evidence_provenance": { "$ref": "#/$defs/ontology_presence" },
+        "branches": { "$ref": "#/$defs/ontology_presence" },
+        "failed_branches": { "$ref": "#/$defs/ontology_presence" },
+        "counterexamples": { "$ref": "#/$defs/ontology_presence" },
+        "conjectures": { "$ref": "#/$defs/ontology_presence" },
+        "epistemic_labels": { "$ref": "#/$defs/ontology_presence" },
+        "unresolved_metavariables": { "$ref": "#/$defs/ontology_presence" },
+        "repair_history": { "$ref": "#/$defs/ontology_presence" }
+      }
+    },
+    "projection": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "§10.3 P, admissibility per §27.",
+      "properties": {
+        "direct_dependency_links": { "$ref": "#/$defs/projection_feature" },
+        "binder_to_use_links": { "$ref": "#/$defs/projection_feature" },
+        "action_to_target_links": { "$ref": "#/$defs/projection_feature" },
+        "premise_to_action_links": { "$ref": "#/$defs/projection_feature" },
+        "definedness_precondition_status": { "$ref": "#/$defs/projection_feature" },
+        "local_neighborhood_summaries": { "$ref": "#/$defs/projection_feature" },
+        "branch_status": { "$ref": "#/$defs/projection_feature" },
+        "state_deltas": { "$ref": "#/$defs/projection_feature" },
+        "evidence_edges": { "$ref": "#/$defs/projection_feature" }
+      }
+    },
+    "topology": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["family"],
+      "description": "§10.4 S.",
+      "properties": {
+        "family": {
+          "enum": ["SEQUENCE", "TREE", "DAG", "GRAPH", "HYPERGRAPH", "GOAL_CENTRIC", "DEPENDENCY_LOCAL", "BRANCH_LOCAL", "HYBRID"]
+        },
+        "node_identity_procedure": {
+          "type": "string",
+          "minLength": 1,
+          "description": "§11: GRAPH topology requires deterministic node identity. Required by the allOf constraint below for GRAPH and HYPERGRAPH."
+        }
+      }
+    },
+    "typing_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type_explicitness", "identity", "scope", "freshness", "partiality"],
+      "description": "§10.5 T. Domains are §10.5 verbatim.",
+      "properties": {
+        "type_explicitness": { "enum": ["NONE", "SELECTIVE", "FULL"] },
+        "identity": { "enum": ["SURFACE_NAME", "SCOPED_ID", "INDEXED"] },
+        "scope": { "enum": ["IMPLICIT", "DELIMITED", "EXPLICIT_SCOPE_ID"] },
+        "freshness": { "enum": ["IMPLICIT", "DECLARED"] },
+        "partiality": { "enum": ["IMPLICIT", "PRECONDITION_TAGGED", "EXPLICIT_OPTIONALITY"] },
+        "index_assignment_procedure": {
+          "type": "string",
+          "minLength": 1,
+          "description": "§11: INDEXED binders require a renderer capable of deterministic index assignment."
+        }
+      }
+    },
+    "grammar": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["family", "grammar_artifact_ref"],
+      "description": "§10.6 G. 'Each executable grammar MUST emit a machine-readable grammar/validator' - the reference is required here; its existence and correctness are code-enforced.",
+      "properties": {
+        "family": {
+          "enum": ["NATURAL_ENGLISH", "CONTROLLED_ENGLISH", "FORMAL_ENGLISH", "PREFIX", "INFIX", "POSTFIX", "S_EXPR", "TYPED_BLOCK", "JSON_AST", "GRAPH_TRIPLE", "HYBRID"]
+        },
+        "grammar_artifact_ref": { "type": "string", "minLength": 1 }
+      }
+    },
+    "morphology": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lexicon_family", "semantic_granularity", "morphological_composition"],
+      "description": "§10.7 M. ARBITRARY_ATOMIC_SYMBOLS is a CONTROL family (§9): random symbol substitution with no other compositional or structural change is an encryption/permutation control for pretrained lexical familiarity, not a language discovery.",
+      "properties": {
+        "lexicon_family": {
+          "enum": ["NATURAL_ENGLISH", "CONTROLLED_ENGLISH", "FORMAL_ENGLISH", "CONVENTIONAL_MATH_SYMBOLS", "ABBREVIATED_ENGLISH", "ARBITRARY_ATOMIC_SYMBOLS", "COMPOSITIONAL_SYMBOLIC", "INVENTED_MORPHEMES", "HYBRID"]
+        },
+        "semantic_granularity": { "enum": ["COARSE", "MEDIUM", "ATOMIC", "HIERARCHICAL"] },
+        "morphological_composition": { "enum": ["FLAT_WORD", "ROLE_PREFIX", "ROLE_SUFFIX", "COMPOSITIONAL", "ALGEBRAIC"] },
+        "morpheme_grammar_ref": {
+          "type": "string",
+          "minLength": 1,
+          "description": "§11: COMPOSITIONAL_SYMBOLIC morphology requires a declared morpheme grammar."
+        }
+      }
+    },
+    "action_protocol": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["payload_level", "granularity"],
+      "description": "§10.8 A. §13.2: the finest primitive decomposition is NOT presumed optimal. §13.1: a macro does not receive free compute; kernel_step_count is accounted after lowering.",
+      "properties": {
+        "payload_level": {
+          "enum": ["ACTION_ONLY", "ACTION_ARGS", "ACTION_ARGS_TARGET", "ACTION_WARRANT", "ACTION_PRECONDITIONS", "ACTION_STATE_DELTA", "FULL_STRUCTURED_ACTION"]
+        },
+        "granularity": { "enum": ["MACRO", "MESO", "PRIMITIVE", "HIERARCHICAL"] },
+        "state_delta_validator_ref": {
+          "type": "string",
+          "minLength": 1,
+          "description": "§11: ACTION_STATE_DELTA requires deterministic state-delta validation."
+        }
+      }
+    },
+    "interface": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "§10.9 I. Dimensions are §10.9 verbatim; their value domains are DELEGATED_FREEDOM (§37) within the declared constraints, because §10.9 lists dimensions rather than enums.",
+      "properties": {
+        "goal_position": { "type": "string" },
+        "context_order": { "type": "string" },
+        "dependency_locality": { "type": "string" },
+        "field_ordering": { "type": "string" },
+        "explicit_labels": { "type": "boolean" },
+        "delimiter_family": { "type": "string" },
+        "redundancy_level": { "type": "string" },
+        "compression_level": { "type": "string" },
+        "stable_semantic_ids": { "type": "boolean" },
+        "graph_traversal_order": { "type": "string" },
+        "repeated_local_context": { "type": "string" },
+        "error_detection_structure": { "type": "string" }
+      }
+    },
+    "deferred_features": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_specific_tokenizer_training",
+        "model_architecture_modification",
+        "candidate_specific_search_controller",
+        "candidate_specific_theorem_library",
+        "candidate_specific_verifier"
+      ],
+      "description": "§10.10. All SHALL be disabled in the first causal search unless explicitly activated by a later ADR. Each is const false here so that activation is a schema change requiring an ADR (§44.2), not a value change.",
+      "properties": {
+        "candidate_specific_tokenizer_training": { "const": false },
+        "model_architecture_modification": { "const": false },
+        "candidate_specific_search_controller": { "const": false },
+        "candidate_specific_theorem_library": { "const": false },
+        "candidate_specific_verifier": { "const": false }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "$comment": "§11: GRAPH topology requires deterministic node identity. Schema requires the DECLARATION; determinism is code-enforced.",
+      "if": {
+        "properties": { "topology": { "properties": { "family": { "enum": ["GRAPH", "HYPERGRAPH"] } }, "required": ["family"] } },
+        "required": ["topology"]
+      },
+      "then": { "properties": { "topology": { "required": ["family", "node_identity_procedure"] } } }
+    },
+    {
+      "$comment": "§11: INDEXED binders require a renderer capable of deterministic index assignment.",
+      "if": {
+        "properties": { "typing_binding": { "properties": { "identity": { "const": "INDEXED" } }, "required": ["identity"] } },
+        "required": ["typing_binding"]
+      },
+      "then": { "properties": { "typing_binding": { "required": ["index_assignment_procedure"] } } }
+    },
+    {
+      "$comment": "§11: COMPOSITIONAL_SYMBOLIC morphology requires a declared morpheme grammar. INVENTED_MORPHEMES is included because §9 makes internal composition the property that distinguishes a candidate morphology from a permutation control.",
+      "if": {
+        "properties": { "morphology": { "properties": { "lexicon_family": { "enum": ["COMPOSITIONAL_SYMBOLIC", "INVENTED_MORPHEMES"] } }, "required": ["lexicon_family"] } },
+        "required": ["morphology"]
+      },
+      "then": { "properties": { "morphology": { "required": ["morpheme_grammar_ref"] } } }
+    },
+    {
+      "$comment": "§11: ACTION_STATE_DELTA requires deterministic state-delta validation.",
+      "if": {
+        "properties": { "action_protocol": { "properties": { "payload_level": { "const": "ACTION_STATE_DELTA" } }, "required": ["payload_level"] } },
+        "required": ["action_protocol"]
+      },
+      "then": { "properties": { "action_protocol": { "required": ["state_delta_validator_ref"] } } }
+    }
+  ]
+}

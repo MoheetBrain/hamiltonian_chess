@@ -9,7 +9,11 @@ This specifies the durable record that the outer loop writes once per evaluated
 so that fitting becomes possible without a retrospective reconstruction from logs.
 
 Companion document: `docs/LONG_HORIZON_FITNESS_V0.md` defines the fitness vector these records
-carry.
+carry. Both documents are written against `HAMILTONIAN_CHESS_META_GOAL.md` §5.1 (the horizon metric
+must be preregistered; the absolute-gap metric is a trap) and §7a (information parity and
+compute/sampling matching are binding controls). Those rulings appear here as **stored columns** —
+`metric`, `trajectory_mode`, `risk_set_by_depth`, the Gate P and Gate C field sets — rather than as
+prose, because a discipline that is not a column is not enforceable after the fact.
 
 ---
 
@@ -223,6 +227,12 @@ without JSON extraction:
 `arena` (environment module + version) · `mechanism` · `task_set_hash` ·
 `task_ids_artifact_id` (the full sorted id list, content-addressed — not inlined) ·
 `horizon_bucket` (`H1`/`H5`/`H10`/`H20`/`H50`/`FULL`, or `NA`) ·
+**`trajectory_mode`** (`FREE` / `ANCHORED` — the distinction of
+`docs/LONG_HORIZON_FITNESS_V0.md` §4.2; a β estimated from `FREE` rows carries a
+depletion-of-susceptibles bias and must never be pooled with an `ANCHORED` one) ·
+`max_depth` · `risk_set_by_depth_json` (the number of trajectories at risk at each depth —
+constant at n in `ANCHORED`, decaying in `FREE`; this single field is what makes the bias visible
+rather than assumed away) ·
 `n_problems` · `n_trajectories` · `n_clusters` ·
 `pool_role` (`DEV` / `SELECTION` / `QUALIFICATION` / `PROMOTION` / `OOD`) ·
 `pool_disjoint_from` (JSON array of task-set hashes this pool is asserted disjoint from) ·
@@ -284,6 +294,7 @@ One row per `(record_id, dimension)`. The existing `metrics` table already has `
 | Field | Notes |
 |---|---|
 | `dimension` | `J_solve` / `J_horizon` / `J_learn` / `J_ood` / `J_search` / `J_repair` / `J_cost` |
+| `metric` | **required for `J_horizon`** — `beta_supercompounding` (primary, per-step log-odds hazard DiD) / `rank_reversal_iut` (secondary) / `absolute_gap_gamma` (**descriptive only, may never carry a claim**). `HAMILTONIAN_CHESS_META_GOAL.md` §5.1 makes an undeclared metric choice disqualifying, so the metric is a stored column, not a convention. |
 | `value` | point estimate |
 | `lower_bound`, `upper_bound` | existing columns |
 | `confidence` | e.g. 0.95 |
@@ -300,6 +311,14 @@ mode queryable.** A dimension whose `unit_of_analysis` is coarser than the claim
 be found with one `SELECT`.
 
 ### 3.9 `uncertainty` (per record, comparative)
+
+For `J_horizon` records, additionally: `beta_hat` · `beta_ci95` · `theta_hat` (the per-step
+intercept advantage — recorded because §5.1 proposition 1 makes θ *not* a contribution, so a record
+that reports β without θ cannot be checked) · `early_late_split_depth` ·
+`hazard_by_depth_json` (per arm, per depth: accepted / at-risk) ·
+`compounding_null_curve_json` (the completion curve a *constant* per-step edge of θ̂ would produce —
+every horizon claim is the distance between the observed curve and this one) ·
+`smallest_effect_of_interest` (β = 0.5 in V0).
 
 `comparison_json`, holding the full output of `game_r_formal_v1.compare_arms` — which is
 `landscape.PairedComparison.to_dict()` plus recomputation and both Wilson intervals:
@@ -340,6 +359,9 @@ and `ABANDONED_UNDER_BUDGET` (the Solver stopped while budget remained).
 
 ### 3.11 `semantic_gate_results`
 
+Four gates are recorded, in the order they are applied. All four are non-compensatory
+(`docs/LONG_HORIZON_FITNESS_V0.md` §3.1), so each stores its evidence, not a verdict.
+
 **Gate S** — the full `GateZeroEvidence` field set, not a boolean:
 `critical_false_accepts` · `canonical_collisions` · `unresolved_scope_corruptions` ·
 `proof_cycles` · `untracked_definedness_escapes` · `silent_semantic_losses` ·
@@ -363,9 +385,26 @@ repeat in either direction. At the V0 operating point (n_EVAL 800, threshold 0.6
 it is **0.0019**; at n_EVAL 400 with threshold 0.55 it would be **0.9937**, i.e. a gate that voids a
 clean language almost every time. A verdict without that number is uninterpretable.
 
-**Parity** — `game_r_formal_v1.ParityReport`: `envelope_signature` · `answer_protocol_hash` ·
-`canonical_recovery_exact` · `distinct_rendered_bytes` · `e1_max_span_coverage` ·
+**Gate P — information parity** — `game_r_formal_v1.ParityReport` plus the mutant-audit checks:
+`envelope_signature` · `answer_protocol_hash` · `canonical_recovery_exact` ·
+`information_inventory_identical` (the order-insensitive `(path, scalar)` multiset check) ·
+`derived_relation_hash` · `distinct_rendered_bytes` · `e1_max_span_coverage` ·
 `seqmatch_ratio` · `parity_verdict`.
+
+`HAMILTONIAN_CHESS_META_GOAL.md` §7a makes this control binding *because the nearest mechanistic
+prior work breaks parity by optimising for token reduction*. `information_inventory_identical` is
+the field that distinguishes a better language from a shorter one, and it must be stored per record
+rather than assumed from the genome.
+
+**Gate C — compute- and sampling-matched control** — per arm: `decoding_hash` ·
+`num_predict` · `temperature` · `samples_per_step` · `retry_policy` · `authorised_calls` ·
+`model_calls_used` · `completion_tokens_total` · `gate_c_verdict`.
+
+Also binding from §7a: published gains in this area have been attributed to extra sampling and
+self-correction rather than to the artifact. Two arms whose `decoding_hash` differs cannot share a
+`cache_identity` by construction, so the mismatch is structurally detectable; the remaining fields
+exist so that a *budget* mismatch is equally detectable. **A record whose arms differ on any Gate C
+field is `VOID`, not adjusted.**
 
 ### 3.12 `provenance`
 
@@ -446,16 +485,21 @@ standing query.
 Spearman ρ between the L2 ranking and the L4 ranking (`landscape.spearman`). This is the
 three-generation retirement rule for the L2 screen, and it needs no new machinery.
 
-**Q6 — horizon profile.** For one `(child_genome_hash, condition_id)`, all
-`dimension = 'J_solve'` rows grouped by `horizon_bucket` with their intervals and `reportable`
-flags. This *is* `J_horizon`; the schema stores the per-bucket rows and derives γ, rather than
-storing a γ whose provenance cannot be re-checked.
+**Q6 — horizon profile.** For one `(child_genome_hash, condition_id)`, the per-depth
+`hazard_by_depth_json` from the `ANCHORED` records plus the `dimension = 'J_solve'` rows grouped by
+`horizon_bucket` from the `FREE` records, with intervals and `reportable` flags. The schema stores
+the **per-depth hazards** and derives β, θ and the compounding-null curve from them, rather than
+storing a β whose provenance cannot be re-checked. A query that mixes `trajectory_mode` values is
+malformed.
 
 **Q7 — the honesty queries.** Records where `pool_role = 'SELECTION'` and `pool_role =
 'QUALIFICATION'` share a `task_set_hash` (V7 L1); records where `declared_exposure_steps <
 measured_exposure_steps` (V7 C10); records where `unit_of_analysis = 'step'` on a comparative
 dimension (granularity substitution); records where `confirmatory = 1` and `preregistration_id IS
-NULL`; records where `cache_scopes_json` shows any `CROSS_CONDITION`. **Each of these returning a
+NULL`; records where `cache_scopes_json` shows any `CROSS_CONDITION`; records where
+`dimension = 'J_horizon'` and `metric = 'absolute_gap_gamma'` and `confirmatory = 1` (a claim on the
+descriptive metric — the §5.1 trap); records where two arms of one comparison differ on any Gate C
+field; records where `trajectory_mode = 'FREE'` and `metric = 'beta_supercompounding'`. **Each of these returning a
 non-empty result is a bug in the loop, not a finding about a language.** They should run as a
 standing check after every generation.
 
@@ -475,8 +519,9 @@ four blocks:
    coordinate system.
 2. **Mutation** — one-hot `operator` (24 values), one-hot `changed_genes`, `n_genes_changed`,
    `evaluation_tier`, `soundness_risk`, `layer`.
-3. **Environment/context** — `environment_version`, `horizon_bucket`, `n_problems`, `pool_role`,
-   `dependency_density` (T1/T2/T3), `horizon_length_confounded`.
+3. **Environment/context** — `environment_version`, `horizon_bucket`, `trajectory_mode`,
+   `max_depth`, `n_problems`, `pool_role`, `dependency_density` (T1/T2/T3),
+   `horizon_length_confounded`.
 4. **Condition** — `model_digest` (as a learned embedding or a categorical), `decoding_hash`,
    `context_length`, `tokenizer_id`.
 

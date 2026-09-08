@@ -4,11 +4,14 @@ from __future__ import annotations
 
 from collections.abc import Iterable, Iterator
 
+from arena.genome.schema import LanguageGenome
+
 from .base import CandidateLanguage
 from .graph import GRAPH_TRIPLES
 from .hml import CURRENT_HML
 from .hybrid import HYBRID_ROLE_LABELLED
 from .json_ast import JSON_AST
+from .phenotype import GenomePhenotypeLanguage
 from .prefix import TYPED_PREFIX
 from .sexpr import SEXPR
 from .structured_english import STRUCTURED_ENGLISH
@@ -62,8 +65,32 @@ SEED_LANGUAGES = (
 LANGUAGE_REGISTRY = LanguageRegistry(SEED_LANGUAGES)
 
 
-def get_language(candidate_id: str) -> CandidateLanguage:
-    return LANGUAGE_REGISTRY.get(candidate_id)
+def get_language(candidate_id: str, *, genome: LanguageGenome | None = None) -> CandidateLanguage:
+    """Resolve an executable surface.
+
+    The eight hand-coded seeds keep their registered objects, byte for byte.  Any other
+    candidate is executable only if its genome is supplied: it is then run through
+    :class:`GenomePhenotypeLanguage`, which is genome-driven, so a mutant no longer has to be
+    hand-registered before it can be rendered.  Without a genome the old ``KeyError`` stands,
+    because a candidate id alone carries no renderer.
+    """
+
+    try:
+        return LANGUAGE_REGISTRY.get(candidate_id)
+    except KeyError:
+        if genome is None:
+            raise
+    if genome.candidate_id != candidate_id:
+        raise ValueError(
+            f"genome {genome.candidate_id!r} does not describe candidate {candidate_id!r}"
+        )
+    return GenomePhenotypeLanguage(genome)
+
+
+def language_for_genome(genome: LanguageGenome) -> CandidateLanguage:
+    """The seed object when the genome names a seed, otherwise the phenotype codec."""
+
+    return get_language(genome.candidate_id, genome=genome)
 
 
 def seed_languages() -> tuple[CandidateLanguage, ...]:

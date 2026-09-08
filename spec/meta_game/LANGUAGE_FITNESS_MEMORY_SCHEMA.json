@@ -1,0 +1,211 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hamiltonian-chess/spec/meta_game/LANGUAGE_FITNESS_MEMORY_SCHEMA.json",
+  "title": "LanguageFitnessRecord",
+  "description": "Machine-checkable form of manual §33. Every evaluation SHALL append one of these. This is not merely logging: it becomes the training set for future surrogate/Architect models (§33, §34).",
+  "$comment": "AUTHORITY: manual §33 field list verbatim, plus §22 (fitness vector), §26.1 (universal declaration), §6.27 (EvaluationUniverse), §12.4 and §14.4 (failure vocabularies), §29 (Refuter), §30.7 (store uncertainty, not only means). APPEND-ONLY (§3.3, §33): records are immutable once written; a correction is a NEW record carrying 'supersedes', never an edit. RECONCILIATION WITH docs/LANGUAGE_FITNESS_MEMORY.md - the manual wins (§3.1); the divergences are: (D1) that document has NO intervention_class field anywhere, while §6.26/§26.1 require every comparison to declare one and §40.5 makes truthful intervention classification the V0 success criterion - this schema requires it; (D2) that document has no truth_kernel_version, controller_id, toolset_id or top-level verifier_id, folding backend identity into 'environment_version' - §33 names all four separately and §6.27 makes controller and tools part of the EvaluationUniverse, so this schema requires them separately; (D3) §33 splits adaptation_budget from inference_budget; that document has a single 'budget' block with budget_authorised - this schema keeps §33's split; (D4) §33 uses parent_candidate_ids and mutation_ids (PLURAL, permitting recombination and multi-operator proposals) where that document uses singular parent_genome_id / mutation_id - this schema keeps §33's plural; (D5) that document adds record_id keying over an eleven-component evaluation_identity, condition_id grouping, status/void_code, supersedes/supersede_reason, and per-metric estimator / n / n_clusters / unit_of_analysis - none contradict §33 and all are RETAINED here as optional refinements because they implement §30.6 (cluster dependence) and §30.7 (store uncertainty) which §33 does not itself operationalise. FIELD NOT IN §33: 'intervention_class' - see D1; recorded as an ENGINEERING_DECISION (§37) that refines rather than contradicts the manual, and flagged for owner review.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "record_id",
+    "parent_candidate_ids",
+    "candidate_id",
+    "mutation_ids",
+    "genome_hash",
+    "intervention_class",
+    "truth_kernel_version",
+    "dataset_manifest_hash",
+    "solver_id",
+    "tokenizer_id",
+    "controller_id",
+    "toolset_id",
+    "verifier_id",
+    "adaptation_budget",
+    "inference_budget",
+    "horizon_bucket",
+    "task_level_outcomes",
+    "fitness_vector",
+    "uncertainty",
+    "semantic_gate_results",
+    "refuter_results",
+    "failure_modes",
+    "wall_clock",
+    "compute_cost",
+    "prompt_hashes",
+    "code_commit",
+    "created_at"
+  ],
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "measured_value": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "unit_of_analysis"],
+      "description": "§30.7: keep raw task outcomes, intervals/posteriors and paired effects, not only means. §30.6: steps from the same theorem/module/problem family are not independent.",
+      "properties": {
+        "value": { "type": ["number", "null"] },
+        "lower_bound": { "type": ["number", "null"] },
+        "upper_bound": { "type": ["number", "null"] },
+        "confidence": { "type": ["number", "null"] },
+        "estimator": { "type": ["string", "null"] },
+        "n": { "type": ["integer", "null"] },
+        "n_clusters": {
+          "type": ["integer", "null"],
+          "description": "§30.6. null means unclustered, which is a defect on any trajectory-derived dimension."
+        },
+        "unit_of_analysis": {
+          "enum": ["problem", "trajectory", "theorem_group", "step", "arm"],
+          "description": "§30.6. A comparative dimension reported at 'step' when the claim is about problems is granularity substitution."
+        },
+        "reportable": { "type": "boolean" },
+        "unreportable_reason": { "type": ["string", "null"] }
+      }
+    }
+  },
+  "properties": {
+    "record_id": { "type": "string", "minLength": 1, "description": "§33." },
+    "parent_candidate_ids": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "description": "§33 (plural). Empty array only for a founder."
+    },
+    "candidate_id": { "type": "string", "minLength": 1, "description": "§33, §12.1." },
+    "mutation_ids": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "description": "§33 (plural). §20.2: early generations SHOULD prefer one gene family per child so parent-child effects are interpretable."
+    },
+    "genome_hash": { "$ref": "#/$defs/sha256", "description": "§33, §12.1." },
+    "intervention_class": {
+      "enum": ["R_ONLY", "P_CHANGE", "O_CHANGE", "T_CHANGE", "A_CHANGE", "TAU_CHANGE", "C_CHANGE", "JOINT"],
+      "description": "§6.26, §12.3, §26. Determines the fairness contract and the causal claims permitted. See $comment D1: not in §33's literal list."
+    },
+    "truth_kernel_version": {
+      "type": "string",
+      "minLength": 1,
+      "description": "§33, §6.1 (K MUST be versioned), §6.24 (versioned per-backend contract), §13.3 (backend plurality)."
+    },
+    "dataset_manifest_hash": { "$ref": "#/$defs/sha256", "description": "§33, §6.27." },
+    "solver_id": { "type": "string", "minLength": 1, "description": "§33, §6.14, §6.27 (initialization/checkpoint)." },
+    "tokenizer_id": { "type": "string", "minLength": 1, "description": "§33, §6.13. SHALL be fixed unless a TAU_CHANGE experiment is active (§26.6)." },
+    "controller_id": { "type": "string", "minLength": 1, "description": "§33, §6.15. C is not part of L in early causal experiments." },
+    "toolset_id": { "type": "string", "minLength": 1, "description": "§33, §6.17." },
+    "verifier_id": { "type": "string", "minLength": 1, "description": "§33, §6.18, §28." },
+    "adaptation_budget": { "type": "object", "description": "§33, §6.19, §26.5 (example-matched and token/compute-matched reporting)." },
+    "inference_budget": { "type": "object", "description": "§33, §6.19." },
+    "horizon_bucket": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bucket_id", "horizon_quantity"],
+      "description": "§33 plus §17.6. A bucket label alone is uninterpretable; the record MUST say which of §6.30-§6.34 the bucket is defined on.",
+      "properties": {
+        "bucket_id": { "type": "string", "minLength": 1 },
+        "horizon_quantity": {
+          "enum": ["ObservedTraceLength", "EpisodeLength", "KernelStepCount", "DependencyDepth", "MinimalProofLength"],
+          "description": "§6.30-§6.34. MinimalProofLength is admissible here only when independently established (§6.34)."
+        },
+        "observed_trace_length": { "type": ["integer", "null"] },
+        "episode_length": { "type": ["integer", "null"] },
+        "kernel_step_count": { "type": ["integer", "null"], "description": "§6.32, §13.1. Required for any A_CHANGE comparison." },
+        "dependency_depth": { "type": ["integer", "null"] },
+        "minimal_proof_length": {
+          "oneOf": [{ "type": "integer" }, { "const": "UNKNOWN" }],
+          "description": "§6.34. The literal string UNKNOWN unless independently established."
+        }
+      }
+    },
+    "task_level_outcomes": {
+      "type": "array",
+      "description": "§33, §30.1 (retain task-level paired outcomes), §30.7. One entry per evaluated task.",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["task_id", "grouping_unit_value", "terminal_outcome"],
+        "properties": {
+          "task_id": { "type": "string", "minLength": 1 },
+          "grouping_unit_value": { "type": "string", "minLength": 1, "description": "§18.2, §30.6: the theorem/module/repository/problem-family this task belongs to." },
+          "terminal_outcome": {
+            "enum": ["VERIFIED_SOLVED", "VERIFIED_REFUTED", "UNRECOVERABLE_INVALID_ACTION", "SEARCH_BUDGET_EXHAUSTED", "TOOL_TIMEOUT", "UNSUPPORTED", "ENVIRONMENT_ERROR"],
+            "description": "§14.4 verbatim. ENVIRONMENT_ERROR SHALL NOT count as mathematical failure."
+          }
+        }
+      }
+    },
+    "fitness_vector": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "§22. A VECTOR (§6.22). §22.2: no arbitrary universal scalar; use Pareto/quality-diversity logic unless a scalar is explicitly frozen for a controller experiment. Truth validity is a HARD GATE, not a weighted component (§22).",
+      "properties": {
+        "Q_terminal": { "$ref": "#/$defs/measured_value" },
+        "Q_horizon": { "$ref": "#/$defs/measured_value" },
+        "L_sample": { "$ref": "#/$defs/measured_value" },
+        "Q_OOD": { "$ref": "#/$defs/measured_value" },
+        "S_search": { "$ref": "#/$defs/measured_value" },
+        "R_repair": { "$ref": "#/$defs/measured_value" },
+        "E_invalid": { "$ref": "#/$defs/measured_value" },
+        "C_token": { "$ref": "#/$defs/measured_value" },
+        "C_kernel": { "$ref": "#/$defs/measured_value" },
+        "C_compute": { "$ref": "#/$defs/measured_value" },
+        "R_robust": { "$ref": "#/$defs/measured_value" }
+      }
+    },
+    "uncertainty": {
+      "type": "object",
+      "description": "§33, §30.7. Intervals/posteriors and paired effects. For any horizon claim the declared metric MUST be stored, not implied (docs/HAMILTONIAN_CHESS_META_GOAL.md §5.1).",
+      "additionalProperties": true
+    },
+    "semantic_gate_results": {
+      "type": "object",
+      "description": "§33, §25 Gate 0, §12.2, §12.3. Stores evidence, not a verdict alone.",
+      "additionalProperties": true
+    },
+    "refuter_results": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["attack_suite_version", "known_critical_exploits"],
+      "description": "§33, §29. Wording is '0 known critical exploits under attack_suite_version X', never 'shortcut-free'.",
+      "properties": {
+        "attack_suite_version": { "type": "string", "minLength": 1 },
+        "known_critical_exploits": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "failure_modes": {
+      "type": "array",
+      "description": "§33, §12.4, §14.4. A failed or refused evaluation IS a record (§3.3, §43: prefer explicit negative states over optimistic prose).",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["failure_class", "count"],
+        "properties": {
+          "failure_class": { "type": "string", "minLength": 1 },
+          "count": { "type": "integer", "minimum": 0 }
+        }
+      }
+    },
+    "wall_clock": { "type": "number", "minimum": 0, "description": "§33, §13.1." },
+    "compute_cost": { "type": "object", "description": "§33, §13.1: model_action_count, kernel_step_count, tool calls, verifier calls, tokens/compute.", "additionalProperties": true },
+    "prompt_hashes": { "type": "array", "items": { "$ref": "#/$defs/sha256" }, "description": "§33." },
+    "code_commit": { "type": "string", "minLength": 1, "description": "§33." },
+    "created_at": { "type": "string", "description": "§33. ISO-8601 UTC. Informational; never part of record identity." },
+    "candidate_lifecycle_state": {
+      "enum": [
+        "PROPOSED", "GENOME_VALID", "COMPILED", "SEMANTIC_GATE_PASS", "REFUTER_PASS",
+        "SCOUT_ELIGIBLE", "SCOUTED", "ADAPTATION_ELIGIBLE", "ADAPTED",
+        "PROMOTION_ELIGIBLE", "PROMOTED", "ROBUSTNESS_ELIGIBLE", "ROBUST_CANDIDATE", "HALL_OF_FAME",
+        "DEAD_GENOME_CONSTRAINT", "DEAD_COMPILE", "DEAD_STATIC_SEMANTICS", "DEAD_SEMANTIC_PARITY",
+        "DEAD_ACTION_LOWERING", "DEAD_LEAKAGE", "DEAD_REFUTER",
+        "ELIMINATED_SCOUT", "ELIMINATED_ADAPTATION", "ELIMINATED_PROMOTION", "ELIMINATED_INSTABILITY",
+        "ARCHIVED_SPECIALIST", "VOID_INSTRUMENT"
+      ],
+      "description": "§21 verbatim. Optional refinement: not in §33, but a record whose candidate is in a DEAD_* state should not exist at all (§12.4: no dead candidate receives Solver compute)."
+    },
+    "evaluation_universe_hash": { "$ref": "#/$defs/sha256", "description": "§6.27, §30.3. Fitness outside the declared universe is UNKNOWN until replicated." },
+    "condition_id": { "$ref": "#/$defs/sha256", "description": "Refinement from docs/LANGUAGE_FITNESS_MEMORY.md §2.2. Grouping key: two records may be differenced or pooled only when this matches." },
+    "status": { "enum": ["COMPLETE", "REFUSED", "ABORTED", "VOID"], "description": "Refinement: §43 requires explicit negative states." },
+    "void_code": { "type": ["string", "null"] },
+    "supersedes": { "type": ["string", "null"], "description": "§3.3. Corrections are additive: a new record, not an edit." },
+    "supersede_reason": { "type": ["string", "null"], "description": "Required when 'supersedes' is non-null (code-enforced)." },
+    "confirmatory": { "type": "boolean", "description": "§30.4, §30.5. True only at Gate 5/6." },
+    "preregistration_id": { "type": ["string", "null"], "description": "§30.3. A record with confirmatory=true and preregistration_id=null is malformed (code-enforced)." }
+  }
+}

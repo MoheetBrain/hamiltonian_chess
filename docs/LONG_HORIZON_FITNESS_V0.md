@@ -12,15 +12,25 @@ It replaces nothing that is running, because nothing is running: the programme h
 `RSTAR_NOT_IDENTIFIED`, `GAME_R_INSTRUMENT_NOT_QUALIFIED`,
 `V7_PARTIALLY_VALID_INSTRUMENT_CONFOUNDED` and `TRAINING_LANGUAGE_V0_BASELINE` are unchanged by it.
 
+**Written against `HAMILTONIAN_CHESS_META_GOAL.md` §5.1 and §7a (the 2026-09-08 prior-art
+correction), which are binding here.** §5.1 rules that "language advantage grows with horizon" is
+*metric-dependent and partly a tautology*: a constant per-step edge already produces a growing
+absolute gap over part of the horizon range, by arithmetic. Only two targets survive — a **rank
+reversal across horizon** and **super-compounding** (the *per-step* gap itself widening with depth)
+— and the metric must be fixed before any claim. §4 below is written to that ruling, and §4.4
+demonstrates numerically that the obvious statistic returns "advantage grows" **under the null**.
+§7a adds two controls that are binding from the start: a **compute- and sampling-matched control**
+and **enforced information parity**; both appear as gates in §3, not as caveats.
+
 ---
 
 ## 0. The one-sentence design
 
-Fitness is a **seven-dimensional vector behind two non-compensatory gates**, estimated on
+Fitness is a **seven-dimensional vector behind four non-compensatory gates**, estimated on
 **trajectories as the unit of analysis**, promoted through a **six-level successive-halving
-ladder** whose cheap levels cost zero model calls, with `J_horizon` — how the parent-vs-child
-advantage changes as reasoning horizon grows — as the dimension the project exists to measure and
-the only one that is expensive enough to be rationed.
+ladder** whose cheap levels cost zero model calls, with `J_horizon` — measured as **β,
+super-compounding: the part of the horizon effect that a constant per-step edge cannot explain** —
+as the dimension the project exists to measure and the only one expensive enough to be rationed.
 
 ---
 
@@ -72,7 +82,7 @@ unit.
 | Dim | Estimand (population) | Unit of analysis | Estimator | Uncertainty | Min n for a useful reading | Primary gaming mode |
 |---|---|---|---|---|---|---|
 | `J_solve` | P(verifier accepts a complete solution) over the sealed problem distribution `D`, given language `L`, Solver `M`, budget `B` | **problem** (one binary outcome per problem, whatever its length) | paired proportion vs parent on the identical problem set | exact McNemar + problem-clustered bootstrap (`landscape.paired_comparison`) | **249 problems** for Δ=0.10 at α=.05, π_d=.30; **344** at α=.0125 (Holm k=4) — `precondition_power.required_n_pairs` | solve easy problems only; drop hard ones via a "cannot proceed" escape that is scored as abstention |
-| `J_horizon` | The **change in Δ(child−parent) across horizon buckets**: γ = Δ(long) − Δ(short) | **trajectory** (nested in problem) | difference-in-differences of two paired proportions on disjoint bucket pools | independent-bucket paired SE; CI from the two clustered bootstraps combined | **≈470 problems per bucket** for γ=0.10, **≈210** for γ=0.15, **≈1,900** for γ=0.05 (seeded simulation, §4.4) | build "long" tasks by concatenation; let horizon correlate with prompt length; report only the bucket that won |
+| `J_horizon` | **β — super-compounding**: the change with depth in the child-vs-parent *per-step* log-odds hazard, i.e. the part of the horizon effect that compounding cannot explain. Secondary: **rank reversal** across horizon. | **trajectory** (steps are the risk set, the trajectory is the cluster) | difference-in-differences of per-step hazard log-odds, EARLY vs LATE depth blocks, measured in **ANCHORED mode** (§4.2) | trajectory-clustered bootstrap; simulated size 0.056–0.071 at nominal 0.05 (§4.5) | **150 problems** for β=1.0 (power 0.797); **≈470–560** for β=0.5 (0.771–0.827); β=0.25 is out of reach at n=210 (0.158) | report the *absolute* completion gap instead, which grows then collapses under the null (§4.4); build "long" tasks by concatenation; let horizon correlate with prompt length; choose the bucket pair after seeing the data |
 | `J_learn` | Verified success after a matched adaptation budget, minus the same before it | **problem**, paired pre/post within candidate; matched budget across arms | paired difference-in-differences (pre/post × arm) | trajectory-clustered bootstrap; budget parity asserted, not assumed | ≥ the `J_solve` n **per pass**; budget parity contract from `arena/training/matched_adaptation.validate_matched_configs` | give one arm more effective tokens/steps under an equal nominal budget |
 | `J_ood` | `J_solve` on a **sealed** structural/domain shift pool, never used for selection or adaptation | **problem** in the shifted pool | same as `J_solve`, computed separately per shift axis, never pooled across axes | per-axis clustered CI; **no pooling** | `J_solve` n **per axis** | seal leakage (V7 C10: declared exposure 8,766 steps, real 21,632); shifting on an axis the language was tuned for |
 | `J_search` | Expected verifier calls / node expansions / tool calls **conditional on solving** | **trajectory**, with the unsolved arm handled explicitly | median and IQR of counts on the **commonly-solved** subset; separately, the solve rate | rank-based paired test on the common subset; bootstrap over trajectories | ≥60 commonly-solved trajectories per arm for a stable median | solve fewer problems and look efficient; the dead `search_metrics.search_efficiency` scalarisation scores unsolved runs 0.0 and hides exactly this |
@@ -153,6 +163,31 @@ the family-disjoint DEV pool.
 Gate A costs **zero model calls**: every adversary is a deterministic function of `(prompt,
 n_options)`.
 
+**Gate P — information parity.** Binding from `HAMILTONIAN_CHESS_META_GOAL.md` §7a: *"a language
+that merely says less is not a better language"*, and the nearest prior work is explicitly
+vulnerable here because it optimises for token reduction. A candidate is eliminated if its rendering
+of a state does not recover the backend's own state identity, or if the order-insensitive
+information inventory of the recovered record differs from the reference. This is already
+implemented and already run: `artifacts/reports/game-r-mutant-audit.json` records the checks as
+*"semantic recovery: parse(render(state)) has the identical mathematical hash"* and *"information
+inventory: order-insensitive (path, scalar) multiset of the recovered record equals the reference"*,
+and classified **120/120 mutants `GAME_R_COMPATIBLE`**. The gate is real code with a currently-zero
+elimination rate, for the reason given in §1.
+
+Parity is a gate, not a Pareto dimension, precisely so that a compression gene cannot buy its way
+past it with capability. `J_cost` remains a Pareto dimension *after* parity is satisfied — cheaper
+is better only among languages that say the same thing.
+
+**Gate C — compute- and sampling-matched control.** Also binding from §7a: published gains in this
+area *"have been attributed to self-correction and extra sampling rather than to the artifact"*.
+Every arm in every comparison must have an identical call budget, an identical sampling policy
+(same `num_predict`, same temperature, same number of samples per step, same retry policy) and an
+identical decoding hash. This is enforceable with code that exists:
+`game_r_formal_v1.decoding_hash(decoding, response_schema)` is one of the eight components of
+`cache_identity`, so two arms with different decoding **cannot** share a cache identity, and
+`CallBudget` / `BudgetExceeded` already fail closed on an over-budget run. A comparison whose arms
+differ in decoding hash or authorised call budget is **void**, not adjusted.
+
 ### 3.2 Pareto dimensions
 
 The surviving seven dimensions enter `arena/fitness/pareto.pareto_fronts` with explicit
@@ -219,7 +254,42 @@ An unreportable bucket is recorded as unreportable. It is never silently dropped
 a neighbour, and never replaced by a curve fitted through the buckets that survived. *Pooling two
 buckets to reach n is granularity substitution and is forbidden.*
 
-### 4.2 The five things measured per bucket
+### 4.2 Two trajectory modes — and why both are needed
+
+**FREE mode.** The Solver rolls its own trajectory forward from its own previous steps. This is the
+capability measurement: it gives `J_solve`, first-error depth, the survival curve, `J_repair`,
+branch counts and `J_search`. Its defect for measuring per-step behaviour is *depletion of
+susceptibles*: at a per-step hazard of 0.87 only 0.87¹⁰ ≈ 25% of trajectories are still alive at
+depth 10, and the survivors of the stronger arm are systematically the harder problems. Any deep
+per-step comparison in FREE mode is a comparison between two differently-selected populations.
+
+**ANCHORED mode.** At every depth `k`, the Solver is given the **verified reference prefix** of
+length `k−1` — rendered in its own language — and asked only for step `k`. The risk set is therefore
+`n` at every depth, there is no depletion and no differential selection, and the reference prefix
+carries *identical mathematical content* across arms, which is where the §7a **information-parity**
+control is actually enforced.
+
+**The measured difference is large and it is free.** Both modes cost `n × H` calls per arm. In
+seeded simulation (H=20, parent per-step hazard 0.870, child intercept advantage θ=0.35,
+trajectory-clustered bootstrap):
+
+| detecting β=1.0 | FREE mode | ANCHORED mode |
+|---|---|---|
+| n=100 | 0.157 | — |
+| n=120 | — | 0.703 |
+| n=150 | — | **0.797** |
+| n=200 | 0.225 | — |
+| n=400 | 0.400 | — |
+
+**ANCHORED mode reaches 0.80 power at n=150 where FREE mode is at 0.40 with n=400** — roughly a
+5× sample-efficiency gain at identical call cost, purely from removing the depletion.
+
+**V0 therefore assigns:** FREE mode → L4 (descriptive profile and every other dimension);
+ANCHORED mode → L5 (the confirmatory β). They are not substitutes; a language that scores well
+anchored and badly free has a real and interesting property (it takes good steps but cannot
+recover from its own), and `J_repair` is exactly the dimension that would show it.
+
+### 4.3 The five things measured per bucket
 
 Per bucket, per arm, on the identical problem set:
 
@@ -237,41 +307,110 @@ Per bucket, per arm, on the identical problem set:
    and descriptor D3).
 5. **Repair rate** — `J_repair`, conditional on having erred, per bucket.
 
-### 4.3 The primary `J_horizon` statistic
+### 4.4 The primary `J_horizon` statistic — and the statistic it replaces
 
-γ = Δ_long − Δ_short, where Δ_b = (completion rate of child) − (completion rate of parent) in
-bucket b, computed on **disjoint problem pools**.
+#### The trap, made numeric
 
-Because the pools are disjoint, Δ_long and Δ_short are independent, so
-Var(γ) = Var(Δ_long) + Var(Δ_short), and the paired SE of each Δ_b follows the McNemar form
-√(n10+n01)/n_b. The test is a two-sided z-test on γ with that SE, Holm-corrected across the
-generation.
+The obvious statistic is γ = Δ_long − Δ_short, the change in the *absolute completion gap* across
+buckets. **It returns "advantage grows with horizon" under the null.** Take a parent with a constant
+per-step hazard q = 0.870 and a child with a constant per-step hazard p = 0.905 — a fixed +3.5pp
+per-step edge, no interaction of any kind, pure compounding. Completion at horizon H is p^H vs q^H,
+and the absolute gap is:
 
-**γ > 0 with a CI excluding 0 is the mission's central claim.** γ ≈ 0 is the "advantage is flat"
-outcome and γ < 0 the "advantage shrinks" outcome; `GOAL.md` §20 already declares both to be valid
-scientific answers, and this design reports them identically.
+| H | 1 | 5 | 10 | 20 | 40 | 80 |
+|---|---|---|---|---|---|---|
+| p^H − q^H | 0.035 | 0.108 | **0.119** | 0.073 | 0.014 | 0.000 |
 
-### 4.4 What it costs to test γ — the numbers
+The gap is **unimodal**: it peaks near H≈10 and collapses. So under a null with *zero* interaction:
 
-Seeded simulation (40,000 replicates, `numpy` default_rng(20260908), discordance π_d = 0.30,
-α = 0.05 two-sided, no clustering), cross-checked against
-`precondition_power.required_n_pairs(0.80, p10, p01, 0.05) = 249` for the corresponding
-single-difference at Δ=0.10:
+- γ measured on buckets {1, 20} is **+0.038** → "advantage grows with horizon";
+- γ measured on buckets {20, 80} is **−0.073** → "advantage shrinks with horizon".
 
-| γ (interaction) | n per bucket | simulated power |
-|---|---|---|
-| 0.15 | 200 / **210** / 240 | 0.790 / **0.810** / 0.857 |
-| 0.10 | 440 / 460 / **470** / 500 | 0.778 / 0.796 / **0.806** / 0.828 |
-| 0.05 | 1,800 / **1,900** / 2,000 | 0.781 / **0.804** / 0.823 |
+Both are artefacts of exponentiation. `HAMILTONIAN_CHESS_META_GOAL.md` §5.1 names this exactly —
+the claim is "*true* for horizon-at-fixed-success-rate and for log-odds, and *false* for absolute
+accuracy difference at large fixed n" — and rules that the metric must be preregistered. **γ on
+absolute completion rates is therefore demoted to a descriptive quantity and may never carry a
+horizon claim.** It is still recorded, because a reader needs to see it and because it is what the
+naive analysis would have produced.
 
-The simulation reproduces the analytic expectation exactly: **an interaction needs ≈2× the
-per-bucket n of a main effect of the same size** (249 → ≈470), hence **≈4× the total sample**.
+#### The primary estimand: β, super-compounding
+
+Model the per-step hazard — the probability that step k is verifier-accepted given the first k−1
+steps are — on the log-odds scale, in ANCHORED mode so the risk set is constant:
+
+```
+logit h_a(k) = α(k) + θ·1[arm = child] + β·1[arm = child]·(k−1)/(H−1)
+```
+
+- **θ** is the per-step advantage. Under `HAMILTONIAN_CHESS_META_GOAL.md` §5.1 proposition 1 this is
+  already-established territory and is *not* a contribution.
+- **β is the seam.** β = 0 is pure compounding — the whole of proposition 2, which is arithmetic.
+  **β > 0 is super-compounding**: the per-step gap itself widens with depth, which compounding
+  cannot produce.
+
+**Declared estimator** (fixed here, before any data): split depths at H/2 into EARLY and LATE
+blocks; for each arm compute the per-step hazard on each block over the constant risk set; then
+
+```
+β̂ = [logit ĥ_child,LATE − logit ĥ_parent,LATE] − [logit ĥ_child,EARLY − logit ĥ_parent,EARLY]
+```
+
+with a **problem-clustered bootstrap** (resample problems with replacement, keeping each problem's
+parent and child trajectories together) for the interval, and a Haldane–Anscombe 0.5 correction so
+the log-odds are finite at a boundary. Holm-corrected across the generation.
+
+Interpretation, at the simulated operating point (parent hazard 0.870, θ = 0.35): β = 0.5 means the
+child's per-step edge grows from **+3.5pp at depth 1 to +7.0pp at depth 20**; β = 1.0 means
+**+3.5pp → +9.3pp**.
+
+#### The secondary estimand: rank reversal
+
+Reversal is the other thing compounding cannot produce, because compounding preserves ordering.
+The endpoint is an **intersection–union test**: reject only if Δ_short > 0 with its CI excluding 0
+**and** Δ_long < 0 with its CI excluding 0 (or the mirror image). An IUT's size is controlled at α
+without any multiplicity correction across its two components, which is worth having.
+
+#### The three admissible outcomes
+
+β > 0 with a CI excluding 0, or a confirmed reversal → the mission's claim. β ≈ 0 → "the advantage
+is exactly what compounding predicts", which is `GOAL.md` §20's "strong generic representations
+remain unbeaten *as representations of depth*" and is a real result. β < 0 → the advantage decays
+with depth, also a real result. All three are reported identically and none may be re-derived from
+the descriptive γ.
+
+### 4.5 What it costs to test β — the numbers
+
+Seeded simulation, `numpy` default_rng(20260908), H = 20, parent per-step hazard 0.870, child
+intercept advantage θ = 0.35, 1,500 replicates × 400 bootstrap resamples per cell, ANCHORED mode,
+problem-clustered bootstrap, nominal α = 0.05 two-sided:
+
+| β | n=40 | n=60 | n=120 | n=150 | n=210 | n=470 | n=560 |
+|---|---|---|---|---|---|---|---|
+| **0.00 (size)** | 0.059 | 0.056 | 0.071 | — | 0.056 | — | — |
+| 0.25 | 0.092 | 0.099 | 0.121 | — | 0.158 | — | — |
+| 0.50 | 0.151 | 0.181 | 0.285 | — | 0.435 | **0.771** | 0.827 |
+| 1.00 | 0.315 | 0.472 | 0.703 | **0.797** | 0.909 | — | — |
+
+Three readings, all load-bearing:
+
+1. **The estimator's size is correct** (0.056–0.071 against a nominal 0.05), so a rejection means
+   something. That is not automatic for a clustered bootstrap on log-odds at these n.
+2. **β = 1.0 costs 150 problems; β = 0.5 costs ≈470–560; β = 0.25 is out of reach** at any n this
+   project can afford (0.158 at n=210). V0 therefore declares its smallest effect of interest at
+   **β = 0.5** and sizes L5 for it, reporting β = 0.25 as undetectable rather than pretending
+   otherwise.
+3. **The descriptive absolute-gap comparison is far more expensive and answers the wrong question.**
+   For completeness, the earlier simulation of γ (40,000 replicates, π_d = 0.30) gives, per bucket:
+   **≈210** for γ=0.15, **≈470** for γ=0.10, **≈1,900** for γ=0.05 — cross-checked against
+   `precondition_power.required_n_pairs(0.80, p10, p01, 0.05) = 249` for the corresponding single
+   difference, confirming the analytic result that an interaction needs ≈2× the per-bucket n of a
+   main effect, hence ≈4× the total. Those numbers now size a *descriptive* readout, not a claim.
 
 **This is the single most important cost fact in the design.** It is why `J_horizon` is measured
-*descriptively with CIs* at L4 every generation, and tested *confirmatorily* only at L5, on a
+*descriptively with CIs* at L4 every generation, and β is tested *confirmatorily* only at L5, on a
 champion, at a declared cadence — never on every candidate.
 
-### 4.5 The test that detects a fake long-horizon task
+### 4.6 The test that detects a fake long-horizon task
 
 The owner forbids manufacturing long-horizon tasks by concatenating unrelated micro-probes. A
 prohibition without a detector is a policy; this is the detector. It runs on the **task generator's
@@ -353,10 +492,10 @@ from contamination.
 | **L1** cheap deterministic diagnostics | 45 → 44 | **0** | ~0 (string statistics) | — | answer leakage at 0.60 with false-void 0.0019 (§3.1); degenerate renderers | whether the language helps; whether it helps *more* at depth |
 | **L2** zero/few-shot Solver scout | 44 → 16 | **1,800** | **4.0** | 4.0 | gross Solver-facing breakage: invalid-response rate, answer-share collapse, position anchoring | any horizon claim; any effect smaller than ~0.15 at n=40 |
 | **L3** short matched adaptation | 16 → 8 | **1,360** | **3.0** | 3.0 | languages that cannot be learned at all under a matched budget | matched *training* effects; long-horizon behaviour |
-| **L4** long-horizon trajectory arena | 8 → 4 | **9,360** | **19.3** | **5.6** | the descriptive horizon profile: survival curves, first-error depth, repair, branch counts, with CIs | any γ claim — at n=40/bucket the power is **0.133** for γ=0.10 and **0.236** for γ=0.15 (§4.4 simulation). Descriptive only; **no significance may be claimed here** |
-| **L5** full matched training + fresh promotion pool | 4 → 2 | **26,250** | **55.4** | **15.4** | γ ≥ 0.15 at power 0.81; `J_learn` under matched training; performance on a pool never used for selection | model-specificity; domain transfer |
-| **L6** cross-model / cross-domain replication | 2 → 1 | **31,500** | **66.5** | **18.5** | "the effect is an artefact of one Solver" — `GOAL.md` §16's `ROBUST_CANDIDATE` bar | `RSTAR_0_1`, which needs *multiple meaningfully distinct* Solver families and a declared universe |
-| **Total (all levels)** | 64 → 1 | **70,270** | **148.4** | **46.5** | | |
+| **L4** long-horizon trajectory arena | 8 → 4 | **9,360** | **19.3** | **5.6** | the descriptive horizon profile: survival curves, first-error depth, repair, branch counts, with CIs | any γ claim — at n=40/bucket the power is **0.133** for γ=0.10 and **0.236** for γ=0.15 (§4.5 simulation). Descriptive only; **no significance may be claimed here** |
+| **L5** ANCHORED β test + fresh promotion pool | 4 → 2 | **30,000** | **69.9** | **17.2** | β = 1.0 at power 0.797 (n=150); `J_learn` under matched training; `J_solve` on a pool never used for selection | β = 0.5 (needs n≈470–560 → 94,000 calls, 219 h / 54 h cached); β = 0.25 at any affordable n |
+| **L6** cross-model / cross-domain replication | 2 → 1 | **18,000** | **42.0** | **10.3** | "the effect is an artefact of one Solver" — `GOAL.md` §16's `ROBUST_CANDIDATE` bar | `RSTAR_0_1`, which needs *multiple meaningfully distinct* Solver families and a declared universe |
+| **Total (all levels)** | 64 → 1 | **60,520** | **134.2** | **36.1** | | |
 
 ### 5.3 The arithmetic, spelled out
 
@@ -369,10 +508,15 @@ from contamination.
 - **L4**: buckets H ∈ {1, 5, 20}, n = 40 problems each, 8 children + 1 shared parent = 9 arms:
   9 × 40 × (1 + 5 + 20) = **9,360 calls**; 9 × 40 trajectories at each H costs
   360 × (3.4 + 22.2 + 167.9) s = **19.3 h**, or 360 × (3.4 + 11.4 + 41.4) s = **5.6 h** prefix-cached.
-- **L5**: buckets H ∈ {5, 20}, n = **210** per bucket (the γ=0.15 power point from §4.4),
-  4 children + 1 shared parent = 5 arms: 5 × 210 × (5 + 20) = **26,250 calls**; **55.4 h** /
-  **15.4 h** cached.
-- **L6**: 2 survivors × 2 further Solver families on the identical frozen pool = **31,500 calls**.
+- **L5**: two passes at H=20 over **n = 150** problems (the β=1.0 power point from §4.5), with
+  4 children + 1 shared parent = 5 arms. **ANCHORED pass** (the confirmatory β): 5 × 150 × 20 =
+  **15,000 calls**, 5 × 150 × 167.9 s = **35.0 h** / **8.6 h** cached. **FREE pass** on the fresh
+  promotion pool (`J_solve`, `J_repair`, `J_search` on data never used for selection): another
+  **15,000 calls**, **35.0 h** / **8.6 h**. Total **30,000 calls, 69.9 h / 17.2 h**.
+  *At the smallest effect of interest β = 0.5 this becomes n ≈ 470: 94,000 calls, 219.2 h / 54.0 h
+  cached — which is a 9-day sequential run and is the honest price of the mission's central claim.*
+- **L6**: 2 survivors + 1 parent = 3 arms × 2 further Solver families × 150 problems × 20 depths,
+  ANCHORED only = **18,000 calls**, **42.0 h** / **10.3 h** cached.
 
 ### 5.4 Promotion rules
 
@@ -399,7 +543,8 @@ L5 and L6 are **not** run every generation. A routine generation is L0–L4:
 
 **12,520 model calls, 26.4 h sequential, 12.7 h prefix-cached, ≈6.6 h at four concurrent workers.**
 
-A promotion event (L5+L6) adds **57,750 calls / 122 h sequential / 34 h cached** and is triggered by
+A promotion event (L5+L6) adds **48,000 calls / 111.9 h sequential / 27.5 h cached** at β = 1.0
+(**112,000 calls / 261 h / 64 h** if sized for β = 0.5), and is triggered by
 a declared rule — [PROPOSED]: a candidate that has held an L4 Pareto-front position for three
 consecutive generations — not by a per-generation schedule and never by an interesting-looking L4
 result. *Choosing when to run the confirmatory level after seeing the exploratory one is the
@@ -465,6 +610,34 @@ single largest threat to this design, and §7 says why.
 Seven failure modes, each with the detector that is supposed to catch it and — honestly — whether
 that detector actually exists.
 
+### 7.0 The metric choice — the lie that is already inside the slogan
+
+**The lie:** "language advantage grows with horizon", reported on absolute completion rates, chosen
+after seeing which buckets made it true.
+
+**Why it is first:** it needs no bad faith and no bug. §4.4's table shows a **constant** +3.5pp
+per-step edge producing an absolute gap that goes 0.035 → 0.108 → 0.119 → 0.073 → 0.014 → 0.000
+across H = 1, 5, 10, 20, 40, 80. Choose buckets {1, 20} and the null says "grows". Choose {20, 80}
+and the same null says "shrinks". Both are exponentiation.
+`HAMILTONIAN_CHESS_META_GOAL.md` §5.1: *"the metric must be preregistered before any horizon claim
+is made, and a result that only appears under one undeclared metric choice is not a result."*
+
+**Detectors:**
+- The primary metric is **fixed in §4.4 before any data exists**: β on the per-step log-odds hazard
+  scale, in ANCHORED mode. The absolute-gap γ is marked descriptive and cannot carry a claim.
+- **The compounding null is computed and reported alongside every horizon result.** From the
+  measured per-step hazards θ̂ and the fitted α(k), simulate the completion curve that a *constant*
+  per-step edge would produce, and plot it against the observed one. A claim is only the distance
+  between them.
+- Bucket pairs are declared in the preregistration, not chosen from the curve.
+
+**Residual risk, stated:** β is estimated from the same trajectories that produce θ, so a
+mis-specified α(k) — for instance a task pool whose intrinsic difficulty rises with depth for
+reasons unrelated to representation — loads onto β for both arms equally but changes its variance.
+The arms share α(k) by construction (same problems, same depths), which is why the estimator is a
+*difference* in differences; but this has not been checked against a real pool, because no pool
+exists.
+
 ### 7.1 Horizon confounded with prompt length
 
 **The lie:** "advantage grows with horizon" when what grows is prompt length, and the winning
@@ -476,7 +649,7 @@ language is simply the one that stays inside the model's effective context.
 *same mathematics*, a 2.33× difference.
 
 **Detectors:**
-- ρ(H, prompt tokens) per pool, with a `HORIZON_LENGTH_CONFOUNDED` mark above 0.9 (§4.5). *Exists as
+- ρ(H, prompt tokens) per pool, with a `HORIZON_LENGTH_CONFOUNDED` mark above 0.9 (§4.6). *Exists as
   a specification; the measurement is trivial.*
 - **A token-matched horizon contrast** [PROPOSED, not built]: construct short-horizon problems whose
   prompts are padded with verified-but-irrelevant context to the token length of the long-horizon
@@ -489,10 +662,18 @@ language is simply the one that stays inside the model's effective context.
 **The lie:** a compression gene wins on `J_solve` because it fits more problem into the budget, and
 this is reported as a reasoning-representation finding.
 
+**Now binding, not merely a risk.** `HAMILTONIAN_CHESS_META_GOAL.md` §7a makes enforced
+information parity a required control *because the nearest mechanistic prior work deliberately
+breaks it by optimising for token reduction*. Compression is the failure mode the field will look
+for first.
+
 **Detectors:**
-- `J_cost` is a first-class Pareto dimension, so a shorter language does not get to hide its
-  mechanism — but Pareto membership does not *explain*, and a shorter-and-better candidate will sit
-  on the front regardless.
+- **Gate P** (§3.1) — non-compensatory, already implemented as the semantic-recovery and
+  information-inventory checks in `game_r_mutant_audit`. A language that says less does not reach
+  the Pareto front at all.
+- `J_cost` is a first-class Pareto dimension *among parity-satisfying languages*, so a shorter
+  language does not get to hide its mechanism — but Pareto membership does not *explain*, and a
+  shorter-and-better candidate will sit on the front regardless.
 - **The real control is a token-matched arm** [PROPOSED, not built]: re-run the child at the
   parent's token budget by truncating the child's *context window*, not its content. If the
   advantage vanishes, it was budget.
@@ -558,6 +739,22 @@ unverified inference"* — is a semantic line, not a syntactic one.
   against one, because no trajectory world exists. `J_solve` is exactly as trustworthy as that
   verifier, and V0 cannot bound how trustworthy that is.
 
+### 7.5b The gain is extra sampling, not the language
+
+**The lie:** the child wins because its arm effectively got more attempts — more samples per step,
+a longer output budget, a retry the parent did not get, or a self-correction loop the language
+happens to invite. §7a names this as the specific vulnerability of the nearest prior work.
+
+**Detectors:**
+- **Gate C** (§3.1): identical decoding hash, identical `num_predict`, identical samples-per-step,
+  identical retry policy, identical authorised `CallBudget`. Two arms with different decoding cannot
+  share a `cache_identity`, so the mismatch is structural rather than a review item.
+- Record `completion_tokens_total` and `model_calls` per arm in the fitness memory and **report them
+  beside every β**. An arm that used more of either has not been compared, whatever the statistic
+  says.
+- `J_repair` is measured *separately* so that self-correction is an observed dimension rather than a
+  hidden contribution to `J_solve`.
+
 ### 7.6 `J_repair`'s conditional denominator
 
 **The lie:** a language that never errs on the easy pool gets an undefined or vacuous `J_repair`,
@@ -572,9 +769,11 @@ diverge.
 
 **The lie:** L4 shows a large γ, the run is stopped there, and the number is reported.
 
-**Why it is likely:** L4 costs 19.3 h and L5 costs 55.4 h, and L4 already produces a
-publishable-looking curve. Measured power of the L4 design (200,000-replicate simulation, π_d=0.30,
-α=0.05):
+**Why it is likely:** L4 costs 19.3 h and L5 costs 69.9 h, and L4 already produces a
+publishable-looking curve. L4 runs FREE mode at n=40 per bucket, which cannot test β at all
+(FREE mode needs n≈400 for power 0.40 at β=1.0, §4.2) and whose descriptive γ has the power below
+(200,000-replicate simulation, π_d=0.30, α=0.05) — for a statistic that §4.4 has already shown is
+non-monotone under the null:
 
 | n per bucket | γ=0.10 | γ=0.15 | γ=0.20 |
 |---|---|---|---|
@@ -586,13 +785,16 @@ publishable-looking curve. Measured power of the L4 design (200,000-replicate si
 
 An L4 γ that "looks big" is what a 0.13-power estimator produces when it happens to be right —
 and, more often, what it produces when it is wrong in the other direction. L4 rejects at γ=0.10 in
-about one run in eight; the sign of the estimate it reports is close to a coin flip.
+about one run in eight; the sign of the estimate it reports is close to a coin flip. **And even a
+correctly-signed, adequately-powered γ would not be the claim**, because §4.4's null produces one.
 
-**Detector:** L4 output carries a machine-readable `confirmatory: false` flag and a
-`power_at_declared_effect` field computed by `precondition_power`. Any report that quotes an L4 γ
-without both is malformed. This is a convention, and conventions are the weakest kind of detector —
-which is why the promotion rule in §5.5 is stated in advance and tied to generations survived, not
-to effect size observed.
+**Detector:** L4 output carries a machine-readable `confirmatory: false` flag, a
+`metric: "absolute_gap_descriptive"` label, and a `power_at_declared_effect` field computed by
+`precondition_power`. Any report that quotes an L4 number without all three is malformed.
+
+This is a convention, and conventions are the weakest kind of detector — which is why the
+promotion rule in §5.5 is stated in advance and tied to generations survived, not to effect size
+observed.
 
 ---
 
@@ -600,9 +802,10 @@ to effect size observed.
 
 Being ruthless about scope is more useful than being complete.
 
-**In V0:** the vector's definitions; the two gates and their operating points; the bucket rule and
-the fake-horizon detector's T1 (exact); the ladder and its arithmetic; the Game R assay design; the
-archive's descriptors.
+**In V0:** the vector's definitions; the four gates and their operating points; the two trajectory
+modes; the preregistered β estimand and its estimator; the bucket rule and the fake-horizon
+detector's T1 (exact); the ladder and its arithmetic; the Game R assay design; the archive's
+descriptors.
 
 **Explicitly not in V0:**
 
@@ -614,6 +817,14 @@ archive's descriptors.
 - **Calibrated T2/T3 thresholds**, the token-matched horizon contrast, and the budget-matched arm.
   All three are named as [PROPOSED] and are the highest-value things to build after the world.
 - **The H=50 and "full solution" buckets.** Priced (4.9× H=20 conservatively) and deferred.
+- **β = 0.25 as a detectable effect.** Out of reach at any affordable n (0.158 at n=210). Declared
+  undetectable rather than chased.
+- **Any novelty claim for the architecture.** `HAMILTONIAN_CHESS_META_GOAL.md` §7a's
+  `NOVEL_ONLY_IN_COMBINATION` verdict is binding: quality-diversity, successive halving, archives,
+  canonical-content-many-renderings, and search over how state is rendered to an agent are all
+  commodity or published. **Nothing in this fitness design is a contribution.** What it exists to
+  do is make one narrow result *earnable* — a horizon interaction under enforced parity and matched
+  compute — and it is worth exactly as much as the result it produces.
 - **`GOAL.md` §15's `E_invalid` and `R_robust` as separate dimensions.** `E_invalid` is folded into
   L2's validity screen and into `J_solve`'s fail-closed scoring (`SCORED_STATUSES` counts every
   solver-caused failure as incorrect rather than dropping it). `R_robust` is not a dimension but a
@@ -626,5 +837,10 @@ archive's descriptors.
 2. Build the trajectory world, then calibrate T2/T3 on generator output only.
 3. Run L1's Gate A at n_EVAL=800 against the *actual* renderers to confirm the false-void rate.
 4. Measure, do not assume, L0's elimination rate on the widened meta-genome. It is currently 0/120.
-5. Preregister before any confirmatory claim. `HAMILTONIAN_CHESS_META_GOAL.md` §7:
-   exploratory search inside the loop is expected; a *claim* requires a frozen protocol.
+5. **Preregister the horizon metric before any confirmatory claim** — β on the per-step log-odds
+   hazard in ANCHORED mode, the bucket pairs, and the smallest effect of interest (β = 0.5).
+   `HAMILTONIAN_CHESS_META_GOAL.md` §5.1 makes an undeclared metric choice disqualifying, and §7
+   makes preregistration binding on any claim; exploratory search inside the loop is expected.
+6. Verify the β estimator's size on a *real* pool. The 0.056–0.071 figure is simulated under a
+   correctly-specified α(k); nothing has checked it against a task pool whose difficulty varies
+   with depth for reasons of its own.

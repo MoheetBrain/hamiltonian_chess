@@ -1737,3 +1737,80 @@ created, retired or reinterpreted: `RSTAR_NOT_IDENTIFIED`, `GAME_R_INSTRUMENT_NO
 
 **Next intended step.** Phase C: the verified trajectory arena on live Lean, and the thin outer
 loop (`HAMILTONIAN_CHESS_V0`) — targeting end-to-end executability, not discovery.
+
+---
+
+## 2026-09-08 — Mission reset, Phase C: HC-V0 executes; verified trajectory world exists
+
+**Date/time.** 2026-09-08, Europe/London. **Branch.** `claude/hamiltonian-phase-8-experiment-691d22`.
+**Stage.** Mission reset, Phase C (thin vertical slice). **No scientific claim is made.**
+
+**Objective.** Build the smallest honest outer loop that can eventually discover a language, and
+the smallest verifier-backed world with a real horizon. Per the owner-supplied governing manual
+(`spec/SOURCE/HAMILTONIAN_CHESS_ATOMIC_SPECIFICATION_MANUAL_v0.2.md` §0.2, §40) the target is
+**end-to-end executability, not discovery**, and no HC-V0 winner is a scientific winner.
+
+**Files and systems changed.** New: `arena/evolution/{__init__,loop,record}.py`,
+`arena/trajectory/{__init__,schema,lean_backend,arena_v0}.py`, `tests/evolution/` (50 tests),
+`tests/trajectory/` (93 tests), `spec/` (the manual verbatim + the §36.1 minimum authority set),
+`artifacts/trajectory_bank_v0/{h5,h12}/`. Modified surgically: `arena/languages/registry.py`
+(+31/−2, `get_language` gains a genome-driven fallback; the 8 seeds keep their exact behaviour)
+and `arena/pipeline.py` (+37/−4, `_genome` reads `artifacts/candidates/<id>/genome.json`).
+**No frozen instrument was edited**; `GOAL.md` re-verified `43d8fcdb…20117b`; the manual stored
+unchanged, `f3c04e69…1768cf`.
+
+**What was completed.**
+1. *The outer loop runs.* One generation, zero model calls, 0.6 s. Determinism verified by the
+   integrator across two runs: `result_hash` and `record_id` identical, only wall-clock and
+   timestamp differ. First-ever 80 `MatchObservation` rows written to `arena/league/registry.py`.
+2. *A kernel-verified trajectory world exists.* Live Lean replay against the built mathlib4
+   checkout (Lean 4.10.0-rc1, 5,680 `.olean`). **11 `CLOSED_VERIFIED` trajectories**, histogram
+   `{5:7, 7:1, 12:1, 13:1, 14:1}`, max 14, re-verified from the committed bank by the integrator.
+   Verification is the Lean kernel twice: per-step REPL acceptance returning a new state id, and
+   whole-script re-elaboration ending in `#print axioms`, rejecting `sorryAx`.
+3. *Two manual requirements retrofitted by the integrator:* `InterventionClass` (§6.26/§12.3/§26),
+   derived from the changed genes and failing closed on an undeclared gene; and the five-way
+   horizon vocabulary (§6.30–§6.34, §17.6) with `MinimalProofLength` and `DependencyDepth`
+   returning literal `UNKNOWN`.
+
+**Decisions made and why.** (a) `InterventionClass` is *derived, never stored*, so a record cannot
+assert a class its genes do not support. (b) It *fails closed* on an unknown gene: defaulting to
+`R_ONLY` would let the first ontology gene be reported as a pure representation effect, which
+§26.3 forbids. (c) `DerivedView.canonical_state` is typed `None` rather than `dict | None` — the
+type system, not a comment, refuses a canonical projection the pilot measured at 0/368. (d) The
+bank's default tactic policy is `record_only` with a hashed policy id, so automation is visible
+rather than silently excluded.
+
+**Tests actually executed.** `.venv/bin/python -m pytest` → **1,275 passed, 1 skipped in 116.6 s**
+(base `2047fda`: 964/1; salvage: 1,132/1). With the Lean toolchain hidden
+(`HAMILTONIAN_MATHLIB_ROOT=/no/such/path`) → 1,260 passed, 10 skipped, i.e. the Lean-dependent
+tests skip cleanly. `ruff check .` → All checks passed. `ruff format --check .` → 338 files already
+formatted. `mypy arena` → Success, 142 source files. One live-kernel proof recorded: a 5-step
+replay closed to `no goals` with `#print axioms` → `[propext, Classical.choice, Quot.sound]`, while
+the same probe closed with `sorry` → `[…, sorryAx, …]` → rejected.
+
+**Failures and unresolved uncertainty.**
+- **All 120 actions in the bank are `actor=REFERENCE`.** There are **zero solver actions**. The
+  bank measures the environment, not a policy. A single-actor guard prevents misreporting.
+- **Contamination is unresolved and unresolvable locally.** mathlib4 is `HISTORICALLY_EXPOSED`
+  transitively; nothing distinguishes reasoning from recall. Every trajectory carries the note:
+  this is **long-horizon execution under kernel verification**, not discovery.
+- **Flat replay succeeds at 11/26 = 42%**, not the 5/6 = 83% the six-proof audit sample suggested,
+  and it degrades with length (56% at ≥5, **20% at ≥12**). This corrects the prior entry's implied
+  yield and must be used for any future bank sizing.
+- **`VerifiedTask` (interactive) does not exist in code** — only `VerifiedTrajectory`. Manual
+  §40.3's preferred `INTERACTIVE_TASK` mode is therefore unavailable and **autonomous long-horizon
+  claims remain blocked**.
+- The §21 lifecycle state machine is specified but not yet code-enforced; the spec audit recorded
+  17 conformance gaps in `spec/`, of which the integrator closed two after that audit ran.
+- The three JSON Schemas were validated as well-formed JSON only; `jsonschema` is not installed and
+  installing it needs the network. The meta-schema check is unrun.
+
+**Effect on the overall project.** HC-V0's success criterion (§40.5) is met for the loop and for a
+replay-mode world. No sentinel is created, retired or reinterpreted: `RSTAR_NOT_IDENTIFIED`,
+`GAME_R_INSTRUMENT_NOT_QUALIFIED`, `V7_PARTIALLY_VALID_INSTRUMENT_CONFOUNDED` and
+`TRAINING_LANGUAGE_V0_BASELINE` all stand. No `RSTAR` or `LSTAR` claim is made or implied.
+
+**Next intended step.** Red-team the loop per manual §47 Step 9 (lineage/provenance, truth
+mutation, cache identity, oracle leakage, dead-candidate enforcement, fitness-memory immutability),
+then stop and hand off with measured costs. Do **not** continue into Pilot 1.

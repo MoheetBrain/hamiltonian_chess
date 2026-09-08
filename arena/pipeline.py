@@ -12,7 +12,7 @@ from arena.evaluation.static import StaticEvaluation, evaluate_static
 from arena.fitness.metrics import Direction
 from arena.fitness.pareto import Objective
 from arena.genome.schema import LanguageGenome
-from arena.languages.registry import get_language, seed_languages
+from arena.languages.registry import get_language, language_for_genome, seed_languages
 from arena.league.hall_of_fame import HallOfFameSuite
 from arena.league.registry import DEFAULT_BASELINES, LeagueRegistry
 from arena.league.selection import rank_registry
@@ -158,9 +158,35 @@ class ArenaRuntime:
             return get_language(candidate_id).genome
         except KeyError:
             rows = [row for row in self.db.rows("languages") if row["language_id"] == candidate_id]
-            if not rows:
+            if rows:
+                return LanguageGenome.from_dict(json.loads(rows[0]["genome_json"]))
+            stored = self._stored_genome(candidate_id)
+            if stored is None:
                 raise KeyError(f"unknown candidate {candidate_id!r}") from None
-            return LanguageGenome.from_dict(json.loads(rows[0]["genome_json"]))
+            return stored
+
+    def _stored_genome(self, candidate_id: str) -> LanguageGenome | None:
+        """A genome written by a previous ``mutate()`` wave, read back from the artifact store.
+
+        Mutation wrote ``artifacts/candidates/<id>/genome.json`` and nothing ever read it back,
+        so every mutant on disk was unreachable from ``evaluate``.  The id is checked against
+        the record it names, which also rules out a path escaping the candidate directory.
+        """
+
+        if (
+            not candidate_id
+            or "/" in candidate_id
+            or "\\" in candidate_id
+            or candidate_id[0] == "."
+        ):
+            return None
+        path = self.artifact_root / "candidates" / candidate_id / "genome.json"
+        if not path.is_file():
+            return None
+        genome = LanguageGenome.from_dict(json.loads(path.read_text(encoding="utf-8")))
+        if genome.candidate_id != candidate_id:
+            raise ValueError(f"stored genome for {candidate_id!r} names {genome.candidate_id!r}")
+        return genome
 
     def mutate(self, parent_id: str, *, count: int = 20, seed: int = 0) -> dict[str, Any]:
         self.seed_candidate_languages()
@@ -207,11 +233,14 @@ class ArenaRuntime:
         self.initialize()
         self.seed_candidate_languages()
         try:
-            language = get_language(candidate_id)
+            genome = self._genome(candidate_id)
         except KeyError as error:
             raise ValueError(
                 "candidate has no executable renderer/parser; it cannot enter evaluation"
             ) from error
+        # Seeds keep their hand-coded surfaces; every other genome is rendered by the
+        # genome-driven phenotype codec, which is what reconnects mutants to evaluation.
+        language = language_for_genome(genome)
         world, _ = self._world()
         evaluation = evaluate_static(language, world.tasks)
         result = evaluation.to_dict()

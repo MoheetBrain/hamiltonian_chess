@@ -1,0 +1,187 @@
+{
+  "schema": "arena-verified-trajectory-bank-v0",
+  "generated_utc": "2026-09-08T13:07:35+00:00",
+  "generator": "arena/trajectory/arena_v0.py@v0",
+  "bank_file": "bank.jsonl",
+  "selection": {
+    "train_json": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo_raw/leandojo_benchmark_4/random/train.json",
+    "seed": 3,
+    "scan_limit": 12000,
+    "min_horizon": 12,
+    "max_horizon": null,
+    "limit": 10,
+    "allow_multiline_tactics": false,
+    "records_scanned": 12000,
+    "candidates_selected": 10
+  },
+  "toolchain": {
+    "lean_version_string": "Lean (version 4.10.0-rc1, arm64-apple-darwin23.5.0, commit 3b58e0649156, Release)",
+    "toolchain": "leanprover/lean4:v4.10.0-rc1",
+    "mathlib_root": "/Users/moheet/Documents/ChatGPT/HML_V3/external/runtime_work/leanprover-community-mathlib4-29dcec074de168ac2bf835a77ef68bbe069194c5/mathlib4",
+    "olean_count": 5680,
+    "max_heartbeats": 1000000
+  },
+  "action_space": {
+    "kind": "FREE_FORM_TACTIC_STRING",
+    "enumerable": false,
+    "proposes_candidates": false,
+    "policy_name": "record_only",
+    "policy_id": "54954a450e6c9c5b",
+    "denied_heads": [],
+    "allowed_heads": null,
+    "always_refused": [
+      "admit",
+      "sorry",
+      "sorryAx",
+      "stop"
+    ],
+    "description": "The Solver proposes one Lean 4 tactic string per step. The arena neither enumerates nor ranks candidates; legality is decided by the Lean elaborator at the current metavariable context, after the caller's tactic policy has been applied. `sorry` and `admit` are refused unconditionally."
+  },
+  "results": {
+    "trajectories_written": 10,
+    "closed_verified": 2,
+    "horizon_histogram_verified": {
+      "12": 1,
+      "14": 1
+    },
+    "max_verified_horizon": 14,
+    "terminal_status_counts": {
+      "CLOSED_VERIFIED": 2,
+      "ERROR_BACKEND": 1,
+      "FAILED": 7
+    },
+    "tactic_head_counts": {
+      "refine": 6,
+      "exact": 4,
+      "rw": 4,
+      "obtain": 3,
+      "simp": 3,
+      "apply": 1,
+      "convert": 1,
+      "infer_instance": 1,
+      "intro": 1,
+      "let": 1,
+      "nontriviality": 1
+    }
+  },
+  "discards": {
+    "BELOW_MIN_HORIZON": 11554,
+    "LEAKAGE_FILTER": 8,
+    "MULTILINE_TACTIC": 354,
+    "NO_BY_BLOCK": 2
+  },
+  "leakage": {
+    "problems_scanned": 446,
+    "steps_scanned": 9313,
+    "leaking_steps": 9,
+    "problems_dropped": 8,
+    "reasons": {
+      "TACTIC_IN_STATE_BEFORE": 9
+    }
+  },
+  "timings_s": {
+    "selection": 0.4,
+    "replay": 24.07,
+    "total": 24.47,
+    "mean_per_episode": 2.41
+  },
+  "episodes": [
+    {
+      "problem_id": "Mathlib/Data/Set/Finite.lean::Set.Finite.exists_maximal_wrt",
+      "terminal_status": "FAILED",
+      "achieved_horizon": 0,
+      "reference_horizon": 14,
+      "wall_s": 3.94,
+      "startup_s": 3.89,
+      "error": ""
+    },
+    {
+      "problem_id": "Mathlib/CategoryTheory/Sites/Coherent/SheafComparison.lean::CategoryTheory.regularTopology.exists_effectiveEpi_iff_mem_induced",
+      "terminal_status": "CLOSED_VERIFIED",
+      "achieved_horizon": 14,
+      "reference_horizon": 15,
+      "wall_s": 2.2,
+      "startup_s": 0.96,
+      "error": ""
+    },
+    {
+      "problem_id": "Mathlib/RingTheory/MvPowerSeries/Basic.lean::MvPowerSeries.X_pow_dvd_iff",
+      "terminal_status": "FAILED",
+      "achieved_horizon": 2,
+      "reference_horizon": 50,
+      "wall_s": 3.44,
+      "startup_s": 3.39,
+      "error": ""
+    },
+    {
+      "problem_id": "Mathlib/Combinatorics/SetFamily/Shatter.lean::Finset.Shatters.of_compression",
+      "terminal_status": "FAILED",
+      "achieved_horizon": 6,
+      "reference_horizon": 20,
+      "wall_s": 0.97,
+      "startup_s": 0.9,
+      "error": ""
+    },
+    {
+      "problem_id": "Mathlib/SetTheory/Cardinal/Divisibility.lean::Cardinal.prime_of_aleph0_le",
+      "terminal_status": "FAILED",
+      "achieved_horizon": 1,
+      "reference_horizon": 14,
+      "wall_s": 0.85,
+      "startup_s": 0.8,
+      "error": ""
+    },
+    {
+      "problem_id": "Mathlib/GroupTheory/Index.lean::Subgroup.index_comap_of_surjective",
+      "terminal_status": "FAILED",
+      "achieved_horizon": 2,
+      "reference_horizon": 12,
+      "wall_s": 0.81,
+      "startup_s": 0.77,
+      "error": ""
+    },
+    {
+      "problem_id": "Mathlib/Analysis/LocallyConvex/WithSeminorms.lean::WithSeminorms.isVonNBounded_iff_finset_seminorm_bounded",
+      "terminal_status": "FAILED",
+      "achieved_horizon": 2,
+      "reference_horizon": 20,
+      "wall_s": 3.87,
+      "startup_s": 3.8,
+      "error": ""
+    },
+    {
+      "problem_id": "Mathlib/Data/Nat/Factorization/Basic.lean::Nat.ord_compl_dvd_ord_compl_iff_dvd",
+      "terminal_status": "FAILED",
+      "achieved_horizon": 4,
+      "reference_horizon": 12,
+      "wall_s": 2.22,
+      "startup_s": 2.16,
+      "error": ""
+    },
+    {
+      "problem_id": "Mathlib/RingTheory/Polynomial/Basic.lean::Polynomial.Monic.geom_sum",
+      "terminal_status": "CLOSED_VERIFIED",
+      "achieved_horizon": 12,
+      "reference_horizon": 12,
+      "wall_s": 3.71,
+      "startup_s": 1.66,
+      "error": ""
+    },
+    {
+      "problem_id": "Mathlib/Topology/MetricSpace/Gluing.lean::Metric.inductiveLimitDist_eq_dist",
+      "terminal_status": "ERROR_BACKEND",
+      "achieved_horizon": 0,
+      "reference_horizon": 17,
+      "wall_s": 2.05,
+      "startup_s": 2.02,
+      "error": ""
+    }
+  ],
+  "sealed_splits_not_read": [
+    "novel_premises/val.json",
+    "novel_premises/test.json",
+    "random/val.json",
+    "random/test.json"
+  ],
+  "contamination": "mathlib4 is HISTORICALLY_EXPOSED and exposure is transitive: no LeanDojo split establishes pretraining-cleanliness. This measures long-horizon EXECUTION under kernel verification, not long-horizon discovery."
+}
