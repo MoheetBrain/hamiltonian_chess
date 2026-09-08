@@ -1,0 +1,34 @@
+{
+ "pair": {
+  "file_path": "Mathlib/Analysis/Normed/Group/AddTorsor.lean",
+  "horizons": [
+   3,
+   1
+  ],
+  "scopes_identical": true,
+  "terminals": [
+   "CLOSED_VERIFIED",
+   "CLOSED_VERIFIED"
+  ],
+  "theorems": [
+   "Mathlib/Analysis/Normed/Group/AddTorsor.lean::edist_vsub_vsub_le",
+   "Mathlib/Analysis/Normed/Group/AddTorsor.lean::dist_vsub_cancel_left"
+  ]
+ },
+ "scan": {
+  "files_with_two_or_more_short_theorems": 223,
+  "records_scanned": 3000
+ },
+ "splice": {
+  "claimed_horizon": null,
+  "component_horizons": [
+   3,
+   1
+  ],
+  "load_error": "TrajectoryIntegrityError: state 4 carries session id 'lean4-repl-a7788e2ae0afa402d8e225bc' but the trajectory's session is 'lean4-repl-c89100917191764285bc2bbf': states from two sessions cannot be spliced into one trajectory",
+  "loads_without_error": false,
+  "problem_id_kept": "Mathlib/Analysis/Normed/Group/AddTorsor.lean::edist_vsub_vsub_le"
+ },
+ "verdict": "HELD_AT_LOAD",
+ "wall_s": 5.3
+}

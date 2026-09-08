@@ -25,6 +25,7 @@ from arena.evolution.loop import (
     Outcome,
     ParentSelection,
     StubLadderEvaluator,
+    build_diagnostics,
     build_fitness_vector,
     leakage_gate,
     live_gene_families,
@@ -34,7 +35,13 @@ from arena.evolution.loop import (
     seed_population,
     semantic_gate,
 )
-from arena.evolution.record import DimensionStatus, GateStatus, RecordStatus
+from arena.evolution.record import (
+    DimensionStatus,
+    EvaluationMode,
+    EvidenceActor,
+    GateStatus,
+    RecordStatus,
+)
 from arena.experiments.game_r_formal_v1 import MaterialisedItem, OllamaSolver
 from arena.genome.schema import LanguageGenome
 from arena.genome.seeds import SEED_GENOME_BY_ID, SEED_GENOMES
@@ -247,6 +254,13 @@ def test_one_generation_runs_end_to_end_offline(tmp_path: Path) -> None:
 
 
 def test_the_archive_receives_rows_and_ranking_returns_a_front(tmp_path: Path) -> None:
+    """The plumbing runs, and RT-16: nothing it writes is a scientific ranking.
+
+    The rows reach the archive - that was the point of reconnecting the league registry - but
+    under a stub they are ``verified=False``, so no multi-axis rating is computed from them, and
+    the objectives the front was built from name the mode that produced them.
+    """
+
     loop = EvolutionLoop(store=ArtifactStore(tmp_path), config=fast_config())
     result = loop.run_generation(0)
 
@@ -255,16 +269,24 @@ def test_the_archive_receives_rows_and_ranking_returns_a_front(tmp_path: Path) -
     assert scored, "the generation produced no scored candidate"
     child = scored[0].child_id
     assert any(item.candidate_id == child for item in loop.registry.observations)
-    assert loop.registry.candidates[child].domain_ratings, "no multi-axis rating was computed"
+    # RT-16: recorded, and not counted. `LeagueRegistry._recompute` rates only verified rows.
+    assert not any(item.verified for item in loop.registry.observations)
+    assert loop.registry.candidates[child].domain_ratings == {}, (
+        "a chance-level hash acquired a confidence interval in the durable archive"
+    )
 
     assert result.fronts and result.fronts[0], "ranking returned an empty front"
     assert set(result.population_after) <= set(loop.genomes)
-    # Every ranked candidate carries the objectives the front was computed from.
+    # Every ranked candidate carries the objectives the front was computed from - and not one of
+    # them is a fitness dimension.
     for front in result.fronts:
         for candidate_id in front:
-            assert {"J_solve", "J_cost"} <= set(
-                loop.registry.candidates[candidate_id].objective_metrics
-            )
+            metrics = loop.registry.candidates[candidate_id].objective_metrics
+            assert {
+                "EXECUTABILITY_STUB::stub_choice_agreement",
+                "EXECUTABILITY_STUB::rendered_prompt_bytes_mean",
+            } <= set(metrics)
+            assert not set(metrics) & {"J_solve", "J_cost"}
 
 
 def test_the_fitness_vector_is_not_collapsed_to_a_scalar(tmp_path: Path) -> None:
@@ -275,16 +297,31 @@ def test_the_fitness_vector_is_not_collapsed_to_a_scalar(tmp_path: Path) -> None
 
     names = [item.name for item in vector.dimensions]
     assert names == ["J_solve", "J_horizon", "J_learn", "J_ood", "J_search", "J_repair", "J_cost"]
-    assert set(vector.measured()) == {"J_solve", "J_cost"}
-    unmeasured = {
-        item.name for item in vector.dimensions if item.status is DimensionStatus.NOT_MEASURED
+    # RT-16: under a stub there is no measured dimension at all. The two the evaluator addressed
+    # are NOT_REPRESENTABLE - a number was computed and is inadmissible - and the other five are
+    # NOT_MEASURED, which is a different and weaker statement.
+    assert vector.measured() == {}
+    assert not vector.admissible_as_fitness
+    by_status = {
+        status: {item.name for item in vector.dimensions if item.status is status}
+        for status in DimensionStatus
     }
-    assert unmeasured == {"J_horizon", "J_learn", "J_ood", "J_search", "J_repair"}
+    assert by_status[DimensionStatus.MEASURED] == set()
+    assert by_status[DimensionStatus.NOT_REPRESENTABLE] == {"J_solve", "J_cost"}
+    assert by_status[DimensionStatus.NOT_MEASURED] == {
+        "J_horizon",
+        "J_learn",
+        "J_ood",
+        "J_search",
+        "J_repair",
+    }
+    assert vector["J_solve"].unreportable_reason == "EXECUTABILITY_STUB"
     for attribute in ("__float__", "total", "scalar", "score"):
         assert not hasattr(vector, attribute)
     # And the stored JSON keeps all seven, so a downstream reader cannot mistake absence for zero.
     stored = json.loads(loop.records.record_paths()[0].read_text(encoding="utf-8"))
     assert len(stored["fitness_vector"]["dimensions"]) == 7
+    assert all(item["value"] is None for item in stored["fitness_vector"]["dimensions"])
 
 
 def test_two_runs_are_identical_apart_from_timing(tmp_path: Path) -> None:
@@ -400,9 +437,23 @@ def test_a_mutant_from_disk_is_evaluable_by_the_loop(
         outcome = evaluator.evaluate(
             genome=genome, language=language_for_genome(genome), items=solve_items
         )
-        vector = build_fitness_vector(outcome)
-        assert set(vector.measured()) == {"J_solve", "J_cost"}
-        assert observations_from_rows(outcome, arena_id="test", opponent_id=parent.candidate_id)
+        vector = build_fitness_vector(
+            outcome,
+            evaluation_mode=EvaluationMode.EXECUTABILITY_STUB,
+            actor=EvidenceActor.SOLVER,
+        )
+        assert vector.measured() == {}
+        assert set(
+            build_diagnostics(outcome, basis=EvaluationMode.EXECUTABILITY_STUB).readings
+        ) == {
+            "stub_choice_agreement",
+            "rendered_prompt_bytes_mean",
+            "n_items",
+            "n_clusters",
+        }
+        assert observations_from_rows(
+            outcome, arena_id="test", opponent_id=parent.candidate_id, verified=False
+        )
     assert effective, "every stored mutant was byte-inert; none could be scored"
 
 
@@ -470,7 +521,21 @@ def test_the_cli_prints_a_compact_json_summary(
     assert printed["model_calls"] == 0
     assert printed["records"] >= 1
     assert printed["scientific_status"] == "EXECUTABILITY_ONLY_NOT_A_RESULT"
-    assert printed["generations"][0]["candidates"][0]["fitness"].keys() >= {"J_solve", "J_cost"}
+    # RT-16: the compact summary a human reads carries no J_* number, and says why.
+    candidate = printed["generations"][0]["candidates"][0]
+    assert candidate["fitness"] == {}
+    assert candidate["fitness_admissible"] is False
+    assert set(candidate["diagnostics"]) == {
+        "EXECUTABILITY_STUB::stub_choice_agreement",
+        "EXECUTABILITY_STUB::rendered_prompt_bytes_mean",
+        "EXECUTABILITY_STUB::n_items",
+        "EXECUTABILITY_STUB::n_clusters",
+    }
+    assert printed["evaluation_mode"] == "EXECUTABILITY_STUB"
+    assert printed["ranked_on"] == [
+        "EXECUTABILITY_STUB::stub_choice_agreement",
+        "EXECUTABILITY_STUB::rendered_prompt_bytes_mean",
+    ]
 
     # The full summary, including every schema divergence, is on disk.
     stored = json.loads(

@@ -1,0 +1,67 @@
+{
+ "I1_kernel_key_collides_across_two_live_sessions": {
+  "goal_digests_differ": true,
+  "kernel_key_A": "LEAN4_TACTIC_STATE_PP|vtask-3c308f316916ee194c8c9ae7#ep0001|1",
+  "kernel_key_B": "LEAN4_TACTIC_STATE_PP|vtask-3c308f316916ee194c8c9ae7#ep0001|1",
+  "note": "session_id is the LABEL f'{task_id}#ep{n:04d}', not a handle on the live backend process; two VerifiedTasks built from one probe are the same task_id and their first episodes are both #ep0001",
+  "record_keys_equal": false,
+  "same_kernel_state_as": true,
+  "session_label_A": "vtask-3c308f316916ee194c8c9ae7#ep0001",
+  "session_label_B": "vtask-3c308f316916ee194c8c9ae7#ep0001",
+  "task_id_A": "vtask-3c308f316916ee194c8c9ae7",
+  "task_id_B": "vtask-3c308f316916ee194c8c9ae7",
+  "verdict": "DEFECT"
+ },
+ "I2_state_carried_across_a_failed_reset": {
+  "episode_index": 2,
+  "goal_digest_unchanged": true,
+  "note": "reset() advances _episode_index and _session BEFORE the arena is opened; if the arena raises, _current still holds the previous episode's state and observe()/state_identity() attribute it to the new session",
+  "reset_raised": "RuntimeError: lean session refused to start",
+  "session_after": "vtask-3c308f316916ee194c8c9ae7#ep0002",
+  "session_before": "vtask-3c308f316916ee194c8c9ae7#ep0001",
+  "terminal_after": "OPEN",
+  "verdict": "DEFECT"
+ },
+ "I3_observe_after_close_returns_a_dead_session_projection": {
+  "declared_terminal_status": [
+   "ATTEMPTS_REMAINING",
+   "BACKEND_KIND",
+   "BACKEND_STATE_ID",
+   "GOAL_COUNT",
+   "GOAL_TEXT",
+   "PP_SCOPE",
+   "STEP_INDEX",
+   "TERMINAL_STATUS"
+  ],
+  "kernel_key": "LEAN4_TACTIC_STATE_PP|vtask-3c308f316916ee194c8c9ae7#ep0001|1",
+  "note": "observe()/state_identity() have no arena precondition; only step() does. The projection reports TERMINAL_STATUS=OPEN for a session that no longer exists",
+  "observe_succeeded": true,
+  "step_after_close_accepted": false,
+  "step_refusal": "reset() must be called before the task can be driven",
+  "task_is_terminal": false,
+  "verdict": "DEFECT"
+ },
+ "I4_identity_can_claim_an_unreached_state": {
+  "forged_kernel_key": "LEAN4_TACTIC_STATE_PP|vtask-3c308f316916ee194c8c9ae7#ep0001|0",
+  "forged_reelaboration_key": "LEAN4_TACTIC_STATE_PP|547c8a13782d0400|3cee30d556ed271e0744525346cc98c99e4bb1179b704947e281df74ab300964",
+  "from_dict_accepts_arbitrary_digest": "c789519c48ce9d0e",
+  "note": "rendered_under() and from_dict() are unchecked constructors; neither consults a backend. Author-only, and both are documented as provenance carriers",
+  "real_kernel_key": "LEAN4_TACTIC_STATE_PP|vtask-3c308f316916ee194c8c9ae7#ep0001|0",
+  "verdict": "DEFECT"
+ },
+ "I5_stale_projection_after_a_rejection": {
+  "expected": [
+   "a b : Nat\nh : a = b\n\u22a2 b = a",
+   "\u22a2 state one",
+   "\u22a2 state one",
+   "\u22a2 state two"
+  ],
+  "observed": [
+   "a b : Nat\nh : a = b\n\u22a2 b = a",
+   "\u22a2 state one",
+   "\u22a2 state one",
+   "\u22a2 state two"
+  ],
+  "verdict": "HELD"
+ }
+}

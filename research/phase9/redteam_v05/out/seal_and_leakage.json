@@ -1,0 +1,136 @@
+{
+ "S10_step_info_not_leak_checked": {
+  "info_keys": [
+   "kernel",
+   "n_goals",
+   "no_op_suspected",
+   "tactic_head",
+   "wall_ms"
+  ],
+  "note": "info is returned to the caller; the guard only covers projection.rendered and the diagnostic",
+  "verdict": "DEFECT"
+ },
+ "S11_from_leandojo_record_enforces_its_own_leak_filter": {
+  "note": "the filter's verdict is RECORDED in provenance and the task is built anyway; select_candidates() is the layer that actually drops (verified separately)",
+  "provenance_static_leakage_filters": [
+   "TACTIC_IN_STATE_BEFORE"
+  ],
+  "scan_reasons": [
+   "TACTIC_IN_STATE_BEFORE"
+  ],
+  "task_built": true,
+  "verdict": "DEFECT"
+ },
+ "S12_declared_parity_hides_extra_information": {
+  "honest_rendered_keys": [
+   "goals_pp",
+   "n_goals",
+   "renderer_id"
+  ],
+  "leaky_rendered_keys": [
+   "backend_kind",
+   "coach_note",
+   "goals_pp",
+   "n_goals",
+   "pp_scope",
+   "pp_sha256",
+   "renderer_id",
+   "state_id"
+  ],
+  "note": "from_information trusts declare_information; only the from_rendered FALLBACK folds undeclared keys in",
+  "parity_admissible": true,
+  "projection_hashes_equal": true,
+  "verdict": "DEFECT"
+ },
+ "S12b_undeclared_renderer_fallback_catches_it": {
+  "note": "control: the conservative fallback path",
+  "verdict": "HELD"
+ },
+ "S1_constructor_accepts_reference_text": {
+  "refusal": "VerifiedTask refuses a probe that still carries reference_tactics: the task must be structurally unable to read the answ",
+  "verdict": "HELD"
+ },
+ "S2_reference_text_reachable_from_shipped_task": {
+  "hits": [],
+  "note": "default _lean_arena_factory closure captures config/policy/renderer/budget only",
+  "verdict": "HELD"
+ },
+ "S2b_reference_text_reachable_through_injected_arena_factory": {
+  "hits": [
+   "task._arena_factory.<cell 0>.reference_tactics[0]='nlinarith [sq_nonneg (a - b), sq_nonneg (a + b)]'",
+   "task._arena_factory.<cell 0>.reference_tactics[1]='ring'"
+  ],
+  "note": "arena_factory is a public constructor parameter and is not scanned",
+  "verdict": "DEFECT"
+ },
+ "S2c_reference_text_reachable_from_selection": {
+  "hits": [],
+  "verdict": "HELD"
+ },
+ "S3_slots_prevent_reattachment": {
+  "declared_slot_reassignment_accepted": true,
+  "new_attribute_accepted": false,
+  "note": "__slots__ blocks a NEW name; it does not freeze the declared slots",
+  "reachable_after_reassignment": [
+   "task._arena_factory.<cell 0>.reference_tactics[0]='nlinarith [sq_nonneg (a - b), sq_nonneg (a + b)]'"
+  ],
+  "verdict": "DEFECT"
+ },
+ "S4_runner_falls_back_to_reference": {
+  "reference_tactics_mentions_in_source": [
+   "return replace(probe, reference_tactics=())",
+   "f\"a flat live replay of the {len(probe.reference_tactics)}-tactic reference proof \"",
+   "f\"{outcome.achieved_horizon}/{len(probe.reference_tactics)} tactics; a recorded proof is \"",
+   "if probe.reference_tactics:",
+   "then unreachable.  The probe handed to the task has ``reference_tactics == ()``.",
+   "probe.reference_tactics,"
+  ],
+  "reference_tactics_played": [],
+  "tactics_played": [
+   "exact foo",
+   "exact foo"
+  ],
+  "terminal": "FAILED",
+  "verdict": "HELD"
+ },
+ "S5_long_reference_tactic_into_goals_pp": {
+  "detail": "the observation contains a sealed reference tactic (digest 055c764d7bf4f7ed...); refusing to show it",
+  "verdict": "HELD"
+ },
+ "S6_short_reference_tactic_into_goals_pp": {
+  "min_secret_len": 6,
+  "prompt_tail": ":\na b : Nat\nh : a = b\n\u22a2 b = a\n-- hint: ring\n\nGive exactly one Lean 4 tactic to apply to the first goal.\nReply with only the JSON object {\"tactic\": \"<tactic>\"}.\n",
+  "secret": "ring",
+  "secret_bytes": 4,
+  "verdict": "DEFECT"
+ },
+ "S7_file_path_into_goals_pp": {
+  "prompt_tail": "ean\n\nGive exactly one Lean 4 tactic to apply to the first goal.\nReply with only the JSON object {\"tactic\": \"<tactic>\"}.\n",
+  "secret": "RT/Probe.lean",
+  "verdict": "DEFECT"
+ },
+ "S7_full_name_into_goals_pp": {
+  "prompt_tail": "obe\n\nGive exactly one Lean 4 tactic to apply to the first goal.\nReply with only the JSON object {\"tactic\": \"<tactic>\"}.\n",
+  "secret": "rt.probe",
+  "verdict": "DEFECT"
+ },
+ "S7_pp_scope_namespace_into_goals_pp": {
+  "prompt_tail": " RT\n\nGive exactly one Lean 4 tactic to apply to the first goal.\nReply with only the JSON object {\"tactic\": \"<tactic>\"}.\n",
+  "secret": "RT",
+  "verdict": "DEFECT"
+ },
+ "S8_prompt_allowlist_bypass": {
+  "prompt": "Lean 4 proof state:\n\u22a2 1 = 1\n\nGive exactly one Lean 4 tactic to apply to the first goal.\nReply with only the JSON object {\"tactic\": \"<tactic>\"}.\n",
+  "verdict": "HELD"
+ },
+ "S9_diagnostic_leak_past_truncation": {
+  "diagnostic_len": 401,
+  "leaked": false,
+  "note": "the guard runs AFTER truncation, so a secret past the cap is cut, not shown",
+  "verdict": "HELD"
+ },
+ "S9b_diagnostic_leak_short_line": {
+  "refusal": "the backend diagnostic contains a sealed reference tactic (digest 055c764d7bf4f7ed...); refusing to ",
+  "verdict": "HELD"
+ }
+}

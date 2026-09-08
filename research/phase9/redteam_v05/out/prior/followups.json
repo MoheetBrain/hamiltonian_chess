@@ -1,0 +1,140 @@
+{
+  "F1_gate_object_vs_prompt_object": {
+    "per_seed": {
+      "L0_STRUCTURED_ENGLISH": {
+        "gate_validates": "StructuredEnglishLanguage",
+        "prompt_uses": "GenomePhenotypeLanguage",
+        "identical_bytes": false
+      },
+      "L1_CURRENT_HML": {
+        "gate_validates": "CurrentHMLCompatibilityLanguage",
+        "prompt_uses": "GenomePhenotypeLanguage",
+        "identical_bytes": false
+      },
+      "L2_SEXPR": {
+        "gate_validates": "SExpressionLanguage",
+        "prompt_uses": "GenomePhenotypeLanguage",
+        "identical_bytes": false
+      },
+      "L3_JSON_AST": {
+        "gate_validates": "JsonAstLanguage",
+        "prompt_uses": "GenomePhenotypeLanguage",
+        "identical_bytes": false
+      },
+      "L4_TYPED_PREFIX": {
+        "gate_validates": "TypedPrefixLanguage",
+        "prompt_uses": "GenomePhenotypeLanguage",
+        "identical_bytes": false
+      },
+      "L5_COMPACT_SYMBOLIC": {
+        "gate_validates": "CompactSymbolicLanguage",
+        "prompt_uses": "GenomePhenotypeLanguage",
+        "identical_bytes": false
+      },
+      "L6_GRAPH_TRIPLES": {
+        "gate_validates": "GraphTriplesLanguage",
+        "prompt_uses": "GenomePhenotypeLanguage",
+        "identical_bytes": false
+      },
+      "L7_HYBRID_ROLE_LABELLED": {
+        "gate_validates": "HybridRoleLabelledLanguage",
+        "prompt_uses": "GenomePhenotypeLanguage",
+        "identical_bytes": false
+      }
+    },
+    "note": "semantic_gate check 1 runs render/parse on language_for_genome(child); the prompt the evaluator scores comes from GenomePhenotypeLanguage(model_view(child).surface). For the eight seeds these are DIFFERENT CLASSES constructed separately from one genome. Nothing asserts they agree; this measures whether they do."
+  },
+  "F2_dead_candidate": {
+    "child_id": "M-eb1a374cf05b556b5f74",
+    "outcome": "KILLED_BY_SEMANTIC_GATE",
+    "record_status": "REFUSED",
+    "void_code": "MUTATION_INERT",
+    "failure_modes": [
+      "MUTATION_INERT"
+    ],
+    "evaluation_ran": false,
+    "budget_calls": 0,
+    "fitness_measured": {},
+    "rows_file_bytes": 0,
+    "entered_league_registry": false,
+    "gate_detail": "mutation is byte-inert on this pool: the gene it changed does not reach the rendered bytes of this arena's states"
+  },
+  "F3_axiom_free_proof": {
+    "regex": "^'(?P<name>[^']+)' depends on axioms: \\[(?P<axioms>[^\\]]*)\\]",
+    "regex_matches": {
+      "'probe_x' depends on axioms: [propext, Classical.choice, Quot.sound]": true,
+      "'probe_x' does not depend on any axioms": false
+    },
+    "live": {
+      "statement": "theorem probe_redteam_axiom_free : 1 = 1 := by rfl",
+      "verified": false,
+      "exit_code": 0,
+      "print_axioms": "",
+      "errors": "'probe_redteam_axiom_free' does not depend on any axioms\n",
+      "note": "a genuinely correct, kernel-checked, axiom-free proof is reported NOT verified because the parser only understands the 'depends on axioms: [...]' spelling"
+    }
+  },
+  "F5_actor_and_horizon_are_caller_assertions": {
+    "same_episode": true,
+    "terminal_status": "CLOSED_VERIFIED",
+    "as_REFERENCE": {
+      "achieved": 1,
+      "verified": 1,
+      "reference": 1,
+      "solver_actions": 0,
+      "reference_actions": 1,
+      "episode_length": 1,
+      "observed_trace_length": 1,
+      "kernel_step_count": 1,
+      "dependency_depth": "UNKNOWN",
+      "minimal_proof_length": "UNKNOWN"
+    },
+    "as_SOLVER": {
+      "achieved": 1,
+      "verified": 1,
+      "reference": 1,
+      "solver_actions": 1,
+      "reference_actions": 0,
+      "episode_length": 1,
+      "observed_trace_length": 1,
+      "kernel_step_count": 1,
+      "dependency_depth": "UNKNOWN",
+      "minimal_proof_length": "UNKNOWN"
+    },
+    "inflated_reference_horizon": {
+      "achieved": 1,
+      "verified": 1,
+      "reference": 999,
+      "solver_actions": 1,
+      "reference_actions": 0,
+      "episode_length": 1,
+      "observed_trace_length": 999,
+      "kernel_step_count": 1,
+      "dependency_depth": "UNKNOWN",
+      "minimal_proof_length": "UNKNOWN"
+    },
+    "trajectory_ids_differ": 3,
+    "note": "one episode, three self-consistent records with different provenance claims. The arena stamps Actor.SOLVER on every action in step(); build_trajectory then overwrites all of them with whatever the caller passes."
+  },
+  "F4_runtime_tripwire_inert_fraction": {
+    "threshold": 6,
+    "tactics_scanned": 13003,
+    "shorter_than_threshold": 1000,
+    "fraction": 0.0769,
+    "top_short_tactics": {
+      "simp": 280,
+      "rfl": 200,
+      "ext": 86,
+      "ring": 49,
+      "congr": 35,
+      "dsimp": 34,
+      "omega": 34,
+      "ext x": 30,
+      "swap": 29,
+      "tauto": 17,
+      "ext i": 14,
+      "simpa": 14
+    },
+    "note": "assert_observation_clean skips any remaining reference tactic shorter than 6 characters, so for this fraction of steps the runtime leakage tripwire is a no-op by construction"
+  }
+}

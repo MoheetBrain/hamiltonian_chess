@@ -138,40 +138,40 @@
     "record.json_has_stamp": false,
     "record.json_has_prose_status": true,
     "league-registry.json_has_stamp": false,
-    "league-registry.json_mentions_stub": false,
+    "league-registry.json_mentions_stub": true,
     "league-registry.json_mentions_model": false,
     "league_observations": 256,
-    "league_observations_marked_verified": 256,
-    "league_rating_method": [
-      "normal"
-    ],
+    "league_observations_marked_verified": 0,
+    "league_rating_method": [],
     "league_objective_metrics_sample": {
-      "J_cost": 18755.0,
-      "J_solve": 0.5625
+      "EXECUTABILITY_STUB::n_clusters": 8.0,
+      "EXECUTABILITY_STUB::n_items": 16.0,
+      "EXECUTABILITY_STUB::rendered_prompt_bytes_mean": 18755.0,
+      "EXECUTABILITY_STUB::stub_choice_agreement": 0.5625
     },
     "note": "the league registry is the durable archive and the only file that carries cross-candidate rankings; it carries no scientific-status stamp, no model identity, no condition id, and marks every stub row verified=true"
   },
   "G7_determinism_under_PYTHONHASHSEED": {
     "results": {
       "0": {
-        "run": "run-6d5f3acd5135ad5b63d9",
-        "m": "97b0016e4f60b18632c36d99604020815546658ff22cf39c7a55d8b7247355e4",
+        "run": "run-6fb4aced4ab60dcd1212",
+        "m": "a0e502fa74587a98c292a618af40890cf42f699144365a4643ac7eba4ac6b5b4",
         "front": [
           "L2_SEXPR",
           "M-0d91d015350081da8528"
         ]
       },
       "1": {
-        "run": "run-6d5f3acd5135ad5b63d9",
-        "m": "97b0016e4f60b18632c36d99604020815546658ff22cf39c7a55d8b7247355e4",
+        "run": "run-6fb4aced4ab60dcd1212",
+        "m": "a0e502fa74587a98c292a618af40890cf42f699144365a4643ac7eba4ac6b5b4",
         "front": [
           "L2_SEXPR",
           "M-0d91d015350081da8528"
         ]
       },
       "12345": {
-        "run": "run-6d5f3acd5135ad5b63d9",
-        "m": "97b0016e4f60b18632c36d99604020815546658ff22cf39c7a55d8b7247355e4",
+        "run": "run-6fb4aced4ab60dcd1212",
+        "m": "a0e502fa74587a98c292a618af40890cf42f699144365a4643ac7eba4ac6b5b4",
         "front": [
           "L2_SEXPR",
           "M-0d91d015350081da8528"

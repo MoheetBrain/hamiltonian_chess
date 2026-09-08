@@ -1,0 +1,59 @@
+{
+ "emitted_trajectory": {
+  "actors": [
+   "SOLVER"
+  ],
+  "horizon": {
+   "achieved": 1,
+   "dependency_depth": "UNKNOWN",
+   "episode_length": 1,
+   "kernel_step_count": 1,
+   "minimal_proof_length": "UNKNOWN",
+   "observed_trace_length": 1,
+   "reference": 1,
+   "reference_actions": 0,
+   "solver_actions": 1,
+   "verified": 1
+  },
+  "kernel_verified": true,
+  "provenance_notes": [
+   "INTERACTIVE_TASK task_id=vtask-3209fc3da9711bd964ddc7f2",
+   "task_terminal_status=CLOSED_VERIFIED",
+   "task_terminal_outcome=VERIFIED_SOLVED",
+   "failure_policy=ONE_DIAGNOSTIC_RETRY",
+   "renderer=backend-native-v0"
+  ],
+  "terminal_status": "CLOSED_VERIFIED",
+  "trajectory_id": "vt-8ebd03cbde409dc7f4c8fd0c",
+  "trust_tier": "A_NATIVE_VERIFIED"
+ },
+ "episode": {
+  "identical": true,
+  "problem_id": "Mathlib/Data/Vector/MapLemmas.lean::Vector.map\u2082_flip",
+  "reward": 1.0,
+  "tactics_played": [
+   "induction xs, ys using Vector.inductionOn\u2082 <;> simp_all[flip]"
+  ],
+  "tactics_recorded_in_the_source": [
+   "induction xs, ys using Vector.inductionOn\u2082 <;> simp_all[flip]"
+  ],
+  "task_terminal": "CLOSED_VERIFIED",
+  "task_terminal_outcome": "VERIFIED_SOLVED"
+ },
+ "note": "an episode whose every action came from the recorded mathlib proof is emitted with actor=SOLVER, trust_tier=A_NATIVE_VERIFIED and solver_actions == achieved, and passes the repository's strongest check. Nothing in the artefact records where the tactics came from.",
+ "runner_can_emit_a_trajectory": {
+  "emitted": false,
+  "episode_solved": true,
+  "error": "TaskStateError: reset() must be called before the task can be driven",
+  "why": "run_episode uses `with task as active:` and __exit__ calls close()"
+ },
+ "verdict": "DEFECT",
+ "verify": {
+  "relive_failures": [],
+  "relive_matches": 1,
+  "relive_passed": true,
+  "structural_failures": [],
+  "structural_passed": true
+ },
+ "wall_s": 11.6
+}

@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/Users/moheet/Documents/ChatGPT/hamiltonian_chess/.claude/worktrees/hamiltonian-phase-8-experiment-691d22/research/phase9/redteam_v05/attack_legacy_splice.py", line 180, in <module>
+    main()
+    ~~~~^^
+  File "/Users/moheet/Documents/ChatGPT/hamiltonian_chess/.claude/worktrees/hamiltonian-phase-8-experiment-691d22/research/phase9/redteam_v05/attack_legacy_splice.py", line 82, in main
+    outcome = driver.run(dict(record), probe)
+  File "/Users/moheet/Documents/ChatGPT/hamiltonian_chess/.claude/worktrees/hamiltonian-phase-8-experiment-691d22/arena/trajectory/arena_v0.py", line 809, in run
+    attempt_budget=max(4 * len(probe.reference_tactics), 8),
+                               ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'ProbeBuildResult' object has no attribute 'reference_tactics'

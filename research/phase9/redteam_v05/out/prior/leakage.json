@@ -1,0 +1,111 @@
+{
+  "R1_independent_recount_h5": {
+    "manifest_claim": {
+      "leaking_steps": 7,
+      "problems_dropped": 6,
+      "reasons": {
+        "TACTIC_IN_STATE_BEFORE": 7
+      }
+    },
+    "recount": {
+      "records_scanned": 6000,
+      "below_min_horizon": 5227,
+      "problems_scanned": 773,
+      "steps_scanned": 8855,
+      "leaking_steps": 7,
+      "problems_dropped": 6,
+      "reasons": {
+        "TACTIC_IN_STATE_BEFORE": 7
+      },
+      "dropped_by_kind": {
+        "tactic_only": 6,
+        "name_only": 0,
+        "both": 0
+      }
+    }
+  },
+  "R2_independent_recount_h12": {
+    "manifest_claim": {
+      "leaking_steps": 9,
+      "problems_dropped": 8,
+      "reasons": {
+        "TACTIC_IN_STATE_BEFORE": 9
+      }
+    },
+    "recount": {
+      "records_scanned": 12000,
+      "below_min_horizon": 11554,
+      "problems_scanned": 446,
+      "steps_scanned": 9313,
+      "leaking_steps": 9,
+      "problems_dropped": 8,
+      "reasons": {
+        "TACTIC_IN_STATE_BEFORE": 9
+      },
+      "dropped_by_kind": {
+        "tactic_only": 8,
+        "name_only": 0,
+        "both": 0
+      }
+    }
+  },
+  "R3_live_state_leakage_h5": {
+    "trajectories": 16,
+    "non_terminal_states_scanned": 77,
+    "live_state_leaks_total": 0,
+    "caught_by_runtime_tripwire": 0,
+    "BELOW_TRIPWIRE_LENGTH_UNCAUGHT": 0,
+    "examples": []
+  },
+  "R3_live_state_leakage_h12": {
+    "trajectories": 10,
+    "non_terminal_states_scanned": 43,
+    "live_state_leaks_total": 0,
+    "caught_by_runtime_tripwire": 0,
+    "BELOW_TRIPWIRE_LENGTH_UNCAUGHT": 0,
+    "examples": []
+  },
+  "R4_unchecked_channels": {
+    "C1_short_tactic_below_len_threshold": {
+      "backend-native-v0": "PASSED (no leak reported)",
+      "goal-text-v0": "PASSED (no leak reported)"
+    },
+    "C1b_long_tactic_in_goal": {
+      "backend-native-v0": "BLOCKED: observation contains a remaining reference tactic ('exact my_long_lemma_name'); refusing to show it",
+      "goal-text-v0": "BLOCKED: observation contains a remaining reference tactic ('exact my_long_lemma_name'); refusing to show it"
+    },
+    "C2_full_name_in_live_state": {
+      "backend-native-v0": "PASSED (no leak reported)",
+      "goal-text-v0": "PASSED (no leak reported)"
+    },
+    "C3_pp_scope_namespace_channel": {
+      "backend-native-v0": "PASSED (no leak reported)",
+      "goal-text-v0": "PASSED (no leak reported)"
+    },
+    "C4_whitespace_variant": {
+      "backend-native-v0": "PASSED (no leak reported)",
+      "goal-text-v0": "PASSED (no leak reported)"
+    }
+  },
+  "R5_filter_source_of_truth": {
+    "record_level_criteria": [
+      "tactic in state_before",
+      "full_name in state_before"
+    ],
+    "record_level_object": "LeanDojo recorded state_before",
+    "runtime_object": "live lean_dojo_repl pretty-print",
+    "audit_measured_divergence": "40.6% of replayed successor states differ textually",
+    "runtime_criteria": [
+      "remaining reference tactic, verbatim, len >= 6"
+    ],
+    "never_checked_at_runtime": [
+      "full_name",
+      "file_path",
+      "premise names",
+      "pp_scope.current_namespace / open_declarations",
+      "state_after of any recorded step",
+      "any non-verbatim paraphrase of a remaining tactic"
+    ],
+    "mathlib_root_used_for_probes": "/Users/moheet/Documents/ChatGPT/HML_V3/external/runtime_work/leanprover-community-mathlib4-29dcec074de168ac2bf835a77ef68bbe069194c5/mathlib4"
+  }
+}

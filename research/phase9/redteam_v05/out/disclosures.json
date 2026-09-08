@@ -1,0 +1,33 @@
+{
+ "D2_retry_is_structurally_a_no_op": {
+  "diagnostic_appears_in_prompt_path": false,
+  "prompt_reads_only": "goals_pp",
+  "runner_routes_diagnostic_anywhere": true,
+  "seed": 20260908,
+  "temperature": 0.0,
+  "verdict": "ENFORCED (the disclosure is a consequence of the frozen prompt + greedy decoding, not a convention that could drift)"
+ },
+ "D3_contamination_stamp": {
+  "anything_refuses_an_exposed_problem": false,
+  "manifest_key_present": true,
+  "manifest_text_head": "mathlib4 is HISTORICALLY_EXPOSED and exposure is transitive. This records long-h",
+  "scientific_status": "ENGINEERING_SMOKE_NOT_A_RESULT",
+  "task_provenance_default": true,
+  "verdict": "STAMPED, NOT ENFORCED -- and it cannot be; the stamp is the honest response"
+ },
+ "D4_terminal_divergence": {
+  "diverged": true,
+  "divergence_recoverable_from_the_artefact": true,
+  "emitted_terminal": "ABANDONED",
+  "provenance_notes": [
+   "INTERACTIVE_TASK task_id=vtask-3209fc3da9711bd964ddc7f2",
+   "task_terminal_status=FAILED",
+   "task_terminal_outcome=UNRECOVERABLE_INVALID_ACTION",
+   "failure_policy=ONE_DIAGNOSTIC_RETRY",
+   "renderer=backend-native-v0"
+  ],
+  "task_terminal": "FAILED",
+  "task_terminal_outcome": "UNRECOVERABLE_INVALID_ACTION",
+  "verdict": "ENFORCED (the task terminal travels in provenance_notes, so a reader of the emitted trajectory alone can recover it)"
+ }
+}

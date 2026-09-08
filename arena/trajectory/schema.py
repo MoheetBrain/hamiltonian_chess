@@ -16,12 +16,16 @@ Design constraints, each taken from a measurement rather than from taste
    strings would have rejected 59.4% of mathematically correct steps.  Therefore state identity
    here is the **backend's own state id**; the ``pp_sha256`` content hash exists for
    reproducibility and diffing, and is *never* an authority on whether two states are the same
-   mathematics.  :meth:`BackendStateEnvelope.same_backend_state_as` compares ids only.
+   mathematics.  :meth:`BackendStateEnvelope.same_backend_state_as` compares the backend's own
+   handle — kind, session, id — and never the rendered text.
 
-3. **A chain must actually chain.**  ``action[i].to_state_id`` must equal
-   ``action[i+1].from_state_id`` and must name the envelope the backend actually produced, so
-   that concatenated single-step probes cannot be dressed up as a trajectory.  This is enforced
-   in :meth:`VerifiedTrajectory.__post_init__`, not documented and hoped for.
+3. **A chain must actually chain, inside one episode.**  ``action[i].to_state_id`` must equal
+   ``action[i+1].from_state_id`` and must name the envelope the backend actually produced.  That
+   alone was *not* enough and this docstring used to claim it was: Lean's state ids are
+   per-session integers, so RT-02 renumbered one theorem's states into another's chain and the
+   record loaded clean.  Every state must therefore also agree on backend, session, elaboration
+   scope and theorem — see :meth:`VerifiedTrajectory._assert_one_episode`, which is enforced in
+   ``__post_init__`` rather than documented and hoped for.
 
 4. **Closure requires kernel evidence.**  A trajectory may not be constructed with
    ``terminal_status=CLOSED_VERIFIED`` unless it carries a ``TERMINAL_KERNEL`` evidence record
@@ -202,14 +206,27 @@ class DerivedView:
 class BackendStateEnvelope:
     """One state of the inner MDP, as the formal backend itself names it.
 
-    Identity is ``(backend_kind, state_id, pp_sha256)``:
+    Identity is ``(backend_kind, session_id, state_id, pp_sha256)``:
 
     * ``state_id`` is the backend's own handle (for Lean it is the ``lean_dojo_repl`` ``sid``).
       It is persistent and addressable — an episode can return to an earlier ``sid`` — and it is
-      the **only** thing that decides whether two envelopes are the same backend state.
+      the **only** thing that decides whether two envelopes are the same backend state *within
+      one session*.
+    * ``session_id`` says **which session** that handle belongs to.  Lean's sids are per-session
+      small integers (``"0"``, ``"1"``, …), so without it a state from one session can be
+      renumbered into another and nothing notices: RT-02 spliced two unrelated mathlib theorems
+      into one "ten-step trajectory" by renumbering ``state_id`` alone.  It is stamped by the
+      arena at ``reset()`` and is a function of what the session was opened on (the probe file,
+      the tactic policy and the seed), so a byte-identical re-run reproduces it.
+    * ``problem_id`` is the theorem the session was opened on.  A state may not travel into a
+      trajectory that claims a different theorem.
     * ``pp_sha256`` is a content hash of the rendered goal text.  It makes a run byte-reproducible
       and makes tampering visible.  It is **not** a semantic identity: scope-dependent rendering
       means equal mathematics can hash differently (measured 40.6% vs 98.1%).
+
+    ``session_id`` and ``problem_id`` default to ``""``.  Records written before the binding
+    existed carry neither, keep their original ``content_hash`` byte-for-byte, and are checked by
+    the weaker scope invariant in :meth:`VerifiedTrajectory.__post_init__` instead.
     """
 
     index: int
@@ -219,6 +236,10 @@ class BackendStateEnvelope:
     pp_scope: PPScope = PPScope()
     n_goals: int = 1
     derived: DerivedView = DerivedView()
+    #: Which backend session produced this state.  ``""`` in records written before the binding.
+    session_id: str = ""
+    #: Which theorem that session was opened on.  ``""`` in records written before the binding.
+    problem_id: str = ""
 
     @property
     def pp_sha256(self) -> str:
@@ -228,23 +249,38 @@ class BackendStateEnvelope:
 
     @property
     def envelope_id(self) -> str:
-        """Stable identity: backend kind, backend state id, and the goal-text content hash."""
+        """Stable identity: backend kind, session, backend state id, goal-text content hash.
 
+        The session segment is omitted when the state carries no session binding, so the ids of
+        records written before the binding existed — and therefore their ``states_hash`` — are
+        unchanged.
+        """
+
+        if self.session_id:
+            return f"{self.backend_kind}:{self.session_id}:{self.state_id}:{self.pp_sha256[:32]}"
         return f"{self.backend_kind}:{self.state_id}:{self.pp_sha256[:32]}"
 
     def same_backend_state_as(self, other: BackendStateEnvelope) -> bool:
         """True iff the backend says these are the same saved state.
 
-        Compares ``backend_kind`` and ``state_id`` and nothing else.  It deliberately does not
-        look at ``pp``: the pretty-printer is not a canonical form.
+        Compares ``backend_kind``, ``session_id`` and ``state_id`` and nothing else.  It
+        deliberately does not look at ``pp``: the pretty-printer is not a canonical form.  It does
+        look at the session, because a Lean ``sid`` means nothing outside the session that issued
+        it — that is precisely what let RT-02 renumber one theorem's states into another's.
         """
 
-        return self.backend_kind == other.backend_kind and self.state_id == other.state_id
+        return (
+            self.backend_kind == other.backend_kind
+            and self.session_id == other.session_id
+            and self.state_id == other.state_id
+        )
 
     def to_dict(self) -> dict[str, Any]:
         return {
             "index": self.index,
             "state_id": self.state_id,
+            "session_id": self.session_id,
+            "problem_id": self.problem_id,
             "backend_native": {
                 "kind": self.backend_kind,
                 "pp": self.pp,
@@ -267,6 +303,8 @@ class BackendStateEnvelope:
             pp_scope=PPScope.from_dict(native.get("pp_scope", {}) or {}),
             n_goals=int(native.get("n_goals", 1)),
             derived=DerivedView.from_dict(payload.get("derived", {}) or {}),
+            session_id=str(payload.get("session_id", "") or ""),
+            problem_id=str(payload.get("problem_id", "") or ""),
         )
         recorded = native.get("pp_sha256")
         if recorded is not None and recorded != envelope.pp_sha256:
@@ -637,9 +675,26 @@ class VerifiedTrajectory:
     Constructing one asserts, mechanically:
 
     * ``len(states) == len(actions) + 1``, indices sequential from zero;
-    * every action's endpoints name the adjacent envelopes' backend state ids (so ten unrelated
-      one-step probes cannot be concatenated into a "ten-step trajectory");
+    * every action's endpoints name the adjacent envelopes' backend state ids;
+    * every state belongs to **one** episode: one ``backend_kind``, one ``session_id``, one
+      ``pp_scope``, and one ``problem_id`` which must be the trajectory's own;
     * ``CLOSED_VERIFIED`` carries ``TERMINAL_KERNEL`` evidence with ``contains_sorry_ax=False``.
+
+    The endpoint chaining alone was **not** enough, and the docstring that said it was is the
+    defect RT-02 exploited: Lean's ``sid``s are per-session small integers, so a red team spliced
+    the states and actions of ``MvPolynomial.IsHomogeneous.rename_isHomogeneous_iff`` onto
+    ``MeasureTheory.weightedSMul_add_measure``, renumbered ``index`` and ``state_id``, and got a
+    record claiming ``{"achieved": 10, "verified": 10}`` that loaded clean.  The episode
+    invariants above are what refuse it now, and they refuse it **without** Lean.
+
+    What they do *not* refuse: two episodes of the *same* theorem under the same policy and seed
+    share a ``session_id``, and two theorems that happen to be declared in byte-identical scopes
+    are indistinguishable to a record that carries no binding at all (everything written before
+    this fix).  Splicing those is caught by ``verify_bank(relive=True)``, which re-executes the
+    stored actions, and by nothing cheaper.
+
+    Re-entering an earlier state of the same session (legitimate search: ``arena.branch``) stays
+    legal — repeated ``state_id``s are never refused, only ids from a *different* session are.
     """
 
     trajectory_id: str
@@ -683,10 +738,62 @@ class VerifiedTrajectory:
                     f"trajectory's state {position + 1} is "
                     f"{self.states[position + 1].state_id!r}: the chain is broken"
                 )
+        self._assert_one_episode()
         if self.terminal_status is TerminalStatus.CLOSED_VERIFIED and not self.kernel_verified:
             raise TrajectoryIntegrityError(
                 "CLOSED_VERIFIED requires a TERMINAL_KERNEL evidence record with verdict "
                 "KERNEL_VERIFIED and contains_sorry_ax=False"
+            )
+
+    def _assert_one_episode(self) -> None:
+        """RT-02: every state must come from the same session, on this trajectory's theorem.
+
+        Four separate claims, each raising with the index of the first state that breaks it:
+
+        1. one backend;
+        2. one session — Lean ``sid``s are per-session integers, so this is the check that stops
+           a state from another session being renumbered into this chain;
+        3. one elaboration scope — a session runs inside one file's namespace and ``open``s, so
+           two states rendered under different scopes were produced by two different sessions.
+           This is the only one of the four that legacy records (which carry no session binding)
+           can be checked by, and it is what catches the published RT-02 splice;
+        4. one theorem, and it is the theorem this record claims.
+
+        Repeated ``state_id``s are deliberately *not* refused: re-entering an earlier state of the
+        same session is legitimate search (``arena.branch``), and a uniqueness rule would forbid
+        it while catching nothing a session check does not already catch.
+        """
+
+        anchor = self.states[0]
+        for position, state in enumerate(self.states[1:], start=1):
+            if state.backend_kind != anchor.backend_kind:
+                raise TrajectoryIntegrityError(
+                    f"state {position} was produced by backend {state.backend_kind!r} but state 0 "
+                    f"by {anchor.backend_kind!r}: one trajectory is one backend session"
+                )
+            if state.session_id != anchor.session_id:
+                raise TrajectoryIntegrityError(
+                    f"state {position} carries session id {state.session_id!r} but the "
+                    f"trajectory's session is {anchor.session_id!r}: states from two sessions "
+                    "cannot be spliced into one trajectory"
+                )
+            if state.pp_scope != anchor.pp_scope:
+                raise TrajectoryIntegrityError(
+                    f"state {position} was rendered under a different elaboration scope than "
+                    f"state 0 ({canonical_json(state.pp_scope.to_dict())[:200]} vs "
+                    f"{canonical_json(anchor.pp_scope.to_dict())[:200]}): one episode runs in one "
+                    "file scope, so these two states are from two different theorems"
+                )
+            if state.problem_id != anchor.problem_id:
+                raise TrajectoryIntegrityError(
+                    f"state {position} was produced on theorem {state.problem_id!r} but state 0 "
+                    f"on {anchor.problem_id!r}: states from two theorems cannot be spliced into "
+                    "one trajectory"
+                )
+        if anchor.problem_id and anchor.problem_id != self.problem_id:
+            raise TrajectoryIntegrityError(
+                f"state 0 was produced on theorem {anchor.problem_id!r} but the trajectory claims "
+                f"{self.problem_id!r}"
             )
 
     # -- accessors -----------------------------------------------------------------
@@ -766,6 +873,12 @@ class VerifiedTrajectory:
                     "backend_kind": state.backend_kind,
                     "pp_sha256": state.pp_sha256,
                     "n_goals": state.n_goals,
+                    # The session binding is part of the content — a state is only meaningful in
+                    # the session that issued its id.  It is written only when the producing
+                    # arena stamped one, so records made before the binding existed keep their
+                    # original content_hash byte-for-byte: an absent field is an absent claim.
+                    **({"session_id": state.session_id} if state.session_id else {}),
+                    **({"problem_id": state.problem_id} if state.problem_id else {}),
                 }
                 for state in self.states
             ],

@@ -1,0 +1,196 @@
+{'scanned': 2000, 'selected': 5, 'leakage_ledger': {'problems_scanned': 997, 'steps_scanned': 4331, 'leaking_steps': 2, 'problems_dropped': 2, 'reasons': {'TACTIC_IN_STATE_BEFORE': 2}}, 'scan_wall_s': 0.2}
+L1_live_leakage: HELD 0 leaks
+L2_skip_is_an_accepted_no_op: VERDICT=DEFECT  {'problem': 'Mathlib/Data/Vector/MapLemmas.lean::Vector.map₂_flip', 'probes': [{'tactic': 'skip', 'result': 'ACCEPTED_TRANSITION', 'goal_digest_unchanged': True, 'kernel_step_count': 1, 'retries_remaining': 1, 'terminal': 'OPEN'}, {'tactic': 'skip', 'result': 'ACCEPTED_TRANSITION', 'goal_digest_unchanged': True, 'kernel_step_count': 1, 'retries_remaining': 1, 'terminal': 'OPEN'}, {'tactic': 'skip'
+L2b_live_retry_allowance_reset_by_skip: VERDICT=DEFECT  {'rejections_absorbed': 6, 'declared_max_retries': 1, 'terminal': 'OPEN', 'model_actions': 15}
+L3_unsound_tactic_accepted: VERDICT=HELD  {'attempts': [{'tactic': 'sorry', 'result': 'UNSUPPORTED', 'backend_outcome': 'SORRY_REFUSED', 'terminal': 'OPEN', 'reward': 0.0, 'diagnostic': "tactic mentions unconditionally refused token(s) ['sorry']"}, {'tactic': 'so\u200brry', 'result': 'REJECTED_INVALID_ACTION', 'backend_outcome': 'TACTIC_ERROR', 'terminal': 'FAILED', 'reward': 0.0, 'diagnostic': '<stdin>:1:1: unknown tactic'}, {'tactic': '
+L4_two_live_lean_sessions_share_a_kernel_key: VERDICT=HELD  {'task_ids_equal': True, 'session_labels': ['vtask-f6910cd7b6b13bc4cf670dd5#ep0001', 'vtask-f6910cd7b6b13bc4cf670dd5#ep0001'], 'kernel_keys': ['LEAN4_TACTIC_STATE_PP|vtask-f6910cd7b6b13bc4cf670dd5#ep0001|1', 'LEAN4_TACTIC_STATE_PP|vtask-f6910cd7b6b13bc4cf670dd5#ep0001|0'], 'same_kernel_state_as': False, 'goal_digests_equal': True, 'initial_reelaboration_keys_equal': True, 'note': 'reelaboration_ke
+{
+ "L1_live_leakage": {
+  "note": "independent recount over the LIVE initial observation with no length floor",
+  "tasks": [
+   {
+    "file_path_in_observation": false,
+    "full_name_in_observation": false,
+    "goal_bytes": 127,
+    "guard_registered": 1,
+    "pp_scope_in_observation": true,
+    "problem": "Mathlib/Data/Vector/MapLemmas.lean::Vector.map\u2082_flip",
+    "reference_tactics": 1,
+    "tactics_under_the_6_byte_floor": [],
+    "verbatim_leaks_at_any_length": []
+   },
+   {
+    "file_path_in_observation": false,
+    "full_name_in_observation": false,
+    "goal_bytes": 185,
+    "guard_registered": 1,
+    "pp_scope_in_observation": true,
+    "problem": "Mathlib/MeasureTheory/Integral/Lebesgue.lean::MeasureTheory.lintegral_singleton",
+    "reference_tactics": 1,
+    "tactics_under_the_6_byte_floor": [],
+    "verbatim_leaks_at_any_length": []
+   },
+   {
+    "file_path_in_observation": false,
+    "full_name_in_observation": false,
+    "goal_bytes": 423,
+    "guard_registered": 6,
+    "pp_scope_in_observation": true,
+    "problem": "Mathlib/LinearAlgebra/BilinearForm/Orthogonal.lean::LinearMap.BilinForm.orthogonal_span_singleton_eq_toLin_ker",
+    "reference_tactics": 7,
+    "tactics_under_the_6_byte_floor": [
+     "ext y"
+    ],
+    "verbatim_leaks_at_any_length": []
+   },
+   {
+    "file_path_in_observation": false,
+    "full_name_in_observation": false,
+    "goal_bytes": 145,
+    "guard_registered": 1,
+    "pp_scope_in_observation": true,
+    "problem": "Mathlib/Order/SymmDiff.lean::symmDiff_sdiff",
+    "reference_tactics": 1,
+    "tactics_under_the_6_byte_floor": [],
+    "verbatim_leaks_at_any_length": []
+   },
+   {
+    "file_path_in_observation": false,
+    "full_name_in_observation": false,
+    "goal_bytes": 222,
+    "guard_registered": 2,
+    "pp_scope_in_observation": true,
+    "problem": "Mathlib/Topology/Sheaves/Stalks.lean::TopCat.Presheaf.stalkSpecializes_stalkFunctor_map",
+    "reference_tactics": 4,
+    "tactics_under_the_6_byte_floor": [
+     "ext",
+     "rfl"
+    ],
+    "verbatim_leaks_at_any_length": []
+   }
+  ],
+  "total_verbatim_leaks": 0,
+  "verdict": "HELD"
+ },
+ "L2_skip_is_an_accepted_no_op": {
+  "note": "each accepted `skip` costs one model action and one 'kernel step', changes nothing, and resets the PER_CONSECUTIVE_RUN retry counter",
+  "probes": [
+   {
+    "goal_digest_unchanged": true,
+    "kernel_step_count": 1,
+    "result": "ACCEPTED_TRANSITION",
+    "retries_remaining": 1,
+    "tactic": "skip",
+    "terminal": "OPEN"
+   },
+   {
+    "goal_digest_unchanged": true,
+    "kernel_step_count": 1,
+    "result": "ACCEPTED_TRANSITION",
+    "retries_remaining": 1,
+    "tactic": "skip",
+    "terminal": "OPEN"
+   },
+   {
+    "goal_digest_unchanged": true,
+    "kernel_step_count": 1,
+    "result": "ACCEPTED_TRANSITION",
+    "retries_remaining": 1,
+    "tactic": "skip",
+    "terminal": "OPEN"
+   }
+  ],
+  "problem": "Mathlib/Data/Vector/MapLemmas.lean::Vector.map\u2082_flip",
+  "verdict": "DEFECT"
+ },
+ "L2b_live_retry_allowance_reset_by_skip": {
+  "declared_max_retries": 1,
+  "model_actions": 15,
+  "rejections_absorbed": 6,
+  "terminal": "OPEN",
+  "verdict": "DEFECT"
+ },
+ "L3_unsound_tactic_accepted": {
+  "attempts": [
+   {
+    "backend_outcome": "SORRY_REFUSED",
+    "diagnostic": "tactic mentions unconditionally refused token(s) ['sorry']",
+    "result": "UNSUPPORTED",
+    "reward": 0.0,
+    "tactic": "sorry",
+    "terminal": "OPEN"
+   },
+   {
+    "backend_outcome": "TACTIC_ERROR",
+    "diagnostic": "<stdin>:1:1: unknown tactic",
+    "result": "REJECTED_INVALID_ACTION",
+    "reward": 0.0,
+    "tactic": "so\u200brry",
+    "terminal": "FAILED"
+   },
+   {
+    "backend_outcome": "SORRY_REFUSED",
+    "diagnostic": "tactic mentions unconditionally refused token(s) ['sorry']",
+    "result": "UNSUPPORTED",
+    "reward": 0.0,
+    "tactic": "\u00absorry\u00bb",
+    "terminal": "OPEN"
+   },
+   {
+    "backend_outcome": "TACTIC_ERROR",
+    "diagnostic": "<stdin>:1:1: unterminated comment",
+    "result": "REJECTED_INVALID_ACTION",
+    "reward": 0.0,
+    "tactic": "rfl /-",
+    "terminal": "FAILED"
+   },
+   {
+    "backend_outcome": "SORRY_REFUSED",
+    "diagnostic": "tactic mentions unconditionally refused token(s) ['sorryAx']",
+    "result": "UNSUPPORTED",
+    "reward": 0.0,
+    "tactic": "exact @sorryAx _ _ true",
+    "terminal": "OPEN"
+   }
+  ],
+  "verdict": "HELD"
+ },
+ "L4_two_live_lean_sessions_share_a_kernel_key": {
+  "goal_digests_equal": true,
+  "initial_reelaboration_keys_equal": true,
+  "kernel_keys": [
+   "LEAN4_TACTIC_STATE_PP|vtask-f6910cd7b6b13bc4cf670dd5#ep0001|1",
+   "LEAN4_TACTIC_STATE_PP|vtask-f6910cd7b6b13bc4cf670dd5#ep0001|0"
+  ],
+  "note": "reelaboration_key agreeing on the two INITIAL states is the documented guarantee and it holds; kernel_key agreeing on two states of two different live REPL processes is the guarantee that does not",
+  "same_kernel_state_as": false,
+  "session_labels": [
+   "vtask-f6910cd7b6b13bc4cf670dd5#ep0001",
+   "vtask-f6910cd7b6b13bc4cf670dd5#ep0001"
+  ],
+  "task_ids_equal": true,
+  "verdict": "HELD"
+ },
+ "selection": {
+  "leakage_ledger": {
+   "leaking_steps": 2,
+   "problems_dropped": 2,
+   "problems_scanned": 997,
+   "reasons": {
+    "TACTIC_IN_STATE_BEFORE": 2
+   },
+   "steps_scanned": 4331
+  },
+  "scan_wall_s": 0.2,
+  "scanned": 2000,
+  "selected": 5
+ },
+ "toolchain": {
+  "available": true,
+  "lean": "Lean (version 4.10.0-rc1, arm64-apple-darwin23.5.0, commit 3b58e0649156, Release)",
+  "mathlib_root": "/Users/moheet/Documents/ChatGPT/HML_V3/external/runtime_work/leanprover-community-mathlib4-29dcec074de168ac2bf835a77ef68bbe069194c5/mathlib4"
+ },
+ "wall_s": 25.3
+}
+
+[written] /Users/moheet/Documents/ChatGPT/hamiltonian_chess/.claude/worktrees/hamiltonian-phase-8-experiment-691d22/research/phase9/redteam_v05/out/live_lean.json

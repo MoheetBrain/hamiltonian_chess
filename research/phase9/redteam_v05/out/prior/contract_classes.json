@@ -1,0 +1,44 @@
+{
+  "C1_sealed_split_guard": {
+    "novel_premises/val.json": "REFUSED: /Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo_raw/lean",
+    "novel_premises/test.json": "REFUSED: /Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo_raw/lean",
+    "random/val.json": "REFUSED: /Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo_raw/lean",
+    "random/test.json": "REFUSED: /Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo_raw/lean",
+    "random/train.json": "ALLOWED",
+    "EVASION::random/./val.json": "REFUSED",
+    "EVASION::random/../random/val.json": "REFUSED",
+    "EVASION::absolute-resolved": "REFUSED",
+    "EVASION::symlink-style-alias": "REFUSED"
+  },
+  "C2_kernel_timeout_is_not_a_falsehood": {
+    "verified": false,
+    "contains_sorry_ax": false,
+    "errors": "kernel re-elaboration exceeded 1.0s",
+    "exit_code": -1,
+    "section_28_reading": "TIMEOUT yields verified=False with contains_sorry_ax=False and an explicit timeout message; it is NOT recorded as a mathematical falsehood"
+  },
+  "C2b_backend_failure_is_not_candidate_failure": {
+    "terminal_status": "ERROR_BACKEND",
+    "is_ERROR_BACKEND": true,
+    "is_FAILED": false,
+    "evidence_verdicts": [
+      "REJECTED"
+    ]
+  },
+  "C3_macro_cost_hiding": {
+    "field": "Horizon.kernel_step_count (manual sections 6.32, 13.1)",
+    "distinct_values_in_committed_bank": [
+      "ABSENT"
+    ],
+    "trajectories": 26,
+    "serialised_in_bank": false,
+    "note": "the field exists and is serialised, and is 0 for every trajectory: a one-tactic `linarith` and a fourteen-tactic hand proof report the same post-lowering cost, which is exactly the macro-cost hiding manual section 13.1 asks the accounting to prevent. Nothing in the package ever assigns it a non-zero value.",
+    "assigned_anywhere_in_arena_trajectory": false
+  },
+  "C4_alpha_equivalence_has_no_verification_surface": {
+    "state_vs_state_comparisons_in_arena_trajectory": 0,
+    "only_state_text_comparison": "is_no_goals(tactic_state) == 'no goals'",
+    "consequence": "binder renaming, alpha-equivalence and irrelevant reordering cannot flip a verdict, because no verdict is ever computed by comparing two states. The Lean elaborator decides each transition and the kernel decides closure. This is a genuine structural defence, and tests/trajectory/test_arena_v0.py enforces it with an AST scan that has a negative control.",
+    "scope_limit_of_that_scan": "the scan globs arena/trajectory/*.py only; it does not cover arena/evolution, arena/experiments or arena/model_view, and it does not flag LeakageFilter.assert_observation_clean's `candidate in payload` containment test because the operand names are not in its STATE_TEXT_NAMES set"
+  }
+}

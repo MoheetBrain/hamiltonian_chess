@@ -1,0 +1,23 @@
+Traceback (most recent call last):
+  File "/Users/moheet/Documents/ChatGPT/hamiltonian_chess/.claude/worktrees/hamiltonian-phase-8-experiment-691d22/research/phase9/redteam/attack_trajectory_integrity.py", line 300, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "/Users/moheet/Documents/ChatGPT/hamiltonian_chess/.claude/worktrees/hamiltonian-phase-8-experiment-691d22/research/phase9/redteam/attack_trajectory_integrity.py", line 129, in main
+    spliced = reseal(spliced)
+  File "/Users/moheet/Documents/ChatGPT/hamiltonian_chess/.claude/worktrees/hamiltonian-phase-8-experiment-691d22/research/phase9/redteam/attack_trajectory_integrity.py", line 53, in reseal
+    trajectory = VerifiedTrajectory.from_dict(payload, check_hashes=False)
+  File "/Users/moheet/Documents/ChatGPT/hamiltonian_chess/.claude/worktrees/hamiltonian-phase-8-experiment-691d22/arena/trajectory/schema.py", line 927, in from_dict
+    trajectory = cls(
+        trajectory_id=str(payload["trajectory_id"]),
+    ...<11 lines>...
+        schema_version=str(payload.get("schema", TRAJECTORY_SCHEMA_VERSION)),
+    )
+  File "<string>", line 14, in __init__
+  File "/Users/moheet/Documents/ChatGPT/hamiltonian_chess/.claude/worktrees/hamiltonian-phase-8-experiment-691d22/arena/trajectory/schema.py", line 741, in __post_init__
+    self._assert_one_episode()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/moheet/Documents/ChatGPT/hamiltonian_chess/.claude/worktrees/hamiltonian-phase-8-experiment-691d22/arena/trajectory/schema.py", line 781, in _assert_one_episode
+    raise TrajectoryIntegrityError(
+    ...<4 lines>...
+    )
+arena.trajectory.schema.TrajectoryIntegrityError: state 6 was rendered under a different elaboration scope than state 0 ({"current_namespace":"MvPolynomial.IsHomogeneous","open_declarations":[],"options":[]} vs {"current_namespace":"MeasureTheory","open_declarations":["Topology","NNReal","ENNReal","MeasureTheory","Set","Filter","TopologicalSpace","EMetric","ContinuousLinearMap"],"options":[]}): one episode runs in one file scope, so these two states are from two different theorems

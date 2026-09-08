@@ -14,37 +14,47 @@
   },
   "exploit": {
     "tactic": "native_decide",
-    "terminal_status": "CLOSED_VERIFIED",
-    "reward": 1.0,
+    "terminal_status": "FAILED",
+    "reward": 0.0,
     "kernel_evidence": {
-      "verified": true,
+      "verified": false,
       "print_axioms": "'probe_redteam_of_reduce_bool' depends on axioms: [propext, Lean.ofReduceBool]",
       "contains_sorry_ax": false,
       "contains_of_reduce_bool": true,
       "exit_code": 0,
-      "errors": ""
+      "errors": "",
+      "axioms": [
+        "propext",
+        "Lean.ofReduceBool"
+      ],
+      "untrusted_axioms": [
+        "Lean.ofReduceBool"
+      ],
+      "trusted_axiom_allow_list": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
     },
-    "trajectory_terminal": "CLOSED_VERIFIED",
-    "trajectory_kernel_verified_property": true,
+    "trajectory_terminal": "FAILED",
+    "trajectory_kernel_verified_property": false,
     "horizon": {
       "achieved": 1,
-      "verified": 1,
+      "verified": 0,
       "reference": 1,
       "solver_actions": 1,
       "reference_actions": 0,
       "episode_length": 1,
       "observed_trace_length": 1,
-      "kernel_step_count": 0,
+      "kernel_step_count": 1,
       "dependency_depth": "UNKNOWN",
       "minimal_proof_length": "UNKNOWN"
     },
     "trust_tier_claimed": "A_NATIVE_VERIFIED",
     "bank_verify_passed": true,
     "bank_verify_failures": [],
-    "bank_horizon_histogram": {
-      "1": 1
-    },
-    "CLOSED_VERIFIED": true
+    "bank_horizon_histogram": {},
+    "CLOSED_VERIFIED": false
   },
   "why_it_gets_through": {
     "verify_closed_script_verified_expression": "verified=(completed.returncode == 0 and not has_sorry and not errors)",

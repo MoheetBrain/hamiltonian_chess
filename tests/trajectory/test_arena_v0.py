@@ -28,7 +28,7 @@ from arena.trajectory.arena_v0 import (
     source_version_from_record,
     verify_bank,
 )
-from arena.trajectory.lean_backend import LeanToolchainConfig, TacticPolicy
+from arena.trajectory.lean_backend import LeanToolchainConfig, TacticPolicy, build_probe
 from arena.trajectory.schema import (
     Actor,
     BackendStateEnvelope,
@@ -68,6 +68,12 @@ ALLOWED_STATE_HASH_SITES = {
     ("schema.py", "from_dict"),
     # advisory `no_op_suspected` diagnostic reported in `info`; gates nothing
     ("arena_v0.py", "step"),
+    # RT-03: tamper detection when RE-RUNNING a stored trajectory.  Same category as
+    # `schema.from_dict` — it asks whether the artefact faithfully records the run it claims, not
+    # whether a step was mathematically correct.  Lean has already decided the latter by the time
+    # this is reached: an action that is not mathematically legal is REJECTED by the elaborator
+    # and relive fails on the rejection, never on the hash.
+    ("arena_v0.py", "_state_hashes_agree"),
 }
 
 
@@ -407,6 +413,50 @@ def test_verify_bank_catches_missing_step_evidence(tmp_path: Path) -> None:
     result = verify_bank(bank)
     assert not result.passed
     assert any("ACCEPTED step evidence" in item for item in result.failures)
+
+
+def test_verify_bank_catches_an_action_whose_tactic_was_rewritten(tmp_path: Path) -> None:
+    """RT-03's payload, seen without Lean: the evidence still names the tactic that really ran.
+
+    Relive is what catches a forger who rewrites the evidence too (see
+    ``test_relive_integrity.py``); this catches the published one for the price of a JSON parse.
+    """
+
+    trajectory = make_trajectory(4)
+    swapped = replace(
+        trajectory,
+        actions=tuple(replace(action, tactic="aesop") for action in trajectory.actions),
+    )
+    bank = tmp_path / "bank.jsonl"
+    bank.write_text(json.dumps(json.loads(swapped.to_json())) + "\n", encoding="utf-8")
+    result = verify_bank(bank)
+    assert not result.passed
+    assert any(
+        "is not the action the verifier recorded accepting" in item for item in result.failures
+    ), result.failures
+    assert any("action 0" in item for item in result.failures), result.failures
+
+
+def test_session_id_is_a_function_of_what_the_session_was_opened_on(tmp_path: Path) -> None:
+    """RT-02: the binding must be reproducible, or a byte-identical re-run gets a new identity."""
+
+    root, records = fake_mathlib_root(tmp_path, declarations=2)
+    probes = []
+    for record in records:
+        built = build_probe(record, mathlib_root=root)
+        assert built.ok and built.probe is not None
+        probes.append(built.probe)
+    policy = TacticPolicy.record_only()
+
+    first = arena_v0.derive_session_id(probes[0], policy=policy, seed=7)
+    assert first == arena_v0.derive_session_id(probes[0], policy=policy, seed=7)
+    assert first.startswith("lean4-repl-")
+    # a different theorem, a different policy or a different seed is a different session
+    assert first != arena_v0.derive_session_id(probes[1], policy=policy, seed=7)
+    assert first != arena_v0.derive_session_id(probes[0], policy=policy, seed=8)
+    assert first != arena_v0.derive_session_id(
+        probes[0], policy=TacticPolicy.no_heavy_automation(), seed=7
+    )
 
 
 def test_load_bank_round_trips(tmp_path: Path) -> None:

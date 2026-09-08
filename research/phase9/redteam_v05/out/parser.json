@@ -1,0 +1,295 @@
+{
+ "cases": [
+  {
+   "case": "plain",
+   "decode": "OK",
+   "head": "rfl",
+   "parse_detail": "",
+   "parsed": "rfl",
+   "policy": "ALLOWED",
+   "policy_reason": ""
+  },
+  {
+   "case": "fenced",
+   "parse_detail": "not JSON (Expecting value at char 0)",
+   "parsed": null
+  },
+  {
+   "case": "preamble",
+   "parse_detail": "not JSON (Expecting value at char 0)",
+   "parsed": null
+  },
+  {
+   "case": "two_objects",
+   "parse_detail": "not JSON (Extra data at char 17)",
+   "parsed": null
+  },
+  {
+   "case": "extra_key",
+   "parse_detail": "expected exactly the key 'tactic', got ['tactic', 'why']",
+   "parsed": null
+  },
+  {
+   "case": "cyrillic_key",
+   "parse_detail": "expected exactly the key 'tactic', got ['ta\u0441tic']",
+   "parsed": null
+  },
+  {
+   "case": "fullwidth_key",
+   "parse_detail": "expected exactly the key 'tactic', got ['\uff54actic']",
+   "parsed": null
+  },
+  {
+   "case": "empty_tactic",
+   "parse_detail": "'tactic' is empty",
+   "parsed": null
+  },
+  {
+   "case": "whitespace_tactic",
+   "parse_detail": "'tactic' is empty",
+   "parsed": null
+  },
+  {
+   "case": "null_tactic",
+   "parse_detail": "'tactic' is NoneType, not a string",
+   "parsed": null
+  },
+  {
+   "case": "list_tactic",
+   "parse_detail": "'tactic' is list, not a string",
+   "parsed": null
+  },
+  {
+   "case": "nested",
+   "parse_detail": "'tactic' is dict, not a string",
+   "parsed": null
+  },
+  {
+   "case": "array_root",
+   "parse_detail": "not a JSON object (got list)",
+   "parsed": null
+  },
+  {
+   "case": "bare_string",
+   "parse_detail": "not JSON (Expecting value at char 0)",
+   "parsed": null
+  },
+  {
+   "case": "bom",
+   "parse_detail": "not JSON (Unexpected UTF-8 BOM (decode using utf-8-sig) at char 0)",
+   "parsed": null
+  },
+  {
+   "case": "nbsp_around",
+   "decode": "OK",
+   "head": "rfl",
+   "parse_detail": "",
+   "parsed": "rfl",
+   "policy": "ALLOWED",
+   "policy_reason": ""
+  },
+  {
+   "case": "escaped_sorry",
+   "decode": "OK",
+   "head": "sorry",
+   "parse_detail": "",
+   "parsed": "sorry",
+   "policy": "REFUSED_UNSOUND",
+   "policy_reason": "tactic mentions unconditionally refused token(s) ['sorry']"
+  },
+  {
+   "case": "guillemet_sorry",
+   "decode": "OK",
+   "head": "\u00absorry\u00bb",
+   "parse_detail": "",
+   "parsed": "\u00absorry\u00bb",
+   "policy": "REFUSED_UNSOUND",
+   "policy_reason": "tactic mentions unconditionally refused token(s) ['sorry']"
+  },
+  {
+   "case": "nested_sorry",
+   "decode": "OK",
+   "head": "exact",
+   "parse_detail": "",
+   "parsed": "exact (by sorry : True)",
+   "policy": "REFUSED_UNSOUND",
+   "policy_reason": "tactic mentions unconditionally refused token(s) ['sorry']"
+  },
+  {
+   "case": "first_alt_sorry",
+   "decode": "OK",
+   "head": "first",
+   "parse_detail": "",
+   "parsed": "first | rfl | sorry",
+   "policy": "REFUSED_UNSOUND",
+   "policy_reason": "tactic mentions unconditionally refused token(s) ['sorry']"
+  },
+  {
+   "case": "all_goals_sorry",
+   "decode": "OK",
+   "head": "all_goals",
+   "parse_detail": "",
+   "parsed": "all_goals sorry",
+   "policy": "REFUSED_UNSOUND",
+   "policy_reason": "tactic mentions unconditionally refused token(s) ['sorry']"
+  },
+  {
+   "case": "sorryAx",
+   "decode": "OK",
+   "head": "exact",
+   "parse_detail": "",
+   "parsed": "exact @sorryAx _ _ true",
+   "policy": "REFUSED_UNSOUND",
+   "policy_reason": "tactic mentions unconditionally refused token(s) ['sorryAx']"
+  },
+  {
+   "case": "have_sorry",
+   "decode": "OK",
+   "head": "have",
+   "parse_detail": "",
+   "parsed": "have h : True := by sorry",
+   "policy": "REFUSED_UNSOUND",
+   "policy_reason": "tactic mentions unconditionally refused token(s) ['sorry']"
+  },
+  {
+   "case": "zwsp_sorry",
+   "decode": "OK",
+   "head": "so\u200brry",
+   "parse_detail": "",
+   "parsed": "so\u200brry",
+   "policy": "ALLOWED",
+   "policy_reason": ""
+  },
+  {
+   "case": "sorry_comment",
+   "decode": "OK",
+   "head": "sorry",
+   "parse_detail": "",
+   "parsed": "sorry -- close it",
+   "policy": "REFUSED_UNSOUND",
+   "policy_reason": "tactic mentions unconditionally refused token(s) ['sorry']"
+  },
+  {
+   "case": "semicolon_chain",
+   "decode": "OK",
+   "head": "intro",
+   "parse_detail": "",
+   "parsed": "intro h; exact h.symm; rfl",
+   "policy": "ALLOWED",
+   "policy_reason": ""
+  },
+  {
+   "case": "seq_focus",
+   "decode": "OK",
+   "head": "constructor",
+   "parse_detail": "",
+   "parsed": "constructor <;> simp <;> omega",
+   "policy": "ALLOWED",
+   "policy_reason": ""
+  },
+  {
+   "case": "newline_tactic",
+   "decode": "OK",
+   "head": "rfl",
+   "parse_detail": "",
+   "parsed": "rfl\nexact foo",
+   "policy": "ALLOWED",
+   "policy_reason": ""
+  },
+  {
+   "case": "nul_tactic",
+   "decode": "REFUSED: action contains a NUL byte",
+   "head": "rfl\u0000",
+   "parse_detail": "",
+   "parsed": "rfl\u0000",
+   "policy": "ALLOWED",
+   "policy_reason": ""
+  },
+  {
+   "case": "block_comment_open",
+   "decode": "OK",
+   "head": "rfl",
+   "parse_detail": "",
+   "parsed": "rfl /-",
+   "policy": "ALLOWED",
+   "policy_reason": ""
+  },
+  {
+   "case": "line_comment",
+   "decode": "OK",
+   "head": "--",
+   "parse_detail": "",
+   "parsed": "-- nothing",
+   "policy": "ALLOWED",
+   "policy_reason": ""
+  },
+  {
+   "case": "native_decide",
+   "decode": "OK",
+   "head": "native_decide",
+   "parse_detail": "",
+   "parsed": "native_decide",
+   "policy": "ALLOWED",
+   "policy_reason": ""
+  },
+  {
+   "case": "decide",
+   "decode": "OK",
+   "head": "decide",
+   "parse_detail": "",
+   "parsed": "decide",
+   "policy": "ALLOWED",
+   "policy_reason": ""
+  },
+  {
+   "case": "stop",
+   "decode": "OK",
+   "head": "stop",
+   "parse_detail": "",
+   "parsed": "stop",
+   "policy": "REFUSED_UNSOUND",
+   "policy_reason": "tactic mentions unconditionally refused token(s) ['stop']"
+  },
+  {
+   "case": "admit",
+   "decode": "OK",
+   "head": "admit",
+   "parse_detail": "",
+   "parsed": "admit",
+   "policy": "REFUSED_UNSOUND",
+   "policy_reason": "tactic mentions unconditionally refused token(s) ['admit']"
+  },
+  {
+   "case": "huge",
+   "decode": "OK",
+   "head": "simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp",
+   "parse_detail": "",
+   "parsed": "simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;simp;",
+   "policy": "ALLOWED",
+   "policy_reason": ""
+  }
+ ],
+ "summary": {
+  "allowed_by_default_policy": 12,
+  "decode_refusals": [
+   "nul_tactic"
+  ],
+  "reached_a_tactic": 22,
+  "refused_unsound": [
+   "escaped_sorry",
+   "guillemet_sorry",
+   "nested_sorry",
+   "first_alt_sorry",
+   "all_goals_sorry",
+   "sorryAx",
+   "have_sorry",
+   "sorry_comment",
+   "stop",
+   "admit"
+  ],
+  "sorry_like_strings_allowed_by_policy": [
+   "zwsp_sorry"
+  ],
+  "wire_cases": 36
+ }
+}

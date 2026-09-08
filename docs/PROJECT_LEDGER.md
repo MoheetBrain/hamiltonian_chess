@@ -1935,3 +1935,73 @@ evaluator makes outcomes stochastic.
 `META_GAME_V0_EXECUTABLE` for the V0 milestone itself. No `RSTAR`/`LSTAR` claim.
 
 **Next intended step.** Owner decision. The session stops here per §47 Step 10.
+
+---
+
+## 2026-09-08 — HC-V0.5: a real Solver played real Lean under kernel verification
+
+**Date/time.** 2026-09-08, Europe/London. **Branch.** `claude/hamiltonian-phase-8-experiment-691d22`.
+**Stage.** HC-V0.5 (first real player). **Engineering milestone; no scientific claim.**
+
+**Objective.** Directive HC-V0.5: make one real Solver autonomously play one genuine interactive
+Lean episode under kernel verification. No representation comparison, no language winner, no
+evolutionary generation. Record-integrity defects were to be fixed **before** any stochastic call.
+
+**Files and systems changed.** New: `arena/trajectory/{task,state_identity,solver,episode}.py`,
+`tests/trajectory/test_{task,state_identity,solver,relive_integrity,axiom_allow_list}.py`,
+`tests/evolution/test_{evaluation_identity,actor_identity,inadmissible_fitness}.py`,
+`research/phase9/{interactive_probe,redteam_v05}/`, docs `HC_V0_5_RESULT.md`,
+`HC_V0_5_INTERACTIVE_TASK_SPEC.md`, `HC_V0_5_HANDOFF.md`, `HC_V0_5_REDTEAM.md`,
+`LEAN_BACKEND_STATE_IDENTITY_V0.md`. Modified: `arena/trajectory/{arena_v0,schema}.py`
+(RT-03/RT-02), `arena/evolution/{record,loop}.py` (RT-13/RT-04/RT-16, schema **v0.1.0 → v0.2.0**).
+New artifact: `artifacts/trajectory/hc_v0_5_smoke.json`. `GOAL.md` and the manual re-verified
+unchanged.
+
+**What was completed.**
+1. *A real player.* `LinearEquiv.snd_comp_prodComm`: **four consecutive Solver-proposed tactics,
+   each accepted by the Lean elaborator, terminal `CLOSED_VERIFIED`.** Smoke bank: 30 episodes,
+   **4 solved, 16 accepted Solver transitions, 47 rejected, 0 parse failures**, longest chain 4,
+   **30/30 trajectories emitted** with states, `pp_sha256` and kernel receipts.
+2. *The environment is a game*, established before the task layer existed: across 14 theorems Lean
+   accepted a **non-reference** tactic in **10**, and in **2** an alternative closed a goal mathlib
+   proves differently.
+3. *Five record-integrity defects closed before any stochastic call* — RT-03, RT-02, RT-13
+   (identity 11 → 21 components), RT-04 (ledger layer), RT-16 (type-level).
+4. *Red team* `hc-v0.5-redteam-2026-09-08`: 25 defects, **0 CRITICAL**, 7 HIGH. Four fixed by the
+   integrator during close-out (V05-24, V05-02, V05-10, V05-11).
+
+**Decisions and why.** (a) The sample was widened from 10 to 30 tasks of the **same** distribution,
+not to an easier one, because the first ten yielded no accepted transition and §31 forbids moving
+the goalposts. (b) `think=False` frozen after measuring that the model's answer is otherwise
+diverted to a `thinking` field leaving `response` empty. (c) The Solver was given a **new**
+identity with `lineage: UNKNOWN`; the deleted Phase 6/8 model is not assumed to be an ancestor.
+(d) Lean is **not** forced through the canonical schema (0/368 lossless); `canonical_state` is
+typed `None`.
+
+**Tests actually executed.** `.venv/bin/python -m pytest` → **1,483 passed, 1 skipped in 172.5 s**
+(HC-V0 baseline 1,286/1). `ruff check .` → All checks passed. `ruff format --check .` → 359 files
+already formatted. `mypy arena` → Success, 146 source files. Live kernel and live model calls were
+made throughout; the smoke bank is a real run.
+
+**Failures and unresolved uncertainty.**
+- **The runtime is NOT reproducible.** Two runs of an identical 6-task configuration gave different
+  `result_hash`. All Lean states and kernel receipts were identical; only Solver output diverged,
+  on retries, with **identical `prompt_sha256` and identical prompt token counts**. In isolation
+  the same prompt returns the same answer 6/6; divergence appears once other calls pass through the
+  same server process. **HC-V0.6 is a paired assay and this breaks its central assumption.**
+- **The retry is near-useless**: the backend diagnostic never reaches the Solver, so it re-asks an
+  identical question. In the first 10-task bank all ten retries returned the identical tactic.
+- **V05-01 and V05-03 remain open**: an oracle-fed episode is byte-shaped like an autonomous one,
+  and `build_trajectory` still rewrites every action's actor. **No autonomy or long-horizon claim
+  may be made from the smoke artefact until they close.**
+- **RT-04 remains open at the trajectory layer** — a relabelled mathlib replay still passes relive.
+- 21 further red-team findings open, with reproductions.
+- Contamination unresolved: mathlib4 is `HISTORICALLY_EXPOSED` transitively.
+
+**Effect.** Sentinel `HC_V0_5_REAL_PLAYER_EXECUTABLE` recorded for the milestone. No prior sentinel
+created, retired or reinterpreted: `RSTAR_NOT_IDENTIFIED`, `GAME_R_INSTRUMENT_NOT_QUALIFIED`,
+`V7_PARTIALLY_VALID_INSTRUMENT_CONFOUNDED`, `TRAINING_LANGUAGE_V0_BASELINE` and
+`META_GAME_V0_EXECUTABLE` all stand. No `RSTAR`/`LSTAR` claim.
+
+**Next intended step.** Settle runtime reproducibility, then close V05-01 and V05-03. Do **not**
+begin HC-V0.6, Pilot 1, multi-generation evolution, fine-tuning or an RL Architect.

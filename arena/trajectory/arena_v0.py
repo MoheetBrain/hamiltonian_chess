@@ -30,8 +30,18 @@ placed where the meta-MDP puts it and nowhere else:
     the identity on the backend's own fields, so V0 measures capability, not representation; a
     language genome can later supply its own renderer through the same seam.
 
-Also here: a leakage filter with counted drops, a replay driver that executes a *recorded*
-reference proof live (the ground-truth generator), a seeded bank builder, and a CLI.
+Also here: a leakage filter with counted drops, a seeded bank builder, and a CLI — plus **two
+replays that must never be confused**, because confusing them is what RT-03 was:
+
+:class:`ReplayDriver`
+    executes a *recorded reference proof* live.  It is the ground-truth **generator**: it answers
+    "is this mathlib proof still reproducible?" and it produces banks.
+
+:func:`relive_trajectory`
+    executes *a stored artefact's own actions* live.  It is the **verifier** behind
+    ``--relive``: it answers "did this record's actions really do what the record says?".  Until
+    RT-03 was fixed, ``--relive`` called the generator, so it re-verified the source and never
+    read ``trajectory.actions`` at all.
 """
 
 from __future__ import annotations
@@ -79,6 +89,7 @@ from arena.trajectory.schema import (
     Verdict,
     VerifiedTrajectory,
     VerifierEvidence,
+    content_sha256,
     derive_trajectory_id,
 )
 
@@ -297,6 +308,34 @@ class ActionSpaceSpec:
 # ---------------------------------------------------------------------------------------------
 
 
+def derive_session_id(probe: LeanTheoremProbe, *, policy: TacticPolicy, seed: int) -> str:
+    """The identity of what a backend session was opened on (RT-02).
+
+    Lean's ``lean_dojo_repl`` hands out per-session small integers as state ids, so an id alone
+    says nothing about which episode produced it: renumbering one theorem's states into another's
+    chain is free, which is exactly how RT-02 spliced two mathlib theorems into one "ten-step
+    trajectory".  Every envelope this arena emits therefore carries the session id below, and
+    :meth:`VerifiedTrajectory.__post_init__` refuses a trajectory whose states disagree on it.
+
+    It is a **function of the session's opening conditions** — the theorem, the exact probe file
+    handed to Lean, the tactic policy and the seed — and not a random nonce, so a byte-identical
+    re-run of an episode still produces a byte-identical record and the same ``trajectory_id``.
+    The cost of that choice is stated rather than hidden: two *different* episodes of the same
+    theorem under the same policy and seed share a session id, so splicing those two is caught by
+    ``verify_bank(relive=True)`` and not at load time.
+    """
+
+    material = "\x00".join(
+        (
+            probe.problem_id,
+            content_sha256(probe.repl_source()),
+            f"{policy.name}:{policy.policy_id}",
+            str(seed),
+        )
+    )
+    return f"lean4-repl-{content_sha256(material)[:24]}"
+
+
 @dataclass(frozen=True, slots=True)
 class ArenaObservation:
     """What a Solver sees: the rendered state and the episode's bookkeeping, nothing else."""
@@ -373,6 +412,7 @@ class LeanTrajectoryArena:
         self._olean_count = olean_count
         self._probe: LeanTheoremProbe | None = None
         self._session: LeanReplSession | None = None
+        self._session_id = ""
         self._states: list[BackendStateEnvelope] = []
         self._actions: list[TrajectoryAction] = []
         self._evidence: list[VerifierEvidence] = []
@@ -409,6 +449,7 @@ class LeanTrajectoryArena:
         self.close()
         started = time.monotonic()
         self._probe = probe
+        self._session_id = derive_session_id(probe, policy=self.policy, seed=self.seed)
         self._states = []
         self._actions = []
         self._evidence = []
@@ -434,7 +475,7 @@ class LeanTrajectoryArena:
                     rejected_reason="session failed to start",
                 )
             )
-            envelope = BackendStateEnvelope(index=0, state_id="<none>", pp="", n_goals=0)
+            envelope = self._envelope(0, "<none>", "")
             self._states.append(envelope)
             return self._observe(envelope)
 
@@ -622,6 +663,8 @@ class LeanTrajectoryArena:
             pp=pp,
             pp_scope=probe.pp_scope,
             n_goals=_count_goals(pp),
+            session_id=self._session_id,
+            problem_id=probe.problem_id,
         )
 
     def _observe(self, envelope: BackendStateEnvelope) -> ArenaObservation:
@@ -1124,9 +1167,10 @@ def verify_bank(
 ) -> BankVerification:
     """Re-check a bank: hashes, chain integrity, kernel evidence, actor purity.
 
-    Structural by default.  ``relive=True`` additionally re-executes every trajectory's action
-    sequence against a fresh Lean session and requires the same terminal status — the only check
-    that can catch a bank whose evidence was fabricated wholesale.
+    Structural by default.  ``relive=True`` additionally re-executes **the actions stored in each
+    trajectory** — ``trajectory.actions``, not the source proof — against a fresh Lean session and
+    requires them to reproduce the record's own terminal status, horizon and states.  See
+    :func:`relive_trajectory`; RT-03 is why that sentence now says which tactics get run.
     """
 
     result = BankVerification()
@@ -1204,16 +1248,213 @@ def _structural_problems(trajectory: VerifiedTrajectory) -> list[str]:
             trajectory.terminal_status is TerminalStatus.CLOSED_VERIFIED
         ):
             problems.append("CLOSED_VERIFIED while evidence reports sorryAx")
-    accepted = sum(
-        1
+    accepted = [
+        evidence
         for evidence in trajectory.verifier_evidence
         if evidence.kind is EvidenceKind.STEP and evidence.verdict is Verdict.ACCEPTED
-    )
-    if accepted != len(trajectory.actions):
+    ]
+    if len(accepted) != len(trajectory.actions):
         problems.append(
-            f"{accepted} ACCEPTED step evidence records for {len(trajectory.actions)} actions"
+            f"{len(accepted)} ACCEPTED step evidence records for {len(trajectory.actions)} actions"
         )
+        return problems
+    # RT-02/RT-03 hardening: the verifier's own utterances must describe the actions the record
+    # claims.  A spliced or rewritten action list leaves the evidence naming the endpoints and the
+    # tactic that were really accepted, so this catches both forgeries with no Lean at all.
+    for evidence, action in zip(accepted, trajectory.actions, strict=True):
+        if (
+            evidence.step != action.index
+            or evidence.from_state_id != action.from_state_id
+            or evidence.to_state_id != action.to_state_id
+            or evidence.tactic != action.tactic
+        ):
+            problems.append(
+                f"action {action.index} ({action.from_state_id}->{action.to_state_id} "
+                f"{action.tactic!r}) is not the action the verifier recorded accepting "
+                f"(evidence: step={evidence.step} {evidence.from_state_id}->"
+                f"{evidence.to_state_id} {evidence.tactic!r})"
+            )
+            break
     return problems
+
+
+@dataclass(frozen=True, slots=True)
+class ReliveOutcome:
+    """The result of re-executing one stored trajectory's own actions."""
+
+    problem_id: str
+    trajectory_id: str
+    matched: bool
+    detail: str
+    terminal_status: TerminalStatus
+    #: Stored actions that the backend accepted on the re-run, in order.
+    actions_executed: int
+    actions_stored: int
+    wall_s: float = 0.0
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "problem_id": self.problem_id,
+            "trajectory_id": self.trajectory_id,
+            "matched": self.matched,
+            "detail": self.detail,
+            "terminal_status": self.terminal_status.value,
+            "actions_executed": self.actions_executed,
+            "actions_stored": self.actions_stored,
+            "wall_s": round(self.wall_s, 2),
+        }
+
+
+def _state_hashes_agree(replayed: BackendStateEnvelope, stored: BackendStateEnvelope) -> bool:
+    """Did the re-run land on the state the artefact records?
+
+    **Tamper detection, never a mathematical verdict.**  Same category as the ``pp_sha256`` check
+    in ``schema.from_dict``: it decides whether the stored record faithfully describes the run it
+    claims to describe, and it is never consulted to decide whether a step was mathematically
+    correct — the Lean elaborator decides that, by accepting or rejecting the tactic, before this
+    function is reached.  Two states that print differently may be the same mathematics (measured
+    40.6% vs 98.1%), which is exactly why this is not allowed to be a verifier.
+    """
+
+    return replayed.pp_sha256 == stored.pp_sha256
+
+
+def relive_trajectory(
+    trajectory: VerifiedTrajectory,
+    probe: LeanTheoremProbe,
+    *,
+    config: LeanToolchainConfig | None = None,
+    policy: TacticPolicy | None = None,
+) -> ReliveOutcome:
+    """Re-execute **this artefact's own stored actions** against a fresh backend session.
+
+    RT-03: the previous implementation called ``ReplayDriver.run(record, probe)``, and that driver
+    plays ``probe.reference_tactics`` — the tactics of the *LeanDojo source record*.
+    ``trajectory.actions`` was never read, so a bank whose every stored tactic had been replaced
+    with ``aesop`` relived clean.  The check re-verified the source, not the artefact.
+
+    What runs here is ``tuple(action.tactic for action in trajectory.actions)``, in order, on a
+    session opened on ``probe`` — which supplies the *problem* (the theorem statement), never the
+    answer.  The re-run must:
+
+    1. have every stored action accepted by the backend, in order — the first one that is not is
+       named, with its index and its text;
+    2. land on the state the artefact records after each action (``pp_sha256``, see
+       :func:`_state_hashes_agree`);
+    3. reproduce the stored horizon; and
+    4. reproduce closure: a record claiming ``CLOSED_VERIFIED`` must close under the kernel again,
+       and a record claiming anything else must **not** close, or it is misreporting its own
+       episode.
+
+    An episode that ended for a reason no action records — a rejected tactic, an exhausted
+    reference script — cannot have that reason reproduced from ``actions`` alone, because a
+    rejected attempt is evidence, not an action.  For those records this establishes exactly
+    the claim they make: these actions, in this order, were accepted and produced these states,
+    and they did not close the goal.
+    """
+
+    started = time.monotonic()
+    config = config or LeanToolchainConfig.from_env()
+    stored_actions = trajectory.actions
+
+    def outcome(matched: bool, detail: str, status: TerminalStatus, executed: int) -> ReliveOutcome:
+        return ReliveOutcome(
+            problem_id=trajectory.problem_id,
+            trajectory_id=trajectory.trajectory_id,
+            matched=matched,
+            detail=detail,
+            terminal_status=status,
+            actions_executed=executed,
+            actions_stored=len(stored_actions),
+            wall_s=time.monotonic() - started,
+        )
+
+    arena = LeanTrajectoryArena(
+        config=config,
+        policy=policy,
+        attempt_budget=len(stored_actions) + 8,
+        fail_fast=False,
+    )
+    try:
+        arena.reset(probe)
+        if arena.terminal_status is TerminalStatus.ERROR_BACKEND:
+            # A record may claim exactly this: an episode that never started, with no actions and
+            # no horizon (the committed h12 bank holds one).  Reproducing it is a match — there is
+            # nothing there to over-claim.  Any *other* record that cannot even open its session
+            # has not been reproduced.
+            reproduced = (
+                trajectory.terminal_status is TerminalStatus.ERROR_BACKEND and not stored_actions
+            )
+            return outcome(
+                reproduced,
+                ""
+                if reproduced
+                else (
+                    "the backend session would not start, but the record claims "
+                    f"{trajectory.terminal_status.value} over {len(stored_actions)} actions"
+                ),
+                arena.terminal_status,
+                0,
+            )
+        if not _state_hashes_agree(arena.states[0], trajectory.states[0]):
+            return outcome(
+                False,
+                "the session's initial goal is not the state this record calls state 0: the "
+                f"re-run opened on backend state {arena.states[0].state_id!r} of "
+                f"{probe.problem_id}",
+                arena.terminal_status,
+                0,
+            )
+        for index, action in enumerate(stored_actions):
+            before = len(arena.states)
+            step = arena.step(action.tactic)
+            if len(arena.states) == before:
+                reason = step.info.get("error") or step.info.get("refused") or step.info
+                return outcome(
+                    False,
+                    f"stored action {index} ({action.tactic!r}) was not accepted on the re-run: "
+                    f"{str(reason)[:200]}",
+                    arena.terminal_status,
+                    index,
+                )
+            if not _state_hashes_agree(arena.states[-1], trajectory.states[index + 1]):
+                return outcome(
+                    False,
+                    f"stored action {index} ({action.tactic!r}) produced a state the artefact "
+                    f"does not record: re-run reached backend state "
+                    f"{arena.states[-1].state_id!r}, the record claims state {index + 1}",
+                    arena.terminal_status,
+                    index + 1,
+                )
+        executed = len(arena.states) - 1
+        stored_status = trajectory.terminal_status
+        if executed != trajectory.horizon.achieved:
+            return outcome(
+                False,
+                f"horizon {executed} != stored {trajectory.horizon.achieved}",
+                arena.terminal_status,
+                executed,
+            )
+        closed = arena.terminal_status is TerminalStatus.CLOSED_VERIFIED
+        if stored_status is TerminalStatus.CLOSED_VERIFIED and not closed:
+            return outcome(
+                False,
+                f"the stored actions did not close the goal under the kernel: re-run terminal "
+                f"{arena.terminal_status.value} != stored CLOSED_VERIFIED",
+                arena.terminal_status,
+                executed,
+            )
+        if stored_status is not TerminalStatus.CLOSED_VERIFIED and closed:
+            return outcome(
+                False,
+                f"the stored actions DID close the goal under the kernel, but the record claims "
+                f"{stored_status.value}",
+                arena.terminal_status,
+                executed,
+            )
+        return outcome(True, "", arena.terminal_status, executed)
+    finally:
+        arena.close()
 
 
 def _relive(
@@ -1223,24 +1464,19 @@ def _relive(
     config: LeanToolchainConfig,
     policy: TacticPolicy | None,
 ) -> tuple[bool, str]:
-    """Re-run a stored trajectory's actions live and require the same terminal status."""
+    """Rebuild the theorem's probe from the source record, then relive the stored actions.
+
+    The source record supplies the *problem* — the declaration, its file prefix and its scope —
+    and nothing else.  Its ``traced_tactics`` are not read here, which is the whole of RT-03.
+    """
 
     if record is None:
         return False, f"source record for {trajectory.problem_id} not found"
     built = build_probe(record, mathlib_root=config.mathlib_root, policy=policy)
     if not built.ok or built.probe is None:
         return False, f"probe could not be rebuilt: {built.discard_reason}"
-    driver = ReplayDriver(config=config, policy=policy)
-    outcome = driver.run(record, built.probe)
-    if outcome.terminal_status is not trajectory.terminal_status:
-        return False, (
-            f"terminal {outcome.terminal_status.value} != stored {trajectory.terminal_status.value}"
-        )
-    if outcome.achieved_horizon != trajectory.horizon.achieved:
-        return False, (
-            f"horizon {outcome.achieved_horizon} != stored {trajectory.horizon.achieved}"
-        )
-    return True, ""
+    outcome = relive_trajectory(trajectory, built.probe, config=config, policy=policy)
+    return outcome.matched, outcome.detail
 
 
 # ---------------------------------------------------------------------------------------------

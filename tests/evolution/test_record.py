@@ -17,7 +17,10 @@ from arena.evolution.record import (
     DatasetIdentity,
     DimensionStatus,
     EvaluationContext,
+    EvaluationMode,
+    EvidenceActor,
     EvolutionRecordStore,
+    ExperimentalCondition,
     FitnessDimension,
     FitnessMemoryIdentityViolation,
     FitnessRecord,
@@ -30,6 +33,7 @@ from arena.evolution.record import (
     RecordIdentityViolation,
     RecordScope,
     RecordStatus,
+    ReplicateAuthorisation,
     RescoringConflict,
     dumps,
     record_key,
@@ -68,6 +72,16 @@ def _model() -> ModelIdentity:
     return ModelIdentity("stub", "d" * 64, "t" * 64, "c" * 64, is_stub=True)
 
 
+def _condition() -> ExperimentalCondition:
+    return ExperimentalCondition(
+        controller="none:single-shot-choice",
+        toolset="none",
+        adaptation_condition="NO_ADAPTATION",
+        adaptation_budget="0",
+        inference_condition="single-pass|deterministic|n=1",
+    )
+
+
 def _dataset() -> DatasetIdentity:
     return DatasetIdentity("arena-precondition-ladder-v2.0.0", "SMOKE:P05:8", "UNSEALED")
 
@@ -90,6 +104,11 @@ def _vector(solve: float = 0.5) -> FitnessVector:
             )
         ],
         note="no trajectory world exists",
+        # These tests exercise the ledger's identity and storage discipline, so they use a
+        # SCIENTIFIC/SOLVER vector: the mode and actor that *may* carry a number.  The modes that
+        # may not are the subject of tests/evolution/test_inadmissible_fitness.py.
+        evaluation_mode=EvaluationMode.SCIENTIFIC,
+        actor=EvidenceActor.SOLVER,
     )
 
 
@@ -98,6 +117,8 @@ def _record(**overrides: Any) -> FitnessRecord:
         "run_id": RUN_ID,
         "generation": 0,
         "harness_version": "arena-game-r-formal-harness-v1.0.0",
+        "evaluation_mode": EvaluationMode.SCIENTIFIC,
+        "actor": EvidenceActor.SOLVER,
         "parent_genome_id": "L0_STRUCTURED_ENGLISH",
         "parent_genome_hash": "p" * 64,
         "child_genome_id": "M-child",
@@ -105,6 +126,8 @@ def _record(**overrides: Any) -> FitnessRecord:
         "mutation": _mutation(),
         "evaluation_context": _context(),
         "model": _model(),
+        "condition": _condition(),
+        "replicate": ReplicateAuthorisation.primary(),
         "dataset": _dataset(),
         "budget": Budget(calls=0, tokens=0, wall_clock_seconds=1.25),
         "fitness_vector": _vector(),
@@ -166,17 +189,20 @@ def test_a_tampered_stored_hash_is_refused() -> None:
 # --------------------------------------------------------------------------- record key
 
 
-def test_the_identity_carries_exactly_the_eleven_declared_components() -> None:
+def test_the_identity_carries_exactly_the_declared_components() -> None:
     identity = record_key(
         harness_version="arena-game-r-formal-harness-v1.0.0",
+        evaluation_mode=EvaluationMode.SCIENTIFIC,
+        actor=EvidenceActor.SOLVER,
         parent_genome_hash="p" * 64,
         child_genome_hash="c" * 64,
         mutation=_mutation(),
         evaluation_context=_context(),
         model=_model(),
+        condition=_condition(),
+        replicate=ReplicateAuthorisation.primary(),
     )
     assert set(identity) == set(EVALUATION_IDENTITY_COMPONENTS)
-    assert len(EVALUATION_IDENTITY_COMPONENTS) == 11
     assert set(CONDITION_COMPONENTS) <= set(EVALUATION_IDENTITY_COMPONENTS)
     assert _record().record_id.startswith("lfm:")
 
@@ -185,11 +211,15 @@ def test_a_missing_identity_component_is_a_refusal_not_a_blank_slot() -> None:
     with pytest.raises(RecordIdentityViolation, match="missing components"):
         record_key(
             harness_version="",
+            evaluation_mode=EvaluationMode.SCIENTIFIC,
+            actor=EvidenceActor.SOLVER,
             parent_genome_hash="p" * 64,
             child_genome_hash="c" * 64,
             mutation=_mutation(),
             evaluation_context=_context(),
             model=_model(),
+            condition=_condition(),
+            replicate=ReplicateAuthorisation.primary(),
         )
     with pytest.raises(RecordIdentityViolation, match="missing components"):
         ModelIdentity("stub", "", "t" * 64, "c" * 64)
@@ -212,7 +242,7 @@ def test_a_new_model_or_context_is_a_new_record_never_an_overwrite() -> None:
     assert base.record_id != other_model.record_id
     assert base.record_id != other_level.record_id
     assert base.condition_id != other_model.condition_id
-    # A different dataset is *not* in the eleven components, so it does not fork the identity;
+    # A different dataset is *not* an identity component, so it does not fork the identity;
     # it changes the record's content, which the append guard then refuses under one identity.
     assert _record(dataset=DatasetIdentity("v2", "s", "UNSEALED")).record_id == base.record_id
 
@@ -234,7 +264,12 @@ def test_a_refused_record_must_name_what_refused_it() -> None:
         status=RecordStatus.REFUSED,
         outcome="KILLED_BY_SEMANTIC_GATE",
         void_code="TRUTH_ALTERED",
-        fitness_vector=FitnessVector.build([], note="never scored"),
+        fitness_vector=FitnessVector.build(
+            [],
+            note="never scored",
+            evaluation_mode=EvaluationMode.SCIENTIFIC,
+            actor=EvidenceActor.SOLVER,
+        ),
     )
     assert refused.fitness_vector.measured() == {}
 
@@ -302,7 +337,7 @@ def test_an_identical_re_append_is_reuse_not_a_duplicate(tmp_path: Path) -> None
 def test_the_guard_raises_when_a_condition_changed(tmp_path: Path) -> None:
     store = EvolutionRecordStore(ArtifactStore(tmp_path), RUN_ID)
     store.append(_record())
-    # Same eleven-component identity, but a different compute budget bought the reading.  This
+    # Same evaluation identity, but a different compute budget bought the reading.  This
     # is the cross-condition reuse cache identity forbids, and it raises rather than overwrite.
     with pytest.raises(FitnessMemoryIdentityViolation, match="different result_hash"):
         store.append(_record(budget=Budget(calls=40, wall_clock_seconds=3.0)))

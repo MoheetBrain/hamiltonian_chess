@@ -1,0 +1,1136 @@
+{
+  "candidates": [
+    {
+      "active": true,
+      "baseline": false,
+      "candidate_id": "L0_STRUCTURED_ENGLISH",
+      "display_name": "L0_STRUCTURED_ENGLISH",
+      "domain_ratings": {},
+      "mechanism_ratings": {},
+      "objective_metrics": {
+        "EXECUTABILITY_STUB::n_clusters": 8.0,
+        "EXECUTABILITY_STUB::n_items": 16.0,
+        "EXECUTABILITY_STUB::rendered_prompt_bytes_mean": 18755.0,
+        "EXECUTABILITY_STUB::stub_choice_agreement": 0.5625
+      },
+      "parent_ids": [],
+      "pareto_status": "PARETO_RANK_1"
+    },
+    {
+      "active": true,
+      "baseline": false,
+      "candidate_id": "L1_CURRENT_HML",
+      "display_name": "L1_CURRENT_HML",
+      "domain_ratings": {},
+      "mechanism_ratings": {},
+      "objective_metrics": {
+        "EXECUTABILITY_STUB::n_clusters": 8.0,
+        "EXECUTABILITY_STUB::n_items": 16.0,
+        "EXECUTABILITY_STUB::rendered_prompt_bytes_mean": 11036.0,
+        "EXECUTABILITY_STUB::stub_choice_agreement": 0.4375
+      },
+      "parent_ids": [],
+      "pareto_status": "PARETO_RANK_1"
+    },
+    {
+      "active": true,
+      "baseline": false,
+      "candidate_id": "L2_SEXPR",
+      "display_name": "L2_SEXPR",
+      "domain_ratings": {},
+      "mechanism_ratings": {},
+      "objective_metrics": {
+        "EXECUTABILITY_STUB::n_clusters": 8.0,
+        "EXECUTABILITY_STUB::n_items": 16.0,
+        "EXECUTABILITY_STUB::rendered_prompt_bytes_mean": 9188.0,
+        "EXECUTABILITY_STUB::stub_choice_agreement": 0.5625
+      },
+      "parent_ids": [],
+      "pareto_status": "FRONTIER"
+    },
+    {
+      "active": true,
+      "baseline": false,
+      "candidate_id": "L3_JSON_AST",
+      "display_name": "L3_JSON_AST",
+      "domain_ratings": {},
+      "mechanism_ratings": {},
+      "objective_metrics": {
+        "EXECUTABILITY_STUB::n_clusters": 8.0,
+        "EXECUTABILITY_STUB::n_items": 16.0,
+        "EXECUTABILITY_STUB::rendered_prompt_bytes_mean": 20220.0,
+        "EXECUTABILITY_STUB::stub_choice_agreement": 0.5
+      },
+      "parent_ids": [],
+      "pareto_status": "PARETO_RANK_2"
+    },
+    {
+      "active": true,
+      "baseline": false,
+      "candidate_id": "M-0d91d015350081da8528",
+      "display_name": "M-0d91d015350081da8528",
+      "domain_ratings": {},
+      "mechanism_ratings": {},
+      "objective_metrics": {
+        "EXECUTABILITY_STUB::n_clusters": 8.0,
+        "EXECUTABILITY_STUB::n_items": 16.0,
+        "EXECUTABILITY_STUB::rendered_prompt_bytes_mean": 17310.0,
+        "EXECUTABILITY_STUB::stub_choice_agreement": 0.75
+      },
+      "parent_ids": [
+        "L0_STRUCTURED_ENGLISH"
+      ],
+      "pareto_status": "FRONTIER"
+    }
+  ],
+  "matches": [
+    "match:3f2cc292447bfaca66ee",
+    "match:6ef778fff42d66cfd7f0",
+    "match:48d922d4b039927bf49f",
+    "match:3931034b841df1aaa1c0",
+    "match:7b06e70e9df738045c00"
+  ],
+  "observations": [
+    {
+      "candidate_id": "M-0d91d015350081da8528",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": "L0_STRUCTURED_ENGLISH",
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0000:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "M-0d91d015350081da8528",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": "L0_STRUCTURED_ENGLISH",
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0000:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "M-0d91d015350081da8528",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": "L0_STRUCTURED_ENGLISH",
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0001:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "M-0d91d015350081da8528",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": "L0_STRUCTURED_ENGLISH",
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0001:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "M-0d91d015350081da8528",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": "L0_STRUCTURED_ENGLISH",
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0002:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "M-0d91d015350081da8528",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": "L0_STRUCTURED_ENGLISH",
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0002:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "M-0d91d015350081da8528",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": "L0_STRUCTURED_ENGLISH",
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0003:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "M-0d91d015350081da8528",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": "L0_STRUCTURED_ENGLISH",
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0003:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "M-0d91d015350081da8528",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": "L0_STRUCTURED_ENGLISH",
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0004:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "M-0d91d015350081da8528",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": "L0_STRUCTURED_ENGLISH",
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0004:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "M-0d91d015350081da8528",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": "L0_STRUCTURED_ENGLISH",
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0005:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "M-0d91d015350081da8528",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": "L0_STRUCTURED_ENGLISH",
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0005:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "M-0d91d015350081da8528",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": "L0_STRUCTURED_ENGLISH",
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0006:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "M-0d91d015350081da8528",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": "L0_STRUCTURED_ENGLISH",
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0006:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "M-0d91d015350081da8528",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": "L0_STRUCTURED_ENGLISH",
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0007:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "M-0d91d015350081da8528",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": "L0_STRUCTURED_ENGLISH",
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0007:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L0_STRUCTURED_ENGLISH",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0000:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L0_STRUCTURED_ENGLISH",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0000:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L0_STRUCTURED_ENGLISH",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0001:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L0_STRUCTURED_ENGLISH",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0001:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L0_STRUCTURED_ENGLISH",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0002:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L0_STRUCTURED_ENGLISH",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0002:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L0_STRUCTURED_ENGLISH",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0003:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L0_STRUCTURED_ENGLISH",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0003:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L0_STRUCTURED_ENGLISH",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0004:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L0_STRUCTURED_ENGLISH",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0004:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L0_STRUCTURED_ENGLISH",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0005:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L0_STRUCTURED_ENGLISH",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0005:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L0_STRUCTURED_ENGLISH",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0006:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L0_STRUCTURED_ENGLISH",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0006:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L0_STRUCTURED_ENGLISH",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0007:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L0_STRUCTURED_ENGLISH",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0007:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L1_CURRENT_HML",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0000:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L1_CURRENT_HML",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0000:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L1_CURRENT_HML",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0001:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L1_CURRENT_HML",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0001:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L1_CURRENT_HML",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0002:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L1_CURRENT_HML",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0002:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L1_CURRENT_HML",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0003:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L1_CURRENT_HML",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0003:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L1_CURRENT_HML",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0004:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L1_CURRENT_HML",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0004:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L1_CURRENT_HML",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0005:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L1_CURRENT_HML",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0005:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L1_CURRENT_HML",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0006:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L1_CURRENT_HML",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0006:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L1_CURRENT_HML",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0007:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L1_CURRENT_HML",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0007:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L2_SEXPR",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0000:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L2_SEXPR",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0000:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L2_SEXPR",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0001:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L2_SEXPR",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0001:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L2_SEXPR",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0002:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L2_SEXPR",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0002:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L2_SEXPR",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0003:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L2_SEXPR",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0003:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L2_SEXPR",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0004:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L2_SEXPR",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0004:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L2_SEXPR",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0005:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L2_SEXPR",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0005:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L2_SEXPR",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0006:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L2_SEXPR",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0006:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L2_SEXPR",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0007:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L2_SEXPR",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0007:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L3_JSON_AST",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0000:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L3_JSON_AST",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0000:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L3_JSON_AST",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0001:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L3_JSON_AST",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0001:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L3_JSON_AST",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0002:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L3_JSON_AST",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0002:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L3_JSON_AST",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0003:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L3_JSON_AST",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0003:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L3_JSON_AST",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0004:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L3_JSON_AST",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0004:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L3_JSON_AST",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0005:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L3_JSON_AST",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0005:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L3_JSON_AST",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0006:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L3_JSON_AST",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 1.0,
+      "task_id": "pl2:smoke:P05:0006:COUNTERFACTUAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L3_JSON_AST",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:ORIGINAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0007:ORIGINAL",
+      "verified": false
+    },
+    {
+      "candidate_id": "L3_JSON_AST",
+      "domain": "arena-precondition-ladder-v2.0.0|precondition_conjunction|P05",
+      "mechanisms": [
+        "precondition_conjunction",
+        "level:5",
+        "variant:COUNTERFACTUAL"
+      ],
+      "opponent_id": null,
+      "score": 0.0,
+      "task_id": "pl2:smoke:P05:0007:COUNTERFACTUAL",
+      "verified": false
+    }
+  ],
+  "version": "arena-league-v0.1.0"
+}

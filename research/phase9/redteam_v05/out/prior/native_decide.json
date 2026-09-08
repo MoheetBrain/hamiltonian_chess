@@ -1,0 +1,55 @@
+{
+  "policy": {
+    "default_policy_name": "record_only",
+    "native_decide_under_default": [
+      "ALLOWED",
+      ""
+    ],
+    "native_decide_under_no_heavy_automation": [
+      "DENIED_BY_POLICY",
+      "tactic head 'native_decide' is on the deny-list"
+    ],
+    "native_decide_in_HEAVY_AUTOMATION": true,
+    "bank_manifest_policy": "record_only (artifacts/trajectory_bank_v0/*/manifest.json)"
+  },
+  "exploit": {
+    "tactic": "native_decide",
+    "terminal_status": "CLOSED_VERIFIED",
+    "reward": 1.0,
+    "kernel_evidence": {
+      "verified": true,
+      "print_axioms": "'probe_redteam_of_reduce_bool' depends on axioms: [propext, Lean.ofReduceBool]",
+      "contains_sorry_ax": false,
+      "contains_of_reduce_bool": true,
+      "exit_code": 0,
+      "errors": ""
+    },
+    "trajectory_terminal": "CLOSED_VERIFIED",
+    "trajectory_kernel_verified_property": true,
+    "horizon": {
+      "achieved": 1,
+      "verified": 1,
+      "reference": 1,
+      "solver_actions": 1,
+      "reference_actions": 0,
+      "episode_length": 1,
+      "observed_trace_length": 1,
+      "kernel_step_count": 0,
+      "dependency_depth": "UNKNOWN",
+      "minimal_proof_length": "UNKNOWN"
+    },
+    "trust_tier_claimed": "A_NATIVE_VERIFIED",
+    "bank_verify_passed": true,
+    "bank_verify_failures": [],
+    "bank_horizon_histogram": {
+      "1": 1
+    },
+    "CLOSED_VERIFIED": true
+  },
+  "why_it_gets_through": {
+    "verify_closed_script_verified_expression": "verified=(completed.returncode == 0 and not has_sorry and not errors)",
+    "contains_of_reduce_bool_used_in_that_expression": false,
+    "_structural_problems_mentions_of_reduce_bool": false,
+    "_structural_problems_mentions_sorry_ax": true
+  }
+}

@@ -1,0 +1,138 @@
+{
+ "E10_manifest_carries_no_condition_identity": {
+  "manifest_keys": [
+   "contamination",
+   "episodes",
+   "result_hash",
+   "run_mode",
+   "schema",
+   "scientific_status",
+   "selection",
+   "solver",
+   "summary"
+  ],
+  "note": "the interactive path emits no condition_id, EvidenceActor or ReplicateAuthorisation, so two HC-V0.5 runs cannot be pooled, deduplicated or refused as duplicate draws by arena/evolution/record.py's machinery",
+  "verdict": "DEFECT"
+ },
+ "E1_selection_provenance_silently_dropped": {
+  "call_site": "getattr(selection, \"to_dict\", lambda: {})()",
+  "committed_artefact_selection": {},
+  "manifest_keys_available": [
+   "contamination",
+   "discards",
+   "generator",
+   "leakage",
+   "max_reference_length",
+   "min_reference_length",
+   "records_scanned",
+   "scan_limit",
+   "schema",
+   "sealed_splits_not_read",
+   "seed",
+   "tasks",
+   "tasks_selected",
+   "train_json"
+  ],
+  "note": "TaskSelection exposes manifest(), never to_dict(); the getattr default swallows the seed, scan_limit, train_json, per-task ids, discard ledger and leakage ledger",
+  "selection_has_manifest": true,
+  "selection_has_to_dict": false,
+  "selection_in_manifest": {},
+  "verdict": "DEFECT"
+ },
+ "E2_step_state_id_is_always_unknown": {
+  "key_the_runner_reads": "backend_state_id",
+  "note": "run_episode reads projection.rendered['backend_state_id']; BackendNativeRenderer emits 'state_id'.  Every recorded action is therefore unbound to a state",
+  "rendered_keys_the_renderer_emits": [
+   "state_id",
+   "goals_pp",
+   "..."
+  ],
+  "state_ids_in_committed_artefact": [
+   "?"
+  ],
+  "state_ids_in_fresh_run": [
+   "?"
+  ],
+  "verdict": "DEFECT"
+ },
+ "E3_task_id_in_the_artefact_is_the_problem_id": {
+  "artefact_problem_id": "RT/Probe.lean::rt.probe",
+  "artefact_task_id": "RT/Probe.lean::rt.probe",
+  "committed_all_equal": true,
+  "note": "EpisodeResult(task_id=task.problem_id, ...); the vtask- identity that covers the budget, failure policy, seal and source hash appears nowhere in the artefact",
+  "real_task_id": "vtask-3c308f316916ee194c8c9ae7",
+  "verdict": "DEFECT"
+ },
+ "E4_solver_digest_asserted_not_verified": {
+  "digest_actually_served_by_this_transport": "deadbeefdeadbeefdeadbeef",
+  "episode_module_calls_verify_served": false,
+  "episode_solved": true,
+  "live_runtime_check": {
+   "assert_matches": "passes",
+   "digests_match": true,
+   "recorded_digest": "d49fd9e0da45e486918c87318b866e5924e37ad5841db58763900297d9616ee7",
+   "served_digest": "d49fd9e0da45e486918c87318b866e5924e37ad5841db58763900297d9616ee7"
+  },
+  "manifest_digest": "d49fd9e0da45e486918c8731",
+  "note": "run_episode() and episode.main() never call OllamaTacticSolver.verify_served(); the digest in the manifest is a module constant",
+  "verdict": "DEFECT"
+ },
+ "E5_transport_failure_counted_as_a_solver_parse_failure": {
+  "episode_terminal": "OPEN",
+  "note": "EpisodeResult.parse_failures counts every proposal_status != OK, so TRANSPORT_FAILURE and PROMPT_OVER_BUDGET are charged to the Solver; summarise()'s environment_errors counts neither",
+  "step_proposal_status": [
+   "TRANSPORT_FAILURE"
+  ],
+  "summary": {
+   "accepted_solver_transitions": 0,
+   "environment_errors": 0,
+   "episodes": 1,
+   "episodes_with_an_accepted_solver_transition": 0,
+   "max_accepted_in_one_episode": 0,
+   "parse_failures": 1,
+   "rejected_actions": 0,
+   "solved": 0
+  },
+  "verdict": "DEFECT"
+ },
+ "E6_crashed_episode_reported_as_open": {
+  "dead_line": "result.terminal_status = result.terminal_status or \"ENVIRONMENT_ERROR\"",
+  "error": "RuntimeError: backend exploded mid-episode",
+  "note": "terminal_status is initialised to the truthy string \"OPEN\", so the `or` fallback can never fire",
+  "terminal_outcome": "OPEN",
+  "terminal_status": "OPEN",
+  "verdict": "DEFECT"
+ },
+ "E7_solver_parse_failure_bypasses_the_failure_policy": {
+  "arena_saw_tactics": [],
+  "declared_policy": {
+   "declared_before_measurement": true,
+   "diagnostic_max_chars": 400,
+   "effective_retries": 1,
+   "max_retries": 1,
+   "policy": "ONE_DIAGNOSTIC_RETRY",
+   "scope": "PER_CONSECUTIVE_RUN"
+  },
+  "episode_terminal": "OPEN",
+  "note": "the runner `break`s on a non-OK proposal without stepping the task, so ONE_DIAGNOSTIC_RETRY never applies to the single most likely solver-attributable failure, and the episode is filed OPEN rather than FAILED",
+  "retries_remaining_after": 1,
+  "steps": [
+   "PARSE_FAILURE"
+  ],
+  "verdict": "DEFECT"
+ },
+ "E8_actor_label_is_a_literal": {
+  "artefact_actor": "SOLVER",
+  "note": "nothing in the artefact binds an action to the Solver that produced it beyond the per-step prompt_sha256",
+  "source_line": [
+   "\"actor\": \"SOLVER\","
+  ],
+  "verdict": "DEFECT"
+ },
+ "E9_result_hash_not_deterministic": {
+  "different_tactic_hash_differs": true,
+  "hash": "83d6e1dd519cad8808b7fcb6",
+  "identical_runs_hash_equal": true,
+  "verdict": "HELD"
+ }
+}

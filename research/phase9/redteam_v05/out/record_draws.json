@@ -1,0 +1,123 @@
+{
+ "R1_reroll_proposal_id_buys_a_second_draw": {
+  "first": "FRESH",
+  "note": "RT-13's original channel",
+  "record_ids_equal": true,
+  "second": "SAME_CONDITION_REUSE",
+  "verdict": "HELD"
+ },
+ "R2_intervention_class_relabel_forks_a_fresh_record": {
+  "declared_gene_classes": [
+   "R_ONLY"
+  ],
+  "identity_components_outside_the_condition": [
+   "schema_version",
+   "harness_version",
+   "parent_genome_hash",
+   "child_genome_hash",
+   "intervention_class",
+   "replicate_id"
+  ],
+  "note": "intervention_class is an identity component and NOT a condition component, so a relabel would fork a FRESH draw inside one condition. It cannot be varied today because all 14 declared genes are R_ONLY and an undeclared gene fails closed: the protection is restriction of the gene table, not a check",
+  "undeclared_gene": "REFUSED: no declared InterventionClass for gene(s) ['ontology_commitment']. Add them to G",
+  "verdict": "HELD"
+ },
+ "R2b_free_string_forks_a_second_draw_inside_one_condition": {
+  "note": "a harness that bumps its own version between generations silently re-draws every edge it re-evaluates, in the SAME condition shard, reported as FRESH rather than as an authorised replicate",
+  "variants": {
+   "harness_version": {
+    "record_ids_differ": true,
+    "replicate_id": "replicate:0000",
+    "same_condition_id": true,
+    "same_shard": true,
+    "scope": "FRESH"
+   },
+   "schema_version": {
+    "scope": "ValueError: unsupported record schema 'arena-language-fitness-memory-v0.2.0x'"
+   }
+  },
+  "verdict": "DEFECT"
+ },
+ "R3_gene_changes_unverified_against_genomes": {
+  "edge": [
+   "pppppppp",
+   "cccccccc"
+  ],
+  "honest_class": "R_ONLY",
+  "honest_genes": [
+   "token_policy"
+  ],
+  "intervention_hashes_differ": true,
+  "lying_class": "R_ONLY",
+  "lying_genes": [
+   "alphabet"
+  ],
+  "note": "MutationDescriptor.__post_init__ only requires gene_changes to be non-empty; no parent/child genome diff is ever consulted",
+  "verdict": "DEFECT"
+ },
+ "R4_unauthorised_replicate_accepted": {
+  "authorised_second_draw": "FRESH",
+  "refusals": {
+   "authorised": "ACCEPTED",
+   "bare_second_draw": "REFUSED: replicate:0002 claims the reserved primary authoriser 'PRIMARY_DRAW'",
+   "nonce_id": "REFUSED: unusable replicate id 'draw-zzzzzzzz'; expected 'replicate:NNNN'. An a",
+   "primary_with_reason": "REFUSED: replicate:0000 is the primary draw and carries no authorisation; a dra",
+   "steals_primary_authoriser": "REFUSED: replicate:0002 claims the reserved primary authoriser 'PRIMARY_DRAW'"
+  },
+  "same_condition": true,
+  "verdict": "HELD"
+ },
+ "R5_free_identity_forks": {
+  "components": [
+   "schema_version",
+   "harness_version",
+   "evaluation_mode",
+   "actor",
+   "parent_genome_hash",
+   "child_genome_hash",
+   "intervention_class",
+   "environment_version",
+   "evaluation_manifest_hash",
+   "ladder_level",
+   "solver_digest",
+   "solver_revision",
+   "decoding_hash",
+   "tokenizer_condition",
+   "runtime_condition",
+   "controller",
+   "toolset",
+   "adaptation_condition",
+   "adaptation_budget",
+   "inference_condition",
+   "replicate_id"
+  ],
+  "forks": {
+   "adaptation_budget": "FRESH (same_condition=False)",
+   "controller": "FRESH (same_condition=False)",
+   "environment_version": "FRESH (same_condition=False)",
+   "harness_version": "FRESH (same_condition=True)",
+   "ladder_level_via_fidelity": "FRESH (same_condition=False)",
+   "solver_revision": "FRESH (same_condition=False)",
+   "task_ids": "FRESH (same_condition=False)",
+   "tokenizer_id": "FRESH (same_condition=False)",
+   "toolset": "FRESH (same_condition=False)"
+  },
+  "note": "every one of these is a caller-declared string; a whitespace difference is a new experiment. Most also move the condition, so they cannot be pooled -- the ones that keep the condition are the duplicate-draw channel",
+  "verdict": "DEFECT"
+ },
+ "R6_reference_evidence_pooled_as_solver": {
+  "records_over_two_actors": "REFUSED: records() spans actors ['REFERENCE', 'SOLVER']. REFERENCE ev",
+  "relabel_reference_to_solver": "FitnessRepresentationError: record declares actor=SOLVER but its fitness vector was built under RE",
+  "shards": "{'68c0790b5d8e', '43ce111b1252'}",
+  "summary_over_two_actors": "REFUSED: summary() spans actors ['REFERENCE', 'SOLVER']. REFERENCE evidence is source pro",
+  "verdict": "HELD"
+ },
+ "R7_build_trajectory_still_rewrites_the_actor": {
+  "note": "RT-04's trajectory half is unchanged: the caller's actor= is stamped onto every action. VerifiedTask.emit_trajectory hardcodes Actor.SOLVER",
+  "require_single_actor_called": false,
+  "rewrite_line": [
+   "actions = tuple(replace(action, actor=actor) for action in self._actions)"
+  ],
+  "verdict": "DEFECT"
+ }
+}

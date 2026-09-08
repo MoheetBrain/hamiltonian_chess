@@ -1,0 +1,39 @@
+{
+ "note": "the session binding is OPTIONAL; dropping it is legal by the schema's own rule that an absent field is an absent claim, and it downgrades _assert_one_episode to the scope invariant, which two theorems in one file satisfy",
+ "pair": {
+  "file_path": "Mathlib/Analysis/Normed/Group/AddTorsor.lean",
+  "horizon_a": 3,
+  "horizon_b": 1,
+  "scopes_identical": true,
+  "terminal_a": "CLOSED_VERIFIED",
+  "terminal_b": "CLOSED_VERIFIED",
+  "theorem_a": "Mathlib/Analysis/Normed/Group/AddTorsor.lean::edist_vsub_vsub_le",
+  "theorem_b": "Mathlib/Analysis/Normed/Group/AddTorsor.lean::dist_vsub_cancel_left"
+ },
+ "splice": {
+  "claimed_horizon": {
+   "achieved": 4,
+   "dependency_depth": "UNKNOWN",
+   "episode_length": 4,
+   "kernel_step_count": 4,
+   "minimal_proof_length": "UNKNOWN",
+   "observed_trace_length": 3,
+   "reference": 3,
+   "reference_actions": 4,
+   "solver_actions": 0,
+   "verified": 4
+  },
+  "load_error": "",
+  "loads_without_error": true
+ },
+ "verdict": "DEFECT",
+ "verify": {
+  "relive_failures": [
+   "vt-15351aae6c88c8cdaddad8f1: relive mismatch: stored action 3 ('rw [dist_eq_norm, vsub_sub_vsub_cancel_left, dist_comm, dist_eq_norm_vsub V]') was not accepted on the re-run: episode already terminal"
+  ],
+  "relive_passed": false,
+  "structural_failures": [],
+  "structural_passed": true
+ },
+ "wall_s": 7.9
+}

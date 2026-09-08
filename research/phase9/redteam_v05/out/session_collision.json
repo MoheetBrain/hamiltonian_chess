@@ -1,0 +1,44 @@
+{
+ "attempts": [
+  {
+   "A_goal_bytes": 127,
+   "A_result": "ACCEPTED_TRANSITION",
+   "A_tactic": "skip",
+   "A_terminal": "OPEN",
+   "B_goal_bytes": 8,
+   "B_result": "ACCEPTED_TRANSITION",
+   "B_tactic": "induction xs, ys using Vector.inductionOn\u2082 <;> simp_all[flip]",
+   "B_terminal": "CLOSED_VERIFIED",
+   "goal_digests_equal": false,
+   "kernel_key_A": "LEAN4_TACTIC_STATE_PP|vtask-c6da58b670145797c39d5b4d#ep0001|1",
+   "kernel_key_B": "LEAN4_TACTIC_STATE_PP|vtask-c6da58b670145797c39d5b4d#ep0001|1",
+   "problem": "Mathlib/Data/Vector/MapLemmas.lean::Vector.map\u2082_flip",
+   "record_keys_equal": true,
+   "reelaboration_keys_equal": false,
+   "same_kernel_state_as": true,
+   "task_ids_equal": true
+  }
+ ],
+ "collisions": [
+  {
+   "A_goal_bytes": 127,
+   "A_result": "ACCEPTED_TRANSITION",
+   "A_tactic": "skip",
+   "A_terminal": "OPEN",
+   "B_goal_bytes": 8,
+   "B_result": "ACCEPTED_TRANSITION",
+   "B_tactic": "induction xs, ys using Vector.inductionOn\u2082 <;> simp_all[flip]",
+   "B_terminal": "CLOSED_VERIFIED",
+   "goal_digests_equal": false,
+   "kernel_key_A": "LEAN4_TACTIC_STATE_PP|vtask-c6da58b670145797c39d5b4d#ep0001|1",
+   "kernel_key_B": "LEAN4_TACTIC_STATE_PP|vtask-c6da58b670145797c39d5b4d#ep0001|1",
+   "problem": "Mathlib/Data/Vector/MapLemmas.lean::Vector.map\u2082_flip",
+   "record_keys_equal": true,
+   "reelaboration_keys_equal": false,
+   "same_kernel_state_as": true,
+   "task_ids_equal": true
+  }
+ ],
+ "note": "kernel_key = backend_kind|session_id|state_id, and session_id is the LABEL f'{task_id}#ep{episode_index:04d}'.  record_session_id is content-addressed from the probe/policy/seed and collides too.  No field in KernelStateIdentity distinguishes two concurrent live sessions of one task, so equal kernel keys can name two states in two different REPL processes -- one still OPEN, one CLOSED_VERIFIED -- with different goals.",
+ "verdict": "DEFECT"
+}

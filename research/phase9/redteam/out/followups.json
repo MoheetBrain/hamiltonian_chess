@@ -85,7 +85,7 @@
       "reference_actions": 1,
       "episode_length": 1,
       "observed_trace_length": 1,
-      "kernel_step_count": 0,
+      "kernel_step_count": 1,
       "dependency_depth": "UNKNOWN",
       "minimal_proof_length": "UNKNOWN"
     },
@@ -97,7 +97,7 @@
       "reference_actions": 0,
       "episode_length": 1,
       "observed_trace_length": 1,
-      "kernel_step_count": 0,
+      "kernel_step_count": 1,
       "dependency_depth": "UNKNOWN",
       "minimal_proof_length": "UNKNOWN"
     },
@@ -109,7 +109,7 @@
       "reference_actions": 0,
       "episode_length": 1,
       "observed_trace_length": 999,
-      "kernel_step_count": 0,
+      "kernel_step_count": 1,
       "dependency_depth": "UNKNOWN",
       "minimal_proof_length": "UNKNOWN"
     },

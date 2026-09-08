@@ -18,11 +18,18 @@ Every stage reuses machinery that already exists and is tested:
 * record             ``arena.evolution.record`` through ``arena.storage.artifacts.ArtifactStore``
 
 **What this is not.**  The V0 evaluator is :class:`StubSolver`: a deterministic hash over the
-rendered prompt.  It cannot reason, and its ``J_solve`` is chance-level by construction.  It
-exists so the loop's plumbing can be exercised, ranked and recorded without a model call.  No
-number this module produces is a scientific result, and every record it writes says so in its
-``provenance`` block.  ``HAMILTONIAN_CHESS_META_GOAL.md`` section 8's evidence ladder is
-untouched by anything here.
+rendered prompt.  It cannot reason, so it *has* no ``J_solve``.  It exists so the loop's plumbing
+can be exercised, ranked and recorded without a model call.
+
+That last claim used to be enforced by a sentence.  It is now enforced by the schema
+(``docs/HC_V0_RED_TEAM.md`` RT-16): :class:`StubLadderEvaluator` declares
+``EvaluationMode.EXECUTABILITY_STUB``, and under that mode a
+:class:`~arena.evolution.record.FitnessVector` **cannot be constructed** with a number in any
+dimension.  The stub's readings go to :class:`~arena.evolution.record.DiagnosticReadings` under
+names that may never be a ``J_*`` name; the archive ranks on those, prefixed with the mode that
+produced them; and the league observations are written ``verified=False``, so a chance-level hash
+cannot acquire a confidence interval in ``league-registry.json``.  A reader who opens any artefact
+this module writes and looks for a scientific ``J_solve`` will not find one, because none exists.
 """
 
 from __future__ import annotations
@@ -47,13 +54,18 @@ from arena.environments.precondition_ladder import (
     build_pool,
 )
 from arena.evolution.record import (
+    DIMENSION_DIRECTIONS,
     RECORD_SCHEMA_VERSION,
     SCHEMA_DIVERGENCES,
     Budget,
     DatasetIdentity,
+    DiagnosticReadings,
     DimensionStatus,
     EvaluationContext,
+    EvaluationMode,
+    EvidenceActor,
     EvolutionRecordStore,
+    ExperimentalCondition,
     FitnessDimension,
     FitnessRecord,
     FitnessVector,
@@ -63,6 +75,8 @@ from arena.evolution.record import (
     ModelIdentity,
     MutationDescriptor,
     RecordStatus,
+    ReplicateAuthorisation,
+    StubFitnessNotRepresentable,
 )
 from arena.experiments.game_r_formal_v1 import (
     HARNESS_VERSION,
@@ -249,6 +263,25 @@ class Evaluator(Protocol):
     @property
     def fidelity_level(self) -> int: ...
 
+    @property
+    def evaluation_mode(self) -> EvaluationMode:
+        """Whether this evaluator's readings are admissible as scientific fitness (RT-16).
+
+        Part of the protocol, not of the loop: only the thing that produced a number can say what
+        kind of number it is, and a stub that had to declare itself cannot forget to.
+        """
+        ...
+
+    @property
+    def actor(self) -> EvidenceActor:
+        """Who chose the actions being scored (RT-04).  Never inferred, never rewritten."""
+        ...
+
+    @property
+    def condition(self) -> ExperimentalCondition:
+        """Controller, toolset, adaptation allowance and inference protocol (RT-13)."""
+        ...
+
     def evaluate(
         self,
         *,
@@ -321,6 +354,38 @@ class StubLadderEvaluator:
     @property
     def fidelity_level(self) -> int:
         return 0
+
+    @property
+    def evaluation_mode(self) -> EvaluationMode:
+        """RT-16.  Declared here, enforced by the type system downstream.
+
+        Nothing this evaluator produces can be filed as a ``J_*`` reading:
+        :class:`~arena.evolution.record.FitnessVector` refuses to be constructed with a number
+        under this mode, so ``league-registry.json`` cannot acquire a scientific-looking
+        ``J_solve`` however the loop is wired.
+        """
+
+        return EvaluationMode.EXECUTABILITY_STUB
+
+    @property
+    def actor(self) -> EvidenceActor:
+        """The stub chooses its own answers, so the actor is ``SOLVER`` - a very bad one.
+
+        Not ``REFERENCE``: it has no access to truth.  The two claims it must not be able to make
+        are handled separately - "this was a policy" (actor) and "this is a result" (mode).
+        """
+
+        return EvidenceActor.SOLVER
+
+    @property
+    def condition(self) -> ExperimentalCondition:
+        return ExperimentalCondition(
+            controller="none:single-shot-choice",
+            toolset="none",
+            adaptation_condition="NO_ADAPTATION",
+            adaptation_budget="0",
+            inference_condition="single-pass|deterministic|n=1",
+        )
 
     def evaluate(
         self,
@@ -587,14 +652,69 @@ def leakage_gate(
 # ----------------------------------------------------------------------------------- fitness
 
 
-def build_fitness_vector(outcome: EvaluationOutcome) -> FitnessVector:
+#: The two dimensions this loop's evaluator can address at all.  Under a stub they are the two
+#: that become ``NOT_REPRESENTABLE`` rather than ``NOT_MEASURED``: a number *was* computed for
+#: each, and neither is admissible as fitness.
+ADDRESSED_DIMENSIONS: tuple[str, ...] = ("J_solve", "J_cost")
+
+
+def build_diagnostics(outcome: EvaluationOutcome, *, basis: EvaluationMode) -> DiagnosticReadings:
+    """The stub's numbers, under names that are not fitness dimensions (RT-16).
+
+    ``stub_choice_agreement`` is deliberately not called ``J_solve`` and deliberately carries no
+    interval: it is the rate at which ``sha256(prompt) mod n_options`` happened to land on the
+    key, which is chance up to the hash's arbitrary partition of prompt space.  It exists so the
+    loop's Pareto ranking, frontier selection and archive have something to run on, and every key
+    that reaches an archive is prefixed with the basis that produced it.
+    """
+
+    rows = outcome.rows
+    return DiagnosticReadings(
+        basis=EvaluationMode(basis).value,
+        readings={
+            "stub_choice_agreement": sum(1 for row in rows if row.correct) / len(rows),
+            "rendered_prompt_bytes_mean": sum(row.prompt_bytes for row in rows) / len(rows),
+            "n_items": float(len(rows)),
+            "n_clusters": float(len({row.family_id for row in rows})),
+        },
+        note=(
+            "NOT FITNESS. Produced by a deterministic stub with no reasoning ability; a "
+            "difference between two languages here is noise. Recorded so the loop's ranking and "
+            "archive can be exercised without a model call, and named so it cannot be read as a "
+            "J_* result."
+        ),
+    )
+
+
+def build_fitness_vector(
+    outcome: EvaluationOutcome,
+    *,
+    evaluation_mode: EvaluationMode,
+    actor: EvidenceActor,
+) -> FitnessVector:
     """``J_solve`` and ``J_cost`` measured; the other five present and ``NOT_MEASURED``.
 
     No scalarisation, no weights.  The five unmeasured dimensions are named, not omitted: an
     absent dimension reads as coverage that was never attempted, and this loop must not be able
     to look more complete than it is.
+
+    Under ``EXECUTABILITY_STUB``, or under the ``REFERENCE`` actor, **no** dimension carries a
+    number: the two the evaluator addressed become ``NOT_REPRESENTABLE`` and their readings go to
+    :func:`build_diagnostics`.  This is not a policy the caller can decline - constructing the
+    vector with values under either condition raises (RT-16, RT-04).
     """
 
+    if not (evaluation_mode.permits_scientific_fitness and actor.permits_capability_claim):
+        return FitnessVector.inadmissible(
+            evaluation_mode=evaluation_mode,
+            actor=actor,
+            computed=ADDRESSED_DIMENSIONS,
+            note=(
+                f"a reading was computed under evaluation_mode={evaluation_mode.value}, "
+                f"actor={actor.value} and is inadmissible as fitness; see the record's "
+                "diagnostics block"
+            ),
+        )
     correct = sum(1 for row in outcome.rows if row.correct)
     solve = proportion_metric("J_solve", correct, len(outcome.rows))
     cost = mean_metric(
@@ -641,16 +761,27 @@ def build_fitness_vector(outcome: EvaluationOutcome) -> FitnessVector:
     return FitnessVector.build(
         measured,
         note="requires a verified trajectory world (docs/HAMILTONIAN_CHESS_META_GOAL.md s6.1)",
+        evaluation_mode=evaluation_mode,
+        actor=actor,
     )
 
 
 def observations_from_rows(
-    outcome: EvaluationOutcome, *, arena_id: str, opponent_id: str | None
+    outcome: EvaluationOutcome,
+    *,
+    arena_id: str,
+    opponent_id: str | None,
+    verified: bool,
 ) -> tuple[MatchObservation, ...]:
     """The ~30-line adapter the remap names: evaluation rows -> ``MatchObservation`` rows.
 
     ``arena/league/registry.py`` has carried a complete, tested data model with zero rows ever
     written.  This is what writes them.
+
+    ``verified`` is required rather than defaulted (RT-16).  ``LeagueRegistry._recompute`` builds
+    its multi-axis ratings from exactly the observations that carry it, so a stub row marked
+    ``verified=True`` is how a chance-level hash acquires a confidence interval in the durable
+    archive.  A stub row is recorded and **not** counted.
     """
 
     return tuple(
@@ -661,7 +792,7 @@ def observations_from_rows(
             mechanisms=(MECHANISM, f"level:{row.level}", f"variant:{row.variant}"),
             score=1.0 if row.correct else 0.0,
             opponent_id=opponent_id,
-            verified=True,
+            verified=verified,
         )
         for row in outcome.rows
     )
@@ -671,6 +802,51 @@ PARETO_OBJECTIVES: tuple[Objective, ...] = (
     Objective("J_solve", Direction.MAXIMIZE),
     Objective("J_cost", Direction.MINIMIZE),
 )
+
+#: What the archive ranks on when the evaluator is a stub (RT-16).  Every name carries the basis
+#: that produced it, so no ranking anywhere - front, frontier, ``objective_metrics`` in
+#: ``league-registry.json`` - can be read as a ranking on ``J_solve``.
+STUB_DIAGNOSTIC_OBJECTIVES: tuple[Objective, ...] = (
+    Objective("EXECUTABILITY_STUB::stub_choice_agreement", Direction.MAXIMIZE),
+    Objective("EXECUTABILITY_STUB::rendered_prompt_bytes_mean", Direction.MINIMIZE),
+)
+
+
+def objectives_for(mode: EvaluationMode) -> tuple[Objective, ...]:
+    """The objectives a run of this mode may rank on.
+
+    Under ``EXECUTABILITY_STUB`` there are no ``J_*`` values in existence to rank on, so the
+    archive ranks on the explicitly-named diagnostics instead; the loop's selection machinery is
+    exercised, and the ordering it produces claims nothing.
+    """
+
+    return PARETO_OBJECTIVES if mode.permits_scientific_fitness else STUB_DIAGNOSTIC_OBJECTIVES
+
+
+def archive_objectives(record: FitnessRecord) -> dict[str, float]:
+    """What may be written into the league archive for one record (RT-16).
+
+    Fails closed: a ``J_*`` key under a non-scientific mode raises rather than being dropped,
+    because silently discarding it would leave the archive quietly incomplete instead of loudly
+    wrong.
+    """
+
+    if record.fitness_vector.admissible_as_fitness:
+        return record.fitness_vector.measured()
+    if record.diagnostics is None:
+        return {}
+    metrics = record.diagnostics.archive_metrics()
+    # Both spellings: the archive key *and* the raw reading name it was built from, so a
+    # diagnostics block that reached the record without passing its own constructor - a
+    # hand-edited artefact, a forged object - is still caught here.
+    names = set(metrics) | set(record.diagnostics.readings)
+    scientific = sorted(names & set(DIMENSION_DIRECTIONS))
+    if scientific:
+        raise StubFitnessNotRepresentable(
+            f"refusing to rank {record.child_genome_id} on {scientific} under "
+            f"evaluation_mode={record.evaluation_mode.value}, actor={record.actor.value}"
+        )
+    return metrics
 
 
 # -------------------------------------------------------------------------------- selection
@@ -683,8 +859,9 @@ def choose_parent(
     generation: int,
     registry: LeagueRegistry,
     rng: random.Random,
+    objectives: Sequence[Objective],
 ) -> LanguageGenome:
-    """Deterministic given (population, strategy, generation, archive, seeded rng)."""
+    """Deterministic given (population, strategy, generation, archive, seeded rng, objectives)."""
 
     if not population:
         raise ValueError("the population is empty")
@@ -694,12 +871,12 @@ def choose_parent(
         ParetoPoint(genome.candidate_id, registry.candidates[genome.candidate_id].objective_metrics)
         for genome in population
         if genome.candidate_id in registry.candidates
-        and {objective.name for objective in PARETO_OBJECTIVES}
+        and {objective.name for objective in objectives}
         <= registry.candidates[genome.candidate_id].objective_metrics.keys()
     ]
     if not points:
         return population[generation % len(population)]
-    front = select_frontier_diverse(points, PARETO_OBJECTIVES, max(1, len(points) // 2))
+    front = select_frontier_diverse(points, objectives, max(1, len(points) // 2))
     by_id = {genome.candidate_id: genome for genome in population}
     return by_id[front[rng.randrange(len(front))]]
 
@@ -760,7 +937,14 @@ class CandidateResult:
             "inert": self.gate.inert,
             "failure_modes": list(self.record.failure_modes),
             "gates": {item.name: item.status.value for item in self.record.semantic_gate_results},
+            # Empty under a stub, and empty for a reason the next two keys name (RT-16, RT-04).
             "fitness": self.record.fitness_vector.measured(),
+            "evaluation_mode": self.record.evaluation_mode.value,
+            "actor": self.record.actor.value,
+            "fitness_admissible": self.record.fitness_vector.admissible_as_fitness,
+            "diagnostics": (
+                {} if self.record.diagnostics is None else self.record.diagnostics.archive_metrics()
+            ),
             "content_hash": self.record.content_hash,
         }
 
@@ -796,6 +980,11 @@ class LoopConfig:
     arena: ArenaSpec = field(default_factory=ArenaSpec)
     adversary_permutations: int = 500
     adversary_bootstrap: int = 300
+    #: Which draw of this experiment the run is taking (RT-13).  The default is the primary draw;
+    #: a replicate must be constructed with an authoriser, a reason and a plan, and it changes the
+    #: ``run_id`` as well as every ``record_id``, so a second draw is visible in the artefact tree
+    #: rather than hidden inside one.
+    replicate: ReplicateAuthorisation = field(default_factory=ReplicateAuthorisation.primary)
 
     def __post_init__(self) -> None:
         if not 1 <= self.population <= len(SEED_GENOMES):
@@ -814,6 +1003,7 @@ class LoopConfig:
             "arena": self.arena.to_dict(),
             "adversary_permutations": self.adversary_permutations,
             "adversary_bootstrap": self.adversary_bootstrap,
+            "replicate": self.replicate.to_dict(),
         }
 
     @property
@@ -950,13 +1140,19 @@ class EvolutionLoop:
         child: LanguageGenome = proposal.genome
         self.genomes[child.candidate_id] = child
         started = time.perf_counter()
+        mode = self.evaluator.evaluation_mode
+        actor = self.evaluator.actor
         gate = semantic_gate(parent=parent, child=child, items=self.solve_items)
         gates: list[GateOutcome] = list(gate.outcomes)
         failures: list[str] = list(gate.failure_modes)
         evaluation: EvaluationOutcome | None = None
+        diagnostics: DiagnosticReadings | None = None
         outcome = Outcome.KILLED_BY_SEMANTIC_GATE
         vector = FitnessVector.build(
-            [], note="candidate was killed by the semantic gate and was never scored"
+            [],
+            note="candidate was killed by the semantic gate and was never scored",
+            evaluation_mode=mode,
+            actor=actor,
         )
         uncertainty: dict[str, Any] = {}
         calls = tokens = 0
@@ -978,29 +1174,45 @@ class EvolutionLoop:
                     language=language_for_genome(child),
                     items=self.solve_items,
                 )
-                vector = build_fitness_vector(evaluation)
+                vector = build_fitness_vector(evaluation, evaluation_mode=mode, actor=actor)
                 calls, tokens = evaluation.calls, evaluation.tokens
                 outcome = Outcome.SCORED
-                uncertainty = {
-                    "J_solve": {
-                        "interval": [vector["J_solve"].lower, vector["J_solve"].upper],
-                        "clustered": False,
-                        "cluster_unit_available": "family_id",
-                        "note": "unclustered; twins within a family are not independent trials",
-                    },
-                    "J_cost": {
-                        "interval": [vector["J_cost"].lower, vector["J_cost"].upper],
-                        "clustered": False,
-                    },
-                    "power": "NOT_COMPUTED_AT_THIS_N",
-                    "confirmatory": False,
-                }
+                if vector.admissible_as_fitness:
+                    uncertainty = {
+                        "J_solve": {
+                            "interval": [vector["J_solve"].lower, vector["J_solve"].upper],
+                            "clustered": False,
+                            "cluster_unit_available": "family_id",
+                            "note": "unclustered; twins within a family are not independent trials",
+                        },
+                        "J_cost": {
+                            "interval": [vector["J_cost"].lower, vector["J_cost"].upper],
+                            "clustered": False,
+                        },
+                        "power": "NOT_COMPUTED_AT_THIS_N",
+                        "confirmatory": False,
+                    }
+                else:
+                    # RT-16: there is no interval to report, because there is no reading to be
+                    # uncertain about.  Saying so is not the same as leaving the block empty.
+                    diagnostics = build_diagnostics(evaluation, basis=mode)
+                    uncertainty = {
+                        "power": "NOT_APPLICABLE_NO_ADMISSIBLE_READING",
+                        "confirmatory": False,
+                        "note": (
+                            f"evaluation_mode={mode.value}, actor={actor.value}: no fitness "
+                            "dimension carries a value, so no interval is reported. The numbers "
+                            "the run produced are in the diagnostics block and are not fitness."
+                        ),
+                    }
 
         status = RecordStatus.COMPLETE if outcome is Outcome.SCORED else RecordStatus.REFUSED
         record = FitnessRecord(
             run_id=self.config.run_id,
             generation=generation,
             harness_version=HARNESS_VERSION,
+            evaluation_mode=mode,
+            actor=actor,
             parent_genome_id=parent.candidate_id,
             parent_genome_hash=parent.genome_hash,
             child_genome_id=child.candidate_id,
@@ -1010,6 +1222,10 @@ class EvolutionLoop:
             ),
             evaluation_context=self._context(),
             model=self.evaluator.model,
+            condition=self.evaluator.condition,
+            # V0 takes one draw per experiment.  A second would need an authorisation naming who
+            # asked for it and why (RT-13); re-proposing the same edge does not qualify.
+            replicate=self.config.replicate,
             dataset=self.config.arena.dataset(),
             budget=Budget(
                 calls=calls,
@@ -1019,6 +1235,7 @@ class EvolutionLoop:
                 verifier_calls=0,
             ),
             fitness_vector=vector,
+            diagnostics=diagnostics,
             uncertainty=uncertainty,
             failure_modes=tuple(failures),
             semantic_gate_results=tuple(gates),
@@ -1044,14 +1261,22 @@ class EvolutionLoop:
 
     # ------------------------------------------------------------------ one generation
 
+    @property
+    def objectives(self) -> tuple[Objective, ...]:
+        """What this run's archive may rank on - never ``J_*`` under a stub (RT-16)."""
+
+        return objectives_for(self.evaluator.evaluation_mode)
+
     def run_generation(self, generation: int) -> GenerationResult:
         rng = random.Random(f"{self.config.seed}|{generation}")
+        objectives = self.objectives
         parent = choose_parent(
             self.population,
             strategy=self.config.strategy,
             generation=generation,
             registry=self.registry,
             rng=rng,
+            objectives=objectives,
         )
         results: list[CandidateResult] = []
         used: set[str] = set(self.genomes)
@@ -1086,24 +1311,25 @@ class EvolutionLoop:
                         item.evaluation,
                         arena_id=self.config.arena.arena_id,
                         opponent_id=item.parent_id,
+                        verified=self._observations_are_verified(),
                     ),
                     suite_id=self.config.arena.arena_id,
                 )
             )
-            self.registry.set_objectives(item.child_id, item.record.fitness_vector.measured())
+            self.registry.set_objectives(item.child_id, archive_objectives(item.record))
 
         self._score_population_baselines(generation)
         ranked = [
             candidate_id
             for candidate_id in self.registry.candidates
-            if {objective.name for objective in PARETO_OBJECTIVES}
+            if {objective.name for objective in objectives}
             <= self.registry.candidates[candidate_id].objective_metrics.keys()
         ]
-        fronts = rank_registry(self.registry, PARETO_OBJECTIVES, candidate_ids=ranked)
+        fronts = rank_registry(self.registry, objectives, candidate_ids=ranked)
         points = [
             ParetoPoint(cid, self.registry.candidates[cid].objective_metrics) for cid in ranked
         ]
-        survivors = select_frontier_diverse(points, PARETO_OBJECTIVES, self.config.population)
+        survivors = select_frontier_diverse(points, objectives, self.config.population)
         self.population = [self.genomes[cid] for cid in survivors if cid in self.genomes] or list(
             self.population
         )
@@ -1115,6 +1341,17 @@ class EvolutionLoop:
             population_after=tuple(genome.candidate_id for genome in self.population),
             children_requested=self.config.children_per_generation,
         )
+
+    def _observations_are_verified(self) -> bool:
+        """Whether league rows from this evaluator may feed the archive's ratings (RT-16).
+
+        ``LeagueRegistry._recompute`` skips unverified observations, so a stub's rows are stored
+        - a refusal to store them would hide that the loop ran - and excluded from every rating.
+        Without this, ``league-registry.json`` reports a normal-approximation interval over rows
+        produced by ``sha256(prompt) mod n_options``.
+        """
+
+        return self.evaluator.evaluation_mode.permits_scientific_fitness
 
     def _score_population_baselines(self, generation: int) -> None:
         """Every seed in the population is measured on the same rows, once.
@@ -1146,13 +1383,22 @@ class EvolutionLoop:
                         )[:20]
                     ),
                     observations=observations_from_rows(
-                        outcome, arena_id=self.config.arena.arena_id, opponent_id=None
+                        outcome,
+                        arena_id=self.config.arena.arena_id,
+                        opponent_id=None,
+                        verified=self._observations_are_verified(),
                     ),
                     suite_id=self.config.arena.arena_id,
                 )
             )
+            mode = self.evaluator.evaluation_mode
+            actor = self.evaluator.actor
+            vector = build_fitness_vector(outcome, evaluation_mode=mode, actor=actor)
             self.registry.set_objectives(
-                genome.candidate_id, build_fitness_vector(outcome).measured()
+                genome.candidate_id,
+                vector.measured()
+                if vector.admissible_as_fitness
+                else build_diagnostics(outcome, basis=mode).archive_metrics(),
             )
 
     # ------------------------------------------------------------------ whole run
@@ -1166,6 +1412,12 @@ class EvolutionLoop:
             "loop_version": LOOP_VERSION,
             "config": self.config.to_dict(),
             "model": self.evaluator.model.to_dict(),
+            "evaluation_mode": self.evaluator.evaluation_mode.value,
+            "actor": self.evaluator.actor.value,
+            "condition": self.evaluator.condition.to_dict(),
+            "replicate": self.config.replicate.to_dict(),
+            "ranked_on": [objective.name for objective in self.objectives],
+            "observations_verified": self._observations_are_verified(),
             "model_calls": 0,
             "generations": [item.summary() for item in generations],
             "records": self.records.summary(),
@@ -1190,6 +1442,9 @@ def compact_summary(summary: Mapping[str, Any]) -> dict[str, Any]:
         "run_id": summary["run_id"],
         "loop_version": summary["loop_version"],
         "scientific_status": summary["scientific_status"],
+        "evaluation_mode": summary["evaluation_mode"],
+        "actor": summary["actor"],
+        "ranked_on": summary["ranked_on"],
         "model": summary["model"]["name"],
         "model_calls": summary["model_calls"],
         "generations": [
@@ -1204,6 +1459,8 @@ def compact_summary(summary: Mapping[str, Any]) -> dict[str, Any]:
                         "gates": child["gates"],
                         "failure_modes": child["failure_modes"],
                         "fitness": child["fitness"],
+                        "fitness_admissible": child["fitness_admissible"],
+                        "diagnostics": child["diagnostics"],
                     }
                     for child in item["candidates"]
                 ],
@@ -1266,7 +1523,10 @@ if __name__ == "__main__":  # pragma: no cover - CLI entry point
 
 
 __all__ = [
+    "ADDRESSED_DIMENSIONS",
     "LOOP_VERSION",
+    "PARETO_OBJECTIVES",
+    "STUB_DIAGNOSTIC_OBJECTIVES",
     "ArenaSpec",
     "CandidateResult",
     "EvaluationOutcome",
@@ -1281,8 +1541,12 @@ __all__ = [
     "ParentSelection",
     "StubLadderEvaluator",
     "StubSolver",
+    "archive_objectives",
+    "build_diagnostics",
     "build_fitness_vector",
+    "choose_parent",
     "leakage_gate",
+    "objectives_for",
     "live_gene_families",
     "main",
     "model_view",

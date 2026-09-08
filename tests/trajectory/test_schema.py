@@ -207,6 +207,48 @@ def test_envelope_identity_is_state_id_plus_content_hash() -> None:
     assert envelope.envelope_id == f"LEAN4_TACTIC_STATE_PP:3:{envelope.pp_sha256[:32]}"
 
 
+def test_a_state_id_means_nothing_outside_the_session_that_issued_it() -> None:
+    """RT-02: Lean hands out per-session integers, so ``"1"`` alone is not an identity."""
+
+    here = BackendStateEnvelope(index=1, state_id="1", pp="⊢ p", session_id="lean4-repl-aaa")
+    there = BackendStateEnvelope(index=1, state_id="1", pp="⊢ p", session_id="lean4-repl-bbb")
+    assert not here.same_backend_state_as(there)
+    assert here.envelope_id != there.envelope_id
+    assert here.same_backend_state_as(replace(there, session_id="lean4-repl-aaa"))
+
+
+def test_the_session_binding_is_part_of_the_records_identity() -> None:
+    """A record that names its session hashes differently from one that does not."""
+
+    unbound = make_trajectory(3)
+    bound = replace(
+        unbound,
+        states=tuple(
+            replace(state, session_id="lean4-repl-aaa", problem_id=unbound.problem_id)
+            for state in unbound.states
+        ),
+    )
+    assert bound.content_hash != unbound.content_hash
+    assert bound.states_hash != unbound.states_hash
+    core = bound.semantic_core()["states"][0]
+    assert core["session_id"] == "lean4-repl-aaa"
+    assert core["problem_id"] == unbound.problem_id
+
+
+def test_records_written_before_the_binding_keep_their_hashes_byte_for_byte() -> None:
+    """The committed banks must not be invalidated: an absent field is an absent claim.
+
+    ``semantic_core`` writes the binding only when there is one, so the pre-image of a legacy
+    record's ``content_hash`` — and therefore its ``trajectory_id`` — is unchanged.
+    """
+
+    legacy = make_trajectory(3)
+    assert all(state.session_id == "" and state.problem_id == "" for state in legacy.states)
+    for state in legacy.semantic_core()["states"]:
+        assert set(state) == {"index", "state_id", "backend_kind", "pp_sha256", "n_goals"}
+    assert legacy.states[0].envelope_id.count(":") == 2, "no session segment when unbound"
+
+
 def test_state_identity_is_the_backend_id_never_the_rendered_string() -> None:
     """`univ` vs `Finset.univ`: the same state renders differently under a different scope."""
 

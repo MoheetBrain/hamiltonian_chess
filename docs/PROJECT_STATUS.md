@@ -649,6 +649,55 @@ Solver in it. Today the world is replay-only with zero solver actions, so manual
 `INTERACTIVE_TASK` mode does not exist and autonomous long-horizon claims stay blocked. Fix RT-03
 and RT-13 first: both corrupt the fitness record the moment an evaluator makes outcomes stochastic.
 
+## HC-V0.5 (2026-09-08) — `HC_V0_5_REAL_PLAYER_EXECUTABLE`
+
+**A real Solver autonomously played real Lean mathematics under kernel verification.** Before this,
+every action in the trajectory bank carried `actor=REFERENCE`: the world existed, the outer loop
+existed, and no policy had ever chosen a move.
+
+Decisive episode — `LinearEquiv.snd_comp_prodComm`: four consecutive Solver-proposed tactics, each
+accepted by the elaborator, terminal `CLOSED_VERIFIED`. Smoke bank
+(`artifacts/trajectory/hc_v0_5_smoke.json`): **30 episodes · 4 solved · 16 accepted Solver
+transitions · 47 rejected · 0 parse failures · longest chain 4 · 30/30 trajectories emitted with
+states, `pp_sha256` and kernel receipts.** Read `docs/HC_V0_5_RESULT.md` and
+`docs/HC_V0_5_HANDOFF.md`.
+
+**The environment is genuinely a game**, measured before the task layer existed: across 14 theorems
+Lean accepted a **non-reference** tactic in **10**, and in **2** an alternative closed a goal
+mathlib proves differently (`research/phase9/interactive_probe/`).
+
+### The finding that outranks the solve rate
+
+**The runtime is not reproducible, and temperature 0 does not fix it.** Two runs of an identical
+6-task configuration gave different `result_hash`. Every Lean state and kernel receipt was
+identical; only Solver output diverged, on retries, with **identical `prompt_sha256` and identical
+prompt token counts**. In isolation the same prompt returns the same answer 6/6; divergence appears
+once other calls pass through the same server process. **HC-V0.6 is a paired assay, and paired
+designs assume exactly the reproducibility this runtime lacks.** Settle it before any language
+comparison.
+
+Two further findings: **`thinking` silently voids the Solver** (answer diverted to a separate
+field, `response` empty — every proposal would be a parse failure; `think=False` now frozen), and
+**the retry is near-useless** because the backend diagnostic never reaches the Solver.
+
+### Red team — `hc-v0.5-redteam-2026-09-08`
+
+**25 confirmed defects, 0 CRITICAL, 7 HIGH.** Not blocked on soundness: Lean never accepted a false
+proof, no harness fault paid reward, no reference tactic reached the prompt. **But attribution is
+weaker than the mathematics** — an oracle-fed episode can be emitted as `actor=SOLVER` and pass
+`verify_bank(relive=True)`. Fixed this session: **V05-24** (the runner emitted no re-verifiable
+trajectory), **V05-02** (solver digest never verified), **V05-10**, **V05-11**. Still open and
+blocking any autonomy claim: **V05-01**, **V05-03**. `docs/HC_V0_5_REDTEAM.md` has all 25 with
+reproductions.
+
+### Record-integrity blockers closed before any stochastic call
+
+**RT-03** (relive verified the source proof, not the artifact's actions), **RT-02** (theorem
+splicing passed at load), **RT-13** (identity 11 → **21 components**; a re-rolled `mutation_hash`
+now yields `SAME_CONDITION_REUSE`; a second draw needs `ReplicateAuthorisation`), **RT-04** (actor
+bound into identity and condition; `ActorPoolingViolation`), **RT-16** (stub fitness is type-level
+unrepresentable). **RT-04 remains open at the trajectory layer.**
+
 ## Current Blockers
 
 1. **The meta-game has no verified trajectory world.** Every existing environment is a

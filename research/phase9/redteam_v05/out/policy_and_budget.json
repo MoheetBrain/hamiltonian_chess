@@ -1,0 +1,167 @@
+{
+ "P1_retry_allowance_reset_by_no_op": {
+  "accepted_no_ops": 40,
+  "baseline_consecutive": {
+   "rejections_absorbed": 2,
+   "terminal": "FAILED"
+  },
+  "declared_policy": {
+   "declared_before_measurement": true,
+   "diagnostic_max_chars": 400,
+   "effective_retries": 1,
+   "max_retries": 1,
+   "policy": "ONE_DIAGNOSTIC_RETRY",
+   "scope": "PER_CONSECUTIVE_RUN"
+  },
+  "no_op_suspected_gates_nothing": true,
+  "note": "ONE_DIAGNOSTIC_RETRY/max_retries=1 bounds a RUN of failures, not an episode; any accepted tactic (Lean's `skip` is always accepted and is a no-op) restores it",
+  "rejections_absorbed_with_interleaved_no_op": 40,
+  "terminal": "OPEN",
+  "verdict": "DEFECT"
+ },
+ "P2_model_action_budget_overrun": {
+  "arena_attempts": 4,
+  "attempts_remaining_reported": 0,
+  "budget_model_actions": 4,
+  "log": [
+   [
+    "rfl\\0",
+    "PARSE_FAILURE",
+    3
+   ],
+   [
+    "skip",
+    "ACCEPTED_TRANSITION",
+    2
+   ],
+   [
+    "rfl\\0",
+    "PARSE_FAILURE",
+    1
+   ],
+   [
+    "skip",
+    "ACCEPTED_TRANSITION",
+    0
+   ],
+   [
+    "rfl\\0",
+    "PARSE_FAILURE",
+    0
+   ],
+   [
+    "skip",
+    "ACCEPTED_TRANSITION",
+    0
+   ],
+   [
+    "rfl\\0",
+    "PARSE_FAILURE",
+    0
+   ],
+   [
+    "skip",
+    "ACCEPTED_TRANSITION",
+    0
+   ]
+  ],
+  "model_actions_charged": 8,
+  "note": "task.attempts_remaining clamps at 0 and terminates nothing; only the ARENA's attempt_budget can end the episode, and an action that never reached the backend does not consume one",
+  "terminal": "BUDGET_EXHAUSTED",
+  "verdict": "DEFECT"
+ },
+ "P3_unenforced_budget_counters": {
+  "cap_kernel_steps": 1,
+  "source_references_to_each_cap": {
+   "kernel_steps": 0,
+   "model_actions": 3,
+   "tool_calls": 0,
+   "verifier_calls": 0,
+   "wall_clock_s": 3
+  },
+  "spent_kernel_steps": 5,
+  "spent_tool_calls": 5,
+  "spent_verifier_calls": 5,
+  "terminal": "OPEN",
+  "verdict": "DEFECT"
+ },
+ "P4_backend_dead_scored_as_solver_failure": {
+  "charged_to_solver": false,
+  "expected_outcome_name": "ENVIRONMENT_ERROR",
+  "is_mathematical_failure": false,
+  "model_actions_charged": 1,
+  "result": "ENVIRONMENT_ERROR",
+  "retries_remaining": 1,
+  "reward": 0.0,
+  "terminal": "ERROR_BACKEND",
+  "terminal_outcome": "ENVIRONMENT_ERROR",
+  "verdict": "HELD"
+ },
+ "P4_session_expired_scored_as_solver_failure": {
+  "charged_to_solver": false,
+  "expected_outcome_name": "EPISODE_ABANDONED",
+  "is_mathematical_failure": false,
+  "model_actions_charged": 1,
+  "result": "ENVIRONMENT_ERROR",
+  "retries_remaining": 1,
+  "reward": 0.0,
+  "terminal": "ABANDONED",
+  "terminal_outcome": "EPISODE_ABANDONED",
+  "verdict": "HELD"
+ },
+ "P4_timeout_scored_as_solver_failure": {
+  "charged_to_solver": false,
+  "expected_outcome_name": "TOOL_TIMEOUT",
+  "is_mathematical_failure": false,
+  "model_actions_charged": 1,
+  "result": "TOOL_TIMEOUT",
+  "retries_remaining": 1,
+  "reward": 0.0,
+  "terminal": "ERROR_BACKEND",
+  "terminal_outcome": "TOOL_TIMEOUT",
+  "verdict": "HELD"
+ },
+ "P5_terminal_relabelled_to_solved": {
+  "final_terminal": "ERROR_BACKEND",
+  "first_terminal": "ERROR_BACKEND",
+  "refusal": "TaskStateError: episode is already terminal (ERROR_BACKEND); call reset() to start a new one rather ",
+  "reward": 0.0,
+  "step_after_terminal_accepted": false,
+  "verdict": "HELD"
+ },
+ "P6_macro_cost_hiding": {
+  "classifications": {
+   "all_goals (simp; ring)": "ALLOWED",
+   "constructor <;> simp <;> omega": "ALLOWED",
+   "decide": "ALLOWED",
+   "intro h; exact h.symm; rfl": "ALLOWED",
+   "native_decide": "ALLOWED",
+   "repeat (first | rfl | simp | ring | omega | aesop)": "ALLOWED"
+  },
+  "default_policy": "record_only",
+  "note": "ActionCost.kernel_step_count is `1 if accepted else 0`; a `<;>`/`repeat`/`all_goals` action bundles many elaborator steps and still costs 1",
+  "one_combinator_action_cost": {
+   "completion_tokens": null,
+   "kernel_step_count": 1,
+   "lowered_action_count": 1,
+   "model_action_count": 1,
+   "prompt_tokens": null,
+   "tool_call_count": 1,
+   "total_tokens": null,
+   "verifier_call_count": 1,
+   "wall_clock_s": 9e-06
+  },
+  "verdict": "DEFECT"
+ },
+ "P7_wall_clock_cap_not_enforced": {
+  "terminal": "BUDGET_EXHAUSTED",
+  "terminal_outcome": "SEARCH_BUDGET_EXHAUSTED",
+  "verdict": "HELD"
+ },
+ "P8_abandon_filed_as_failure_or_solve": {
+  "reward": 0.0,
+  "terminal": "ABANDONED",
+  "terminal_outcome": "EPISODE_ABANDONED",
+  "verdict": "HELD"
+ }
+}

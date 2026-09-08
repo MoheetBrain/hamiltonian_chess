@@ -1,0 +1,136 @@
+v05_honest_control {"structural_passed": true, "structural_failures": [], "relive_passed": true, "relived": 1, "relive_matches": 1, "relive_failures": [], "wall_s": 3.3}
+v05_forged_action_and_evidence {"structural_passed": true, "structural_failures": [], "relive_passed": false, "relived": 1, "relive_matches": 0, "relive_failures": ["vt-a1f7cada31c265aaf6ed7d2f: relive mismatch: stored action 0 ('aesop') produced a state the artefact does not record: re-run reached backend state '1', the record claims state 1"], "wall_s": 1.6}
+v05_forged_solver_actor {"structural_passed": true, "structural_failures": [], "relive_passed": true, "relived": 1, "relive_matches": 1, "relive_failures": [], "wall_s": 3.3}
+G2_coordinated_action_and_evidence_swap: VERDICT=HELD  {'caught_by_structural_check': False, 'caught_by_relive': True, 'detail': {'structural_passed': True, 'structural_failures': [], 'relive_passed': False, 'relived': 1, 'relive_matches': 0, 'relive_failures': ["vt-a1f7cada31c265aaf6ed7d2f: relive mismatch: stored action 0 ('aesop') produced a state the artefact does not record: re-run reached backend state '1', the record claims state 1"], 'wall_s': 1.6}, 'note': "the previous suite's swap was caught by the evidence cross-check alone; this one rew
+G3_actor_relabel_still_verifies: VERDICT=DEFECT  {'detail': {'structural_passed': True, 'structural_failures': [], 'relive_passed': True, 'relived': 1, 'relive_matches': 1, 'relive_failures': [], 'wall_s': 3.3}, 'horizon_claimed': {'achieved': 5, 'verified': 5, 'reference': 5, 'solver_actions': 5, 'reference_actions': 0, 'episode_length': 5, 'observed_trace_length': 5, 'kernel_step_count': 5, 'dependency_depth': 'UNKNOWN', 'minimal_proof_length': 'UNKNOWN'}, 'note': "RT-04 carry-over: a flat replay of mathlib's own proof, relabelled, passes ve
+G4_same_scope_splice: VERDICT=HELD  {'setup': {'distinct_scopes_in_bank': 16, 'largest_scope_group': 1, 'same_scope_pair_available': False}, 'note': 'no two trajectories in the committed h5 bank share an elaboration scope'}
+{
+ "G2_coordinated_action_and_evidence_swap": {
+  "caught_by_relive": true,
+  "caught_by_structural_check": false,
+  "detail": {
+   "relive_failures": [
+    "vt-a1f7cada31c265aaf6ed7d2f: relive mismatch: stored action 0 ('aesop') produced a state the artefact does not record: re-run reached backend state '1', the record claims state 1"
+   ],
+   "relive_matches": 0,
+   "relive_passed": false,
+   "relived": 1,
+   "structural_failures": [],
+   "structural_passed": true,
+   "wall_s": 1.6
+  },
+  "note": "the previous suite's swap was caught by the evidence cross-check alone; this one rewrites the evidence too, so only the re-execution can catch it",
+  "verdict": "HELD"
+ },
+ "G2_setup": {
+  "evidence_rewritten_in_step": 5,
+  "forged_tactic": "aesop",
+  "load_error": "",
+  "loads_without_error": true,
+  "new_trajectory_id": "vt-a1f7cada31c265aaf6ed7d2f",
+  "original_tactics": [
+   "ext1 x",
+   "push_cast",
+   "simp_rw [Pi.add_apply, weightedSMul_apply]",
+   "push_cast",
+   "rw [Pi.add_apply, ENNReal.toReal_add h\u03bcs h\u03bds, add_smul]"
+  ]
+ },
+ "G3_actor_relabel_still_verifies": {
+  "detail": {
+   "relive_failures": [],
+   "relive_matches": 1,
+   "relive_passed": true,
+   "relived": 1,
+   "structural_failures": [],
+   "structural_passed": true,
+   "wall_s": 3.3
+  },
+  "horizon_claimed": {
+   "achieved": 5,
+   "dependency_depth": "UNKNOWN",
+   "episode_length": 5,
+   "kernel_step_count": 5,
+   "minimal_proof_length": "UNKNOWN",
+   "observed_trace_length": 5,
+   "reference": 5,
+   "reference_actions": 0,
+   "solver_actions": 5,
+   "verified": 5
+  },
+  "note": "RT-04 carry-over: a flat replay of mathlib's own proof, relabelled, passes verify_bank(relive=True) claiming solver_actions == achieved",
+  "verdict": "DEFECT"
+ },
+ "G3_setup": {
+  "claim": "a flat replay of a recorded mathlib proof, reported as a SOLVER horizon",
+  "horizon_after": {
+   "achieved": 5,
+   "dependency_depth": "UNKNOWN",
+   "episode_length": 5,
+   "kernel_step_count": 5,
+   "minimal_proof_length": "UNKNOWN",
+   "observed_trace_length": 5,
+   "reference": 5,
+   "reference_actions": 0,
+   "solver_actions": 5,
+   "verified": 5
+  }
+ },
+ "G4_same_scope_splice": {
+  "note": "no two trajectories in the committed h5 bank share an elaboration scope",
+  "setup": {
+   "distinct_scopes_in_bank": 16,
+   "largest_scope_group": 1,
+   "same_scope_pair_available": false
+  },
+  "verdict": "HELD"
+ },
+ "G4_setup": {
+  "distinct_scopes_in_bank": 16,
+  "largest_scope_group": 1,
+  "same_scope_pair_available": false
+ },
+ "bank": {
+  "closed_verified": 9,
+  "path": "artifacts/trajectory_bank_v0/h5/bank.jsonl",
+  "rows": 16,
+  "states_carry_problem_binding": [
+   false
+  ],
+  "states_carry_session_binding": [
+   false
+  ]
+ },
+ "toolchain": true,
+ "verdict_v05_forged_action_and_evidence": {
+  "relive_failures": [
+   "vt-a1f7cada31c265aaf6ed7d2f: relive mismatch: stored action 0 ('aesop') produced a state the artefact does not record: re-run reached backend state '1', the record claims state 1"
+  ],
+  "relive_matches": 0,
+  "relive_passed": false,
+  "relived": 1,
+  "structural_failures": [],
+  "structural_passed": true,
+  "wall_s": 1.6
+ },
+ "verdict_v05_forged_solver_actor": {
+  "relive_failures": [],
+  "relive_matches": 1,
+  "relive_passed": true,
+  "relived": 1,
+  "structural_failures": [],
+  "structural_passed": true,
+  "wall_s": 3.3
+ },
+ "verdict_v05_honest_control": {
+  "relive_failures": [],
+  "relive_matches": 1,
+  "relive_passed": true,
+  "relived": 1,
+  "structural_failures": [],
+  "structural_passed": true,
+  "wall_s": 3.3
+ }
+}
+
+[written] /Users/moheet/Documents/ChatGPT/hamiltonian_chess/.claude/worktrees/hamiltonian-phase-8-experiment-691d22/research/phase9/redteam_v05/out/forgery_v05.json

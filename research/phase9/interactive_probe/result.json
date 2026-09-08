@@ -1,0 +1,441 @@
+{
+ "accepted_non_reference": 10,
+ "alternatives_offered": [
+  "simp",
+  "omega",
+  "aesop",
+  "norm_num",
+  "rfl",
+  "decide",
+  "tauto",
+  "linarith",
+  "exact rfl",
+  "simp_all"
+ ],
+ "closed_by_non_reference": 2,
+ "probe": "non-reference-action-acceptance-v1",
+ "probes": 14,
+ "question": "will Lean accept an action that is not the reference proof action?",
+ "rows": [
+  {
+   "accepted_alternative": "norm_num",
+   "closed_goal": false,
+   "full_name": "edist_vsub_vsub_le",
+   "problem_id": "Mathlib/Analysis/Normed/Group/AddTorsor.lean::edist_vsub_vsub_le",
+   "reference_tactics": [
+    "simp only [edist_nndist]",
+    "norm_cast",
+    "apply dist_vsub_vsub_le"
+   ],
+   "rejections": [
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "simp"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "omega"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "aesop"
+    }
+   ]
+  },
+  {
+   "accepted_alternative": null,
+   "closed_goal": null,
+   "full_name": "Nat.mul_add_mod'",
+   "problem_id": "Mathlib/Data/Nat/Defs.lean::Nat.mul_add_mod'",
+   "reference_tactics": [
+    "rw [Nat.mul_comm, Nat.mul_add_mod]"
+   ],
+   "rejections": [
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "simp"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "omega"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "aesop"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "norm_num"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "rfl"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "decide"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "tauto"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "linarith"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "exact rfl"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "simp_all"
+    }
+   ]
+  },
+  {
+   "accepted_alternative": "norm_num",
+   "closed_goal": false,
+   "full_name": "MeasureTheory.OuterMeasure.restrict_biInf",
+   "problem_id": "Mathlib/MeasureTheory/OuterMeasure/OfFunction.lean::MeasureTheory.OuterMeasure.restrict_biInf",
+   "reference_tactics": [
+    "haveI := hI.to_subtype",
+    "rw [\u2190 iInf_subtype'', \u2190 iInf_subtype'']",
+    "exact restrict_iInf _ _"
+   ],
+   "rejections": [
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "simp"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "omega"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "aesop"
+    }
+   ]
+  },
+  {
+   "accepted_alternative": "aesop",
+   "closed_goal": true,
+   "full_name": "LieSubalgebra.ofLe_eq_comap_incl",
+   "problem_id": "Mathlib/Algebra/Lie/Subalgebra.lean::LieSubalgebra.ofLe_eq_comap_incl",
+   "reference_tactics": [
+    "ext",
+    "rw [mem_ofLe]",
+    "rfl"
+   ],
+   "rejections": [
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "simp"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "omega"
+    }
+   ]
+  },
+  {
+   "accepted_alternative": "simp",
+   "closed_goal": false,
+   "full_name": "Ordnode.dual_node3L",
+   "problem_id": "Mathlib/Data/Ordmap/Ordset.lean::Ordnode.dual_node3L",
+   "reference_tactics": [
+    "simp [node3L, node3R, dual_node', add_comm]"
+   ],
+   "rejections": []
+  },
+  {
+   "accepted_alternative": "norm_num",
+   "closed_goal": false,
+   "full_name": "LinearMap.trace_eq_contract_of_basis'",
+   "problem_id": "Mathlib/LinearAlgebra/Trace.lean::LinearMap.trace_eq_contract_of_basis'",
+   "reference_tactics": [
+    "simp [LinearEquiv.eq_comp_toLinearMap_symm, trace_eq_contract_of_basis b]"
+   ],
+   "rejections": [
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "simp"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "omega"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "aesop"
+    }
+   ]
+  },
+  {
+   "accepted_alternative": "aesop",
+   "closed_goal": false,
+   "full_name": "tendsto_Ioo_atBot",
+   "problem_id": "Mathlib/Topology/Order/DenselyOrdered.lean::tendsto_Ioo_atBot",
+   "reference_tactics": [
+    "rw [\u2190 comap_coe_Ioo_nhdsWithin_Ioi, tendsto_comap_iff]",
+    "rfl"
+   ],
+   "rejections": [
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "simp"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "omega"
+    }
+   ]
+  },
+  {
+   "accepted_alternative": "aesop",
+   "closed_goal": true,
+   "full_name": "LieModule.toEnd_lie",
+   "problem_id": "Mathlib/Algebra/Lie/OfAssociative.lean::LieModule.toEnd_lie",
+   "reference_tactics": [
+    "simp"
+   ],
+   "rejections": [
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "omega"
+    }
+   ]
+  },
+  {
+   "accepted_alternative": null,
+   "closed_goal": null,
+   "full_name": "Set.iUnion_univ_pi",
+   "problem_id": "Mathlib/Data/Set/Lattice.lean::Set.iUnion_univ_pi",
+   "reference_tactics": [
+    "ext",
+    "simp [Classical.skolem]"
+   ],
+   "rejections": [
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "simp"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "omega"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "aesop"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "norm_num"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "rfl"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "decide"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "tauto"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "linarith"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "exact rfl"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "simp_all"
+    }
+   ]
+  },
+  {
+   "accepted_alternative": "norm_num",
+   "closed_goal": false,
+   "full_name": "Int.gcd_a_modEq",
+   "problem_id": "Mathlib/Data/Int/ModEq.lean::Int.gcd_a_modEq",
+   "reference_tactics": [
+    "rw [\u2190 add_zero ((a : \u2124) * _), Nat.gcd_eq_gcd_ab]",
+    "exact (dvd_mul_right _ _).zero_modEq_int.add_left _"
+   ],
+   "rejections": [
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "simp"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "omega"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "aesop"
+    }
+   ]
+  },
+  {
+   "accepted_alternative": null,
+   "closed_goal": null,
+   "full_name": "Function.Semiconj.bijOn_range",
+   "problem_id": "Mathlib/Data/Set/Function.lean::Function.Semiconj.bijOn_range",
+   "reference_tactics": [
+    "rw [\u2190 image_univ]",
+    "exact h.bijOn_image (bijective_iff_bijOn_univ.1 ha) hf.injOn"
+   ],
+   "rejections": [
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "simp"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "omega"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "aesop"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "norm_num"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "rfl"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "decide"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "tauto"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "linarith"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "exact rfl"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "simp_all"
+    }
+   ]
+  },
+  {
+   "accepted_alternative": "norm_num",
+   "closed_goal": false,
+   "full_name": "Matroid.emptyOn_dual_eq",
+   "problem_id": "Mathlib/Data/Matroid/Constructions.lean::Matroid.emptyOn_dual_eq",
+   "reference_tactics": [
+    "rw [\u2190 ground_eq_empty_iff]",
+    "rfl"
+   ],
+   "rejections": [
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "simp"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "omega"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "aesop"
+    }
+   ]
+  },
+  {
+   "accepted_alternative": "aesop",
+   "closed_goal": false,
+   "full_name": "MeasureTheory.Measure.compProd_add_left",
+   "problem_id": "Mathlib/Probability/Kernel/MeasureCompProd.lean::MeasureTheory.Measure.compProd_add_left",
+   "reference_tactics": [
+    "rw [Measure.compProd, kernel.const_add, kernel.compProd_add_left]",
+    "rfl"
+   ],
+   "rejections": [
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "simp"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "omega"
+    }
+   ]
+  },
+  {
+   "accepted_alternative": null,
+   "closed_goal": null,
+   "full_name": "DirectSum.toAddMonoid.unique",
+   "problem_id": "Mathlib/Algebra/DirectSum/Basic.lean::DirectSum.toAddMonoid.unique",
+   "reference_tactics": [
+    "congr",
+    "apply DFinsupp.addHom_ext'",
+    "simp [toAddMonoid, of]"
+   ],
+   "rejections": [
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "simp"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "omega"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "aesop"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "norm_num"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "rfl"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "decide"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "tauto"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "linarith"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "exact rfl"
+    },
+    {
+     "outcome": "TACTIC_ERROR",
+     "tactic": "simp_all"
+    }
+   ]
+  }
+ ],
+ "toolchain": {
+  "lean_version_string": "Lean (version 4.10.0-rc1, arm64-apple-darwin23.5.0, commit 3b58e0649156, Release)",
+  "mathlib_root": "/Users/moheet/Documents/ChatGPT/HML_V3/external/runtime_work/leanprover-community-mathlib4-29dcec074de168ac2bf835a77ef68bbe069194c5/mathlib4"
+ },
+ "verdict": "INTERACTIVE_GAME"
+}
