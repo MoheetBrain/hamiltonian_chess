@@ -1,0 +1,34 @@
+case intro
+R : Type u
+S : Type v
+T : Type w
+a b : R
+n : ℕ
+inst✝¹ : Semiring R
+inst✝ : NoZeroDivisors R
+p✝ q✝ p q : R[X]
+h2 : p * q ≠ 0
+⊢ p.natDegree ≤ (p * q).natDegree
+case intro
+R : Type u
+S : Type v
+T : Type w
+a b : R
+n : ℕ
+inst✝¹ : Semiring R
+inst✝ : NoZeroDivisors R
+p✝ q✝ p q : R[X]
+h2 : p ≠ 0 ∧ q ≠ 0
+⊢ p.natDegree ≤ (p * q).natDegree
+case intro
+R : Type u
+S : Type v
+T : Type w
+a b : R
+n : ℕ
+inst✝¹ : Semiring R
+inst✝ : NoZeroDivisors R
+p✝ q✝ p q : R[X]
+h2 : p ≠ 0 ∧ q ≠ 0
+⊢ p.natDegree ≤ p.natDegree + q.natDegree
+

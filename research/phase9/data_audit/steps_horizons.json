@@ -1,0 +1,229 @@
+{
+  "source": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo/steps.jsonl",
+  "bytes": 271038884,
+  "total_rows": 259580,
+  "rows_by_split": {
+    "train": 250814,
+    "val": 4260,
+    "test": 4506
+  },
+  "train_rows": 250814,
+  "train_proofs": 59557,
+  "train_files": 3602,
+  "record_keys": [
+    "added_names",
+    "closed",
+    "combinator",
+    "defs_after",
+    "defs_before",
+    "delta_goals",
+    "eff",
+    "file_path",
+    "head",
+    "hyps_added",
+    "hyps_removed",
+    "inacc_after",
+    "inacc_before",
+    "last_step",
+    "multiline",
+    "mvar_after",
+    "mvar_before",
+    "n_after",
+    "n_before",
+    "n_hyps_before",
+    "n_premises_used",
+    "noop",
+    "premises",
+    "proof_id",
+    "prov",
+    "raw_len",
+    "split",
+    "step_index",
+    "syn_mvar_holes",
+    "tag_change",
+    "target_changed",
+    "thm",
+    "umvar_after",
+    "umvar_before"
+  ],
+  "horizon_at_least": {
+    "1": 59557,
+    "2": 38755,
+    "3": 25911,
+    "5": 15275,
+    "10": 5892,
+    "15": 2904,
+    "20": 1605,
+    "30": 628,
+    "50": 159,
+    "100": 15
+  },
+  "horizon_hist_1_to_40": {
+    "1": 20802,
+    "2": 12844,
+    "3": 6576,
+    "4": 4060,
+    "5": 2992,
+    "6": 2183,
+    "7": 1677,
+    "8": 1364,
+    "9": 1167,
+    "10": 856,
+    "11": 694,
+    "12": 587,
+    "13": 454,
+    "14": 397,
+    "15": 346,
+    "16": 304,
+    "17": 239,
+    "18": 219,
+    "19": 191,
+    "20": 164,
+    "21": 147,
+    "22": 126,
+    "23": 111,
+    "24": 85,
+    "25": 95,
+    "26": 75,
+    "27": 54,
+    "28": 59,
+    "29": 61,
+    "30": 55,
+    "31": 51,
+    "32": 36,
+    "33": 44,
+    "34": 30,
+    "35": 30,
+    "36": 24,
+    "37": 19,
+    "38": 28,
+    "39": 22,
+    "40": 12
+  },
+  "max_horizon": 128,
+  "mean_horizon": 4.211326964084826,
+  "median_horizon": 2,
+  "train_proofs_with_closed_last_step": 59282,
+  "top_30_tactic_heads": [
+    [
+      "rw",
+      47333
+    ],
+    [
+      "simp",
+      32185
+    ],
+    [
+      "exact",
+      29719
+    ],
+    [
+      "have",
+      16297
+    ],
+    [
+      "refine",
+      13815
+    ],
+    [
+      "apply",
+      9741
+    ],
+    [
+      "intro",
+      8030
+    ],
+    [
+      "simpa",
+      7106
+    ],
+    [
+      "obtain",
+      6311
+    ],
+    [
+      "rcases",
+      5001
+    ],
+    [
+      "ext",
+      4999
+    ],
+    [
+      "rintro",
+      4859
+    ],
+    [
+      "simp_rw",
+      4654
+    ],
+    [
+      "rfl",
+      3802
+    ],
+    [
+      "rwa",
+      3130
+    ],
+    [
+      "let",
+      3081
+    ],
+    [
+      "by_cases",
+      2662
+    ],
+    [
+      "cases",
+      2572
+    ],
+    [
+      "convert",
+      2534
+    ],
+    [
+      "dsimp",
+      2420
+    ],
+    [
+      "constructor",
+      2236
+    ],
+    [
+      "congr",
+      1673
+    ],
+    [
+      "cases'",
+      1537
+    ],
+    [
+      "suffices",
+      1488
+    ],
+    [
+      "induction'",
+      1445
+    ],
+    [
+      "haveI",
+      1217
+    ],
+    [
+      "use",
+      1184
+    ],
+    [
+      "erw",
+      1114
+    ],
+    [
+      "induction",
+      1080
+    ],
+    [
+      "filter_upwards",
+      1038
+    ]
+  ]
+}

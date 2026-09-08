@@ -1,0 +1,35 @@
+case intro
+α : Type u
+β : Type v
+γ : Type w
+ι : Sort x
+inst✝ : Preorder β
+f g : α → β
+h : ∀ (a : α), f a ≤ g a
+C : β
+hC : C ∈ upperBounds (Set.range g)
+⊢ BddAbove (Set.range f)
+case h
+α : Type u
+β : Type v
+γ : Type w
+ι : Sort x
+inst✝ : Preorder β
+f g : α → β
+h : ∀ (a : α), f a ≤ g a
+C : β
+hC : C ∈ upperBounds (Set.range g)
+⊢ C ∈ upperBounds (Set.range f)
+case h.intro
+α : Type u
+β : Type v
+γ : Type w
+ι : Sort x
+inst✝ : Preorder β
+f g : α → β
+h : ∀ (a : α), f a ≤ g a
+C : β
+hC : C ∈ upperBounds (Set.range g)
+x : α
+⊢ f x ≤ C
+

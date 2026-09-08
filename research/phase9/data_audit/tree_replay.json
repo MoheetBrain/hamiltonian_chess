@@ -1,0 +1,56 @@
+[
+  {
+    "status": "OK",
+    "steps_done": 11,
+    "n_tactics": 11,
+    "error": "",
+    "final": "no goals",
+    "thm": "TopologicalSpace.isTopologicalBasis_of_subbasis",
+    "file": "Mathlib/Topology/Bases.lean"
+  },
+  {
+    "status": "OK",
+    "steps_done": 5,
+    "n_tactics": 5,
+    "error": "",
+    "final": "no goals",
+    "thm": "TensorProduct.forall_vanishesTrivially_iff_forall_rTensor_injective",
+    "file": "Mathlib/LinearAlgebra/TensorProduct/Vanishing.lean"
+  },
+  {
+    "status": "OK",
+    "steps_done": 13,
+    "n_tactics": 13,
+    "error": "",
+    "final": "no goals",
+    "thm": "Computation.results_bind",
+    "file": "Mathlib/Data/Seq/Computation.lean"
+  },
+  {
+    "status": "OK",
+    "steps_done": 14,
+    "n_tactics": 14,
+    "error": "",
+    "final": "no goals",
+    "thm": "AlgebraicGeometry.PresheafedSpace.IsOpenImmersion.pullbackConeOfLeftLift_fst",
+    "file": "Mathlib/Geometry/RingedSpace/OpenImmersion.lean"
+  },
+  {
+    "status": "STEP_ERROR",
+    "steps_done": 1,
+    "n_tactics": 6,
+    "error": "tactic 'introN' failed, insufficient number of binders\ncase mp\nR : Type u_1\nR\u2081 : Type u_2\nR\u2082 : Type u_3\nR\u2083 : Type u_4\nM : Type u_5\nM\u2081 : Type u_6\nM\u2082 : Type u_7\nM",
+    "final": "case mp\nR : Type u_1\nR\u2081 : Type u_2\nR\u2082 : ",
+    "thm": "LinearMap.isSymm_iff_eq_flip",
+    "file": "Mathlib/LinearAlgebra/SesquilinearForm.lean"
+  },
+  {
+    "status": "OK",
+    "steps_done": 10,
+    "n_tactics": 10,
+    "error": "",
+    "final": "no goals",
+    "thm": "LinearOrderedField.smul_Iio",
+    "file": "Mathlib/Algebra/Order/Pointwise.lean"
+  }
+]

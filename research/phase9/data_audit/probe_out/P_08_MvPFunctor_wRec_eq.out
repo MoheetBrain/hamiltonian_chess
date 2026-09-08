@@ -1,0 +1,52 @@
+n : ℕ
+P : MvPFunctor.{u} (n + 1)
+α : TypeVec.{u} n
+C : Type u_1
+g : (a : P.A) → P.drop.B a ⟹ α → (P.last.B a → P.W α) → (P.last.B a → C) → C
+a : P.A
+f' : P.drop.B a ⟹ α
+f : P.last.B a → P.W α
+⊢ (match
+      let g := fun i => (f i).fst;
+      let g' := P.wPathCasesOn f' fun i => (f i).snd;
+      ⟨WType.mk a g, g'⟩ with
+    | ⟨a, f'⟩ =>
+      let g' := fun a f h h' => g a (P.wPathDestLeft h) (fun i => ⟨f i, P.wPathDestRight h i⟩) h';
+      P.wpRec g' a f') =
+    g a f' f fun i => P.wRec g (f i)
+n : ℕ
+P : MvPFunctor.{u} (n + 1)
+α : TypeVec.{u} n
+C : Type u_1
+g : (a : P.A) → P.drop.B a ⟹ α → (P.last.B a → P.W α) → (P.last.B a → C) → C
+a : P.A
+f' : P.drop.B a ⟹ α
+f : P.last.B a → P.W α
+⊢ P.wpRec (fun a f h h' => g a (P.wPathDestLeft h) (fun i => ⟨f i, P.wPathDestRight h i⟩) h')
+      (WType.mk a fun i => (f i).fst) (P.wPathCasesOn f' fun i => (f i).snd) =
+    g a f' f fun i => P.wRec g (f i)
+n : ℕ
+P : MvPFunctor.{u} (n + 1)
+α : TypeVec.{u} n
+C : Type u_1
+g : (a : P.A) → P.drop.B a ⟹ α → (P.last.B a → P.W α) → (P.last.B a → C) → C
+a : P.A
+f' : P.drop.B a ⟹ α
+f : P.last.B a → P.W α
+⊢ (g a (P.wPathDestLeft (P.wPathCasesOn f' fun i => (f i).snd))
+      (fun i => ⟨(f i).fst, P.wPathDestRight (P.wPathCasesOn f' fun i => (f i).snd) i⟩) fun i =>
+      P.wpRec (fun a f h h' => g a (P.wPathDestLeft h) (fun i => ⟨f i, P.wPathDestRight h i⟩) h') (f i).fst
+        (P.wPathDestRight (P.wPathCasesOn f' fun i => (f i).snd) i)) =
+    g a f' f fun i => P.wRec g (f i)
+n : ℕ
+P : MvPFunctor.{u} (n + 1)
+α : TypeVec.{u} n
+C : Type u_1
+g : (a : P.A) → P.drop.B a ⟹ α → (P.last.B a → P.W α) → (P.last.B a → C) → C
+a : P.A
+f' : P.drop.B a ⟹ α
+f : P.last.B a → P.W α
+⊢ (g a f' (fun i => ⟨(f i).fst, (f i).snd⟩) fun i =>
+      P.wpRec (fun a f h h' => g a (P.wPathDestLeft h) (fun i => ⟨f i, P.wPathDestRight h i⟩) h') (f i).fst (f i).snd) =
+    g a f' f fun i => P.wRec g (f i)
+

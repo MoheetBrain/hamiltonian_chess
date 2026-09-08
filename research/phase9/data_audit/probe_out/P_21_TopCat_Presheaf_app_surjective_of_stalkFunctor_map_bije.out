@@ -1,0 +1,174 @@
+C : Type u
+inst✝⁶ : CategoryTheory.Category.{v, u} C
+inst✝⁵ : CategoryTheory.Limits.HasColimits C
+X Y Z : TopCat
+inst✝⁴ : CategoryTheory.ConcreteCategory C
+inst✝³ : CategoryTheory.Limits.PreservesFilteredColimits (CategoryTheory.forget C)
+inst✝² : CategoryTheory.Limits.HasLimits C
+inst✝¹ : CategoryTheory.Limits.PreservesLimits (CategoryTheory.forget C)
+inst✝ : (CategoryTheory.forget C).ReflectsIsomorphisms
+F G : TopCat.Sheaf C X
+f : F ⟶ G
+U : TopologicalSpace.Opens ↑X
+h : ∀ (x : ↥U), Function.Bijective ⇑((TopCat.Presheaf.stalkFunctor C ↑x).map f.val)
+t : (CategoryTheory.forget C).obj (G.val.obj { unop := U })
+x : ↥U
+⊢ ∃ V, ∃ (_ : ↑x ∈ V), ∃ iVU s, (f.val.app { unop := V }) s = (G.val.map iVU.op) t
+case intro
+C : Type u
+inst✝⁶ : CategoryTheory.Category.{v, u} C
+inst✝⁵ : CategoryTheory.Limits.HasColimits C
+X Y Z : TopCat
+inst✝⁴ : CategoryTheory.ConcreteCategory C
+inst✝³ : CategoryTheory.Limits.PreservesFilteredColimits (CategoryTheory.forget C)
+inst✝² : CategoryTheory.Limits.HasLimits C
+inst✝¹ : CategoryTheory.Limits.PreservesLimits (CategoryTheory.forget C)
+inst✝ : (CategoryTheory.forget C).ReflectsIsomorphisms
+F G : TopCat.Sheaf C X
+f : F ⟶ G
+U : TopologicalSpace.Opens ↑X
+h : ∀ (x : ↥U), Function.Bijective ⇑((TopCat.Presheaf.stalkFunctor C ↑x).map f.val)
+t : (CategoryTheory.forget C).obj (G.val.obj { unop := U })
+x : ↥U
+s₀ : (CategoryTheory.forget C).obj ((TopCat.Presheaf.stalkFunctor C ↑x).obj F.val)
+hs₀ : ((TopCat.Presheaf.stalkFunctor C ↑x).map f.val) s₀ = (G.presheaf.germ x) t
+⊢ ∃ V, ∃ (_ : ↑x ∈ V), ∃ iVU s, (f.val.app { unop := V }) s = (G.val.map iVU.op) t
+case intro.intro.intro.intro
+C : Type u
+inst✝⁶ : CategoryTheory.Category.{v, u} C
+inst✝⁵ : CategoryTheory.Limits.HasColimits C
+X Y Z : TopCat
+inst✝⁴ : CategoryTheory.ConcreteCategory C
+inst✝³ : CategoryTheory.Limits.PreservesFilteredColimits (CategoryTheory.forget C)
+inst✝² : CategoryTheory.Limits.HasLimits C
+inst✝¹ : CategoryTheory.Limits.PreservesLimits (CategoryTheory.forget C)
+inst✝ : (CategoryTheory.forget C).ReflectsIsomorphisms
+F G : TopCat.Sheaf C X
+f : F ⟶ G
+U : TopologicalSpace.Opens ↑X
+h : ∀ (x : ↥U), Function.Bijective ⇑((TopCat.Presheaf.stalkFunctor C ↑x).map f.val)
+t : (CategoryTheory.forget C).obj (G.val.obj { unop := U })
+x : ↥U
+s₀ : (CategoryTheory.forget C).obj ((TopCat.Presheaf.stalkFunctor C ↑x).obj F.val)
+hs₀ : ((TopCat.Presheaf.stalkFunctor C ↑x).map f.val) s₀ = (G.presheaf.germ x) t
+V₁ : TopologicalSpace.Opens ↑X
+hxV₁ : ↑x ∈ V₁
+s₁ : (CategoryTheory.forget C).obj (F.presheaf.obj { unop := V₁ })
+hs₁ : (F.presheaf.germ ⟨↑x, hxV₁⟩) s₁ = s₀
+⊢ ∃ V, ∃ (_ : ↑x ∈ V), ∃ iVU s, (f.val.app { unop := V }) s = (G.val.map iVU.op) t
+case intro.intro.intro.intro
+C : Type u
+inst✝⁶ : CategoryTheory.Category.{v, u} C
+inst✝⁵ : CategoryTheory.Limits.HasColimits C
+X Y Z : TopCat
+inst✝⁴ : CategoryTheory.ConcreteCategory C
+inst✝³ : CategoryTheory.Limits.PreservesFilteredColimits (CategoryTheory.forget C)
+inst✝² : CategoryTheory.Limits.HasLimits C
+inst✝¹ : CategoryTheory.Limits.PreservesLimits (CategoryTheory.forget C)
+inst✝ : (CategoryTheory.forget C).ReflectsIsomorphisms
+F G : TopCat.Sheaf C X
+f : F ⟶ G
+U : TopologicalSpace.Opens ↑X
+h : ∀ (x : ↥U), Function.Bijective ⇑((TopCat.Presheaf.stalkFunctor C ↑x).map f.val)
+t : (CategoryTheory.forget C).obj (G.val.obj { unop := U })
+x : ↥U
+V₁ : TopologicalSpace.Opens ↑X
+hxV₁ : ↑x ∈ V₁
+s₁ : (CategoryTheory.forget C).obj (F.presheaf.obj { unop := V₁ })
+hs₀ : ((TopCat.Presheaf.stalkFunctor C ↑x).map f.val) ((F.presheaf.germ ⟨↑x, hxV₁⟩) s₁) = (G.presheaf.germ x) t
+⊢ ∃ V, ∃ (_ : ↑x ∈ V), ∃ iVU s, (f.val.app { unop := V }) s = (G.val.map iVU.op) t
+case intro.intro.intro.intro
+C : Type u
+inst✝⁶ : CategoryTheory.Category.{v, u} C
+inst✝⁵ : CategoryTheory.Limits.HasColimits C
+X Y Z : TopCat
+inst✝⁴ : CategoryTheory.ConcreteCategory C
+inst✝³ : CategoryTheory.Limits.PreservesFilteredColimits (CategoryTheory.forget C)
+inst✝² : CategoryTheory.Limits.HasLimits C
+inst✝¹ : CategoryTheory.Limits.PreservesLimits (CategoryTheory.forget C)
+inst✝ : (CategoryTheory.forget C).ReflectsIsomorphisms
+F G : TopCat.Sheaf C X
+f : F ⟶ G
+U : TopologicalSpace.Opens ↑X
+h : ∀ (x : ↥U), Function.Bijective ⇑((TopCat.Presheaf.stalkFunctor C ↑x).map f.val)
+t : (CategoryTheory.forget C).obj (G.val.obj { unop := U })
+x : ↥U
+V₁ : TopologicalSpace.Opens ↑X
+hxV₁ : ↑x ∈ V₁
+s₁ : (CategoryTheory.forget C).obj (F.presheaf.obj { unop := V₁ })
+hs₁ : ((TopCat.Presheaf.stalkFunctor C ↑x).map f.val) ((F.presheaf.germ ⟨↑x, hxV₁⟩) s₁) = (G.presheaf.germ x) t
+⊢ ∃ V, ∃ (_ : ↑x ∈ V), ∃ iVU s, (f.val.app { unop := V }) s = (G.val.map iVU.op) t
+case intro.intro.intro.intro
+C : Type u
+inst✝⁶ : CategoryTheory.Category.{v, u} C
+inst✝⁵ : CategoryTheory.Limits.HasColimits C
+X Y Z : TopCat
+inst✝⁴ : CategoryTheory.ConcreteCategory C
+inst✝³ : CategoryTheory.Limits.PreservesFilteredColimits (CategoryTheory.forget C)
+inst✝² : CategoryTheory.Limits.HasLimits C
+inst✝¹ : CategoryTheory.Limits.PreservesLimits (CategoryTheory.forget C)
+inst✝ : (CategoryTheory.forget C).ReflectsIsomorphisms
+F G : TopCat.Sheaf C X
+f : F ⟶ G
+U : TopologicalSpace.Opens ↑X
+h : ∀ (x : ↥U), Function.Bijective ⇑((TopCat.Presheaf.stalkFunctor C ↑x).map f.val)
+t : (CategoryTheory.forget C).obj (G.val.obj { unop := U })
+x : ↥U
+V₁ : TopologicalSpace.Opens ↑X
+hxV₁ : ↑x ∈ V₁
+s₁ : (CategoryTheory.forget C).obj (F.presheaf.obj { unop := V₁ })
+hs₁ : (TopCat.Presheaf.germ G.val ⟨↑x, hxV₁⟩) ((f.val.app { unop := V₁ }) s₁) = (G.presheaf.germ x) t
+⊢ ∃ V, ∃ (_ : ↑x ∈ V), ∃ iVU s, (f.val.app { unop := V }) s = (G.val.map iVU.op) t
+case intro.intro.intro.intro.intro.intro.intro.intro
+C : Type u
+inst✝⁶ : CategoryTheory.Category.{v, u} C
+inst✝⁵ : CategoryTheory.Limits.HasColimits C
+X Y Z : TopCat
+inst✝⁴ : CategoryTheory.ConcreteCategory C
+inst✝³ : CategoryTheory.Limits.PreservesFilteredColimits (CategoryTheory.forget C)
+inst✝² : CategoryTheory.Limits.HasLimits C
+inst✝¹ : CategoryTheory.Limits.PreservesLimits (CategoryTheory.forget C)
+inst✝ : (CategoryTheory.forget C).ReflectsIsomorphisms
+F G : TopCat.Sheaf C X
+f : F ⟶ G
+U : TopologicalSpace.Opens ↑X
+h : ∀ (x : ↥U), Function.Bijective ⇑((TopCat.Presheaf.stalkFunctor C ↑x).map f.val)
+t : (CategoryTheory.forget C).obj (G.val.obj { unop := U })
+x : ↥U
+V₁ : TopologicalSpace.Opens ↑X
+hxV₁ : ↑x ∈ V₁
+s₁ : (CategoryTheory.forget C).obj (F.presheaf.obj { unop := V₁ })
+hs₁ : (TopCat.Presheaf.germ G.val ⟨↑x, hxV₁⟩) ((f.val.app { unop := V₁ }) s₁) = (G.presheaf.germ x) t
+V₂ : TopologicalSpace.Opens ↑X
+hxV₂ : ↑x ∈ V₂
+iV₂V₁ : V₂ ⟶ V₁
+iV₂U : V₂ ⟶ U
+heq : (G.presheaf.map iV₂V₁.op) ((f.val.app { unop := V₁ }) s₁) = (G.presheaf.map iV₂U.op) t
+⊢ ∃ V, ∃ (_ : ↑x ∈ V), ∃ iVU s, (f.val.app { unop := V }) s = (G.val.map iVU.op) t
+case h
+C : Type u
+inst✝⁶ : CategoryTheory.Category.{v, u} C
+inst✝⁵ : CategoryTheory.Limits.HasColimits C
+X Y Z : TopCat
+inst✝⁴ : CategoryTheory.ConcreteCategory C
+inst✝³ : CategoryTheory.Limits.PreservesFilteredColimits (CategoryTheory.forget C)
+inst✝² : CategoryTheory.Limits.HasLimits C
+inst✝¹ : CategoryTheory.Limits.PreservesLimits (CategoryTheory.forget C)
+inst✝ : (CategoryTheory.forget C).ReflectsIsomorphisms
+F G : TopCat.Sheaf C X
+f : F ⟶ G
+U : TopologicalSpace.Opens ↑X
+h : ∀ (x : ↥U), Function.Bijective ⇑((TopCat.Presheaf.stalkFunctor C ↑x).map f.val)
+t : (CategoryTheory.forget C).obj (G.val.obj { unop := U })
+x : ↥U
+V₁ : TopologicalSpace.Opens ↑X
+hxV₁ : ↑x ∈ V₁
+s₁ : (CategoryTheory.forget C).obj (F.presheaf.obj { unop := V₁ })
+hs₁ : (TopCat.Presheaf.germ G.val ⟨↑x, hxV₁⟩) ((f.val.app { unop := V₁ }) s₁) = (G.presheaf.germ x) t
+V₂ : TopologicalSpace.Opens ↑X
+hxV₂ : ↑x ∈ V₂
+iV₂V₁ : V₂ ⟶ V₁
+iV₂U : V₂ ⟶ U
+heq : (G.presheaf.map iV₂V₁.op) ((f.val.app { unop := V₁ }) s₁) = (G.presheaf.map iV₂U.op) t
+⊢ (f.val.app { unop := V₂ }) ((F.val.map iV₂V₁.op) s₁) = (G.val.map iV₂U.op) t
+

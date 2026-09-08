@@ -1,0 +1,642 @@
+[
+  {
+    "tag": "00_LinearMap_adjoint_inner_left",
+    "full_name": "LinearMap.adjoint_inner_left",
+    "file_path": "Mathlib/Analysis/InnerProductSpace/Adjoint.lean",
+    "n_steps": 4,
+    "prefix_lines": 378,
+    "tactics": [
+      "haveI := FiniteDimensional.complete \ud835\udd5c E",
+      "haveI := FiniteDimensional.complete \ud835\udd5c F",
+      "rw [\u2190 coe_toContinuousLinearMap A, adjoint_eq_toCLM_adjoint]",
+      "exact ContinuousLinearMap.adjoint_inner_left _ x y"
+    ],
+    "recorded_states": [
+      "\ud835\udd5c : Type u_1\nE : Type u_2\nF : Type u_3\nG : Type u_4\ninst\u271d\u2079 : RCLike \ud835\udd5c\ninst\u271d\u2078 : NormedAddCommGroup E\ninst\u271d\u2077 : NormedAddCommGroup F\ninst\u271d\u2076 : NormedAddCommGroup G\ninst\u271d\u2075 : InnerProductSpace \ud835\udd5c E\ninst\u271d\u2074 : InnerProductSpace \ud835\udd5c F\ninst\u271d\u00b3 : InnerProductSpace \ud835\udd5c G\ninst\u271d\u00b2 : FiniteDimensional \ud835\udd5c E\ninst\u271d\u00b9 : FiniteDimensional \ud835\udd5c F\ninst\u271d : FiniteDimensional \ud835\udd5c G\nA : E \u2192\u2097[\ud835\udd5c] F\nx : E\ny : F\n\u22a2 \u27ea(adjoint A) y, x\u27eb_\ud835\udd5c = \u27eay, A x\u27eb_\ud835\udd5c",
+      "\ud835\udd5c : Type u_1\nE : Type u_2\nF : Type u_3\nG : Type u_4\ninst\u271d\u2079 : RCLike \ud835\udd5c\ninst\u271d\u2078 : NormedAddCommGroup E\ninst\u271d\u2077 : NormedAddCommGroup F\ninst\u271d\u2076 : NormedAddCommGroup G\ninst\u271d\u2075 : InnerProductSpace \ud835\udd5c E\ninst\u271d\u2074 : InnerProductSpace \ud835\udd5c F\ninst\u271d\u00b3 : InnerProductSpace \ud835\udd5c G\ninst\u271d\u00b2 : FiniteDimensional \ud835\udd5c E\ninst\u271d\u00b9 : FiniteDimensional \ud835\udd5c F\ninst\u271d : FiniteDimensional \ud835\udd5c G\nA : E \u2192\u2097[\ud835\udd5c] F\nx : E\ny : F\nthis : CompleteSpace E\n\u22a2 \u27ea(adjoint A) y, x\u27eb_\ud835\udd5c = \u27eay, A x\u27eb_\ud835\udd5c",
+      "\ud835\udd5c : Type u_1\nE : Type u_2\nF : Type u_3\nG : Type u_4\ninst\u271d\u2079 : RCLike \ud835\udd5c\ninst\u271d\u2078 : NormedAddCommGroup E\ninst\u271d\u2077 : NormedAddCommGroup F\ninst\u271d\u2076 : NormedAddCommGroup G\ninst\u271d\u2075 : InnerProductSpace \ud835\udd5c E\ninst\u271d\u2074 : InnerProductSpace \ud835\udd5c F\ninst\u271d\u00b3 : InnerProductSpace \ud835\udd5c G\ninst\u271d\u00b2 : FiniteDimensional \ud835\udd5c E\ninst\u271d\u00b9 : FiniteDimensional \ud835\udd5c F\ninst\u271d : FiniteDimensional \ud835\udd5c G\nA : E \u2192\u2097[\ud835\udd5c] F\nx : E\ny : F\nthis\u271d : CompleteSpace E\nthis : CompleteSpace F\n\u22a2 \u27ea(adjoint A) y, x\u27eb_\ud835\udd5c = \u27eay, A x\u27eb_\ud835\udd5c",
+      "\ud835\udd5c : Type u_1\nE : Type u_2\nF : Type u_3\nG : Type u_4\ninst\u271d\u2079 : RCLike \ud835\udd5c\ninst\u271d\u2078 : NormedAddCommGroup E\ninst\u271d\u2077 : NormedAddCommGroup F\ninst\u271d\u2076 : NormedAddCommGroup G\ninst\u271d\u2075 : InnerProductSpace \ud835\udd5c E\ninst\u271d\u2074 : InnerProductSpace \ud835\udd5c F\ninst\u271d\u00b3 : InnerProductSpace \ud835\udd5c G\ninst\u271d\u00b2 : FiniteDimensional \ud835\udd5c E\ninst\u271d\u00b9 : FiniteDimensional \ud835\udd5c F\ninst\u271d : FiniteDimensional \ud835\udd5c G\nA : E \u2192\u2097[\ud835\udd5c] F\nx : E\ny : F\nthis\u271d : CompleteSpace E\nthis : CompleteSpace F\n\u22a2 \u27ea\u2191(ContinuousLinearMap.adjoint (toContinuousLinearMap \u2191(toContinuousLinearMap A))) y, x\u27eb_\ud835\udd5c =\n    \u27eay, \u2191(toContinuousLinearMap A) x\u27eb_\ud835\udd5c",
+      "no goals"
+    ]
+  },
+  {
+    "tag": "01_Matrix_sum_cramer_apply",
+    "full_name": "Matrix.sum_cramer_apply",
+    "file_path": "Mathlib/LinearAlgebra/Matrix/Adjugate.lean",
+    "n_steps": 5,
+    "prefix_lines": 157,
+    "tactics": [
+      "rw [sum_cramer, cramer_apply, cramer_apply]",
+      "simp only [updateColumn]",
+      "congr with j",
+      "congr",
+      "apply Finset.sum_apply"
+    ],
+    "recorded_states": [
+      "m : Type u\nn : Type v\n\u03b1 : Type w\ninst\u271d\u2074 : DecidableEq n\ninst\u271d\u00b3 : Fintype n\ninst\u271d\u00b2 : DecidableEq m\ninst\u271d\u00b9 : Fintype m\ninst\u271d : CommRing \u03b1\nA : Matrix n n \u03b1\nb : n \u2192 \u03b1\n\u03b2 : Type u_1\ns : Finset \u03b2\nf : n \u2192 \u03b2 \u2192 \u03b1\ni : n\n\u22a2 (\u2211 x \u2208 s, A.cramer fun j => f j x) i = A.cramer (fun j => \u2211 x \u2208 s, f j x) i",
+      "m : Type u\nn : Type v\n\u03b1 : Type w\ninst\u271d\u2074 : DecidableEq n\ninst\u271d\u00b3 : Fintype n\ninst\u271d\u00b2 : DecidableEq m\ninst\u271d\u00b9 : Fintype m\ninst\u271d : CommRing \u03b1\nA : Matrix n n \u03b1\nb : n \u2192 \u03b1\n\u03b2 : Type u_1\ns : Finset \u03b2\nf : n \u2192 \u03b2 \u2192 \u03b1\ni : n\n\u22a2 (A.updateColumn i (\u2211 x \u2208 s, fun j => f j x)).det = (A.updateColumn i fun j => \u2211 x \u2208 s, f j x).det",
+      "m : Type u\nn : Type v\n\u03b1 : Type w\ninst\u271d\u2074 : DecidableEq n\ninst\u271d\u00b3 : Fintype n\ninst\u271d\u00b2 : DecidableEq m\ninst\u271d\u00b9 : Fintype m\ninst\u271d : CommRing \u03b1\nA : Matrix n n \u03b1\nb : n \u2192 \u03b1\n\u03b2 : Type u_1\ns : Finset \u03b2\nf : n \u2192 \u03b2 \u2192 \u03b1\ni : n\n\u22a2 (of fun i_1 => Function.update (A i_1) i ((\u2211 x \u2208 s, fun j => f j x) i_1)).det =\n    (of fun i_1 => Function.update (A i_1) i (\u2211 x \u2208 s, f i_1 x)).det",
+      "case e_M.h.e_6.h.h.h\nm : Type u\nn : Type v\n\u03b1 : Type w\ninst\u271d\u2074 : DecidableEq n\ninst\u271d\u00b3 : Fintype n\ninst\u271d\u00b2 : DecidableEq m\ninst\u271d\u00b9 : Fintype m\ninst\u271d : CommRing \u03b1\nA : Matrix n n \u03b1\nb : n \u2192 \u03b1\n\u03b2 : Type u_1\ns : Finset \u03b2\nf : n \u2192 \u03b2 \u2192 \u03b1\ni j x\u271d : n\n\u22a2 Function.update (A j) i ((\u2211 x \u2208 s, fun j => f j x) j) x\u271d = Function.update (A j) i (\u2211 x \u2208 s, f j x) x\u271d",
+      "case e_M.h.e_6.h.h.h.e_v\nm : Type u\nn : Type v\n\u03b1 : Type w\ninst\u271d\u2074 : DecidableEq n\ninst\u271d\u00b3 : Fintype n\ninst\u271d\u00b2 : DecidableEq m\ninst\u271d\u00b9 : Fintype m\ninst\u271d : CommRing \u03b1\nA : Matrix n n \u03b1\nb : n \u2192 \u03b1\n\u03b2 : Type u_1\ns : Finset \u03b2\nf : n \u2192 \u03b2 \u2192 \u03b1\ni j x\u271d : n\n\u22a2 (\u2211 x \u2208 s, fun j => f j x) j = \u2211 x \u2208 s, f j x",
+      "no goals"
+    ]
+  },
+  {
+    "tag": "02_Cardinal_mk_equiv_eq_arrow_of_lift_eq",
+    "full_name": "Cardinal.mk_equiv_eq_arrow_of_lift_eq",
+    "file_path": "Mathlib/SetTheory/Cardinal/Ordinal.lean",
+    "n_steps": 5,
+    "prefix_lines": 1121,
+    "tactics": [
+      "obtain \u27e8e\u27e9 := lift_mk_eq'.mp leq",
+      "have e\u2081 := lift_mk_eq'.mpr \u27e8.equivCongr (.refl \u03b1) e\u27e9",
+      "have e\u2082 := lift_mk_eq'.mpr \u27e8.arrowCongr (.refl \u03b1) e\u27e9",
+      "rw [lift_id'.{u,v}] at e\u2081 e\u2082",
+      "rw [\u2190 e\u2081, \u2190 e\u2082, lift_inj, mk_perm_eq_self_power, power_def]"
+    ],
+    "recorded_states": [
+      "\u03b1 \u03b2 : Type u\n\u03b2' : Type v\ninst\u271d : Infinite \u03b1\nleq : lift.{v, u} #\u03b1 = lift.{u, v} #\u03b2'\neq : #\u03b1 = #\u03b2\n\u22a2 #(\u03b1 \u2243 \u03b2') = #(\u03b1 \u2192 \u03b2')",
+      "case intro\n\u03b1 \u03b2 : Type u\n\u03b2' : Type v\ninst\u271d : Infinite \u03b1\nleq : lift.{v, u} #\u03b1 = lift.{u, v} #\u03b2'\neq : #\u03b1 = #\u03b2\ne : \u03b1 \u2243 \u03b2'\n\u22a2 #(\u03b1 \u2243 \u03b2') = #(\u03b1 \u2192 \u03b2')",
+      "case intro\n\u03b1 \u03b2 : Type u\n\u03b2' : Type v\ninst\u271d : Infinite \u03b1\nleq : lift.{v, u} #\u03b1 = lift.{u, v} #\u03b2'\neq : #\u03b1 = #\u03b2\ne : \u03b1 \u2243 \u03b2'\ne\u2081 : lift.{max u v, u} #(\u03b1 \u2243 \u03b1) = lift.{u, max u v} #(\u03b1 \u2243 \u03b2')\n\u22a2 #(\u03b1 \u2243 \u03b2') = #(\u03b1 \u2192 \u03b2')",
+      "case intro\n\u03b1 \u03b2 : Type u\n\u03b2' : Type v\ninst\u271d : Infinite \u03b1\nleq : lift.{v, u} #\u03b1 = lift.{u, v} #\u03b2'\neq : #\u03b1 = #\u03b2\ne : \u03b1 \u2243 \u03b2'\ne\u2081 : lift.{max u v, u} #(\u03b1 \u2243 \u03b1) = lift.{u, max u v} #(\u03b1 \u2243 \u03b2')\ne\u2082 : lift.{max u v, u} #(\u03b1 \u2192 \u03b1) = lift.{u, max u v} #(\u03b1 \u2192 \u03b2')\n\u22a2 #(\u03b1 \u2243 \u03b2') = #(\u03b1 \u2192 \u03b2')",
+      "case intro\n\u03b1 \u03b2 : Type u\n\u03b2' : Type v\ninst\u271d : Infinite \u03b1\nleq : lift.{v, u} #\u03b1 = lift.{u, v} #\u03b2'\neq : #\u03b1 = #\u03b2\ne : \u03b1 \u2243 \u03b2'\ne\u2081 : lift.{max u v, u} #(\u03b1 \u2243 \u03b1) = #(\u03b1 \u2243 \u03b2')\ne\u2082 : lift.{max u v, u} #(\u03b1 \u2192 \u03b1) = #(\u03b1 \u2192 \u03b2')\n\u22a2 #(\u03b1 \u2243 \u03b2') = #(\u03b1 \u2192 \u03b2')",
+      "no goals"
+    ]
+  },
+  {
+    "tag": "03_Path_trans_pi_eq_pi_trans",
+    "full_name": "Path.trans_pi_eq_pi_trans",
+    "file_path": "Mathlib/Topology/Connected/PathConnected.lean",
+    "n_steps": 4,
+    "prefix_lines": 578,
+    "tactics": [
+      "ext t i",
+      "unfold Path.trans",
+      "simp only [Path.coe_mk_mk, Function.comp_apply, pi_coe]",
+      "split_ifs <;> rfl"
+    ],
+    "recorded_states": [
+      "X : Type u_1\nY : Type u_2\ninst\u271d\u00b2 : TopologicalSpace X\ninst\u271d\u00b9 : TopologicalSpace Y\nx y z : X\n\u03b9 : Type u_3\n\u03b3 : Path x y\n\u03c7 : \u03b9 \u2192 Type u_4\ninst\u271d : (i : \u03b9) \u2192 TopologicalSpace (\u03c7 i)\nas bs cs : (i : \u03b9) \u2192 \u03c7 i\n\u03b3\u2080 : (i : \u03b9) \u2192 Path (as i) (bs i)\n\u03b3\u2081 : (i : \u03b9) \u2192 Path (bs i) (cs i)\n\u22a2 (Path.pi \u03b3\u2080).trans (Path.pi \u03b3\u2081) = Path.pi fun i => (\u03b3\u2080 i).trans (\u03b3\u2081 i)",
+      "case a.h.h\nX : Type u_1\nY : Type u_2\ninst\u271d\u00b2 : TopologicalSpace X\ninst\u271d\u00b9 : TopologicalSpace Y\nx y z : X\n\u03b9 : Type u_3\n\u03b3 : Path x y\n\u03c7 : \u03b9 \u2192 Type u_4\ninst\u271d : (i : \u03b9) \u2192 TopologicalSpace (\u03c7 i)\nas bs cs : (i : \u03b9) \u2192 \u03c7 i\n\u03b3\u2080 : (i : \u03b9) \u2192 Path (as i) (bs i)\n\u03b3\u2081 : (i : \u03b9) \u2192 Path (bs i) (cs i)\nt : \u2191I\ni : \u03b9\n\u22a2 ((Path.pi \u03b3\u2080).trans (Path.pi \u03b3\u2081)) t i = (Path.pi fun i => (\u03b3\u2080 i).trans (\u03b3\u2081 i)) t i",
+      "case a.h.h\nX : Type u_1\nY : Type u_2\ninst\u271d\u00b2 : TopologicalSpace X\ninst\u271d\u00b9 : TopologicalSpace Y\nx y z : X\n\u03b9 : Type u_3\n\u03b3 : Path x y\n\u03c7 : \u03b9 \u2192 Type u_4\ninst\u271d : (i : \u03b9) \u2192 TopologicalSpace (\u03c7 i)\nas bs cs : (i : \u03b9) \u2192 \u03c7 i\n\u03b3\u2080 : (i : \u03b9) \u2192 Path (as i) (bs i)\n\u03b3\u2081 : (i : \u03b9) \u2192 Path (bs i) (cs i)\nt : \u2191I\ni : \u03b9\n\u22a2 {\n        toFun :=\n          (fun t => if t \u2264 1 / 2 then (Path.pi \u03b3\u2080).extend (2 * t) else (Path.pi \u03b3\u2081).extend (2 * t - 1)) \u2218 Subtype.val,\n        continuous_toFun := \u22ef, source' := \u22ef, target' := \u22ef }\n      t i =\n    (Path.pi fun i =>\n        { toFun := (fun t => if t \u2264 1 / 2 then (\u03b3\u2080 i).extend (2 * t) else (\u03b3\u2081 i).extend (2 * t - 1)) \u2218 Subtype.val,\n          continuous_toFun := \u22ef, source' := \u22ef, target' := \u22ef })\n      t i",
+      "case a.h.h\nX : Type u_1\nY : Type u_2\ninst\u271d\u00b2 : TopologicalSpace X\ninst\u271d\u00b9 : TopologicalSpace Y\nx y z : X\n\u03b9 : Type u_3\n\u03b3 : Path x y\n\u03c7 : \u03b9 \u2192 Type u_4\ninst\u271d : (i : \u03b9) \u2192 TopologicalSpace (\u03c7 i)\nas bs cs : (i : \u03b9) \u2192 \u03c7 i\n\u03b3\u2080 : (i : \u03b9) \u2192 Path (as i) (bs i)\n\u03b3\u2081 : (i : \u03b9) \u2192 Path (bs i) (cs i)\nt : \u2191I\ni : \u03b9\n\u22a2 (if \u2191t \u2264 1 / 2 then (Path.pi \u03b3\u2080).extend (2 * \u2191t) else (Path.pi \u03b3\u2081).extend (2 * \u2191t - 1)) i =\n    if \u2191t \u2264 1 / 2 then (\u03b3\u2080 i).extend (2 * \u2191t) else (\u03b3\u2081 i).extend (2 * \u2191t - 1)",
+      "no goals"
+    ]
+  },
+  {
+    "tag": "04_RelSeries_smash_castAdd",
+    "full_name": "RelSeries.smash_castAdd",
+    "file_path": "Mathlib/Order/RelSeries.lean",
+    "n_steps": 4,
+    "prefix_lines": 513,
+    "tactics": [
+      "unfold smash",
+      "dsimp",
+      "rw [dif_pos i.2]",
+      "rfl"
+    ],
+    "recorded_states": [
+      "\u03b1 : Type u_1\nr : Rel \u03b1 \u03b1\n\u03b2 : Type u_2\ns : Rel \u03b2 \u03b2\np q : RelSeries r\nconnect : p.last = q.head\ni : Fin p.length\n\u22a2 (p.smash q connect).toFun (Fin.castAdd q.length i).castSucc = p.toFun i.castSucc",
+      "\u03b1 : Type u_1\nr : Rel \u03b1 \u03b1\n\u03b2 : Type u_2\ns : Rel \u03b2 \u03b2\np q : RelSeries r\nconnect : p.last = q.head\ni : Fin p.length\n\u22a2 { length := p.length + q.length,\n          toFun := fun i => if H : \u2191i < p.length then p.toFun \u27e8\u2191i, \u22ef\u27e9 else q.toFun \u27e8\u2191i - p.length, \u22ef\u27e9, step := \u22ef }.toFun\n      (Fin.castAdd q.length i).castSucc =\n    p.toFun i.castSucc",
+      "\u03b1 : Type u_1\nr : Rel \u03b1 \u03b1\n\u03b2 : Type u_2\ns : Rel \u03b2 \u03b2\np q : RelSeries r\nconnect : p.last = q.head\ni : Fin p.length\n\u22a2 (if H : \u2191i < p.length then p.toFun \u27e8\u2191i, \u22ef\u27e9 else q.toFun \u27e8\u2191i - p.length, \u22ef\u27e9) = p.toFun i.castSucc",
+      "\u03b1 : Type u_1\nr : Rel \u03b1 \u03b1\n\u03b2 : Type u_2\ns : Rel \u03b2 \u03b2\np q : RelSeries r\nconnect : p.last = q.head\ni : Fin p.length\n\u22a2 p.toFun \u27e8\u2191i, \u22ef\u27e9 = p.toFun i.castSucc",
+      "no goals"
+    ]
+  },
+  {
+    "tag": "05_MeasureTheory_Measure_Regular_map_iff",
+    "full_name": "MeasureTheory.Measure.Regular.map_iff",
+    "file_path": "Mathlib/MeasureTheory/Measure/Regular.lean",
+    "n_steps": 4,
+    "prefix_lines": 981,
+    "tactics": [
+      "refine \u27e8fun h \u21a6 ?_, fun h \u21a6 h.map f\u27e9",
+      "convert h.map f.symm",
+      "rw [map_map f.symm.continuous.measurable f.continuous.measurable]",
+      "simp"
+    ],
+    "recorded_states": [
+      "\u03b1 : Type u_1\n\u03b2 : Type u_2\ninst\u271d\u2075 : MeasurableSpace \u03b1\ninst\u271d\u2074 : TopologicalSpace \u03b1\n\u03bc : Measure \u03b1\ninst\u271d\u00b3 : BorelSpace \u03b1\ninst\u271d\u00b2 : MeasurableSpace \u03b2\ninst\u271d\u00b9 : TopologicalSpace \u03b2\ninst\u271d : BorelSpace \u03b2\nf : \u03b1 \u2243\u209c \u03b2\n\u22a2 (map (\u21d1f) \u03bc).Regular \u2194 \u03bc.Regular",
+      "\u03b1 : Type u_1\n\u03b2 : Type u_2\ninst\u271d\u2075 : MeasurableSpace \u03b1\ninst\u271d\u2074 : TopologicalSpace \u03b1\n\u03bc : Measure \u03b1\ninst\u271d\u00b3 : BorelSpace \u03b1\ninst\u271d\u00b2 : MeasurableSpace \u03b2\ninst\u271d\u00b9 : TopologicalSpace \u03b2\ninst\u271d : BorelSpace \u03b2\nf : \u03b1 \u2243\u209c \u03b2\nh : (map (\u21d1f) \u03bc).Regular\n\u22a2 \u03bc.Regular",
+      "case h.e'_4\n\u03b1 : Type u_1\n\u03b2 : Type u_2\ninst\u271d\u2075 : MeasurableSpace \u03b1\ninst\u271d\u2074 : TopologicalSpace \u03b1\n\u03bc : Measure \u03b1\ninst\u271d\u00b3 : BorelSpace \u03b1\ninst\u271d\u00b2 : MeasurableSpace \u03b2\ninst\u271d\u00b9 : TopologicalSpace \u03b2\ninst\u271d : BorelSpace \u03b2\nf : \u03b1 \u2243\u209c \u03b2\nh : (map (\u21d1f) \u03bc).Regular\n\u22a2 \u03bc = map (\u21d1f.symm) (map (\u21d1f) \u03bc)",
+      "case h.e'_4\n\u03b1 : Type u_1\n\u03b2 : Type u_2\ninst\u271d\u2075 : MeasurableSpace \u03b1\ninst\u271d\u2074 : TopologicalSpace \u03b1\n\u03bc : Measure \u03b1\ninst\u271d\u00b3 : BorelSpace \u03b1\ninst\u271d\u00b2 : MeasurableSpace \u03b2\ninst\u271d\u00b9 : TopologicalSpace \u03b2\ninst\u271d : BorelSpace \u03b2\nf : \u03b1 \u2243\u209c \u03b2\nh : (map (\u21d1f) \u03bc).Regular\n\u22a2 \u03bc = map (\u21d1f.symm \u2218 \u21d1f) \u03bc",
+      "no goals"
+    ]
+  },
+  {
+    "tag": "06_CauSeq_sup_lt",
+    "full_name": "CauSeq.sup_lt",
+    "file_path": "Mathlib/Algebra/Order/CauSeq/Basic.lean",
+    "n_steps": 4,
+    "prefix_lines": 890,
+    "tactics": [
+      "obtain \u27e8\u27e8\u03b5a, \u03b5a0, ia, ha\u27e9, \u27e8\u03b5b, \u03b5b0, ib, hb\u27e9\u27e9 := ha, hb",
+      "refine \u27e8\u03b5a \u2293 \u03b5b, lt_inf_iff.mpr \u27e8\u03b5a0, \u03b5b0\u27e9, ia \u2294 ib, fun i hi => ?_\u27e9",
+      "have := min_le_min (ha _ (sup_le_iff.mp hi).1) (hb _ (sup_le_iff.mp hi).2)",
+      "exact this.trans_eq (min_sub_sub_left _ _ _)"
+    ],
+    "recorded_states": [
+      "\u03b1 : Type u_1\n\u03b2 : Type u_2\ninst\u271d : LinearOrderedField \u03b1\na b c : CauSeq \u03b1 abs\nha : a < c\nhb : b < c\n\u22a2 a \u2294 b < c",
+      "case intro.intro.intro.intro.intro.intro\n\u03b1 : Type u_1\n\u03b2 : Type u_2\ninst\u271d : LinearOrderedField \u03b1\na b c : CauSeq \u03b1 abs\n\u03b5a : \u03b1\n\u03b5a0 : \u03b5a > 0\nia : \u2115\nha : \u2200 j \u2265 ia, \u03b5a \u2264 \u2191(c - a) j\n\u03b5b : \u03b1\n\u03b5b0 : \u03b5b > 0\nib : \u2115\nhb : \u2200 j \u2265 ib, \u03b5b \u2264 \u2191(c - b) j\n\u22a2 a \u2294 b < c",
+      "case intro.intro.intro.intro.intro.intro\n\u03b1 : Type u_1\n\u03b2 : Type u_2\ninst\u271d : LinearOrderedField \u03b1\na b c : CauSeq \u03b1 abs\n\u03b5a : \u03b1\n\u03b5a0 : \u03b5a > 0\nia : \u2115\nha : \u2200 j \u2265 ia, \u03b5a \u2264 \u2191(c - a) j\n\u03b5b : \u03b1\n\u03b5b0 : \u03b5b > 0\nib : \u2115\nhb : \u2200 j \u2265 ib, \u03b5b \u2264 \u2191(c - b) j\ni : \u2115\nhi : i \u2265 ia \u2294 ib\n\u22a2 \u03b5a \u2293 \u03b5b \u2264 \u2191(c - a \u2294 b) i",
+      "case intro.intro.intro.intro.intro.intro\n\u03b1 : Type u_1\n\u03b2 : Type u_2\ninst\u271d : LinearOrderedField \u03b1\na b c : CauSeq \u03b1 abs\n\u03b5a : \u03b1\n\u03b5a0 : \u03b5a > 0\nia : \u2115\nha : \u2200 j \u2265 ia, \u03b5a \u2264 \u2191(c - a) j\n\u03b5b : \u03b1\n\u03b5b0 : \u03b5b > 0\nib : \u2115\nhb : \u2200 j \u2265 ib, \u03b5b \u2264 \u2191(c - b) j\ni : \u2115\nhi : i \u2265 ia \u2294 ib\nthis : min \u03b5a \u03b5b \u2264 min (\u2191(c - a) i) (\u2191(c - b) i)\n\u22a2 \u03b5a \u2293 \u03b5b \u2264 \u2191(c - a \u2294 b) i",
+      "no goals"
+    ]
+  },
+  {
+    "tag": "07_Path_Homotopic_proj_pi",
+    "full_name": "Path.Homotopic.proj_pi",
+    "file_path": "Mathlib/Topology/Homotopy/Product.lean",
+    "n_steps": 5,
+    "prefix_lines": 155,
+    "tactics": [
+      "apply Quotient.induction_on_pi (p := _) paths",
+      "intro",
+      "unfold proj",
+      "rw [pi_lift, \u2190 Path.Homotopic.map_lift]",
+      "congr"
+    ],
+    "recorded_states": [
+      "\u03b9 : Type u_1\nX : \u03b9 \u2192 Type u_2\ninst\u271d : (i : \u03b9) \u2192 TopologicalSpace (X i)\nas bs cs : (i : \u03b9) \u2192 X i\ni : \u03b9\npaths : (i : \u03b9) \u2192 Homotopic.Quotient (as i) (bs i)\n\u22a2 proj i (pi paths) = paths i",
+      "\u03b9 : Type u_1\nX : \u03b9 \u2192 Type u_2\ninst\u271d : (i : \u03b9) \u2192 TopologicalSpace (X i)\nas bs cs : (i : \u03b9) \u2192 X i\ni : \u03b9\npaths : (i : \u03b9) \u2192 Homotopic.Quotient (as i) (bs i)\n\u22a2 \u2200 (a : (i : \u03b9) \u2192 Path (as i) (bs i)), proj i (pi fun i => \u27e6a i\u27e7) = (fun i => \u27e6a i\u27e7) i",
+      "\u03b9 : Type u_1\nX : \u03b9 \u2192 Type u_2\ninst\u271d : (i : \u03b9) \u2192 TopologicalSpace (X i)\nas bs cs : (i : \u03b9) \u2192 X i\ni : \u03b9\npaths : (i : \u03b9) \u2192 Homotopic.Quotient (as i) (bs i)\na\u271d : (i : \u03b9) \u2192 Path (as i) (bs i)\n\u22a2 proj i (pi fun i => \u27e6a\u271d i\u27e7) = (fun i => \u27e6a\u271d i\u27e7) i",
+      "\u03b9 : Type u_1\nX : \u03b9 \u2192 Type u_2\ninst\u271d : (i : \u03b9) \u2192 TopologicalSpace (X i)\nas bs cs : (i : \u03b9) \u2192 X i\ni : \u03b9\npaths : (i : \u03b9) \u2192 Homotopic.Quotient (as i) (bs i)\na\u271d : (i : \u03b9) \u2192 Path (as i) (bs i)\n\u22a2 (pi fun i => \u27e6a\u271d i\u27e7).mapFn { toFun := fun p => p i, continuous_toFun := \u22ef } = (fun i => \u27e6a\u271d i\u27e7) i",
+      "\u03b9 : Type u_1\nX : \u03b9 \u2192 Type u_2\ninst\u271d : (i : \u03b9) \u2192 TopologicalSpace (X i)\nas bs cs : (i : \u03b9) \u2192 X i\ni : \u03b9\npaths : (i : \u03b9) \u2192 Homotopic.Quotient (as i) (bs i)\na\u271d : (i : \u03b9) \u2192 Path (as i) (bs i)\n\u22a2 \u27e6(Path.pi a\u271d).map \u22ef\u27e7 = (fun i => \u27e6a\u271d i\u27e7) i",
+      "no goals"
+    ]
+  },
+  {
+    "tag": "08_MvPFunctor_wRec_eq",
+    "full_name": "MvPFunctor.wRec_eq",
+    "file_path": "Mathlib/Data/PFunctor/Multivariate/W.lean",
+    "n_steps": 5,
+    "prefix_lines": 203,
+    "tactics": [
+      "rw [wMk, wRec]",
+      "dsimp",
+      "rw [wpRec_eq]",
+      "dsimp only [wPathDestLeft_wPathCasesOn, wPathDestRight_wPathCasesOn]",
+      "congr"
+    ],
+    "recorded_states": [
+      "n : \u2115\nP : MvPFunctor.{u} (n + 1)\n\u03b1 : TypeVec.{u} n\nC : Type u_1\ng : (a : P.A) \u2192 P.drop.B a \u27f9 \u03b1 \u2192 (P.last.B a \u2192 P.W \u03b1) \u2192 (P.last.B a \u2192 C) \u2192 C\na : P.A\nf' : P.drop.B a \u27f9 \u03b1\nf : P.last.B a \u2192 P.W \u03b1\n\u22a2 P.wRec g (P.wMk a f' f) = g a f' f fun i => P.wRec g (f i)",
+      "n : \u2115\nP : MvPFunctor.{u} (n + 1)\n\u03b1 : TypeVec.{u} n\nC : Type u_1\ng : (a : P.A) \u2192 P.drop.B a \u27f9 \u03b1 \u2192 (P.last.B a \u2192 P.W \u03b1) \u2192 (P.last.B a \u2192 C) \u2192 C\na : P.A\nf' : P.drop.B a \u27f9 \u03b1\nf : P.last.B a \u2192 P.W \u03b1\n\u22a2 (match\n      let g := fun i => (f i).fst;\n      let g' := P.wPathCasesOn f' fun i => (f i).snd;\n      \u27e8WType.mk a g, g'\u27e9 with\n    | \u27e8a, f'\u27e9 =>\n      let g' := fun a f h h' => g a (P.wPathDestLeft h) (fun i => \u27e8f i, P.wPathDestRight h i\u27e9) h';\n      P.wpRec g' a f') =\n    g a f' f fun i => P.wRec g (f i)",
+      "n : \u2115\nP : MvPFunctor.{u} (n + 1)\n\u03b1 : TypeVec.{u} n\nC : Type u_1\ng : (a : P.A) \u2192 P.drop.B a \u27f9 \u03b1 \u2192 (P.last.B a \u2192 P.W \u03b1) \u2192 (P.last.B a \u2192 C) \u2192 C\na : P.A\nf' : P.drop.B a \u27f9 \u03b1\nf : P.last.B a \u2192 P.W \u03b1\n\u22a2 P.wpRec (fun a f h h' => g a (P.wPathDestLeft h) (fun i => \u27e8f i, P.wPathDestRight h i\u27e9) h')\n      (WType.mk a fun i => (f i).fst) (P.wPathCasesOn f' fun i => (f i).snd) =\n    g a f' f fun i => P.wRec g (f i)",
+      "n : \u2115\nP : MvPFunctor.{u} (n + 1)\n\u03b1 : TypeVec.{u} n\nC : Type u_1\ng : (a : P.A) \u2192 P.drop.B a \u27f9 \u03b1 \u2192 (P.last.B a \u2192 P.W \u03b1) \u2192 (P.last.B a \u2192 C) \u2192 C\na : P.A\nf' : P.drop.B a \u27f9 \u03b1\nf : P.last.B a \u2192 P.W \u03b1\n\u22a2 (g a (P.wPathDestLeft (P.wPathCasesOn f' fun i => (f i).snd))\n      (fun i => \u27e8(f i).fst, P.wPathDestRight (P.wPathCasesOn f' fun i => (f i).snd) i\u27e9) fun i =>\n      P.wpRec (fun a f h h' => g a (P.wPathDestLeft h) (fun i => \u27e8f i, P.wPathDestRight h i\u27e9) h') (f i).fst\n        (P.wPathDestRight (P.wPathCasesOn f' fun i => (f i).snd) i)) =\n    g a f' f fun i => P.wRec g (f i)",
+      "n : \u2115\nP : MvPFunctor.{u} (n + 1)\n\u03b1 : TypeVec.{u} n\nC : Type u_1\ng : (a : P.A) \u2192 P.drop.B a \u27f9 \u03b1 \u2192 (P.last.B a \u2192 P.W \u03b1) \u2192 (P.last.B a \u2192 C) \u2192 C\na : P.A\nf' : P.drop.B a \u27f9 \u03b1\nf : P.last.B a \u2192 P.W \u03b1\n\u22a2 (g a f' (fun i => \u27e8(f i).fst, (f i).snd\u27e9) fun i =>\n      P.wpRec (fun a f h h' => g a (P.wPathDestLeft h) (fun i => \u27e8f i, P.wPathDestRight h i\u27e9) h') (f i).fst (f i).snd) =\n    g a f' f fun i => P.wRec g (f i)",
+      "no goals"
+    ]
+  },
+  {
+    "tag": "09_linearIndependent_le_span_",
+    "full_name": "linearIndependent_le_span'",
+    "file_path": "Mathlib/LinearAlgebra/Dimension/StrongRankCondition.lean",
+    "n_steps": 5,
+    "prefix_lines": 207,
+    "tactics": [
+      "haveI : Finite \u03b9 := i.finite_of_le_span_finite v w s",
+      "letI := Fintype.ofFinite \u03b9",
+      "rw [Cardinal.mk_fintype]",
+      "simp only [Cardinal.natCast_le]",
+      "exact linearIndependent_le_span_aux' v i w s"
+    ],
+    "recorded_states": [
+      "R : Type u\nM : Type v\ninst\u271d\u2074 : Ring R\ninst\u271d\u00b3 : AddCommGroup M\ninst\u271d\u00b2 : Module R M\n\u03b9\u271d : Type w\n\u03b9' : Type w'\ninst\u271d\u00b9 : StrongRankCondition R\n\u03b9 : Type u_1\nv : \u03b9 \u2192 M\ni : LinearIndependent R v\nw : Set M\ninst\u271d : Fintype \u2191w\ns : range v \u2264 \u2191(span R w)\n\u22a2 #\u03b9 \u2264 \u2191(Fintype.card \u2191w)",
+      "R : Type u\nM : Type v\ninst\u271d\u2074 : Ring R\ninst\u271d\u00b3 : AddCommGroup M\ninst\u271d\u00b2 : Module R M\n\u03b9\u271d : Type w\n\u03b9' : Type w'\ninst\u271d\u00b9 : StrongRankCondition R\n\u03b9 : Type u_1\nv : \u03b9 \u2192 M\ni : LinearIndependent R v\nw : Set M\ninst\u271d : Fintype \u2191w\ns : range v \u2264 \u2191(span R w)\nthis : Finite \u03b9\n\u22a2 #\u03b9 \u2264 \u2191(Fintype.card \u2191w)",
+      "R : Type u\nM : Type v\ninst\u271d\u2074 : Ring R\ninst\u271d\u00b3 : AddCommGroup M\ninst\u271d\u00b2 : Module R M\n\u03b9\u271d : Type w\n\u03b9' : Type w'\ninst\u271d\u00b9 : StrongRankCondition R\n\u03b9 : Type u_1\nv : \u03b9 \u2192 M\ni : LinearIndependent R v\nw : Set M\ninst\u271d : Fintype \u2191w\ns : range v \u2264 \u2191(span R w)\nthis\u271d : Finite \u03b9\nthis : Fintype \u03b9 := Fintype.ofFinite \u03b9\n\u22a2 #\u03b9 \u2264 \u2191(Fintype.card \u2191w)",
+      "R : Type u\nM : Type v\ninst\u271d\u2074 : Ring R\ninst\u271d\u00b3 : AddCommGroup M\ninst\u271d\u00b2 : Module R M\n\u03b9\u271d : Type w\n\u03b9' : Type w'\ninst\u271d\u00b9 : StrongRankCondition R\n\u03b9 : Type u_1\nv : \u03b9 \u2192 M\ni : LinearIndependent R v\nw : Set M\ninst\u271d : Fintype \u2191w\ns : range v \u2264 \u2191(span R w)\nthis\u271d : Finite \u03b9\nthis : Fintype \u03b9 := Fintype.ofFinite \u03b9\n\u22a2 \u2191(Fintype.card \u03b9) \u2264 \u2191(Fintype.card \u2191w)",
+      "R : Type u\nM : Type v\ninst\u271d\u2074 : Ring R\ninst\u271d\u00b3 : AddCommGroup M\ninst\u271d\u00b2 : Module R M\n\u03b9\u271d : Type w\n\u03b9' : Type w'\ninst\u271d\u00b9 : StrongRankCondition R\n\u03b9 : Type u_1\nv : \u03b9 \u2192 M\ni : LinearIndependent R v\nw : Set M\ninst\u271d : Fintype \u2191w\ns : range v \u2264 \u2191(span R w)\nthis\u271d : Finite \u03b9\nthis : Fintype \u03b9 := Fintype.ofFinite \u03b9\n\u22a2 Fintype.card \u03b9 \u2264 Fintype.card \u2191w",
+      "no goals"
+    ]
+  },
+  {
+    "tag": "10_Finset_map_subtype_embedding_Ico",
+    "full_name": "Finset.map_subtype_embedding_Ico",
+    "file_path": "Mathlib/Order/Interval/Finset/Defs.lean",
+    "n_steps": 4,
+    "prefix_lines": 1154,
+    "tactics": [
+      "rw [subtype_Ico_eq]",
+      "refine Finset.subtype_map_of_mem fun x hx => ?_",
+      "rw [mem_Ico] at hx",
+      "exact hp hx.1 hx.2.le a.prop b.prop"
+    ],
+    "recorded_states": [
+      "\u03b1 : Type u_1\n\u03b2 : Type u_2\ninst\u271d\u00b2 : Preorder \u03b1\np : \u03b1 \u2192 Prop\ninst\u271d\u00b9 : DecidablePred p\ninst\u271d : LocallyFiniteOrder \u03b1\na b : Subtype p\nhp : \u2200 \u2983a b x : \u03b1\u2984, a \u2264 x \u2192 x \u2264 b \u2192 p a \u2192 p b \u2192 p x\n\u22a2 map (Embedding.subtype p) (Ico a b) = Ico \u2191a \u2191b",
+      "\u03b1 : Type u_1\n\u03b2 : Type u_2\ninst\u271d\u00b2 : Preorder \u03b1\np : \u03b1 \u2192 Prop\ninst\u271d\u00b9 : DecidablePred p\ninst\u271d : LocallyFiniteOrder \u03b1\na b : Subtype p\nhp : \u2200 \u2983a b x : \u03b1\u2984, a \u2264 x \u2192 x \u2264 b \u2192 p a \u2192 p b \u2192 p x\n\u22a2 map (Embedding.subtype p) (Finset.subtype p (Ico \u2191a \u2191b)) = Ico \u2191a \u2191b",
+      "\u03b1 : Type u_1\n\u03b2 : Type u_2\ninst\u271d\u00b2 : Preorder \u03b1\np : \u03b1 \u2192 Prop\ninst\u271d\u00b9 : DecidablePred p\ninst\u271d : LocallyFiniteOrder \u03b1\na b : Subtype p\nhp : \u2200 \u2983a b x : \u03b1\u2984, a \u2264 x \u2192 x \u2264 b \u2192 p a \u2192 p b \u2192 p x\nx : \u03b1\nhx : x \u2208 Ico \u2191a \u2191b\n\u22a2 p x",
+      "\u03b1 : Type u_1\n\u03b2 : Type u_2\ninst\u271d\u00b2 : Preorder \u03b1\np : \u03b1 \u2192 Prop\ninst\u271d\u00b9 : DecidablePred p\ninst\u271d : LocallyFiniteOrder \u03b1\na b : Subtype p\nhp : \u2200 \u2983a b x : \u03b1\u2984, a \u2264 x \u2192 x \u2264 b \u2192 p a \u2192 p b \u2192 p x\nx : \u03b1\nhx : \u2191a \u2264 x \u2227 x < \u2191b\n\u22a2 p x",
+      "no goals"
+    ]
+  },
+  {
+    "tag": "11_Polynomial_natDegree_le_of_dvd",
+    "full_name": "Polynomial.natDegree_le_of_dvd",
+    "file_path": "Mathlib/Algebra/Polynomial/RingDivision.lean",
+    "n_steps": 4,
+    "prefix_lines": 154,
+    "tactics": [
+      "rcases h1 with \u27e8q, rfl\u27e9",
+      "rw [mul_ne_zero_iff] at h2",
+      "rw [natDegree_mul h2.1 h2.2]",
+      "exact Nat.le_add_right _ _"
+    ],
+    "recorded_states": [
+      "R : Type u\nS : Type v\nT : Type w\na b : R\nn : \u2115\ninst\u271d\u00b9 : Semiring R\ninst\u271d : NoZeroDivisors R\np\u271d q\u271d p q : R[X]\nh1 : p \u2223 q\nh2 : q \u2260 0\n\u22a2 p.natDegree \u2264 q.natDegree",
+      "case intro\nR : Type u\nS : Type v\nT : Type w\na b : R\nn : \u2115\ninst\u271d\u00b9 : Semiring R\ninst\u271d : NoZeroDivisors R\np\u271d q\u271d p q : R[X]\nh2 : p * q \u2260 0\n\u22a2 p.natDegree \u2264 (p * q).natDegree",
+      "case intro\nR : Type u\nS : Type v\nT : Type w\na b : R\nn : \u2115\ninst\u271d\u00b9 : Semiring R\ninst\u271d : NoZeroDivisors R\np\u271d q\u271d p q : R[X]\nh2 : p \u2260 0 \u2227 q \u2260 0\n\u22a2 p.natDegree \u2264 (p * q).natDegree",
+      "case intro\nR : Type u\nS : Type v\nT : Type w\na b : R\nn : \u2115\ninst\u271d\u00b9 : Semiring R\ninst\u271d : NoZeroDivisors R\np\u271d q\u271d p q : R[X]\nh2 : p \u2260 0 \u2227 q \u2260 0\n\u22a2 p.natDegree \u2264 p.natDegree + q.natDegree",
+      "no goals"
+    ]
+  },
+  {
+    "tag": "12_Order_Ideal_isPrime_of_mem_or_compl_mem",
+    "full_name": "Order.Ideal.isPrime_of_mem_or_compl_mem",
+    "file_path": "Mathlib/Order/PrimeIdeal.lean",
+    "n_steps": 5,
+    "prefix_lines": 184,
+    "tactics": [
+      "simp only [isPrime_iff_mem_or_mem, or_iff_not_imp_left]",
+      "intro x y hxy hxI",
+      "have hxcI : x\u1d9c \u2208 I := h.resolve_left hxI",
+      "have ass : x \u2293 y \u2294 y \u2293 x\u1d9c \u2208 I := sup_mem hxy (I.lower inf_le_right hxcI)",
+      "rwa [inf_comm, sup_inf_inf_compl] at ass"
+    ],
+    "recorded_states": [
+      "P : Type u_1\ninst\u271d\u00b9 : BooleanAlgebra P\nx : P\nI : Ideal P\ninst\u271d : I.IsProper\nh : \u2200 {x : P}, x \u2208 I \u2228 x\u1d9c \u2208 I\n\u22a2 I.IsPrime",
+      "P : Type u_1\ninst\u271d\u00b9 : BooleanAlgebra P\nx : P\nI : Ideal P\ninst\u271d : I.IsProper\nh : \u2200 {x : P}, x \u2208 I \u2228 x\u1d9c \u2208 I\n\u22a2 \u2200 {x y : P}, x \u2293 y \u2208 I \u2192 x \u2209 I \u2192 y \u2208 I",
+      "P : Type u_1\ninst\u271d\u00b9 : BooleanAlgebra P\nx\u271d : P\nI : Ideal P\ninst\u271d : I.IsProper\nh : \u2200 {x : P}, x \u2208 I \u2228 x\u1d9c \u2208 I\nx y : P\nhxy : x \u2293 y \u2208 I\nhxI : x \u2209 I\n\u22a2 y \u2208 I",
+      "P : Type u_1\ninst\u271d\u00b9 : BooleanAlgebra P\nx\u271d : P\nI : Ideal P\ninst\u271d : I.IsProper\nh : \u2200 {x : P}, x \u2208 I \u2228 x\u1d9c \u2208 I\nx y : P\nhxy : x \u2293 y \u2208 I\nhxI : x \u2209 I\nhxcI : x\u1d9c \u2208 I\n\u22a2 y \u2208 I",
+      "P : Type u_1\ninst\u271d\u00b9 : BooleanAlgebra P\nx\u271d : P\nI : Ideal P\ninst\u271d : I.IsProper\nh : \u2200 {x : P}, x \u2208 I \u2228 x\u1d9c \u2208 I\nx y : P\nhxy : x \u2293 y \u2208 I\nhxI : x \u2209 I\nhxcI : x\u1d9c \u2208 I\nass : x \u2293 y \u2294 y \u2293 x\u1d9c \u2208 I\n\u22a2 y \u2208 I",
+      "no goals"
+    ]
+  },
+  {
+    "tag": "13_IsClosed_exists_infDist_eq_dist",
+    "full_name": "IsClosed.exists_infDist_eq_dist",
+    "file_path": "Mathlib/Topology/MetricSpace/HausdorffDistance.lean",
+    "n_steps": 7,
+    "prefix_lines": 652,
+    "tactics": [
+      "rcases hne with \u27e8z, hz\u27e9",
+      "rw [\u2190 infDist_inter_closedBall_of_mem hz]",
+      "set t := s \u2229 closedBall x (dist z x)",
+      "have htc : IsCompact t := (isCompact_closedBall x (dist z x)).inter_left h",
+      "have htne : t.Nonempty := \u27e8z, hz, mem_closedBall.2 le_rfl\u27e9",
+      "obtain \u27e8y, \u27e8hys, -\u27e9, hyd\u27e9 : \u2203 y \u2208 t, infDist x t = dist x y := htc.exists_infDist_eq_dist htne x",
+      "exact \u27e8y, hys, hyd\u27e9"
+    ],
+    "recorded_states": [
+      "\u03b9 : Sort u_1\n\u03b1 : Type u\n\u03b2 : Type v\ninst\u271d\u00b2 : PseudoMetricSpace \u03b1\ninst\u271d\u00b9 : PseudoMetricSpace \u03b2\ns t u : Set \u03b1\nx\u271d y : \u03b1\n\u03a6 : \u03b1 \u2192 \u03b2\ninst\u271d : ProperSpace \u03b1\nh : IsClosed s\nhne : s.Nonempty\nx : \u03b1\n\u22a2 \u2203 y \u2208 s, infDist x s = dist x y",
+      "case intro\n\u03b9 : Sort u_1\n\u03b1 : Type u\n\u03b2 : Type v\ninst\u271d\u00b2 : PseudoMetricSpace \u03b1\ninst\u271d\u00b9 : PseudoMetricSpace \u03b2\ns t u : Set \u03b1\nx\u271d y : \u03b1\n\u03a6 : \u03b1 \u2192 \u03b2\ninst\u271d : ProperSpace \u03b1\nh : IsClosed s\nx z : \u03b1\nhz : z \u2208 s\n\u22a2 \u2203 y \u2208 s, infDist x s = dist x y",
+      "case intro\n\u03b9 : Sort u_1\n\u03b1 : Type u\n\u03b2 : Type v\ninst\u271d\u00b2 : PseudoMetricSpace \u03b1\ninst\u271d\u00b9 : PseudoMetricSpace \u03b2\ns t u : Set \u03b1\nx\u271d y : \u03b1\n\u03a6 : \u03b1 \u2192 \u03b2\ninst\u271d : ProperSpace \u03b1\nh : IsClosed s\nx z : \u03b1\nhz : z \u2208 s\n\u22a2 \u2203 y \u2208 s, infDist x (s \u2229 closedBall x (dist z x)) = dist x y",
+      "case intro\n\u03b9 : Sort u_1\n\u03b1 : Type u\n\u03b2 : Type v\ninst\u271d\u00b2 : PseudoMetricSpace \u03b1\ninst\u271d\u00b9 : PseudoMetricSpace \u03b2\ns t\u271d u : Set \u03b1\nx\u271d y : \u03b1\n\u03a6 : \u03b1 \u2192 \u03b2\ninst\u271d : ProperSpace \u03b1\nh : IsClosed s\nx z : \u03b1\nhz : z \u2208 s\nt : Set \u03b1 := s \u2229 closedBall x (dist z x)\n\u22a2 \u2203 y \u2208 s, infDist x t = dist x y",
+      "case intro\n\u03b9 : Sort u_1\n\u03b1 : Type u\n\u03b2 : Type v\ninst\u271d\u00b2 : PseudoMetricSpace \u03b1\ninst\u271d\u00b9 : PseudoMetricSpace \u03b2\ns t\u271d u : Set \u03b1\nx\u271d y : \u03b1\n\u03a6 : \u03b1 \u2192 \u03b2\ninst\u271d : ProperSpace \u03b1\nh : IsClosed s\nx z : \u03b1\nhz : z \u2208 s\nt : Set \u03b1 := s \u2229 closedBall x (dist z x)\nhtc : IsCompact t\n\u22a2 \u2203 y \u2208 s, infDist x t = dist x y",
+      "case intro\n\u03b9 : Sort u_1\n\u03b1 : Type u\n\u03b2 : Type v\ninst\u271d\u00b2 : PseudoMetricSpace \u03b1\ninst\u271d\u00b9 : PseudoMetricSpace \u03b2\ns t\u271d u : Set \u03b1\nx\u271d y : \u03b1\n\u03a6 : \u03b1 \u2192 \u03b2\ninst\u271d : ProperSpace \u03b1\nh : IsClosed s\nx z : \u03b1\nhz : z \u2208 s\nt : Set \u03b1 := s \u2229 closedBall x (dist z x)\nhtc : IsCompact t\nhtne : t.Nonempty\n\u22a2 \u2203 y \u2208 s, infDist x t = dist x y",
+      "case intro.intro.intro.intro\n\u03b9 : Sort u_1\n\u03b1 : Type u\n\u03b2 : Type v\ninst\u271d\u00b2 : PseudoMetricSpace \u03b1\ninst\u271d\u00b9 : PseudoMetricSpace \u03b2\ns t\u271d u : Set \u03b1\nx\u271d y\u271d : \u03b1\n\u03a6 : \u03b1 \u2192 \u03b2\ninst\u271d : ProperSpace \u03b1\nh : IsClosed s\nx z : \u03b1\nhz : z \u2208 s\nt : Set \u03b1 := s \u2229 closedBall x (dist z x)\nhtc : IsCompact t\nhtne : t.Nonempty\ny : \u03b1\nhyd : infDist x t = dist x y\nhys : y \u2208 s\n\u22a2 \u2203 y \u2208 s, infDist x t = dist x y",
+      "no goals"
+    ]
+  },
+  {
+    "tag": "14_isNilpotent_pi_of_bounded_class",
+    "full_name": "isNilpotent_pi_of_bounded_class",
+    "file_path": "Mathlib/GroupTheory/Nilpotent.lean",
+    "n_steps": 7,
+    "prefix_lines": 757,
+    "tactics": [
+      "rw [nilpotent_iff_lowerCentralSeries]",
+      "refine \u27e8n, ?_\u27e9",
+      "rw [eq_bot_iff]",
+      "apply le_trans (lowerCentralSeries_pi_le _)",
+      "rw [\u2190 eq_bot_iff, pi_eq_bot_iff]",
+      "intro i",
+      "apply lowerCentralSeries_eq_bot_iff_nilpotencyClass_le.mpr (h i)"
+    ],
+    "recorded_states": [
+      "G : Type u_1\ninst\u271d\u00b3 : Group G\nH : Subgroup G\ninst\u271d\u00b2 : H.Normal\n\u03b7 : Type u_2\nGs : \u03b7 \u2192 Type u_3\ninst\u271d\u00b9 : (i : \u03b7) \u2192 Group (Gs i)\ninst\u271d : \u2200 (i : \u03b7), Group.IsNilpotent (Gs i)\nn : \u2115\nh : \u2200 (i : \u03b7), Group.nilpotencyClass (Gs i) \u2264 n\n\u22a2 Group.IsNilpotent ((i : \u03b7) \u2192 Gs i)",
+      "G : Type u_1\ninst\u271d\u00b3 : Group G\nH : Subgroup G\ninst\u271d\u00b2 : H.Normal\n\u03b7 : Type u_2\nGs : \u03b7 \u2192 Type u_3\ninst\u271d\u00b9 : (i : \u03b7) \u2192 Group (Gs i)\ninst\u271d : \u2200 (i : \u03b7), Group.IsNilpotent (Gs i)\nn : \u2115\nh : \u2200 (i : \u03b7), Group.nilpotencyClass (Gs i) \u2264 n\n\u22a2 \u2203 n, lowerCentralSeries ((i : \u03b7) \u2192 Gs i) n = \u22a5",
+      "G : Type u_1\ninst\u271d\u00b3 : Group G\nH : Subgroup G\ninst\u271d\u00b2 : H.Normal\n\u03b7 : Type u_2\nGs : \u03b7 \u2192 Type u_3\ninst\u271d\u00b9 : (i : \u03b7) \u2192 Group (Gs i)\ninst\u271d : \u2200 (i : \u03b7), Group.IsNilpotent (Gs i)\nn : \u2115\nh : \u2200 (i : \u03b7), Group.nilpotencyClass (Gs i) \u2264 n\n\u22a2 lowerCentralSeries ((i : \u03b7) \u2192 Gs i) n = \u22a5",
+      "G : Type u_1\ninst\u271d\u00b3 : Group G\nH : Subgroup G\ninst\u271d\u00b2 : H.Normal\n\u03b7 : Type u_2\nGs : \u03b7 \u2192 Type u_3\ninst\u271d\u00b9 : (i : \u03b7) \u2192 Group (Gs i)\ninst\u271d : \u2200 (i : \u03b7), Group.IsNilpotent (Gs i)\nn : \u2115\nh : \u2200 (i : \u03b7), Group.nilpotencyClass (Gs i) \u2264 n\n\u22a2 lowerCentralSeries ((i : \u03b7) \u2192 Gs i) n \u2264 \u22a5",
+      "G : Type u_1\ninst\u271d\u00b3 : Group G\nH : Subgroup G\ninst\u271d\u00b2 : H.Normal\n\u03b7 : Type u_2\nGs : \u03b7 \u2192 Type u_3\ninst\u271d\u00b9 : (i : \u03b7) \u2192 Group (Gs i)\ninst\u271d : \u2200 (i : \u03b7), Group.IsNilpotent (Gs i)\nn : \u2115\nh : \u2200 (i : \u03b7), Group.nilpotencyClass (Gs i) \u2264 n\n\u22a2 (pi Set.univ fun i => lowerCentralSeries (Gs i) n) \u2264 \u22a5",
+      "G : Type u_1\ninst\u271d\u00b3 : Group G\nH : Subgroup G\ninst\u271d\u00b2 : H.Normal\n\u03b7 : Type u_2\nGs : \u03b7 \u2192 Type u_3\ninst\u271d\u00b9 : (i : \u03b7) \u2192 Group (Gs i)\ninst\u271d : \u2200 (i : \u03b7), Group.IsNilpotent (Gs i)\nn : \u2115\nh : \u2200 (i : \u03b7), Group.nilpotencyClass (Gs i) \u2264 n\n\u22a2 \u2200 (i : \u03b7), lowerCentralSeries (Gs i) n = \u22a5",
+      "G : Type u_1\ninst\u271d\u00b3 : Group G\nH : Subgroup G\ninst\u271d\u00b2 : H.Normal\n\u03b7 : Type u_2\nGs : \u03b7 \u2192 Type u_3\ninst\u271d\u00b9 : (i : \u03b7) \u2192 Group (Gs i)\ninst\u271d : \u2200 (i : \u03b7), Group.IsNilpotent (Gs i)\nn : \u2115\nh : \u2200 (i : \u03b7), Group.nilpotencyClass (Gs i) \u2264 n\ni : \u03b7\n\u22a2 lowerCentralSeries (Gs i) n = \u22a5",
+      "no goals"
+    ]
+  },
+  {
+    "tag": "15_AddLECancellable_lt_add_of_tsub_lt_left",
+    "full_name": "AddLECancellable.lt_add_of_tsub_lt_left",
+    "file_path": "Mathlib/Algebra/Order/Sub/Defs.lean",
+    "n_steps": 4,
+    "prefix_lines": 307,
+    "tactics": [
+      "rw [lt_iff_le_and_ne, \u2190 tsub_le_iff_left]",
+      "refine \u27e8h.le, ?_\u27e9",
+      "rintro rfl",
+      "simp [hb] at h"
+    ],
+    "recorded_states": [
+      "\u03b1 : Type u_1\n\u03b2 : Type u_2\ninst\u271d\u00b3 : PartialOrder \u03b1\ninst\u271d\u00b2 : AddCommSemigroup \u03b1\ninst\u271d\u00b9 : Sub \u03b1\ninst\u271d : OrderedSub \u03b1\na b c d : \u03b1\nhb : AddLECancellable b\nh : a - b < c\n\u22a2 a < b + c",
+      "\u03b1 : Type u_1\n\u03b2 : Type u_2\ninst\u271d\u00b3 : PartialOrder \u03b1\ninst\u271d\u00b2 : AddCommSemigroup \u03b1\ninst\u271d\u00b9 : Sub \u03b1\ninst\u271d : OrderedSub \u03b1\na b c d : \u03b1\nhb : AddLECancellable b\nh : a - b < c\n\u22a2 a - b \u2264 c \u2227 a \u2260 b + c",
+      "\u03b1 : Type u_1\n\u03b2 : Type u_2\ninst\u271d\u00b3 : PartialOrder \u03b1\ninst\u271d\u00b2 : AddCommSemigroup \u03b1\ninst\u271d\u00b9 : Sub \u03b1\ninst\u271d : OrderedSub \u03b1\na b c d : \u03b1\nhb : AddLECancellable b\nh : a - b < c\n\u22a2 a \u2260 b + c",
+      "\u03b1 : Type u_1\n\u03b2 : Type u_2\ninst\u271d\u00b3 : PartialOrder \u03b1\ninst\u271d\u00b2 : AddCommSemigroup \u03b1\ninst\u271d\u00b9 : Sub \u03b1\ninst\u271d : OrderedSub \u03b1\nb c d : \u03b1\nhb : AddLECancellable b\nh : b + c - b < c\n\u22a2 False",
+      "no goals"
+    ]
+  },
+  {
+    "tag": "16_univ_eq_singleton_of_card_one",
+    "full_name": "univ_eq_singleton_of_card_one",
+    "file_path": "Mathlib/Data/Fintype/Card.lean",
+    "n_steps": 4,
+    "prefix_lines": 923,
+    "tactics": [
+      "symm",
+      "apply eq_of_subset_of_card_le (subset_univ {x})",
+      "apply le_of_eq",
+      "simp [h, Finset.card_univ]"
+    ],
+    "recorded_states": [
+      "\u03b1\u271d : Type u_1\n\u03b2 : Type u_2\n\u03b3 : Type u_3\n\u03b1 : Type u_4\ninst\u271d : Fintype \u03b1\nx : \u03b1\nh : Fintype.card \u03b1 = 1\n\u22a2 univ = {x}",
+      "\u03b1\u271d : Type u_1\n\u03b2 : Type u_2\n\u03b3 : Type u_3\n\u03b1 : Type u_4\ninst\u271d : Fintype \u03b1\nx : \u03b1\nh : Fintype.card \u03b1 = 1\n\u22a2 {x} = univ",
+      "\u03b1\u271d : Type u_1\n\u03b2 : Type u_2\n\u03b3 : Type u_3\n\u03b1 : Type u_4\ninst\u271d : Fintype \u03b1\nx : \u03b1\nh : Fintype.card \u03b1 = 1\n\u22a2 univ.card \u2264 {x}.card",
+      "case a\n\u03b1\u271d : Type u_1\n\u03b2 : Type u_2\n\u03b3 : Type u_3\n\u03b1 : Type u_4\ninst\u271d : Fintype \u03b1\nx : \u03b1\nh : Fintype.card \u03b1 = 1\n\u22a2 univ.card = {x}.card",
+      "no goals"
+    ]
+  },
+  {
+    "tag": "17_TypeVec_lastFun_prod",
+    "full_name": "TypeVec.lastFun_prod",
+    "file_path": "Mathlib/Data/TypeVec.lean",
+    "n_steps": 4,
+    "prefix_lines": 734,
+    "tactics": [
+      "ext i : 1",
+      "induction i",
+      "simp [lastFun, *]",
+      "rfl"
+    ],
+    "recorded_states": [
+      "n : \u2115\n\u03b1 \u03b1' \u03b2 \u03b2' : TypeVec.{u_1} (n + 1)\nf : \u03b1 \u27f9 \u03b2\nf' : \u03b1' \u27f9 \u03b2'\n\u22a2 lastFun (f \u2297' f') = Prod.map (lastFun f) (lastFun f')",
+      "case h\nn : \u2115\n\u03b1 \u03b1' \u03b2 \u03b2' : TypeVec.{u_1} (n + 1)\nf : \u03b1 \u27f9 \u03b2\nf' : \u03b1' \u27f9 \u03b2'\ni : (\u03b1 \u2297 \u03b1').last\n\u22a2 lastFun (f \u2297' f') i = Prod.map (lastFun f) (lastFun f') i",
+      "case h.mk\nn : \u2115\n\u03b1 \u03b1' \u03b2 \u03b2' : TypeVec.{u_1} (n + 1)\nf : \u03b1 \u27f9 \u03b2\nf' : \u03b1' \u27f9 \u03b2'\nfst\u271d : \u03b1.last\nsnd\u271d : \u03b1'.last\n\u22a2 lastFun (f \u2297' f') (fst\u271d, snd\u271d) = Prod.map (lastFun f) (lastFun f') (fst\u271d, snd\u271d)",
+      "case h.mk\nn : \u2115\n\u03b1 \u03b1' \u03b2 \u03b2' : TypeVec.{u_1} (n + 1)\nf : \u03b1 \u27f9 \u03b2\nf' : \u03b1' \u27f9 \u03b2'\nfst\u271d : \u03b1.last\nsnd\u271d : \u03b1'.last\n\u22a2 (f \u2297' f') Fin2.fz (fst\u271d, snd\u271d) = (f Fin2.fz fst\u271d, f' Fin2.fz snd\u271d)",
+      "no goals"
+    ]
+  },
+  {
+    "tag": "18_MeasurableEmbedding_aemeasurable_map_iff",
+    "full_name": "MeasurableEmbedding.aemeasurable_map_iff",
+    "file_path": "Mathlib/MeasureTheory/Measure/AEMeasurable.lean",
+    "n_steps": 4,
+    "prefix_lines": 260,
+    "tactics": [
+      "refine \u27e8fun H => H.comp_measurable hf.measurable, ?_\u27e9",
+      "rintro \u27e8g\u2081, hgm\u2081, heq\u27e9",
+      "rcases hf.exists_measurable_extend hgm\u2081 fun x => \u27e8g x\u27e9 with \u27e8g\u2082, hgm\u2082, rfl\u27e9",
+      "exact \u27e8g\u2082, hgm\u2082, hf.ae_map_iff.2 heq\u27e9"
+    ],
+    "recorded_states": [
+      "\u03b9 : Type u_1\n\u03b1 : Type u_2\n\u03b2 : Type u_3\n\u03b3 : Type u_4\n\u03b4 : Type u_5\nR : Type u_6\nm0 : MeasurableSpace \u03b1\ninst\u271d\u00b2 : MeasurableSpace \u03b2\ninst\u271d\u00b9 : MeasurableSpace \u03b3\ninst\u271d : MeasurableSpace \u03b4\nf g\u271d : \u03b1 \u2192 \u03b2\n\u03bc \u03bd : Measure \u03b1\ng : \u03b2 \u2192 \u03b3\nhf : MeasurableEmbedding f\n\u22a2 AEMeasurable g (Measure.map f \u03bc) \u2194 AEMeasurable (g \u2218 f) \u03bc",
+      "\u03b9 : Type u_1\n\u03b1 : Type u_2\n\u03b2 : Type u_3\n\u03b3 : Type u_4\n\u03b4 : Type u_5\nR : Type u_6\nm0 : MeasurableSpace \u03b1\ninst\u271d\u00b2 : MeasurableSpace \u03b2\ninst\u271d\u00b9 : MeasurableSpace \u03b3\ninst\u271d : MeasurableSpace \u03b4\nf g\u271d : \u03b1 \u2192 \u03b2\n\u03bc \u03bd : Measure \u03b1\ng : \u03b2 \u2192 \u03b3\nhf : MeasurableEmbedding f\n\u22a2 AEMeasurable (g \u2218 f) \u03bc \u2192 AEMeasurable g (Measure.map f \u03bc)",
+      "case intro.intro\n\u03b9 : Type u_1\n\u03b1 : Type u_2\n\u03b2 : Type u_3\n\u03b3 : Type u_4\n\u03b4 : Type u_5\nR : Type u_6\nm0 : MeasurableSpace \u03b1\ninst\u271d\u00b2 : MeasurableSpace \u03b2\ninst\u271d\u00b9 : MeasurableSpace \u03b3\ninst\u271d : MeasurableSpace \u03b4\nf g\u271d : \u03b1 \u2192 \u03b2\n\u03bc \u03bd : Measure \u03b1\ng : \u03b2 \u2192 \u03b3\nhf : MeasurableEmbedding f\ng\u2081 : \u03b1 \u2192 \u03b3\nhgm\u2081 : Measurable g\u2081\nheq : g \u2218 f =\u1da0[ae \u03bc] g\u2081\n\u22a2 AEMeasurable g (Measure.map f \u03bc)",
+      "case intro.intro.intro.intro\n\u03b9 : Type u_1\n\u03b1 : Type u_2\n\u03b2 : Type u_3\n\u03b3 : Type u_4\n\u03b4 : Type u_5\nR : Type u_6\nm0 : MeasurableSpace \u03b1\ninst\u271d\u00b2 : MeasurableSpace \u03b2\ninst\u271d\u00b9 : MeasurableSpace \u03b3\ninst\u271d : MeasurableSpace \u03b4\nf g\u271d : \u03b1 \u2192 \u03b2\n\u03bc \u03bd : Measure \u03b1\ng : \u03b2 \u2192 \u03b3\nhf : MeasurableEmbedding f\ng\u2082 : \u03b2 \u2192 \u03b3\nhgm\u2082 : Measurable g\u2082\nhgm\u2081 : Measurable (g\u2082 \u2218 f)\nheq : g \u2218 f =\u1da0[ae \u03bc] g\u2082 \u2218 f\n\u22a2 AEMeasurable g (Measure.map f \u03bc)",
+      "no goals"
+    ]
+  },
+  {
+    "tag": "19_HomologicalComplex_exact_of_degreewise_exact",
+    "full_name": "HomologicalComplex.exact_of_degreewise_exact",
+    "file_path": "Mathlib/Algebra/Homology/HomologicalComplexAbelian.lean",
+    "n_steps": 4,
+    "prefix_lines": 38,
+    "tactics": [
+      "simp only [ShortComplex.exact_iff_isZero_homology] at hS \u22a2",
+      "rw [IsZero.iff_id_eq_zero]",
+      "ext i",
+      "apply (IsZero.of_iso (hS i) (S.mapHomologyIso (eval C c i)).symm).eq_of_src"
+    ],
+    "recorded_states": [
+      "C : Type u_1\n\u03b9 : Type u_2\nc : ComplexShape \u03b9\ninst\u271d\u00b9 : Category.{u_3, u_1} C\ninst\u271d : Abelian C\nS : ShortComplex (HomologicalComplex C c)\nhS : \u2200 (i : \u03b9), (S.map (eval C c i)).Exact\n\u22a2 S.Exact",
+      "C : Type u_1\n\u03b9 : Type u_2\nc : ComplexShape \u03b9\ninst\u271d\u00b9 : Category.{u_3, u_1} C\ninst\u271d : Abelian C\nS : ShortComplex (HomologicalComplex C c)\nhS : \u2200 (i : \u03b9), IsZero (S.map (eval C c i)).homology\n\u22a2 IsZero S.homology",
+      "C : Type u_1\n\u03b9 : Type u_2\nc : ComplexShape \u03b9\ninst\u271d\u00b9 : Category.{u_3, u_1} C\ninst\u271d : Abelian C\nS : ShortComplex (HomologicalComplex C c)\nhS : \u2200 (i : \u03b9), IsZero (S.map (eval C c i)).homology\n\u22a2 \ud835\udfd9 S.homology = 0",
+      "case h\nC : Type u_1\n\u03b9 : Type u_2\nc : ComplexShape \u03b9\ninst\u271d\u00b9 : Category.{u_3, u_1} C\ninst\u271d : Abelian C\nS : ShortComplex (HomologicalComplex C c)\nhS : \u2200 (i : \u03b9), IsZero (S.map (eval C c i)).homology\ni : \u03b9\n\u22a2 (\ud835\udfd9 S.homology).f i = Hom.f 0 i",
+      "no goals"
+    ]
+  },
+  {
+    "tag": "20_CategoryTheory_Limits_Concrete_from_union_surjective_of",
+    "full_name": "CategoryTheory.Limits.Concrete.from_union_surjective_of_isColimit",
+    "file_path": "Mathlib/CategoryTheory/Limits/ConcreteCategory.lean",
+    "n_steps": 5,
+    "prefix_lines": 74,
+    "tactics": [
+      "intro ff x",
+      "let E : Cocone (F \u22d9 forget C) := (forget C).mapCocone D",
+      "let hE : IsColimit E := isColimitOfPreserves (forget C) hD",
+      "obtain \u27e8j, y, hy\u27e9 := Types.jointly_surjective_of_isColimit hE x",
+      "exact \u27e8\u27e8j, y\u27e9, hy\u27e9"
+    ],
+    "recorded_states": [
+      "C : Type u\ninst\u271d\u00b3 : Category.{v, u} C\ninst\u271d\u00b2 : ConcreteCategory C\nJ : Type w\ninst\u271d\u00b9 : Category.{r, w} J\nF : J \u2964 C\ninst\u271d : PreservesColimit F (forget C)\nD : Cocone F\nhD : IsColimit D\n\u22a2 let ff := fun a => (D.\u03b9.app a.fst) a.snd;\n  Function.Surjective ff",
+      "C : Type u\ninst\u271d\u00b3 : Category.{v, u} C\ninst\u271d\u00b2 : ConcreteCategory C\nJ : Type w\ninst\u271d\u00b9 : Category.{r, w} J\nF : J \u2964 C\ninst\u271d : PreservesColimit F (forget C)\nD : Cocone F\nhD : IsColimit D\nff : (j : J) \u00d7 (forget C).obj (F.obj j) \u2192 (forget C).obj D.pt := fun a => (D.\u03b9.app a.fst) a.snd\nx : (forget C).obj D.pt\n\u22a2 \u2203 a, ff a = x",
+      "C : Type u\ninst\u271d\u00b3 : Category.{v, u} C\ninst\u271d\u00b2 : ConcreteCategory C\nJ : Type w\ninst\u271d\u00b9 : Category.{r, w} J\nF : J \u2964 C\ninst\u271d : PreservesColimit F (forget C)\nD : Cocone F\nhD : IsColimit D\nff : (j : J) \u00d7 (forget C).obj (F.obj j) \u2192 (forget C).obj D.pt := fun a => (D.\u03b9.app a.fst) a.snd\nx : (forget C).obj D.pt\nE : Cocone (F \u22d9 forget C) := (forget C).mapCocone D\n\u22a2 \u2203 a, ff a = x",
+      "C : Type u\ninst\u271d\u00b3 : Category.{v, u} C\ninst\u271d\u00b2 : ConcreteCategory C\nJ : Type w\ninst\u271d\u00b9 : Category.{r, w} J\nF : J \u2964 C\ninst\u271d : PreservesColimit F (forget C)\nD : Cocone F\nhD : IsColimit D\nff : (j : J) \u00d7 (forget C).obj (F.obj j) \u2192 (forget C).obj D.pt := fun a => (D.\u03b9.app a.fst) a.snd\nx : (forget C).obj D.pt\nE : Cocone (F \u22d9 forget C) := (forget C).mapCocone D\nhE : IsColimit E := isColimitOfPreserves (forget C) hD\n\u22a2 \u2203 a, ff a = x",
+      "case intro.intro\nC : Type u\ninst\u271d\u00b3 : Category.{v, u} C\ninst\u271d\u00b2 : ConcreteCategory C\nJ : Type w\ninst\u271d\u00b9 : Category.{r, w} J\nF : J \u2964 C\ninst\u271d : PreservesColimit F (forget C)\nD : Cocone F\nhD : IsColimit D\nff : (j : J) \u00d7 (forget C).obj (F.obj j) \u2192 (forget C).obj D.pt := fun a => (D.\u03b9.app a.fst) a.snd\nx : (forget C).obj D.pt\nE : Cocone (F \u22d9 forget C) := (forget C).mapCocone D\nhE : IsColimit E := isColimitOfPreserves (forget C) hD\nj : J\ny : (F \u22d9 forget C).obj j\nhy : E.\u03b9.app j y = x\n\u22a2 \u2203 a, ff a = x",
+      "no goals"
+    ]
+  },
+  {
+    "tag": "21_TopCat_Presheaf_app_surjective_of_stalkFunctor_map_bije",
+    "full_name": "TopCat.Presheaf.app_surjective_of_stalkFunctor_map_bijective",
+    "file_path": "Mathlib/Topology/Sheaves/Stalks.lean",
+    "n_steps": 9,
+    "prefix_lines": 560,
+    "tactics": [
+      "refine app_surjective_of_injective_of_locally_surjective f U (fun x => (h x).1) fun t x => ?_",
+      "obtain \u27e8s\u2080, hs\u2080\u27e9 := (h x).2 (G.presheaf.germ x t)",
+      "obtain \u27e8V\u2081, hxV\u2081, s\u2081, hs\u2081\u27e9 := F.presheaf.germ_exist x.1 s\u2080",
+      "subst hs\u2081",
+      "rename' hs\u2080 => hs\u2081",
+      "erw [stalkFunctor_map_germ_apply V\u2081 \u27e8x.1, hxV\u2081\u27e9 f.1 s\u2081] at hs\u2081",
+      "obtain \u27e8V\u2082, hxV\u2082, iV\u2082V\u2081, iV\u2082U, heq\u27e9 := G.presheaf.germ_eq x.1 hxV\u2081 x.2 _ _ hs\u2081",
+      "use V\u2082, hxV\u2082, iV\u2082U, F.1.map iV\u2082V\u2081.op s\u2081",
+      "rw [\u2190 comp_apply, f.1.naturality, comp_apply, heq]"
+    ],
+    "recorded_states": [
+      "C : Type u\ninst\u271d\u2076 : Category.{v, u} C\ninst\u271d\u2075 : HasColimits C\nX Y Z : TopCat\ninst\u271d\u2074 : ConcreteCategory C\ninst\u271d\u00b3 : PreservesFilteredColimits (forget C)\ninst\u271d\u00b2 : HasLimits C\ninst\u271d\u00b9 : PreservesLimits (forget C)\ninst\u271d : (forget C).ReflectsIsomorphisms\nF G : Sheaf C X\nf : F \u27f6 G\nU : Opens \u2191X\nh : \u2200 (x : \u21a5U), Function.Bijective \u21d1((stalkFunctor C \u2191x).map f.val)\n\u22a2 Function.Surjective \u21d1(f.val.app { unop := U })",
+      "C : Type u\ninst\u271d\u2076 : Category.{v, u} C\ninst\u271d\u2075 : HasColimits C\nX Y Z : TopCat\ninst\u271d\u2074 : ConcreteCategory C\ninst\u271d\u00b3 : PreservesFilteredColimits (forget C)\ninst\u271d\u00b2 : HasLimits C\ninst\u271d\u00b9 : PreservesLimits (forget C)\ninst\u271d : (forget C).ReflectsIsomorphisms\nF G : Sheaf C X\nf : F \u27f6 G\nU : Opens \u2191X\nh : \u2200 (x : \u21a5U), Function.Bijective \u21d1((stalkFunctor C \u2191x).map f.val)\nt : (forget C).obj (G.val.obj { unop := U })\nx : \u21a5U\n\u22a2 \u2203 V, \u2203 (_ : \u2191x \u2208 V), \u2203 iVU s, (f.val.app { unop := V }) s = (G.val.map iVU.op) t",
+      "case intro\nC : Type u\ninst\u271d\u2076 : Category.{v, u} C\ninst\u271d\u2075 : HasColimits C\nX Y Z : TopCat\ninst\u271d\u2074 : ConcreteCategory C\ninst\u271d\u00b3 : PreservesFilteredColimits (forget C)\ninst\u271d\u00b2 : HasLimits C\ninst\u271d\u00b9 : PreservesLimits (forget C)\ninst\u271d : (forget C).ReflectsIsomorphisms\nF G : Sheaf C X\nf : F \u27f6 G\nU : Opens \u2191X\nh : \u2200 (x : \u21a5U), Function.Bijective \u21d1((stalkFunctor C \u2191x).map f.val)\nt : (forget C).obj (G.val.obj { unop := U })\nx : \u21a5U\ns\u2080 : (forget C).obj ((stalkFunctor C \u2191x).obj F.val)\nhs\u2080 : ((stalkFunctor C \u2191x).map f.val) s\u2080 = (G.presheaf.germ x) t\n\u22a2 \u2203 V, \u2203 (_ : \u2191x \u2208 V), \u2203 iVU s, (f.val.app { unop := V }) s = (G.val.map iVU.op) t",
+      "case intro.intro.intro.intro\nC : Type u\ninst\u271d\u2076 : Category.{v, u} C\ninst\u271d\u2075 : HasColimits C\nX Y Z : TopCat\ninst\u271d\u2074 : ConcreteCategory C\ninst\u271d\u00b3 : PreservesFilteredColimits (forget C)\ninst\u271d\u00b2 : HasLimits C\ninst\u271d\u00b9 : PreservesLimits (forget C)\ninst\u271d : (forget C).ReflectsIsomorphisms\nF G : Sheaf C X\nf : F \u27f6 G\nU : Opens \u2191X\nh : \u2200 (x : \u21a5U), Function.Bijective \u21d1((stalkFunctor C \u2191x).map f.val)\nt : (forget C).obj (G.val.obj { unop := U })\nx : \u21a5U\ns\u2080 : (forget C).obj ((stalkFunctor C \u2191x).obj F.val)\nhs\u2080 : ((stalkFunctor C \u2191x).map f.val) s\u2080 = (G.presheaf.germ x) t\nV\u2081 : Opens \u2191X\nhxV\u2081 : \u2191x \u2208 V\u2081\ns\u2081 : (forget C).obj (F.presheaf.obj { unop := V\u2081 })\nhs\u2081 : (F.presheaf.germ \u27e8\u2191x, hxV\u2081\u27e9) s\u2081 = s\u2080\n\u22a2 \u2203 V, \u2203 (_ : \u2191x \u2208 V), \u2203 iVU s, (f.val.app { unop := V }) s = (G.val.map iVU.op) t",
+      "case intro.intro.intro.intro\nC : Type u\ninst\u271d\u2076 : Category.{v, u} C\ninst\u271d\u2075 : HasColimits C\nX Y Z : TopCat\ninst\u271d\u2074 : ConcreteCategory C\ninst\u271d\u00b3 : PreservesFilteredColimits (forget C)\ninst\u271d\u00b2 : HasLimits C\ninst\u271d\u00b9 : PreservesLimits (forget C)\ninst\u271d : (forget C).ReflectsIsomorphisms\nF G : Sheaf C X\nf : F \u27f6 G\nU : Opens \u2191X\nh : \u2200 (x : \u21a5U), Function.Bijective \u21d1((stalkFunctor C \u2191x).map f.val)\nt : (forget C).obj (G.val.obj { unop := U })\nx : \u21a5U\nV\u2081 : Opens \u2191X\nhxV\u2081 : \u2191x \u2208 V\u2081\ns\u2081 : (forget C).obj (F.presheaf.obj { unop := V\u2081 })\nhs\u2080 : ((stalkFunctor C \u2191x).map f.val) ((F.presheaf.germ \u27e8\u2191x, hxV\u2081\u27e9) s\u2081) = (G.presheaf.germ x) t\n\u22a2 \u2203 V, \u2203 (_ : \u2191x \u2208 V), \u2203 iVU s, (f.val.app { unop := V }) s = (G.val.map iVU.op) t",
+      "case intro.intro.intro.intro\nC : Type u\ninst\u271d\u2076 : Category.{v, u} C\ninst\u271d\u2075 : HasColimits C\nX Y Z : TopCat\ninst\u271d\u2074 : ConcreteCategory C\ninst\u271d\u00b3 : PreservesFilteredColimits (forget C)\ninst\u271d\u00b2 : HasLimits C\ninst\u271d\u00b9 : PreservesLimits (forget C)\ninst\u271d : (forget C).ReflectsIsomorphisms\nF G : Sheaf C X\nf : F \u27f6 G\nU : Opens \u2191X\nh : \u2200 (x : \u21a5U), Function.Bijective \u21d1((stalkFunctor C \u2191x).map f.val)\nt : (forget C).obj (G.val.obj { unop := U })\nx : \u21a5U\nV\u2081 : Opens \u2191X\nhxV\u2081 : \u2191x \u2208 V\u2081\ns\u2081 : (forget C).obj (F.presheaf.obj { unop := V\u2081 })\nhs\u2081 : ((stalkFunctor C \u2191x).map f.val) ((F.presheaf.germ \u27e8\u2191x, hxV\u2081\u27e9) s\u2081) = (G.presheaf.germ x) t\n\u22a2 \u2203 V, \u2203 (_ : \u2191x \u2208 V), \u2203 iVU s, (f.val.app { unop := V }) s = (G.val.map iVU.op) t",
+      "case intro.intro.intro.intro\nC : Type u\ninst\u271d\u2076 : Category.{v, u} C\ninst\u271d\u2075 : HasColimits C\nX Y Z : TopCat\ninst\u271d\u2074 : ConcreteCategory C\ninst\u271d\u00b3 : PreservesFilteredColimits (forget C)\ninst\u271d\u00b2 : HasLimits C\ninst\u271d\u00b9 : PreservesLimits (forget C)\ninst\u271d : (forget C).ReflectsIsomorphisms\nF G : Sheaf C X\nf : F \u27f6 G\nU : Opens \u2191X\nh : \u2200 (x : \u21a5U), Function.Bijective \u21d1((stalkFunctor C \u2191x).map f.val)\nt : (forget C).obj (G.val.obj { unop := U })\nx : \u21a5U\nV\u2081 : Opens \u2191X\nhxV\u2081 : \u2191x \u2208 V\u2081\ns\u2081 : (forget C).obj (F.presheaf.obj { unop := V\u2081 })\nhs\u2081 : (germ G.val \u27e8\u2191x, hxV\u2081\u27e9) ((f.val.app { unop := V\u2081 }) s\u2081) = (G.presheaf.germ x) t\n\u22a2 \u2203 V, \u2203 (_ : \u2191x \u2208 V), \u2203 iVU s, (f.val.app { unop := V }) s = (G.val.map iVU.op) t",
+      "case intro.intro.intro.intro.intro.intro.intro.intro\nC : Type u\ninst\u271d\u2076 : Category.{v, u} C\ninst\u271d\u2075 : HasColimits C\nX Y Z : TopCat\ninst\u271d\u2074 : ConcreteCategory C\ninst\u271d\u00b3 : PreservesFilteredColimits (forget C)\ninst\u271d\u00b2 : HasLimits C\ninst\u271d\u00b9 : PreservesLimits (forget C)\ninst\u271d : (forget C).ReflectsIsomorphisms\nF G : Sheaf C X\nf : F \u27f6 G\nU : Opens \u2191X\nh : \u2200 (x : \u21a5U), Function.Bijective \u21d1((stalkFunctor C \u2191x).map f.val)\nt : (forget C).obj (G.val.obj { unop := U })\nx : \u21a5U\nV\u2081 : Opens \u2191X\nhxV\u2081 : \u2191x \u2208 V\u2081\ns\u2081 : (forget C).obj (F.presheaf.obj { unop := V\u2081 })\nhs\u2081 : (germ G.val \u27e8\u2191x, hxV\u2081\u27e9) ((f.val.app { unop := V\u2081 }) s\u2081) = (G.presheaf.germ x) t\nV\u2082 : Opens \u2191X\nhxV\u2082 : \u2191x \u2208 V\u2082\niV\u2082V\u2081 : V\u2082 \u27f6 V\u2081\niV\u2082U : V\u2082 \u27f6 U\nheq : (G.presheaf.map iV\u2082V\u2081.op) ((f.val.app { unop := V\u2081 }) s\u2081) = (G.presheaf.map iV\u2082U.op) t\n\u22a2 \u2203 V, \u2203 (_ : \u2191x \u2208 V), \u2203 iVU s, (f.val.app { unop := V }) s = (G.val.map iVU.op) t",
+      "case h\nC : Type u\ninst\u271d\u2076 : Category.{v, u} C\ninst\u271d\u2075 : HasColimits C\nX Y Z : TopCat\ninst\u271d\u2074 : ConcreteCategory C\ninst\u271d\u00b3 : PreservesFilteredColimits (forget C)\ninst\u271d\u00b2 : HasLimits C\ninst\u271d\u00b9 : PreservesLimits (forget C)\ninst\u271d : (forget C).ReflectsIsomorphisms\nF G : Sheaf C X\nf : F \u27f6 G\nU : Opens \u2191X\nh : \u2200 (x : \u21a5U), Function.Bijective \u21d1((stalkFunctor C \u2191x).map f.val)\nt : (forget C).obj (G.val.obj { unop := U })\nx : \u21a5U\nV\u2081 : Opens \u2191X\nhxV\u2081 : \u2191x \u2208 V\u2081\ns\u2081 : (forget C).obj (F.presheaf.obj { unop := V\u2081 })\nhs\u2081 : (germ G.val \u27e8\u2191x, hxV\u2081\u27e9) ((f.val.app { unop := V\u2081 }) s\u2081) = (G.presheaf.germ x) t\nV\u2082 : Opens \u2191X\nhxV\u2082 : \u2191x \u2208 V\u2082\niV\u2082V\u2081 : V\u2082 \u27f6 V\u2081\niV\u2082U : V\u2082 \u27f6 U\nheq : (G.presheaf.map iV\u2082V\u2081.op) ((f.val.app { unop := V\u2081 }) s\u2081) = (G.presheaf.map iV\u2082U.op) t\n\u22a2 (f.val.app { unop := V\u2082 }) ((F.val.map iV\u2082V\u2081.op) s\u2081) = (G.val.map iV\u2082U.op) t",
+      "no goals"
+    ]
+  },
+  {
+    "tag": "22_Seminorm_convex_ball",
+    "full_name": "Seminorm.convex_ball",
+    "file_path": "Mathlib/Analysis/Seminorm.lean",
+    "n_steps": 4,
+    "prefix_lines": 1094,
+    "tactics": [
+      "convert (p.convexOn.translate_left (-x)).convex_lt r",
+      "ext y",
+      "rw [preimage_univ, sep_univ, p.mem_ball, sub_eq_add_neg]",
+      "rfl"
+    ],
+    "recorded_states": [
+      "R : Type u_1\nR' : Type u_2\n\ud835\udd5c : Type u_3\n\ud835\udd5c\u2082 : Type u_4\n\ud835\udd5c\u2083 : Type u_5\n\ud835\udd5d : Type u_6\nE : Type u_7\nE\u2082 : Type u_8\nE\u2083 : Type u_9\nF : Type u_10\nG : Type u_11\n\u03b9 : Type u_12\ninst\u271d\u2075 : NormedField \ud835\udd5c\ninst\u271d\u2074 : AddCommGroup E\ninst\u271d\u00b3 : NormedSpace \u211d \ud835\udd5c\ninst\u271d\u00b2 : Module \ud835\udd5c E\ninst\u271d\u00b9 : Module \u211d E\ninst\u271d : IsScalarTower \u211d \ud835\udd5c E\np : Seminorm \ud835\udd5c E\nx : E\nr : \u211d\n\u22a2 Convex \u211d (p.ball x r)",
+      "case h.e'_6\nR : Type u_1\nR' : Type u_2\n\ud835\udd5c : Type u_3\n\ud835\udd5c\u2082 : Type u_4\n\ud835\udd5c\u2083 : Type u_5\n\ud835\udd5d : Type u_6\nE : Type u_7\nE\u2082 : Type u_8\nE\u2083 : Type u_9\nF : Type u_10\nG : Type u_11\n\u03b9 : Type u_12\ninst\u271d\u2075 : NormedField \ud835\udd5c\ninst\u271d\u2074 : AddCommGroup E\ninst\u271d\u00b3 : NormedSpace \u211d \ud835\udd5c\ninst\u271d\u00b2 : Module \ud835\udd5c E\ninst\u271d\u00b9 : Module \u211d E\ninst\u271d : IsScalarTower \u211d \ud835\udd5c E\np : Seminorm \ud835\udd5c E\nx : E\nr : \u211d\n\u22a2 p.ball x r = {x_1 | x_1 \u2208 (fun z => -x + z) \u207b\u00b9' univ \u2227 (\u21d1p \u2218 fun z => z + -x) x_1 < r}",
+      "case h.e'_6.h\nR : Type u_1\nR' : Type u_2\n\ud835\udd5c : Type u_3\n\ud835\udd5c\u2082 : Type u_4\n\ud835\udd5c\u2083 : Type u_5\n\ud835\udd5d : Type u_6\nE : Type u_7\nE\u2082 : Type u_8\nE\u2083 : Type u_9\nF : Type u_10\nG : Type u_11\n\u03b9 : Type u_12\ninst\u271d\u2075 : NormedField \ud835\udd5c\ninst\u271d\u2074 : AddCommGroup E\ninst\u271d\u00b3 : NormedSpace \u211d \ud835\udd5c\ninst\u271d\u00b2 : Module \ud835\udd5c E\ninst\u271d\u00b9 : Module \u211d E\ninst\u271d : IsScalarTower \u211d \ud835\udd5c E\np : Seminorm \ud835\udd5c E\nx : E\nr : \u211d\ny : E\n\u22a2 y \u2208 p.ball x r \u2194 y \u2208 {x_1 | x_1 \u2208 (fun z => -x + z) \u207b\u00b9' univ \u2227 (\u21d1p \u2218 fun z => z + -x) x_1 < r}",
+      "case h.e'_6.h\nR : Type u_1\nR' : Type u_2\n\ud835\udd5c : Type u_3\n\ud835\udd5c\u2082 : Type u_4\n\ud835\udd5c\u2083 : Type u_5\n\ud835\udd5d : Type u_6\nE : Type u_7\nE\u2082 : Type u_8\nE\u2083 : Type u_9\nF : Type u_10\nG : Type u_11\n\u03b9 : Type u_12\ninst\u271d\u2075 : NormedField \ud835\udd5c\ninst\u271d\u2074 : AddCommGroup E\ninst\u271d\u00b3 : NormedSpace \u211d \ud835\udd5c\ninst\u271d\u00b2 : Module \ud835\udd5c E\ninst\u271d\u00b9 : Module \u211d E\ninst\u271d : IsScalarTower \u211d \ud835\udd5c E\np : Seminorm \ud835\udd5c E\nx : E\nr : \u211d\ny : E\n\u22a2 p (y + -x) < r \u2194 y \u2208 {x_1 | (\u21d1p \u2218 fun z => z + -x) x_1 < r}",
+      "no goals"
+    ]
+  },
+  {
+    "tag": "23_Filter_Tendsto_isCompact_insert_range_of_cofinite",
+    "full_name": "Filter.Tendsto.isCompact_insert_range_of_cofinite",
+    "file_path": "Mathlib/Topology/Compactness/Compact.lean",
+    "n_steps": 4,
+    "prefix_lines": 662,
+    "tactics": [
+      "letI : TopologicalSpace \u03b9 := \u22a5",
+      "haveI h : DiscreteTopology \u03b9 := \u27e8rfl\u27e9",
+      "rw [\u2190 cocompact_eq_cofinite \u03b9] at hf",
+      "exact hf.isCompact_insert_range_of_cocompact continuous_of_discreteTopology"
+    ],
+    "recorded_states": [
+      "X : Type u\nY : Type v\n\u03b9 : Type u_1\ninst\u271d\u00b9 : TopologicalSpace X\ninst\u271d : TopologicalSpace Y\ns t : Set X\nf : \u03b9 \u2192 X\nx : X\nhf : Tendsto f cofinite (\ud835\udcdd x)\n\u22a2 IsCompact (insert x (range f))",
+      "X : Type u\nY : Type v\n\u03b9 : Type u_1\ninst\u271d\u00b9 : TopologicalSpace X\ninst\u271d : TopologicalSpace Y\ns t : Set X\nf : \u03b9 \u2192 X\nx : X\nhf : Tendsto f cofinite (\ud835\udcdd x)\nthis : TopologicalSpace \u03b9 := \u22a5\n\u22a2 IsCompact (insert x (range f))",
+      "X : Type u\nY : Type v\n\u03b9 : Type u_1\ninst\u271d\u00b9 : TopologicalSpace X\ninst\u271d : TopologicalSpace Y\ns t : Set X\nf : \u03b9 \u2192 X\nx : X\nhf : Tendsto f cofinite (\ud835\udcdd x)\nthis : TopologicalSpace \u03b9 := \u22a5\nh : DiscreteTopology \u03b9\n\u22a2 IsCompact (insert x (range f))",
+      "X : Type u\nY : Type v\n\u03b9 : Type u_1\ninst\u271d\u00b9 : TopologicalSpace X\ninst\u271d : TopologicalSpace Y\ns t : Set X\nf : \u03b9 \u2192 X\nx : X\nthis : TopologicalSpace \u03b9 := \u22a5\nhf : Tendsto f (cocompact \u03b9) (\ud835\udcdd x)\nh : DiscreteTopology \u03b9\n\u22a2 IsCompact (insert x (range f))",
+      "no goals"
+    ]
+  },
+  {
+    "tag": "24_multiplicity_multiplicity_pow_self",
+    "full_name": "multiplicity.multiplicity_pow_self",
+    "file_path": "Mathlib/RingTheory/Multiplicity.lean",
+    "n_steps": 4,
+    "prefix_lines": 615,
+    "tactics": [
+      "rw [eq_coe_iff]",
+      "use dvd_rfl",
+      "rw [pow_dvd_pow_iff h0 hu]",
+      "apply Nat.not_succ_le_self"
+    ],
+    "recorded_states": [
+      "\u03b1 : Type u_1\n\u03b2 : Type u_2\ninst\u271d\u00b9 : CancelCommMonoidWithZero \u03b1\ninst\u271d : DecidableRel fun x x_1 => x \u2223 x_1\np : \u03b1\nh0 : p \u2260 0\nhu : \u00acIsUnit p\nn : \u2115\n\u22a2 multiplicity p (p ^ n) = \u2191n",
+      "\u03b1 : Type u_1\n\u03b2 : Type u_2\ninst\u271d\u00b9 : CancelCommMonoidWithZero \u03b1\ninst\u271d : DecidableRel fun x x_1 => x \u2223 x_1\np : \u03b1\nh0 : p \u2260 0\nhu : \u00acIsUnit p\nn : \u2115\n\u22a2 p ^ n \u2223 p ^ n \u2227 \u00acp ^ (n + 1) \u2223 p ^ n",
+      "case right\n\u03b1 : Type u_1\n\u03b2 : Type u_2\ninst\u271d\u00b9 : CancelCommMonoidWithZero \u03b1\ninst\u271d : DecidableRel fun x x_1 => x \u2223 x_1\np : \u03b1\nh0 : p \u2260 0\nhu : \u00acIsUnit p\nn : \u2115\n\u22a2 \u00acp ^ (n + 1) \u2223 p ^ n",
+      "case right\n\u03b1 : Type u_1\n\u03b2 : Type u_2\ninst\u271d\u00b9 : CancelCommMonoidWithZero \u03b1\ninst\u271d : DecidableRel fun x x_1 => x \u2223 x_1\np : \u03b1\nh0 : p \u2260 0\nhu : \u00acIsUnit p\nn : \u2115\n\u22a2 \u00acn + 1 \u2264 n",
+      "no goals"
+    ]
+  },
+  {
+    "tag": "25_Homeomorph_comp_isOpenMap_iff",
+    "full_name": "Homeomorph.comp_isOpenMap_iff",
+    "file_path": "Mathlib/Topology/Homeomorph.lean",
+    "n_steps": 4,
+    "prefix_lines": 517,
+    "tactics": [
+      "refine \u27e8?_, fun hf => h.isOpenMap.comp hf\u27e9",
+      "intro hf",
+      "rw [\u2190 Function.id_comp f, \u2190 h.symm_comp_self, Function.comp.assoc]",
+      "exact h.symm.isOpenMap.comp hf"
+    ],
+    "recorded_states": [
+      "X : Type u_1\nY : Type u_2\nZ : Type u_3\ninst\u271d\u2074 : TopologicalSpace X\ninst\u271d\u00b3 : TopologicalSpace Y\ninst\u271d\u00b2 : TopologicalSpace Z\nX' : Type u_4\nY' : Type u_5\ninst\u271d\u00b9 : TopologicalSpace X'\ninst\u271d : TopologicalSpace Y'\nh : X \u2243\u209c Y\nf : Z \u2192 X\n\u22a2 IsOpenMap (\u21d1h \u2218 f) \u2194 IsOpenMap f",
+      "X : Type u_1\nY : Type u_2\nZ : Type u_3\ninst\u271d\u2074 : TopologicalSpace X\ninst\u271d\u00b3 : TopologicalSpace Y\ninst\u271d\u00b2 : TopologicalSpace Z\nX' : Type u_4\nY' : Type u_5\ninst\u271d\u00b9 : TopologicalSpace X'\ninst\u271d : TopologicalSpace Y'\nh : X \u2243\u209c Y\nf : Z \u2192 X\n\u22a2 IsOpenMap (\u21d1h \u2218 f) \u2192 IsOpenMap f",
+      "X : Type u_1\nY : Type u_2\nZ : Type u_3\ninst\u271d\u2074 : TopologicalSpace X\ninst\u271d\u00b3 : TopologicalSpace Y\ninst\u271d\u00b2 : TopologicalSpace Z\nX' : Type u_4\nY' : Type u_5\ninst\u271d\u00b9 : TopologicalSpace X'\ninst\u271d : TopologicalSpace Y'\nh : X \u2243\u209c Y\nf : Z \u2192 X\nhf : IsOpenMap (\u21d1h \u2218 f)\n\u22a2 IsOpenMap f",
+      "X : Type u_1\nY : Type u_2\nZ : Type u_3\ninst\u271d\u2074 : TopologicalSpace X\ninst\u271d\u00b3 : TopologicalSpace Y\ninst\u271d\u00b2 : TopologicalSpace Z\nX' : Type u_4\nY' : Type u_5\ninst\u271d\u00b9 : TopologicalSpace X'\ninst\u271d : TopologicalSpace Y'\nh : X \u2243\u209c Y\nf : Z \u2192 X\nhf : IsOpenMap (\u21d1h \u2218 f)\n\u22a2 IsOpenMap (\u21d1h.symm \u2218 \u21d1h \u2218 f)",
+      "no goals"
+    ]
+  },
+  {
+    "tag": "26_vsub_mem_vectorSpan_of_mem_spanPoints_of_mem_spanPoints",
+    "full_name": "vsub_mem_vectorSpan_of_mem_spanPoints_of_mem_spanPoints",
+    "file_path": "Mathlib/LinearAlgebra/AffineSpace/AffineSubspace.lean",
+    "n_steps": 6,
+    "prefix_lines": 133,
+    "tactics": [
+      "rcases hp1 with \u27e8p1a, \u27e8hp1a, \u27e8v1, \u27e8hv1, hv1p\u27e9\u27e9\u27e9\u27e9",
+      "rcases hp2 with \u27e8p2a, \u27e8hp2a, \u27e8v2, \u27e8hv2, hv2p\u27e9\u27e9\u27e9\u27e9",
+      "rw [hv1p, hv2p, vsub_vadd_eq_vsub_sub (v1 +\u1d65 p1a), vadd_vsub_assoc, add_comm, add_sub_assoc]",
+      "have hv1v2 : v1 - v2 \u2208 vectorSpan k s := (vectorSpan k s).sub_mem hv1 hv2",
+      "refine (vectorSpan k s).add_mem ?_ hv1v2",
+      "exact vsub_mem_vectorSpan k hp1a hp2a"
+    ],
+    "recorded_states": [
+      "k : Type u_1\nV : Type u_2\nP : Type u_3\ninst\u271d\u00b3 : Ring k\ninst\u271d\u00b2 : AddCommGroup V\ninst\u271d\u00b9 : Module k V\ninst\u271d : AffineSpace V P\ns : Set P\np1 p2 : P\nhp1 : p1 \u2208 spanPoints k s\nhp2 : p2 \u2208 spanPoints k s\n\u22a2 p1 -\u1d65 p2 \u2208 vectorSpan k s",
+      "case intro.intro.intro.intro\nk : Type u_1\nV : Type u_2\nP : Type u_3\ninst\u271d\u00b3 : Ring k\ninst\u271d\u00b2 : AddCommGroup V\ninst\u271d\u00b9 : Module k V\ninst\u271d : AffineSpace V P\ns : Set P\np1 p2 : P\nhp2 : p2 \u2208 spanPoints k s\np1a : P\nhp1a : p1a \u2208 s\nv1 : V\nhv1 : v1 \u2208 vectorSpan k s\nhv1p : p1 = v1 +\u1d65 p1a\n\u22a2 p1 -\u1d65 p2 \u2208 vectorSpan k s",
+      "case intro.intro.intro.intro.intro.intro.intro.intro\nk : Type u_1\nV : Type u_2\nP : Type u_3\ninst\u271d\u00b3 : Ring k\ninst\u271d\u00b2 : AddCommGroup V\ninst\u271d\u00b9 : Module k V\ninst\u271d : AffineSpace V P\ns : Set P\np1 p2 p1a : P\nhp1a : p1a \u2208 s\nv1 : V\nhv1 : v1 \u2208 vectorSpan k s\nhv1p : p1 = v1 +\u1d65 p1a\np2a : P\nhp2a : p2a \u2208 s\nv2 : V\nhv2 : v2 \u2208 vectorSpan k s\nhv2p : p2 = v2 +\u1d65 p2a\n\u22a2 p1 -\u1d65 p2 \u2208 vectorSpan k s",
+      "case intro.intro.intro.intro.intro.intro.intro.intro\nk : Type u_1\nV : Type u_2\nP : Type u_3\ninst\u271d\u00b3 : Ring k\ninst\u271d\u00b2 : AddCommGroup V\ninst\u271d\u00b9 : Module k V\ninst\u271d : AffineSpace V P\ns : Set P\np1 p2 p1a : P\nhp1a : p1a \u2208 s\nv1 : V\nhv1 : v1 \u2208 vectorSpan k s\nhv1p : p1 = v1 +\u1d65 p1a\np2a : P\nhp2a : p2a \u2208 s\nv2 : V\nhv2 : v2 \u2208 vectorSpan k s\nhv2p : p2 = v2 +\u1d65 p2a\n\u22a2 p1a -\u1d65 p2a + (v1 - v2) \u2208 vectorSpan k s",
+      "case intro.intro.intro.intro.intro.intro.intro.intro\nk : Type u_1\nV : Type u_2\nP : Type u_3\ninst\u271d\u00b3 : Ring k\ninst\u271d\u00b2 : AddCommGroup V\ninst\u271d\u00b9 : Module k V\ninst\u271d : AffineSpace V P\ns : Set P\np1 p2 p1a : P\nhp1a : p1a \u2208 s\nv1 : V\nhv1 : v1 \u2208 vectorSpan k s\nhv1p : p1 = v1 +\u1d65 p1a\np2a : P\nhp2a : p2a \u2208 s\nv2 : V\nhv2 : v2 \u2208 vectorSpan k s\nhv2p : p2 = v2 +\u1d65 p2a\nhv1v2 : v1 - v2 \u2208 vectorSpan k s\n\u22a2 p1a -\u1d65 p2a + (v1 - v2) \u2208 vectorSpan k s",
+      "case intro.intro.intro.intro.intro.intro.intro.intro\nk : Type u_1\nV : Type u_2\nP : Type u_3\ninst\u271d\u00b3 : Ring k\ninst\u271d\u00b2 : AddCommGroup V\ninst\u271d\u00b9 : Module k V\ninst\u271d : AffineSpace V P\ns : Set P\np1 p2 p1a : P\nhp1a : p1a \u2208 s\nv1 : V\nhv1 : v1 \u2208 vectorSpan k s\nhv1p : p1 = v1 +\u1d65 p1a\np2a : P\nhp2a : p2a \u2208 s\nv2 : V\nhv2 : v2 \u2208 vectorSpan k s\nhv2p : p2 = v2 +\u1d65 p2a\nhv1v2 : v1 - v2 \u2208 vectorSpan k s\n\u22a2 p1a -\u1d65 p2a \u2208 vectorSpan k s",
+      "no goals"
+    ]
+  },
+  {
+    "tag": "27_BddAbove_range_mono",
+    "full_name": "BddAbove.range_mono",
+    "file_path": "Mathlib/Order/Bounds/Basic.lean",
+    "n_steps": 4,
+    "prefix_lines": 1672,
+    "tactics": [
+      "obtain \u27e8C, hC\u27e9 := hbdd",
+      "use C",
+      "rintro - \u27e8x, rfl\u27e9",
+      "exact (h x).trans (hC <| mem_range_self x)"
+    ],
+    "recorded_states": [
+      "\u03b1 : Type u\n\u03b2 : Type v\n\u03b3 : Type w\n\u03b9 : Sort x\ninst\u271d : Preorder \u03b2\nf g : \u03b1 \u2192 \u03b2\nh : \u2200 (a : \u03b1), f a \u2264 g a\nhbdd : BddAbove (range g)\n\u22a2 BddAbove (range f)",
+      "case intro\n\u03b1 : Type u\n\u03b2 : Type v\n\u03b3 : Type w\n\u03b9 : Sort x\ninst\u271d : Preorder \u03b2\nf g : \u03b1 \u2192 \u03b2\nh : \u2200 (a : \u03b1), f a \u2264 g a\nC : \u03b2\nhC : C \u2208 upperBounds (range g)\n\u22a2 BddAbove (range f)",
+      "case h\n\u03b1 : Type u\n\u03b2 : Type v\n\u03b3 : Type w\n\u03b9 : Sort x\ninst\u271d : Preorder \u03b2\nf g : \u03b1 \u2192 \u03b2\nh : \u2200 (a : \u03b1), f a \u2264 g a\nC : \u03b2\nhC : C \u2208 upperBounds (range g)\n\u22a2 C \u2208 upperBounds (range f)",
+      "case h.intro\n\u03b1 : Type u\n\u03b2 : Type v\n\u03b3 : Type w\n\u03b9 : Sort x\ninst\u271d : Preorder \u03b2\nf g : \u03b1 \u2192 \u03b2\nh : \u2200 (a : \u03b1), f a \u2264 g a\nC : \u03b2\nhC : C \u2208 upperBounds (range g)\nx : \u03b1\n\u22a2 f x \u2264 C",
+      "no goals"
+    ]
+  },
+  {
+    "tag": "28_Polynomial_scaleRoots_isWeaklyEisensteinAt",
+    "full_name": "Polynomial.scaleRoots.isWeaklyEisensteinAt",
+    "file_path": "Mathlib/RingTheory/Polynomial/Eisenstein/Basic.lean",
+    "n_steps": 4,
+    "prefix_lines": 159,
+    "tactics": [
+      "refine \u27e8fun i => ?_\u27e9",
+      "rw [coeff_scaleRoots]",
+      "rw [natDegree_scaleRoots, \u2190 tsub_pos_iff_lt] at i",
+      "exact Ideal.mul_mem_left _ _ (Ideal.pow_mem_of_mem P hP _ i)"
+    ],
+    "recorded_states": [
+      "R : Type u\nA : Type u_1\ninst\u271d\u00b9 : CommRing R\ninst\u271d : CommRing A\np : R[X]\nx : R\nP : Ideal R\nhP : x \u2208 P\n\u22a2 (p.scaleRoots x).IsWeaklyEisensteinAt P",
+      "R : Type u\nA : Type u_1\ninst\u271d\u00b9 : CommRing R\ninst\u271d : CommRing A\np : R[X]\nx : R\nP : Ideal R\nhP : x \u2208 P\nn\u271d : \u2115\ni : n\u271d < (p.scaleRoots x).natDegree\n\u22a2 (p.scaleRoots x).coeff n\u271d \u2208 P",
+      "R : Type u\nA : Type u_1\ninst\u271d\u00b9 : CommRing R\ninst\u271d : CommRing A\np : R[X]\nx : R\nP : Ideal R\nhP : x \u2208 P\nn\u271d : \u2115\ni : n\u271d < (p.scaleRoots x).natDegree\n\u22a2 p.coeff n\u271d * x ^ (p.natDegree - n\u271d) \u2208 P",
+      "R : Type u\nA : Type u_1\ninst\u271d\u00b9 : CommRing R\ninst\u271d : CommRing A\np : R[X]\nx : R\nP : Ideal R\nhP : x \u2208 P\nn\u271d : \u2115\ni : 0 < p.natDegree - n\u271d\n\u22a2 p.coeff n\u271d * x ^ (p.natDegree - n\u271d) \u2208 P",
+      "no goals"
+    ]
+  },
+  {
+    "tag": "29_Multiset_revzip_powersetAux",
+    "full_name": "Multiset.revzip_powersetAux",
+    "file_path": "Mathlib/Data/Multiset/Powerset.lean",
+    "n_steps": 4,
+    "prefix_lines": 123,
+    "tactics": [
+      "rw [revzip, powersetAux_eq_map_coe, \u2190 map_reverse, zip_map, \u2190 revzip, List.mem_map] at h",
+      "simp only [Prod.map_apply, Prod.exists] at h",
+      "rcases h with \u27e8l\u2081, l\u2082, h, rfl, rfl\u27e9",
+      "exact Quot.sound (revzip_sublists _ _ _ h)"
+    ],
+    "recorded_states": [
+      "\u03b1 : Type u_1\nl : List \u03b1\nx : Multiset \u03b1 \u00d7 Multiset \u03b1\nh : x \u2208 (powersetAux l).revzip\n\u22a2 x.1 + x.2 = \u2191l",
+      "\u03b1 : Type u_1\nl : List \u03b1\nx : Multiset \u03b1 \u00d7 Multiset \u03b1\nh : \u2203 a \u2208 l.sublists.revzip, Prod.map ofList ofList a = x\n\u22a2 x.1 + x.2 = \u2191l",
+      "\u03b1 : Type u_1\nl : List \u03b1\nx : Multiset \u03b1 \u00d7 Multiset \u03b1\nh : \u2203 a b, (a, b) \u2208 l.sublists.revzip \u2227 (\u2191a, \u2191b) = x\n\u22a2 x.1 + x.2 = \u2191l",
+      "case intro.intro.intro.refl\n\u03b1 : Type u_1\nl l\u2081 l\u2082 : List \u03b1\nh : (l\u2081, l\u2082) \u2208 l.sublists.revzip\n\u22a2 (\u2191l\u2081, \u2191l\u2082).1 + (\u2191l\u2081, \u2191l\u2082).2 = \u2191l",
+      "no goals"
+    ]
+  }
+]

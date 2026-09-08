@@ -1,0 +1,72 @@
+case h.e'_6
+R : Type u_1
+R' : Type u_2
+𝕜 : Type u_3
+𝕜₂ : Type u_4
+𝕜₃ : Type u_5
+𝕝 : Type u_6
+E : Type u_7
+E₂ : Type u_8
+E₃ : Type u_9
+F : Type u_10
+G : Type u_11
+ι : Type u_12
+inst✝⁵ : NormedField 𝕜
+inst✝⁴ : AddCommGroup E
+inst✝³ : NormedSpace ℝ 𝕜
+inst✝² : Module 𝕜 E
+inst✝¹ : Module ℝ E
+inst✝ : IsScalarTower ℝ 𝕜 E
+p : Seminorm 𝕜 E
+x : E
+r : ℝ
+⊢ p.ball x r = {x_1 | x_1 ∈ (fun z => -x + z) ⁻¹' Set.univ ∧ (⇑p ∘ fun z => z + -x) x_1 < r}
+case h.e'_6.h
+R : Type u_1
+R' : Type u_2
+𝕜 : Type u_3
+𝕜₂ : Type u_4
+𝕜₃ : Type u_5
+𝕝 : Type u_6
+E : Type u_7
+E₂ : Type u_8
+E₃ : Type u_9
+F : Type u_10
+G : Type u_11
+ι : Type u_12
+inst✝⁵ : NormedField 𝕜
+inst✝⁴ : AddCommGroup E
+inst✝³ : NormedSpace ℝ 𝕜
+inst✝² : Module 𝕜 E
+inst✝¹ : Module ℝ E
+inst✝ : IsScalarTower ℝ 𝕜 E
+p : Seminorm 𝕜 E
+x : E
+r : ℝ
+y : E
+⊢ y ∈ p.ball x r ↔ y ∈ {x_1 | x_1 ∈ (fun z => -x + z) ⁻¹' Set.univ ∧ (⇑p ∘ fun z => z + -x) x_1 < r}
+case h.e'_6.h
+R : Type u_1
+R' : Type u_2
+𝕜 : Type u_3
+𝕜₂ : Type u_4
+𝕜₃ : Type u_5
+𝕝 : Type u_6
+E : Type u_7
+E₂ : Type u_8
+E₃ : Type u_9
+F : Type u_10
+G : Type u_11
+ι : Type u_12
+inst✝⁵ : NormedField 𝕜
+inst✝⁴ : AddCommGroup E
+inst✝³ : NormedSpace ℝ 𝕜
+inst✝² : Module 𝕜 E
+inst✝¹ : Module ℝ E
+inst✝ : IsScalarTower ℝ 𝕜 E
+p : Seminorm 𝕜 E
+x : E
+r : ℝ
+y : E
+⊢ p (y + -x) < r ↔ y ∈ {x_1 | (⇑p ∘ fun z => z + -x) x_1 < r}
+

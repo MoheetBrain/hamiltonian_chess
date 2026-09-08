@@ -1,0 +1,48 @@
+case intro.intro.intro.intro.intro.intro
+α : Type u_1
+β : Type u_2
+inst✝ : LinearOrderedField α
+a b c : CauSeq α abs
+εa : α
+εa0 : εa > 0
+ia : ℕ
+ha : ∀ j ≥ ia, εa ≤ ↑(c - a) j
+εb : α
+εb0 : εb > 0
+ib : ℕ
+hb : ∀ j ≥ ib, εb ≤ ↑(c - b) j
+⊢ a ⊔ b < c
+case intro.intro.intro.intro.intro.intro
+α : Type u_1
+β : Type u_2
+inst✝ : LinearOrderedField α
+a b c : CauSeq α abs
+εa : α
+εa0 : εa > 0
+ia : ℕ
+ha : ∀ j ≥ ia, εa ≤ ↑(c - a) j
+εb : α
+εb0 : εb > 0
+ib : ℕ
+hb : ∀ j ≥ ib, εb ≤ ↑(c - b) j
+i : ℕ
+hi : i ≥ ia ⊔ ib
+⊢ εa ⊓ εb ≤ ↑(c - a ⊔ b) i
+case intro.intro.intro.intro.intro.intro
+α : Type u_1
+β : Type u_2
+inst✝ : LinearOrderedField α
+a b c : CauSeq α abs
+εa : α
+εa0 : εa > 0
+ia : ℕ
+ha : ∀ j ≥ ia, εa ≤ ↑(c - a) j
+εb : α
+εb0 : εb > 0
+ib : ℕ
+hb : ∀ j ≥ ib, εb ≤ ↑(c - b) j
+i : ℕ
+hi : i ≥ ia ⊔ ib
+this : min εa εb ≤ min (↑(c - a) i) (↑(c - b) i)
+⊢ εa ⊓ εb ≤ ↑(c - a ⊔ b) i
+

@@ -1,0 +1,31 @@
+α : Type u_1
+β : Type u_2
+inst✝³ : PartialOrder α
+inst✝² : AddCommSemigroup α
+inst✝¹ : Sub α
+inst✝ : OrderedSub α
+a b c d : α
+hb : AddLECancellable b
+h : a - b < c
+⊢ a - b ≤ c ∧ a ≠ b + c
+α : Type u_1
+β : Type u_2
+inst✝³ : PartialOrder α
+inst✝² : AddCommSemigroup α
+inst✝¹ : Sub α
+inst✝ : OrderedSub α
+a b c d : α
+hb : AddLECancellable b
+h : a - b < c
+⊢ a ≠ b + c
+α : Type u_1
+β : Type u_2
+inst✝³ : PartialOrder α
+inst✝² : AddCommSemigroup α
+inst✝¹ : Sub α
+inst✝ : OrderedSub α
+b c d : α
+hb : AddLECancellable b
+h : b + c - b < c
+⊢ False
+

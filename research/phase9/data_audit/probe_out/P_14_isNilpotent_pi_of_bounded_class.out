@@ -1,0 +1,68 @@
+G : Type u_1
+inst✝³ : Group G
+H : Subgroup G
+inst✝² : H.Normal
+η : Type u_2
+Gs : η → Type u_3
+inst✝¹ : (i : η) → Group (Gs i)
+inst✝ : ∀ (i : η), Group.IsNilpotent (Gs i)
+n : ℕ
+h : ∀ (i : η), Group.nilpotencyClass (Gs i) ≤ n
+⊢ ∃ n, lowerCentralSeries ((i : η) → Gs i) n = ⊥
+G : Type u_1
+inst✝³ : Group G
+H : Subgroup G
+inst✝² : H.Normal
+η : Type u_2
+Gs : η → Type u_3
+inst✝¹ : (i : η) → Group (Gs i)
+inst✝ : ∀ (i : η), Group.IsNilpotent (Gs i)
+n : ℕ
+h : ∀ (i : η), Group.nilpotencyClass (Gs i) ≤ n
+⊢ lowerCentralSeries ((i : η) → Gs i) n = ⊥
+G : Type u_1
+inst✝³ : Group G
+H : Subgroup G
+inst✝² : H.Normal
+η : Type u_2
+Gs : η → Type u_3
+inst✝¹ : (i : η) → Group (Gs i)
+inst✝ : ∀ (i : η), Group.IsNilpotent (Gs i)
+n : ℕ
+h : ∀ (i : η), Group.nilpotencyClass (Gs i) ≤ n
+⊢ lowerCentralSeries ((i : η) → Gs i) n ≤ ⊥
+G : Type u_1
+inst✝³ : Group G
+H : Subgroup G
+inst✝² : H.Normal
+η : Type u_2
+Gs : η → Type u_3
+inst✝¹ : (i : η) → Group (Gs i)
+inst✝ : ∀ (i : η), Group.IsNilpotent (Gs i)
+n : ℕ
+h : ∀ (i : η), Group.nilpotencyClass (Gs i) ≤ n
+⊢ (Subgroup.pi Set.univ fun i => lowerCentralSeries (Gs i) n) ≤ ⊥
+G : Type u_1
+inst✝³ : Group G
+H : Subgroup G
+inst✝² : H.Normal
+η : Type u_2
+Gs : η → Type u_3
+inst✝¹ : (i : η) → Group (Gs i)
+inst✝ : ∀ (i : η), Group.IsNilpotent (Gs i)
+n : ℕ
+h : ∀ (i : η), Group.nilpotencyClass (Gs i) ≤ n
+⊢ ∀ (i : η), lowerCentralSeries (Gs i) n = ⊥
+G : Type u_1
+inst✝³ : Group G
+H : Subgroup G
+inst✝² : H.Normal
+η : Type u_2
+Gs : η → Type u_3
+inst✝¹ : (i : η) → Group (Gs i)
+inst✝ : ∀ (i : η), Group.IsNilpotent (Gs i)
+n : ℕ
+h : ∀ (i : η), Group.nilpotencyClass (Gs i) ≤ n
+i : η
+⊢ lowerCentralSeries (Gs i) n = ⊥
+

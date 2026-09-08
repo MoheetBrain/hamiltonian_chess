@@ -1,0 +1,58 @@
+case a.h.h
+X : Type u_1
+Y : Type u_2
+inst✝² : TopologicalSpace X
+inst✝¹ : TopologicalSpace Y
+x y z : X
+ι : Type u_3
+γ : Path x y
+χ : ι → Type u_4
+inst✝ : (i : ι) → TopologicalSpace (χ i)
+as bs cs : (i : ι) → χ i
+γ₀ : (i : ι) → Path (as i) (bs i)
+γ₁ : (i : ι) → Path (bs i) (cs i)
+t : ↑I
+i : ι
+⊢ ((Path.pi γ₀).trans (Path.pi γ₁)) t i = (Path.pi fun i => (γ₀ i).trans (γ₁ i)) t i
+case a.h.h
+X : Type u_1
+Y : Type u_2
+inst✝² : TopologicalSpace X
+inst✝¹ : TopologicalSpace Y
+x y z : X
+ι : Type u_3
+γ : Path x y
+χ : ι → Type u_4
+inst✝ : (i : ι) → TopologicalSpace (χ i)
+as bs cs : (i : ι) → χ i
+γ₀ : (i : ι) → Path (as i) (bs i)
+γ₁ : (i : ι) → Path (bs i) (cs i)
+t : ↑I
+i : ι
+⊢ {
+        toFun :=
+          (fun t => if t ≤ 1 / 2 then (Path.pi γ₀).extend (2 * t) else (Path.pi γ₁).extend (2 * t - 1)) ∘ Subtype.val,
+        continuous_toFun := ⋯, source' := ⋯, target' := ⋯ }
+      t i =
+    (Path.pi fun i =>
+        { toFun := (fun t => if t ≤ 1 / 2 then (γ₀ i).extend (2 * t) else (γ₁ i).extend (2 * t - 1)) ∘ Subtype.val,
+          continuous_toFun := ⋯, source' := ⋯, target' := ⋯ })
+      t i
+case a.h.h
+X : Type u_1
+Y : Type u_2
+inst✝² : TopologicalSpace X
+inst✝¹ : TopologicalSpace Y
+x y z : X
+ι : Type u_3
+γ : Path x y
+χ : ι → Type u_4
+inst✝ : (i : ι) → TopologicalSpace (χ i)
+as bs cs : (i : ι) → χ i
+γ₀ : (i : ι) → Path (as i) (bs i)
+γ₁ : (i : ι) → Path (bs i) (cs i)
+t : ↑I
+i : ι
+⊢ (if ↑t ≤ 1 / 2 then (Path.pi γ₀).extend (2 * ↑t) else (Path.pi γ₁).extend (2 * ↑t - 1)) i =
+    if ↑t ≤ 1 / 2 then (γ₀ i).extend (2 * ↑t) else (γ₁ i).extend (2 * ↑t - 1)
+

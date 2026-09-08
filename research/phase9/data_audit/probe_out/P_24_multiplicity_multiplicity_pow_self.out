@@ -1,0 +1,30 @@
+α : Type u_1
+β : Type u_2
+inst✝¹ : CancelCommMonoidWithZero α
+inst✝ : DecidableRel fun x x_1 => x ∣ x_1
+p : α
+h0 : p ≠ 0
+hu : ¬IsUnit p
+n : ℕ
+⊢ p ^ n ∣ p ^ n ∧ ¬p ^ (n + 1) ∣ p ^ n
+case right
+α : Type u_1
+β : Type u_2
+inst✝¹ : CancelCommMonoidWithZero α
+inst✝ : DecidableRel fun x x_1 => x ∣ x_1
+p : α
+h0 : p ≠ 0
+hu : ¬IsUnit p
+n : ℕ
+⊢ ¬p ^ (n + 1) ∣ p ^ n
+case right
+α : Type u_1
+β : Type u_2
+inst✝¹ : CancelCommMonoidWithZero α
+inst✝ : DecidableRel fun x x_1 => x ∣ x_1
+p : α
+h0 : p ≠ 0
+hu : ¬IsUnit p
+n : ℕ
+⊢ ¬n + 1 ≤ n
+

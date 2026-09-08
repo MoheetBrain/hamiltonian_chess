@@ -1,0 +1,32 @@
+α : Type u_1
+β : Type u_2
+inst✝² : Preorder α
+p : α → Prop
+inst✝¹ : DecidablePred p
+inst✝ : LocallyFiniteOrder α
+a b : Subtype p
+hp : ∀ ⦃a b x : α⦄, a ≤ x → x ≤ b → p a → p b → p x
+⊢ Finset.map (Function.Embedding.subtype p) (Finset.subtype p (Finset.Ico ↑a ↑b)) = Finset.Ico ↑a ↑b
+α : Type u_1
+β : Type u_2
+inst✝² : Preorder α
+p : α → Prop
+inst✝¹ : DecidablePred p
+inst✝ : LocallyFiniteOrder α
+a b : Subtype p
+hp : ∀ ⦃a b x : α⦄, a ≤ x → x ≤ b → p a → p b → p x
+x : α
+hx : x ∈ Finset.Ico ↑a ↑b
+⊢ p x
+α : Type u_1
+β : Type u_2
+inst✝² : Preorder α
+p : α → Prop
+inst✝¹ : DecidablePred p
+inst✝ : LocallyFiniteOrder α
+a b : Subtype p
+hp : ∀ ⦃a b x : α⦄, a ≤ x → x ≤ b → p a → p b → p x
+x : α
+hx : ↑a ≤ x ∧ x < ↑b
+⊢ p x
+

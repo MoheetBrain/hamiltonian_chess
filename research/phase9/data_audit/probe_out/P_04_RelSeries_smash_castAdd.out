@@ -1,0 +1,28 @@
+α : Type u_1
+r : Rel α α
+β : Type u_2
+s : Rel β β
+p q : RelSeries r
+connect : p.last = q.head
+i : Fin p.length
+⊢ { length := p.length + q.length,
+          toFun := fun i => if H : ↑i < p.length then p.toFun ⟨↑i, ⋯⟩ else q.toFun ⟨↑i - p.length, ⋯⟩, step := ⋯ }.toFun
+      (Fin.castAdd q.length i).castSucc =
+    p.toFun i.castSucc
+α : Type u_1
+r : Rel α α
+β : Type u_2
+s : Rel β β
+p q : RelSeries r
+connect : p.last = q.head
+i : Fin p.length
+⊢ (if H : ↑i < p.length then p.toFun ⟨↑i, ⋯⟩ else q.toFun ⟨↑i - p.length, ⋯⟩) = p.toFun i.castSucc
+α : Type u_1
+r : Rel α α
+β : Type u_2
+s : Rel β β
+p q : RelSeries r
+connect : p.last = q.head
+i : Fin p.length
+⊢ p.toFun ⟨↑i, ⋯⟩ = p.toFun i.castSucc
+

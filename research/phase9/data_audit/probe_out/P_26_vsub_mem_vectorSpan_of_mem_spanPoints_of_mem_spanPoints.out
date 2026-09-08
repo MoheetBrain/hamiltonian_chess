@@ -1,0 +1,100 @@
+case intro.intro.intro.intro
+k : Type u_1
+V : Type u_2
+P : Type u_3
+inst✝³ : Ring k
+inst✝² : AddCommGroup V
+inst✝¹ : Module k V
+inst✝ : AffineSpace V P
+s : Set P
+p1 p2 : P
+hp2 : p2 ∈ spanPoints k s
+p1a : P
+hp1a : p1a ∈ s
+v1 : V
+hv1 : v1 ∈ vectorSpan k s
+hv1p : p1 = v1 +ᵥ p1a
+⊢ p1 -ᵥ p2 ∈ vectorSpan k s
+case intro.intro.intro.intro.intro.intro.intro.intro
+k : Type u_1
+V : Type u_2
+P : Type u_3
+inst✝³ : Ring k
+inst✝² : AddCommGroup V
+inst✝¹ : Module k V
+inst✝ : AffineSpace V P
+s : Set P
+p1 p2 p1a : P
+hp1a : p1a ∈ s
+v1 : V
+hv1 : v1 ∈ vectorSpan k s
+hv1p : p1 = v1 +ᵥ p1a
+p2a : P
+hp2a : p2a ∈ s
+v2 : V
+hv2 : v2 ∈ vectorSpan k s
+hv2p : p2 = v2 +ᵥ p2a
+⊢ p1 -ᵥ p2 ∈ vectorSpan k s
+case intro.intro.intro.intro.intro.intro.intro.intro
+k : Type u_1
+V : Type u_2
+P : Type u_3
+inst✝³ : Ring k
+inst✝² : AddCommGroup V
+inst✝¹ : Module k V
+inst✝ : AffineSpace V P
+s : Set P
+p1 p2 p1a : P
+hp1a : p1a ∈ s
+v1 : V
+hv1 : v1 ∈ vectorSpan k s
+hv1p : p1 = v1 +ᵥ p1a
+p2a : P
+hp2a : p2a ∈ s
+v2 : V
+hv2 : v2 ∈ vectorSpan k s
+hv2p : p2 = v2 +ᵥ p2a
+⊢ p1a -ᵥ p2a + (v1 - v2) ∈ vectorSpan k s
+case intro.intro.intro.intro.intro.intro.intro.intro
+k : Type u_1
+V : Type u_2
+P : Type u_3
+inst✝³ : Ring k
+inst✝² : AddCommGroup V
+inst✝¹ : Module k V
+inst✝ : AffineSpace V P
+s : Set P
+p1 p2 p1a : P
+hp1a : p1a ∈ s
+v1 : V
+hv1 : v1 ∈ vectorSpan k s
+hv1p : p1 = v1 +ᵥ p1a
+p2a : P
+hp2a : p2a ∈ s
+v2 : V
+hv2 : v2 ∈ vectorSpan k s
+hv2p : p2 = v2 +ᵥ p2a
+hv1v2 : v1 - v2 ∈ vectorSpan k s
+⊢ p1a -ᵥ p2a + (v1 - v2) ∈ vectorSpan k s
+case intro.intro.intro.intro.intro.intro.intro.intro
+k : Type u_1
+V : Type u_2
+P : Type u_3
+inst✝³ : Ring k
+inst✝² : AddCommGroup V
+inst✝¹ : Module k V
+inst✝ : AffineSpace V P
+s : Set P
+p1 p2 p1a : P
+hp1a : p1a ∈ s
+v1 : V
+hv1 : v1 ∈ vectorSpan k s
+hv1p : p1 = v1 +ᵥ p1a
+p2a : P
+hp2a : p2a ∈ s
+v2 : V
+hv2 : v2 ∈ vectorSpan k s
+hv2p : p2 = v2 +ᵥ p2a
+hv1v2 : v1 - v2 ∈ vectorSpan k s
+⊢ p1a -ᵥ p2a ∈ vectorSpan k s
+

@@ -1,0 +1,402 @@
+[
+  {
+    "tag": "00_LinearMap_adjoint_inner_left",
+    "status": "OK",
+    "n_steps": 4,
+    "states_expected": 4,
+    "states_matched_exactly": 1,
+    "detail": [
+      "MISS",
+      "MISS",
+      "MISS",
+      "terminal(no goals) \u2014 trace_state prints nothing"
+    ]
+  },
+  {
+    "tag": "01_Matrix_sum_cramer_apply",
+    "status": "LEAN_ERROR"
+  },
+  {
+    "tag": "02_Cardinal_mk_equiv_eq_arrow_of_lift_eq",
+    "status": "OK",
+    "n_steps": 5,
+    "states_expected": 5,
+    "states_matched_exactly": 1,
+    "detail": [
+      "MISS",
+      "MISS",
+      "MISS",
+      "MISS",
+      "terminal(no goals) \u2014 trace_state prints nothing"
+    ]
+  },
+  {
+    "tag": "03_Path_trans_pi_eq_pi_trans",
+    "status": "OK",
+    "n_steps": 4,
+    "states_expected": 4,
+    "states_matched_exactly": 4,
+    "detail": [
+      "EXACT",
+      "EXACT",
+      "EXACT",
+      "terminal(no goals) \u2014 trace_state prints nothing"
+    ]
+  },
+  {
+    "tag": "04_RelSeries_smash_castAdd",
+    "status": "OK",
+    "n_steps": 4,
+    "states_expected": 4,
+    "states_matched_exactly": 4,
+    "detail": [
+      "EXACT",
+      "EXACT",
+      "EXACT",
+      "terminal(no goals) \u2014 trace_state prints nothing"
+    ]
+  },
+  {
+    "tag": "05_MeasureTheory_Measure_Regular_map_iff",
+    "status": "OK",
+    "n_steps": 4,
+    "states_expected": 4,
+    "states_matched_exactly": 1,
+    "detail": [
+      "MISS",
+      "MISS",
+      "MISS",
+      "terminal(no goals) \u2014 trace_state prints nothing"
+    ]
+  },
+  {
+    "tag": "06_CauSeq_sup_lt",
+    "status": "OK",
+    "n_steps": 4,
+    "states_expected": 4,
+    "states_matched_exactly": 4,
+    "detail": [
+      "EXACT",
+      "EXACT",
+      "EXACT",
+      "terminal(no goals) \u2014 trace_state prints nothing"
+    ]
+  },
+  {
+    "tag": "07_Path_Homotopic_proj_pi",
+    "status": "OK",
+    "n_steps": 5,
+    "states_expected": 5,
+    "states_matched_exactly": 1,
+    "detail": [
+      "MISS",
+      "MISS",
+      "MISS",
+      "MISS",
+      "terminal(no goals) \u2014 trace_state prints nothing"
+    ]
+  },
+  {
+    "tag": "08_MvPFunctor_wRec_eq",
+    "status": "OK",
+    "n_steps": 5,
+    "states_expected": 5,
+    "states_matched_exactly": 5,
+    "detail": [
+      "EXACT",
+      "EXACT",
+      "EXACT",
+      "EXACT",
+      "terminal(no goals) \u2014 trace_state prints nothing"
+    ]
+  },
+  {
+    "tag": "09_linearIndependent_le_span_",
+    "status": "OK",
+    "n_steps": 5,
+    "states_expected": 5,
+    "states_matched_exactly": 1,
+    "detail": [
+      "MISS",
+      "MISS",
+      "MISS",
+      "MISS",
+      "terminal(no goals) \u2014 trace_state prints nothing"
+    ]
+  },
+  {
+    "tag": "10_Finset_map_subtype_embedding_Ico",
+    "status": "OK",
+    "n_steps": 4,
+    "states_expected": 4,
+    "states_matched_exactly": 2,
+    "detail": [
+      "MISS",
+      "MISS",
+      "EXACT",
+      "terminal(no goals) \u2014 trace_state prints nothing"
+    ]
+  },
+  {
+    "tag": "11_Polynomial_natDegree_le_of_dvd",
+    "status": "OK",
+    "n_steps": 4,
+    "states_expected": 4,
+    "states_matched_exactly": 4,
+    "detail": [
+      "EXACT",
+      "EXACT",
+      "EXACT",
+      "terminal(no goals) \u2014 trace_state prints nothing"
+    ]
+  },
+  {
+    "tag": "12_Order_Ideal_isPrime_of_mem_or_compl_mem",
+    "status": "OK",
+    "n_steps": 5,
+    "states_expected": 5,
+    "states_matched_exactly": 1,
+    "detail": [
+      "MISS",
+      "MISS",
+      "MISS",
+      "MISS",
+      "terminal(no goals) \u2014 trace_state prints nothing"
+    ]
+  },
+  {
+    "tag": "13_IsClosed_exists_infDist_eq_dist",
+    "status": "OK",
+    "n_steps": 7,
+    "states_expected": 7,
+    "states_matched_exactly": 1,
+    "detail": [
+      "MISS",
+      "MISS",
+      "MISS",
+      "MISS",
+      "MISS",
+      "MISS",
+      "terminal(no goals) \u2014 trace_state prints nothing"
+    ]
+  },
+  {
+    "tag": "14_isNilpotent_pi_of_bounded_class",
+    "status": "OK",
+    "n_steps": 7,
+    "states_expected": 7,
+    "states_matched_exactly": 6,
+    "detail": [
+      "EXACT",
+      "EXACT",
+      "EXACT",
+      "MISS",
+      "EXACT",
+      "EXACT",
+      "terminal(no goals) \u2014 trace_state prints nothing"
+    ]
+  },
+  {
+    "tag": "15_AddLECancellable_lt_add_of_tsub_lt_left",
+    "status": "OK",
+    "n_steps": 4,
+    "states_expected": 4,
+    "states_matched_exactly": 4,
+    "detail": [
+      "EXACT",
+      "EXACT",
+      "EXACT",
+      "terminal(no goals) \u2014 trace_state prints nothing"
+    ]
+  },
+  {
+    "tag": "16_univ_eq_singleton_of_card_one",
+    "status": "OK",
+    "n_steps": 4,
+    "states_expected": 4,
+    "states_matched_exactly": 1,
+    "detail": [
+      "MISS",
+      "MISS",
+      "MISS",
+      "terminal(no goals) \u2014 trace_state prints nothing"
+    ]
+  },
+  {
+    "tag": "17_TypeVec_lastFun_prod",
+    "status": "OK",
+    "n_steps": 4,
+    "states_expected": 4,
+    "states_matched_exactly": 2,
+    "detail": [
+      "MISS",
+      "MISS",
+      "EXACT",
+      "terminal(no goals) \u2014 trace_state prints nothing"
+    ]
+  },
+  {
+    "tag": "18_MeasurableEmbedding_aemeasurable_map_iff",
+    "status": "OK",
+    "n_steps": 4,
+    "states_expected": 4,
+    "states_matched_exactly": 1,
+    "detail": [
+      "MISS",
+      "MISS",
+      "MISS",
+      "terminal(no goals) \u2014 trace_state prints nothing"
+    ]
+  },
+  {
+    "tag": "19_HomologicalComplex_exact_of_degreewise_exact",
+    "status": "OK",
+    "n_steps": 4,
+    "states_expected": 4,
+    "states_matched_exactly": 1,
+    "detail": [
+      "MISS",
+      "MISS",
+      "MISS",
+      "terminal(no goals) \u2014 trace_state prints nothing"
+    ]
+  },
+  {
+    "tag": "20_CategoryTheory_Limits_Concrete_from_union_surjective_of",
+    "status": "OK",
+    "n_steps": 5,
+    "states_expected": 5,
+    "states_matched_exactly": 1,
+    "detail": [
+      "MISS",
+      "MISS",
+      "MISS",
+      "MISS",
+      "terminal(no goals) \u2014 trace_state prints nothing"
+    ]
+  },
+  {
+    "tag": "21_TopCat_Presheaf_app_surjective_of_stalkFunctor_map_bije",
+    "status": "OK",
+    "n_steps": 9,
+    "states_expected": 9,
+    "states_matched_exactly": 1,
+    "detail": [
+      "MISS",
+      "MISS",
+      "MISS",
+      "MISS",
+      "MISS",
+      "MISS",
+      "MISS",
+      "MISS",
+      "terminal(no goals) \u2014 trace_state prints nothing"
+    ]
+  },
+  {
+    "tag": "22_Seminorm_convex_ball",
+    "status": "OK",
+    "n_steps": 4,
+    "states_expected": 4,
+    "states_matched_exactly": 2,
+    "detail": [
+      "MISS",
+      "MISS",
+      "EXACT",
+      "terminal(no goals) \u2014 trace_state prints nothing"
+    ]
+  },
+  {
+    "tag": "23_Filter_Tendsto_isCompact_insert_range_of_cofinite",
+    "status": "OK",
+    "n_steps": 4,
+    "states_expected": 4,
+    "states_matched_exactly": 1,
+    "detail": [
+      "MISS",
+      "MISS",
+      "MISS",
+      "terminal(no goals) \u2014 trace_state prints nothing"
+    ]
+  },
+  {
+    "tag": "24_multiplicity_multiplicity_pow_self",
+    "status": "OK",
+    "n_steps": 4,
+    "states_expected": 4,
+    "states_matched_exactly": 4,
+    "detail": [
+      "EXACT",
+      "EXACT",
+      "EXACT",
+      "terminal(no goals) \u2014 trace_state prints nothing"
+    ]
+  },
+  {
+    "tag": "25_Homeomorph_comp_isOpenMap_iff",
+    "status": "OK",
+    "n_steps": 4,
+    "states_expected": 4,
+    "states_matched_exactly": 4,
+    "detail": [
+      "EXACT",
+      "EXACT",
+      "EXACT",
+      "terminal(no goals) \u2014 trace_state prints nothing"
+    ]
+  },
+  {
+    "tag": "26_vsub_mem_vectorSpan_of_mem_spanPoints_of_mem_spanPoints",
+    "status": "OK",
+    "n_steps": 6,
+    "states_expected": 6,
+    "states_matched_exactly": 6,
+    "detail": [
+      "EXACT",
+      "EXACT",
+      "EXACT",
+      "EXACT",
+      "EXACT",
+      "terminal(no goals) \u2014 trace_state prints nothing"
+    ]
+  },
+  {
+    "tag": "27_BddAbove_range_mono",
+    "status": "OK",
+    "n_steps": 4,
+    "states_expected": 4,
+    "states_matched_exactly": 1,
+    "detail": [
+      "MISS",
+      "MISS",
+      "MISS",
+      "terminal(no goals) \u2014 trace_state prints nothing"
+    ]
+  },
+  {
+    "tag": "28_Polynomial_scaleRoots_isWeaklyEisensteinAt",
+    "status": "OK",
+    "n_steps": 4,
+    "states_expected": 4,
+    "states_matched_exactly": 4,
+    "detail": [
+      "EXACT",
+      "EXACT",
+      "EXACT",
+      "terminal(no goals) \u2014 trace_state prints nothing"
+    ]
+  },
+  {
+    "tag": "29_Multiset_revzip_powersetAux",
+    "status": "OK",
+    "n_steps": 4,
+    "states_expected": 4,
+    "states_matched_exactly": 3,
+    "detail": [
+      "MISS",
+      "EXACT",
+      "EXACT",
+      "terminal(no goals) \u2014 trace_state prints nothing"
+    ]
+  }
+]

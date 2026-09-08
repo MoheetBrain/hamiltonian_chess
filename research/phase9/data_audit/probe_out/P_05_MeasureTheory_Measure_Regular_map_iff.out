@@ -1,0 +1,39 @@
+α : Type u_1
+β : Type u_2
+inst✝⁵ : MeasurableSpace α
+inst✝⁴ : TopologicalSpace α
+μ : MeasureTheory.Measure α
+inst✝³ : BorelSpace α
+inst✝² : MeasurableSpace β
+inst✝¹ : TopologicalSpace β
+inst✝ : BorelSpace β
+f : α ≃ₜ β
+h : (MeasureTheory.Measure.map (⇑f) μ).Regular
+⊢ μ.Regular
+case h.e'_4
+α : Type u_1
+β : Type u_2
+inst✝⁵ : MeasurableSpace α
+inst✝⁴ : TopologicalSpace α
+μ : MeasureTheory.Measure α
+inst✝³ : BorelSpace α
+inst✝² : MeasurableSpace β
+inst✝¹ : TopologicalSpace β
+inst✝ : BorelSpace β
+f : α ≃ₜ β
+h : (MeasureTheory.Measure.map (⇑f) μ).Regular
+⊢ μ = MeasureTheory.Measure.map (⇑f.symm) (MeasureTheory.Measure.map (⇑f) μ)
+case h.e'_4
+α : Type u_1
+β : Type u_2
+inst✝⁵ : MeasurableSpace α
+inst✝⁴ : TopologicalSpace α
+μ : MeasureTheory.Measure α
+inst✝³ : BorelSpace α
+inst✝² : MeasurableSpace β
+inst✝¹ : TopologicalSpace β
+inst✝ : BorelSpace β
+f : α ≃ₜ β
+h : (MeasureTheory.Measure.map (⇑f) μ).Regular
+⊢ μ = MeasureTheory.Measure.map (⇑f.symm ∘ ⇑f) μ
+

@@ -1,0 +1,32 @@
+ι : Type u_1
+X : ι → Type u_2
+inst✝ : (i : ι) → TopologicalSpace (X i)
+as bs cs : (i : ι) → X i
+i : ι
+paths : (i : ι) → Path.Homotopic.Quotient (as i) (bs i)
+⊢ ∀ (a : (i : ι) → Path (as i) (bs i)), Path.Homotopic.proj i (Path.Homotopic.pi fun i => ⟦a i⟧) = (fun i => ⟦a i⟧) i
+ι : Type u_1
+X : ι → Type u_2
+inst✝ : (i : ι) → TopologicalSpace (X i)
+as bs cs : (i : ι) → X i
+i : ι
+paths : (i : ι) → Path.Homotopic.Quotient (as i) (bs i)
+a✝ : (i : ι) → Path (as i) (bs i)
+⊢ Path.Homotopic.proj i (Path.Homotopic.pi fun i => ⟦a✝ i⟧) = (fun i => ⟦a✝ i⟧) i
+ι : Type u_1
+X : ι → Type u_2
+inst✝ : (i : ι) → TopologicalSpace (X i)
+as bs cs : (i : ι) → X i
+i : ι
+paths : (i : ι) → Path.Homotopic.Quotient (as i) (bs i)
+a✝ : (i : ι) → Path (as i) (bs i)
+⊢ (Path.Homotopic.pi fun i => ⟦a✝ i⟧).mapFn { toFun := fun p => p i, continuous_toFun := ⋯ } = (fun i => ⟦a✝ i⟧) i
+ι : Type u_1
+X : ι → Type u_2
+inst✝ : (i : ι) → TopologicalSpace (X i)
+as bs cs : (i : ι) → X i
+i : ι
+paths : (i : ι) → Path.Homotopic.Quotient (as i) (bs i)
+a✝ : (i : ι) → Path (as i) (bs i)
+⊢ ⟦(Path.pi a✝).map ⋯⟧ = (fun i => ⟦a✝ i⟧) i
+

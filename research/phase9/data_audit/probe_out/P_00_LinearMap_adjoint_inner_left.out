@@ -1,0 +1,61 @@
+𝕜 : Type u_1
+E : Type u_2
+F : Type u_3
+G : Type u_4
+inst✝⁹ : RCLike 𝕜
+inst✝⁸ : NormedAddCommGroup E
+inst✝⁷ : NormedAddCommGroup F
+inst✝⁶ : NormedAddCommGroup G
+inst✝⁵ : InnerProductSpace 𝕜 E
+inst✝⁴ : InnerProductSpace 𝕜 F
+inst✝³ : InnerProductSpace 𝕜 G
+inst✝² : FiniteDimensional 𝕜 E
+inst✝¹ : FiniteDimensional 𝕜 F
+inst✝ : FiniteDimensional 𝕜 G
+A : E →ₗ[𝕜] F
+x : E
+y : F
+this : CompleteSpace E
+⊢ ⟪(LinearMap.adjoint A) y, x⟫_𝕜 = ⟪y, A x⟫_𝕜
+𝕜 : Type u_1
+E : Type u_2
+F : Type u_3
+G : Type u_4
+inst✝⁹ : RCLike 𝕜
+inst✝⁸ : NormedAddCommGroup E
+inst✝⁷ : NormedAddCommGroup F
+inst✝⁶ : NormedAddCommGroup G
+inst✝⁵ : InnerProductSpace 𝕜 E
+inst✝⁴ : InnerProductSpace 𝕜 F
+inst✝³ : InnerProductSpace 𝕜 G
+inst✝² : FiniteDimensional 𝕜 E
+inst✝¹ : FiniteDimensional 𝕜 F
+inst✝ : FiniteDimensional 𝕜 G
+A : E →ₗ[𝕜] F
+x : E
+y : F
+this✝ : CompleteSpace E
+this : CompleteSpace F
+⊢ ⟪(LinearMap.adjoint A) y, x⟫_𝕜 = ⟪y, A x⟫_𝕜
+𝕜 : Type u_1
+E : Type u_2
+F : Type u_3
+G : Type u_4
+inst✝⁹ : RCLike 𝕜
+inst✝⁸ : NormedAddCommGroup E
+inst✝⁷ : NormedAddCommGroup F
+inst✝⁶ : NormedAddCommGroup G
+inst✝⁵ : InnerProductSpace 𝕜 E
+inst✝⁴ : InnerProductSpace 𝕜 F
+inst✝³ : InnerProductSpace 𝕜 G
+inst✝² : FiniteDimensional 𝕜 E
+inst✝¹ : FiniteDimensional 𝕜 F
+inst✝ : FiniteDimensional 𝕜 G
+A : E →ₗ[𝕜] F
+x : E
+y : F
+this✝ : CompleteSpace E
+this : CompleteSpace F
+⊢ ⟪↑(ContinuousLinearMap.adjoint (LinearMap.toContinuousLinearMap ↑(LinearMap.toContinuousLinearMap A))) y, x⟫_𝕜 =
+    ⟪y, ↑(LinearMap.toContinuousLinearMap A) x⟫_𝕜
+

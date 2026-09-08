@@ -1,0 +1,55 @@
+ι : Type u_1
+α : Type u_2
+β : Type u_3
+γ : Type u_4
+δ : Type u_5
+R : Type u_6
+m0 : MeasurableSpace α
+inst✝² : MeasurableSpace β
+inst✝¹ : MeasurableSpace γ
+inst✝ : MeasurableSpace δ
+f g✝ : α → β
+μ ν : MeasureTheory.Measure α
+g : β → γ
+hf : MeasurableEmbedding f
+⊢ AEMeasurable (g ∘ f) μ → AEMeasurable g (MeasureTheory.Measure.map f μ)
+case intro.intro
+ι : Type u_1
+α : Type u_2
+β : Type u_3
+γ : Type u_4
+δ : Type u_5
+R : Type u_6
+m0 : MeasurableSpace α
+inst✝² : MeasurableSpace β
+inst✝¹ : MeasurableSpace γ
+inst✝ : MeasurableSpace δ
+f g✝ : α → β
+μ ν : MeasureTheory.Measure α
+g : β → γ
+hf : MeasurableEmbedding f
+g₁ : α → γ
+hgm₁ : Measurable g₁
+heq : g ∘ f =ᵐ[μ] g₁
+⊢ AEMeasurable g (MeasureTheory.Measure.map f μ)
+case intro.intro.intro.intro
+ι : Type u_1
+α : Type u_2
+β : Type u_3
+γ : Type u_4
+δ : Type u_5
+R : Type u_6
+m0 : MeasurableSpace α
+inst✝² : MeasurableSpace β
+inst✝¹ : MeasurableSpace γ
+inst✝ : MeasurableSpace δ
+f g✝ : α → β
+μ ν : MeasureTheory.Measure α
+g : β → γ
+hf : MeasurableEmbedding f
+g₂ : β → γ
+hgm₂ : Measurable g₂
+hgm₁ : Measurable (g₂ ∘ f)
+heq : g ∘ f =ᵐ[μ] g₂ ∘ f
+⊢ AEMeasurable g (MeasureTheory.Measure.map f μ)
+

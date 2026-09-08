@@ -1,0 +1,16 @@
+α : Type u_1
+l : List α
+x : Multiset α × Multiset α
+h : ∃ a ∈ l.sublists.revzip, Prod.map Multiset.ofList Multiset.ofList a = x
+⊢ x.1 + x.2 = ↑l
+α : Type u_1
+l : List α
+x : Multiset α × Multiset α
+h : ∃ a b, (a, b) ∈ l.sublists.revzip ∧ (↑a, ↑b) = x
+⊢ x.1 + x.2 = ↑l
+case intro.intro.intro.refl
+α : Type u_1
+l l₁ l₂ : List α
+h : (l₁, l₂) ∈ l.sublists.revzip
+⊢ (↑l₁, ↑l₂).1 + (↑l₁, ↑l₂).2 = ↑l
+

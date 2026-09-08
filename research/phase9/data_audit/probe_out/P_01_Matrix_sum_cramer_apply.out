@@ -1,0 +1,17 @@
+/Users/moheet/Documents/ChatGPT/hamiltonian_chess/.claude/worktrees/hamiltonian-phase-8-experiment-691d22/research/phase9/data_audit/probes/P_01_Matrix_sum_cramer_apply.lean:166:2: error: expected '{' or indented tactic sequence
+/Users/moheet/Documents/ChatGPT/hamiltonian_chess/.claude/worktrees/hamiltonian-phase-8-experiment-691d22/research/phase9/data_audit/probes/P_01_Matrix_sum_cramer_apply.lean:165:52: error: unsolved goals
+m : Type u
+n : Type v
+α : Type w
+inst✝⁴ : DecidableEq n
+inst✝³ : Fintype n
+inst✝² : DecidableEq m
+inst✝¹ : Fintype m
+inst✝ : CommRing α
+A : Matrix n n α
+b : n → α
+β : Type u_1
+s : Finset β
+f : n → β → α
+i : n
+⊢ (∑ x ∈ s, A.cramer fun j => f j x) i = A.cramer (fun j => ∑ x ∈ s, f j x) i

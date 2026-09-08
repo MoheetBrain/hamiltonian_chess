@@ -1,0 +1,72 @@
+[
+  {
+    "tag": "00_LinearMap_adjoint_inner_left",
+    "status": "STEP_ERROR",
+    "error": "<stdin>:1:36: expected end of input",
+    "startup_s": 12.53,
+    "steps_s": 0.001,
+    "n_steps": 0,
+    "terminal": null,
+    "cheat": {
+      "cmd": "sorry",
+      "error": "proof contains `sorry`",
+      "state": null
+    },
+    "file": "Mathlib/Analysis/InnerProductSpace/Adjoint.lean",
+    "prefix_lines": 378
+  },
+  {
+    "tag": "01_Matrix_sum_cramer_apply",
+    "status": "REPL_START_FAIL",
+    "file": "Mathlib/LinearAlgebra/Matrix/Adjugate.lean",
+    "prefix_lines": 157
+  },
+  {
+    "tag": "02_Cardinal_mk_equiv_eq_arrow_of_lift_eq",
+    "status": "OK",
+    "error": null,
+    "startup_s": 2.91,
+    "steps_s": 0.029,
+    "n_steps": 5,
+    "terminal": "no goals",
+    "cheat": null,
+    "file": "Mathlib/SetTheory/Cardinal/Ordinal.lean",
+    "prefix_lines": 1121
+  },
+  {
+    "tag": "03_Path_trans_pi_eq_pi_trans",
+    "status": "OK",
+    "error": null,
+    "startup_s": 4.44,
+    "steps_s": 0.031,
+    "n_steps": 4,
+    "terminal": "no goals",
+    "cheat": null,
+    "file": "Mathlib/Topology/Connected/PathConnected.lean",
+    "prefix_lines": 578
+  },
+  {
+    "tag": "04_RelSeries_smash_castAdd",
+    "status": "OK",
+    "error": null,
+    "startup_s": 2.57,
+    "steps_s": 0.009,
+    "n_steps": 4,
+    "terminal": "no goals",
+    "cheat": null,
+    "file": "Mathlib/Order/RelSeries.lean",
+    "prefix_lines": 513
+  },
+  {
+    "tag": "05_MeasureTheory_Measure_Regular_map_iff",
+    "status": "OK",
+    "error": null,
+    "startup_s": 3.04,
+    "steps_s": 0.019,
+    "n_steps": 4,
+    "terminal": "no goals",
+    "cheat": null,
+    "file": "Mathlib/MeasureTheory/Measure/Regular.lean",
+    "prefix_lines": 981
+  }
+]

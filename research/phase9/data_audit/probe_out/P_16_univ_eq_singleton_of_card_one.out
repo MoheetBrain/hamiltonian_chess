@@ -1,0 +1,26 @@
+α✝ : Type u_1
+β : Type u_2
+γ : Type u_3
+α : Type u_4
+inst✝ : Fintype α
+x : α
+h : Fintype.card α = 1
+⊢ {x} = Finset.univ
+α✝ : Type u_1
+β : Type u_2
+γ : Type u_3
+α : Type u_4
+inst✝ : Fintype α
+x : α
+h : Fintype.card α = 1
+⊢ Finset.univ.card ≤ {x}.card
+case a
+α✝ : Type u_1
+β : Type u_2
+γ : Type u_3
+α : Type u_4
+inst✝ : Fintype α
+x : α
+h : Fintype.card α = 1
+⊢ Finset.univ.card = {x}.card
+

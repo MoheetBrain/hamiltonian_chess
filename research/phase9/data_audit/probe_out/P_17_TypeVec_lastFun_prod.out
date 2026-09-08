@@ -1,0 +1,24 @@
+case h
+n : ℕ
+α α' β β' : TypeVec.{u_1} (n + 1)
+f : α ⟹ β
+f' : α' ⟹ β'
+i : (α ⊗ α').last
+⊢ TypeVec.lastFun (f ⊗' f') i = Prod.map (TypeVec.lastFun f) (TypeVec.lastFun f') i
+case h.mk
+n : ℕ
+α α' β β' : TypeVec.{u_1} (n + 1)
+f : α ⟹ β
+f' : α' ⟹ β'
+fst✝ : α.last
+snd✝ : α'.last
+⊢ TypeVec.lastFun (f ⊗' f') (fst✝, snd✝) = Prod.map (TypeVec.lastFun f) (TypeVec.lastFun f') (fst✝, snd✝)
+case h.mk
+n : ℕ
+α α' β β' : TypeVec.{u_1} (n + 1)
+f : α ⟹ β
+f' : α' ⟹ β'
+fst✝ : α.last
+snd✝ : α'.last
+⊢ (f ⊗' f') Fin2.fz (fst✝, snd✝) = (f Fin2.fz fst✝, f' Fin2.fz snd✝)
+

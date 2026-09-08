@@ -1659,3 +1659,81 @@ controlled local Game-R experiments.
 **Next intended step.** Phase B of the reset: the repository remap, the nested-MDP definition, the
 prior-art boundary, and the verified-trajectory data audit — then the smallest executable outer
 loop. The Phase-8 founder tournament is **not** authorised.
+
+---
+
+## 2026-09-08 — Mission reset, Phase B: remap the project into the Hamiltonian Chess meta-game
+
+**Date/time.** 2026-09-08, Europe/London. **Branch.** `claude/hamiltonian-phase-8-experiment-691d22`.
+**Stage.** Mission reset, Phase B (documentation and audit). No experiment run, no model call, no
+sentinel changed.
+
+**Objective.** The owner reset the project hierarchy: the controlled representation experiment is
+demoted to a local fitness assay, and the top-level mission becomes the open-ended discovery of
+machine-facing mathematical languages evaluated by verified long-horizon capability. This commit
+delivers the eight documents that define that mission and the audits they rest on. `GOAL.md` is
+**not** modified and remains the constitution for controlled local Game-R experiments.
+
+**Files and systems changed.** New: `docs/HAMILTONIAN_CHESS_META_GOAL.md`,
+`docs/HAMILTONIAN_CHESS_META_MDP.md`, `docs/HAMILTONIAN_CHESS_REPO_REMAP.md`,
+`docs/HAMILTONIAN_PRIOR_ART_BOUNDARY.md`, `docs/LANGUAGE_META_GENOME_V0.md`,
+`docs/LONG_HORIZON_FITNESS_V0.md`, `docs/LANGUAGE_FITNESS_MEMORY.md`,
+`docs/VERIFIED_TRAJECTORY_ARENA_V0.md`, `research/phase9/data_audit/` (scripts + measured JSON).
+Modified: `docs/PROJECT_STATUS.md`, this ledger. **No code changed in this commit.** GOAL.md
+sha256 re-verified `43d8fcdb5db39b1841b9f620d939e13c47014d98ecba0d09fdd84f699d20117b`.
+
+**What was completed.** A 57-component repository remap (KEEP 18 / REFACTOR 13 /
+DEMOTE_TO_DIAGNOSTIC 7 / ARCHIVE 12 / MISSING 7); a prior-art boundary with ~70 verified citations;
+a language meta-genome specification; a long-horizon fitness design and its record schema; and a
+verified-trajectory data audit that settles the arena question by measurement.
+
+**Decisions made and why.**
+1. *Live Lean replay is the V0 trajectory world.* Recorded LeanDojo proofs are **trees, not
+   chains** — only 67.3% of adjacent pairs chain, and the fully-linear pool yields just 6 theorems
+   at horizon >=20 versus 1,605 whose reference proof needs >=20 tactics. Replaying live recovers
+   the tree-shaped proofs (5 of 6 probes closed as a flat script). The alternative local corpus
+   (HML_V3 `lean_runtime_v2_full`) is unusable for horizon: mean horizon 1.06, **0 of 65 adjacent
+   pairs chain** — it is an elaboration-time capture, as its own caveats state.
+2. *Truth stays with the backend state id, never a string comparison.* Measured: raw pretty-printed
+   Lean state equality scores **40.6%** where real semantic agreement is **98.1%**, so a
+   string-comparing verifier would reject 59.4% of correct steps.
+3. *The horizon thesis is reframed before anything is built on it.* Under independent per-step
+   errors "advantage compounds" is arithmetic, and the absolute accuracy gap is **unimodal** in
+   depth, so "the gap widens" is false under one natural metric. Only a **rank reversal** across
+   horizon or **super-compounding** is a real result; the metric must be preregistered.
+4. *The meta-genome must change payload structure, not skin.* `_grammar_encode` has three branches,
+   not eight; five of eight grammar families alias one JSON encoder; `L3_JSON_AST` and
+   `L6_GRAPH_TRIPLES` compute a byte-identical role map.
+
+**Tests actually executed.** No code changed, so the suite was not re-run for this commit; the
+baseline from the preceding commit stands at **1,132 passed, 1 skipped**, ruff and mypy clean.
+Measurements executed for the audits: the LeanDojo corpus counts, the Lean toolchain probe, the
+replay probes and the genome-sensitivity sweeps — all recorded under `research/phase9/data_audit/`
+and in the documents. **No model call, no GPU, no cloud, no download.**
+
+**Verification performed by the integrator independently of the subagents.** Maximum horizon in the
+repository is 1 — the only `CanonicalTrajectory` construction (`world_v0.py:507`) passes a
+one-element tuple. The semantic gate accepts all 8 honest surfaces losslessly and **refuses** a
+renderer tampered to drop one `holds(...)` assumption. The eight registered seed codecs change
+**0 of 44** rendered outputs under one-gene mutation while `GenomePhenotypeLanguage` changes
+**24 of 44**. The Lean checkout pins `leanprover/lean4:v4.10.0-rc1` and 5,680 `.olean` are present.
+The corpus reproduces exactly: 118,517 records, 59,557 with tactics, 250,814 steps, horizon >=5:
+15,275, >=10: 5,892, >=20: 1,605, max 128.
+
+**Failures and unresolved uncertainty.** A path error was made and corrected: the LeanDojo corpus
+is under `/Users/moheet/Projects/Hamiltonian-Labs/...`, **not** under `~/Documents/ChatGPT/...`; the
+integrator briefed a subagent with a wrongly expanded ellipsis and has recorded the true path in
+`HAMILTONIAN_CHESS_META_MDP.md` §7. The semantic gate rests on
+`CanonicalState.mathematical_hash`, and the canonical schema maps **0 of 368** real Lean states
+losslessly — so the gate's identity cannot reach the target world and must be re-derived against a
+backend-native envelope. mathlib4 is `HISTORICALLY_EXPOSED` transitively, so no OOD or
+"reasoning" claim is available; only "execution under kernel verification". The sealed splits were
+not opened.
+
+**Effect on the overall project.** The top-level objective moves to
+`docs/HAMILTONIAN_CHESS_META_GOAL.md`. Game R becomes the local causal assay. No sentinel is
+created, retired or reinterpreted: `RSTAR_NOT_IDENTIFIED`, `GAME_R_INSTRUMENT_NOT_QUALIFIED`,
+`V7_PARTIALLY_VALID_INSTRUMENT_CONFOUNDED` and `TRAINING_LANGUAGE_V0_BASELINE` all stand.
+
+**Next intended step.** Phase C: the verified trajectory arena on live Lean, and the thin outer
+loop (`HAMILTONIAN_CHESS_V0`) — targeting end-to-end executability, not discovery.

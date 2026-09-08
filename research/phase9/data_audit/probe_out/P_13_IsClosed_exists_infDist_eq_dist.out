@@ -1,0 +1,97 @@
+case intro
+ι : Sort u_1
+α : Type u
+β : Type v
+inst✝² : PseudoMetricSpace α
+inst✝¹ : PseudoMetricSpace β
+s t u : Set α
+x✝ y : α
+Φ : α → β
+inst✝ : ProperSpace α
+h : IsClosed s
+x z : α
+hz : z ∈ s
+⊢ ∃ y ∈ s, Metric.infDist x s = dist x y
+case intro
+ι : Sort u_1
+α : Type u
+β : Type v
+inst✝² : PseudoMetricSpace α
+inst✝¹ : PseudoMetricSpace β
+s t u : Set α
+x✝ y : α
+Φ : α → β
+inst✝ : ProperSpace α
+h : IsClosed s
+x z : α
+hz : z ∈ s
+⊢ ∃ y ∈ s, Metric.infDist x (s ∩ Metric.closedBall x (dist z x)) = dist x y
+case intro
+ι : Sort u_1
+α : Type u
+β : Type v
+inst✝² : PseudoMetricSpace α
+inst✝¹ : PseudoMetricSpace β
+s t✝ u : Set α
+x✝ y : α
+Φ : α → β
+inst✝ : ProperSpace α
+h : IsClosed s
+x z : α
+hz : z ∈ s
+t : Set α := s ∩ Metric.closedBall x (dist z x)
+⊢ ∃ y ∈ s, Metric.infDist x t = dist x y
+case intro
+ι : Sort u_1
+α : Type u
+β : Type v
+inst✝² : PseudoMetricSpace α
+inst✝¹ : PseudoMetricSpace β
+s t✝ u : Set α
+x✝ y : α
+Φ : α → β
+inst✝ : ProperSpace α
+h : IsClosed s
+x z : α
+hz : z ∈ s
+t : Set α := s ∩ Metric.closedBall x (dist z x)
+htc : IsCompact t
+⊢ ∃ y ∈ s, Metric.infDist x t = dist x y
+case intro
+ι : Sort u_1
+α : Type u
+β : Type v
+inst✝² : PseudoMetricSpace α
+inst✝¹ : PseudoMetricSpace β
+s t✝ u : Set α
+x✝ y : α
+Φ : α → β
+inst✝ : ProperSpace α
+h : IsClosed s
+x z : α
+hz : z ∈ s
+t : Set α := s ∩ Metric.closedBall x (dist z x)
+htc : IsCompact t
+htne : t.Nonempty
+⊢ ∃ y ∈ s, Metric.infDist x t = dist x y
+case intro.intro.intro.intro
+ι : Sort u_1
+α : Type u
+β : Type v
+inst✝² : PseudoMetricSpace α
+inst✝¹ : PseudoMetricSpace β
+s t✝ u : Set α
+x✝ y✝ : α
+Φ : α → β
+inst✝ : ProperSpace α
+h : IsClosed s
+x z : α
+hz : z ∈ s
+t : Set α := s ∩ Metric.closedBall x (dist z x)
+htc : IsCompact t
+htne : t.Nonempty
+y : α
+hyd : Metric.infDist x t = dist x y
+hys : y ∈ s
+⊢ ∃ y ∈ s, Metric.infDist x t = dist x y
+

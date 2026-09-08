@@ -1,0 +1,62 @@
+C : Type u
+inst✝³ : CategoryTheory.Category.{v, u} C
+inst✝² : CategoryTheory.ConcreteCategory C
+J : Type w
+inst✝¹ : CategoryTheory.Category.{r, w} J
+F : J ⥤ C
+inst✝ : CategoryTheory.Limits.PreservesColimit F (CategoryTheory.forget C)
+D : CategoryTheory.Limits.Cocone F
+hD : CategoryTheory.Limits.IsColimit D
+ff : (j : J) × (CategoryTheory.forget C).obj (F.obj j) → (CategoryTheory.forget C).obj D.pt :=
+  fun a => (D.ι.app a.fst) a.snd
+x : (CategoryTheory.forget C).obj D.pt
+⊢ ∃ a, ff a = x
+C : Type u
+inst✝³ : CategoryTheory.Category.{v, u} C
+inst✝² : CategoryTheory.ConcreteCategory C
+J : Type w
+inst✝¹ : CategoryTheory.Category.{r, w} J
+F : J ⥤ C
+inst✝ : CategoryTheory.Limits.PreservesColimit F (CategoryTheory.forget C)
+D : CategoryTheory.Limits.Cocone F
+hD : CategoryTheory.Limits.IsColimit D
+ff : (j : J) × (CategoryTheory.forget C).obj (F.obj j) → (CategoryTheory.forget C).obj D.pt :=
+  fun a => (D.ι.app a.fst) a.snd
+x : (CategoryTheory.forget C).obj D.pt
+E : CategoryTheory.Limits.Cocone (F ⋙ CategoryTheory.forget C) := (CategoryTheory.forget C).mapCocone D
+⊢ ∃ a, ff a = x
+C : Type u
+inst✝³ : CategoryTheory.Category.{v, u} C
+inst✝² : CategoryTheory.ConcreteCategory C
+J : Type w
+inst✝¹ : CategoryTheory.Category.{r, w} J
+F : J ⥤ C
+inst✝ : CategoryTheory.Limits.PreservesColimit F (CategoryTheory.forget C)
+D : CategoryTheory.Limits.Cocone F
+hD : CategoryTheory.Limits.IsColimit D
+ff : (j : J) × (CategoryTheory.forget C).obj (F.obj j) → (CategoryTheory.forget C).obj D.pt :=
+  fun a => (D.ι.app a.fst) a.snd
+x : (CategoryTheory.forget C).obj D.pt
+E : CategoryTheory.Limits.Cocone (F ⋙ CategoryTheory.forget C) := (CategoryTheory.forget C).mapCocone D
+hE : CategoryTheory.Limits.IsColimit E := CategoryTheory.Limits.isColimitOfPreserves (CategoryTheory.forget C) hD
+⊢ ∃ a, ff a = x
+case intro.intro
+C : Type u
+inst✝³ : CategoryTheory.Category.{v, u} C
+inst✝² : CategoryTheory.ConcreteCategory C
+J : Type w
+inst✝¹ : CategoryTheory.Category.{r, w} J
+F : J ⥤ C
+inst✝ : CategoryTheory.Limits.PreservesColimit F (CategoryTheory.forget C)
+D : CategoryTheory.Limits.Cocone F
+hD : CategoryTheory.Limits.IsColimit D
+ff : (j : J) × (CategoryTheory.forget C).obj (F.obj j) → (CategoryTheory.forget C).obj D.pt :=
+  fun a => (D.ι.app a.fst) a.snd
+x : (CategoryTheory.forget C).obj D.pt
+E : CategoryTheory.Limits.Cocone (F ⋙ CategoryTheory.forget C) := (CategoryTheory.forget C).mapCocone D
+hE : CategoryTheory.Limits.IsColimit E := CategoryTheory.Limits.isColimitOfPreserves (CategoryTheory.forget C) hD
+j : J
+y : (F ⋙ CategoryTheory.forget C).obj j
+hy : E.ι.app j y = x
+⊢ ∃ a, ff a = x
+

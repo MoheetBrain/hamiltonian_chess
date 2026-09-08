@@ -1,0 +1,42 @@
+X : Type u_1
+Y : Type u_2
+Z : Type u_3
+inst✝⁴ : TopologicalSpace X
+inst✝³ : TopologicalSpace Y
+inst✝² : TopologicalSpace Z
+X' : Type u_4
+Y' : Type u_5
+inst✝¹ : TopologicalSpace X'
+inst✝ : TopologicalSpace Y'
+h : X ≃ₜ Y
+f : Z → X
+⊢ IsOpenMap (⇑h ∘ f) → IsOpenMap f
+X : Type u_1
+Y : Type u_2
+Z : Type u_3
+inst✝⁴ : TopologicalSpace X
+inst✝³ : TopologicalSpace Y
+inst✝² : TopologicalSpace Z
+X' : Type u_4
+Y' : Type u_5
+inst✝¹ : TopologicalSpace X'
+inst✝ : TopologicalSpace Y'
+h : X ≃ₜ Y
+f : Z → X
+hf : IsOpenMap (⇑h ∘ f)
+⊢ IsOpenMap f
+X : Type u_1
+Y : Type u_2
+Z : Type u_3
+inst✝⁴ : TopologicalSpace X
+inst✝³ : TopologicalSpace Y
+inst✝² : TopologicalSpace Z
+X' : Type u_4
+Y' : Type u_5
+inst✝¹ : TopologicalSpace X'
+inst✝ : TopologicalSpace Y'
+h : X ≃ₜ Y
+f : Z → X
+hf : IsOpenMap (⇑h ∘ f)
+⊢ IsOpenMap (⇑h.symm ∘ ⇑h ∘ f)
+

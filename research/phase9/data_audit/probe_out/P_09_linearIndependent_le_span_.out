@@ -1,0 +1,68 @@
+R : Type u
+M : Type v
+inst✝⁴ : Ring R
+inst✝³ : AddCommGroup M
+inst✝² : Module R M
+ι✝ : Type w
+ι' : Type w'
+inst✝¹ : StrongRankCondition R
+ι : Type u_1
+v : ι → M
+i : LinearIndependent R v
+w : Set M
+inst✝ : Fintype ↑w
+s : Set.range v ≤ ↑(Submodule.span R w)
+this : Finite ι
+⊢ #ι ≤ ↑(Fintype.card ↑w)
+R : Type u
+M : Type v
+inst✝⁴ : Ring R
+inst✝³ : AddCommGroup M
+inst✝² : Module R M
+ι✝ : Type w
+ι' : Type w'
+inst✝¹ : StrongRankCondition R
+ι : Type u_1
+v : ι → M
+i : LinearIndependent R v
+w : Set M
+inst✝ : Fintype ↑w
+s : Set.range v ≤ ↑(Submodule.span R w)
+this✝ : Finite ι
+this : Fintype ι := Fintype.ofFinite ι
+⊢ #ι ≤ ↑(Fintype.card ↑w)
+R : Type u
+M : Type v
+inst✝⁴ : Ring R
+inst✝³ : AddCommGroup M
+inst✝² : Module R M
+ι✝ : Type w
+ι' : Type w'
+inst✝¹ : StrongRankCondition R
+ι : Type u_1
+v : ι → M
+i : LinearIndependent R v
+w : Set M
+inst✝ : Fintype ↑w
+s : Set.range v ≤ ↑(Submodule.span R w)
+this✝ : Finite ι
+this : Fintype ι := Fintype.ofFinite ι
+⊢ ↑(Fintype.card ι) ≤ ↑(Fintype.card ↑w)
+R : Type u
+M : Type v
+inst✝⁴ : Ring R
+inst✝³ : AddCommGroup M
+inst✝² : Module R M
+ι✝ : Type w
+ι' : Type w'
+inst✝¹ : StrongRankCondition R
+ι : Type u_1
+v : ι → M
+i : LinearIndependent R v
+w : Set M
+inst✝ : Fintype ↑w
+s : Set.range v ≤ ↑(Submodule.span R w)
+this✝ : Finite ι
+this : Fintype ι := Fintype.ofFinite ι
+⊢ Fintype.card ι ≤ Fintype.card ↑w
+

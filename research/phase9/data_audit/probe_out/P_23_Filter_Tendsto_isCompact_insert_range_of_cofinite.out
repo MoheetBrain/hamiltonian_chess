@@ -1,0 +1,36 @@
+X : Type u
+Y : Type v
+ι : Type u_1
+inst✝¹ : TopologicalSpace X
+inst✝ : TopologicalSpace Y
+s t : Set X
+f : ι → X
+x : X
+hf : Filter.Tendsto f Filter.cofinite (𝓝 x)
+this : TopologicalSpace ι := ⊥
+⊢ IsCompact (insert x (Set.range f))
+X : Type u
+Y : Type v
+ι : Type u_1
+inst✝¹ : TopologicalSpace X
+inst✝ : TopologicalSpace Y
+s t : Set X
+f : ι → X
+x : X
+hf : Filter.Tendsto f Filter.cofinite (𝓝 x)
+this : TopologicalSpace ι := ⊥
+h : DiscreteTopology ι
+⊢ IsCompact (insert x (Set.range f))
+X : Type u
+Y : Type v
+ι : Type u_1
+inst✝¹ : TopologicalSpace X
+inst✝ : TopologicalSpace Y
+s t : Set X
+f : ι → X
+x : X
+this : TopologicalSpace ι := ⊥
+hf : Filter.Tendsto f (Filter.cocompact ι) (𝓝 x)
+h : DiscreteTopology ι
+⊢ IsCompact (insert x (Set.range f))
+

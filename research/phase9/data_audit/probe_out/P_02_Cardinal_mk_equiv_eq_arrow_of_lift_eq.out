@@ -1,0 +1,38 @@
+case intro
+α β : Type u
+β' : Type v
+inst✝ : Infinite α
+leq : Cardinal.lift.{v, u} #α = Cardinal.lift.{u, v} #β'
+eq : #α = #β
+e : α ≃ β'
+⊢ #(α ≃ β') = #(α → β')
+case intro
+α β : Type u
+β' : Type v
+inst✝ : Infinite α
+leq : Cardinal.lift.{v, u} #α = Cardinal.lift.{u, v} #β'
+eq : #α = #β
+e : α ≃ β'
+e₁ : Cardinal.lift.{max u v, u} #(α ≃ α) = Cardinal.lift.{u, max u v} #(α ≃ β')
+⊢ #(α ≃ β') = #(α → β')
+case intro
+α β : Type u
+β' : Type v
+inst✝ : Infinite α
+leq : Cardinal.lift.{v, u} #α = Cardinal.lift.{u, v} #β'
+eq : #α = #β
+e : α ≃ β'
+e₁ : Cardinal.lift.{max u v, u} #(α ≃ α) = Cardinal.lift.{u, max u v} #(α ≃ β')
+e₂ : Cardinal.lift.{max u v, u} #(α → α) = Cardinal.lift.{u, max u v} #(α → β')
+⊢ #(α ≃ β') = #(α → β')
+case intro
+α β : Type u
+β' : Type v
+inst✝ : Infinite α
+leq : Cardinal.lift.{v, u} #α = Cardinal.lift.{u, v} #β'
+eq : #α = #β
+e : α ≃ β'
+e₁ : Cardinal.lift.{max u v, u} #(α ≃ α) = #(α ≃ β')
+e₂ : Cardinal.lift.{max u v, u} #(α → α) = #(α → β')
+⊢ #(α ≃ β') = #(α → β')
+

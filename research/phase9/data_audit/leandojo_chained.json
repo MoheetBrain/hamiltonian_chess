@@ -1,0 +1,128 @@
+{
+  "fully_chained_proofs": 40683,
+  "fully_chained_horizon_at_least": {
+    "1": 40683,
+    "2": 19881,
+    "3": 8150,
+    "5": 1983,
+    "10": 132,
+    "15": 23,
+    "20": 6,
+    "30": 1,
+    "50": 0,
+    "100": 0
+  },
+  "fully_chained_hist_1_to_30": {
+    "1": 20802,
+    "2": 11731,
+    "3": 4282,
+    "4": 1885,
+    "5": 887,
+    "6": 491,
+    "7": 230,
+    "8": 137,
+    "9": 106,
+    "10": 49,
+    "11": 24,
+    "12": 22,
+    "13": 7,
+    "14": 7,
+    "15": 6,
+    "16": 5,
+    "17": 3,
+    "18": 2,
+    "19": 1,
+    "20": 2,
+    "21": 2,
+    "22": 0,
+    "23": 0,
+    "24": 0,
+    "25": 0,
+    "26": 0,
+    "27": 0,
+    "28": 1,
+    "29": 0,
+    "30": 0
+  },
+  "fully_chained_max": 35,
+  "fully_chained_terminal_no_goals": 40594,
+  "maximal_chained_prefix_at_least": {
+    "1": 59557,
+    "2": 29891,
+    "3": 14399,
+    "5": 4783,
+    "10": 616,
+    "15": 125,
+    "20": 31,
+    "30": 3,
+    "50": 0,
+    "100": 0
+  },
+  "maximal_chained_prefix_max": 35,
+  "steps_whose_tactic_text_appears_verbatim_in_state_before": 92,
+  "total_steps": 250814,
+  "goal_count_distribution_top10": [
+    [
+      1,
+      249275
+    ],
+    [
+      2,
+      1113
+    ],
+    [
+      3,
+      239
+    ],
+    [
+      4,
+      115
+    ],
+    [
+      5,
+      29
+    ],
+    [
+      6,
+      11
+    ],
+    [
+      7,
+      10
+    ],
+    [
+      8,
+      9
+    ],
+    [
+      9,
+      6
+    ],
+    [
+      12,
+      3
+    ]
+  ],
+  "example_fully_chained_ge8": {
+    "full_name": "MvQPF.Cofix.abs_repr",
+    "file_path": "Mathlib/Data/QPF/Multivariate/Constructions/Cofix.lean",
+    "n": 13,
+    "tactics": [
+      "let R := fun x y : Cofix F \u03b1 => abs (repr y) = x",
+      "refine Cofix.bisim\u2082 R ?_ _ _ rfl",
+      "clear x",
+      "rintro x y h",
+      "subst h",
+      "dsimp [Cofix.dest, Cofix.abs]",
+      "induction y using Quot.ind",
+      "simp only [Cofix.repr, M.dest_corec, abs_map, MvQPF.abs_repr, Function.comp]",
+      "conv => congr; rfl; rw [Cofix.dest]",
+      "rw [MvFunctor.map_map, MvFunctor.map_map, \u2190 appendFun_comp_id, \u2190 appendFun_comp_id]",
+      "apply liftR_map_last",
+      "intros",
+      "rfl"
+    ],
+    "state_0": "n : \u2115\nF\u271d : TypeVec.{u} (n + 1) \u2192 Type u\nq\u271d : MvQPF F\u271d\nF : TypeVec.{u} (n + 1) \u2192 Type u\nq : MvQPF F\n\u03b1 : TypeVec.{u} n\nx : Cofix F \u03b1\n\u22a2 Quot.mk Mcongr x.repr = x",
+    "state_final": "no goals"
+  }
+}

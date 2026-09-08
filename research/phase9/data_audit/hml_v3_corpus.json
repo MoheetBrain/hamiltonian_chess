@@ -1,0 +1,161 @@
+{
+  "files": [
+    "lean_runtime_v2_full.canonical.part-000.jsonl.gz",
+    "lean_runtime_v2_full.canonical.part-001.jsonl.gz",
+    "lean_runtime_v2_full.canonical.part-002.jsonl.gz",
+    "lean_runtime_v2_full.canonical.part-003.jsonl.gz",
+    "lean_runtime_v2_full.canonical.part-004.jsonl.gz"
+  ],
+  "bytes": 17042127,
+  "records": 1150,
+  "distinct_theorem_ids": 1085,
+  "horizon_at_least": {
+    "1": 1085,
+    "2": 48,
+    "3": 8,
+    "5": 2,
+    "10": 0,
+    "15": 0,
+    "20": 0
+  },
+  "horizon_hist_1_to_20": {
+    "1": 1037,
+    "2": 40,
+    "3": 4,
+    "4": 2,
+    "5": 1,
+    "6": 0,
+    "7": 0,
+    "8": 1,
+    "9": 0,
+    "10": 0,
+    "11": 0,
+    "12": 0,
+    "13": 0,
+    "14": 0,
+    "15": 0,
+    "16": 0,
+    "17": 0,
+    "18": 0,
+    "19": 0,
+    "20": 0
+  },
+  "max_horizon": 8,
+  "mean_horizon": 1.0599078341013826,
+  "adjacent_pairs": 65,
+  "adjacent_pairs_state_id_chained": 0,
+  "theorems_fully_chained_len_ge2": 0,
+  "records_single_premise_single_goal": 190,
+  "records_with_transitive_imports": 1150,
+  "records_with_external_premise_refs": 749,
+  "action_kinds": {
+    "LEAN_ELABORATED_TACTIC_OCCURRENCE": 1150
+  },
+  "reference_completeness": {
+    "PARTIAL_TACTICS_WITHOUT_TERMINFO_MAY_HIDE_INTERNAL_USE": 1150
+  },
+  "action_keys": [
+    "external_premise_refs",
+    "kind",
+    "local_context_refs",
+    "reference_completeness",
+    "reference_mechanism",
+    "source_location"
+  ],
+  "goal_object_keys": [
+    "identity",
+    "local_context",
+    "local_instances",
+    "target"
+  ],
+  "example_action": {
+    "external_premise_refs": [
+      "Classical.indefiniteDescription"
+    ],
+    "kind": "LEAN_ELABORATED_TACTIC_OCCURRENCE",
+    "local_context_refs": [
+      {
+        "canonical_id": ".lake/packages/batteries/Batteries/Classes/SatisfiesM.lean::SatisfiesM.bind::1:before:local:f1",
+        "resolved": true,
+        "source_fvar_id": "_uniq.13532"
+      },
+      {
+        "canonical_id": ".lake/packages/batteries/Batteries/Classes/SatisfiesM.lean::SatisfiesM.bind::1:before:local:f2",
+        "resolved": true,
+        "source_fvar_id": "_uniq.13533"
+      },
+      {
+        "canonical_id": ".lake/packages/batteries/Batteries/Classes/SatisfiesM.lean::SatisfiesM.bind::1:before:local:f3",
+        "resolved": true,
+        "source_fvar_id": "_uniq.13534"
+      },
+      {
+        "canonical_id": ".lake/packages/batteries/Batteries/Classes/SatisfiesM.lean::SatisfiesM.bind::1:before:local:f4",
+        "resolved": true,
+        "source_fvar_id": "_uniq.13535"
+      },
+      {
+        "canonical_id": ".lake/packages/batteries/Batteries/Classes/SatisfiesM.lean::SatisfiesM.bind::1:before:local:f6",
+        "resolved": true,
+        "source_fvar_id": "_uniq.13537"
+      },
+      {
+        "canonical_id": ".lake/packages/batteries/Batteries/Classes/SatisfiesM.lean::SatisfiesM.bind::1:before:local:f7",
+        "resolved": true,
+        "source_fvar_id": "_uniq.13538"
+      },
+      {
+        "canonical_id": ".lake/packages/batteries/Batteries/Classes/SatisfiesM.lean::SatisfiesM.bind::1:before:local:f9",
+        "resolved": true,
+        "source_fvar_id": "_uniq.13540"
+      },
+      {
+        "canonical_id": ".lake/packages/batteries/Batteries/Classes/SatisfiesM.lean::SatisfiesM.bind::1:before:local:f11",
+        "resolved": true,
+        "source_fvar_id": "_uniq.13542"
+      },
+      {
+        "canonical_id": ".lake/packages/batteries/Batteries/Classes/SatisfiesM.lean::SatisfiesM.bind::1:before:local:f12",
+        "resolved": true,
+        "source_fvar_id": "_uniq.13591"
+      },
+      {
+        "canonical_id": null,
+        "resolved": false,
+        "source_fvar_id": "_uniq.13767"
+      },
+      {
+        "canonical_id": null,
+        "resolved": false,
+        "source_fvar_id": "_uniq.13770"
+      },
+      {
+        "canonical_id": null,
+        "resolved": false,
+        "source_fvar_id": "_uniq.13785"
+      }
+    ],
+    "reference_completeness": "PARTIAL_TACTICS_WITHOUT_TERMINFO_MAY_HIDE_INTERNAL_USE",
+    "reference_mechanism": "DIRECT_TRAVERSAL_OF_ELABORATED_TERMINFO_EXPRS",
+    "source_location": {
+      "end": {
+        "column": 60,
+        "line": 139,
+        "raw": 6538
+      },
+      "info_tree_path": [
+        17,
+        0,
+        0,
+        0,
+        1
+      ],
+      "start": {
+        "column": 2,
+        "line": 139,
+        "raw": 6480
+      }
+    }
+  },
+  "sealed_shard_opened": false
+}

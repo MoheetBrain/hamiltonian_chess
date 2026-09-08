@@ -452,6 +452,57 @@ backed by a file or artifact. Summary: **the machinery is real and mostly sound;
 question the project exists to answer has never been asked**, because no experiment has ever scored
 two representations against a Solver.
 
+## Mission reset — Phase B documentation set (2026-09-08)
+
+The reset's design documents are complete and committed. Each is grounded in measurement, and the
+four findings below changed the plan rather than confirming it.
+
+| Document | What it settles |
+|---|---|
+| `HAMILTONIAN_CHESS_META_GOAL.md` | The mission, the four layers and which may evolve, the truth-preservation invariant, the novelty boundary, the three standing risks |
+| `HAMILTONIAN_CHESS_META_MDP.md` | The nested games: inner `M_L = (S, A, T_K, r, Omega_L)` and the outer language-evolution MDP; what exists vs what is missing |
+| `HAMILTONIAN_CHESS_REPO_REMAP.md` | 57 components classified KEEP 18 / REFACTOR 13 / DEMOTE 7 / ARCHIVE 12 / MISSING 7 |
+| `HAMILTONIAN_PRIOR_ART_BOUNDARY.md` | `NOVEL_ONLY_IN_COMBINATION`, ~70 verified citations, the narrowest defensible claim |
+| `LANGUAGE_META_GENOME_V0.md` | `LanguageMetaGenomeV0`: six gene families, which are ACTIVE in V0, and the cost of each |
+| `LONG_HORIZON_FITNESS_V0.md` | The fitness vector, the multi-fidelity ladder, how `J_horizon` is measured |
+| `LANGUAGE_FITNESS_MEMORY.md` | The durable record schema that a surrogate is eventually trained on |
+| `VERIFIED_TRAJECTORY_ARENA_V0.md` | The trajectory world, resolved by measurement |
+
+**Four findings that changed the plan.**
+
+1. **The prior-art verdict is `NOVEL_ONLY_IN_COMBINATION`.** A hand-designed machine-facing proof
+   language already reports +20-29 points of kernel-verified pass@1 in this exact domain, and
+   automated search over agent-facing representations is published. The architecture alone is not
+   a contribution. Worse for the headline thesis: "language advantage grows with horizon" is
+   **partly a tautology** (`p^n` vs `q^n`) and **metric-dependent** — the absolute accuracy gap is
+   *unimodal* in depth, so the claim is false under one natural metric. Only a **rank reversal**
+   across horizon or **super-compounding** escapes this, and the metric must be preregistered.
+2. **The language layer has two distinct defects, both measured.** The eight registered seed codecs
+   are genome-blind by construction (pre-instantiated singletons; **0 of 44** one-gene mutations
+   change a byte). `GenomePhenotypeLanguage` is genome-driven (**24 of 44**) but its gene-to-byte
+   map is narrow: `_grammar_encode` has **three** branches, not eight, so five of eight grammar
+   families alias one JSON encoder, and `L3_JSON_AST`/`L6_GRAPH_TRIPLES` compute a byte-identical
+   role map. Consequence for the loop: **13 of 35 legal single-gene children of the JSON seed are
+   byte-identical clones** — 37% of the mutation neighbourhood is a no-op.
+3. **The trajectory world is live Lean replay**, and the toolchain exists today: a complete 18 GB
+   mathlib4 build (5,680 `.olean`) pinned to Lean 4.10.0-rc1 with a compiled REPL giving persistent
+   addressable state and branching, at ~193 tactic steps/s warm. The corpus
+   (`.../Hamiltonian-Labs/hml_research_artifacts/.../random/train.json`, 373 MB, CC BY 2.0) has
+   118,517 records, 59,557 with tactics, 250,814 steps, and **1,605 theorems needing >=20 tactics**
+   — all independently re-verified. Recorded proofs are **trees, not chains** (only 67.3% of
+   adjacent pairs chain), so the arena must replay live.
+4. **Two measured traps.** Raw Lean state string equality scores **40.6%** where real semantic
+   agreement is **98.1%**, so a string-comparing verifier would reject 59.4% of correct steps —
+   truth must stay with the backend state id. And mathlib is transitively exposed to any solver, so
+   the defensible phrasing is "long-horizon **execution under kernel verification**", not
+   "reasoning".
+
+**Verified independently by the integrator** (not taken on a subagent's word): maximum horizon in
+the repository is 1 (the only `CanonicalTrajectory` construction passes a one-element tuple); the
+semantic gate accepts all 8 honest surfaces and refuses a renderer that drops a `holds(...)`
+assumption; the 0-of-44 and 24-of-44 genome sensitivity figures; the Lean toolchain and the corpus
+counts.
+
 ## Current Blockers
 
 1. **The meta-game has no verified trajectory world.** Every existing environment is a

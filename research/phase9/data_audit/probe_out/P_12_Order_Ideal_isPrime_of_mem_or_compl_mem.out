@@ -1,0 +1,41 @@
+P : Type u_1
+inst✝¹ : BooleanAlgebra P
+x : P
+I : Order.Ideal P
+inst✝ : I.IsProper
+h : ∀ {x : P}, x ∈ I ∨ xᶜ ∈ I
+⊢ ∀ {x y : P}, x ⊓ y ∈ I → x ∉ I → y ∈ I
+P : Type u_1
+inst✝¹ : BooleanAlgebra P
+x✝ : P
+I : Order.Ideal P
+inst✝ : I.IsProper
+h : ∀ {x : P}, x ∈ I ∨ xᶜ ∈ I
+x y : P
+hxy : x ⊓ y ∈ I
+hxI : x ∉ I
+⊢ y ∈ I
+P : Type u_1
+inst✝¹ : BooleanAlgebra P
+x✝ : P
+I : Order.Ideal P
+inst✝ : I.IsProper
+h : ∀ {x : P}, x ∈ I ∨ xᶜ ∈ I
+x y : P
+hxy : x ⊓ y ∈ I
+hxI : x ∉ I
+hxcI : xᶜ ∈ I
+⊢ y ∈ I
+P : Type u_1
+inst✝¹ : BooleanAlgebra P
+x✝ : P
+I : Order.Ideal P
+inst✝ : I.IsProper
+h : ∀ {x : P}, x ∈ I ∨ xᶜ ∈ I
+x y : P
+hxy : x ⊓ y ∈ I
+hxI : x ∉ I
+hxcI : xᶜ ∈ I
+ass : x ⊓ y ⊔ y ⊓ xᶜ ∈ I
+⊢ y ∈ I
+

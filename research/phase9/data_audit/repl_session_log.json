@@ -1,0 +1,26 @@
+[
+  {
+    "sid": 0,
+    "state": "\u03b1 : Type u_1\nr : Rel \u03b1 \u03b1\n\u03b2 : Type u_2\ns : Rel \u03b2 \u03b2\np q : RelSeries r\nconnect : p.last = q.head\ni : Fin p.length\n\u22a2 (p.smash q connect).toFun (Fin.castAdd q.length i).castSucc = p.toFun i.castSucc"
+  },
+  {
+    "sid": 1,
+    "tactic": "unfold smash",
+    "state": "\u03b1 : Type u_1\nr : Rel \u03b1 \u03b1\n\u03b2 : Type u_2\ns : Rel \u03b2 \u03b2\np q : RelSeries r\nconnect : p.last = q.head\ni : Fin p.length\n\u22a2 { length := p.length + q.length,\n          toFun := fun i => if H : \u2191i < p.length then p.toFun \u27e8\u2191i, \u22ef\u27e9 else q.toFun \u27e8\u2191i - p.length, \u22ef\u27e9, step := \u22ef }.toFun\n      (Fin.castAdd q.length i).castSucc =\n    p.toFun i.castSucc"
+  },
+  {
+    "sid": 2,
+    "tactic": "dsimp",
+    "state": "\u03b1 : Type u_1\nr : Rel \u03b1 \u03b1\n\u03b2 : Type u_2\ns : Rel \u03b2 \u03b2\np q : RelSeries r\nconnect : p.last = q.head\ni : Fin p.length\n\u22a2 (if H : \u2191i < p.length then p.toFun \u27e8\u2191i, \u22ef\u27e9 else q.toFun \u27e8\u2191i - p.length, \u22ef\u27e9) = p.toFun i.castSucc"
+  },
+  {
+    "sid": 3,
+    "tactic": "rw [dif_pos i.2]",
+    "state": "\u03b1 : Type u_1\nr : Rel \u03b1 \u03b1\n\u03b2 : Type u_2\ns : Rel \u03b2 \u03b2\np q : RelSeries r\nconnect : p.last = q.head\ni : Fin p.length\n\u22a2 p.toFun \u27e8\u2191i, \u22ef\u27e9 = p.toFun i.castSucc"
+  },
+  {
+    "sid": 4,
+    "tactic": "rfl",
+    "state": "no goals"
+  }
+]

@@ -1,0 +1,193 @@
+{
+  "source": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo_raw/leandojo_benchmark_4/random/train.json",
+  "bytes": 373077058,
+  "n_theorem_records": 118517,
+  "n_theorems_with_traced_tactics": 59557,
+  "n_theorems_with_zero_tactics": 58960,
+  "n_traced_tactic_steps": 250814,
+  "n_files": 3963,
+  "theorem_record_keys": [
+    "commit",
+    "end",
+    "file_path",
+    "full_name",
+    "start",
+    "traced_tactics",
+    "url"
+  ],
+  "traced_tactic_keys": [
+    "annotated_tactic",
+    "state_after",
+    "state_before",
+    "tactic"
+  ],
+  "horizon_at_least": {
+    "1": 59557,
+    "2": 38755,
+    "3": 25911,
+    "5": 15275,
+    "10": 5892,
+    "15": 2904,
+    "20": 1605,
+    "30": 628,
+    "50": 159,
+    "100": 15
+  },
+  "horizon_hist_1_to_40": {
+    "1": 20802,
+    "2": 12844,
+    "3": 6576,
+    "4": 4060,
+    "5": 2992,
+    "6": 2183,
+    "7": 1677,
+    "8": 1364,
+    "9": 1167,
+    "10": 856,
+    "11": 694,
+    "12": 587,
+    "13": 454,
+    "14": 397,
+    "15": 346,
+    "16": 304,
+    "17": 239,
+    "18": 219,
+    "19": 191,
+    "20": 164,
+    "21": 147,
+    "22": 126,
+    "23": 111,
+    "24": 85,
+    "25": 95,
+    "26": 75,
+    "27": 54,
+    "28": 59,
+    "29": 61,
+    "30": 55,
+    "31": 51,
+    "32": 36,
+    "33": 44,
+    "34": 30,
+    "35": 30,
+    "36": 24,
+    "37": 19,
+    "38": 28,
+    "39": 22,
+    "40": 12
+  },
+  "max_horizon": 128,
+  "mean_horizon_over_nonempty": 4.211326964084826,
+  "chain_adjacent_pairs_total": 191257,
+  "chain_adjacent_pairs_exact_match": 128644,
+  "chain_exact_fraction": 0.6726237471046811,
+  "proofs_len_ge2_fully_chained": 19881,
+  "proofs_len_ge2_total": 38755,
+  "terminal_state_after_is_no_goals": 59282,
+  "terminal_other_top10": [
+    [
+      "case h\n\ud835\udd5c : Type u_1\ninst\u271d\u00b9\u00b3 : NontriviallyNormedField \ud835\udd5c\nE : ",
+      6
+    ],
+    [
+      "case w\nC : Type u_1\ninst\u271d\u2075 : Category.{u_2, u_1} C\ninst\u271d\u2074 : ",
+      4
+    ],
+    [
+      "R : Type u\nS : Type v\ninst\u271d\u00b9 : CommRing R\ninst\u271d : CommRing S",
+      4
+    ],
+    [
+      "case h\n\ud835\udd5c : Type u_1\ninst\u271d\u00b9\u00b2 : NontriviallyNormedField \ud835\udd5c\nE : ",
+      3
+    ],
+    [
+      "R : Type u\nS : Type v\n\u03c3 : Type u_1\n\u03c4 : Type u_2\nr : R\ne : \u2115\n",
+      3
+    ],
+    [
+      "\u03b9 : Type u_1\n\u03b9' : Type u_2\n\u03b1 : Type u_3\n\u03b2 : Type u_4\n\u03b3 : Typ",
+      3
+    ],
+    [
+      "\ud835\udd5c : Type u_1\nE : Type u_2\nF : Type u_3\ninst\u271d\u2074 : _root_.RCLik",
+      3
+    ],
+    [
+      "case pbb.false.false\n\u03b1 : Type u_1\nm\u271d n\u271d : PosNum\n\u22a2 (PosNum.b",
+      3
+    ],
+    [
+      "G\u271d : Type w\nH : Type x\n\u03b1 : Type u\n\u03b2 : Type v\ninst\u271d\u2075 : Topolo",
+      2
+    ],
+    [
+      "\u03b1 : Type u_1\n\u03b9 : Type u_2\n\u03b3 : Type u_3\nA : Type u_4\nB : Type",
+      2
+    ]
+  ],
+  "proofs_whose_own_name_appears_in_some_state_before": 2,
+  "proofs_with_repeated_state_before": 952,
+  "example_5_to_7_step": {
+    "full_name": "Algebra.intTrace_eq_trace",
+    "file_path": "Mathlib/RingTheory/IntegralRestrict.lean",
+    "steps": [
+      {
+        "tactic": "ext x",
+        "state_before_head": "\u22a2 intTrace A B = trace A B",
+        "state_after_head": "\u22a2 (intTrace A B) x = (trace A B) x"
+      },
+      {
+        "tactic": "haveI : IsIntegralClosure B A (FractionRing B) :=\n  IsIntegralClosure.of_isIntegrallyClosed _ _ _",
+        "state_before_head": "\u22a2 (intTrace A B) x = (trace A B) x",
+        "state_after_head": "\u22a2 (intTrace A B) x = (trace A B) x"
+      },
+      {
+        "tactic": "haveI : IsLocalization (algebraMapSubmonoid B A\u2070) (FractionRing B) :=\n  IsIntegralClosure.isLocalization _ (FractionRing A) _ _",
+        "state_before_head": "\u22a2 (intTrace A B) x = (trace A B) x",
+        "state_after_head": "\u22a2 (intTrace A B) x = (trace A B) x"
+      },
+      {
+        "tactic": "apply IsFractionRing.injective A (FractionRing A)",
+        "state_before_head": "\u22a2 (intTrace A B) x = (trace A B) x",
+        "state_after_head": "\u22a2 (algebraMap A (FractionRing A)) ((intTrace A B) x) = (algebraMap A (FractionRing A)) ((trace A B) x)"
+      },
+      {
+        "tactic": "rw [Algebra.algebraMap_intTrace_fractionRing, Algebra.trace_localization A A\u2070]",
+        "state_before_head": "\u22a2 (algebraMap A (FractionRing A)) ((intTrace A B) x) = (algebraMap A (FractionRing A)) ((trace A B) x)",
+        "state_after_head": "no goals"
+      }
+    ]
+  },
+  "example_ge20_step": {
+    "full_name": "isNoetherian_of_fg_of_noetherian",
+    "file_path": "Mathlib/RingTheory/Noetherian.lean",
+    "n_steps": 27,
+    "tactics": [
+      "let \u27e8s, hs\u27e9 := hN",
+      "haveI := Classical.decEq M",
+      "haveI := Classical.decEq R",
+      "have : \u2200 x \u2208 s, x \u2208 N := fun x hx => hs \u25b8 Submodule.subset_span hx",
+      "refine\n  @isNoetherian_of_surjective\n    R ((\u2191s : Set M) \u2192 R) N _ _ _ (Pi.module _ _ _) _ ?_ ?_ isNoetherian_pi",
+      "fapply LinearMap.mk",
+      "fapply AddHom.mk",
+      "exact fun f => \u27e8\u2211 i \u2208 s.attach, f i \u2022 i.1, N.sum_mem fun c _ => N.smul_mem _ <| this _ c.2\u27e9",
+      "intro f g",
+      "apply Subtype.eq",
+      "change (\u2211 i \u2208 s.attach, (f i + g i) \u2022 _) = _",
+      "simp only [add_smul, Finset.sum_add_distrib]",
+      "rfl",
+      "intro c f",
+      "apply Subtype.eq",
+      "change (\u2211 i \u2208 s.attach, (c \u2022 f i) \u2022 _) = _",
+      "simp only [smul_eq_mul, mul_smul]",
+      "exact Finset.smul_sum.symm",
+      "rw [LinearMap.range_eq_top]",
+      "rintro \u27e8n, hn\u27e9",
+      "rw [\u2190 hs, \u2190 Set.image_id (s : Set M), Finsupp.mem_span_image_iff_total] at hn",
+      "rcases hn with \u27e8l, hl1, hl2\u27e9",
+      "refine \u27e8fun x => l x, Subtype.ext ?_\u27e9",
+      "change (\u2211 i \u2208 s.attach, l i \u2022 (i : M)) = n",
+      "rw [s.sum_attach fun i \u21a6 l i \u2022 i, \u2190 hl2,\n  Finsupp.total_apply, Finsupp.sum, eq_comm]"
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+C : Type u_1
+ι : Type u_2
+c : ComplexShape ι
+inst✝¹ : CategoryTheory.Category.{u_3, u_1} C
+inst✝ : CategoryTheory.Abelian C
+S : CategoryTheory.ShortComplex (HomologicalComplex C c)
+hS : ∀ (i : ι), CategoryTheory.Limits.IsZero (S.map (HomologicalComplex.eval C c i)).homology
+⊢ CategoryTheory.Limits.IsZero S.homology
+C : Type u_1
+ι : Type u_2
+c : ComplexShape ι
+inst✝¹ : CategoryTheory.Category.{u_3, u_1} C
+inst✝ : CategoryTheory.Abelian C
+S : CategoryTheory.ShortComplex (HomologicalComplex C c)
+hS : ∀ (i : ι), CategoryTheory.Limits.IsZero (S.map (HomologicalComplex.eval C c i)).homology
+⊢ 𝟙 S.homology = 0
+case h
+C : Type u_1
+ι : Type u_2
+c : ComplexShape ι
+inst✝¹ : CategoryTheory.Category.{u_3, u_1} C
+inst✝ : CategoryTheory.Abelian C
+S : CategoryTheory.ShortComplex (HomologicalComplex C c)
+hS : ∀ (i : ι), CategoryTheory.Limits.IsZero (S.map (HomologicalComplex.eval C c i)).homology
+i : ι
+⊢ (𝟙 S.homology).f i = HomologicalComplex.Hom.f 0 i
+

@@ -1,0 +1,34 @@
+R : Type u
+A : Type u_1
+inst✝¹ : CommRing R
+inst✝ : CommRing A
+p : R[X]
+x : R
+P : Ideal R
+hP : x ∈ P
+n✝ : ℕ
+i : n✝ < (p.scaleRoots x).natDegree
+⊢ (p.scaleRoots x).coeff n✝ ∈ P
+R : Type u
+A : Type u_1
+inst✝¹ : CommRing R
+inst✝ : CommRing A
+p : R[X]
+x : R
+P : Ideal R
+hP : x ∈ P
+n✝ : ℕ
+i : n✝ < (p.scaleRoots x).natDegree
+⊢ p.coeff n✝ * x ^ (p.natDegree - n✝) ∈ P
+R : Type u
+A : Type u_1
+inst✝¹ : CommRing R
+inst✝ : CommRing A
+p : R[X]
+x : R
+P : Ideal R
+hP : x ∈ P
+n✝ : ℕ
+i : 0 < p.natDegree - n✝
+⊢ p.coeff n✝ * x ^ (p.natDegree - n✝) ∈ P
+
