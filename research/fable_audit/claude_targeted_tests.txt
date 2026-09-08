@@ -1,0 +1,18 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.14.7, pytest-9.1.1, pluggy-1.6.0
+rootdir: /Users/moheet/Documents/ChatGPT/hamiltonian_chess/.claude/worktrees/hamiltonian-phase-8-experiment-691d22
+configfile: pyproject.toml
+plugins: cov-7.1.0, hypothesis-6.167.1
+collected 168 items
+
+tests/environments/test_precondition_ladder.py .......................   [ 13%]
+tests/experiments/test_game_r_precondition_founder_v1.py ............... [ 22%]
+........................................                                 [ 46%]
+tests/experiments/test_ollama_live.py ................                   [ 55%]
+tests/experiments/test_precondition_parity.py ......................     [ 69%]
+tests/experiments/test_precondition_power.py ........................... [ 85%]
+....                                                                     [ 87%]
+tests/experiments/test_rendered_prompt_adversary.py .................... [ 99%]
+.                                                                        [100%]
+
+============================= 168 passed in 26.08s =============================

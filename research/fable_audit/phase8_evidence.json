@@ -1,0 +1,546 @@
+{
+  "cells": 45,
+  "design": {
+    "bootstrap_samples": 300,
+    "dev_families": 100,
+    "development_pool": "ADV_DEV",
+    "eval_families": 200,
+    "evaluation_pool": "SHORTCUT_EVAL",
+    "input_to_adversary": "prompt string + option count only",
+    "permutations": 1000,
+    "top_k_rules": 3
+  },
+  "dev_examples_total_across_arms": 9000,
+  "eval_examples_total_across_arms": 18000,
+  "unique_strata": [
+    "P05",
+    "P05_M2_D2",
+    "P05_M3_D4",
+    "P07",
+    "P09",
+    "P12",
+    "P12_M2_D2",
+    "P16",
+    "P20"
+  ],
+  "eval_task_hashes_match_across_arms": true,
+  "frozen_best_holm_significant": [
+    {
+      "stratum": "P05",
+      "arm": "L5_COMPACT_SYMBOLIC",
+      "best_accuracy": 0.5625,
+      "best_adversary": "model:logistic:difference",
+      "best_bonferroni_upper": 0.6265659064745535,
+      "best_holm_p": 0.035460307979697465,
+      "significant": true
+    },
+    {
+      "stratum": "P05_M2_D2",
+      "arm": "L2_SEXPR",
+      "best_accuracy": 0.5375,
+      "best_adversary": "model:tree:difference",
+      "best_bonferroni_upper": 0.744657832626018,
+      "best_holm_p": 0.015879059799754906,
+      "significant": true
+    },
+    {
+      "stratum": "P05_M2_D2",
+      "arm": "L5_COMPACT_SYMBOLIC",
+      "best_accuracy": 0.56,
+      "best_adversary": "model:logistic:difference",
+      "best_bonferroni_upper": 0.6241356273070267,
+      "best_holm_p": 0.04665380079339339,
+      "significant": true
+    }
+  ],
+  "full_family_perm_lt_05": [
+    {
+      "stratum": "P05",
+      "arm": "L2_SEXPR",
+      "accuracy": 0.545,
+      "p": 0
+    },
+    {
+      "stratum": "P05",
+      "arm": "L5_COMPACT_SYMBOLIC",
+      "accuracy": 0.54875,
+      "p": 0
+    },
+    {
+      "stratum": "P07",
+      "arm": "L0_STRUCTURED_ENGLISH",
+      "accuracy": 0.52125,
+      "p": 0.001
+    },
+    {
+      "stratum": "P07",
+      "arm": "L2_SEXPR",
+      "accuracy": 0.5275,
+      "p": 0.001
+    },
+    {
+      "stratum": "P07",
+      "arm": "L5_COMPACT_SYMBOLIC",
+      "accuracy": 0.535,
+      "p": 0.005
+    },
+    {
+      "stratum": "P12",
+      "arm": "L0_STRUCTURED_ENGLISH",
+      "accuracy": 0.52125,
+      "p": 0.001
+    },
+    {
+      "stratum": "P16",
+      "arm": "L0_STRUCTURED_ENGLISH",
+      "accuracy": 0.53125,
+      "p": 0.003
+    },
+    {
+      "stratum": "P05_M2_D2",
+      "arm": "L0_STRUCTURED_ENGLISH",
+      "accuracy": 0.51625,
+      "p": 0.001
+    },
+    {
+      "stratum": "P05_M2_D2",
+      "arm": "L1_CURRENT_HML",
+      "accuracy": 0.52625,
+      "p": 0.026
+    },
+    {
+      "stratum": "P05_M2_D2",
+      "arm": "L5_COMPACT_SYMBOLIC",
+      "accuracy": 0.535,
+      "p": 0.004
+    },
+    {
+      "stratum": "P05_M3_D4",
+      "arm": "L2_SEXPR",
+      "accuracy": 0.52375,
+      "p": 0.035
+    },
+    {
+      "stratum": "P05_M3_D4",
+      "arm": "L5_COMPACT_SYMBOLIC",
+      "accuracy": 0.525,
+      "p": 0.034
+    },
+    {
+      "stratum": "P12_M2_D2",
+      "arm": "L0_STRUCTURED_ENGLISH",
+      "accuracy": 0.525,
+      "p": 0.008
+    }
+  ],
+  "upper_above_07": [
+    {
+      "stratum": "P09",
+      "arm": "L2_SEXPR",
+      "best_accuracy": 0.52125,
+      "best_adversary": "model:tree:difference",
+      "best_bonferroni_upper": 0.7173497988777342,
+      "best_holm_p": 0.250433326216889,
+      "significant": false
+    },
+    {
+      "stratum": "P05_M2_D2",
+      "arm": "L2_SEXPR",
+      "best_accuracy": 0.5375,
+      "best_adversary": "model:tree:difference",
+      "best_bonferroni_upper": 0.744657832626018,
+      "best_holm_p": 0.015879059799754906,
+      "significant": true
+    }
+  ],
+  "hard_max_best": 0.5375,
+  "hard_min_holm": 0.250433326216889,
+  "twin_flips_all": true,
+  "unpinned_features": [
+    "gzip_delta",
+    "window_ngram_overlap"
+  ],
+  "frozen_hashes_all_match": true,
+  "hashes": {
+    "arena/environments/precondition_ladder.py": "79f3470742c7c0590b7eb8b59ffa0ec4a3cc785746cda7f9d61b3b3815c778a2",
+    "arena/experiments/game_r_precondition_founder_v1.py": "0cc25949cb6a8e9026bb927b75c68b00635973f11a16ff246138ac7e8d095903",
+    "arena/experiments/ollama_live.py": "c0b4d6abce422c1b136dec7fdd6f0383dfa87ef723578105322ba99a6c4c16f2",
+    "arena/experiments/precondition_power.py": "dd0faa772c22dcb1aec60cac8469f06ec7693f424097a2929447e23a1f072674",
+    "arena/experiments/rendered_prompt_adversary.py": "46588c33a44a0ebb5e51ea5db9f87e678a51d47377882b115cda4f3db6d28335",
+    "research/phase8/shortcut/rendered_shortcut_audit.py": "94379bc3d8d16c8c7b3c7e0586c6d0fccea47c01b6b6d7d4ababe6bab09691cb",
+    "docs/GAME_R_PRECONDITION_FOUNDER_V1_SPEC.md": "285120ccf1ba7fa065685cb946c7c433e76a69ea8fd3e1016a84deaaae6de942",
+    "docs/PRECONDITION_RENDERED_SHORTCUT_AUDIT.md": "bd9132329525d683e0b3545a0a1d7fb51c77e609eddc1b037687b94459a0bc0d",
+    "artifacts/reports/precondition_rendered_shortcut_audit.json": "f6f9d2026f38df59e0bdf2f138a42419513825eef3fc8de0e5ee3e776c833456",
+    "artifacts/reports/precondition_parity_audit.json": "96ffad66e36a0b005162b1d5feb74002550ed6c1aaafe890df61ea043d304af2",
+    "research/phase8/transitive/adversary_audit.json": "8d77b5fb2444f43282ef5372227dc61758438eeb18580d94d499ed3b2aecbe68",
+    "research/phase8/transitive/twin_invariance.json": "96c6c5c9bb555a2b01d6eee8e78d3f87effafb53a0d10a0ef8933a042ff30c5c",
+    "research/phase8/transitive/frozen_adversaries.json": "ed5b1cab560e228710af86e0fe535aa2bdda5aa427f759e7eb9dc9c05b9a9322"
+  },
+  "frozen_manifests": [
+    {
+      "cell": "P05/L3_JSON_AST",
+      "payload_hash": "28489b3ed7e505d14cad2f809d38768e7c87b1a995f480f708c0452e552f7672",
+      "recomputed_matches": true,
+      "file_sha256": "1d12fc3ce7f52fc17c396da725d198fca6a46ccd48a5cc417a820e630c01d026",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P05/L0_STRUCTURED_ENGLISH",
+      "payload_hash": "c1166edc2bbeee12774d824c747d5428293207b4d61c2767b4d45ced22ab4d59",
+      "recomputed_matches": true,
+      "file_sha256": "6e2b47e9f70b36c03f10101ffe7e8b382d5f612681e4ad979d9f157b9b4831c8",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P05/L1_CURRENT_HML",
+      "payload_hash": "f8fa3da4f1f24e9830b3726a81844a1425a1455aabf4edba30bb488b92410075",
+      "recomputed_matches": true,
+      "file_sha256": "b8c4902b23b5b028d4ad519b5be03408f110362ee5fcab77cfcd3c272d164fcc",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P05/L2_SEXPR",
+      "payload_hash": "94597004455adf85472429adf941e64b230920e83a29aeee1dbf2f0bff06833b",
+      "recomputed_matches": true,
+      "file_sha256": "b2cadb0bebc7fd6940992d29f25e319f8ee3c43602629596d5091deeeabab816",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P05/L5_COMPACT_SYMBOLIC",
+      "payload_hash": "882f9e538733ec3151a5168f2bcacd25977fbe9cab2a2517278fdb8ab02e9649",
+      "recomputed_matches": true,
+      "file_sha256": "472ef8aa68faeb6d5ed91bc06b6bf09248cd31b565dec9733833a184d99ab56b",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P07/L3_JSON_AST",
+      "payload_hash": "efddf0368b52d0a0e8b9e25bf26ce89cd83242b5c266de45a2bfd33df1e88cc8",
+      "recomputed_matches": true,
+      "file_sha256": "50ca0f649dbb3655de23acac500af3ad09c6177e36170997cbabcc71c2ffb923",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P07/L0_STRUCTURED_ENGLISH",
+      "payload_hash": "1c62dca79a92f0bcd9b5e6943edc6397e58e457f3ca7abec153e56d82e293d0a",
+      "recomputed_matches": true,
+      "file_sha256": "c8b9776201862eae168ce3278e64f993c38828c300e1194c3ead50c8af70d742",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P07/L1_CURRENT_HML",
+      "payload_hash": "f1b23d65b116681265c3bca6aa90716f7f6b8a4917f002f019a84be2121c1248",
+      "recomputed_matches": true,
+      "file_sha256": "3dabacd8db3dfaf606b46154775bbb397ccc0953bf425715054088762d5e2c20",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P07/L2_SEXPR",
+      "payload_hash": "0a174cbd4043383ea5a834cca6a343a27dd324da9a38ec8f83db1cbc62ceca3a",
+      "recomputed_matches": true,
+      "file_sha256": "58ca2e76c6ccf86cbe8a17bfb7ee6001e0d77ffc8b257a9648e39d2d77cf2b22",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P07/L5_COMPACT_SYMBOLIC",
+      "payload_hash": "f5db1f1136b46da280d3330e1d9dcda80428e581cd01d7f022f6c0ffae854bea",
+      "recomputed_matches": true,
+      "file_sha256": "fbc839647eea895aee881703f7cb5f45749714392b021882c8662c394c819e36",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P09/L3_JSON_AST",
+      "payload_hash": "044c4aa777e3e54fe62962a0c45a88e52ce15e3ff21b12816e61268930495c33",
+      "recomputed_matches": true,
+      "file_sha256": "25177abfbc2c1d574b825045d16e9dd8a91f977feb9e7ac89018e1277eca6e96",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P09/L0_STRUCTURED_ENGLISH",
+      "payload_hash": "41a5f1e20ff5e8967c0800554d365d7ee9a67b004b1e109f747dab852f0b6ff6",
+      "recomputed_matches": true,
+      "file_sha256": "32251f93ab045a5893d1e88eba2d630e2275dabca172fb99d5f926c0cd0cd627",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P09/L1_CURRENT_HML",
+      "payload_hash": "db209c70f5aef2109c799a4ced03d1727260daecc16b41811c9f5a54d4cc3011",
+      "recomputed_matches": true,
+      "file_sha256": "391b6be07f90a6e9d6b317379128dfb61d47ade22c04e8d03a443394573a8a59",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P09/L2_SEXPR",
+      "payload_hash": "31427a6872e04b4dac59eba82525beb65f0eba27afe4dc4f31b69ef49b1ac14d",
+      "recomputed_matches": true,
+      "file_sha256": "274cb15675ccc51b0d37e47a017c8daf3fe3e10ec5aec5e2b719920c2ad5ef4b",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P09/L5_COMPACT_SYMBOLIC",
+      "payload_hash": "cbc5070bfd899d6aadecd9afa857e3a0933da13643094fb7f1a567cc7d5318fc",
+      "recomputed_matches": true,
+      "file_sha256": "bc7f17cec3e56db20eaf8c4418d325bc562752d3edc85177c283103668373a40",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P12/L3_JSON_AST",
+      "payload_hash": "b9a2aa0f73217e87a460801c40abb5583c564af27b819b02569abd1593b7b9c8",
+      "recomputed_matches": true,
+      "file_sha256": "a2422571750c54b9bb40eeb43b961f2b3d1a2610ac9b5a21ccbef64c04f72a03",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P12/L0_STRUCTURED_ENGLISH",
+      "payload_hash": "14f4a8d617e3513e2c72ba0c8cd563b3a7c4b899db7e07d1052137e11f4b0435",
+      "recomputed_matches": true,
+      "file_sha256": "ef77dc1c62ecee702e4423d100d0a5ea79ba7ca61f637be260009da1e3d958b7",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P12/L1_CURRENT_HML",
+      "payload_hash": "eea8872f19530e35973eaf7e7f9ad5d1586c1907a3872b8caa760d7bf8c7c35a",
+      "recomputed_matches": true,
+      "file_sha256": "82b7f5cadab98f3ec66370fd69a06893efbb3cf557c3bd7da6e7a1d471225a2d",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P12/L2_SEXPR",
+      "payload_hash": "d7c58f85952a72027ffcfa34a19382080b0b46d715999c2cfde5c786844d99ef",
+      "recomputed_matches": true,
+      "file_sha256": "456f685ebe88d9efefc3ef750707dbd99f9d9857ed16db6a36cffc47e499c24e",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P12/L5_COMPACT_SYMBOLIC",
+      "payload_hash": "e9c340636125d6f82ae028c9eed81dc1198093fa02879966444286d255a2af0f",
+      "recomputed_matches": true,
+      "file_sha256": "152e0748365744753ff7a2dd211b2945d8bc21e3ba21fa9e9e10fce6cab76ca8",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P16/L3_JSON_AST",
+      "payload_hash": "bf7f4ba17e9099e8b8d8618fe674d71fcadaf0efd2d136ca5454c636f43fe317",
+      "recomputed_matches": true,
+      "file_sha256": "5b86caf68587067a0b8875f19161146845095042cd98014cfab2e005da2750c9",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P16/L0_STRUCTURED_ENGLISH",
+      "payload_hash": "1625322d6c479cd0ec1d341d7d6898b95fb5db6f6b1b72b87ab302189738b821",
+      "recomputed_matches": true,
+      "file_sha256": "1b93ba9553407ca257b8f4012ee5bbcd9e3a27fb5c6e9c46b57853d558c8a1a7",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P16/L1_CURRENT_HML",
+      "payload_hash": "483ea1d26616dbb8d67be4985d5a6b340c9ad71ae2e20fcafd8ed50413aabb50",
+      "recomputed_matches": true,
+      "file_sha256": "cc9460d153e74f58fea021d59d79f45a91a4d345607dbb14e796029cf1c6d11b",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P16/L2_SEXPR",
+      "payload_hash": "26ccf9bd9e0809d46bfba21b4a0c2c345da1c34d6d2754fd8dcf9aa700ea7a62",
+      "recomputed_matches": true,
+      "file_sha256": "6a9a5b986c82a056c4e837b09e55dbbeca16e0eb3502559c14e1c8a5d56b564c",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P16/L5_COMPACT_SYMBOLIC",
+      "payload_hash": "c67c29eaac108c9ef7453c776ba665e587c55e4582e001cda517e08e1b60b505",
+      "recomputed_matches": true,
+      "file_sha256": "6e874b2a056bb90c10ad142907c97d817534924c3277f8ba9bc7b2d0c97908f4",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P20/L3_JSON_AST",
+      "payload_hash": "0d1aae0dd116c6beed8031ef2efed2563cb85015706bdb8a7a082750a05b3183",
+      "recomputed_matches": true,
+      "file_sha256": "d84f9b02f887483e6375faf73576af9c50772f1c94bff35a03833e37f0278820",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P20/L0_STRUCTURED_ENGLISH",
+      "payload_hash": "517c907b6724968f73620c1fd5be39de542475534a51b28896d130f572d5a19e",
+      "recomputed_matches": true,
+      "file_sha256": "28d52b7369651009eef120dac6702346f3105dffb72008f4cc67fe6cf9503a55",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P20/L1_CURRENT_HML",
+      "payload_hash": "f8a631d36790e36ef63c93e1b19702c0ecb37989a0a529081d77f84a34140774",
+      "recomputed_matches": true,
+      "file_sha256": "2febd281a58b1e92a937870fb30c104753f26abf752da22a816fe1edbb7019a1",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P20/L2_SEXPR",
+      "payload_hash": "111e472c5d978b1116b5f2ce6476070d1410024bb6fe5950e10797c07ecdd47c",
+      "recomputed_matches": true,
+      "file_sha256": "f7deb8e1442fd6e41f34e27ff3604927ed4f3bfa97d8b99453fb0ae86f4ebddb",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P20/L5_COMPACT_SYMBOLIC",
+      "payload_hash": "eb949ed544b0c04245be9d46f01abc26394a4d157cacce1327154aaa671b40b2",
+      "recomputed_matches": true,
+      "file_sha256": "84d714b447f33dbfd23968d097a8c2685d4ef8db3bcc7aab1e044c93548009ef",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P05_M2_D2/L3_JSON_AST",
+      "payload_hash": "9b96fe0e11fdfa941c3acfb39bf6cb4543421b1a9bcfbfb658cf987f12ce2171",
+      "recomputed_matches": true,
+      "file_sha256": "7f941e964b80a9190a47e252d6629a60fb3c7063bbd0ad7769fa91d589b9f6a9",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P05_M2_D2/L0_STRUCTURED_ENGLISH",
+      "payload_hash": "f5087db52e7f0726ea635fc1c3ef2ca806f4f27f1df01377604f8d71b40c68c2",
+      "recomputed_matches": true,
+      "file_sha256": "2a797336a59bed207bace6e5d7603aa9546cc1a64c4c97d429cabf231c8bb7c0",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P05_M2_D2/L1_CURRENT_HML",
+      "payload_hash": "5c236d2ef00eb356eb22b8b2399207f634fcd1fea374d19303723375963a02b3",
+      "recomputed_matches": true,
+      "file_sha256": "da07be9ac1a8f19918f0beb5a8fa349cff4885c2f36fc872e339d4f5828e5c2f",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P05_M2_D2/L2_SEXPR",
+      "payload_hash": "4efa05783bf2105f4aed07abc68064a12ec0f52194e8f71ae8264a1d3c9cf36e",
+      "recomputed_matches": true,
+      "file_sha256": "3606a8d46031c6b08e565421490e5a1e862500277b724aede48c13b7b2165168",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P05_M2_D2/L5_COMPACT_SYMBOLIC",
+      "payload_hash": "88eb32e8c578c2e405601901bdfe1f81ee437bce6393b48c2f3f41f5edc65633",
+      "recomputed_matches": true,
+      "file_sha256": "9ecbdcd5cb2e0a8f678523bef81e53159594dcdd809ee872b09b482878de7b4a",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P05_M3_D4/L3_JSON_AST",
+      "payload_hash": "ab6cc19cc71d51ed37fea1e103752792db461e5a530224c91725225d5cb6dd46",
+      "recomputed_matches": true,
+      "file_sha256": "d5f779caaad1a74bd304c4bcc60439a3f69cd6eaa3084fd320c265e175b2d450",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P05_M3_D4/L0_STRUCTURED_ENGLISH",
+      "payload_hash": "7fb7082606bb727d22def9e054ab3967bb3f2f2090e54d600aca0e52b49eb547",
+      "recomputed_matches": true,
+      "file_sha256": "f17fafc3212fc6b0b069401567806fea33d68f9081b8f1f0deeaf9f1d93ad021",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P05_M3_D4/L1_CURRENT_HML",
+      "payload_hash": "ac1965efe3abd5f048748f7150eb5a72e93e6c9fde2d08b5cb08b0ce6e2253c0",
+      "recomputed_matches": true,
+      "file_sha256": "9512239dd6a3fc443420f40a4329fe25e216b88f65005b32e1bdc9a206df94db",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P05_M3_D4/L2_SEXPR",
+      "payload_hash": "cf29c55847f7a1e9ecd07f1e8a29b0ebeb8c891741381925e9e82d96ed6cd1a3",
+      "recomputed_matches": true,
+      "file_sha256": "69c3e71882a0cb79d2052d0efb1113b551791dc2bc252f715536f3d0395270c4",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P05_M3_D4/L5_COMPACT_SYMBOLIC",
+      "payload_hash": "42cd06c654ffb060f294b1d58c01f4de2f63f1754764d2c4b27f550485426b1c",
+      "recomputed_matches": true,
+      "file_sha256": "acc4c2ba737f682c862376f7c3a6f4c00a75ec66bda2bd4a52fc693302ce0ce1",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P12_M2_D2/L3_JSON_AST",
+      "payload_hash": "3ab381335c50920c39f151dc69396dd11fdeabee2e35648e319b86334fc52624",
+      "recomputed_matches": true,
+      "file_sha256": "f9bb32fb8632502acaf852fd1894977504fb1825859b343823248da7d7e7a4a4",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P12_M2_D2/L0_STRUCTURED_ENGLISH",
+      "payload_hash": "88f232472acac97f52c5d9b90c7254b7e7cd8c4962339e1964d91d9083b2b6cb",
+      "recomputed_matches": true,
+      "file_sha256": "fcea3fe6d55560df7bad2225df1911d42a1deb950e6398ca4330666c2a9e440b",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P12_M2_D2/L1_CURRENT_HML",
+      "payload_hash": "98cd1101cd9f24f39460cd1a865b4ef470eeab568a38eaa415d789b59ba8d53a",
+      "recomputed_matches": true,
+      "file_sha256": "a9b1eccd60a75b85b0fe078341416f43d139377c7c60bf7fb7c260a481e8b81c",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P12_M2_D2/L2_SEXPR",
+      "payload_hash": "d0508d228a47dce223fa5a1744bd60c27815d8e9b9ab5259043977d0f59ca074",
+      "recomputed_matches": true,
+      "file_sha256": "fd517ca8310b1c1d4ffb230479179fec13e9ff50ffa290743570c112d5c7c6ae",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    },
+    {
+      "cell": "P12_M2_D2/L5_COMPACT_SYMBOLIC",
+      "payload_hash": "c19ff34b4cb093aefe87c32fc4f3ed5a49978df52c02f9dc3b875eee639289a9",
+      "recomputed_matches": true,
+      "file_sha256": "2609eb5035069d1d422094a26d4ce58e14e64ce11efcf5c7e7de618303cf5981",
+      "dev_families": 100,
+      "dev_task_ids": 200
+    }
+  ],
+  "scope": {
+    "source_root": "/Users/moheet/Documents/ChatGPT/hamiltonian_chess/.claude/worktrees/hamiltonian-phase-8-experiment-691d22",
+    "status": "dirty-only untracked Phase 8 files",
+    "method": "read-only JSON aggregation and SHA256 recomputation; no generation, adversary evaluation, model calls or test execution"
+  }
+}
