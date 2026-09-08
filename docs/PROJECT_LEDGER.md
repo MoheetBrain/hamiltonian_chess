@@ -1579,3 +1579,83 @@ result documents are authoritative. It creates no new evidence and resolves no o
 
 **Next intended step.** Unchanged: the single experiment in
 `docs/V7_TOTAL_FORENSIC_AUDIT.md` §22, pending the owner's decision.
+
+---
+
+## 2026-09-08 — Phase 8 stood down; salvage its infrastructure as `PHASE8_DIAGNOSTIC_INFRASTRUCTURE`
+
+**Date/time.** 2026-09-08, Europe/London. **Branch.** `claude/hamiltonian-phase-8-experiment-691d22`
+(worktree, fast-forwarded onto `2047fda`). **Stage.** Mission reset, Phase A (salvage).
+
+**Objective.** Phase 8 was building the programme's first experiment to compare several
+representations of identical mathematics against one Solver. Mid-build the project owner reset the
+project hierarchy: the controlled representation experiment is now explicitly a *local fitness
+assay* inside an open-ended language-discovery system. This commit preserves everything Phase 8
+built, records exactly what it did and did not establish, and stops the experiment. It creates no
+scientific claim.
+
+**Files and systems changed.** New code: `arena/environments/precondition_ladder.py` (1,132),
+`arena/experiments/rendered_prompt_adversary.py` (1,620),
+`arena/experiments/precondition_power.py` (1,286),
+`arena/experiments/game_r_precondition_founder_v1.py` (1,686),
+`arena/experiments/ollama_live.py` (299). New tests: six files, 139 tests. New research scripts:
+`research/phase8/{shortcut,parity,transitive}/`. New artifacts:
+`artifacts/reports/precondition_rendered_shortcut_audit.json`,
+`artifacts/reports/precondition_parity_audit.json`,
+`artifacts/manifests/phase8_frozen_adversaries/` (45 frozen adversary sets). New docs:
+`docs/PHASE8_SALVAGE_HANDOFF.md`, `docs/PRECONDITION_RENDERED_SHORTCUT_AUDIT.md`. Annotated as
+never-enacted: `docs/GAME_R_PRECONDITION_FOUNDER_V1_SPEC.md` (SUSPENDED banner) and §7 of the
+shortcut audit. Updated: `docs/PROJECT_STATUS.md`, this ledger. **No frozen instrument was
+edited** (`fitness_v1..v7`, `game_r_formal_v1`, `GOAL.md` all untouched; GOAL.md sha256 verified
+`43d8fcdb5db39b1841b9f620d939e13c47014d98ecba0d09fdd84f699d20117b`).
+
+**What was completed.** Two zero-model-cost measurements, both properties of generators and
+renderers rather than of any Solver:
+
+1. *Rendered-prompt shortcut audit* — 45 cells (9 strata × 5 surfaces), adversaries developed and
+   frozen on one pool and evaluated on a disjoint fresh pool of 400 items. Best frozen adversary
+   anywhere **0.5625** (chance 0.500); ≤ 0.54 at every stratum with premises ≥ 7; every
+   candidate-mention and option-text feature pinned at exactly 0.5 on 100% of twin pairs. This
+   closes V7 forensic-audit defects C1 (the audit read a string the Solver never receives) and
+   C3e (max-over-rules with the ancestor's Bonferroni + Clopper–Pearson correction deleted)
+   prospectively, in new code.
+2. *Representation parity audit* — harness parity passes everywhere (one envelope signature, one
+   answer protocol, exact canonical recovery per arm, distinct bytes, twin differences local to
+   the assumptions block). **But `L3_JSON_AST` and `L6_GRAPH_TRIPLES` share 98.6% of their state
+   bytes via ≥40-character spans at `P20`, and `L0_STRUCTURED_ENGLISH` vs `L3_JSON_AST` reaches a
+   0.82 similarity ratio.** The eight seed surfaces are not eight independent design points. This
+   is the E1 failure that killed the Astra bridge, reappearing inside the seed population itself,
+   and it is a finding about the *meta-game's founding population*, not about Phase 8.
+
+**Decisions and why.** (a) Stop Phase 8 rather than finish it — the owner's reset is governing,
+and independently the preregistered Solver ceased to exist. (b) Commit the work as
+*infrastructure*, never as a result, and annotate the unfrozen preregistration in place rather
+than deleting it, so the record shows what was designed and never enacted. (c) Do not retro-fit a
+replacement Solver into the Phase-8 spec: a Solver substitution is a change of a frozen variable
+class and would need its own preregistration, which the reset does not authorise.
+
+**Tests actually executed.** `.venv/bin/python -m pytest` → **1,132 passed, 1 skipped in 85.8 s**
+(base commit `2047fda`: 964 passed, 1 skipped; Phase 8 adds 168 tests).
+`.venv/bin/python -m ruff check .` → All checks passed. `.venv/bin/python -m ruff format --check .`
+→ 306 files already formatted. `.venv/bin/python -m mypy arena` → Success, 135 source files.
+Import path verified to resolve inside this worktree before any test run. Dry-run of the founder
+runner (`--dry-run`) executes smoke, calibration and tournament stages against a stub solver with
+all eleven smoke checks PASS. **No live model call was made through the founder runner.**
+
+**Failures and unresolved uncertainty.** The one live attempt failed at the digest check because
+the Solver had been deleted — that is the full extent of the live exercise, so the live path is
+**unproven end to end**. `docs/PRECONDITION_POWER_ANALYSIS.md` was never written; the power
+numbers exist only in the module and its tests. The transitive-dependency reanalysis is
+unfinished: scripts and three JSON outputs exist, no document and no verdict — **do not cite it**.
+The Phase-8 preregistration still contains `TBD` at every scientific choice.
+
+**Effect on the overall project.** No sentinel is created, retired or reinterpreted.
+`RSTAR_NOT_IDENTIFIED`, `GAME_R_INSTRUMENT_NOT_QUALIFIED`,
+`V7_PARTIALLY_VALID_INSTRUMENT_CONFOUNDED` and `TRAINING_LANGUAGE_V0_BASELINE` all stand.
+`Δ(R_A, R_B)` remains uncomputed. The project's top-level objective moves to
+`docs/HAMILTONIAN_CHESS_META_GOAL.md`; `GOAL.md` is retained unmodified as the constitution for
+controlled local Game-R experiments.
+
+**Next intended step.** Phase B of the reset: the repository remap, the nested-MDP definition, the
+prior-art boundary, and the verified-trajectory data audit — then the smallest executable outer
+loop. The Phase-8 founder tournament is **not** authorised.

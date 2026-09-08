@@ -1,5 +1,21 @@
 # Project Status
 
+> ## MISSION RESET — 2026-09-08
+>
+> The project owner has reset the project hierarchy. `GOAL.md` remains the scientific
+> constitution **for controlled local Game-R experiments**, but it is no longer the top-level
+> objective. The top-level mission is now `docs/HAMILTONIAN_CHESS_META_GOAL.md`: an open-ended
+> system in which agents **discover** machine-facing mathematical languages that improve
+> **verified long-horizon** mathematical reasoning. **Game R is demoted to the local causal
+> fitness assay** used to decide whether a language mutation helped.
+>
+> Phase 8 (the first multi-representation experiment) was **stood down mid-build**. Its
+> infrastructure is preserved and committed as `PHASE8_DIAGNOSTIC_INFRASTRUCTURE`; **no founder
+> tournament ran, no preregistration was frozen, no language was ranked**. See
+> `docs/PHASE8_SALVAGE_HANDOFF.md`.
+>
+> No historical result is retracted or reinterpreted by this reset.
+
 ## Project Objective
 
 `GOAL.md` (SHA-256 `43d8fcdb5db39b1841b9f620d939e13c47014d98ecba0d09fdd84f699d20117b`, unmodified)
@@ -10,14 +26,29 @@ first controlled game. No language is assumed to win; a negative result is valid
 
 ## Current Stage
 
-`SOLVER_SPECIFIC_FAILURE_SUPPORTED` (Phase 6). Fitness V5 repaired the two
-instrument defects that invalidated V3 and V4 (input truncation, then a 64-token output cap
-plus a representation-specific character guard) using grammar-constrained decoding and real
-Lean-derived probe states. The repair is complete and measured: 0 malformed rows in 432,
-against 89 of 348 in V4. With the instrument sound, 0 of 3 mechanisms qualified while 2 of 3
-explicit-positive arms passed at 0.917 and 1.000, so the preregistered abort clause fired.
-The blocker is the Solver, not the protocol; no founder, mutant or candidate has been scored
-and V6 is not authorised.
+**`PHASE8_DIAGNOSTIC_INFRASTRUCTURE`, and the mission has been reset to the meta-game.**
+
+Phase 8 built the machinery for the programme's first multi-representation experiment and then
+stopped without running it, for two independent reasons recorded in
+`docs/PHASE8_SALVAGE_HANDOFF.md`: the owner's mission reset (governing), and the deletion of the
+preregistered Solver from the local runtime at 11:43 on 2026-09-08 (`qwen38-rvn:latest`, digest
+`25eb57cb…`, replaced by `qwen3.6:27b-mlx`, digest `d49fd9e0…`; the manifest is gone and the name
+is a local build that cannot be re-pulled).
+
+What Phase 8 established, at zero model cost and independent of any Solver:
+
+- **The precondition mechanism is clean on the bytes a Solver would actually see.** Best frozen
+  adversary over 45 (stratum, surface) cells on fresh evaluation data: **0.5625** against a chance
+  level of 0.500; ≤ 0.54 at every stratum with premises ≥ 7. Candidate-mention and option-text
+  features are pinned at exactly 0.5 on 100% of twin pairs. This closes forensic-audit defects C1
+  and C3e prospectively, in new code, without touching a frozen instrument.
+- **The eight seed surfaces are not eight independent languages.** `L3_JSON_AST` and
+  `L6_GRAPH_TRIPLES` share **98.6%** of their state bytes via ≥40-character spans at `P20`;
+  `L0_STRUCTURED_ENGLISH` vs `L3_JSON_AST` reaches a **0.82** similarity ratio. Harness parity
+  nevertheless passes everywhere (one envelope, one answer protocol, exact canonical recovery,
+  distinct bytes, twin differences local to the assumptions block).
+
+`Δ(R_A, R_B)` remains **uncomputed**, exactly as after V7.
 
 ## Current Branch
 
@@ -423,29 +454,34 @@ two representations against a Solver.
 
 ## Current Blockers
 
-A new experiment version (V4.1 calibration or V5) requires explicit authorisation before any
-model call. GPU spend for Route B requires explicit authorisation, and is now additionally gated
-mechanically by `arena/training/gpu_authorisation.py` (fail-closed; requires an explicit flag, an
-environment variable, and a preregistration document whose hash matches).
-
-**New blocker, measured 2026-09-07:** the `WORLD_V0_NEXT_ACTION` task family is degenerate — a
-model-free predictor reproduces the whole gold target on 676/676 tasks (held-out 96/96). Route B
-cannot run on it, and no replacement slice has yet passed the headroom gate in
-`docs/ROUTE_B_V1_SPEC.md`. See `artifacts/reports/next_action_leakage.json`.
+1. **The meta-game has no verified trajectory world.** Every existing environment is a
+   single-step, two-option probe. Long-horizon reasoning — the central quantity of the new
+   mission — cannot be measured by anything currently in the repository. This is the top blocker.
+2. **The preregistered Phase-8 Solver no longer exists** on this machine and is unrecoverable.
+   Any future Solver-facing work must record a new Solver decision from scratch. A replacement
+   Qwen was being downloaded as of 2026-09-08.
+3. **The seed language population is narrower than assumed** (§ Current Stage): an evolutionary
+   search seeded from these eight surfaces starts from fewer independent design points than the
+   roster implies.
+4. GPU spend remains gated by `arena/training/gpu_authorisation.py` (fail-closed).
+5. `WORLD_V0_NEXT_ACTION` remains degenerate — a model-free predictor reproduces the gold target
+   on 676/676 tasks. Unchanged by this commit.
 
 ## Exact Next Actions
 
-1. **Change the Solver, not the instrument.** Re-run the frozen V5 DEV against a second and
-   third installed model family (`gemma4:31b`, `qwen38-rvn`); ~400 calls each. This also
-   addresses the cross-reader replication failure that closed HML_V3's own thesis.
-2. If any Solver shows a usable band, resume the frozen pipeline at the founder tournament.
-3. If none does, preregister Route B low-budget matched learning curves
-   (`docs/ROUTE_B_HISTORICAL_AUDIT.md` §4). Requires GPU authorisation.
-4. Before `formal_expression_depth` is reused, add an option-ordering control and an
-   identifier-obfuscation arm; it leaked at 0.833 on `first_mentioned_in_state` in the
-   selected stratum.
-5. Do **not** build V6 on this evidence: the preregistered rule admits a new version only for
-   a change of frozen variable class, and the indicated change is the Solver.
+**Superseding all earlier next-action lists in this document.** The Phase-8 and V-series next
+actions below are retained for history and are **not** authorised.
+
+1. Complete the mission-reset documentation set: meta-goal, nested-MDP definition, repository
+   remap, prior-art boundary, language meta-genome, long-horizon fitness, verified-trajectory
+   arena, language-fitness memory.
+2. Determine, from **local** assets only, the smallest source of genuine multi-step verified
+   mathematical trajectories, and specify the V0 arena on it.
+3. Implement the thin outer loop (`HAMILTONIAN_CHESS_V0`): population → choose parent → mutate →
+   semantic gate → evaluate → record fitness → archive → next generation. The target is
+   **end-to-end executability**, not a scientific discovery.
+4. Do **not** run the Phase-8 founder tournament, invent a new hand-designed language, train an
+   RL Architect, or run large GPU jobs.
 
 **Superseding detail from the parallel next-stage branch** (`docs/PARALLEL_NEXT_STAGE_HANDOFF.md`
 §7, `docs/PHASE6_INTEGRATION_MAP.md`):
