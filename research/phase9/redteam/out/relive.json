@@ -6,7 +6,7 @@
     "relived": 1,
     "relive_matches": 1,
     "failures": [],
-    "wall_s": 5.2
+    "wall_s": 4.3
   },
   "forged_action_swap": {
     "passed": false,
@@ -16,15 +16,17 @@
     "failures": [
       "line 1: action 0 (0->1 'aesop') is not the action the verifier recorded accepting (evidence: step=0 0->1 'ext1 x')"
     ],
-    "wall_s": 3.4
+    "wall_s": 4.0
   },
   "forged_solver_actor": {
-    "passed": true,
+    "passed": false,
     "checked": 1,
-    "relived": 1,
-    "relive_matches": 1,
-    "failures": [],
-    "wall_s": 3.2
+    "relived": 0,
+    "relive_matches": 0,
+    "failures": [
+      "line 1: actor=SOLVER but actions [0, 1, 2, 3, 4] carry no provenance digest: nothing binds them to a policy identity or to the state that policy was shown"
+    ],
+    "wall_s": 4.1
   },
   "forged_concat": {
     "passed": false,
@@ -34,7 +36,7 @@
     "failures": [
       "line 1: state 6 was rendered under a different elaboration scope than state 0 ({\"current_namespace\":\"MvPolynomial.IsHomogeneous\",\"open_declarations\":[],\"options\":[]} vs {\"current_namespace\":\"MeasureTheory\",\"open_declarations\":[\"Topology\",\"NNReal\",\"ENNReal\",\"MeasureTheory\",\"Set\",\"Filter\",\"Topological"
     ],
-    "wall_s": 3.4
+    "wall_s": 4.1
   },
   "forged_closed_verified": {
     "passed": false,
@@ -44,6 +46,6 @@
     "failures": [
       "vt-beb60953245bad175e303e33: relive mismatch: the stored actions did not close the goal under the kernel: re-run terminal OPEN != stored CLOSED_VERIFIED"
     ],
-    "wall_s": 2.2
+    "wall_s": 2.8
   }
 }

@@ -1,0 +1,460 @@
+{
+ "bank": "artifacts/trajectory/hc_v0_6_anchor_bank.json",
+ "content_hash": "f13ffee5aae464d6f4717c4f85cd6ec1091eb19d9ca0ab5cd716094a9b583b40",
+ "n_anchors": 1127,
+ "clusters": {
+  "anchors": 1127,
+  "theorems": 393,
+  "files": 330,
+  "anchors_per_theorem": {
+   "1": 16,
+   "2": 20,
+   "3": 357
+  },
+  "anchors_per_file": {
+   "1": 10,
+   "2": 10,
+   "3": 260,
+   "4": 3,
+   "5": 6,
+   "6": 33,
+   "7": 1,
+   "9": 3,
+   "10": 2,
+   "11": 1,
+   "12": 1
+  },
+  "theorems_per_file": {
+   "1": 279,
+   "2": 43,
+   "3": 4,
+   "4": 4
+  },
+  "depth_class": {
+   "INITIAL": 393,
+   "MID_PROOF": 734
+  },
+  "prefix_length": {
+   "0": 393,
+   "1": 377,
+   "2": 134,
+   "3": 71,
+   "4": 57,
+   "5": 29,
+   "6": 15,
+   "7": 18,
+   "8": 7,
+   "9": 4,
+   "10": 8,
+   "11": 5,
+   "12": 9
+  },
+  "n_goals": {
+   "1": 975,
+   "2": 129,
+   "3": 17,
+   "4": 5,
+   "5": 1
+  },
+  "distinct_pp": 1127,
+  "distinct_reelaboration_keys": 1127
+ },
+ "usability": {
+  "n_anchors": 1127,
+  "refusals_by_arm": {
+   "R_A": 0,
+   "R_A_PRIME": 0,
+   "R_B": 0,
+   "R_ABLATED": 0
+  },
+  "refusal_reasons_by_arm": {},
+  "refusal_detail": {},
+  "unusable_by_any_arm": 0,
+  "usable_by_all_arms": 1127,
+  "usable_theorems": 393,
+  "usable_files": 330
+ },
+ "bijection": {
+  "R_A": {
+   "arm_id": "R_A",
+   "baseline_arm_id": "R_A",
+   "n_states": 1127,
+   "n_checked": 1127,
+   "n_holds": 1127,
+   "n_failures": 0,
+   "n_refused": 0,
+   "refusal_counts": {},
+   "holds_everywhere": true,
+   "failures": [],
+   "failure_details": {},
+   "failing_pp_shapes": [],
+   "refusal_detail": []
+  },
+  "R_A_PRIME": {
+   "arm_id": "R_A_PRIME",
+   "baseline_arm_id": "R_A",
+   "n_states": 1127,
+   "n_checked": 1127,
+   "n_holds": 1127,
+   "n_failures": 0,
+   "n_refused": 0,
+   "refusal_counts": {},
+   "holds_everywhere": true,
+   "failures": [],
+   "failure_details": {},
+   "failing_pp_shapes": [],
+   "refusal_detail": []
+  },
+  "R_B": {
+   "arm_id": "R_B",
+   "baseline_arm_id": "R_A",
+   "n_states": 1127,
+   "n_checked": 1127,
+   "n_holds": 1127,
+   "n_failures": 0,
+   "n_refused": 0,
+   "refusal_counts": {},
+   "holds_everywhere": true,
+   "failures": [],
+   "failure_details": {},
+   "failing_pp_shapes": [],
+   "refusal_detail": []
+  },
+  "R_ABLATED": {
+   "arm_id": "R_ABLATED",
+   "baseline_arm_id": "R_A",
+   "n_states": 1127,
+   "n_checked": 1127,
+   "n_holds": 0,
+   "n_failures": 1127,
+   "n_refused": 0,
+   "refusal_counts": {},
+   "holds_everywhere": false,
+   "failures": [
+    {
+     "state_id": "0",
+     "holds": false,
+     "checked": true,
+     "refused": null,
+     "detail": "GoalWithheldRenderer does not implement invert()"
+    },
+    {
+     "state_id": "1",
+     "holds": false,
+     "checked": true,
+     "refused": null,
+     "detail": "GoalWithheldRenderer does not implement invert()"
+    },
+    {
+     "state_id": "3",
+     "holds": false,
+     "checked": true,
+     "refused": null,
+     "detail": "GoalWithheldRenderer does not implement invert()"
+    },
+    {
+     "state_id": "0",
+     "holds": false,
+     "checked": true,
+     "refused": null,
+     "detail": "GoalWithheldRenderer does not implement invert()"
+    },
+    {
+     "state_id": "1",
+     "holds": false,
+     "checked": true,
+     "refused": null,
+     "detail": "GoalWithheldRenderer does not implement invert()"
+    },
+    {
+     "state_id": "2",
+     "holds": false,
+     "checked": true,
+     "refused": null,
+     "detail": "GoalWithheldRenderer does not implement invert()"
+    },
+    {
+     "state_id": "0",
+     "holds": false,
+     "checked": true,
+     "refused": null,
+     "detail": "GoalWithheldRenderer does not implement invert()"
+    },
+    {
+     "state_id": "1",
+     "holds": false,
+     "checked": true,
+     "refused": null,
+     "detail": "GoalWithheldRenderer does not implement invert()"
+    },
+    {
+     "state_id": "2",
+     "holds": false,
+     "checked": true,
+     "refused": null,
+     "detail": "GoalWithheldRenderer does not implement invert()"
+    },
+    {
+     "state_id": "0",
+     "holds": false,
+     "checked": true,
+     "refused": null,
+     "detail": "GoalWithheldRenderer does not implement invert()"
+    }
+   ],
+   "failure_details": {
+    "GoalWithheldRenderer does not implement invert()": 1127
+   },
+   "failing_pp_shapes": [
+    {
+     "chars": 184,
+     "lines": 9,
+     "goal_markers": 1,
+     "blank_line_blocks": 1,
+     "has_crlf": false,
+     "trailing_newline": false
+    },
+    {
+     "chars": 252,
+     "lines": 11,
+     "goal_markers": 1,
+     "blank_line_blocks": 1,
+     "has_crlf": false,
+     "trailing_newline": false
+    },
+    {
+     "chars": 204,
+     "lines": 14,
+     "goal_markers": 1,
+     "blank_line_blocks": 1,
+     "has_crlf": false,
+     "trailing_newline": false
+    },
+    {
+     "chars": 184,
+     "lines": 9,
+     "goal_markers": 1,
+     "blank_line_blocks": 1,
+     "has_crlf": false,
+     "trailing_newline": false
+    },
+    {
+     "chars": 252,
+     "lines": 11,
+     "goal_markers": 1,
+     "blank_line_blocks": 1,
+     "has_crlf": false,
+     "trailing_newline": false
+    },
+    {
+     "chars": 241,
+     "lines": 13,
+     "goal_markers": 1,
+     "blank_line_blocks": 1,
+     "has_crlf": false,
+     "trailing_newline": false
+    },
+    {
+     "chars": 184,
+     "lines": 9,
+     "goal_markers": 1,
+     "blank_line_blocks": 1,
+     "has_crlf": false,
+     "trailing_newline": false
+    },
+    {
+     "chars": 252,
+     "lines": 11,
+     "goal_markers": 1,
+     "blank_line_blocks": 1,
+     "has_crlf": false,
+     "trailing_newline": false
+    },
+    {
+     "chars": 241,
+     "lines": 13,
+     "goal_markers": 1,
+     "blank_line_blocks": 1,
+     "has_crlf": false,
+     "trailing_newline": false
+    },
+    {
+     "chars": 184,
+     "lines": 9,
+     "goal_markers": 1,
+     "blank_line_blocks": 1,
+     "has_crlf": false,
+     "trailing_newline": false
+    }
+   ],
+   "refusal_detail": []
+  }
+ },
+ "parity": {
+  "R_A_vs_R_A_PRIME": {
+   "n": 1127,
+   "parity_holds": 1127,
+   "bytes_differ": 1127,
+   "admissible": 1127,
+   "derived_classes": {
+    "R_ONLY": 1127
+   },
+   "explanations": {
+    "R_ONLY: the same declared information was exposed; the renderings differ in byte": 1127
+   }
+  },
+  "R_A_vs_R_B": {
+   "n": 1127,
+   "parity_holds": 1127,
+   "bytes_differ": 1127,
+   "admissible": 1127,
+   "derived_classes": {
+    "R_ONLY": 1127
+   },
+   "explanations": {
+    "R_ONLY: the same declared information was exposed; the renderings differ in byte": 1127
+   }
+  },
+  "R_A_vs_R_ABLATED_as_R_ONLY": {
+   "n": 1127,
+   "parity_holds": 0,
+   "bytes_differ": 1127,
+   "admissible": 0,
+   "derived_classes": {
+    "P_CHANGE": 1127
+   },
+   "explanations": {
+    "R_ONLY parity VIOLATED: the two projections expose different declared informatio": 1127
+   }
+  },
+  "R_A_vs_R_ABLATED_as_P_CHANGE": {
+   "n": 1127,
+   "parity_holds": 0,
+   "bytes_differ": 1127,
+   "admissible": 1127,
+   "derived_classes": {
+    "P_CHANGE": 1127
+   },
+   "explanations": {
+    "P_CHANGE does not require visible-information parity (manual §26.3); a differenc": 1127
+   }
+  }
+ },
+ "leakage_on_rendered_bytes": {
+  "surfaces_scanned": 4508,
+  "arms": [
+   "R_A",
+   "R_ABLATED",
+   "R_A_PRIME",
+   "R_B"
+  ],
+  "min_needle_chars": 6,
+  "needle_comparisons": 22800,
+  "needles_below_floor": 458,
+  "hits": 0,
+  "hit_detail": []
+ },
+ "prompt_lengths": {
+  "R_A": {
+   "goals_pp_chars": {
+    "n": 1127,
+    "median": 240,
+    "mean": 300.1,
+    "min": 23,
+    "max": 2394,
+    "total": 338267
+   },
+   "prompt_chars": {
+    "n": 1127,
+    "median": 377,
+    "mean": 437.1,
+    "min": 160,
+    "max": 2531,
+    "total": 492666
+   },
+   "median_pct_change_vs_R_A": 0.0,
+   "pct_change_range_vs_R_A": [
+    0.0,
+    0.0
+   ],
+   "median_prompt_pct_change_vs_R_A": 0.0,
+   "total_pct_change_vs_R_A": 0.0
+  },
+  "R_A_PRIME": {
+   "goals_pp_chars": {
+    "n": 1127,
+    "median": 253,
+    "mean": 315.8,
+    "min": 26,
+    "max": 2473,
+    "total": 355921
+   },
+   "prompt_chars": {
+    "n": 1127,
+    "median": 390,
+    "mean": 452.8,
+    "min": 163,
+    "max": 2610,
+    "total": 510320
+   },
+   "median_pct_change_vs_R_A": 5.52,
+   "pct_change_range_vs_R_A": [
+    2.56,
+    15.38
+   ],
+   "median_prompt_pct_change_vs_R_A": 3.4,
+   "total_pct_change_vs_R_A": 5.22
+  },
+  "R_B": {
+   "goals_pp_chars": {
+    "n": 1127,
+    "median": 327,
+    "mean": 400.0,
+    "min": 65,
+    "max": 2816,
+    "total": 450834
+   },
+   "prompt_chars": {
+    "n": 1127,
+    "median": 464,
+    "mean": 537.0,
+    "min": 202,
+    "max": 2953,
+    "total": 605233
+   },
+   "median_pct_change_vs_R_A": 36.36,
+   "pct_change_range_vs_R_A": [
+    13.42,
+    182.61
+   ],
+   "median_prompt_pct_change_vs_R_A": 22.95,
+   "total_pct_change_vs_R_A": 33.28
+  },
+  "R_ABLATED": {
+   "goals_pp_chars": {
+    "n": 1127,
+    "median": 53,
+    "mean": 53.0,
+    "min": 53,
+    "max": 53,
+    "total": 59731
+   },
+   "prompt_chars": {
+    "n": 1127,
+    "median": 190,
+    "mean": 190.0,
+    "min": 190,
+    "max": 190,
+    "total": 214130
+   },
+   "median_pct_change_vs_R_A": -77.92,
+   "pct_change_range_vs_R_A": [
+    -97.79,
+    130.43
+   ],
+   "median_prompt_pct_change_vs_R_A": -49.6,
+   "total_pct_change_vs_R_A": -82.34
+  }
+ },
+ "wall_s": 0.4
+}

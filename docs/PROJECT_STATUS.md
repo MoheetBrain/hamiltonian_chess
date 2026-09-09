@@ -1,5 +1,28 @@
 # Project Status
 
+> ## CURRENT STATE — HC-V0.6 SIGNAL SPRINT, ASSAY FROZEN (2026-09-09)
+>
+> **Stage: `HC_V0_6_ASSAY_FROZEN`.** The four-arm anchored representation assay is specified and
+> frozen in `docs/HC_V0_6_SPEC.md`, written and committed **before any `R_B` outcome exists**.
+> No Δ has been computed. No representation has been compared. No language has been ranked.
+>
+> **Branch:** `claude/hamiltonian-phase-8-experiment-691d22`, worktree at
+> `.claude/worktrees/hamiltonian-phase-8-experiment-691d22`, based on `37cb8dd` (HC-V0.5).
+>
+> **What is frozen:** the evaluation universe (`artifacts/trajectory/hc_v0_6_anchor_bank.json`,
+> hash `f13ffee5…`, 1,127 anchors / 393 theorems / 330 mathlib files, re-derived 1,127/1,127); the
+> four arms (`R_A`, `R_A_PRIME`, `R_B`, `R_ABLATED`); the endpoint
+> `KERNEL_ACCEPTED_STATE_CHANGE`; the runtime contract; the interleaved execution schedule;
+> `δ_min = 0.05`; the control thresholds; the model-selection rule and its application; and a call
+> ceiling of 14,851.
+>
+> **Primary model: `gemma4:e4b`**, chosen by the frozen information-rate rule on baseline-only
+> preflight data. This is deliberately *not* the historical HC-V0.5 solver.
+>
+> The sections below this banner predate the reset and are retained as history. Where they
+> conflict with this banner, the banner governs.
+
+
 > ## MISSION RESET — 2026-09-08
 >
 > The project owner has reset the project hierarchy. `GOAL.md` remains the scientific
@@ -26,7 +49,10 @@ first controlled game. No language is assumed to win; a negative result is valid
 
 ## Current Stage
 
-**`PHASE8_DIAGNOSTIC_INFRASTRUCTURE`, and the mission has been reset to the meta-game.**
+**`HC_V0_6_ASSAY_FROZEN`** (see the banner). Superseded stages, newest first:
+`HC_V0_5_REAL_PLAYER_EXECUTABLE` → `META_GAME_V0_EXECUTABLE` → `PHASE8_DIAGNOSTIC_INFRASTRUCTURE`.
+
+### Historical: `PHASE8_DIAGNOSTIC_INFRASTRUCTURE`
 
 Phase 8 built the machinery for the programme's first multi-representation experiment and then
 stopped without running it, for two independent reasons recorded in
@@ -52,9 +78,10 @@ What Phase 8 established, at zero model cost and independent of any Solver:
 
 ## Current Branch
 
-`claude/hamiltonian-arena-takeover-caa2eb` (worktree from `codex/arena-v0-fitness` at
-`3995227`). This commit is fast-forwarded onto `codex/arena-v0-fitness` and pushed there.
-No force push, no history rewrite.
+`claude/hamiltonian-phase-8-experiment-691d22`, worktree at
+`.claude/worktrees/hamiltonian-phase-8-experiment-691d22`, based on `37cb8dd`.
+No force push, no history rewrite. (Historically: `claude/hamiltonian-arena-takeover-caa2eb`
+from `codex/arena-v0-fitness` at `3995227`.)
 
 ## Current System Architecture
 

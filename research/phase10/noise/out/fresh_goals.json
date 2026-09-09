@@ -1,0 +1,295 @@
+{
+  "schema": "hc-v0.6-noise-fresh-goals-v0",
+  "selection": {
+    "schema": "arena-verified-task-selection-v0",
+    "generator": "arena/trajectory/task.py@v0",
+    "train_json": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo_raw/leandojo_benchmark_4/random/train.json",
+    "seed": 20260909,
+    "scan_limit": 12000,
+    "min_reference_length": 1,
+    "max_reference_length": null,
+    "records_scanned": 12000,
+    "tasks_selected": 18,
+    "discards": {
+      "BELOW_MIN_HORIZON": 5925,
+      "LEAKAGE_FILTER": 13,
+      "MULTILINE_TACTIC": 1482,
+      "NOT_THEOREM_OR_LEMMA": 300,
+      "NO_BY_BLOCK": 683
+    },
+    "leakage": {
+      "problems_scanned": 6075,
+      "steps_scanned": 25517,
+      "leaking_steps": 15,
+      "problems_dropped": 13,
+      "reasons": {
+        "TACTIC_IN_STATE_BEFORE": 15
+      }
+    },
+    "sealed_splits_not_read": [
+      "novel_premises/val.json",
+      "novel_premises/test.json",
+      "random/val.json",
+      "random/test.json"
+    ],
+    "contamination": "mathlib4 is HISTORICALLY_EXPOSED and exposure is transitive: no LeanDojo split establishes pretraining-cleanliness. This measures long-horizon EXECUTION under kernel verification, not long-horizon discovery.",
+    "tasks": [
+      {
+        "task_id": "vtask-58e2cfac675e99ba8468f782",
+        "problem_id": "Mathlib/LinearAlgebra/AffineSpace/Midpoint.lean::midpoint_sub_add",
+        "reference_tactic_count": 2,
+        "source_hash": "b04d55d96610445ab12839f7770457c5c7b39ae95d78c9b1dc2a55d54e44d01b"
+      },
+      {
+        "task_id": "vtask-3c0fe0a7e5197107b598dd91",
+        "problem_id": "Mathlib/Data/Nat/Factorial/Basic.lean::Nat.factorial_dvd_factorial",
+        "reference_tactic_count": 3,
+        "source_hash": "9c02da10b20c1a28cea6e65c65b1a614ae7efe862ae5f1a505b3b7e056336603"
+      },
+      {
+        "task_id": "vtask-c907e2a3cbf4a09641c73208",
+        "problem_id": "Mathlib/Algebra/Homology/ShortComplex/Exact.lean::CategoryTheory.ShortComplex.exact_iff_mono_cokernel_desc",
+        "reference_tactic_count": 4,
+        "source_hash": "57e4f9e055ed2405203c4cacc70d0fba5055ad9d5d9e652e454053c9b4ba274e"
+      },
+      {
+        "task_id": "vtask-cdce301316c8c70ea0a94fb8",
+        "problem_id": "Mathlib/LinearAlgebra/Eigenspace/Basic.lean::Module.End.genEigenspace_zero",
+        "reference_tactic_count": 1,
+        "source_hash": "5403063cbcc2dd0298fc6dfac0430c5afc323daa6c4c206a2ada2a88970b4039"
+      },
+      {
+        "task_id": "vtask-b2f7394c480e28937377121b",
+        "problem_id": "Mathlib/Geometry/Manifold/VectorBundle/Basic.lean::FiberBundle.extChartAt",
+        "reference_tactic_count": 3,
+        "source_hash": "92122756e422b2c0158763d84447782ec0dcd6d326ae8648b7aaa5b0dd36ab5a"
+      },
+      {
+        "task_id": "vtask-d742430cd43fd4df1569177e",
+        "problem_id": "Mathlib/Data/List/Dedup.lean::List.count_dedup",
+        "reference_tactic_count": 1,
+        "source_hash": "d6d2b3a1e8039ccc3598675537aecc515f8ecff0c96ec375364efef248d3be67"
+      },
+      {
+        "task_id": "vtask-df846627e00274313031e115",
+        "problem_id": "Mathlib/Analysis/Distribution/SchwartzSpace.lean::Function.HasTemperateGrowth.of_fderiv",
+        "reference_tactic_count": 7,
+        "source_hash": "d012f9fc01a5897dcc7136af9febe3defef0f93ccf118138b9ba63e1d3f230b8"
+      },
+      {
+        "task_id": "vtask-687e43be181df830c5bd67a1",
+        "problem_id": "Mathlib/Algebra/Polynomial/Degree/Definitions.lean::Polynomial.natDegree_eq_of_natDegree_add_eq_zero",
+        "reference_tactic_count": 8,
+        "source_hash": "cdb6bb79d73c90139e1c4a19cd9e18efdfe9ae49f445fa68b63ab2dc74cc1d9b"
+      },
+      {
+        "task_id": "vtask-076cdbe1648f7a957b2b566e",
+        "problem_id": "Mathlib/RingTheory/UniqueFactorizationDomain.lean::UniqueFactorizationMonoid.normalizedFactors_pow",
+        "reference_tactic_count": 5,
+        "source_hash": "454f10e8c4e7cdf0368d9bc406824f07aa0f29b20cf1d296277fec4983bf4f9d"
+      },
+      {
+        "task_id": "vtask-f561068c00c51e47690a20b8",
+        "problem_id": "Mathlib/AlgebraicTopology/DoldKan/Normalized.lean::AlgebraicTopology.DoldKan.PInftyToNormalizedMooreComplex_comp_inclusionOfMooreComplexMap",
+        "reference_tactic_count": 1,
+        "source_hash": "75b1561d6a4be896a66baa5e91ae5b4f2d20457c68d9c2e4eb454480cbcc9974"
+      },
+      {
+        "task_id": "vtask-abc23a8599478a91cdc1fdf4",
+        "problem_id": "Mathlib/RingTheory/Polynomial/Quotient.lean::MvPolynomial.quotient_map_C_eq_zero",
+        "reference_tactic_count": 2,
+        "source_hash": "54ea09da441aa7b97cb6cdf7d68394e061aa33703a893f6d86a220f989d66e1a"
+      },
+      {
+        "task_id": "vtask-bdcd3da75b38ecfa937ea77f",
+        "problem_id": "Mathlib/Data/Finset/Powerset.lean::Finset.not_mem_of_mem_powerset_of_not_mem",
+        "reference_tactic_count": 2,
+        "source_hash": "5296a45e0111b8c223b8aa6f6186d9278a0f2ee2e083749afcd85f72229d4d76"
+      },
+      {
+        "task_id": "vtask-4cc58080f20773d673e7e19a",
+        "problem_id": "Mathlib/Data/Nat/Defs.lean::Nat.pred_sub",
+        "reference_tactic_count": 1,
+        "source_hash": "7d183d297d235c3eee59b4d3fb413db70b614d4f490807eb10151452dc7460e5"
+      },
+      {
+        "task_id": "vtask-0ba860cc1c4cf3e53abfa290",
+        "problem_id": "Mathlib/GroupTheory/Perm/Cycle/Concrete.lean::Cycle.support_formPerm",
+        "reference_tactic_count": 4,
+        "source_hash": "2b01f64b595dd12f1f1f09e2d447953769a70503c66b5b79a3644c7a411aa65e"
+      },
+      {
+        "task_id": "vtask-0dffc70e19299174bdb02f79",
+        "problem_id": "Mathlib/RingTheory/Kaehler/Basic.lean::KaehlerDifferential.kerTotal_map'",
+        "reference_tactic_count": 5,
+        "source_hash": "69c32ac7cfef669fdd86048b75b52dbf34c70cc455a1151c44829736915ec749"
+      },
+      {
+        "task_id": "vtask-655d75c625ff2153d38dd986",
+        "problem_id": "Mathlib/Topology/MetricSpace/Pseudo/Defs.lean::tendsto_iff_dist_tendsto_zero",
+        "reference_tactic_count": 1,
+        "source_hash": "80e9a05afe51354303e575340f1e762836928937b8e417c25f23364b39e1aef9"
+      },
+      {
+        "task_id": "vtask-0cabfcdba0bb4506ea04ace3",
+        "problem_id": "Mathlib/Data/List/Chain.lean::List.chain_append_cons_cons",
+        "reference_tactic_count": 1,
+        "source_hash": "65fe469d71b53c2c4ca7cec407a01e4e47551638e8a0ffa993f6234ab0fc612d"
+      },
+      {
+        "task_id": "vtask-e4cd5468022c05bd5cf1bd93",
+        "problem_id": "Mathlib/RingTheory/Polynomial/Quotient.lean::Ideal.quotient_map_C_eq_zero",
+        "reference_tactic_count": 3,
+        "source_hash": "dc7ba02f0d8e5844244872c58e9981419c5702718436f18d45b525824899b337"
+      }
+    ]
+  },
+  "goals": [
+    {
+      "state_id": "vtask-58e2cfac675e99ba8468f782#reset",
+      "problem_id": "vtask-58e2cfac675e99ba8468f782",
+      "goals_pp": "R : Type u_1\nV : Type u_2\nV' : Type u_3\nP : Type u_4\nP' : Type u_5\ninst✝⁷ : Ring R\ninst✝⁶ : Invertible 2\ninst✝⁵ : AddCommGroup V\ninst✝⁴ : Module R V\ninst✝³ : AddTorsor V P\ninst✝² : AddCommGroup V'\ninst✝¹ : Module R V'\ninst✝ : AddTorsor V' P'\nx✝ y✝ z : P\nx y : V\n⊢ midpoint R (x - y) (x + y) = x",
+      "n_goals": 1,
+      "prompt_sha256": "4b04a5c441754d35adcff26bc16f03251650efe7b2b0c9571aac33d33e0360c7",
+      "prompt_chars": 431
+    },
+    {
+      "state_id": "vtask-3c0fe0a7e5197107b598dd91#reset",
+      "problem_id": "vtask-3c0fe0a7e5197107b598dd91",
+      "goals_pp": "m✝ n✝ m n : ℕ\nh : m ≤ n\n⊢ m ! ∣ n !",
+      "n_goals": 1,
+      "prompt_sha256": "27432c7b4f9644cb30f8d0f80e8702ed065b2b1ee1f0104d2e5de9e4c1e703a3",
+      "prompt_chars": 172
+    },
+    {
+      "state_id": "vtask-c907e2a3cbf4a09641c73208#reset",
+      "problem_id": "vtask-c907e2a3cbf4a09641c73208",
+      "goals_pp": "C : Type u_1\nD : Type u_2\ninst✝⁵ : Category.{u_3, u_1} C\ninst✝⁴ : Category.{?u.56926, u_2} D\ninst✝³ : Preadditive C\ninst✝² : Preadditive D\nS : ShortComplex C\ninst✝¹ : S.HasHomology\ninst✝ : HasCokernel S.f\n⊢ S.Exact ↔ Mono (cokernel.desc S.f S.g ⋯)",
+      "n_goals": 1,
+      "prompt_sha256": "cf724c46a570e79707e7699cebe10f998a65e3e7275c3e42ea9e22f676acfd5e",
+      "prompt_chars": 384
+    },
+    {
+      "state_id": "vtask-cdce301316c8c70ea0a94fb8#reset",
+      "problem_id": "vtask-cdce301316c8c70ea0a94fb8",
+      "goals_pp": "K R : Type v\nV M : Type w\ninst✝⁵ : CommRing R\ninst✝⁴ : AddCommGroup M\ninst✝³ : Module R M\ninst✝² : Field K\ninst✝¹ : AddCommGroup V\ninst✝ : Module K V\nf : End R M\nk : ℕ\n⊢ (f.genEigenspace 0) k = LinearMap.ker (f ^ k)",
+      "n_goals": 1,
+      "prompt_sha256": "69dffd86b5a0f92c50b6df47c2d202c414532704fdc35a6122dde11d4f6ad763",
+      "prompt_chars": 352
+    },
+    {
+      "state_id": "vtask-b2f7394c480e28937377121b#reset",
+      "problem_id": "vtask-b2f7394c480e28937377121b",
+      "goals_pp": "𝕜 : Type u_1\nB : Type u_2\nB' : Type u_3\nF : Type u_4\nM : Type u_5\nE : B → Type u_6\ninst✝¹⁶ : NontriviallyNormedField 𝕜\ninst✝¹⁵ : NormedAddCommGroup F\ninst✝¹⁴ : NormedSpace 𝕜 F\ninst✝¹³ : TopologicalSpace (TotalSpace F E)\ninst✝¹² : (x : B) → TopologicalSpace (E x)\nEB : Type u_7\ninst✝¹¹ : NormedAddCommGroup EB\ninst✝¹⁰ : NormedSpace 𝕜 EB\nHB : Type u_8\ninst✝⁹ : TopologicalSpace HB\nIB : ModelWithCorners 𝕜 EB HB\nE' : B → Type u_9\ninst✝⁸ : (x : B) → Zero (E' x)\nEM : Type u_10\ninst✝⁷ : NormedAddCommGroup EM\ninst✝⁶ : NormedSpace 𝕜 EM\nHM : Type u_11\ninst✝⁵ : TopologicalSpace HM\nIM : ModelWithCorners 𝕜 EM HM\ninst✝⁴ : TopologicalSpace M\ninst✝³ : ChartedSpace HM M\nIs : SmoothManifoldWithCorners IM M\nn : ℕ∞\ninst✝² : TopologicalSpace B\ninst✝¹ : ChartedSpace HB B\ninst✝ : FiberBundle F E\nx : TotalSpace F E\n⊢ extChartAt (IB.prod 𝓘(𝕜, F)) x =\n    (trivializationAt F E x.proj).toPartialEquiv ≫ (extChartAt IB x.proj).prod (PartialEquiv.refl F)",
+      "n_goals": 1,
+      "prompt_sha256": "37ab557357ce949bb942daf2d798aa44a268301548864e40142dc01ee63b18ba",
+      "prompt_chars": 1072
+    },
+    {
+      "state_id": "vtask-d742430cd43fd4df1569177e#reset",
+      "problem_id": "vtask-d742430cd43fd4df1569177e",
+      "goals_pp": "α : Type u\ninst✝ : DecidableEq α\nl : List α\na : α\n⊢ count a l.dedup = if a ∈ l then 1 else 0",
+      "n_goals": 1,
+      "prompt_sha256": "43c86e6916bb3d34957bd65b62b4d3edefbf07c6f0f68219f05e62e4e95e7db8",
+      "prompt_chars": 229
+    },
+    {
+      "state_id": "vtask-df846627e00274313031e115#reset",
+      "problem_id": "vtask-df846627e00274313031e115",
+      "goals_pp": "𝕜 : Type u_1\n𝕜' : Type u_2\nD : Type u_3\nE : Type u_4\nF : Type u_5\nG : Type u_6\nV : Type u_7\ninst✝³ : NormedAddCommGroup E\ninst✝² : NormedSpace ℝ E\ninst✝¹ : NormedAddCommGroup F\ninst✝ : NormedSpace ℝ F\nf : E → F\nh'f : Function.HasTemperateGrowth (fderiv ℝ f)\nhf : Differentiable ℝ f\nk : ℕ\nC : ℝ\nh : ∀ (x : E), ‖f x‖ ≤ C * (1 + ‖x‖) ^ k\n⊢ Function.HasTemperateGrowth f",
+      "n_goals": 1,
+      "prompt_sha256": "9dc161941d111d5980bef159de9a09ccf5a9d1e61adf740201834afc45041a4d",
+      "prompt_chars": 503
+    },
+    {
+      "state_id": "vtask-687e43be181df830c5bd67a1#reset",
+      "problem_id": "vtask-687e43be181df830c5bd67a1",
+      "goals_pp": "R : Type u\nS : Type v\na b c d : R\nn m : ℕ\ninst✝ : Semiring R\np✝¹ p✝ q✝ : R[X]\nι : Type u_1\np q : R[X]\nH : (p + q).natDegree = 0\n⊢ p.natDegree = q.natDegree",
+      "n_goals": 1,
+      "prompt_sha256": "5072660e2e91763ae869baa22207aa01d81f28c75b806e9a0da1c99cc3f71c5b",
+      "prompt_chars": 292
+    },
+    {
+      "state_id": "vtask-076cdbe1648f7a957b2b566e#reset",
+      "problem_id": "vtask-076cdbe1648f7a957b2b566e",
+      "goals_pp": "α : Type u_1\ninst✝² : CancelCommMonoidWithZero α\ninst✝¹ : NormalizationMonoid α\ninst✝ : UniqueFactorizationMonoid α\nx : α\nn : ℕ\n⊢ normalizedFactors (x ^ n) = n • normalizedFactors x",
+      "n_goals": 1,
+      "prompt_sha256": "42a3b754d7f8792906672b1b698afdedb33a87e6d721e447851c32c61edc0512",
+      "prompt_chars": 318
+    },
+    {
+      "state_id": "vtask-f561068c00c51e47690a20b8#reset",
+      "problem_id": "vtask-f561068c00c51e47690a20b8",
+      "goals_pp": "A : Type u_1\ninst✝¹ : Category.{u_2, u_1} A\ninst✝ : Abelian A\nX✝ X : SimplicialObject A\n⊢ PInftyToNormalizedMooreComplex X ≫ inclusionOfMooreComplexMap X = PInfty",
+      "n_goals": 1,
+      "prompt_sha256": "7bc658a947c65e4e17b12a743700b1c488cfd9946cb29116df9a03c982a9dc49",
+      "prompt_chars": 299
+    },
+    {
+      "state_id": "vtask-abc23a8599478a91cdc1fdf4#reset",
+      "problem_id": "vtask-abc23a8599478a91cdc1fdf4",
+      "goals_pp": "R : Type u_1\nσ : Type u_2\ninst✝ : CommRing R\nr : R\nI : Ideal R\ni : R\nhi : i ∈ I\n⊢ ((Ideal.Quotient.mk (Ideal.map C I)).comp C) i = 0",
+      "n_goals": 1,
+      "prompt_sha256": "ed372554d5f88cf77717504fa2ed373b631c1258c874a8d5beea53ec90de6720",
+      "prompt_chars": 269
+    },
+    {
+      "state_id": "vtask-bdcd3da75b38ecfa937ea77f#reset",
+      "problem_id": "vtask-bdcd3da75b38ecfa937ea77f",
+      "goals_pp": "α : Type u_1\ns✝ t✝ s t : Finset α\na : α\nht : t ∈ s.powerset\nh : a ∉ s\n⊢ a ∉ t",
+      "n_goals": 1,
+      "prompt_sha256": "cdef73e67aec7470ec9bbf5246ab0b4f539610fb0932811ef6a12a2135232f53",
+      "prompt_chars": 214
+    },
+    {
+      "state_id": "vtask-4cc58080f20773d673e7e19a#reset",
+      "problem_id": "vtask-4cc58080f20773d673e7e19a",
+      "goals_pp": "a b c d m✝ n✝ k : ℕ\np q : ℕ → Prop\nn m : ℕ\n⊢ n.pred - m = (n - m).pred",
+      "n_goals": 1,
+      "prompt_sha256": "226936894df4b71b3b1a4b29e8d701f3eeadc122dcc867a572e14c4fae5f3e4a",
+      "prompt_chars": 207
+    },
+    {
+      "state_id": "vtask-0ba860cc1c4cf3e53abfa290#reset",
+      "problem_id": "vtask-0ba860cc1c4cf3e53abfa290",
+      "goals_pp": "α : Type u_1\ninst✝¹ : DecidableEq α\ns✝ s' : Cycle α\ninst✝ : Fintype α\ns : Cycle α\nh : s.Nodup\nhn : s.Nontrivial\n⊢ (s.formPerm h).support = s.toFinset",
+      "n_goals": 1,
+      "prompt_sha256": "78358e49511126033a7251b39d5dd1572020b1134111daa9053a42c265e9bd89",
+      "prompt_chars": 286
+    },
+    {
+      "state_id": "vtask-0dffc70e19299174bdb02f79#reset",
+      "problem_id": "vtask-0dffc70e19299174bdb02f79",
+      "goals_pp": "R : Type u\nS : Type v\ninst✝¹⁵ : CommRing R\ninst✝¹⁴ : CommRing S\ninst✝¹³ : Algebra R S\nM : Type u_1\ninst✝¹² : AddCommGroup M\ninst✝¹¹ : Module R M\ninst✝¹⁰ : Module S M\ninst✝⁹ : IsScalarTower R S M\nA : Type u_2\nB : Type u_3\ninst✝⁸ : CommRing A\ninst✝⁷ : CommRing B\ninst✝⁶ : Algebra R A\ninst✝⁵ : Algebra R B\ninst✝⁴ : Algebra A B\ninst✝³ : Algebra S B\ninst✝² : IsScalarTower R A B\ninst✝¹ : IsScalarTower R S B\ninst✝ : SMulCommClass S A B\nh : Function.Surjective ⇑(algebraMap A B)\n⊢ Submodule.map (Finsupp.mapRange.linearMap (Algebra.linearMap A B) ∘ₗ Finsupp.lmapDomain A A ⇑(algebraMap A B))\n      (KaehlerDifferential.kerTotal R A ⊔ Submodule.span A (Set.range fun x => Finsupp.single ((algebraMap R A) x) 1)) =\n    Submodule.restrictScalars A (KaehlerDifferential.kerTotal R B)",
+      "n_goals": 1,
+      "prompt_sha256": "83c91a835c96f39d2832c302b2ec5df8623ef98c0b2ba6263517ceb35020bfd6",
+      "prompt_chars": 910
+    },
+    {
+      "state_id": "vtask-655d75c625ff2153d38dd986#reset",
+      "problem_id": "vtask-655d75c625ff2153d38dd986",
+      "goals_pp": "α : Type u\nβ : Type v\nX : Type u_1\nι : Type u_2\ninst✝ : PseudoMetricSpace α\nf : β → α\nx : Filter β\na : α\n⊢ Tendsto f x (𝓝 a) ↔ Tendsto (fun b => dist (f b) a) x (𝓝 0)",
+      "n_goals": 1,
+      "prompt_sha256": "9f00454a23a42b4cd5da70931a7783702785669a34c54da8ecd626b237270def",
+      "prompt_chars": 303
+    },
+    {
+      "state_id": "vtask-0cabfcdba0bb4506ea04ace3#reset",
+      "problem_id": "vtask-0cabfcdba0bb4506ea04ace3",
+      "goals_pp": "α : Type u\nβ : Type v\nR r : α → α → Prop\nl l₁✝ l₂✝ : List α\na✝ b✝ a b c : α\nl₁ l₂ : List α\n⊢ Chain R a (l₁ ++ b :: c :: l₂) ↔ Chain R a (l₁ ++ [b]) ∧ R b c ∧ Chain R c l₂",
+      "n_goals": 1,
+      "prompt_sha256": "27e44031eca7e170270b6fd36cf60685d7a0f34c442621bebea7e5610f15d7f3",
+      "prompt_chars": 307
+    },
+    {
+      "state_id": "vtask-e4cd5468022c05bd5cf1bd93#reset",
+      "problem_id": "vtask-e4cd5468022c05bd5cf1bd93",
+      "goals_pp": "R : Type u_1\ninst✝ : CommRing R\nI : Ideal R\n⊢ ∀ a ∈ I, ((Quotient.mk (map C I)).comp C) a = 0",
+      "n_goals": 1,
+      "prompt_sha256": "3bec5a09b6d9458da52be20985e719157fd1fadb31f2aa372db519779513a84e",
+      "prompt_chars": 230
+    }
+  ],
+  "errors": [],
+  "wall_seconds": 47.074
+}

@@ -1,0 +1,73 @@
+{
+  "source_id": "leandojo-benchmark-4-random-train",
+  "license_or_access_status": "LeanDojo Benchmark 4 is released under CC BY 2.0 (stated verbatim in the dataset's own licenses/README.md, sha256 4031ab45...); the traced repository mathlib4 is Apache-2.0 (licenses/mathlib4). Local read-only copy; not redistributed by this project.",
+  "formal_backend": "lean4 / Lean 4.10.0-rc1 (leanprover/lean4:v4.10.0-rc1, commit 3b58e0649156) against the built mathlib4 checkout 29dcec074de168ac2bf835a77ef68bbe069194c5 (5,681 .olean). This is the BackendKernelContract the source's truth is grounded in and is not a universal ontology (manual 13.3).",
+  "version_or_commit": "LeanDojo 2.0.0, traced 2024-07-02T13:14:48Z from github.com/leanprover-community/mathlib4 @ 29dcec074de168ac2bf835a77ef68bbe069194c5",
+  "hashes": {
+    "random/train.json": "eef6fb1382095ab4c28d4a0b0e2b5999a96cbef454dcf2899776957e83a40c1a",
+    "metadata.json": "a397544ea1bcec9d25fa8797fea0387314ec77f74e34610e9d5017dc3fec4a73",
+    "licenses/README.md": "4031ab4528f0bc042344fe5d68568080dd56e989ede81b9ae15e3258334bd849"
+  },
+  "extraction_method": "LeanDojo 2.0.0 traced mathlib4 and emitted per-declaration records carrying file_path, full_name, the declaration span, and traced_tactics[].tactic / .state_before / .state_after. This project reads ONLY those keys (arena/trajectory/lean_backend.py::build_probe) and rebuilds a self-contained probe file from the pinned checkout; the recorded states are never trusted as truth, only as a recipe.",
+  "verification_method": "Every admitted record's truth is re-established by the live backend, never by the transcript. A probe is elaborated by Lean 4.10.0-rc1 in a REPL against the built mathlib; a tactic is accepted only if the elaborator accepts it, and an episode is CLOSED_VERIFIED only if the completed script re-elaborates and `#print axioms` closes over the trusted allow-list {propext, Classical.choice, Quot.sound} with no sorryAx and no untrusted axiom (arena/trajectory/lean_backend.py::TRUSTED_AXIOMS, the RT-01 fix). A string comparison against the recorded transcript is NOT used as a verification method anywhere (manual 17.3), and tests/trajectory/test_arena_v0.py::test_string_equality_is_never_used_for_verification enforces that by AST scan.",
+  "project_exposure_status": {
+    "value": "PROJECT_INSPECTED",
+    "justification": "This split has been read, sampled from, and used to guide development repeatedly: Phase 6/7/8 fitness work, HC-V0, HC-V0.5's smoke bank, and HC-V0.6's anchored state bank all draw from it. Hashing, renaming or re-sampling it does not make it PROJECT_HIDDEN (manual 18.1). No confirmation role has ever been frozen against it, so confirmation_role_frozen_at is null: recording a freeze date would be the specific falsehood this field exists to prevent.",
+    "confirmation_role_frozen_at": null
+  },
+  "model_exposure_status": "LIKELY_PRETRAINING_EXPOSURE",
+  "supported_task_mode": "BOTH",
+  "observed_trace_distribution": {
+    "_unit": "records by len(traced_tactics), measured over all 118517 records of random/train.json",
+    "0": 58960,
+    "1": 20802,
+    "2": 12844,
+    "3": 6576,
+    "4": 4060,
+    "5": 2992,
+    "6": 2183,
+    "7": 1677,
+    "8": 1364,
+    "9": 1167,
+    "10": 856,
+    "11-20": 3595,
+    "21-50": 1290,
+    "51+": 151
+  },
+  "dependency_depth_distribution_if_available": null,
+  "domain_distribution": {
+    "_unit": "records by the top-level Mathlib subdirectory of file_path; 33 distinct, 15 largest listed",
+    "Algebra": 18696,
+    "Data": 18679,
+    "Analysis": 12729,
+    "Topology": 10992,
+    "Order": 9249,
+    "MeasureTheory": 6794,
+    "CategoryTheory": 6188,
+    "RingTheory": 6141,
+    "LinearAlgebra": 5340,
+    "GroupTheory": 2867,
+    "NumberTheory": 2780,
+    "SetTheory": 2498,
+    "Geometry": 2310,
+    "Combinatorics": 2123,
+    "packages": 1735
+  },
+  "grouping_unit": "mathlib source file (record.file_path). The theorem (full_name) nests inside it, so the file is the coarser and therefore the safe unit: HC-V0.6's 223-anchor bank spans 78 theorems in 75 files, i.e. clustering on the theorem would have treated same-file theorems as independent. Individual traced steps from one proof are NOT the grouping unit (manual 18.2, 30.6).",
+  "admitted_for": ["TRAIN", "DEV", "SCOUT"],
+  "known_limitations": [
+    "PROMOTION and FINAL are deliberately absent. The project has already used this split to guide mutation, candidate selection and thresholds, so admitting it for confirmation would be exactly the reuse manual 30.4 forbids. A confirmatory claim needs a source this project has not inspected.",
+    "The `random` split is split by PROOF, not grouped by file or theorem, so random/{train,val,test}.json share mathlib files and premises. That is the defect LeanDojo's separate `novel_premises` split exists to address. It does not bite HC-V0.6, which uses train only and compares nothing across splits, but it forbids ever treating random/val or random/test as a clean holdout for a model that saw random/train.",
+    "49.7% of records (58,960 of 118,517) carry zero traced tactics and are unusable as tasks; a further 20,802 carry one. Any sample with min_reference_length >= 3 is drawn from about 25,911 records, i.e. 21.9% of the file.",
+    "A recorded LeanDojo proof is a traversal of a proof TREE. Replaying it as a flat tactic script does not always chain (measured: 67.3% of adjacent pairs). Mid-proof anchors therefore over-represent proofs whose prefixes happen to chain flatly.",
+    "ObservedTraceLength is a SAMPLING PROXY and never a required reasoning horizon (manual 6.30, 17.6). MinimalProofLength is UNKNOWN for every record and nothing in this arena could establish it. DependencyDepth is UNKNOWN for this backend, which is why the field above is null rather than empty.",
+    "mathlib4 is HISTORICALLY_EXPOSED and exposure is transitive. No split of this source establishes pretraining-cleanliness for any model, so nothing measured on it separates a solved goal from a recalled one. The defensible phrasing is execution under kernel verification, never reasoning or discovery.",
+    "The corpus.jsonl premise file shipped with the benchmark is present but has never been read by this project."
+  ],
+  "sealed_splits_not_read": [
+    "random/val.json",
+    "random/test.json",
+    "novel_premises/val.json",
+    "novel_premises/test.json"
+  ]
+}

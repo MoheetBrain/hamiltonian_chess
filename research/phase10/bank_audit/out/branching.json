@@ -1,0 +1,1173 @@
+{
+ "bank": "artifacts/trajectory/hc_v0_6_anchor_bank.json",
+ "content_hash": "f13ffee5aae464d6f4717c4f85cd6ec1091eb19d9ca0ab5cd716094a9b583b40",
+ "seed": 20260909,
+ "theorems_requested": 18,
+ "theorems_opened": 18,
+ "theorems_errored": [],
+ "anchored_states_branched": 36,
+ "initial_states_branched": 18,
+ "mid_proof_states_branched": 18,
+ "two_successful_branches": 36,
+ "children_distinct": 36,
+ "parent_text_unchanged": 36,
+ "first_child_text_unchanged": 36,
+ "reference_branch_succeeded": 35,
+ "reference_child_distinct": 35,
+ "rederived_matched": 36,
+ "wall_s": 63.97,
+ "detail": [
+  {
+   "problem_id": "Mathlib/Algebra/Polynomial/Expand.lean::Polynomial.expand_contract'",
+   "branches": [
+    {
+     "anchor_id": "anchor:bcbb304742bf66b7ad6224f7",
+     "depth_class": "INITIAL",
+     "prefix_length": 0,
+     "rederived_matched": true,
+     "parent_state_id": "0",
+     "neutral_1": {
+      "ok": true,
+      "to": "4",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "5",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": true,
+      "to": "6",
+      "error": ""
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": true,
+     "third_child_distinct": true
+    },
+    {
+     "anchor_id": "anchor:96b88a4c487a0692d99ea683",
+     "depth_class": "MID_PROOF",
+     "prefix_length": 3,
+     "rederived_matched": true,
+     "parent_state_id": "3",
+     "neutral_1": {
+      "ok": true,
+      "to": "7",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "8",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": true,
+      "to": "9",
+      "error": ""
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": true,
+     "third_child_distinct": true
+    }
+   ],
+   "anchors_rederived": 3,
+   "anchors_matched": 3,
+   "missing": []
+  },
+  {
+   "problem_id": "Mathlib/Algebra/MvPolynomial/Degrees.lean::MvPolynomial.degreeOf_mul_C_le",
+   "branches": [
+    {
+     "anchor_id": "anchor:d793f340bfb987dbb93fd72c",
+     "depth_class": "INITIAL",
+     "prefix_length": 0,
+     "rederived_matched": true,
+     "parent_state_id": "0",
+     "neutral_1": {
+      "ok": true,
+      "to": "3",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "4",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": true,
+      "to": "5",
+      "error": ""
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": true,
+     "third_child_distinct": true
+    },
+    {
+     "anchor_id": "anchor:7d1f2dadf844b74ed5750cad",
+     "depth_class": "MID_PROOF",
+     "prefix_length": 2,
+     "rederived_matched": true,
+     "parent_state_id": "2",
+     "neutral_1": {
+      "ok": true,
+      "to": "6",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "7",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": true,
+      "to": "8",
+      "error": ""
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": true,
+     "third_child_distinct": true
+    }
+   ],
+   "anchors_rederived": 3,
+   "anchors_matched": 3,
+   "missing": []
+  },
+  {
+   "problem_id": "Mathlib/Analysis/InnerProductSpace/OfNorm.lean::InnerProductSpaceable.real_prop",
+   "branches": [
+    {
+     "anchor_id": "anchor:6bd5ebbd875016b1559854df",
+     "depth_class": "INITIAL",
+     "prefix_length": 0,
+     "rederived_matched": true,
+     "parent_state_id": "0",
+     "neutral_1": {
+      "ok": true,
+      "to": "7",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "8",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": true,
+      "to": "9",
+      "error": ""
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": true,
+     "third_child_distinct": true
+    },
+    {
+     "anchor_id": "anchor:8e597b829ad1ce3eb2f1dd95",
+     "depth_class": "MID_PROOF",
+     "prefix_length": 6,
+     "rederived_matched": true,
+     "parent_state_id": "6",
+     "neutral_1": {
+      "ok": true,
+      "to": "10",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "11",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": true,
+      "to": "12",
+      "error": ""
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": true,
+     "third_child_distinct": true
+    }
+   ],
+   "anchors_rederived": 3,
+   "anchors_matched": 3,
+   "missing": []
+  },
+  {
+   "problem_id": "Mathlib/NumberTheory/LucasLehmer.lean::LucasLehmer.two_lt_q",
+   "branches": [
+    {
+     "anchor_id": "anchor:1087399ce7c5d92e566a3b08",
+     "depth_class": "INITIAL",
+     "prefix_length": 0,
+     "rederived_matched": true,
+     "parent_state_id": "0",
+     "neutral_1": {
+      "ok": true,
+      "to": "4",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "5",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": true,
+      "to": "6",
+      "error": ""
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": true,
+     "third_child_distinct": true
+    },
+    {
+     "anchor_id": "anchor:530181ab44d91179e05c79de",
+     "depth_class": "MID_PROOF",
+     "prefix_length": 3,
+     "rederived_matched": true,
+     "parent_state_id": "3",
+     "neutral_1": {
+      "ok": true,
+      "to": "7",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "8",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": true,
+      "to": "9",
+      "error": ""
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": true,
+     "third_child_distinct": true
+    }
+   ],
+   "anchors_rederived": 3,
+   "anchors_matched": 3,
+   "missing": []
+  },
+  {
+   "problem_id": "Mathlib/Analysis/Calculus/FDeriv/Add.lean::HasFDerivAtFilter.sum",
+   "branches": [
+    {
+     "anchor_id": "anchor:d221bd0ce4ab7c7d394f9a21",
+     "depth_class": "INITIAL",
+     "prefix_length": 0,
+     "rederived_matched": true,
+     "parent_state_id": "0",
+     "neutral_1": {
+      "ok": true,
+      "to": "3",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "4",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": true,
+      "to": "5",
+      "error": ""
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": true,
+     "third_child_distinct": true
+    },
+    {
+     "anchor_id": "anchor:990baf440f1a8ea737d28a29",
+     "depth_class": "MID_PROOF",
+     "prefix_length": 2,
+     "rederived_matched": true,
+     "parent_state_id": "2",
+     "neutral_1": {
+      "ok": true,
+      "to": "6",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "7",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": true,
+      "to": "8",
+      "error": ""
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": true,
+     "third_child_distinct": true
+    }
+   ],
+   "anchors_rederived": 3,
+   "anchors_matched": 3,
+   "missing": []
+  },
+  {
+   "problem_id": "Mathlib/MeasureTheory/Decomposition/SignedLebesgue.lean::MeasureTheory.SignedMeasure.rnDeriv_sub",
+   "branches": [
+    {
+     "anchor_id": "anchor:f7976a482f9cc33d7177fbeb",
+     "depth_class": "INITIAL",
+     "prefix_length": 0,
+     "rederived_matched": true,
+     "parent_state_id": "0",
+     "neutral_1": {
+      "ok": true,
+      "to": "3",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "4",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": true,
+      "to": "5",
+      "error": ""
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": true,
+     "third_child_distinct": true
+    },
+    {
+     "anchor_id": "anchor:ec54999f3d466f561dd30d79",
+     "depth_class": "MID_PROOF",
+     "prefix_length": 2,
+     "rederived_matched": true,
+     "parent_state_id": "2",
+     "neutral_1": {
+      "ok": true,
+      "to": "6",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "7",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": true,
+      "to": "8",
+      "error": ""
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": true,
+     "third_child_distinct": true
+    }
+   ],
+   "anchors_rederived": 3,
+   "anchors_matched": 3,
+   "missing": []
+  },
+  {
+   "problem_id": "Mathlib/Algebra/BigOperators/Finprod.lean::finprod_of_isEmpty",
+   "branches": [
+    {
+     "anchor_id": "anchor:2cba851cf2807dcec0dcbfb6",
+     "depth_class": "INITIAL",
+     "prefix_length": 0,
+     "rederived_matched": true,
+     "parent_state_id": "0",
+     "neutral_1": {
+      "ok": true,
+      "to": "3",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "4",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": true,
+      "to": "5",
+      "error": ""
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": true,
+     "third_child_distinct": true
+    },
+    {
+     "anchor_id": "anchor:903569b2c5e393446d09bc50",
+     "depth_class": "MID_PROOF",
+     "prefix_length": 2,
+     "rederived_matched": true,
+     "parent_state_id": "2",
+     "neutral_1": {
+      "ok": true,
+      "to": "6",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "7",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": true,
+      "to": "8",
+      "error": ""
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": true,
+     "third_child_distinct": true
+    }
+   ],
+   "anchors_rederived": 3,
+   "anchors_matched": 3,
+   "missing": []
+  },
+  {
+   "problem_id": "Mathlib/Data/List/Perm.lean::List.perm_lookmap",
+   "branches": [
+    {
+     "anchor_id": "anchor:aa12eae5534d624083cccc2b",
+     "depth_class": "INITIAL",
+     "prefix_length": 0,
+     "rederived_matched": true,
+     "parent_state_id": "0",
+     "neutral_1": {
+      "ok": true,
+      "to": "13",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "14",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": true,
+      "to": "15",
+      "error": ""
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": true,
+     "third_child_distinct": true
+    },
+    {
+     "anchor_id": "anchor:68113e29d58c161d28e049d7",
+     "depth_class": "MID_PROOF",
+     "prefix_length": 12,
+     "rederived_matched": true,
+     "parent_state_id": "12",
+     "neutral_1": {
+      "ok": true,
+      "to": "16",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "17",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": true,
+      "to": "18",
+      "error": ""
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": true,
+     "third_child_distinct": true
+    }
+   ],
+   "anchors_rederived": 3,
+   "anchors_matched": 3,
+   "missing": []
+  },
+  {
+   "problem_id": "Mathlib/SetTheory/Surreal/Multiplication.lean::Surreal.Multiplication.ih1",
+   "branches": [
+    {
+     "anchor_id": "anchor:b229899f13fa39905d4f02f5",
+     "depth_class": "INITIAL",
+     "prefix_length": 0,
+     "rederived_matched": true,
+     "parent_state_id": "0",
+     "neutral_1": {
+      "ok": true,
+      "to": "3",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "4",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": true,
+      "to": "5",
+      "error": ""
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": true,
+     "third_child_distinct": true
+    },
+    {
+     "anchor_id": "anchor:504417b0e61a5bacd84fd467",
+     "depth_class": "MID_PROOF",
+     "prefix_length": 2,
+     "rederived_matched": true,
+     "parent_state_id": "2",
+     "neutral_1": {
+      "ok": true,
+      "to": "6",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "7",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": true,
+      "to": "8",
+      "error": ""
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": true,
+     "third_child_distinct": true
+    }
+   ],
+   "anchors_rederived": 3,
+   "anchors_matched": 3,
+   "missing": []
+  },
+  {
+   "problem_id": "Mathlib/Topology/ContinuousFunction/FunctionalCalculus.lean::cfc_star",
+   "branches": [
+    {
+     "anchor_id": "anchor:e59f94a07b74aef0e7a0d8fe",
+     "depth_class": "INITIAL",
+     "prefix_length": 0,
+     "rederived_matched": true,
+     "parent_state_id": "0",
+     "neutral_1": {
+      "ok": true,
+      "to": "8",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "9",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": true,
+      "to": "10",
+      "error": ""
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": true,
+     "third_child_distinct": true
+    },
+    {
+     "anchor_id": "anchor:03128d0ef53276c00c3d3f48",
+     "depth_class": "MID_PROOF",
+     "prefix_length": 7,
+     "rederived_matched": true,
+     "parent_state_id": "7",
+     "neutral_1": {
+      "ok": true,
+      "to": "11",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "12",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": true,
+      "to": "13",
+      "error": ""
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": true,
+     "third_child_distinct": true
+    }
+   ],
+   "anchors_rederived": 3,
+   "anchors_matched": 3,
+   "missing": []
+  },
+  {
+   "problem_id": ".lake/packages/batteries/Batteries/Data/List/Lemmas.lean::List.merge_loop_nil_right",
+   "branches": [
+    {
+     "anchor_id": "anchor:6682abd32bd9580598b0d81b",
+     "depth_class": "INITIAL",
+     "prefix_length": 0,
+     "rederived_matched": true,
+     "parent_state_id": "0",
+     "neutral_1": {
+      "ok": true,
+      "to": "3",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "4",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": true,
+      "to": "5",
+      "error": ""
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": true,
+     "third_child_distinct": true
+    },
+    {
+     "anchor_id": "anchor:8d8a76a72e3d2946c0811b71",
+     "depth_class": "MID_PROOF",
+     "prefix_length": 2,
+     "rederived_matched": true,
+     "parent_state_id": "2",
+     "neutral_1": {
+      "ok": true,
+      "to": "6",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "7",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": true,
+      "to": "8",
+      "error": ""
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": true,
+     "third_child_distinct": true
+    }
+   ],
+   "anchors_rederived": 3,
+   "anchors_matched": 3,
+   "missing": []
+  },
+  {
+   "problem_id": "Mathlib/Combinatorics/SimpleGraph/Connectivity.lean::SimpleGraph.ConnectedComponent.supp_injective",
+   "branches": [
+    {
+     "anchor_id": "anchor:3e8acadf6992fd0bbcf7f9c3",
+     "depth_class": "INITIAL",
+     "prefix_length": 0,
+     "rederived_matched": true,
+     "parent_state_id": "0",
+     "neutral_1": {
+      "ok": true,
+      "to": "5",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "6",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": true,
+      "to": "7",
+      "error": ""
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": true,
+     "third_child_distinct": true
+    },
+    {
+     "anchor_id": "anchor:714303b3bd03811c59d4a5d4",
+     "depth_class": "MID_PROOF",
+     "prefix_length": 4,
+     "rederived_matched": true,
+     "parent_state_id": "4",
+     "neutral_1": {
+      "ok": true,
+      "to": "8",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "9",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": true,
+      "to": "10",
+      "error": ""
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": true,
+     "third_child_distinct": true
+    }
+   ],
+   "anchors_rederived": 3,
+   "anchors_matched": 3,
+   "missing": []
+  },
+  {
+   "problem_id": "Mathlib/RingTheory/DedekindDomain/Ideal.lean::IsDedekindDomain.exists_representative_mod_finset",
+   "branches": [
+    {
+     "anchor_id": "anchor:f54233b81351dea02843620f",
+     "depth_class": "INITIAL",
+     "prefix_length": 0,
+     "rederived_matched": true,
+     "parent_state_id": "0",
+     "neutral_1": {
+      "ok": true,
+      "to": "4",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "5",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": true,
+      "to": "6",
+      "error": ""
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": true,
+     "third_child_distinct": true
+    },
+    {
+     "anchor_id": "anchor:07a70b6020c718bdef76d58b",
+     "depth_class": "MID_PROOF",
+     "prefix_length": 3,
+     "rederived_matched": true,
+     "parent_state_id": "3",
+     "neutral_1": {
+      "ok": true,
+      "to": "7",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "8",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": true,
+      "to": "9",
+      "error": ""
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": true,
+     "third_child_distinct": true
+    }
+   ],
+   "anchors_rederived": 3,
+   "anchors_matched": 3,
+   "missing": []
+  },
+  {
+   "problem_id": "Mathlib/FieldTheory/Finite/Basic.lean::ZMod.pow_totient",
+   "branches": [
+    {
+     "anchor_id": "anchor:6cb4b3debdd005b81d0ee938",
+     "depth_class": "INITIAL",
+     "prefix_length": 0,
+     "rederived_matched": true,
+     "parent_state_id": "0",
+     "neutral_1": {
+      "ok": true,
+      "to": "3",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "4",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": true,
+      "to": "5",
+      "error": ""
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": true,
+     "third_child_distinct": true
+    },
+    {
+     "anchor_id": "anchor:8af6153474cc55fe0ca4b698",
+     "depth_class": "MID_PROOF",
+     "prefix_length": 2,
+     "rederived_matched": true,
+     "parent_state_id": "2",
+     "neutral_1": {
+      "ok": true,
+      "to": "6",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "7",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": true,
+      "to": "8",
+      "error": ""
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": true,
+     "third_child_distinct": true
+    }
+   ],
+   "anchors_rederived": 3,
+   "anchors_matched": 3,
+   "missing": []
+  },
+  {
+   "problem_id": "Mathlib/LinearAlgebra/QuadraticForm/Prod.lean::QuadraticForm.posDef_pi_iff",
+   "branches": [
+    {
+     "anchor_id": "anchor:8c9a0ac1c2a65a31d711f70d",
+     "depth_class": "INITIAL",
+     "prefix_length": 0,
+     "rederived_matched": true,
+     "parent_state_id": "0",
+     "neutral_1": {
+      "ok": true,
+      "to": "9",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "10",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": true,
+      "to": "11",
+      "error": ""
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": true,
+     "third_child_distinct": true
+    },
+    {
+     "anchor_id": "anchor:3c44069408e4377ef299f1be",
+     "depth_class": "MID_PROOF",
+     "prefix_length": 8,
+     "rederived_matched": true,
+     "parent_state_id": "8",
+     "neutral_1": {
+      "ok": true,
+      "to": "12",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "13",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": false,
+      "to": null,
+      "error": "type mismatch\n  (h (sorryAx ι true)).left ?m.204940\nhas type\n  0 ≤ (Q (sorryAx ι true)) ?m.204940 : Prop\nbut is expected"
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": false,
+     "third_child_distinct": false
+    }
+   ],
+   "anchors_rederived": 3,
+   "anchors_matched": 3,
+   "missing": []
+  },
+  {
+   "problem_id": "Mathlib/Analysis/SpecialFunctions/Trigonometric/Arctan.lean::Real.arctan_inv_of_pos",
+   "branches": [
+    {
+     "anchor_id": "anchor:e8784f3cafc19c65494ed9de",
+     "depth_class": "INITIAL",
+     "prefix_length": 0,
+     "rederived_matched": true,
+     "parent_state_id": "0",
+     "neutral_1": {
+      "ok": true,
+      "to": "5",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "6",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": true,
+      "to": "7",
+      "error": ""
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": true,
+     "third_child_distinct": true
+    },
+    {
+     "anchor_id": "anchor:67d33d624e5f6b9ef33f2c9c",
+     "depth_class": "MID_PROOF",
+     "prefix_length": 4,
+     "rederived_matched": true,
+     "parent_state_id": "4",
+     "neutral_1": {
+      "ok": true,
+      "to": "8",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "9",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": true,
+      "to": "10",
+      "error": ""
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": true,
+     "third_child_distinct": true
+    }
+   ],
+   "anchors_rederived": 3,
+   "anchors_matched": 3,
+   "missing": []
+  },
+  {
+   "problem_id": "Mathlib/Analysis/InnerProductSpace/Basic.lean::ext_inner_map",
+   "branches": [
+    {
+     "anchor_id": "anchor:d2669d41cd6b678f458303c3",
+     "depth_class": "INITIAL",
+     "prefix_length": 0,
+     "rederived_matched": true,
+     "parent_state_id": "0",
+     "neutral_1": {
+      "ok": true,
+      "to": "3",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "4",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": true,
+      "to": "5",
+      "error": ""
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": true,
+     "third_child_distinct": true
+    },
+    {
+     "anchor_id": "anchor:0c92f125f43ff4948fca85f2",
+     "depth_class": "MID_PROOF",
+     "prefix_length": 2,
+     "rederived_matched": true,
+     "parent_state_id": "2",
+     "neutral_1": {
+      "ok": true,
+      "to": "6",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "7",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": true,
+      "to": "8",
+      "error": ""
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": true,
+     "third_child_distinct": true
+    }
+   ],
+   "anchors_rederived": 3,
+   "anchors_matched": 3,
+   "missing": []
+  },
+  {
+   "problem_id": "Mathlib/Data/List/Basic.lean::List.pmap_append",
+   "branches": [
+    {
+     "anchor_id": "anchor:9ba459df862ddf49c148a922",
+     "depth_class": "INITIAL",
+     "prefix_length": 0,
+     "rederived_matched": true,
+     "parent_state_id": "0",
+     "neutral_1": {
+      "ok": true,
+      "to": "4",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "5",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": true,
+      "to": "6",
+      "error": ""
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": true,
+     "third_child_distinct": true
+    },
+    {
+     "anchor_id": "anchor:22e26f1a107e2c50633cf4b9",
+     "depth_class": "MID_PROOF",
+     "prefix_length": 3,
+     "rederived_matched": true,
+     "parent_state_id": "3",
+     "neutral_1": {
+      "ok": true,
+      "to": "7",
+      "error": ""
+     },
+     "neutral_2": {
+      "ok": true,
+      "to": "8",
+      "error": ""
+     },
+     "reference_branch": {
+      "ok": true,
+      "to": "9",
+      "error": ""
+     },
+     "two_successful_branches": true,
+     "children_distinct": true,
+     "parent_text_unchanged": true,
+     "first_child_text_unchanged": true,
+     "third_branch_succeeded": true,
+     "third_child_distinct": true
+    }
+   ],
+   "anchors_rederived": 3,
+   "anchors_matched": 3,
+   "missing": []
+  }
+ ]
+}

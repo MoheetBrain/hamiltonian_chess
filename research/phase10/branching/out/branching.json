@@ -1,0 +1,143 @@
+{
+ "theorems": 6,
+ "theorems_without_error": 6,
+ "two_successful_branches_distinct": 6,
+ "first_child_intact_always": true,
+ "root_text_unchanged_always": true,
+ "branch_from_child_ok": 6,
+ "reference_first_tactic_accepted": 6,
+ "detail": [
+  {
+   "problem_id": "Mathlib/SetTheory/Cardinal/Ordinal.lean::Cardinal.mk_equiv_eq_arrow_of_lift_eq",
+   "root_state_id": "0",
+   "neutral_1": {
+    "ok": true,
+    "to": "1"
+   },
+   "neutral_2": {
+    "ok": true,
+    "to": "2"
+   },
+   "reference_step": {
+    "ok": true,
+    "to": "3",
+    "outcome": "OK"
+   },
+   "two_neutral_children_are_distinct": true,
+   "first_child_text_intact_after_later_steps": true,
+   "root_text_unchanged": true,
+   "branch_from_child_ok": true,
+   "distinct_state_ids": 5
+  },
+  {
+   "problem_id": "Mathlib/RingTheory/PrincipalIdealDomain.lean::PrincipalIdealRing.factors_spec",
+   "root_state_id": "0",
+   "neutral_1": {
+    "ok": true,
+    "to": "1"
+   },
+   "neutral_2": {
+    "ok": true,
+    "to": "2"
+   },
+   "reference_step": {
+    "ok": true,
+    "to": "3",
+    "outcome": "OK"
+   },
+   "two_neutral_children_are_distinct": true,
+   "first_child_text_intact_after_later_steps": true,
+   "root_text_unchanged": true,
+   "branch_from_child_ok": true,
+   "distinct_state_ids": 5
+  },
+  {
+   "problem_id": "Mathlib/Data/List/Infix.lean::List.suffix_insert",
+   "root_state_id": "0",
+   "neutral_1": {
+    "ok": true,
+    "to": "1"
+   },
+   "neutral_2": {
+    "ok": true,
+    "to": "2"
+   },
+   "reference_step": {
+    "ok": true,
+    "to": "3",
+    "outcome": "OK"
+   },
+   "two_neutral_children_are_distinct": true,
+   "first_child_text_intact_after_later_steps": true,
+   "root_text_unchanged": true,
+   "branch_from_child_ok": true,
+   "distinct_state_ids": 5
+  },
+  {
+   "problem_id": "Mathlib/Analysis/Calculus/Deriv/Inv.lean::derivWithin_inv",
+   "root_state_id": "0",
+   "neutral_1": {
+    "ok": true,
+    "to": "1"
+   },
+   "neutral_2": {
+    "ok": true,
+    "to": "2"
+   },
+   "reference_step": {
+    "ok": true,
+    "to": "3",
+    "outcome": "OK"
+   },
+   "two_neutral_children_are_distinct": true,
+   "first_child_text_intact_after_later_steps": true,
+   "root_text_unchanged": true,
+   "branch_from_child_ok": true,
+   "distinct_state_ids": 5
+  },
+  {
+   "problem_id": "Mathlib/Topology/Algebra/Ring/Ideal.lean::QuotientRing.isOpenMap_coe",
+   "root_state_id": "0",
+   "neutral_1": {
+    "ok": true,
+    "to": "1"
+   },
+   "neutral_2": {
+    "ok": true,
+    "to": "2"
+   },
+   "reference_step": {
+    "ok": true,
+    "to": "3",
+    "outcome": "OK"
+   },
+   "two_neutral_children_are_distinct": true,
+   "first_child_text_intact_after_later_steps": true,
+   "root_text_unchanged": true,
+   "branch_from_child_ok": true,
+   "distinct_state_ids": 5
+  },
+  {
+   "problem_id": "Mathlib/Algebra/Polynomial/UnitTrinomial.lean::Polynomial.IsUnitTrinomial.card_support_eq_three",
+   "root_state_id": "0",
+   "neutral_1": {
+    "ok": true,
+    "to": "1"
+   },
+   "neutral_2": {
+    "ok": true,
+    "to": "2"
+   },
+   "reference_step": {
+    "ok": true,
+    "to": "3",
+    "outcome": "OK"
+   },
+   "two_neutral_children_are_distinct": true,
+   "first_child_text_intact_after_later_steps": true,
+   "root_text_unchanged": true,
+   "branch_from_child_ok": true,
+   "distinct_state_ids": 5
+  }
+ ]
+}

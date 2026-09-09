@@ -1,0 +1,387 @@
+[
+  {
+    "model": "gemma3:4b",
+    "model_digest": "a2af6cc3eb7fa8be8504abaf9b04e88f17a119ec3f04a3addf55f92841195f5a",
+    "n": 5,
+    "ok": 5,
+    "rows": [
+      {
+        "completion_tokens": 8,
+        "done_reason": "stop",
+        "failure_detail": "",
+        "latency_ms": 1985,
+        "prompt_tokens": 62,
+        "raw_output": "{\"tactic\": \"rewrite\"}",
+        "state_id": "smoke-add-comm",
+        "status": "OK",
+        "tactic": "rewrite",
+        "thinking_chars": 0
+      },
+      {
+        "completion_tokens": 8,
+        "done_reason": "stop",
+        "failure_detail": "",
+        "latency_ms": 113,
+        "prompt_tokens": 57,
+        "raw_output": "{\"tactic\": \"rw\"}",
+        "state_id": "smoke-refl",
+        "status": "OK",
+        "tactic": "rw",
+        "thinking_chars": 0
+      },
+      {
+        "completion_tokens": 8,
+        "done_reason": "stop",
+        "failure_detail": "",
+        "latency_ms": 117,
+        "prompt_tokens": 60,
+        "raw_output": "{\"tactic\": \"intro\"}",
+        "state_id": "smoke-intro",
+        "status": "OK",
+        "tactic": "intro",
+        "thinking_chars": 0
+      },
+      {
+        "completion_tokens": 8,
+        "done_reason": "stop",
+        "failure_detail": "",
+        "latency_ms": 115,
+        "prompt_tokens": 67,
+        "raw_output": "{\"tactic\": \"simp\"}",
+        "state_id": "smoke-list-append-nil",
+        "status": "OK",
+        "tactic": "simp",
+        "thinking_chars": 0
+      },
+      {
+        "completion_tokens": 9,
+        "done_reason": "stop",
+        "failure_detail": "",
+        "latency_ms": 117,
+        "prompt_tokens": 86,
+        "raw_output": "{\"tactic\": \"apply hp\"}",
+        "state_id": "smoke-two-goals",
+        "status": "OK",
+        "tactic": "apply hp",
+        "thinking_chars": 0
+      }
+    ],
+    "solver_digest": "08cec30273a7eb5477238863e9d3403caa386b4d1c6d499294d383a804b99b25",
+    "statuses": [
+      "OK",
+      "OK",
+      "OK",
+      "OK",
+      "OK"
+    ],
+    "wall_clock_s": 2.5
+  },
+  {
+    "model": "gemma4:12b",
+    "model_digest": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c",
+    "n": 5,
+    "ok": 5,
+    "rows": [
+      {
+        "completion_tokens": 13,
+        "done_reason": "stop",
+        "failure_detail": "",
+        "latency_ms": 2430,
+        "prompt_tokens": 64,
+        "raw_output": "{\"tactic\": \"rw [add_comm]\"}",
+        "state_id": "smoke-add-comm",
+        "status": "OK",
+        "tactic": "rw [add_comm]",
+        "thinking_chars": 0
+      },
+      {
+        "completion_tokens": 9,
+        "done_reason": "stop",
+        "failure_detail": "",
+        "latency_ms": 271,
+        "prompt_tokens": 59,
+        "raw_output": "{\"tactic\": \"reflexivity\"}",
+        "state_id": "smoke-refl",
+        "status": "OK",
+        "tactic": "reflexivity",
+        "thinking_chars": 0
+      },
+      {
+        "completion_tokens": 8,
+        "done_reason": "stop",
+        "failure_detail": "",
+        "latency_ms": 260,
+        "prompt_tokens": 62,
+        "raw_output": "{\"tactic\": \"intro\"}",
+        "state_id": "smoke-intro",
+        "status": "OK",
+        "tactic": "intro",
+        "thinking_chars": 0
+      },
+      {
+        "completion_tokens": 8,
+        "done_reason": "stop",
+        "failure_detail": "",
+        "latency_ms": 255,
+        "prompt_tokens": 69,
+        "raw_output": "{\"tactic\": \"simp\"}",
+        "state_id": "smoke-list-append-nil",
+        "status": "OK",
+        "tactic": "simp",
+        "thinking_chars": 0
+      },
+      {
+        "completion_tokens": 9,
+        "done_reason": "stop",
+        "failure_detail": "",
+        "latency_ms": 277,
+        "prompt_tokens": 88,
+        "raw_output": "{\"tactic\": \"exact hp\"}",
+        "state_id": "smoke-two-goals",
+        "status": "OK",
+        "tactic": "exact hp",
+        "thinking_chars": 0
+      }
+    ],
+    "solver_digest": "246d658ee8c52d8abd595c7317ada1582357f6366908a58e55cfada5add178b6",
+    "statuses": [
+      "OK",
+      "OK",
+      "OK",
+      "OK",
+      "OK"
+    ],
+    "wall_clock_s": 3.5
+  },
+  {
+    "model": "gemma4:31b",
+    "model_digest": "6316f0629137b426c9d9b853ffc4c8209589f30ee39aebede6285096c0ff47e7",
+    "n": 5,
+    "ok": 5,
+    "rows": [
+      {
+        "completion_tokens": 15,
+        "done_reason": "stop",
+        "failure_detail": "",
+        "latency_ms": 6548,
+        "prompt_tokens": 64,
+        "raw_output": "{\"tactic\": \"rw [Nat.add_comm]\"}",
+        "state_id": "smoke-add-comm",
+        "status": "OK",
+        "tactic": "rw [Nat.add_comm]",
+        "thinking_chars": 0
+      },
+      {
+        "completion_tokens": 9,
+        "done_reason": "stop",
+        "failure_detail": "",
+        "latency_ms": 616,
+        "prompt_tokens": 59,
+        "raw_output": "{\"tactic\": \"rfl\"}",
+        "state_id": "smoke-refl",
+        "status": "OK",
+        "tactic": "rfl",
+        "thinking_chars": 0
+      },
+      {
+        "completion_tokens": 10,
+        "done_reason": "stop",
+        "failure_detail": "",
+        "latency_ms": 646,
+        "prompt_tokens": 62,
+        "raw_output": "{\"tactic\": \"intro p q\"}",
+        "state_id": "smoke-intro",
+        "status": "OK",
+        "tactic": "intro p q",
+        "thinking_chars": 0
+      },
+      {
+        "completion_tokens": 8,
+        "done_reason": "stop",
+        "failure_detail": "",
+        "latency_ms": 582,
+        "prompt_tokens": 69,
+        "raw_output": "{\"tactic\": \"simp\"}",
+        "state_id": "smoke-list-append-nil",
+        "status": "OK",
+        "tactic": "simp",
+        "thinking_chars": 0
+      },
+      {
+        "completion_tokens": 9,
+        "done_reason": "stop",
+        "failure_detail": "",
+        "latency_ms": 622,
+        "prompt_tokens": 88,
+        "raw_output": "{\"tactic\": \"exact hp\"}",
+        "state_id": "smoke-two-goals",
+        "status": "OK",
+        "tactic": "exact hp",
+        "thinking_chars": 0
+      }
+    ],
+    "solver_digest": "a4b21ebe27f3bd14fc419ce9460130ace47223498314f8dce540209059b1c2a8",
+    "statuses": [
+      "OK",
+      "OK",
+      "OK",
+      "OK",
+      "OK"
+    ],
+    "wall_clock_s": 9.0
+  },
+  {
+    "model": "gemma4:e4b",
+    "model_digest": "c6eb396dbd5992bbe3f5cdb947e8bbc0ee413d7c17e2beaae69f5d569cf982eb",
+    "n": 5,
+    "ok": 5,
+    "rows": [
+      {
+        "completion_tokens": 15,
+        "done_reason": "stop",
+        "failure_detail": "",
+        "latency_ms": 3816,
+        "prompt_tokens": 60,
+        "raw_output": "{\"tactic\": \"rw [Nat.add_comm]\"}",
+        "state_id": "smoke-add-comm",
+        "status": "OK",
+        "tactic": "rw [Nat.add_comm]",
+        "thinking_chars": 0
+      },
+      {
+        "completion_tokens": 9,
+        "done_reason": "stop",
+        "failure_detail": "",
+        "latency_ms": 153,
+        "prompt_tokens": 55,
+        "raw_output": "{\"tactic\": \"rfl\"}",
+        "state_id": "smoke-refl",
+        "status": "OK",
+        "tactic": "rfl",
+        "thinking_chars": 0
+      },
+      {
+        "completion_tokens": 8,
+        "done_reason": "stop",
+        "failure_detail": "",
+        "latency_ms": 140,
+        "prompt_tokens": 58,
+        "raw_output": "{\"tactic\": \"intro\"}",
+        "state_id": "smoke-intro",
+        "status": "OK",
+        "tactic": "intro",
+        "thinking_chars": 0
+      },
+      {
+        "completion_tokens": 9,
+        "done_reason": "stop",
+        "failure_detail": "",
+        "latency_ms": 145,
+        "prompt_tokens": 65,
+        "raw_output": "{\"tactic\": \"rfl\"}",
+        "state_id": "smoke-list-append-nil",
+        "status": "OK",
+        "tactic": "rfl",
+        "thinking_chars": 0
+      },
+      {
+        "completion_tokens": 8,
+        "done_reason": "stop",
+        "failure_detail": "",
+        "latency_ms": 146,
+        "prompt_tokens": 84,
+        "raw_output": "{\"tactic\": \"assumption\"}",
+        "state_id": "smoke-two-goals",
+        "status": "OK",
+        "tactic": "assumption",
+        "thinking_chars": 0
+      }
+    ],
+    "solver_digest": "051d055ed8f49bf125fab7e78f41cfd1ef11bbebe8c3a9f637710efd31295699",
+    "statuses": [
+      "OK",
+      "OK",
+      "OK",
+      "OK",
+      "OK"
+    ],
+    "wall_clock_s": 4.4
+  },
+  {
+    "model": "qwen3.6:27b-mlx",
+    "model_digest": "d49fd9e0da45e486918c87318b866e5924e37ad5841db58763900297d9616ee7",
+    "n": 5,
+    "ok": 5,
+    "rows": [
+      {
+        "completion_tokens": 11,
+        "done_reason": "stop",
+        "failure_detail": "",
+        "latency_ms": 7720,
+        "prompt_tokens": 65,
+        "raw_output": "{\"tactic\": \"rw [add_comm]\"}",
+        "state_id": "smoke-add-comm",
+        "status": "OK",
+        "tactic": "rw [add_comm]",
+        "thinking_chars": 0
+      },
+      {
+        "completion_tokens": 8,
+        "done_reason": "stop",
+        "failure_detail": "",
+        "latency_ms": 1388,
+        "prompt_tokens": 60,
+        "raw_output": "{\"tactic\": \"rfl\"}",
+        "state_id": "smoke-refl",
+        "status": "OK",
+        "tactic": "rfl",
+        "thinking_chars": 0
+      },
+      {
+        "completion_tokens": 14,
+        "done_reason": "stop",
+        "failure_detail": "",
+        "latency_ms": 606,
+        "prompt_tokens": 63,
+        "raw_output": "{\"tactic\": \"intro p; intro q; exact p\"}",
+        "state_id": "smoke-intro",
+        "status": "OK",
+        "tactic": "intro p; intro q; exact p",
+        "thinking_chars": 0
+      },
+      {
+        "completion_tokens": 7,
+        "done_reason": "stop",
+        "failure_detail": "",
+        "latency_ms": 399,
+        "prompt_tokens": 70,
+        "raw_output": "{\"tactic\": \"simp\"}",
+        "state_id": "smoke-list-append-nil",
+        "status": "OK",
+        "tactic": "simp",
+        "thinking_chars": 0
+      },
+      {
+        "completion_tokens": 8,
+        "done_reason": "stop",
+        "failure_detail": "",
+        "latency_ms": 471,
+        "prompt_tokens": 91,
+        "raw_output": "{\"tactic\": \"exact hp\"}",
+        "state_id": "smoke-two-goals",
+        "status": "OK",
+        "tactic": "exact hp",
+        "thinking_chars": 0
+      }
+    ],
+    "solver_digest": "a775592df23efae46f5146d128165c3886af0cb9adcb61693ebc48707f977c18",
+    "statuses": [
+      "OK",
+      "OK",
+      "OK",
+      "OK",
+      "OK"
+    ],
+    "wall_clock_s": 10.6
+  }
+]

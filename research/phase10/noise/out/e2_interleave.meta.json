@@ -1,0 +1,71 @@
+{
+  "environment": {
+    "arch": "arm64",
+    "architecture": "qwen3_5",
+    "captured_utc": "2026-09-08T21:35:23Z",
+    "context_limit": 262144,
+    "frozen_decoding": {
+      "min_p": 0.0,
+      "num_ctx": 32768,
+      "num_predict": 128,
+      "presence_penalty": 0.0,
+      "repeat_penalty": 1.0,
+      "seed": 20260908,
+      "temperature": 0.0,
+      "top_k": 20,
+      "top_p": 0.95
+    },
+    "host_cpu": "Apple M5 Max",
+    "host_memory_bytes": "51539607552",
+    "host_model": "Mac17,6",
+    "macos": "26.6.2",
+    "model_digest": "d49fd9e0da45e486918c87318b866e5924e37ad5841db58763900297d9616ee7",
+    "model_name": "qwen3.6:27b-mlx",
+    "ollama_version": "0.33.2",
+    "output_schema_sha256": "9b25cba2450affa8cae91c864b059aeadc3bb0ed5ab2766a962495e2ed4f3e0b",
+    "parameter_size": "27.8B",
+    "parser": "qwen3.5",
+    "prompt_template_sha256": "95a4e049fca802876995f8b235573ddaa22e55964d74f4efb14579f4f5cee6ef",
+    "python": "3.14.7",
+    "quantization": "nvfp4",
+    "renderer": "qwen3.5",
+    "wire_flags": {
+      "raw": false,
+      "stream": false,
+      "think": false
+    }
+  },
+  "experiment": "e2_interleave",
+  "fillers_available": 17,
+  "probe": {
+    "n_goals": 1,
+    "problem_id": "vtask-655d75c625ff2153d38dd986",
+    "prompt_chars": 303,
+    "prompt_sha256": "9f00454a23a42b4cd5da70931a7783702785669a34c54da8ecd626b237270def",
+    "source": "fresh-lean-repl",
+    "state_id": "vtask-655d75c625ff2153d38dd986#reset"
+  },
+  "question": "does interleaving other prompts change the answer to a fixed prompt?",
+  "repeats": 30,
+  "summary": {
+    "cross_arm": {
+      "solo_modal_equals_interleaved_modal": "True"
+    },
+    "interleaved": {
+      "calls": 30,
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_response_sha256": "b37061ae7d38bd0d79884673d7fa8e4a7510bdd8c8b708842073a5e646a66b4d",
+      "modal_tactic_rate": 1.0
+    },
+    "solo": {
+      "calls": 30,
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_response_sha256": "b37061ae7d38bd0d79884673d7fa8e4a7510bdd8c8b708842073a5e646a66b4d",
+      "modal_tactic_rate": 1.0
+    }
+  }
+}

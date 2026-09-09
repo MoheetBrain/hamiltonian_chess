@@ -31,12 +31,30 @@ Design constraints, each taken from a measurement rather than from taste
    ``terminal_status=CLOSED_VERIFIED`` unless it carries a ``TERMINAL_KERNEL`` evidence record
    whose verdict is ``KERNEL_VERIFIED`` and which reports no ``sorryAx``.
 
+5. **A SOLVER action must say what bound it to a policy and to a state.**  V05-01 measured that
+   an oracle-fed episode and an autonomous one were byte-identical in shape: ``actor`` was a
+   string literal and nothing recorded where the tactic came from.
+   :class:`ActionEvidence` is the binding and :attr:`TrajectoryAction.provenance_digest` is where
+   it lands, inside ``semantic_core`` and therefore inside ``content_hash``.  Read
+   :class:`ActionEvidence` for what this does and, more importantly, what it cannot do.
+
+   *Records written before the binding existed.*  ``provenance_digest`` defaults to ``""`` and is
+   written into neither ``to_dict`` nor ``semantic_core`` when empty, so every already-published
+   artefact — ``artifacts/trajectory/hc_v0_5_smoke.json`` included — still loads, still
+   round-trips, and keeps its original ``content_hash`` byte-for-byte.  That is deliberate and it
+   is only half the choice: the other half is that such a record **does not pass the new SOLVER
+   check**.  ``hc_v0_5_smoke.json``'s episodes claim ``actor=SOLVER`` with no binding at all, and
+   :meth:`VerifiedTrajectory.require_attributed_actions` refuses exactly that.  Readable is not
+   the same as believed; back-dating provenance onto an old artefact would be the one outcome
+   worse than refusing it.
+
 Nothing in this module talks to Lean; it is pure data and validation, so its tests run anywhere.
 """
 
 from __future__ import annotations
 
 import hashlib
+from collections.abc import Mapping
 from dataclasses import dataclass
 from enum import StrEnum
 from typing import Any, Self
@@ -46,6 +64,10 @@ from arena.canonical.schema import canonical_json, stable_hash
 #: Schema identity of the record defined in this module.  Distinct from ``arena-canonical-v0.1.0``
 #: on purpose: this schema refuses to claim a canonical form for a Lean goal.
 TRAJECTORY_SCHEMA_VERSION = "arena-verified-trajectory-v0"
+
+#: Schema identity of :class:`ActionEvidence`.  Part of every ``provenance_digest``, so a change
+#: to what the binding contains changes the digest rather than silently re-interpreting old ones.
+ACTION_EVIDENCE_SCHEMA_VERSION = "arena-action-evidence-v0"
 
 
 def content_sha256(text: str) -> str:
@@ -315,6 +337,100 @@ class BackendStateEnvelope:
         return envelope
 
 
+class ActionProvenanceError(ValueError):
+    """An action claimed an origin it cannot substantiate.  Never downgraded to a warning."""
+
+
+@dataclass(frozen=True, slots=True)
+class ActionEvidence:
+    """Why one action is attributable to one policy that was looking at one particular state.
+
+    V05-01: before this existed, nothing in the record distinguished *"the Solver proposed this
+    while looking at this state"* from *"the caller handed the task mathlib's recorded tactic"*.
+    An oracle-fed episode was byte-shaped like an autonomous one, and no reader of the artefact
+    and no run of ``verify_bank`` could tell the two apart.
+
+    The four fields are the whole claim:
+
+    * ``policy_digest`` -- ``SolverIdentity.digest``: *which* policy, down to its served model
+      digest, its prompt template and its wire flags;
+    * ``prompt_sha256`` -- the exact bytes that policy was asked to complete;
+    * ``observation_digest`` -- the projection the task itself handed out immediately before the
+      action, identity **and** rendered bytes (see
+      :func:`arena.trajectory.task.observation_digest_of`).  ``VerifiedTask.step`` refuses an
+      action whose value does not match the projection it just returned, so an action produced
+      from some *other* state -- a recorded proof read out of the source file, say -- cannot be
+      stepped as though it were a response to this one;
+    * ``decoding_digest`` -- the frozen decoding parameters, so a temperature change is a
+      different binding rather than an invisible one.
+
+    **What this does not do, stated plainly.**  It **cannot cryptographically prove that a
+    black-box model emitted a token.**  Nothing available here can: the runtime is not attesting
+    its own output, and a caller determined to forge a proposal can compute these four digests
+    over a tactic it chose itself.  What it does do is exactly three things: it **binds the
+    action to a specific policy identity and a specific observed state**, it **makes that binding
+    re-derivable by a reader** (the digest is inside ``content_hash``, so ``verify_bank``
+    recomputes it), and it **makes an evidence-free SOLVER claim structurally impossible** --
+    :meth:`VerifiedTrajectory.require_attributed_actions` refuses to emit or verify one.  That
+    turns "this was autonomous" from a string literal into a checkable statement whose forgery
+    requires deliberate, recorded fabrication rather than a keyword argument.
+
+    Every field is required.  A partially filled evidence object is a partially filled claim, and
+    is refused at construction rather than digested into something that looks complete.
+    """
+
+    #: ``SolverIdentity.digest`` of the policy that produced the action.
+    policy_digest: str
+    #: SHA-256 of the exact prompt bytes that policy was given.
+    prompt_sha256: str
+    #: Digest of the projection the task handed out immediately before this action.
+    observation_digest: str
+    #: Digest of the decoding parameters in force for the call.
+    decoding_digest: str
+    schema_version: str = ACTION_EVIDENCE_SCHEMA_VERSION
+
+    def __post_init__(self) -> None:
+        missing = [
+            name
+            for name in ("policy_digest", "prompt_sha256", "observation_digest", "decoding_digest")
+            if not str(getattr(self, name)).strip()
+        ]
+        if missing:
+            raise ActionProvenanceError(
+                f"ActionEvidence is incomplete: {sorted(missing)} empty. An action's provenance "
+                "is a single claim; half of one is not a weaker claim, it is an unfalsifiable one"
+            )
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "schema": self.schema_version,
+            "policy_digest": self.policy_digest,
+            "prompt_sha256": self.prompt_sha256,
+            "observation_digest": self.observation_digest,
+            "decoding_digest": self.decoding_digest,
+        }
+
+    @classmethod
+    def from_dict(cls, payload: Mapping[str, Any]) -> Self:
+        return cls(
+            policy_digest=str(payload["policy_digest"]),
+            prompt_sha256=str(payload["prompt_sha256"]),
+            observation_digest=str(payload["observation_digest"]),
+            decoding_digest=str(payload["decoding_digest"]),
+            schema_version=str(payload.get("schema", ACTION_EVIDENCE_SCHEMA_VERSION)),
+        )
+
+    @property
+    def provenance_digest(self) -> str:
+        """The single value stamped into :attr:`TrajectoryAction.provenance_digest`.
+
+        Deterministic across processes, so a reader holding the same four inputs re-derives it
+        and a reader holding only the trajectory can see that *some* binding was recorded.
+        """
+
+        return stable_hash(self.to_dict())
+
+
 @dataclass(frozen=True, slots=True)
 class TrajectoryAction:
     """One attempted-and-accepted transition.  Rejected attempts live in ``verifier_evidence``."""
@@ -333,6 +449,12 @@ class TrajectoryAction:
     kernel_steps: int = 1
     #: Wall time.  Excluded from every content hash: it is machine load, not content.
     wall_ms: int = 0
+    #: :attr:`ActionEvidence.provenance_digest` for a SOLVER action, ``""`` when the action
+    #: carries no such binding.  ``""`` is the honest value for a ``REFERENCE`` replay (no policy
+    #: chose it) and for a record written before the binding existed; it is **not** an acceptable
+    #: value for an action a trajectory wants to report as ``SOLVER`` --
+    #: :meth:`VerifiedTrajectory.require_attributed_actions` is where that is enforced.
+    provenance_digest: str = ""
 
     @property
     def tactic_head(self) -> str:
@@ -358,6 +480,10 @@ class TrajectoryAction:
         }
         if self.annotated_tactic is not None:
             payload["annotated_tactic"] = [self.annotated_tactic[0], list(self.annotated_tactic[1])]
+        # Written only when there is a binding to write.  An absent key is an absent claim, and
+        # records made before the binding existed round-trip byte-for-byte.
+        if self.provenance_digest:
+            payload["provenance_digest"] = self.provenance_digest
         return payload
 
     @classmethod
@@ -374,10 +500,20 @@ class TrajectoryAction:
             ),
             premises_used=tuple(payload.get("premises_used", ()) or ()),
             wall_ms=int(payload.get("wall_ms", 0)),
+            # A record written before the binding existed simply has no key here.  A missing
+            # digest reads as *absent*, never as a load error: the artefacts this project has
+            # already published stay readable, and are refused by the SOLVER check instead.
+            provenance_digest=str(payload.get("provenance_digest", "") or ""),
         )
 
     def semantic_core(self) -> dict[str, Any]:
-        """The part of an action that a re-run must reproduce.  Timing is excluded."""
+        """The part of an action that a re-run must reproduce.  Timing is excluded.
+
+        ``provenance_digest`` is included **only when present**, exactly as the state envelope's
+        session binding is: that keeps every already-published record's ``content_hash``
+        byte-for-byte identical while putting every new binding inside the hash, where
+        ``verify_bank`` re-derives it rather than trusting a side-car field.
+        """
 
         return {
             "index": self.index,
@@ -385,6 +521,7 @@ class TrajectoryAction:
             "to_state_id": self.to_state_id,
             "actor": self.actor.value,
             "tactic": self.tactic,
+            **({"provenance_digest": self.provenance_digest} if self.provenance_digest else {}),
         }
 
 
@@ -846,6 +983,43 @@ class VerifiedTrajectory:
                 f"trajectory {self.trajectory_id} contains actions by "
                 f"{sorted(a.value for a in self.actors)}; it cannot be reported as a "
                 f"{actor.value} result"
+            )
+
+    @property
+    def unattributed_action_indices(self) -> tuple[int, ...]:
+        """Indices of actions carrying no :class:`ActionEvidence` binding.
+
+        Empty is the *required* answer for a ``SOLVER`` trajectory and the *expected* one for a
+        ``REFERENCE`` replay, where no policy chose anything and there is nothing to bind to.
+        """
+
+        return tuple(action.index for action in self.actions if not action.provenance_digest)
+
+    def require_attributed_actions(self, actor: Actor) -> None:
+        """Refuse a ``SOLVER`` claim over actions that carry no provenance binding (V05-01).
+
+        This is the check that makes "an oracle-fed episode is byte-shaped like an autonomous
+        one" false.  It does not, and cannot, prove that a model emitted the tactic; see
+        :class:`ActionEvidence`.  It proves that *something* recorded which policy identity and
+        which observed state the action was bound to, and that the binding is inside
+        ``content_hash`` where a reader re-derives it.  Relabelling a recorded replay ``SOLVER``
+        no longer produces a record that verifies, because a replay has no such binding to
+        relabel.
+
+        ``REFERENCE`` is unaffected on purpose: the whole point of a replay is that mathlib chose
+        the tactic, and a replay claiming policy evidence would be the more alarming record.
+        """
+
+        if actor is not Actor.SOLVER:
+            return
+        missing = self.unattributed_action_indices
+        if missing:
+            raise TrajectoryIntegrityError(
+                f"trajectory {self.trajectory_id} claims actor=SOLVER but actions "
+                f"{list(missing)} carry no provenance digest: nothing in the record binds them "
+                "to a policy identity or to the state that policy was shown, so this is "
+                "indistinguishable from a replay of a recorded proof and may not be emitted or "
+                "verified as an autonomous result"
             )
 
     def tactic_head_counts(self) -> dict[str, int]:

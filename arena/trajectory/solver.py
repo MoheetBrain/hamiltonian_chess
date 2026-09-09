@@ -90,6 +90,7 @@ __all__ = [
     "ProposalStatus",
     "RenderedObservation",
     "ScriptedSolver",
+    "solver_for",
     "Solver",
     "SolverIdentity",
     "SolverIdentityMismatch",
@@ -502,7 +503,43 @@ def identity_from_live(
         decoding=_decoding_pairs(FROZEN_DECODING),
         wire_flags=_wire_pairs(WIRE_FLAGS),
         lineage="UNKNOWN",
-        lineage_evidence=INSTALLED_LINEAGE_EVIDENCE,
+        # `INSTALLED_LINEAGE_EVIDENCE` is written about qwen3.6:27b-mlx specifically.  Attaching
+        # it to another served model would be a fabricated provenance claim, so a different model
+        # gets an evidence string that says only what /api/show actually established about IT.
+        lineage_evidence=(
+            INSTALLED_LINEAGE_EVIDENCE
+            if model_name == INSTALLED_MODEL_NAME
+            else (
+                f"established: served by ollama {version} as {model_name!r}, digest {digest}, "
+                f"architecture {architecture!r}, quantization "
+                f"{details.get('quantization_level', '')!r}. NOT established: training data, base "
+                "checkpoint, fine-tuning history, or any relation to any other model in this "
+                "study. Same-family names are NOT evidence of shared lineage."
+            )
+        ),
+    )
+
+
+def solver_for(
+    model_name: str,
+    *,
+    endpoint: str = OLLAMA_ENDPOINT,
+    transport: Transport | None = None,
+) -> OllamaTacticSolver:
+    """A Solver bound to whichever installed model is named, under the SAME frozen conditions.
+
+    The cross-model check in HC-V0.6 is only a check if the models differ and nothing else does.
+    Everything this project controls -- prompt template, output grammar, decoding options, wire
+    flags, ``num_ctx`` -- comes from module constants and is therefore identical for every model;
+    only the served weights, tokenizer and chat renderer change, and those are exactly the thing
+    under comparison.  ``num_ctx`` is pinned rather than scaled to each model's own limit because
+    it was measured to change the *policy*, not only the capacity (``docs/HC_V0_6_RUNTIME_NOISE.md``).
+    """
+
+    return OllamaTacticSolver(
+        identity_from_live(model_name, endpoint=endpoint, transport=transport),
+        endpoint=endpoint,
+        transport=transport,
     )
 
 

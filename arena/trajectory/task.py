@@ -27,6 +27,18 @@ that is **structural, not conventional**:
   window over the observation bytes and compares **digests** -- it can recognise the answer
   without containing it.
 
+All four of those protect the *environment* from the answer.  V05-01 measured what they do not
+protect: the **record** from the caller.  A caller holding the LeanDojo record can hand the task
+the recorded tactic through a Solver-shaped object, and before
+:class:`~arena.trajectory.schema.ActionEvidence` existed the emitted artefact was byte-identical
+to an autonomous one -- ``actor=SOLVER``, ``A_NATIVE_VERIFIED``, passing ``verify_bank
+--relive``.  :meth:`VerifiedTask.step` therefore takes an optional ``evidence`` argument and
+**refuses** an action whose ``observation_digest`` is not the digest of the projection this task
+itself just returned, and :meth:`VerifiedTask.emit_trajectory` refuses a ``SOLVER`` claim over
+any episode with an unattributed accepted action.  That does not prove a model emitted a token
+-- nothing here could -- and the exact limit is written out in
+:class:`~arena.trajectory.schema.ActionEvidence`.
+
 This module composes ``LeanTrajectoryArena``; it does not modify or reimplement it.
 
 Where the task's status and the arena's status can differ
@@ -88,6 +100,8 @@ from arena.trajectory.lean_backend import (
     check_toolchain,
 )
 from arena.trajectory.schema import (
+    ActionEvidence,
+    ActionProvenanceError,
     Actor,
     BackendStateEnvelope,
     SourceVersion,
@@ -117,6 +131,22 @@ class ReferenceProofExposureError(RuntimeError):
 
 class BackendOutcomeError(RuntimeError):
     """The backend reported an outcome that cannot be lowered into the manual's vocabulary."""
+
+
+def observation_digest_of(projection: WorkspaceProjection) -> str:
+    """Digest the exact projection a task handed out: declared identity **and** rendered bytes.
+
+    This is the value :attr:`~arena.trajectory.schema.ActionEvidence.observation_digest` must
+    carry, and it deliberately covers both halves of a projection.  The identity alone would make
+    two ``R_ONLY`` renderings of one state interchangeable — which is the *point* of ``R_ONLY``
+    for a parity comparison, and exactly the wrong granularity here: the claim being bound is
+    "the policy was looking at *these bytes*", so an action produced from ``R_B``'s rendering
+    must not validate against ``R_A``'s.
+
+    Deterministic across processes: a reader holding the projection re-derives the digest.
+    """
+
+    return stable_hash(projection.to_dict())
 
 
 # =============================================================================================
@@ -813,6 +843,9 @@ class TaskEpisodeReport:
     start_state_identity: dict[str, Any] | None
     final_state_identity: dict[str, Any] | None
     action_log: tuple[dict[str, Any], ...] = ()
+    #: Accepted transitions stepped without :class:`~arena.trajectory.schema.ActionEvidence`.
+    #: Nonzero means this episode may not be reported as an autonomous SOLVER result (V05-01).
+    actions_without_provenance: int = 0
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -833,6 +866,7 @@ class TaskEpisodeReport:
             "start_state_identity": self.start_state_identity,
             "final_state_identity": self.final_state_identity,
             "action_log": list(self.action_log),
+            "actions_without_provenance": self.actions_without_provenance,
         }
 
 
@@ -862,7 +896,7 @@ class TaskArena(Protocol):
         self, probe: LeanTheoremProbe, *, hide_reference: Sequence[str] | None = None
     ) -> ArenaObservation: ...
 
-    def step(self, tactic: str) -> ArenaStep: ...
+    def step(self, tactic: str, *, evidence: ActionEvidence | None = ...) -> ArenaStep: ...
 
     def abandon(self, reason: str) -> TerminalStatus: ...
 
@@ -885,7 +919,8 @@ class VerifiedTask:
         task = VerifiedTask.from_probe(probe, contract=contract)   # seals the reference proof
         projection = task.reset()
         while not task.is_terminal():
-            outcome = task.step(my_policy(projection))
+            tactic, evidence = my_policy(projection)   # evidence names *this* projection
+            outcome = task.step(tactic, evidence=evidence)
             projection = outcome.observation
 
     The Solver may play anything; Lean decides.  ``task.reference_seal`` reports how long the
@@ -901,10 +936,12 @@ class VerifiedTask:
         "_current",
         "_episode_index",
         "_episode_retries_used",
+        "_last_projection",
         "_probe",
         "_run_failures",
         "_session",
         "_start_identity",
+        "_unattributed_actions",
         "_started_monotonic",
         "_terminal",
         "_terminal_cause",
@@ -994,6 +1031,12 @@ class VerifiedTask:
         self._accepted_tactics = 0
         self._action_log: list[dict[str, Any]] = []
         self._started_monotonic = 0.0
+        #: The projection handed out by the last ``reset()``/``observe()``.  An action's evidence
+        #: is checked against this and nothing else.
+        self._last_projection: WorkspaceProjection | None = None
+        #: Accepted transitions this episode that carried no :class:`ActionEvidence`.  Counted, so
+        #: an evidence-free episode is a recorded fact rather than an indistinguishable one.
+        self._unattributed_actions = 0
 
     # -- construction ---------------------------------------------------------------
 
@@ -1169,6 +1212,8 @@ class VerifiedTask:
         self._accepted_tactics = 0
         self._action_log = []
         self._started_monotonic = time.monotonic()
+        self._last_projection = None
+        self._unattributed_actions = 0
 
         arena = self._arena_factory()
         self._arena = arena
@@ -1181,7 +1226,12 @@ class VerifiedTask:
         return self.observe()
 
     def observe(self) -> WorkspaceProjection:
-        """``Ω_L``'s input and output: the current workspace, and what it declares."""
+        """``Ω_L``'s input and output: the current workspace, and what it declares.
+
+        The projection returned here is *remembered*: it is the one an action's
+        :class:`~arena.trajectory.schema.ActionEvidence` must name, and the only one
+        :meth:`step` will accept a binding against.
+        """
 
         envelope = self._require_state()
         projection = project_workspace(
@@ -1198,6 +1248,7 @@ class VerifiedTask:
         self.leakage_guard.assert_clean(
             canonical_json(dict(projection.rendered)), where="the observation"
         )
+        self._last_projection = projection
         return projection
 
     def state_identity(self) -> KernelStateIdentity:
@@ -1205,11 +1256,31 @@ class VerifiedTask:
 
         return self._identity(self._require_state())
 
-    def step(self, action: str) -> TaskStepResult:
+    def step(self, action: str, *, evidence: ActionEvidence | None = None) -> TaskStepResult:
         """Apply one model-facing action.  Lean decides; this method never consults the answer.
 
         Nothing reachable from ``self`` holds reference-proof text (see the module docstring), so
         there is no fallback path to take even by accident.
+
+        ``evidence`` closes the other half of that guarantee (V05-01).  The seal protects the
+        *environment* from the answer; it never protected the *record* from the caller, and the
+        caller of an HC-V0.5 runner is the same process that just read the LeanDojo record.  When
+        evidence is supplied it is checked **before the action reaches Lean**: its
+        ``observation_digest`` must equal :func:`observation_digest_of` of the projection this
+        task itself last handed out.  An action produced from anything else — a recorded proof, a
+        different state, a stale observation — is refused with
+        :class:`~arena.trajectory.schema.ActionProvenanceError` and never played.
+
+        Evidence is optional so that scripted and offline play remain possible.  Its absence is
+        counted (:attr:`unattributed_actions`), written into the action log, and carried into the
+        provenance notes; and an episode with even one unattributed accepted action **cannot be
+        emitted as a SOLVER trajectory** — :meth:`emit_trajectory` refuses it.
+
+        What a *present* binding establishes, and what it does not, is stated exactly once, in
+        :class:`~arena.trajectory.schema.ActionEvidence`.  In short: it cannot cryptographically
+        prove a black-box model emitted a token; it binds the action to a specific policy identity
+        and a specific observed state, makes that binding re-derivable by a reader, and makes an
+        evidence-free SOLVER claim structurally impossible.
         """
 
         arena = self._require_arena()
@@ -1218,6 +1289,8 @@ class VerifiedTask:
                 f"episode is already terminal ({self._terminal.value}); call reset() to start a "
                 "new one rather than stepping a finished episode"
             )
+        if evidence is not None:
+            self._require_bound_evidence(evidence)
         started = time.monotonic()
 
         decoded, decode_error = decode_action(action)
@@ -1229,9 +1302,12 @@ class VerifiedTask:
                 reached_backend=False,
                 started=started,
                 info={"decode_error": decode_error},
+                evidence=evidence,
             )
 
-        outcome: ArenaStep = arena.step(decoded)
+        outcome: ArenaStep = (
+            arena.step(decoded) if evidence is None else arena.step(decoded, evidence=evidence)
+        )
         backend_outcome = str(outcome.info.get("outcome", StepOutcome.BACKEND_DEAD.value))
         result = classify_backend_outcome(backend_outcome)
         if result.advanced_state:
@@ -1255,7 +1331,18 @@ class VerifiedTask:
                 for key, value in outcome.info.items()
                 if key in {"tactic_head", "no_op_suspected", "n_goals", "wall_ms", "kernel"}
             },
+            evidence=evidence,
         )
+
+    @property
+    def unattributed_actions(self) -> int:
+        """Accepted transitions this episode that carried no :class:`ActionEvidence`.
+
+        Nonzero is not an error — scripted play is legitimate — but it is the reason
+        :meth:`emit_trajectory` will refuse a ``SOLVER`` claim over this episode.
+        """
+
+        return self._unattributed_actions
 
     def is_terminal(self) -> bool:
         return self._terminal.is_terminal
@@ -1344,6 +1431,7 @@ class VerifiedTask:
                 None if self._current is None else self._identity(self._current).to_dict()
             ),
             action_log=tuple(self._action_log),
+            actions_without_provenance=self._unattributed_actions,
         )
 
     def reward(self) -> float:
@@ -1358,6 +1446,12 @@ class VerifiedTask:
         ``OPEN``, so it is abandoned here with a reason naming the task's terminal, and the
         emitted record says ``ABANDONED``.  The task's own terminal stays authoritative and is
         written into the provenance notes so the two can never be confused.
+
+        ``actor=SOLVER`` is now a claim the record has to support.  ``build_trajectory`` asserts
+        it (V05-03) instead of stamping it, and refuses it outright when any accepted action was
+        stepped without :class:`~arena.trajectory.schema.ActionEvidence` (V05-01) — so an episode
+        driven by a scripted or oracle-fed caller raises here rather than emitting an artefact
+        that is byte-shaped like an autonomous one.
         """
 
         arena = self._require_arena()
@@ -1377,6 +1471,8 @@ class VerifiedTask:
                 f"task_terminal_status={self._terminal.value}",
                 f"task_terminal_outcome={self.terminal_outcome()}",
                 f"failure_policy={self.failure_policy.policy.value}",
+                f"actions_accepted={self._accepted_tactics}",
+                f"actions_without_provenance={self._unattributed_actions}",
             ),
         )
 
@@ -1391,6 +1487,31 @@ class VerifiedTask:
         if self._current is None:
             raise TaskStateError("reset() must be called before observe()")
         return self._current
+
+    def _require_bound_evidence(self, evidence: ActionEvidence) -> None:
+        """Refuse an action whose evidence does not name the projection this task just handed out.
+
+        This is the check that separates ``INTERACTIVE_TASK`` from ``TRAJECTORY_REPLAY`` in
+        evidence rather than in prose.  The recorded tactic of a mathlib proof was not produced
+        from a projection this task returned, so a caller feeding one cannot supply an
+        ``observation_digest`` that matches — not without first observing the state, which is the
+        one thing the check is asking it to have done.
+        """
+
+        projection = self._last_projection
+        if projection is None:
+            raise TaskStateError(
+                "reset() must be called before an action can be bound to an observation"
+            )
+        expected = observation_digest_of(projection)
+        if evidence.observation_digest != expected:
+            raise ActionProvenanceError(
+                "the action's evidence names a different observation than the one this task last "
+                f"returned (evidence {evidence.observation_digest[:16]}…, projection "
+                f"{expected[:16]}…): an action produced from some other state — a recorded proof, "
+                "a stale observation — is not a response to this one and is refused before Lean "
+                "sees it"
+            )
 
     def _identity(self, envelope: BackendStateEnvelope) -> KernelStateIdentity:
         return KernelStateIdentity.from_envelope(envelope, session=self._session)
@@ -1426,6 +1547,7 @@ class VerifiedTask:
         reached_backend: bool,
         started: float,
         info: Mapping[str, Any],
+        evidence: ActionEvidence | None = None,
     ) -> TaskStepResult:
         elapsed = time.monotonic() - started
         accepted = result.advanced_state
@@ -1441,6 +1563,8 @@ class VerifiedTask:
         )
         self._cost.add(cost)
 
+        if accepted and evidence is None:
+            self._unattributed_actions += 1
         if accepted:
             self._run_failures = 0
         elif result.attributable_to_solver:
@@ -1463,6 +1587,10 @@ class VerifiedTask:
             "terminal_outcome": outcome_name,
             "diagnostic": diagnostic,
             "cost": cost.to_dict(),
+            # V05-01: recorded per attempt, so "this episode was driven without provenance" is a
+            # visible fact in the report rather than something a reader has to infer.
+            "action_evidence": "ABSENT" if evidence is None else "PRESENT",
+            "provenance_digest": "" if evidence is None else evidence.provenance_digest,
         }
         self._action_log.append(entry)
         return TaskStepResult(

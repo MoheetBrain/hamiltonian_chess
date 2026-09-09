@@ -1,0 +1,837 @@
+{
+  "corpus": [
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/Analysis/SpecialFunctions/Trigonometric/Angle.lean::Real.Angle.sign_pi_add",
+      "prompt_chars": 172,
+      "prompt_sha256": "689d58647753d95bb4922a7003cd5255dbbe33b40ee7fbe633591e3bf0b61893",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "0"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/Data/Nat/Defs.lean::Nat.le_sqrt'",
+      "prompt_chars": 193,
+      "prompt_sha256": "eefcd17125d00ab065df0c73da9f48e6c6390a137c0f0f725778bd01a6a1e898",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "1"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/Analysis/SpecialFunctions/Trigonometric/Angle.lean::Real.Angle.sign_pi_add",
+      "prompt_chars": 194,
+      "prompt_sha256": "68b56920b613681cc67c39b304b823727fbb5ac33308484896cad0d088c3afc0",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "1"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/Data/Nat/Defs.lean::Nat.le_sqrt'",
+      "prompt_chars": 194,
+      "prompt_sha256": "c1d1316053b870e18567bdb01d2d6740551a5a51e96f53d402f45748223d958c",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "0"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/RingTheory/Ideal/Operations.lean::Ideal.pow_right_mono",
+      "prompt_chars": 239,
+      "prompt_sha256": "37dd2a982c6628ba7bb6181a4578dcdcaf6fe7f08e6f9783c5f75305be50c541",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "0"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/Init/Data/Ordering/Lemmas.lean::cmpUsing_eq_lt",
+      "prompt_chars": 240,
+      "prompt_sha256": "9d33bf63b7beca9abf7cb30fd72a93c953eef764125e33a5429139285912e99b",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "0"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/Order/Interval/Finset/Basic.lean::Finset.Icc_self",
+      "prompt_chars": 244,
+      "prompt_sha256": "661366c3c391185d94b86260749034f298658b887ccda579d9a8c194b8b2ad11",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "0"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/Data/List/Basic.lean::List.indexOf_cons_self",
+      "prompt_chars": 261,
+      "prompt_sha256": "5a3f2f76c1332536dcc31b430f7d90ebae43a71dc300e7eff29760ff3c6f226c",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "0"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/Data/List/Basic.lean::List.indexOf_cons_self",
+      "prompt_chars": 277,
+      "prompt_sha256": "755618ba3ad2c4e400efd6fe37a0ee051435f2d647f734c2f73818265b8fa6d2",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "1"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/RingTheory/OreLocalization/Basic.lean::OreLocalization.mul_inv",
+      "prompt_chars": 279,
+      "prompt_sha256": "58530141f378589b66a7e23779c6d36d6c29ee321c044c51ece47ca84a8f1c18",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "0"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/Data/List/Basic.lean::List.indexOf_cons_self",
+      "prompt_chars": 282,
+      "prompt_sha256": "95cbab829286048bab6ee7573063b742c7f5f2d69765a7cfd0408d4ebe917717",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "2"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/Order/ConditionallyCompleteLattice/Basic.lean::ciSup_const",
+      "prompt_chars": 283,
+      "prompt_sha256": "05cb1a6a6722ab5153b1ed48514211207da9e34bc2ae230a2879ebd9bc17bb4e",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "0"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/MeasureTheory/OuterMeasure/AE.lean::MeasureTheory.inter_ae_eq_empty_of_ae_eq_empty_right",
+      "prompt_chars": 291,
+      "prompt_sha256": "8a8916ad0bf2c7ac80b0bdf8acecc45381c368af270f4ec1d23cebf1aaee0f3d",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "0"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/Topology/MetricSpace/Pseudo/Defs.lean::tendsto_iff_dist_tendsto_zero",
+      "prompt_chars": 303,
+      "prompt_sha256": "9f00454a23a42b4cd5da70931a7783702785669a34c54da8ecd626b237270def",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "0"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/Order/Filter/Archimedean.lean::Filter.Tendsto.atBot_mul_const'",
+      "prompt_chars": 313,
+      "prompt_sha256": "2f44ef7673c9cb435ca634b4e31179fdbf34cf114a83efc60bedc7380e1e5fae",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "0"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/Topology/Category/CompHaus/Limits.lean::CompHaus.finiteCoproduct.ι_desc_apply",
+      "prompt_chars": 326,
+      "prompt_sha256": "0772bd7a3ed73f3a88ad6b982c960770099419270b75de401fb1a7a55571c8c0",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "0"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/LinearAlgebra/QuadraticForm/Basic.lean::QuadraticForm.polar_sub_right",
+      "prompt_chars": 356,
+      "prompt_sha256": "1e9c61ec983c80672a3a45618939f061748569f944969b11fd3cbe8c42ce997a",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "0"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/Algebra/BigOperators/Group/Finset.lean::Finset.eq_prod_range_div'",
+      "prompt_chars": 359,
+      "prompt_sha256": "90c51b3d33ddcc4c545114a88df6a52e73422422bb38fdf4a50fb6ad873d378b",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "1"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/Data/Set/Function.lean::Set.eqOn_univ",
+      "prompt_chars": 368,
+      "prompt_sha256": "a0db75effcdaf66ecf4dee010f6a762cc4ec8a4548eec0d3fc3d666beeece0d5",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "0"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/Analysis/ODE/Gronwall.lean::hasDerivAt_gronwallBound_shift",
+      "prompt_chars": 377,
+      "prompt_sha256": "cd7e99d95f11cfd9ef0d77c7113b08be401d9abf299affc5df3653856ec876e5",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "0"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/Algebra/BigOperators/Group/Finset.lean::Finset.eq_prod_range_div'",
+      "prompt_chars": 378,
+      "prompt_sha256": "247ba70fd9135a9d98612f542d0134ca3a1c70b926ea2934fc031f2b2cddcca9",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "0"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/Topology/CompactOpen.lean::ContinuousMap.image_coev",
+      "prompt_chars": 380,
+      "prompt_sha256": "f1bd726a41f5583252ebb4a3a6a6812de07978c5965983fa328d0dfddacb0188",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "0"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/Topology/Homeomorph.lean::Homeomorph.isCompact_preimage",
+      "prompt_chars": 402,
+      "prompt_sha256": "86ecc32a4a36fb1fd18c53ecb6d3b8862139092197bdf7cb6fffde0841ed3532",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "0"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/Combinatorics/Enumerative/DoubleCounting.lean::Finset.sum_card_bipartiteAbove_eq_sum_card_bipartiteBelow",
+      "prompt_chars": 421,
+      "prompt_sha256": "0520c8df02a4acff576bcd883fb11b8161dd29e597bae73559f10e7bc3e90629",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "0"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/RingTheory/PowerBasis.lean::PowerBasis.finrank",
+      "prompt_chars": 460,
+      "prompt_sha256": "1117f867d08caf50f86f01b162d6b29e55193e333ecc1444ce946a0ccf02a6fc",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "0"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/MeasureTheory/Measure/FiniteMeasureProd.lean::MeasureTheory.ProbabilityMeasure.map_prod_map",
+      "prompt_chars": 461,
+      "prompt_sha256": "1ef9f991168221458a78f4814a1e9537b6fee8034c6f3368a8e9f6755ffbf959",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "0"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/LinearAlgebra/Prod.lean::LinearEquiv.snd_comp_prodComm",
+      "prompt_chars": 462,
+      "prompt_sha256": "bba5cc0611e3d998692c6077e777cdc0db2795bed3ffa4f8098c3c4edc1775a6",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "0"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/LinearAlgebra/Dimension/Basic.lean::LinearMap.rank_le_of_surjective",
+      "prompt_chars": 469,
+      "prompt_sha256": "5729b042da209062ecc79f3e82e7cacc9feb8ef75a83923680944679d87cb07b",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "0"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/Algebra/Lie/Weights/Basic.lean::LieModule.exists_weightSpace_zero_le_ker_of_isNoetherian",
+      "prompt_chars": 478,
+      "prompt_sha256": "797fa83a92236a67b0c628e90d233f4d3af7be7a9055cf55ca9eba08275df53f",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "0"
+    },
+    {
+      "n_goals": 2,
+      "problem_id": "Mathlib/Topology/MetricSpace/Pseudo/Defs.lean::tendsto_iff_dist_tendsto_zero",
+      "prompt_chars": 488,
+      "prompt_sha256": "37c7fb06c259cf540066ed44141b3123c235edca609464e9c9e8e05fd9cb6bb1",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "1"
+    },
+    {
+      "n_goals": 2,
+      "problem_id": "Mathlib/Topology/MetricSpace/Pseudo/Defs.lean::tendsto_iff_dist_tendsto_zero",
+      "prompt_chars": 490,
+      "prompt_sha256": "ab7db3a5771920cb77810276fb5d429360ad89ae811be7cb9851d8e16adbfa67",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "2"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/Algebra/Module/Submodule/EqLocus.lean::LinearMap.eqOn_sup",
+      "prompt_chars": 514,
+      "prompt_sha256": "da0b1056e3422662f8fa7dd9f4994c599228cf4a77f552bae1734003e2df17e6",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "0"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/Dynamics/Ergodic/MeasurePreserving.lean::MeasureTheory.MeasurePreserving.exists_mem_iterate_mem",
+      "prompt_chars": 516,
+      "prompt_sha256": "b51b696ea545e71ce4a9c6bd21eac4d987ef6b14f920e62537a0d91244b43cd7",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "0"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/LinearAlgebra/Prod.lean::LinearEquiv.snd_comp_prodComm",
+      "prompt_chars": 565,
+      "prompt_sha256": "047ca7d94865bac7eb081b9679f37d7f664d0b2625bccca449f8cce7b9d90df4",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "1"
+    },
+    {
+      "n_goals": 2,
+      "problem_id": "Mathlib/Data/Set/Function.lean::Set.eqOn_univ",
+      "prompt_chars": 618,
+      "prompt_sha256": "fc4fac5d22899c3a76307df1bcc56d843a27b647352daa20297665ada1899008",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "1"
+    },
+    {
+      "n_goals": 2,
+      "problem_id": "Mathlib/Data/Set/Function.lean::Set.eqOn_univ",
+      "prompt_chars": 620,
+      "prompt_sha256": "666a41ab34c133962ea6039a28153596e0e061d5cf2be2f8ccb0cf048e3fa9f8",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "2"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/LinearAlgebra/Prod.lean::LinearEquiv.snd_comp_prodComm",
+      "prompt_chars": 657,
+      "prompt_sha256": "9a247d382321b0c448489bcde23f8242c9e1a220d977d958ab7aa089501f0ef8",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "3"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/Geometry/Manifold/Algebra/LieGroup.lean::ContMDiff.div",
+      "prompt_chars": 1073,
+      "prompt_sha256": "6111292e3297d66ac147e7a66275fc9dee17e9331367fab39ba1e855181a5b3f",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "0"
+    },
+    {
+      "n_goals": 2,
+      "problem_id": "Mathlib/LinearAlgebra/Prod.lean::LinearEquiv.snd_comp_prodComm",
+      "prompt_chars": 1178,
+      "prompt_sha256": "1053a546d3b65421117e0706d1a7506a1a853ffdf9089fe839bdfd0f06edc6c4",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "2"
+    }
+  ],
+  "endpoint_note": "response stability, not Lean acceptance; no Lean is involved",
+  "environment": {
+    "arch": "arm64",
+    "architecture": "qwen3_5",
+    "captured_utc": "2026-09-08T22:58:33Z",
+    "context_limit": 262144,
+    "frozen_decoding": {
+      "min_p": 0.0,
+      "num_ctx": 32768,
+      "num_predict": 128,
+      "presence_penalty": 0.0,
+      "repeat_penalty": 1.0,
+      "seed": 20260908,
+      "temperature": 0.0,
+      "top_k": 20,
+      "top_p": 0.95
+    },
+    "host_cpu": "Apple M5 Max",
+    "host_memory_bytes": "51539607552",
+    "host_model": "Mac17,6",
+    "macos": "26.6.2",
+    "model_digest": "d49fd9e0da45e486918c87318b866e5924e37ad5841db58763900297d9616ee7",
+    "model_name": "qwen3.6:27b-mlx",
+    "ollama_version": "0.33.2",
+    "output_schema_sha256": "9b25cba2450affa8cae91c864b059aeadc3bb0ed5ab2766a962495e2ed4f3e0b",
+    "parameter_size": "27.8B",
+    "parser": "qwen3.5",
+    "prompt_template_sha256": "95a4e049fca802876995f8b235573ddaa22e55964d74f4efb14579f4f5cee6ef",
+    "python": "3.14.7",
+    "quantization": "nvfp4",
+    "renderer": "qwen3.5",
+    "wire_flags": {
+      "raw": false,
+      "stream": false,
+      "think": false
+    }
+  },
+  "experiment": "e5_cell_variance",
+  "per_cell": {
+    "047ca7d94865bac7eb081b9679f37d7f664d0b2625bccca449f8cce7b9d90df4": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 565,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "0520c8df02a4acff576bcd883fb11b8161dd29e597bae73559f10e7bc3e90629": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 421,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "05cb1a6a6722ab5153b1ed48514211207da9e34bc2ae230a2879ebd9bc17bb4e": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 283,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "0772bd7a3ed73f3a88ad6b982c960770099419270b75de401fb1a7a55571c8c0": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 326,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "1053a546d3b65421117e0706d1a7506a1a853ffdf9089fe839bdfd0f06edc6c4": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 1178,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "1117f867d08caf50f86f01b162d6b29e55193e333ecc1444ce946a0ccf02a6fc": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 460,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "1e9c61ec983c80672a3a45618939f061748569f944969b11fd3cbe8c42ce997a": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 356,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "1ef9f991168221458a78f4814a1e9537b6fee8034c6f3368a8e9f6755ffbf959": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 461,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "247ba70fd9135a9d98612f542d0134ca3a1c70b926ea2934fc031f2b2cddcca9": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 378,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "2f44ef7673c9cb435ca634b4e31179fdbf34cf114a83efc60bedc7380e1e5fae": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 313,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "37c7fb06c259cf540066ed44141b3123c235edca609464e9c9e8e05fd9cb6bb1": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 488,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "37dd2a982c6628ba7bb6181a4578dcdcaf6fe7f08e6f9783c5f75305be50c541": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 239,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "5729b042da209062ecc79f3e82e7cacc9feb8ef75a83923680944679d87cb07b": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 469,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "58530141f378589b66a7e23779c6d36d6c29ee321c044c51ece47ca84a8f1c18": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 279,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "5a3f2f76c1332536dcc31b430f7d90ebae43a71dc300e7eff29760ff3c6f226c": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 261,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "6111292e3297d66ac147e7a66275fc9dee17e9331367fab39ba1e855181a5b3f": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 1073,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "661366c3c391185d94b86260749034f298658b887ccda579d9a8c194b8b2ad11": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 244,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "666a41ab34c133962ea6039a28153596e0e061d5cf2be2f8ccb0cf048e3fa9f8": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 620,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "689d58647753d95bb4922a7003cd5255dbbe33b40ee7fbe633591e3bf0b61893": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 172,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "68b56920b613681cc67c39b304b823727fbb5ac33308484896cad0d088c3afc0": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 194,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "755618ba3ad2c4e400efd6fe37a0ee051435f2d647f734c2f73818265b8fa6d2": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 277,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "797fa83a92236a67b0c628e90d233f4d3af7be7a9055cf55ca9eba08275df53f": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 478,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "86ecc32a4a36fb1fd18c53ecb6d3b8862139092197bdf7cb6fffde0841ed3532": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 402,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "8a8916ad0bf2c7ac80b0bdf8acecc45381c368af270f4ec1d23cebf1aaee0f3d": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 291,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "90c51b3d33ddcc4c545114a88df6a52e73422422bb38fdf4a50fb6ad873d378b": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 359,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "95cbab829286048bab6ee7573063b742c7f5f2d69765a7cfd0408d4ebe917717": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 282,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "9a247d382321b0c448489bcde23f8242c9e1a220d977d958ab7aa089501f0ef8": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 657,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "9d33bf63b7beca9abf7cb30fd72a93c953eef764125e33a5429139285912e99b": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 240,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "9f00454a23a42b4cd5da70931a7783702785669a34c54da8ecd626b237270def": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 303,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "a0db75effcdaf66ecf4dee010f6a762cc4ec8a4548eec0d3fc3d666beeece0d5": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 368,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "ab7db3a5771920cb77810276fb5d429360ad89ae811be7cb9851d8e16adbfa67": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 490,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "b51b696ea545e71ce4a9c6bd21eac4d987ef6b14f920e62537a0d91244b43cd7": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 516,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "bba5cc0611e3d998692c6077e777cdc0db2795bed3ffa4f8098c3c4edc1775a6": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 462,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "c1d1316053b870e18567bdb01d2d6740551a5a51e96f53d402f45748223d958c": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 194,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "cd7e99d95f11cfd9ef0d77c7113b08be401d9abf299affc5df3653856ec876e5": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 377,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "da0b1056e3422662f8fa7dd9f4994c599228cf4a77f552bae1734003e2df17e6": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 514,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "eefcd17125d00ab065df0c73da9f48e6c6390a137c0f0f725778bd01a6a1e898": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 193,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "f1bd726a41f5583252ebb4a3a6a6812de07978c5965983fa328d0dfddacb0188": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 380,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "fc4fac5d22899c3a76307df1bcc56d843a27b647352daa20297665ada1899008": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 618,
+      "replicates": 8,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    }
+  },
+  "question": "what fraction of cells are unanimous, and what is the within-cell variance?",
+  "summary": {
+    "cells": 39,
+    "cells_unanimous_response": 39,
+    "cells_unanimous_response_fraction": 1.0,
+    "cells_unanimous_tactic": 39,
+    "cells_unanimous_tactic_fraction": 1.0,
+    "max_tactic_bernoulli_variance": 0.0,
+    "mean_modal_tactic_rate": 1.0,
+    "mean_tactic_bernoulli_variance": 0.0,
+    "min_modal_tactic_rate": 1.0,
+    "replicates_per_cell": 8
+  }
+}

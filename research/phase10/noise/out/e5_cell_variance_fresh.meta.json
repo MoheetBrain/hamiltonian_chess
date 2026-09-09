@@ -1,0 +1,417 @@
+{
+  "corpus": [
+    {
+      "n_goals": 1,
+      "problem_id": "vtask-3c0fe0a7e5197107b598dd91",
+      "prompt_chars": 172,
+      "prompt_sha256": "27432c7b4f9644cb30f8d0f80e8702ed065b2b1ee1f0104d2e5de9e4c1e703a3",
+      "source": "fresh-lean-repl",
+      "state_id": "vtask-3c0fe0a7e5197107b598dd91#reset"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "vtask-4cc58080f20773d673e7e19a",
+      "prompt_chars": 207,
+      "prompt_sha256": "226936894df4b71b3b1a4b29e8d701f3eeadc122dcc867a572e14c4fae5f3e4a",
+      "source": "fresh-lean-repl",
+      "state_id": "vtask-4cc58080f20773d673e7e19a#reset"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "vtask-bdcd3da75b38ecfa937ea77f",
+      "prompt_chars": 214,
+      "prompt_sha256": "cdef73e67aec7470ec9bbf5246ab0b4f539610fb0932811ef6a12a2135232f53",
+      "source": "fresh-lean-repl",
+      "state_id": "vtask-bdcd3da75b38ecfa937ea77f#reset"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "vtask-d742430cd43fd4df1569177e",
+      "prompt_chars": 229,
+      "prompt_sha256": "43c86e6916bb3d34957bd65b62b4d3edefbf07c6f0f68219f05e62e4e95e7db8",
+      "source": "fresh-lean-repl",
+      "state_id": "vtask-d742430cd43fd4df1569177e#reset"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "vtask-e4cd5468022c05bd5cf1bd93",
+      "prompt_chars": 230,
+      "prompt_sha256": "3bec5a09b6d9458da52be20985e719157fd1fadb31f2aa372db519779513a84e",
+      "source": "fresh-lean-repl",
+      "state_id": "vtask-e4cd5468022c05bd5cf1bd93#reset"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "vtask-abc23a8599478a91cdc1fdf4",
+      "prompt_chars": 269,
+      "prompt_sha256": "ed372554d5f88cf77717504fa2ed373b631c1258c874a8d5beea53ec90de6720",
+      "source": "fresh-lean-repl",
+      "state_id": "vtask-abc23a8599478a91cdc1fdf4#reset"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "vtask-0ba860cc1c4cf3e53abfa290",
+      "prompt_chars": 286,
+      "prompt_sha256": "78358e49511126033a7251b39d5dd1572020b1134111daa9053a42c265e9bd89",
+      "source": "fresh-lean-repl",
+      "state_id": "vtask-0ba860cc1c4cf3e53abfa290#reset"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "vtask-687e43be181df830c5bd67a1",
+      "prompt_chars": 292,
+      "prompt_sha256": "5072660e2e91763ae869baa22207aa01d81f28c75b806e9a0da1c99cc3f71c5b",
+      "source": "fresh-lean-repl",
+      "state_id": "vtask-687e43be181df830c5bd67a1#reset"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "vtask-f561068c00c51e47690a20b8",
+      "prompt_chars": 299,
+      "prompt_sha256": "7bc658a947c65e4e17b12a743700b1c488cfd9946cb29116df9a03c982a9dc49",
+      "source": "fresh-lean-repl",
+      "state_id": "vtask-f561068c00c51e47690a20b8#reset"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "vtask-655d75c625ff2153d38dd986",
+      "prompt_chars": 303,
+      "prompt_sha256": "9f00454a23a42b4cd5da70931a7783702785669a34c54da8ecd626b237270def",
+      "source": "fresh-lean-repl",
+      "state_id": "vtask-655d75c625ff2153d38dd986#reset"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "vtask-0cabfcdba0bb4506ea04ace3",
+      "prompt_chars": 307,
+      "prompt_sha256": "27e44031eca7e170270b6fd36cf60685d7a0f34c442621bebea7e5610f15d7f3",
+      "source": "fresh-lean-repl",
+      "state_id": "vtask-0cabfcdba0bb4506ea04ace3#reset"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "vtask-076cdbe1648f7a957b2b566e",
+      "prompt_chars": 318,
+      "prompt_sha256": "42a3b754d7f8792906672b1b698afdedb33a87e6d721e447851c32c61edc0512",
+      "source": "fresh-lean-repl",
+      "state_id": "vtask-076cdbe1648f7a957b2b566e#reset"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "vtask-cdce301316c8c70ea0a94fb8",
+      "prompt_chars": 352,
+      "prompt_sha256": "69dffd86b5a0f92c50b6df47c2d202c414532704fdc35a6122dde11d4f6ad763",
+      "source": "fresh-lean-repl",
+      "state_id": "vtask-cdce301316c8c70ea0a94fb8#reset"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "vtask-c907e2a3cbf4a09641c73208",
+      "prompt_chars": 384,
+      "prompt_sha256": "cf724c46a570e79707e7699cebe10f998a65e3e7275c3e42ea9e22f676acfd5e",
+      "source": "fresh-lean-repl",
+      "state_id": "vtask-c907e2a3cbf4a09641c73208#reset"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "vtask-58e2cfac675e99ba8468f782",
+      "prompt_chars": 431,
+      "prompt_sha256": "4b04a5c441754d35adcff26bc16f03251650efe7b2b0c9571aac33d33e0360c7",
+      "source": "fresh-lean-repl",
+      "state_id": "vtask-58e2cfac675e99ba8468f782#reset"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "vtask-df846627e00274313031e115",
+      "prompt_chars": 503,
+      "prompt_sha256": "9dc161941d111d5980bef159de9a09ccf5a9d1e61adf740201834afc45041a4d",
+      "source": "fresh-lean-repl",
+      "state_id": "vtask-df846627e00274313031e115#reset"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "vtask-0dffc70e19299174bdb02f79",
+      "prompt_chars": 910,
+      "prompt_sha256": "83c91a835c96f39d2832c302b2ec5df8623ef98c0b2ba6263517ceb35020bfd6",
+      "source": "fresh-lean-repl",
+      "state_id": "vtask-0dffc70e19299174bdb02f79#reset"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "vtask-b2f7394c480e28937377121b",
+      "prompt_chars": 1072,
+      "prompt_sha256": "37ab557357ce949bb942daf2d798aa44a268301548864e40142dc01ee63b18ba",
+      "source": "fresh-lean-repl",
+      "state_id": "vtask-b2f7394c480e28937377121b#reset"
+    }
+  ],
+  "endpoint_note": "response stability, not Lean acceptance; no Lean is involved",
+  "environment": {
+    "arch": "arm64",
+    "architecture": "qwen3_5",
+    "captured_utc": "2026-09-08T22:53:29Z",
+    "context_limit": 262144,
+    "frozen_decoding": {
+      "min_p": 0.0,
+      "num_ctx": 32768,
+      "num_predict": 128,
+      "presence_penalty": 0.0,
+      "repeat_penalty": 1.0,
+      "seed": 20260908,
+      "temperature": 0.0,
+      "top_k": 20,
+      "top_p": 0.95
+    },
+    "host_cpu": "Apple M5 Max",
+    "host_memory_bytes": "51539607552",
+    "host_model": "Mac17,6",
+    "macos": "26.6.2",
+    "model_digest": "d49fd9e0da45e486918c87318b866e5924e37ad5841db58763900297d9616ee7",
+    "model_name": "qwen3.6:27b-mlx",
+    "ollama_version": "0.33.2",
+    "output_schema_sha256": "9b25cba2450affa8cae91c864b059aeadc3bb0ed5ab2766a962495e2ed4f3e0b",
+    "parameter_size": "27.8B",
+    "parser": "qwen3.5",
+    "prompt_template_sha256": "95a4e049fca802876995f8b235573ddaa22e55964d74f4efb14579f4f5cee6ef",
+    "python": "3.14.7",
+    "quantization": "nvfp4",
+    "renderer": "qwen3.5",
+    "wire_flags": {
+      "raw": false,
+      "stream": false,
+      "think": false
+    }
+  },
+  "experiment": "e5_cell_variance",
+  "per_cell": {
+    "226936894df4b71b3b1a4b29e8d701f3eeadc122dcc867a572e14c4fae5f3e4a": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 207,
+      "replicates": 10,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "27432c7b4f9644cb30f8d0f80e8702ed065b2b1ee1f0104d2e5de9e4c1e703a3": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 172,
+      "replicates": 10,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "27e44031eca7e170270b6fd36cf60685d7a0f34c442621bebea7e5610f15d7f3": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 307,
+      "replicates": 10,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "37ab557357ce949bb942daf2d798aa44a268301548864e40142dc01ee63b18ba": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 1072,
+      "replicates": 10,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "3bec5a09b6d9458da52be20985e719157fd1fadb31f2aa372db519779513a84e": {
+      "distinct_responses": 2,
+      "distinct_tactics": 2,
+      "modal_response_rate": 0.9,
+      "modal_tactic_rate": 0.9,
+      "prompt_chars": 230,
+      "replicates": 10,
+      "response_bernoulli_variance": 0.09,
+      "tactic_bernoulli_variance": 0.09,
+      "unanimous_response": false,
+      "unanimous_tactic": false
+    },
+    "42a3b754d7f8792906672b1b698afdedb33a87e6d721e447851c32c61edc0512": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 318,
+      "replicates": 10,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "43c86e6916bb3d34957bd65b62b4d3edefbf07c6f0f68219f05e62e4e95e7db8": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 229,
+      "replicates": 10,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "4b04a5c441754d35adcff26bc16f03251650efe7b2b0c9571aac33d33e0360c7": {
+      "distinct_responses": 2,
+      "distinct_tactics": 2,
+      "modal_response_rate": 0.9,
+      "modal_tactic_rate": 0.9,
+      "prompt_chars": 431,
+      "replicates": 10,
+      "response_bernoulli_variance": 0.09,
+      "tactic_bernoulli_variance": 0.09,
+      "unanimous_response": false,
+      "unanimous_tactic": false
+    },
+    "5072660e2e91763ae869baa22207aa01d81f28c75b806e9a0da1c99cc3f71c5b": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 292,
+      "replicates": 10,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "69dffd86b5a0f92c50b6df47c2d202c414532704fdc35a6122dde11d4f6ad763": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 352,
+      "replicates": 10,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "78358e49511126033a7251b39d5dd1572020b1134111daa9053a42c265e9bd89": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 286,
+      "replicates": 10,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "7bc658a947c65e4e17b12a743700b1c488cfd9946cb29116df9a03c982a9dc49": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 299,
+      "replicates": 10,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "83c91a835c96f39d2832c302b2ec5df8623ef98c0b2ba6263517ceb35020bfd6": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 910,
+      "replicates": 10,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "9dc161941d111d5980bef159de9a09ccf5a9d1e61adf740201834afc45041a4d": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 503,
+      "replicates": 10,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "9f00454a23a42b4cd5da70931a7783702785669a34c54da8ecd626b237270def": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 303,
+      "replicates": 10,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "cdef73e67aec7470ec9bbf5246ab0b4f539610fb0932811ef6a12a2135232f53": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 214,
+      "replicates": 10,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "cf724c46a570e79707e7699cebe10f998a65e3e7275c3e42ea9e22f676acfd5e": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 384,
+      "replicates": 10,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    },
+    "ed372554d5f88cf77717504fa2ed373b631c1258c874a8d5beea53ec90de6720": {
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 269,
+      "replicates": 10,
+      "response_bernoulli_variance": 0.0,
+      "tactic_bernoulli_variance": 0.0,
+      "unanimous_response": true,
+      "unanimous_tactic": true
+    }
+  },
+  "question": "what fraction of cells are unanimous, and what is the within-cell variance?",
+  "summary": {
+    "cells": 18,
+    "cells_unanimous_response": 16,
+    "cells_unanimous_response_fraction": 0.8889,
+    "cells_unanimous_tactic": 16,
+    "cells_unanimous_tactic_fraction": 0.8889,
+    "max_tactic_bernoulli_variance": 0.09,
+    "mean_modal_tactic_rate": 0.9889,
+    "mean_tactic_bernoulli_variance": 0.01,
+    "min_modal_tactic_rate": 0.9,
+    "replicates_per_cell": 10
+  }
+}

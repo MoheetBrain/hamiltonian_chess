@@ -1,0 +1,757 @@
+{
+  "control_digests": [
+    "0520c8df02a4acff576bcd883fb11b8161dd29e597bae73559f10e7bc3e90629",
+    "05cb1a6a6722ab5153b1ed48514211207da9e34bc2ae230a2879ebd9bc17bb4e",
+    "0772bd7a3ed73f3a88ad6b982c960770099419270b75de401fb1a7a55571c8c0",
+    "1117f867d08caf50f86f01b162d6b29e55193e333ecc1444ce946a0ccf02a6fc",
+    "1ef9f991168221458a78f4814a1e9537b6fee8034c6f3368a8e9f6755ffbf959"
+  ],
+  "corpus": "hc_v0_5_smoke.json states, recovered by verified prompt_sha256",
+  "environment": {
+    "arch": "arm64",
+    "architecture": "qwen3_5",
+    "captured_utc": "2026-09-08T22:43:31Z",
+    "context_limit": 262144,
+    "frozen_decoding": {
+      "min_p": 0.0,
+      "num_ctx": 32768,
+      "num_predict": 128,
+      "presence_penalty": 0.0,
+      "repeat_penalty": 1.0,
+      "seed": 20260908,
+      "temperature": 0.0,
+      "top_k": 20,
+      "top_p": 0.95
+    },
+    "host_cpu": "Apple M5 Max",
+    "host_memory_bytes": "51539607552",
+    "host_model": "Mac17,6",
+    "macos": "26.6.2",
+    "model_digest": "d49fd9e0da45e486918c87318b866e5924e37ad5841db58763900297d9616ee7",
+    "model_name": "qwen3.6:27b-mlx",
+    "ollama_version": "0.33.2",
+    "output_schema_sha256": "9b25cba2450affa8cae91c864b059aeadc3bb0ed5ab2766a962495e2ed4f3e0b",
+    "parameter_size": "27.8B",
+    "parser": "qwen3.5",
+    "prompt_template_sha256": "95a4e049fca802876995f8b235573ddaa22e55964d74f4efb14579f4f5cee6ef",
+    "python": "3.14.7",
+    "quantization": "nvfp4",
+    "renderer": "qwen3.5",
+    "wire_flags": {
+      "raw": false,
+      "stream": false,
+      "think": false
+    }
+  },
+  "experiment": "e6_divergent_replay",
+  "per_cell": {
+    "interleaved::0520c8df02a4acff576bcd883fb11b8161dd29e597bae73559f10e7bc3e90629": {
+      "arm": "interleaved",
+      "byte_stable": true,
+      "calls": 25,
+      "distinct_completion_tokens": [
+        23
+      ],
+      "distinct_raw_responses": 1,
+      "distinct_tactics": 1,
+      "group": "control",
+      "modal_raw_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 421,
+      "recorded_answers": [
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 23,
+          "index": 0,
+          "prompt_tokens": 195,
+          "tactic": "rw [Finset.sum_card_bipartiteAbove_bipartiteBelow]",
+          "task_id": "Mathlib/Combinatorics/Enumerative/DoubleCounting.lean::Finset.sum_card_bipartiteAbove_eq_sum_card_bipartiteBelow"
+        },
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 23,
+          "index": 1,
+          "prompt_tokens": 195,
+          "tactic": "rw [Finset.sum_card_bipartiteAbove_bipartiteBelow]",
+          "task_id": "Mathlib/Combinatorics/Enumerative/DoubleCounting.lean::Finset.sum_card_bipartiteAbove_eq_sum_card_bipartiteBelow"
+        }
+      ],
+      "tactic_stable": true
+    },
+    "interleaved::05cb1a6a6722ab5153b1ed48514211207da9e34bc2ae230a2879ebd9bc17bb4e": {
+      "arm": "interleaved",
+      "byte_stable": true,
+      "calls": 25,
+      "distinct_completion_tokens": [
+        7
+      ],
+      "distinct_raw_responses": 1,
+      "distinct_tactics": 1,
+      "group": "control",
+      "modal_raw_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 283,
+      "recorded_answers": [
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 7,
+          "index": 0,
+          "prompt_tokens": 124,
+          "tactic": "simp",
+          "task_id": "Mathlib/Order/ConditionallyCompleteLattice/Basic.lean::ciSup_const"
+        },
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 7,
+          "index": 1,
+          "prompt_tokens": 124,
+          "tactic": "simp",
+          "task_id": "Mathlib/Order/ConditionallyCompleteLattice/Basic.lean::ciSup_const"
+        }
+      ],
+      "tactic_stable": true
+    },
+    "interleaved::0772bd7a3ed73f3a88ad6b982c960770099419270b75de401fb1a7a55571c8c0": {
+      "arm": "interleaved",
+      "byte_stable": true,
+      "calls": 25,
+      "distinct_completion_tokens": [
+        23
+      ],
+      "distinct_raw_responses": 1,
+      "distinct_tactics": 1,
+      "group": "control",
+      "modal_raw_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 326,
+      "recorded_answers": [
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 23,
+          "index": 0,
+          "prompt_tokens": 136,
+          "tactic": "simp [finiteCoproduct.desc_ι, finiteCoproduct.ι]",
+          "task_id": "Mathlib/Topology/Category/CompHaus/Limits.lean::CompHaus.finiteCoproduct.ι_desc_apply"
+        },
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 23,
+          "index": 1,
+          "prompt_tokens": 136,
+          "tactic": "simp [finiteCoproduct.desc_ι, finiteCoproduct.ι]",
+          "task_id": "Mathlib/Topology/Category/CompHaus/Limits.lean::CompHaus.finiteCoproduct.ι_desc_apply"
+        }
+      ],
+      "tactic_stable": true
+    },
+    "interleaved::1117f867d08caf50f86f01b162d6b29e55193e333ecc1444ce946a0ccf02a6fc": {
+      "arm": "interleaved",
+      "byte_stable": true,
+      "calls": 25,
+      "distinct_completion_tokens": [
+        14
+      ],
+      "distinct_raw_responses": 1,
+      "distinct_tactics": 1,
+      "group": "control",
+      "modal_raw_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 460,
+      "recorded_answers": [
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 14,
+          "index": 0,
+          "prompt_tokens": 197,
+          "tactic": "rw [PowerBasis.finrank]",
+          "task_id": "Mathlib/RingTheory/PowerBasis.lean::PowerBasis.finrank"
+        },
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 14,
+          "index": 1,
+          "prompt_tokens": 197,
+          "tactic": "rw [PowerBasis.finrank]",
+          "task_id": "Mathlib/RingTheory/PowerBasis.lean::PowerBasis.finrank"
+        }
+      ],
+      "tactic_stable": true
+    },
+    "interleaved::1e9c61ec983c80672a3a45618939f061748569f944969b11fd3cbe8c42ce997a": {
+      "arm": "interleaved",
+      "byte_stable": false,
+      "calls": 25,
+      "distinct_completion_tokens": [
+        12,
+        16
+      ],
+      "distinct_raw_responses": 2,
+      "distinct_tactics": 1,
+      "group": "suspect",
+      "modal_raw_rate": 0.8,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 356,
+      "recorded_answers": [
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 16,
+          "index": 0,
+          "prompt_tokens": 161,
+          "tactic": "rw [polar_sub]",
+          "task_id": "Mathlib/LinearAlgebra/QuadraticForm/Basic.lean::QuadraticForm.polar_sub_right"
+        },
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 12,
+          "index": 1,
+          "prompt_tokens": 161,
+          "tactic": "rw [polar_sub]",
+          "task_id": "Mathlib/LinearAlgebra/QuadraticForm/Basic.lean::QuadraticForm.polar_sub_right"
+        }
+      ],
+      "tactic_stable": true
+    },
+    "interleaved::1ef9f991168221458a78f4814a1e9537b6fee8034c6f3368a8e9f6755ffbf959": {
+      "arm": "interleaved",
+      "byte_stable": true,
+      "calls": 25,
+      "distinct_completion_tokens": [
+        13
+      ],
+      "distinct_raw_responses": 1,
+      "distinct_tactics": 1,
+      "group": "control",
+      "modal_raw_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 461,
+      "recorded_answers": [
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 13,
+          "index": 0,
+          "prompt_tokens": 191,
+          "tactic": "rw [ProbabilityMeasure.map_prod]",
+          "task_id": "Mathlib/MeasureTheory/Measure/FiniteMeasureProd.lean::MeasureTheory.ProbabilityMeasure.map_prod_map"
+        },
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 13,
+          "index": 1,
+          "prompt_tokens": 191,
+          "tactic": "rw [ProbabilityMeasure.map_prod]",
+          "task_id": "Mathlib/MeasureTheory/Measure/FiniteMeasureProd.lean::MeasureTheory.ProbabilityMeasure.map_prod_map"
+        }
+      ],
+      "tactic_stable": true
+    },
+    "interleaved::661366c3c391185d94b86260749034f298658b887ccda579d9a8c194b8b2ad11": {
+      "arm": "interleaved",
+      "byte_stable": false,
+      "calls": 25,
+      "distinct_completion_tokens": [
+        19,
+        24
+      ],
+      "distinct_raw_responses": 2,
+      "distinct_tactics": 2,
+      "group": "suspect",
+      "modal_raw_rate": 0.92,
+      "modal_tactic_rate": 0.92,
+      "prompt_chars": 244,
+      "recorded_answers": [
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 19,
+          "index": 0,
+          "prompt_tokens": 103,
+          "tactic": "ext x; simp [Set.mem_Icc, le_refl]",
+          "task_id": "Mathlib/Order/Interval/Finset/Basic.lean::Finset.Icc_self"
+        },
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 20,
+          "index": 1,
+          "prompt_tokens": 103,
+          "tactic": "ext x; constructor <;> simp [Set.mem_Icc]",
+          "task_id": "Mathlib/Order/Interval/Finset/Basic.lean::Finset.Icc_self"
+        }
+      ],
+      "tactic_stable": false
+    },
+    "interleaved::666a41ab34c133962ea6039a28153596e0e061d5cf2be2f8ccb0cf048e3fa9f8": {
+      "arm": "interleaved",
+      "byte_stable": false,
+      "calls": 25,
+      "distinct_completion_tokens": [
+        20,
+        22
+      ],
+      "distinct_raw_responses": 2,
+      "distinct_tactics": 2,
+      "group": "suspect",
+      "modal_raw_rate": 0.92,
+      "modal_tactic_rate": 0.92,
+      "prompt_chars": 620,
+      "recorded_answers": [
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 22,
+          "index": 3,
+          "prompt_tokens": 342,
+          "tactic": "ext x; simp [EqOn] at h ⊢; exact h x",
+          "task_id": "Mathlib/Data/Set/Function.lean::Set.eqOn_univ"
+        },
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 20,
+          "index": 4,
+          "prompt_tokens": 342,
+          "tactic": "ext x; simp [EqOn] at h; exact h x",
+          "task_id": "Mathlib/Data/Set/Function.lean::Set.eqOn_univ"
+        }
+      ],
+      "tactic_stable": false
+    },
+    "interleaved::797fa83a92236a67b0c628e90d233f4d3af7be7a9055cf55ca9eba08275df53f": {
+      "arm": "interleaved",
+      "byte_stable": false,
+      "calls": 25,
+      "distinct_completion_tokens": [
+        25,
+        28
+      ],
+      "distinct_raw_responses": 2,
+      "distinct_tactics": 2,
+      "group": "suspect",
+      "modal_raw_rate": 0.96,
+      "modal_tactic_rate": 0.96,
+      "prompt_chars": 478,
+      "recorded_answers": [
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 28,
+          "index": 0,
+          "prompt_tokens": 214,
+          "tactic": "obtain ⟨k, hk⟩ := exists_weightSpace_le_ker (toEnd R L M) x",
+          "task_id": "Mathlib/Algebra/Lie/Weights/Basic.lean::LieModule.exists_weightSpace_zero_le_ker_of_isNoetherian"
+        },
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 25,
+          "index": 1,
+          "prompt_tokens": 214,
+          "tactic": "exact ⟨0, by simp [LinearMap.ker_zero, Submodule.bot_le]⟩",
+          "task_id": "Mathlib/Algebra/Lie/Weights/Basic.lean::LieModule.exists_weightSpace_zero_le_ker_of_isNoetherian"
+        }
+      ],
+      "tactic_stable": false
+    },
+    "interleaved::a0db75effcdaf66ecf4dee010f6a762cc4ec8a4548eec0d3fc3d666beeece0d5": {
+      "arm": "interleaved",
+      "byte_stable": false,
+      "calls": 25,
+      "distinct_completion_tokens": [
+        7,
+        12
+      ],
+      "distinct_raw_responses": 2,
+      "distinct_tactics": 2,
+      "group": "suspect",
+      "modal_raw_rate": 0.88,
+      "modal_tactic_rate": 0.88,
+      "prompt_chars": 368,
+      "recorded_answers": [
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 12,
+          "index": 0,
+          "prompt_tokens": 191,
+          "tactic": "exact Set.eqOn_univ",
+          "task_id": "Mathlib/Data/Set/Function.lean::Set.eqOn_univ"
+        },
+        {
+          "action_result": "ACCEPTED_TRANSITION",
+          "completion_tokens": 7,
+          "index": 1,
+          "prompt_tokens": 191,
+          "tactic": "constructor",
+          "task_id": "Mathlib/Data/Set/Function.lean::Set.eqOn_univ"
+        }
+      ],
+      "tactic_stable": false
+    },
+    "solo::0520c8df02a4acff576bcd883fb11b8161dd29e597bae73559f10e7bc3e90629": {
+      "arm": "solo",
+      "byte_stable": true,
+      "calls": 25,
+      "distinct_completion_tokens": [
+        23
+      ],
+      "distinct_raw_responses": 1,
+      "distinct_tactics": 1,
+      "group": "control",
+      "modal_raw_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 421,
+      "recorded_answers": [
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 23,
+          "index": 0,
+          "prompt_tokens": 195,
+          "tactic": "rw [Finset.sum_card_bipartiteAbove_bipartiteBelow]",
+          "task_id": "Mathlib/Combinatorics/Enumerative/DoubleCounting.lean::Finset.sum_card_bipartiteAbove_eq_sum_card_bipartiteBelow"
+        },
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 23,
+          "index": 1,
+          "prompt_tokens": 195,
+          "tactic": "rw [Finset.sum_card_bipartiteAbove_bipartiteBelow]",
+          "task_id": "Mathlib/Combinatorics/Enumerative/DoubleCounting.lean::Finset.sum_card_bipartiteAbove_eq_sum_card_bipartiteBelow"
+        }
+      ],
+      "tactic_stable": true
+    },
+    "solo::05cb1a6a6722ab5153b1ed48514211207da9e34bc2ae230a2879ebd9bc17bb4e": {
+      "arm": "solo",
+      "byte_stable": true,
+      "calls": 25,
+      "distinct_completion_tokens": [
+        7
+      ],
+      "distinct_raw_responses": 1,
+      "distinct_tactics": 1,
+      "group": "control",
+      "modal_raw_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 283,
+      "recorded_answers": [
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 7,
+          "index": 0,
+          "prompt_tokens": 124,
+          "tactic": "simp",
+          "task_id": "Mathlib/Order/ConditionallyCompleteLattice/Basic.lean::ciSup_const"
+        },
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 7,
+          "index": 1,
+          "prompt_tokens": 124,
+          "tactic": "simp",
+          "task_id": "Mathlib/Order/ConditionallyCompleteLattice/Basic.lean::ciSup_const"
+        }
+      ],
+      "tactic_stable": true
+    },
+    "solo::0772bd7a3ed73f3a88ad6b982c960770099419270b75de401fb1a7a55571c8c0": {
+      "arm": "solo",
+      "byte_stable": true,
+      "calls": 25,
+      "distinct_completion_tokens": [
+        23
+      ],
+      "distinct_raw_responses": 1,
+      "distinct_tactics": 1,
+      "group": "control",
+      "modal_raw_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 326,
+      "recorded_answers": [
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 23,
+          "index": 0,
+          "prompt_tokens": 136,
+          "tactic": "simp [finiteCoproduct.desc_ι, finiteCoproduct.ι]",
+          "task_id": "Mathlib/Topology/Category/CompHaus/Limits.lean::CompHaus.finiteCoproduct.ι_desc_apply"
+        },
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 23,
+          "index": 1,
+          "prompt_tokens": 136,
+          "tactic": "simp [finiteCoproduct.desc_ι, finiteCoproduct.ι]",
+          "task_id": "Mathlib/Topology/Category/CompHaus/Limits.lean::CompHaus.finiteCoproduct.ι_desc_apply"
+        }
+      ],
+      "tactic_stable": true
+    },
+    "solo::1117f867d08caf50f86f01b162d6b29e55193e333ecc1444ce946a0ccf02a6fc": {
+      "arm": "solo",
+      "byte_stable": true,
+      "calls": 25,
+      "distinct_completion_tokens": [
+        14
+      ],
+      "distinct_raw_responses": 1,
+      "distinct_tactics": 1,
+      "group": "control",
+      "modal_raw_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 460,
+      "recorded_answers": [
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 14,
+          "index": 0,
+          "prompt_tokens": 197,
+          "tactic": "rw [PowerBasis.finrank]",
+          "task_id": "Mathlib/RingTheory/PowerBasis.lean::PowerBasis.finrank"
+        },
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 14,
+          "index": 1,
+          "prompt_tokens": 197,
+          "tactic": "rw [PowerBasis.finrank]",
+          "task_id": "Mathlib/RingTheory/PowerBasis.lean::PowerBasis.finrank"
+        }
+      ],
+      "tactic_stable": true
+    },
+    "solo::1e9c61ec983c80672a3a45618939f061748569f944969b11fd3cbe8c42ce997a": {
+      "arm": "solo",
+      "byte_stable": true,
+      "calls": 25,
+      "distinct_completion_tokens": [
+        12
+      ],
+      "distinct_raw_responses": 1,
+      "distinct_tactics": 1,
+      "group": "suspect",
+      "modal_raw_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 356,
+      "recorded_answers": [
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 16,
+          "index": 0,
+          "prompt_tokens": 161,
+          "tactic": "rw [polar_sub]",
+          "task_id": "Mathlib/LinearAlgebra/QuadraticForm/Basic.lean::QuadraticForm.polar_sub_right"
+        },
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 12,
+          "index": 1,
+          "prompt_tokens": 161,
+          "tactic": "rw [polar_sub]",
+          "task_id": "Mathlib/LinearAlgebra/QuadraticForm/Basic.lean::QuadraticForm.polar_sub_right"
+        }
+      ],
+      "tactic_stable": true
+    },
+    "solo::1ef9f991168221458a78f4814a1e9537b6fee8034c6f3368a8e9f6755ffbf959": {
+      "arm": "solo",
+      "byte_stable": true,
+      "calls": 25,
+      "distinct_completion_tokens": [
+        13
+      ],
+      "distinct_raw_responses": 1,
+      "distinct_tactics": 1,
+      "group": "control",
+      "modal_raw_rate": 1.0,
+      "modal_tactic_rate": 1.0,
+      "prompt_chars": 461,
+      "recorded_answers": [
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 13,
+          "index": 0,
+          "prompt_tokens": 191,
+          "tactic": "rw [ProbabilityMeasure.map_prod]",
+          "task_id": "Mathlib/MeasureTheory/Measure/FiniteMeasureProd.lean::MeasureTheory.ProbabilityMeasure.map_prod_map"
+        },
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 13,
+          "index": 1,
+          "prompt_tokens": 191,
+          "tactic": "rw [ProbabilityMeasure.map_prod]",
+          "task_id": "Mathlib/MeasureTheory/Measure/FiniteMeasureProd.lean::MeasureTheory.ProbabilityMeasure.map_prod_map"
+        }
+      ],
+      "tactic_stable": true
+    },
+    "solo::661366c3c391185d94b86260749034f298658b887ccda579d9a8c194b8b2ad11": {
+      "arm": "solo",
+      "byte_stable": false,
+      "calls": 25,
+      "distinct_completion_tokens": [
+        19,
+        20
+      ],
+      "distinct_raw_responses": 2,
+      "distinct_tactics": 2,
+      "group": "suspect",
+      "modal_raw_rate": 0.96,
+      "modal_tactic_rate": 0.96,
+      "prompt_chars": 244,
+      "recorded_answers": [
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 19,
+          "index": 0,
+          "prompt_tokens": 103,
+          "tactic": "ext x; simp [Set.mem_Icc, le_refl]",
+          "task_id": "Mathlib/Order/Interval/Finset/Basic.lean::Finset.Icc_self"
+        },
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 20,
+          "index": 1,
+          "prompt_tokens": 103,
+          "tactic": "ext x; constructor <;> simp [Set.mem_Icc]",
+          "task_id": "Mathlib/Order/Interval/Finset/Basic.lean::Finset.Icc_self"
+        }
+      ],
+      "tactic_stable": false
+    },
+    "solo::666a41ab34c133962ea6039a28153596e0e061d5cf2be2f8ccb0cf048e3fa9f8": {
+      "arm": "solo",
+      "byte_stable": false,
+      "calls": 25,
+      "distinct_completion_tokens": [
+        20,
+        22
+      ],
+      "distinct_raw_responses": 2,
+      "distinct_tactics": 2,
+      "group": "suspect",
+      "modal_raw_rate": 0.92,
+      "modal_tactic_rate": 0.92,
+      "prompt_chars": 620,
+      "recorded_answers": [
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 22,
+          "index": 3,
+          "prompt_tokens": 342,
+          "tactic": "ext x; simp [EqOn] at h ⊢; exact h x",
+          "task_id": "Mathlib/Data/Set/Function.lean::Set.eqOn_univ"
+        },
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 20,
+          "index": 4,
+          "prompt_tokens": 342,
+          "tactic": "ext x; simp [EqOn] at h; exact h x",
+          "task_id": "Mathlib/Data/Set/Function.lean::Set.eqOn_univ"
+        }
+      ],
+      "tactic_stable": false
+    },
+    "solo::797fa83a92236a67b0c628e90d233f4d3af7be7a9055cf55ca9eba08275df53f": {
+      "arm": "solo",
+      "byte_stable": false,
+      "calls": 25,
+      "distinct_completion_tokens": [
+        25,
+        28
+      ],
+      "distinct_raw_responses": 2,
+      "distinct_tactics": 2,
+      "group": "suspect",
+      "modal_raw_rate": 0.96,
+      "modal_tactic_rate": 0.96,
+      "prompt_chars": 478,
+      "recorded_answers": [
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 28,
+          "index": 0,
+          "prompt_tokens": 214,
+          "tactic": "obtain ⟨k, hk⟩ := exists_weightSpace_le_ker (toEnd R L M) x",
+          "task_id": "Mathlib/Algebra/Lie/Weights/Basic.lean::LieModule.exists_weightSpace_zero_le_ker_of_isNoetherian"
+        },
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 25,
+          "index": 1,
+          "prompt_tokens": 214,
+          "tactic": "exact ⟨0, by simp [LinearMap.ker_zero, Submodule.bot_le]⟩",
+          "task_id": "Mathlib/Algebra/Lie/Weights/Basic.lean::LieModule.exists_weightSpace_zero_le_ker_of_isNoetherian"
+        }
+      ],
+      "tactic_stable": false
+    },
+    "solo::a0db75effcdaf66ecf4dee010f6a762cc4ec8a4548eec0d3fc3d666beeece0d5": {
+      "arm": "solo",
+      "byte_stable": false,
+      "calls": 25,
+      "distinct_completion_tokens": [
+        7,
+        12
+      ],
+      "distinct_raw_responses": 2,
+      "distinct_tactics": 2,
+      "group": "suspect",
+      "modal_raw_rate": 0.96,
+      "modal_tactic_rate": 0.96,
+      "prompt_chars": 368,
+      "recorded_answers": [
+        {
+          "action_result": "REJECTED_INVALID_ACTION",
+          "completion_tokens": 12,
+          "index": 0,
+          "prompt_tokens": 191,
+          "tactic": "exact Set.eqOn_univ",
+          "task_id": "Mathlib/Data/Set/Function.lean::Set.eqOn_univ"
+        },
+        {
+          "action_result": "ACCEPTED_TRANSITION",
+          "completion_tokens": 7,
+          "index": 1,
+          "prompt_tokens": 191,
+          "tactic": "constructor",
+          "task_id": "Mathlib/Data/Set/Function.lean::Set.eqOn_univ"
+        }
+      ],
+      "tactic_stable": false
+    }
+  },
+  "question": "are the prompts on which HC-V0.5 diverged still non-deterministic?",
+  "summary": {
+    "byte_unstable_cells": [
+      "interleaved::1e9c61ec983c80672a3a45618939f061748569f944969b11fd3cbe8c42ce997a",
+      "interleaved::661366c3c391185d94b86260749034f298658b887ccda579d9a8c194b8b2ad11",
+      "interleaved::666a41ab34c133962ea6039a28153596e0e061d5cf2be2f8ccb0cf048e3fa9f8",
+      "interleaved::797fa83a92236a67b0c628e90d233f4d3af7be7a9055cf55ca9eba08275df53f",
+      "interleaved::a0db75effcdaf66ecf4dee010f6a762cc4ec8a4548eec0d3fc3d666beeece0d5",
+      "solo::661366c3c391185d94b86260749034f298658b887ccda579d9a8c194b8b2ad11",
+      "solo::666a41ab34c133962ea6039a28153596e0e061d5cf2be2f8ccb0cf048e3fa9f8",
+      "solo::797fa83a92236a67b0c628e90d233f4d3af7be7a9055cf55ca9eba08275df53f",
+      "solo::a0db75effcdaf66ecf4dee010f6a762cc4ec8a4548eec0d3fc3d666beeece0d5"
+    ],
+    "cells_byte_stable": 11,
+    "cells_tactic_stable": 12,
+    "cells_total": 20,
+    "control_prompts": 5,
+    "prompts_replayed": 10,
+    "repeats_each_arm": 25,
+    "suspect_prompts": 5,
+    "tactic_unstable_cells": [
+      "interleaved::661366c3c391185d94b86260749034f298658b887ccda579d9a8c194b8b2ad11",
+      "interleaved::666a41ab34c133962ea6039a28153596e0e061d5cf2be2f8ccb0cf048e3fa9f8",
+      "interleaved::797fa83a92236a67b0c628e90d233f4d3af7be7a9055cf55ca9eba08275df53f",
+      "interleaved::a0db75effcdaf66ecf4dee010f6a762cc4ec8a4548eec0d3fc3d666beeece0d5",
+      "solo::661366c3c391185d94b86260749034f298658b887ccda579d9a8c194b8b2ad11",
+      "solo::666a41ab34c133962ea6039a28153596e0e061d5cf2be2f8ccb0cf048e3fa9f8",
+      "solo::797fa83a92236a67b0c628e90d233f4d3af7be7a9055cf55ca9eba08275df53f",
+      "solo::a0db75effcdaf66ecf4dee010f6a762cc4ec8a4548eec0d3fc3d666beeece0d5"
+    ],
+    "unrecovered_suspect_digests": []
+  },
+  "suspect_digests": [
+    "1e9c61ec983c80672a3a45618939f061748569f944969b11fd3cbe8c42ce997a",
+    "661366c3c391185d94b86260749034f298658b887ccda579d9a8c194b8b2ad11",
+    "666a41ab34c133962ea6039a28153596e0e061d5cf2be2f8ccb0cf048e3fa9f8",
+    "797fa83a92236a67b0c628e90d233f4d3af7be7a9055cf55ca9eba08275df53f",
+    "a0db75effcdaf66ecf4dee010f6a762cc4ec8a4548eec0d3fc3d666beeece0d5"
+  ]
+}

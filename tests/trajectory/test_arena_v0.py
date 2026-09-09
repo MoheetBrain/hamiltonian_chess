@@ -62,6 +62,11 @@ ALLOWED_STATE_TEXT_SITES = {
     ("lean_backend.py", "is_no_goals"),
     # the leakage filter looks for the answer inside recorded state text; not a verdict
     ("arena_v0.py", "scan_record"),
+    # a renderer checking that its own re-layout inverts to the text it came from; a round-trip
+    # self-test, and the alternative is silently mangling a state (HC-V0.6 design brief §2)
+    ("representation.py", "present"),
+    # the same round-trip self-test one level down: the parse must reproduce its own input
+    ("representation.py", "parse_tactic_state"),
 }
 ALLOWED_STATE_HASH_SITES = {
     # tamper detection when loading a stored trajectory

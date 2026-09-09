@@ -1,0 +1,177 @@
+{
+  "environment": {
+    "arch": "arm64",
+    "architecture": "qwen3_5",
+    "captured_utc": "2026-09-08T23:04:26Z",
+    "context_limit": 262144,
+    "frozen_decoding": {
+      "min_p": 0.0,
+      "num_ctx": 32768,
+      "num_predict": 128,
+      "presence_penalty": 0.0,
+      "repeat_penalty": 1.0,
+      "seed": 20260908,
+      "temperature": 0.0,
+      "top_k": 20,
+      "top_p": 0.95
+    },
+    "host_cpu": "Apple M5 Max",
+    "host_memory_bytes": "51539607552",
+    "host_model": "Mac17,6",
+    "macos": "26.6.2",
+    "model_digest": "d49fd9e0da45e486918c87318b866e5924e37ad5841db58763900297d9616ee7",
+    "model_name": "qwen3.6:27b-mlx",
+    "ollama_version": "0.33.2",
+    "output_schema_sha256": "9b25cba2450affa8cae91c864b059aeadc3bb0ed5ab2766a962495e2ed4f3e0b",
+    "parameter_size": "27.8B",
+    "parser": "qwen3.5",
+    "prompt_template_sha256": "95a4e049fca802876995f8b235573ddaa22e55964d74f4efb14579f4f5cee6ef",
+    "python": "3.14.7",
+    "quantization": "nvfp4",
+    "renderer": "qwen3.5",
+    "wire_flags": {
+      "raw": false,
+      "stream": false,
+      "think": false
+    }
+  },
+  "experiment": "e7_server_state",
+  "probes": {
+    "control": {
+      "n_goals": 1,
+      "problem_id": "Mathlib/Combinatorics/Enumerative/DoubleCounting.lean::Finset.sum_card_bipartiteAbove_eq_sum_card_bipartiteBelow",
+      "prompt_chars": 421,
+      "prompt_sha256": "0520c8df02a4acff576bcd883fb11b8161dd29e597bae73559f10e7bc3e90629",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "0"
+    },
+    "suspect": {
+      "n_goals": 1,
+      "problem_id": "Mathlib/LinearAlgebra/QuadraticForm/Basic.lean::QuadraticForm.polar_sub_right",
+      "prompt_chars": 356,
+      "prompt_sha256": "1e9c61ec983c80672a3a45618939f061748569f944969b11fd3cbe8c42ce997a",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "0"
+    }
+  },
+  "question": "does model (re)load, concurrency, or idle time move a greedy answer?",
+  "summary": {
+    "arms": [
+      "warm",
+      "cold",
+      "concurrent",
+      "idle"
+    ],
+    "byte_unstable_cells": [
+      "concurrent::suspect",
+      "warm::suspect"
+    ],
+    "modal_answer_equals_warm": {
+      "control": {
+        "cold": true,
+        "concurrent": true,
+        "idle": true,
+        "warm": true
+      },
+      "suspect": {
+        "cold": false,
+        "concurrent": true,
+        "idle": true,
+        "warm": true
+      }
+    },
+    "per_cell": {
+      "cold::control": {
+        "byte_stable": true,
+        "calls": 8,
+        "distinct_completion_tokens": [
+          23
+        ],
+        "distinct_raw_responses": 1,
+        "distinct_tactics": 1,
+        "modal_raw_rate": 1.0,
+        "modal_raw_sha256": "04c7e92bb28c23de0439282a3f76839cf5aef0916574b14d37522da3bd102f38"
+      },
+      "cold::suspect": {
+        "byte_stable": true,
+        "calls": 8,
+        "distinct_completion_tokens": [
+          16
+        ],
+        "distinct_raw_responses": 1,
+        "distinct_tactics": 1,
+        "modal_raw_rate": 1.0,
+        "modal_raw_sha256": "8996f63b9a7444da9074fae3d254e63f51b07f9a2c7de67cf21c20bcf13904a6"
+      },
+      "concurrent::control": {
+        "byte_stable": true,
+        "calls": 14,
+        "distinct_completion_tokens": [
+          23
+        ],
+        "distinct_raw_responses": 1,
+        "distinct_tactics": 1,
+        "modal_raw_rate": 1.0,
+        "modal_raw_sha256": "04c7e92bb28c23de0439282a3f76839cf5aef0916574b14d37522da3bd102f38"
+      },
+      "concurrent::suspect": {
+        "byte_stable": false,
+        "calls": 14,
+        "distinct_completion_tokens": [
+          12,
+          16
+        ],
+        "distinct_raw_responses": 2,
+        "distinct_tactics": 1,
+        "modal_raw_rate": 0.9286,
+        "modal_raw_sha256": "76393f51eaf6581d4f0c5861c49e5e95586b624e8d7c3a3e55c6aa9daa1eee1b"
+      },
+      "idle::control": {
+        "byte_stable": true,
+        "calls": 5,
+        "distinct_completion_tokens": [
+          23
+        ],
+        "distinct_raw_responses": 1,
+        "distinct_tactics": 1,
+        "modal_raw_rate": 1.0,
+        "modal_raw_sha256": "04c7e92bb28c23de0439282a3f76839cf5aef0916574b14d37522da3bd102f38"
+      },
+      "idle::suspect": {
+        "byte_stable": true,
+        "calls": 5,
+        "distinct_completion_tokens": [
+          12
+        ],
+        "distinct_raw_responses": 1,
+        "distinct_tactics": 1,
+        "modal_raw_rate": 1.0,
+        "modal_raw_sha256": "76393f51eaf6581d4f0c5861c49e5e95586b624e8d7c3a3e55c6aa9daa1eee1b"
+      },
+      "warm::control": {
+        "byte_stable": true,
+        "calls": 14,
+        "distinct_completion_tokens": [
+          23
+        ],
+        "distinct_raw_responses": 1,
+        "distinct_tactics": 1,
+        "modal_raw_rate": 1.0,
+        "modal_raw_sha256": "04c7e92bb28c23de0439282a3f76839cf5aef0916574b14d37522da3bd102f38"
+      },
+      "warm::suspect": {
+        "byte_stable": false,
+        "calls": 14,
+        "distinct_completion_tokens": [
+          12,
+          16
+        ],
+        "distinct_raw_responses": 2,
+        "distinct_tactics": 1,
+        "modal_raw_rate": 0.9286,
+        "modal_raw_sha256": "76393f51eaf6581d4f0c5861c49e5e95586b624e8d7c3a3e55c6aa9daa1eee1b"
+      }
+    },
+    "wall_seconds": 316.6
+  }
+}

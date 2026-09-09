@@ -2005,3 +2005,105 @@ created, retired or reinterpreted: `RSTAR_NOT_IDENTIFIED`, `GAME_R_INSTRUMENT_NO
 
 **Next intended step.** Settle runtime reproducibility, then close V05-01 and V05-03. Do **not**
 begin HC-V0.6, Pilot 1, multi-generation evolution, fine-tuning or an RL Architect.
+
+---
+
+## 2026-09-09 — HC-V0.6 assay frozen before any representation outcome
+
+**Branch.** `claude/hamiltonian-phase-8-experiment-691d22` (worktree), base `37cb8dd`.
+
+**Project stage.** `HC_V0_5_REAL_PLAYER_EXECUTABLE` → **`HC_V0_6_ASSAY_FROZEN`**.
+
+**Objective of the change.** Freeze and commit the four-arm anchored representation assay
+*before* any `R_B` / `R_A_PRIME` / `R_ABLATED` outcome exists, so that no threshold, selection
+rule or model choice can have been made after seeing a result. Owner directive: HC-V0.6 signal
+sprint — get the cheapest credible answer to whether changing the machine-facing representation
+of the same real Lean state causally changes verified Solver behaviour, and whether any effect
+survives across more than one local model.
+
+**Files and systems changed.**
+- New `arena/trajectory/anchor.py` (anchored-state bank: derivation, re-derivation, oracle
+  segregation, `open_anchor_session` branching) and `arena/trajectory/representation.py`
+  (`R_A`, `R_A_PRIME`, `R_B`, `R_ABLATED`; declaration-derived renderers with a bijection contract).
+- New `arena/experiments/hc_v0_6/` (cell schema, paired estimators, power, calibration) and
+  `arena/experiments/hc_v0_6_assay.py` (the runner).
+- `arena/trajectory/{schema,task,arena_v0,episode}.py`: `ActionEvidence` / `provenance_digest`
+  (V05-01) and actor stamped at choice rather than rewritten at emission (V05-03).
+- `arena/trajectory/arena_v0.py`: `normalise_backend_diagnostic` — Lean's per-session scratch path
+  no longer enters a content hash.
+- `arena/trajectory/episode.py`: `wall_ms` added to `NON_DETERMINISTIC_FIELDS`.
+- `arena/trajectory/solver.py`: `solver_for(model_name)`; a non-recorded model no longer inherits
+  the recorded model's lineage-evidence text.
+- New `spec/world/SOURCE_ADMISSION_leandojo_benchmark_4_random_train.json` (manual §18).
+- Docs: `HC_V0_6_SPEC.md` (the freeze), `HC_V0_6_DESIGN_BRIEF.md`, `HC_V0_6_ANCHOR_BANK.md`,
+  `HC_V0_6_REPRESENTATIONS.md`, `HC_V0_6_RUNTIME_NOISE.md`, `HC_V0_6_MODEL_INVENTORY.md`,
+  `HC_V0_6_ANALYSIS_PLAN.md`, `HC_V0_6_ANCHORED_DELTA_SPEC.md`, `HC_V0_6_PREREGISTRATION.md`,
+  `HC_V0_6_MANUAL_COMPLIANCE.md`.
+
+**What was completed.**
+- **Anchored state bank**, frozen: 1,127 anchors, 393 theorems, 330 mathlib files, content hash
+  `f13ffee5aae464d6f4717c4f85cd6ec1091eb19d9ca0ab5cd716094a9b583b40`. Re-derived in independent
+  Lean processes **1,127/1,127**. Reference-tactic leakage into the solver-visible payload
+  **0/1,127**, and **0 hits** over all 4,508 rendered payloads (the model-visible surface).
+- **Branching verified with successful actions**, not inferred from rejections: two successful
+  steps from one live state give distinct children 36/36 with the parent intact.
+- **Renderer contract verified at full scale**: bijection 1,127/1,127 for `R_A_PRIME` and `R_B`,
+  0 refusals, 0 anchors unusable; `R_ONLY` parity 1,127/1,127; `R_ABLATED` fails `R_ONLY` parity
+  1,127/1,127 (the negative control) and is derived `P_CHANGE` from its own declaration.
+- **Endpoint changed to `KERNEL_ACCEPTED_STATE_CHANGE`** per owner directive and verified live: a
+  scripted `skip` solver scored 36/36 events under the old acceptance-only endpoint and **0/36**
+  under the new one.
+- **Runtime characterised**: no call-for-call reproducible configuration exists; 7/56 prompts
+  return more than one tactic; per-call tactic-flip rate 1.02% over 1,566 calls; `num_ctx` changes
+  the policy, not only the capacity; a model reload changes it too.
+- **Baseline preflight**, 45 identical anchors, five models, `R_A` only.
+- **V05-01 and V05-03 closed**; the source-admission record written.
+
+**Decisions made and why.**
+- **Endpoint excludes accepted no-ops.** `skip` is accepted at every open goal, so an
+  acceptance-only endpoint is maximised by a policy that never attempts mathematics. Measured, not
+  hypothesised.
+- **`k = 1`.** The measured noise is symmetric, so it cannot bias Δ̂, only dilute power; protecting
+  against it costs 15 extra anchors versus 405 extra calls per arm at `k = 3`.
+- **Arms interleaved within anchor under a recorded seed.** The runtime instability is
+  state-dependent, not random, so a blocked order would put drift entirely on one arm.
+- **Primary model `gemma4:e4b`**, by the frozen information-rate rule on baseline-only data. Not
+  the historical HC-V0.5 solver; the rule was written before the preflight ran and was followed.
+- **`T_ablate` defined as a function of the preflight baseline**, because a flat 10-point bar is
+  structurally unclearable when the baseline is near 0.10.
+- **Two multiplicity regimes kept separate**: intersection–union for certification gates, Holm for
+  effect claims.
+
+**Tests and verification actually executed.**
+- `.venv/bin/python -m pytest -q` → **2246 passed, 1 failed, 1 skipped**. The single failure is
+  `tests/experiments/test_hc_v0_6_analysis.py::test_cluster_profile_matches_the_built_anchor_bank_when_it_exists`,
+  which hard-codes the **old** 223-anchor bank's counts; the statistics agent is recomputing on the
+  frozen bank as this is written. It is recorded here rather than hidden or deleted.
+- `.venv/bin/python -m ruff check .` → All checks passed.
+- `.venv/bin/python -m ruff format --check .` → 383 files already formatted.
+- `.venv/bin/python -m mypy arena` → Success, 154 source files.
+- Live Lean used throughout (bank build, branching audit, endpoint verification). Live model calls
+  used for the preflight only.
+
+**Failures or unresolved uncertainty.**
+- One known failing test, above.
+- **HC-V0.5's ledger entry recorded a wrong diagnosis**, corrected here rather than rewritten
+  there: it reported "the runtime is NOT reproducible" on the evidence that `result_hash` differed
+  between runs. That hash was differing on Lean's `wall_ms` and on a per-session scratch path
+  embedded in a diagnostic string — it would have differed with a perfectly deterministic Solver.
+  The *phenomenon* is nevertheless real at ~1% per call, established later by a 1,566-call study;
+  the diagnosis, and the design conclusion drawn from it, were wrong.
+- 9 of the 30 HC-V0.5 smoke trajectories are now **refused** by the new provenance check: they
+  claim `actor=SOLVER` with nothing binding them to a policy. Correct, and left refused.
+- `Δ(R_A, R_B)` is **uncomputed**. Nothing in this commit is a representation result.
+- At one prefix-8 anchor the theorem's own recorded next tactic no longer type-checks after flat
+  replay, so no per-anchor ceiling may be inferred from the recorded proof.
+- `R_B` is +36.4% median goal text and +23.0% median prompt characters versus `R_A`: the length and
+  added-vocabulary confound is declared, narrowed by `R_A_PRIME`, and not eliminated.
+
+**Effect on the overall project.** The assay is frozen and auditable before exposure. No sentinel
+is created, retired or reinterpreted by this commit; `HC_V0_5_REAL_PLAYER_EXECUTABLE` stands. No
+`RSTAR`/`LSTAR` claim, no language ranking, no candidate promoted.
+
+**Next intended step.** Run the four-arm assay on `gemma4:e4b` across the frozen bank, check the
+control gates, then the three secondary models on three arms each. Stop and report.

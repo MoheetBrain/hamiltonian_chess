@@ -49,6 +49,7 @@ from __future__ import annotations
 import argparse
 import json
 import random
+import re
 import sys
 import time
 from collections.abc import Iterable, Mapping, Sequence
@@ -78,6 +79,8 @@ from arena.trajectory.lean_backend import (
     verify_closed_script,
 )
 from arena.trajectory.schema import (
+    ActionEvidence,
+    ActionProvenanceError,
     Actor,
     BackendStateEnvelope,
     EvidenceKind,
@@ -380,12 +383,19 @@ class LeanTrajectoryArena:
         arena = LeanTrajectoryArena(renderer=BackendNativeRenderer())
         obs = arena.reset(probe)
         while not done:
-            result = arena.step(solver_tactic)
+            result = arena.step(solver_tactic, evidence=action_evidence)
         trajectory = arena.build_trajectory(actor=Actor.SOLVER)
 
     A rejected tactic does **not** end the episode by default (the Solver may try another) and
     does **not** advance the state; it consumes one attempt and is recorded as evidence.  Set
     ``fail_fast=True`` for reference replay, where a rejection is a real failure.
+
+    **Who chose the action is fixed when the arena is built, not when it is emitted** (V05-03).
+    ``actor`` is a property of the *driver*: a caller stepping this arena directly is the Solver,
+    and :class:`ReplayDriver` constructs its arena with ``actor=Actor.REFERENCE`` because every
+    tactic it plays came out of a recorded proof.  :meth:`step` stamps that actor on the action
+    at the moment of choice and :meth:`build_trajectory` now *asserts* the caller's claim instead
+    of rewriting history to match it.
     """
 
     def __init__(
@@ -400,6 +410,7 @@ class LeanTrajectoryArena:
         toolchain_report: ToolchainReport | None = None,
         olean_count: int | None = None,
         seed: int = 0,
+        actor: Actor = Actor.SOLVER,
     ) -> None:
         self.config = config or LeanToolchainConfig.from_env()
         self.policy = policy or TacticPolicy.record_only()
@@ -408,6 +419,9 @@ class LeanTrajectoryArena:
         self.attempt_budget = attempt_budget
         self.fail_fast = fail_fast
         self.seed = seed
+        #: Stamped on every action this arena accepts.  Set once, at construction, by whoever is
+        #: driving; never re-derived from a caller's assertion at emission time.
+        self.actor = actor
         self._toolchain_report = toolchain_report
         self._olean_count = olean_count
         self._probe: LeanTheoremProbe | None = None
@@ -471,7 +485,7 @@ class LeanTrajectoryArena:
                     verifier="lean4-repl",
                     verdict=Verdict.REJECTED,
                     step=None,
-                    backend_error=start_result.error,
+                    backend_error=normalise_backend_diagnostic(start_result.error),
                     rejected_reason="session failed to start",
                 )
             )
@@ -483,9 +497,23 @@ class LeanTrajectoryArena:
         self._states.append(envelope)
         return self._observe(envelope)
 
-    def step(self, tactic: str) -> ArenaStep:
-        """Apply one action.  Returns the next observation, reward, status and info."""
+    def step(self, tactic: str, *, evidence: ActionEvidence | None = None) -> ArenaStep:
+        """Apply one action.  Returns the next observation, reward, status and info.
 
+        ``evidence`` binds the action to the policy that produced it and to the state that policy
+        was shown; its digest is stamped into the resulting :class:`TrajectoryAction` and is
+        therefore inside the trajectory's ``content_hash``.  It is optional so that scripted and
+        offline play stays possible, and its absence is *recorded* (``info["action_evidence"]``)
+        rather than assumed away — an episode with absent evidence simply cannot be emitted as a
+        ``SOLVER`` trajectory.  Read :class:`~arena.trajectory.schema.ActionEvidence` for the
+        exact limit of what a present binding establishes.
+        """
+
+        if evidence is not None and self.actor is not Actor.SOLVER:
+            raise ActionProvenanceError(
+                f"this arena stamps actor={self.actor.value}; policy evidence on an action it did "
+                "not choose would be a claim that a replayed tactic came from a Solver"
+            )
         if self._terminal.is_terminal:
             return ArenaStep(
                 observation=self._observe(self._states[-1]),
@@ -512,9 +540,12 @@ class LeanTrajectoryArena:
             index=len(self._actions),
             from_state_id=current.state_id,
             to_state_id=envelope.state_id,
-            actor=Actor.SOLVER,
+            # V05-03: stamped at the moment of choice from this arena's own actor, so a
+            # ReplayDriver's actions are born REFERENCE and nothing downstream relabels them.
+            actor=self.actor,
             tactic=tactic,
             wall_ms=result.wall_ms,
+            provenance_digest="" if evidence is None else evidence.provenance_digest,
         )
         self._states.append(envelope)
         self._actions.append(action)
@@ -525,6 +556,9 @@ class LeanTrajectoryArena:
         info: dict[str, Any] = {
             "outcome": result.outcome.value,
             "wall_ms": result.wall_ms,
+            "actor": action.actor.value,
+            # Recorded, not assumed: an unattributed action is a fact about the episode.
+            "action_evidence": "ABSENT" if evidence is None else "PRESENT",
             "tactic_head": action.tactic_head,
             # ADVISORY diagnostic, never a verdict: identical rendered text after a step is a
             # sign the move did nothing.  It is reported, and it gates nothing (audit §7.4).
@@ -597,10 +631,22 @@ class LeanTrajectoryArena:
         reference_horizon: int,
         provenance_notes: Sequence[str] = (),
     ) -> VerifiedTrajectory:
+        """Emit the episode.  ``actor`` is **checked against** the record, never written onto it.
+
+        V05-03: this used to be ``replace(action, actor=actor)`` — it rewrote history, so a
+        five-action replay of a recorded mathlib proof could be resealed as a five-action Solver
+        result and pass ``verify_bank`` both structurally and under ``--relive``.  The actor is
+        now stamped in :meth:`step` from :attr:`actor`, and the caller's claim is an assertion:
+        :meth:`~arena.trajectory.schema.VerifiedTrajectory.require_single_actor` refuses a claim
+        the actions do not support, and
+        :meth:`~arena.trajectory.schema.VerifiedTrajectory.require_attributed_actions` refuses a
+        ``SOLVER`` claim over actions with no provenance binding (V05-01).
+        """
+
         probe = self._probe
         if probe is None:
             raise RuntimeError("no episode to emit")
-        actions = tuple(replace(action, actor=actor) for action in self._actions)
+        actions = tuple(self._actions)
         report = self._toolchain_report or check_toolchain(self.config)
         backend = FormalBackend(
             system="lean4",
@@ -638,6 +684,8 @@ class LeanTrajectoryArena:
             provenance=provenance,
             reference_horizon=reference_horizon,
         )
+        draft.require_single_actor(actor)
+        draft.require_attributed_actions(actor)
         return replace(
             draft, trajectory_id=derive_trajectory_id(probe.problem_id, draft.content_hash)
         )
@@ -733,6 +781,28 @@ def _count_goals(pp: str) -> int:
     return max(pp.count("⊢"), 1)
 
 
+#: Per-run scratch paths that Lean writes into its own diagnostics.  Each session gets a fresh
+#: ``tempfile.mkdtemp(prefix="hamiltonian-lean-")``, so a rejection message can carry
+#: ``/var/folders/w9/8f0vxk…/hamiltonian-lean-abc123/Foo.lean`` -- a string that differs on every
+#: run and identifies nothing about the mathematics.  Left in place it makes every artefact
+#: content-unique: four replays of one configuration produced four distinct ``result_hash`` values
+#: with byte-identical Solver behaviour, and that was read as "the runtime is not reproducible".
+_SCRATCH_PATH = re.compile(r"(?:/private)?/(?:var|tmp)/[^\s'\"]*hamiltonian-lean-[A-Za-z0-9_]+")
+
+
+def normalise_backend_diagnostic(text: str | None) -> str | None:
+    """Replace this run's scratch path with a stable token, keeping the rest of the message.
+
+    The file name is preserved because it names the probe, which is content; only the directory
+    that changes per run is replaced.  This is a *normalisation*, not a redaction: nothing a reader
+    could act on is removed.
+    """
+
+    if not text:
+        return text
+    return _SCRATCH_PATH.sub("<SESSION_SCRATCH>", text)
+
+
 def _step_evidence(step_index: int, result: StepResult) -> VerifierEvidence:
     if result.ok:
         verdict = Verdict.ACCEPTED
@@ -748,8 +818,12 @@ def _step_evidence(step_index: int, result: StepResult) -> VerifierEvidence:
         from_state_id=result.from_state_id,
         to_state_id=result.to_state_id,
         tactic=result.tactic,
-        backend_error=result.error if verdict is Verdict.REJECTED else None,
-        rejected_reason=result.error if verdict is Verdict.REFUSED else None,
+        backend_error=normalise_backend_diagnostic(
+            result.error if verdict is Verdict.REJECTED else None
+        ),
+        rejected_reason=normalise_backend_diagnostic(
+            result.error if verdict is Verdict.REFUSED else None
+        ),
     )
 
 
@@ -777,7 +851,11 @@ class ReplayDriver:
     so a recorded-chain arena collapses past 10 steps (6 theorems at ≥20).  Replaying the flat
     list through the live REPL sidesteps that — Lean's goal stack absorbs the structuring — and
     the audit measured 5 of 6 tree-shaped proofs closing this way.  Every action produced here is
-    ``actor=REFERENCE``: it is ground truth for building a bank, never a solver result.
+    ``actor=REFERENCE`` — and, since V05-03, that is now true *by construction* rather than by a
+    keyword argument at emission time: the arena is built with ``actor=Actor.REFERENCE`` so its
+    actions are stamped REFERENCE the moment Lean accepts them, and ``build_trajectory`` asserts
+    the label instead of writing it.  It is ground truth for building a bank, never a solver
+    result.
     """
 
     def __init__(
@@ -811,6 +889,10 @@ class ReplayDriver:
             toolchain_report=self.toolchain_report,
             olean_count=self.olean_count,
             seed=self.seed,
+            # V05-03: REFERENCE at the moment of choice.  Every tactic this driver plays came out
+            # of the recorded proof, so its actions are born REFERENCE and build_trajectory below
+            # asserts that rather than relabelling them.
+            actor=Actor.REFERENCE,
         )
         error = ""
         try:
@@ -1165,7 +1247,13 @@ def verify_bank(
     policy: TacticPolicy | None = None,
     train_json: Path = DEFAULT_TRAIN_JSON,
 ) -> BankVerification:
-    """Re-check a bank: hashes, chain integrity, kernel evidence, actor purity.
+    """Re-check a bank: hashes, chain integrity, kernel evidence, actor purity, action provenance.
+
+    *Action provenance* is the V05-01 check: a trajectory claiming ``actor=SOLVER`` whose actions
+    carry no ``provenance_digest`` is refused, because nothing in it distinguishes an autonomous
+    episode from a replay of a recorded proof that was relabelled.  Records written before the
+    binding existed still **load** — a missing digest is an absent claim, not a parse error — and
+    are refused by this check rather than quietly accepted.
 
     Structural by default.  ``relive=True`` additionally re-executes **the actions stored in each
     trajectory** — ``trajectory.actions``, not the source proof — against a fresh Lean session and
@@ -1233,6 +1321,16 @@ def _structural_problems(trajectory: VerifiedTrajectory) -> list[str]:
     problems: list[str] = []
     if not trajectory.is_single_actor:
         problems.append("mixes SOLVER and REFERENCE actions")
+    # V05-01: a SOLVER claim whose actions carry no provenance binding is indistinguishable from
+    # a relabelled replay of a recorded proof, and is refused here rather than at emission alone
+    # -- a bank file can be edited after the fact, and this is the check the reader runs.
+    if Actor.SOLVER in trajectory.actors:
+        unattributed = trajectory.unattributed_action_indices
+        if unattributed:
+            problems.append(
+                f"actor=SOLVER but actions {list(unattributed)} carry no provenance digest: "
+                "nothing binds them to a policy identity or to the state that policy was shown"
+            )
     if trajectory.terminal_status is TerminalStatus.OPEN:
         problems.append("OPEN trajectory in a bank: the episode never terminated")
     if trajectory.terminal_status is TerminalStatus.CLOSED_VERIFIED:

@@ -1,0 +1,498 @@
+{
+  "environment": {
+    "arch": "arm64",
+    "architecture": "qwen3_5",
+    "captured_utc": "2026-09-08T22:49:17Z",
+    "context_limit": 262144,
+    "frozen_decoding": {
+      "min_p": 0.0,
+      "num_ctx": 32768,
+      "num_predict": 128,
+      "presence_penalty": 0.0,
+      "repeat_penalty": 1.0,
+      "seed": 20260908,
+      "temperature": 0.0,
+      "top_k": 20,
+      "top_p": 0.95
+    },
+    "host_cpu": "Apple M5 Max",
+    "host_memory_bytes": "51539607552",
+    "host_model": "Mac17,6",
+    "macos": "26.6.2",
+    "model_digest": "d49fd9e0da45e486918c87318b866e5924e37ad5841db58763900297d9616ee7",
+    "model_name": "qwen3.6:27b-mlx",
+    "ollama_version": "0.33.2",
+    "output_schema_sha256": "9b25cba2450affa8cae91c864b059aeadc3bb0ed5ab2766a962495e2ed4f3e0b",
+    "parameter_size": "27.8B",
+    "parser": "qwen3.5",
+    "prompt_template_sha256": "95a4e049fca802876995f8b235573ddaa22e55964d74f4efb14579f4f5cee6ef",
+    "python": "3.14.7",
+    "quantization": "nvfp4",
+    "renderer": "qwen3.5",
+    "wire_flags": {
+      "raw": false,
+      "stream": false,
+      "think": false
+    }
+  },
+  "experiment": "e3_knobs",
+  "not_reproducible_on_some_probe": [
+    "unseeded_hot"
+  ],
+  "probes": [
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/Data/Set/Function.lean::Set.eqOn_univ",
+      "prompt_chars": 368,
+      "prompt_sha256": "a0db75effcdaf66ecf4dee010f6a762cc4ec8a4548eec0d3fc3d666beeece0d5",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "0"
+    },
+    {
+      "n_goals": 1,
+      "problem_id": "Mathlib/Order/ConditionallyCompleteLattice/Basic.lean::ciSup_const",
+      "prompt_chars": 283,
+      "prompt_sha256": "05cb1a6a6722ab5153b1ed48514211207da9e34bc2ae230a2879ebd9bc17bb4e",
+      "source": "hc_v0_5_smoke.json:verified-prompt-sha256",
+      "state_id": "0"
+    }
+  ],
+  "protocol": "interleaved: a distinct filler prompt between every repeat of the probe",
+  "question": "which options dict, if any, gives a reproducible configuration?",
+  "repeats": 12,
+  "reproducible_on_every_probe": [
+    "frozen_baseline",
+    "greedy_strict",
+    "greedy_strict_ctx4096",
+    "greedy_strict_noseed",
+    "no_seed",
+    "seeded_hot",
+    "temp0_only",
+    "topk1_seeded",
+    "topp1_seeded"
+  ],
+  "summary": {
+    "frozen_baseline::05cb1a6a67": {
+      "calls": 12,
+      "config": "frozen_baseline",
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_response_sha256": "fee849153b8ab32e233e540c9a2033649b27529ad4f0ebd0cbd43ad8b6b73676",
+      "modal_tactic_rate": 1.0,
+      "options": {
+        "min_p": 0.0,
+        "num_ctx": 32768,
+        "num_predict": 128,
+        "presence_penalty": 0.0,
+        "repeat_penalty": 1.0,
+        "seed": 20260908,
+        "temperature": 0.0,
+        "top_k": 20,
+        "top_p": 0.95
+      },
+      "probe_sha256": "05cb1a6a6722ab5153b1ed48514211207da9e34bc2ae230a2879ebd9bc17bb4e",
+      "reproducible": true
+    },
+    "frozen_baseline::a0db75effc": {
+      "calls": 12,
+      "config": "frozen_baseline",
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_response_sha256": "b37061ae7d38bd0d79884673d7fa8e4a7510bdd8c8b708842073a5e646a66b4d",
+      "modal_tactic_rate": 1.0,
+      "options": {
+        "min_p": 0.0,
+        "num_ctx": 32768,
+        "num_predict": 128,
+        "presence_penalty": 0.0,
+        "repeat_penalty": 1.0,
+        "seed": 20260908,
+        "temperature": 0.0,
+        "top_k": 20,
+        "top_p": 0.95
+      },
+      "probe_sha256": "a0db75effcdaf66ecf4dee010f6a762cc4ec8a4548eec0d3fc3d666beeece0d5",
+      "reproducible": true
+    },
+    "greedy_strict::05cb1a6a67": {
+      "calls": 12,
+      "config": "greedy_strict",
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_response_sha256": "fee849153b8ab32e233e540c9a2033649b27529ad4f0ebd0cbd43ad8b6b73676",
+      "modal_tactic_rate": 1.0,
+      "options": {
+        "min_p": 0.0,
+        "num_ctx": 32768,
+        "num_predict": 128,
+        "presence_penalty": 0.0,
+        "repeat_penalty": 1.0,
+        "seed": 20260908,
+        "temperature": 0.0,
+        "top_k": 1,
+        "top_p": 1.0
+      },
+      "probe_sha256": "05cb1a6a6722ab5153b1ed48514211207da9e34bc2ae230a2879ebd9bc17bb4e",
+      "reproducible": true
+    },
+    "greedy_strict::a0db75effc": {
+      "calls": 12,
+      "config": "greedy_strict",
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_response_sha256": "b37061ae7d38bd0d79884673d7fa8e4a7510bdd8c8b708842073a5e646a66b4d",
+      "modal_tactic_rate": 1.0,
+      "options": {
+        "min_p": 0.0,
+        "num_ctx": 32768,
+        "num_predict": 128,
+        "presence_penalty": 0.0,
+        "repeat_penalty": 1.0,
+        "seed": 20260908,
+        "temperature": 0.0,
+        "top_k": 1,
+        "top_p": 1.0
+      },
+      "probe_sha256": "a0db75effcdaf66ecf4dee010f6a762cc4ec8a4548eec0d3fc3d666beeece0d5",
+      "reproducible": true
+    },
+    "greedy_strict_ctx4096::05cb1a6a67": {
+      "calls": 12,
+      "config": "greedy_strict_ctx4096",
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_response_sha256": "fee849153b8ab32e233e540c9a2033649b27529ad4f0ebd0cbd43ad8b6b73676",
+      "modal_tactic_rate": 1.0,
+      "options": {
+        "min_p": 0.0,
+        "num_ctx": 4096,
+        "num_predict": 128,
+        "presence_penalty": 0.0,
+        "repeat_penalty": 1.0,
+        "seed": 20260908,
+        "temperature": 0.0,
+        "top_k": 1,
+        "top_p": 1.0
+      },
+      "probe_sha256": "05cb1a6a6722ab5153b1ed48514211207da9e34bc2ae230a2879ebd9bc17bb4e",
+      "reproducible": true
+    },
+    "greedy_strict_ctx4096::a0db75effc": {
+      "calls": 12,
+      "config": "greedy_strict_ctx4096",
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_response_sha256": "9b093b7b71fd93018a1eca176d9d0691a12dceeab71a5b86bbf841b9934fdb83",
+      "modal_tactic_rate": 1.0,
+      "options": {
+        "min_p": 0.0,
+        "num_ctx": 4096,
+        "num_predict": 128,
+        "presence_penalty": 0.0,
+        "repeat_penalty": 1.0,
+        "seed": 20260908,
+        "temperature": 0.0,
+        "top_k": 1,
+        "top_p": 1.0
+      },
+      "probe_sha256": "a0db75effcdaf66ecf4dee010f6a762cc4ec8a4548eec0d3fc3d666beeece0d5",
+      "reproducible": true
+    },
+    "greedy_strict_noseed::05cb1a6a67": {
+      "calls": 12,
+      "config": "greedy_strict_noseed",
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_response_sha256": "fee849153b8ab32e233e540c9a2033649b27529ad4f0ebd0cbd43ad8b6b73676",
+      "modal_tactic_rate": 1.0,
+      "options": {
+        "min_p": 0.0,
+        "num_ctx": 32768,
+        "num_predict": 128,
+        "presence_penalty": 0.0,
+        "repeat_penalty": 1.0,
+        "temperature": 0.0,
+        "top_k": 1,
+        "top_p": 1.0
+      },
+      "probe_sha256": "05cb1a6a6722ab5153b1ed48514211207da9e34bc2ae230a2879ebd9bc17bb4e",
+      "reproducible": true
+    },
+    "greedy_strict_noseed::a0db75effc": {
+      "calls": 12,
+      "config": "greedy_strict_noseed",
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_response_sha256": "b37061ae7d38bd0d79884673d7fa8e4a7510bdd8c8b708842073a5e646a66b4d",
+      "modal_tactic_rate": 1.0,
+      "options": {
+        "min_p": 0.0,
+        "num_ctx": 32768,
+        "num_predict": 128,
+        "presence_penalty": 0.0,
+        "repeat_penalty": 1.0,
+        "temperature": 0.0,
+        "top_k": 1,
+        "top_p": 1.0
+      },
+      "probe_sha256": "a0db75effcdaf66ecf4dee010f6a762cc4ec8a4548eec0d3fc3d666beeece0d5",
+      "reproducible": true
+    },
+    "no_seed::05cb1a6a67": {
+      "calls": 12,
+      "config": "no_seed",
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_response_sha256": "fee849153b8ab32e233e540c9a2033649b27529ad4f0ebd0cbd43ad8b6b73676",
+      "modal_tactic_rate": 1.0,
+      "options": {
+        "min_p": 0.0,
+        "num_ctx": 32768,
+        "num_predict": 128,
+        "presence_penalty": 0.0,
+        "repeat_penalty": 1.0,
+        "temperature": 0.0,
+        "top_k": 20,
+        "top_p": 0.95
+      },
+      "probe_sha256": "05cb1a6a6722ab5153b1ed48514211207da9e34bc2ae230a2879ebd9bc17bb4e",
+      "reproducible": true
+    },
+    "no_seed::a0db75effc": {
+      "calls": 12,
+      "config": "no_seed",
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_response_sha256": "b37061ae7d38bd0d79884673d7fa8e4a7510bdd8c8b708842073a5e646a66b4d",
+      "modal_tactic_rate": 1.0,
+      "options": {
+        "min_p": 0.0,
+        "num_ctx": 32768,
+        "num_predict": 128,
+        "presence_penalty": 0.0,
+        "repeat_penalty": 1.0,
+        "temperature": 0.0,
+        "top_k": 20,
+        "top_p": 0.95
+      },
+      "probe_sha256": "a0db75effcdaf66ecf4dee010f6a762cc4ec8a4548eec0d3fc3d666beeece0d5",
+      "reproducible": true
+    },
+    "seeded_hot::05cb1a6a67": {
+      "calls": 12,
+      "config": "seeded_hot",
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_response_sha256": "fee849153b8ab32e233e540c9a2033649b27529ad4f0ebd0cbd43ad8b6b73676",
+      "modal_tactic_rate": 1.0,
+      "options": {
+        "min_p": 0.0,
+        "num_ctx": 32768,
+        "num_predict": 128,
+        "presence_penalty": 0.0,
+        "repeat_penalty": 1.0,
+        "seed": 20260908,
+        "temperature": 1.0,
+        "top_k": 20,
+        "top_p": 0.95
+      },
+      "probe_sha256": "05cb1a6a6722ab5153b1ed48514211207da9e34bc2ae230a2879ebd9bc17bb4e",
+      "reproducible": true
+    },
+    "seeded_hot::a0db75effc": {
+      "calls": 12,
+      "config": "seeded_hot",
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_response_sha256": "b37061ae7d38bd0d79884673d7fa8e4a7510bdd8c8b708842073a5e646a66b4d",
+      "modal_tactic_rate": 1.0,
+      "options": {
+        "min_p": 0.0,
+        "num_ctx": 32768,
+        "num_predict": 128,
+        "presence_penalty": 0.0,
+        "repeat_penalty": 1.0,
+        "seed": 20260908,
+        "temperature": 1.0,
+        "top_k": 20,
+        "top_p": 0.95
+      },
+      "probe_sha256": "a0db75effcdaf66ecf4dee010f6a762cc4ec8a4548eec0d3fc3d666beeece0d5",
+      "reproducible": true
+    },
+    "temp0_only::05cb1a6a67": {
+      "calls": 12,
+      "config": "temp0_only",
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_response_sha256": "fee849153b8ab32e233e540c9a2033649b27529ad4f0ebd0cbd43ad8b6b73676",
+      "modal_tactic_rate": 1.0,
+      "options": {
+        "num_ctx": 32768,
+        "num_predict": 128,
+        "temperature": 0.0
+      },
+      "probe_sha256": "05cb1a6a6722ab5153b1ed48514211207da9e34bc2ae230a2879ebd9bc17bb4e",
+      "reproducible": true
+    },
+    "temp0_only::a0db75effc": {
+      "calls": 12,
+      "config": "temp0_only",
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_response_sha256": "b37061ae7d38bd0d79884673d7fa8e4a7510bdd8c8b708842073a5e646a66b4d",
+      "modal_tactic_rate": 1.0,
+      "options": {
+        "num_ctx": 32768,
+        "num_predict": 128,
+        "temperature": 0.0
+      },
+      "probe_sha256": "a0db75effcdaf66ecf4dee010f6a762cc4ec8a4548eec0d3fc3d666beeece0d5",
+      "reproducible": true
+    },
+    "topk1_seeded::05cb1a6a67": {
+      "calls": 12,
+      "config": "topk1_seeded",
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_response_sha256": "fee849153b8ab32e233e540c9a2033649b27529ad4f0ebd0cbd43ad8b6b73676",
+      "modal_tactic_rate": 1.0,
+      "options": {
+        "min_p": 0.0,
+        "num_ctx": 32768,
+        "num_predict": 128,
+        "presence_penalty": 0.0,
+        "repeat_penalty": 1.0,
+        "seed": 20260908,
+        "temperature": 0.0,
+        "top_k": 1,
+        "top_p": 0.95
+      },
+      "probe_sha256": "05cb1a6a6722ab5153b1ed48514211207da9e34bc2ae230a2879ebd9bc17bb4e",
+      "reproducible": true
+    },
+    "topk1_seeded::a0db75effc": {
+      "calls": 12,
+      "config": "topk1_seeded",
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_response_sha256": "b37061ae7d38bd0d79884673d7fa8e4a7510bdd8c8b708842073a5e646a66b4d",
+      "modal_tactic_rate": 1.0,
+      "options": {
+        "min_p": 0.0,
+        "num_ctx": 32768,
+        "num_predict": 128,
+        "presence_penalty": 0.0,
+        "repeat_penalty": 1.0,
+        "seed": 20260908,
+        "temperature": 0.0,
+        "top_k": 1,
+        "top_p": 0.95
+      },
+      "probe_sha256": "a0db75effcdaf66ecf4dee010f6a762cc4ec8a4548eec0d3fc3d666beeece0d5",
+      "reproducible": true
+    },
+    "topp1_seeded::05cb1a6a67": {
+      "calls": 12,
+      "config": "topp1_seeded",
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_response_sha256": "fee849153b8ab32e233e540c9a2033649b27529ad4f0ebd0cbd43ad8b6b73676",
+      "modal_tactic_rate": 1.0,
+      "options": {
+        "min_p": 0.0,
+        "num_ctx": 32768,
+        "num_predict": 128,
+        "presence_penalty": 0.0,
+        "repeat_penalty": 1.0,
+        "seed": 20260908,
+        "temperature": 0.0,
+        "top_k": 20,
+        "top_p": 1.0
+      },
+      "probe_sha256": "05cb1a6a6722ab5153b1ed48514211207da9e34bc2ae230a2879ebd9bc17bb4e",
+      "reproducible": true
+    },
+    "topp1_seeded::a0db75effc": {
+      "calls": 12,
+      "config": "topp1_seeded",
+      "distinct_responses": 1,
+      "distinct_tactics": 1,
+      "modal_response_rate": 1.0,
+      "modal_response_sha256": "b37061ae7d38bd0d79884673d7fa8e4a7510bdd8c8b708842073a5e646a66b4d",
+      "modal_tactic_rate": 1.0,
+      "options": {
+        "min_p": 0.0,
+        "num_ctx": 32768,
+        "num_predict": 128,
+        "presence_penalty": 0.0,
+        "repeat_penalty": 1.0,
+        "seed": 20260908,
+        "temperature": 0.0,
+        "top_k": 20,
+        "top_p": 1.0
+      },
+      "probe_sha256": "a0db75effcdaf66ecf4dee010f6a762cc4ec8a4548eec0d3fc3d666beeece0d5",
+      "reproducible": true
+    },
+    "unseeded_hot::05cb1a6a67": {
+      "calls": 12,
+      "config": "unseeded_hot",
+      "distinct_responses": 3,
+      "distinct_tactics": 3,
+      "modal_response_rate": 0.75,
+      "modal_response_sha256": "fee849153b8ab32e233e540c9a2033649b27529ad4f0ebd0cbd43ad8b6b73676",
+      "modal_tactic_rate": 0.75,
+      "options": {
+        "min_p": 0.0,
+        "num_ctx": 32768,
+        "num_predict": 128,
+        "presence_penalty": 0.0,
+        "repeat_penalty": 1.0,
+        "temperature": 1.0,
+        "top_k": 20,
+        "top_p": 0.95
+      },
+      "probe_sha256": "05cb1a6a6722ab5153b1ed48514211207da9e34bc2ae230a2879ebd9bc17bb4e",
+      "reproducible": false
+    },
+    "unseeded_hot::a0db75effc": {
+      "calls": 12,
+      "config": "unseeded_hot",
+      "distinct_responses": 9,
+      "distinct_tactics": 9,
+      "modal_response_rate": 0.25,
+      "modal_response_sha256": "9b093b7b71fd93018a1eca176d9d0691a12dceeab71a5b86bbf841b9934fdb83",
+      "modal_tactic_rate": 0.25,
+      "options": {
+        "min_p": 0.0,
+        "num_ctx": 32768,
+        "num_predict": 128,
+        "presence_penalty": 0.0,
+        "repeat_penalty": 1.0,
+        "temperature": 1.0,
+        "top_k": 20,
+        "top_p": 0.95
+      },
+      "probe_sha256": "a0db75effcdaf66ecf4dee010f6a762cc4ec8a4548eec0d3fc3d666beeece0d5",
+      "reproducible": false
+    }
+  }
+}

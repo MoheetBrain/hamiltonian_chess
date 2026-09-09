@@ -14,6 +14,15 @@ What this module does NOT do, stated up front because the distinction is the who
   Solver fails.  A failed episode stays failed.
 * it never repairs, re-prompts around, or silently retries a malformed proposal.  A parse failure
   is a recorded outcome.
+* it never claims autonomy it cannot substantiate.  Every action is stepped with an
+  :class:`~arena.trajectory.schema.ActionEvidence` binding it to the Solver identity that served
+  the call, the prompt bytes it was given, the decoding parameters in force, and the exact
+  projection the task handed out; the task refuses an action whose observation digest does not
+  match, and the emitted trajectory carries the binding inside its ``content_hash``.  This is
+  V05-01's fix and it is worth being exact about its reach: it **cannot cryptographically prove
+  a black-box model emitted a token**.  It binds the action to a specific policy identity and a
+  specific observed state, makes the binding re-derivable by a reader, and makes an evidence-free
+  ``SOLVER`` claim structurally impossible.
 * it makes no scientific claim.  The result is an ``ENGINEERING_SMOKE``: one fixed baseline
   renderer, one Solver, no representation comparison, no language ranking.
 
@@ -34,15 +43,28 @@ from typing import Any
 
 from arena.canonical.schema import stable_hash
 from arena.storage.artifacts import ArtifactStore
+from arena.trajectory.schema import ActionEvidence
 from arena.trajectory.solver import ProposalStatus, Solver, TacticProposal
-from arena.trajectory.task import ActionResult, VerifiedTask
+from arena.trajectory.state_identity import WorkspaceProjection
+from arena.trajectory.task import ActionResult, VerifiedTask, observation_digest_of
 
 EPISODE_RUNNER_VERSION = "arena-hc-v0.5-episode-runner-v1"
 RUN_MODE_SMOKE = "ENGINEERING_SMOKE"
 
 #: Fields excluded from the deterministic result hash: they vary run to run without changing
 #: what happened mathematically (directive section 28).
-NON_DETERMINISTIC_FIELDS = frozenset({"wall_clock_s", "latency_ms", "generated_utc"})
+#:
+#: ``wall_ms`` was missing here and it mattered.  Four runs of the identical six-task
+#: configuration on 2026-09-09 produced four different ``result_hash`` values while every prompt,
+#: every proposed tactic and every Lean verdict was identical -- and HC-V0.5 read that difference
+#: as "the runtime is not reproducible".  It was reading machine load: ``TrajectoryAction`` carries
+#: ``wall_ms``, whose own docstring says it is "excluded from every content hash", and this set was
+#: the one place that failed to exclude it.
+#:
+#: ``completion_tokens`` is deliberately NOT excluded.  It genuinely differed once in 13 calls for
+#: an identical prompt and an identical parsed tactic, so the response bytes really did differ.
+#: That is a fact about the runtime and the hash should keep reporting it.
+NON_DETERMINISTIC_FIELDS = frozenset({"wall_clock_s", "latency_ms", "generated_utc", "wall_ms"})
 
 
 @dataclass(frozen=True, slots=True)
@@ -72,6 +94,10 @@ class EpisodeStep:
     latency_ms: int | None
     state_id: str
     prompt_sha256: str
+    #: The V05-01 binding actually played, or ``""`` when the step never reached the task.
+    provenance_digest: str = ""
+    #: Digest of the projection this proposal was produced from, as the task itself computed it.
+    observation_digest: str = ""
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -86,12 +112,14 @@ class EpisodeStep:
             "latency_ms": self.latency_ms,
             "state_id": self.state_id,
             "prompt_sha256": self.prompt_sha256,
+            "provenance_digest": self.provenance_digest,
+            "observation_digest": self.observation_digest,
         }
 
 
 @dataclass(slots=True)
 class EpisodeResult:
-    """One autonomous episode.  ``actor`` is SOLVER for every step recorded here."""
+    """One autonomous episode.  ``actor`` is *read back* from the emitted trajectory, not asserted."""
 
     task_id: str
     problem_id: str
@@ -120,13 +148,37 @@ class EpisodeResult:
     def solved(self) -> bool:
         return self.terminal_status == "CLOSED_VERIFIED"
 
+    @property
+    def actor(self) -> str:
+        """Who the *emitted record* says chose the actions — read, never asserted (V05-03).
+
+        This used to be the string literal ``"SOLVER"`` in :meth:`to_dict`, which is precisely
+        the defect: the summary asserted autonomy that nothing in it could support.  It is now
+        read back out of the trajectory the arena actually emitted, and an episode that emitted
+        nothing says so instead of claiming a Solver.
+        """
+
+        if not self.trajectory:
+            return "NOT_EMITTED"
+        actors = sorted({str(a.get("actor", "")) for a in self.trajectory.get("actions", ())})
+        if not actors:
+            return "NO_ACTIONS"
+        return "+".join(actors)
+
+    @property
+    def steps_with_provenance(self) -> int:
+        """Proposals carrying a V05-01 binding to a policy identity and an observed state."""
+
+        return sum(1 for s in self.steps if s.provenance_digest)
+
     def to_dict(self) -> dict[str, Any]:
         return {
             "task_id": self.task_id,
             "problem_id": self.problem_id,
             "terminal_status": self.terminal_status,
             "terminal_outcome": self.terminal_outcome,
-            "actor": "SOLVER",
+            "actor": self.actor,
+            "steps_with_provenance": self.steps_with_provenance,
             "accepted_transitions": self.accepted,
             "rejected_actions": self.rejected,
             "parse_failures": self.parse_failures,
@@ -140,8 +192,40 @@ class EpisodeResult:
         }
 
 
+def action_evidence_for(
+    proposal: TacticProposal, projection: WorkspaceProjection, solver: Solver
+) -> ActionEvidence:
+    """Bind one proposal to the policy that produced it and to the state it was produced from.
+
+    ``projection`` must be the one the task handed out immediately before ``proposal`` was asked
+    for; :meth:`VerifiedTask.step` re-derives its digest and refuses the action if it disagrees,
+    which is what makes this a binding rather than a label.
+
+    ``policy_digest`` comes from the *proposal*, not from ``solver.identity`` read a second time:
+    it is the identity that actually served the call.  ``decoding_digest`` is taken from the
+    solver's frozen decoding options, so a temperature or seed change produces a different
+    binding instead of an invisible one.
+
+    See :class:`~arena.trajectory.schema.ActionEvidence` for what this establishes and — more
+    importantly — what it cannot: it does not prove a black-box model emitted these tokens.
+    """
+
+    return ActionEvidence(
+        policy_digest=proposal.solver_digest or solver.identity.digest,
+        prompt_sha256=proposal.prompt_sha256,
+        observation_digest=observation_digest_of(projection),
+        decoding_digest=stable_hash(dict(solver.identity.decoding_options())),
+    )
+
+
 def run_episode(task: VerifiedTask, solver: Solver, *, max_steps: int = 8) -> EpisodeResult:
-    """Play one task to termination.  Every action comes from ``solver``; none from the source."""
+    """Play one task to termination.  Every action comes from ``solver``; none from the source.
+
+    Every action is stepped with :func:`action_evidence_for`, so the episode's emitted trajectory
+    carries a per-action ``provenance_digest`` inside its ``content_hash``.  A runner that skipped
+    this would find ``emit_trajectory()`` refusing the ``SOLVER`` claim rather than producing an
+    artefact indistinguishable from a replay (V05-01).
+    """
 
     started = time.monotonic()
     result = EpisodeResult(
@@ -167,6 +251,9 @@ def run_episode(task: VerifiedTask, solver: Solver, *, max_steps: int = 8) -> Ep
                     step_index=index, state_id=state_id, rendered=projection.rendered
                 )
                 proposal: TacticProposal = solver.propose(observation)
+                # V05-01: bound to *this* projection, before the tactic is played.  The task
+                # re-derives the digest and refuses anything produced from another state.
+                evidence = action_evidence_for(proposal, projection, solver)
                 step = EpisodeStep(
                     index=index,
                     proposal_status=str(proposal.status),
@@ -179,13 +266,15 @@ def run_episode(task: VerifiedTask, solver: Solver, *, max_steps: int = 8) -> Ep
                     latency_ms=proposal.latency_ms,
                     state_id=observation.state_id,
                     prompt_sha256=proposal.prompt_sha256,
+                    provenance_digest=evidence.provenance_digest,
+                    observation_digest=evidence.observation_digest,
                 )
                 if proposal.status is not ProposalStatus.OK or not proposal.tactic:
                     # A malformed proposal is an outcome, never a reason to consult the source.
                     step.diagnostic = str(proposal.failure_detail or "")
                     result.steps.append(step)
                     break
-                outcome = active.step(proposal.tactic)
+                outcome = active.step(proposal.tactic, evidence=evidence)
                 step.action_result = str(outcome.result)
                 step.terminal_status = str(outcome.terminal_status)
                 step.diagnostic = str(outcome.diagnostic or "")

@@ -1,0 +1,636 @@
+{
+  "endpoint": "http://127.0.0.1:11434",
+  "models": [
+    {
+      "architecture": "gemma3",
+      "block_count": 34,
+      "capabilities": [
+        "completion",
+        "vision"
+      ],
+      "context_length": 131072,
+      "declared_base_model": {
+        "name": "",
+        "organization": "",
+        "repo_url": ""
+      },
+      "digest": "a2af6cc3eb7fa8be8504abaf9b04e88f17a119ec3f04a3addf55f92841195f5a",
+      "embedding_length": 2560,
+      "format": "gguf",
+      "general_basename": "",
+      "general_finetune": "",
+      "general_license": "",
+      "general_name": "",
+      "general_size_label": "",
+      "head_count": 8,
+      "head_count_kv": 4,
+      "legacy_template": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 }}\n{{- if or (eq .Role \"user\") (eq .Role \"system\") }}<start_of_turn>user\n{{ .Content }}<end_of_turn>\n{{ if $last }}<start_of_turn>model\n{{ end }}\n{{- else if eq .Role \"assistant\" }}<start_of_turn>model\n{{ .Content }}{{ if not $last }}<end_of_turn>\n{{ end }}\n{{- end }}\n{{- end }}",
+      "lineage": "UNKNOWN",
+      "lineage_evidence": "established: served by ollama 0.33.2 as 'gemma3:4b', digest a2af6cc3eb7fa8be8504abaf9b04e88f17a119ec3f04a3addf55f92841195f5a, architecture 'gemma3', quantization 'Q4_K_M'. NOT established: training data, base checkpoint, fine-tuning history, or any relation to any other model in this study. Same-family names are NOT evidence of shared lineage.",
+      "modified_at": "2026-08-08T12:58:36.494695717+01:00",
+      "name": "gemma3:4b",
+      "parameter_count": 4299915632,
+      "parser": "",
+      "quantization_level": "Q4_K_M",
+      "renderer": "",
+      "runtime": "ollama",
+      "runtime_version": "0.33.2",
+      "show_families": [
+        "gemma3"
+      ],
+      "show_family": "gemma3",
+      "show_parameter_size": "4.3B",
+      "size_bytes_on_disk": 3338801804,
+      "solver_identity_digest": "08cec30273a7eb5477238863e9d3403caa386b4d1c6d499294d383a804b99b25",
+      "tags_families": [
+        "gemma3"
+      ],
+      "tags_family": "gemma3",
+      "tags_parameter_size": "4.3B",
+      "tokenizer_model": "llama",
+      "tokenizer_pre": "default",
+      "vocab_size": "NOT_REPORTED_BY_RUNTIME"
+    },
+    {
+      "architecture": "gemma4",
+      "block_count": 48,
+      "capabilities": [
+        "audio",
+        "completion",
+        "thinking",
+        "tools",
+        "vision"
+      ],
+      "context_length": 262144,
+      "declared_base_model": {
+        "name": "Gemma 4 12B",
+        "organization": "Google",
+        "repo_url": "https://huggingface.co/google/gemma-4-12B"
+      },
+      "digest": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c",
+      "embedding_length": 3840,
+      "format": "gguf",
+      "general_basename": "",
+      "general_finetune": "",
+      "general_license": "apache-2.0",
+      "general_name": "",
+      "general_size_label": "12B",
+      "head_count": 16,
+      "head_count_kv": 0,
+      "legacy_template": "{{ .Prompt }}",
+      "lineage": "UNKNOWN",
+      "lineage_evidence": "established: served by ollama 0.33.2 as 'gemma4:12b', digest 4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c, architecture 'gemma4', quantization 'Q4_K_M'. NOT established: training data, base checkpoint, fine-tuning history, or any relation to any other model in this study. Same-family names are NOT evidence of shared lineage.",
+      "modified_at": "2026-08-08T11:50:50.599114574+01:00",
+      "name": "gemma4:12b",
+      "parameter_count": 11907350576,
+      "parser": "gemma4",
+      "quantization_level": "Q4_K_M",
+      "renderer": "gemma4",
+      "runtime": "ollama",
+      "runtime_version": "0.33.2",
+      "show_families": [
+        "gemma4"
+      ],
+      "show_family": "gemma4",
+      "show_parameter_size": "11.9B",
+      "size_bytes_on_disk": 7556508396,
+      "solver_identity_digest": "246d658ee8c52d8abd595c7317ada1582357f6366908a58e55cfada5add178b6",
+      "tags_families": [
+        "gemma4"
+      ],
+      "tags_family": "gemma4",
+      "tags_parameter_size": "11.9B",
+      "tokenizer_model": "gemma4",
+      "tokenizer_pre": "",
+      "vocab_size": "NOT_REPORTED_BY_RUNTIME"
+    },
+    {
+      "architecture": "gemma4",
+      "block_count": 60,
+      "capabilities": [
+        "completion",
+        "thinking",
+        "tools",
+        "vision"
+      ],
+      "context_length": 262144,
+      "declared_base_model": {
+        "name": "",
+        "organization": "",
+        "repo_url": ""
+      },
+      "digest": "6316f0629137b426c9d9b853ffc4c8209589f30ee39aebede6285096c0ff47e7",
+      "embedding_length": 5376,
+      "format": "gguf",
+      "general_basename": "",
+      "general_finetune": "",
+      "general_license": "",
+      "general_name": "",
+      "general_size_label": "",
+      "head_count": 32,
+      "head_count_kv": 0,
+      "legacy_template": "{{ .Prompt }}",
+      "lineage": "UNKNOWN",
+      "lineage_evidence": "established: served by ollama 0.33.2 as 'gemma4:31b', digest 6316f0629137b426c9d9b853ffc4c8209589f30ee39aebede6285096c0ff47e7, architecture 'gemma4', quantization 'Q4_K_M'. NOT established: training data, base checkpoint, fine-tuning history, or any relation to any other model in this study. Same-family names are NOT evidence of shared lineage.",
+      "modified_at": "2026-07-29T08:50:20.416174979+01:00",
+      "name": "gemma4:31b",
+      "parameter_count": 31273089132,
+      "parser": "gemma4",
+      "quantization_level": "Q4_K_M",
+      "renderer": "gemma4",
+      "runtime": "ollama",
+      "runtime_version": "0.33.2",
+      "show_families": [
+        "gemma4"
+      ],
+      "show_family": "gemma4",
+      "show_parameter_size": "31.3B",
+      "size_bytes_on_disk": 19868981791,
+      "solver_identity_digest": "a4b21ebe27f3bd14fc419ce9460130ace47223498314f8dce540209059b1c2a8",
+      "tags_families": [
+        "gemma4"
+      ],
+      "tags_family": "gemma4",
+      "tags_parameter_size": "31.3B",
+      "tokenizer_model": "llama",
+      "tokenizer_pre": "gemma4",
+      "vocab_size": "NOT_REPORTED_BY_RUNTIME"
+    },
+    {
+      "architecture": "gemma4",
+      "block_count": 42,
+      "capabilities": [
+        "audio",
+        "completion",
+        "thinking",
+        "tools",
+        "vision"
+      ],
+      "context_length": 131072,
+      "declared_base_model": {
+        "name": "",
+        "organization": "",
+        "repo_url": ""
+      },
+      "digest": "c6eb396dbd5992bbe3f5cdb947e8bbc0ee413d7c17e2beaae69f5d569cf982eb",
+      "embedding_length": 2560,
+      "format": "gguf",
+      "general_basename": "",
+      "general_finetune": "",
+      "general_license": "",
+      "general_name": "",
+      "general_size_label": "",
+      "head_count": 8,
+      "head_count_kv": 2,
+      "legacy_template": "{{ .Prompt }}",
+      "lineage": "UNKNOWN",
+      "lineage_evidence": "established: served by ollama 0.33.2 as 'gemma4:e4b', digest c6eb396dbd5992bbe3f5cdb947e8bbc0ee413d7c17e2beaae69f5d569cf982eb, architecture 'gemma4', quantization 'Q4_K_M'. NOT established: training data, base checkpoint, fine-tuning history, or any relation to any other model in this study. Same-family names are NOT evidence of shared lineage.",
+      "modified_at": "2026-08-08T13:01:40.675446322+01:00",
+      "name": "gemma4:e4b",
+      "parameter_count": 7996157674,
+      "parser": "gemma4",
+      "quantization_level": "Q4_K_M",
+      "renderer": "gemma4",
+      "runtime": "ollama",
+      "runtime_version": "0.33.2",
+      "show_families": [
+        "gemma4"
+      ],
+      "show_family": "gemma4",
+      "show_parameter_size": "8.0B",
+      "size_bytes_on_disk": 9608350718,
+      "solver_identity_digest": "051d055ed8f49bf125fab7e78f41cfd1ef11bbebe8c3a9f637710efd31295699",
+      "tags_families": [
+        "gemma4"
+      ],
+      "tags_family": "gemma4",
+      "tags_parameter_size": "8.0B",
+      "tokenizer_model": "llama",
+      "tokenizer_pre": "gemma4",
+      "vocab_size": "NOT_REPORTED_BY_RUNTIME"
+    },
+    {
+      "architecture": "qwen3_5",
+      "block_count": 64,
+      "capabilities": [
+        "completion",
+        "thinking",
+        "tools",
+        "vision"
+      ],
+      "context_length": 262144,
+      "declared_base_model": {
+        "name": "",
+        "organization": "",
+        "repo_url": ""
+      },
+      "digest": "d49fd9e0da45e486918c87318b866e5924e37ad5841db58763900297d9616ee7",
+      "embedding_length": 5120,
+      "format": "safetensors",
+      "general_basename": "",
+      "general_finetune": "",
+      "general_license": "",
+      "general_name": "",
+      "general_size_label": "",
+      "head_count": 0,
+      "head_count_kv": 0,
+      "legacy_template": "{{ .Prompt }}",
+      "lineage": "UNKNOWN",
+      "lineage_evidence": "established: pulled from registry.ollama.ai/library/qwen3.6:27b-mlx (local manifest path); safetensors format; Apache-2.0 licence text served by /api/show; architecture string 'qwen3_5'. NOT established: training data, base checkpoint, fine-tuning history, or any relation to the deleted Phase 6/8 solver qwen38-rvn (digest 25eb57cb...), which is unrecoverable and is NOT assumed to be an ancestor, descendant or sibling of this model.",
+      "modified_at": "2026-09-08T11:43:30.88186678+01:00",
+      "name": "qwen3.6:27b-mlx",
+      "parameter_count": 27781081984,
+      "parser": "qwen3.5",
+      "quantization_level": "nvfp4",
+      "renderer": "qwen3.5",
+      "runtime": "ollama",
+      "runtime_version": "0.33.2",
+      "show_families": null,
+      "show_family": "qwen3_5",
+      "show_parameter_size": "27.8B",
+      "size_bytes_on_disk": 18785066095,
+      "solver_identity_digest": "a775592df23efae46f5146d128165c3886af0cb9adcb61693ebc48707f977c18",
+      "tags_families": null,
+      "tags_family": "",
+      "tags_parameter_size": "",
+      "tokenizer_model": "",
+      "tokenizer_pre": "",
+      "vocab_size": "NOT_REPORTED_BY_RUNTIME"
+    }
+  ],
+  "pairwise": [
+    {
+      "a": "gemma3:4b",
+      "b": "gemma4:12b",
+      "evidence": {
+        "architecture": [
+          "gemma3",
+          "gemma4"
+        ],
+        "context_length": [
+          131072,
+          262144
+        ],
+        "digest": [
+          "a2af6cc3eb7f",
+          "4eb23ef187e2"
+        ],
+        "parameter_count": [
+          4299915632,
+          11907350576
+        ],
+        "quantization_level": [
+          "Q4_K_M",
+          "Q4_K_M"
+        ],
+        "show_family": [
+          "gemma3",
+          "gemma4"
+        ],
+        "tokenizer": [
+          "llama/default",
+          "gemma4/"
+        ]
+      },
+      "reason": "different general.architecture strings ('gemma3' vs 'gemma4') and different details.family",
+      "relation": "DISTINCT_MODEL_FAMILY",
+      "training_lineage": "UNKNOWN -- no runtime field records training data, base checkpoint or fine-tuning history for both members of this pair"
+    },
+    {
+      "a": "gemma3:4b",
+      "b": "gemma4:31b",
+      "evidence": {
+        "architecture": [
+          "gemma3",
+          "gemma4"
+        ],
+        "context_length": [
+          131072,
+          262144
+        ],
+        "digest": [
+          "a2af6cc3eb7f",
+          "6316f0629137"
+        ],
+        "parameter_count": [
+          4299915632,
+          31273089132
+        ],
+        "quantization_level": [
+          "Q4_K_M",
+          "Q4_K_M"
+        ],
+        "show_family": [
+          "gemma3",
+          "gemma4"
+        ],
+        "tokenizer": [
+          "llama/default",
+          "llama/gemma4"
+        ]
+      },
+      "reason": "different general.architecture strings ('gemma3' vs 'gemma4') and different details.family",
+      "relation": "DISTINCT_MODEL_FAMILY",
+      "training_lineage": "UNKNOWN -- no runtime field records training data, base checkpoint or fine-tuning history for both members of this pair"
+    },
+    {
+      "a": "gemma3:4b",
+      "b": "gemma4:e4b",
+      "evidence": {
+        "architecture": [
+          "gemma3",
+          "gemma4"
+        ],
+        "context_length": [
+          131072,
+          131072
+        ],
+        "digest": [
+          "a2af6cc3eb7f",
+          "c6eb396dbd59"
+        ],
+        "parameter_count": [
+          4299915632,
+          7996157674
+        ],
+        "quantization_level": [
+          "Q4_K_M",
+          "Q4_K_M"
+        ],
+        "show_family": [
+          "gemma3",
+          "gemma4"
+        ],
+        "tokenizer": [
+          "llama/default",
+          "llama/gemma4"
+        ]
+      },
+      "reason": "different general.architecture strings ('gemma3' vs 'gemma4') and different details.family",
+      "relation": "DISTINCT_MODEL_FAMILY",
+      "training_lineage": "UNKNOWN -- no runtime field records training data, base checkpoint or fine-tuning history for both members of this pair"
+    },
+    {
+      "a": "gemma3:4b",
+      "b": "qwen3.6:27b-mlx",
+      "evidence": {
+        "architecture": [
+          "gemma3",
+          "qwen3_5"
+        ],
+        "context_length": [
+          131072,
+          262144
+        ],
+        "digest": [
+          "a2af6cc3eb7f",
+          "d49fd9e0da45"
+        ],
+        "parameter_count": [
+          4299915632,
+          27781081984
+        ],
+        "quantization_level": [
+          "Q4_K_M",
+          "nvfp4"
+        ],
+        "show_family": [
+          "gemma3",
+          "qwen3_5"
+        ],
+        "tokenizer": [
+          "llama/default",
+          "/"
+        ]
+      },
+      "reason": "different general.architecture strings ('gemma3' vs 'qwen3_5') and different details.family",
+      "relation": "DISTINCT_MODEL_FAMILY",
+      "training_lineage": "UNKNOWN -- no runtime field records training data, base checkpoint or fine-tuning history for both members of this pair"
+    },
+    {
+      "a": "gemma4:12b",
+      "b": "gemma4:31b",
+      "evidence": {
+        "architecture": [
+          "gemma4",
+          "gemma4"
+        ],
+        "context_length": [
+          262144,
+          262144
+        ],
+        "digest": [
+          "4eb23ef187e2",
+          "6316f0629137"
+        ],
+        "parameter_count": [
+          11907350576,
+          31273089132
+        ],
+        "quantization_level": [
+          "Q4_K_M",
+          "Q4_K_M"
+        ],
+        "show_family": [
+          "gemma4",
+          "gemma4"
+        ],
+        "tokenizer": [
+          "gemma4/",
+          "llama/gemma4"
+        ]
+      },
+      "reason": "same general.architecture and same details.family; an ARCHITECTURE-family statement only. Differences: parameter count, tokenizer metadata encoding",
+      "relation": "SAME_FAMILY_VARIANT",
+      "training_lineage": "UNKNOWN -- no runtime field records training data, base checkpoint or fine-tuning history for both members of this pair"
+    },
+    {
+      "a": "gemma4:12b",
+      "b": "gemma4:e4b",
+      "evidence": {
+        "architecture": [
+          "gemma4",
+          "gemma4"
+        ],
+        "context_length": [
+          262144,
+          131072
+        ],
+        "digest": [
+          "4eb23ef187e2",
+          "c6eb396dbd59"
+        ],
+        "parameter_count": [
+          11907350576,
+          7996157674
+        ],
+        "quantization_level": [
+          "Q4_K_M",
+          "Q4_K_M"
+        ],
+        "show_family": [
+          "gemma4",
+          "gemma4"
+        ],
+        "tokenizer": [
+          "gemma4/",
+          "llama/gemma4"
+        ]
+      },
+      "reason": "same general.architecture and same details.family; an ARCHITECTURE-family statement only. Differences: parameter count, context length, tokenizer metadata encoding",
+      "relation": "SAME_FAMILY_VARIANT",
+      "training_lineage": "UNKNOWN -- no runtime field records training data, base checkpoint or fine-tuning history for both members of this pair"
+    },
+    {
+      "a": "gemma4:12b",
+      "b": "qwen3.6:27b-mlx",
+      "evidence": {
+        "architecture": [
+          "gemma4",
+          "qwen3_5"
+        ],
+        "context_length": [
+          262144,
+          262144
+        ],
+        "digest": [
+          "4eb23ef187e2",
+          "d49fd9e0da45"
+        ],
+        "parameter_count": [
+          11907350576,
+          27781081984
+        ],
+        "quantization_level": [
+          "Q4_K_M",
+          "nvfp4"
+        ],
+        "show_family": [
+          "gemma4",
+          "qwen3_5"
+        ],
+        "tokenizer": [
+          "gemma4/",
+          "/"
+        ]
+      },
+      "reason": "different general.architecture strings ('gemma4' vs 'qwen3_5') and different details.family",
+      "relation": "DISTINCT_MODEL_FAMILY",
+      "training_lineage": "UNKNOWN -- no runtime field records training data, base checkpoint or fine-tuning history for both members of this pair"
+    },
+    {
+      "a": "gemma4:31b",
+      "b": "gemma4:e4b",
+      "evidence": {
+        "architecture": [
+          "gemma4",
+          "gemma4"
+        ],
+        "context_length": [
+          262144,
+          131072
+        ],
+        "digest": [
+          "6316f0629137",
+          "c6eb396dbd59"
+        ],
+        "parameter_count": [
+          31273089132,
+          7996157674
+        ],
+        "quantization_level": [
+          "Q4_K_M",
+          "Q4_K_M"
+        ],
+        "show_family": [
+          "gemma4",
+          "gemma4"
+        ],
+        "tokenizer": [
+          "llama/gemma4",
+          "llama/gemma4"
+        ]
+      },
+      "reason": "same general.architecture and same details.family; an ARCHITECTURE-family statement only. Differences: parameter count, context length",
+      "relation": "SAME_FAMILY_VARIANT",
+      "training_lineage": "UNKNOWN -- no runtime field records training data, base checkpoint or fine-tuning history for both members of this pair"
+    },
+    {
+      "a": "gemma4:31b",
+      "b": "qwen3.6:27b-mlx",
+      "evidence": {
+        "architecture": [
+          "gemma4",
+          "qwen3_5"
+        ],
+        "context_length": [
+          262144,
+          262144
+        ],
+        "digest": [
+          "6316f0629137",
+          "d49fd9e0da45"
+        ],
+        "parameter_count": [
+          31273089132,
+          27781081984
+        ],
+        "quantization_level": [
+          "Q4_K_M",
+          "nvfp4"
+        ],
+        "show_family": [
+          "gemma4",
+          "qwen3_5"
+        ],
+        "tokenizer": [
+          "llama/gemma4",
+          "/"
+        ]
+      },
+      "reason": "different general.architecture strings ('gemma4' vs 'qwen3_5') and different details.family",
+      "relation": "DISTINCT_MODEL_FAMILY",
+      "training_lineage": "UNKNOWN -- no runtime field records training data, base checkpoint or fine-tuning history for both members of this pair"
+    },
+    {
+      "a": "gemma4:e4b",
+      "b": "qwen3.6:27b-mlx",
+      "evidence": {
+        "architecture": [
+          "gemma4",
+          "qwen3_5"
+        ],
+        "context_length": [
+          131072,
+          262144
+        ],
+        "digest": [
+          "c6eb396dbd59",
+          "d49fd9e0da45"
+        ],
+        "parameter_count": [
+          7996157674,
+          27781081984
+        ],
+        "quantization_level": [
+          "Q4_K_M",
+          "nvfp4"
+        ],
+        "show_family": [
+          "gemma4",
+          "qwen3_5"
+        ],
+        "tokenizer": [
+          "llama/gemma4",
+          "/"
+        ]
+      },
+      "reason": "different general.architecture strings ('gemma4' vs 'qwen3_5') and different details.family",
+      "relation": "DISTINCT_MODEL_FAMILY",
+      "training_lineage": "UNKNOWN -- no runtime field records training data, base checkpoint or fine-tuning history for both members of this pair"
+    }
+  ],
+  "runtime": "ollama",
+  "runtime_version": "0.33.2",
+  "schema": "hc-v0.6-model-inventory-v1"
+}
