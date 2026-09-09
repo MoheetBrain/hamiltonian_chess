@@ -1,0 +1,47 @@
+{
+ "attack": "A6 actor provenance: can a cell claim an outcome it did not earn?",
+ "forgeries_accepted": [
+  "F5_event_with_no_tactic",
+  "F6_arbitrary_solver_digest",
+  "F7_R_B_row_carrying_R_A_prompt_hash"
+ ],
+ "forgery_results": {
+  "F1_event_without_reaching_lean": "REJECTED -- DesignViolation: anchor:1: parse status PARSE_FAILURE never reached Lean, so Lean cannot have accepted it",
+  "F2_closed_against_a_non_event": "REJECTED -- DesignViolation: anchor:1: closed_all_goals is an endpoint event (KERNEL_ACCEPTED_STATE_CHANGE), so it cannot be recorded against ACCEPTED_NO_OP; an action t",
+  "F3_stored_endpoint_contradicts_step_result": "REJECTED -- DesignViolation: anchor:1: stored kernel_accepted_state_change=True contradicts step_result=ACCEPTED_NO_OP",
+  "F4_arm_wearing_another_arms_renderer": "REJECTED -- DesignViolation: anchor:1: arm R_B renders with R_B, not 'R_A'",
+  "F4b_arm_wearing_another_arms_class": "REJECTED -- DesignViolation: anchor:1: arm R_B is R_ONLY, not P_CHANGE",
+  "F5_event_with_no_tactic": "ACCEPTED -- the forgery was not caught",
+  "F6_arbitrary_solver_digest": "ACCEPTED -- the forgery was not caught",
+  "F7_R_B_row_carrying_R_A_prompt_hash": "ACCEPTED -- the forgery was not caught"
+ },
+ "in_flight_cell_file": {
+  "cells_by_arm": {
+   "R_A": 744,
+   "R_ABLATED": 743,
+   "R_A_PRIME": 744,
+   "R_B": 744
+  },
+  "fields_read": [
+   "anchor_id",
+   "arm",
+   "replicate_index",
+   "renderer_id",
+   "intervention_class",
+   "prompt_sha256",
+   "solver_digest"
+  ],
+  "file_present": true,
+  "intervention_class_mismatches": 0,
+  "prompt_hash_mismatch_examples": [],
+  "prompt_hash_mismatches": 0,
+  "rows_read": 2975
+ },
+ "note": "prompt_sha256 is a pure function of (bank goal text, arm renderer, frozen template), so it CAN be re-derived offline -- but nothing in the pipeline does it, and CellOutcome accepts any 64-character string. The re-derivation above is the missing check, not an existing one.",
+ "prompt_hash_table": {
+  "anchors_where_two_arms_share_a_prompt_hash": 0,
+  "entries": 4508,
+  "global_hash_collisions": 1122
+ },
+ "verdict": "BROKEN"
+}

@@ -1,0 +1,61 @@
+{
+ "attack": "A12 the endpoint: score without mathematics, and lose a genuine advance",
+ "caveat": "The SCORING half is measured here exactly. Whether Lean accepts rotate_left / rename_i / clear at a given anchor is not re-measured (Lean is busy); it is standard Mathlib behaviour but is marked PLAUSIBLE end-to-end, CONFIRMED for the scoring rule.",
+ "fakes_that_scored": [
+  "E1_goal_permutation",
+  "E2_hypothesis_rename",
+  "E3_hypothesis_clear"
+ ],
+ "findings": {
+  "E1_exposure": {
+   "anchors_total": 1127,
+   "anchors_with_two_or_more_goals": 152,
+   "share": 0.1349
+  },
+  "E1_goal_permutation": {
+   "cell_step_result": "ACCEPTED_TRANSITION",
+   "endpoint_fires": true,
+   "policy": "ALLOWED",
+   "tactic": "rotate_left"
+  },
+  "E2_hypothesis_rename": {
+   "cell_step_result": "ACCEPTED_TRANSITION",
+   "endpoint_fires": true,
+   "policy": "ALLOWED",
+   "tactic": "rename_i fresh"
+  },
+  "E3_hypothesis_clear": {
+   "cell_step_result": "ACCEPTED_TRANSITION",
+   "endpoint_fires": true,
+   "policy": "ALLOWED",
+   "tactic": "clear h"
+  },
+  "E4_untrusted_axiom_closure": {
+   "always_refused_tokens": [
+    "admit",
+    "sorry",
+    "sorryAx",
+    "stop"
+   ],
+   "assay_checks_untrusted_axioms": false,
+   "assay_runs_verify_closed_script": false,
+   "note": "closed_all_goals comes straight from the REPL's `no goals` sentinel. RT-01's fix (the TRUSTED_AXIOMS allow-list) lives in verify_closed_script, which this assay never calls, so a native_decide closure would score an event with Lean.ofReduceBool in its trust base and nothing would record it.",
+   "policy": "ALLOWED",
+   "tactic": "native_decide"
+  },
+  "E5_ok_step_with_no_reported_state": {
+   "cell_step_result": "ACCEPTED_NO_OP",
+   "endpoint_fires": false,
+   "note": "an OK step whose tactic_state the backend did not report scores 0, not a harness failure -- a genuine advance would be silently recorded as a no-op"
+  },
+  "E6_change_erased_by_normalisation": {
+   "endpoint_fires": false,
+   "note": "normalize_goal_text rstrips each line, so a change that is only trailing whitespace is invisible. Harmless for real tactics."
+  },
+  "E7_parent_falls_back_to_the_bank": {
+   "fallback_reached_when_session_is_silent": "ACCEPTED_NO_OP",
+   "note": "`live.parent_state_text(...) or anchor.solver_visible.goals_pp` -- if the session returns None or '' the comparison silently switches from the LIVE parent to the BANK's recorded text. The two agree only up to the re-elaboration key, which is a hash of the NORMALISED text, so a live/bank divergence inside the normalisation would not be caught."
+  }
+ },
+ "verdict": "BROKEN"
+}

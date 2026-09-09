@@ -1,0 +1,40 @@
+{
+ "attack": "A10 control exclusion: can R_ABLATED read as a candidate language?",
+ "findings": {
+  "L1_in_BIJECTIVE_ARM_IDS": false,
+  "L1_in_NULL_PERTURBATION_ARM_IDS": false,
+  "L1_in_REPRESENTATION_ARM_IDS": false,
+  "L2_has_invert": false,
+  "L2_satisfies_BijectiveRenderer": false,
+  "L3_derived_class": "P_CHANGE",
+  "L4_row_claiming_R_ONLY": "REJECTED -- DesignViolation: a: arm R_ABLATED is P_CHANGE, not R_ONLY",
+  "L5_classify_intervention": "FAILS CLOSED -- UnclassifiedGeneError: no declared InterventionClass for gene(s) ['goal_visibility']. Add them to GENE_INTERVENTION_CLASS with their true class; refusing to assume R_ONLY.",
+  "L5_gene_in_table": false,
+  "L6_league_or_archive_modules": [
+   "arena/cli.py",
+   "arena/evolution/loop.py",
+   "arena/evolution/record.py",
+   "arena/league/matches.py",
+   "arena/league/registry.py",
+   "arena/players/league_manager.py"
+  ],
+  "L6_modules_mentioning_R_ABLATED": [
+   "arena/experiments/hc_v0_6/calibration.py",
+   "arena/experiments/hc_v0_6/estimators.py",
+   "arena/experiments/hc_v0_6/schema.py",
+   "arena/experiments/hc_v0_6_assay.py",
+   "arena/trajectory/representation.py",
+   "tests/experiments/test_hc_v0_6_analysis.py",
+   "tests/experiments/test_hc_v0_6_assay.py",
+   "tests/trajectory/test_representation.py"
+  ],
+  "L6_overlap": [],
+  "L7_manifest_renderer_declaration": {
+   "arm_id": "R_ABLATED",
+   "declared_intervention_class": "P_CHANGE",
+   "renderer_id": "hc-v0.6-R_ABLATED-goal-withheld-v1"
+  },
+  "L8_permits_representation_claim": false
+ },
+ "verdict": "HELD"
+}

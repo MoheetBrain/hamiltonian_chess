@@ -460,11 +460,19 @@ def arm_marginal(
     seed: int = SEED,
     resamples: int = BOOTSTRAP_RESAMPLES,
 ) -> ArmMarginal:
-    """Marginal endpoint rate for one arm, with Clopper-Pearson and a cluster bootstrap."""
+    """Marginal endpoint rate for one arm, with Clopper-Pearson and a cluster bootstrap.
 
-    rows = table.rows_for(arm)
+    Harness-decided cells are excluded, exactly as they are in
+    :func:`~arena.experiments.hc_v0_6.schema.extract_pair`: spec §4 makes ``ENVIRONMENT_ERROR``
+    separately typed and never a mathematical zero, so counting one in the denominator would
+    depress the arm's rate for a reason that has nothing to do with the model
+    (``docs/HC_V0_6_REDTEAM.md`` RT-V06-01).  ``n_cells`` is therefore the *analysable* cell count;
+    what was dropped is reported by :meth:`CellTable.harness_failures_by_arm`.
+    """
+
+    rows = tuple(row for row in table.rows_for(arm) if row.analysable)
     if not rows:
-        raise DesignViolation(f"no rows for arm {arm.value}")
+        raise DesignViolation(f"no analysable rows for arm {arm.value}")
     per_anchor: dict[str, list[bool]] = {}
     cluster_of: dict[str, str] = {}
     for row in rows:
@@ -560,9 +568,9 @@ def split_half_identity(table: CellTable, *, arm: Arm = Arm.R_A) -> PairedCells:
     Solver is deterministic; it is not evidence that the analysis pipeline can detect anything.
     """
 
-    rows = table.rows_for(arm)
+    rows = tuple(row for row in table.rows_for(arm) if row.analysable)
     if not rows:
-        raise DesignViolation(f"no rows for arm {arm.value}")
+        raise DesignViolation(f"no analysable rows for arm {arm.value}")
     by_anchor: dict[str, list[CellOutcome]] = defaultdict(list)
     for row in rows:
         by_anchor[row.anchor_id].append(row)

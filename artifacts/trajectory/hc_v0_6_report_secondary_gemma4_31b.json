@@ -1,0 +1,405 @@
+{
+ "anchors": 1127,
+ "anchors_dropped_from_each_contrast": {
+  "R_A": 3,
+  "R_A_PRIME": 4,
+  "R_B": 4
+ },
+ "arms": [
+  "R_A",
+  "R_A_PRIME",
+  "R_B"
+ ],
+ "balance": {
+  "balanced": true,
+  "replicates": 1
+ },
+ "cell_table_content_hash": "c8338022ede73a099e595de9dbc366a607ddc9c1cb921c1b985b1c6303cde252",
+ "cells": 3381,
+ "cluster_profile_analysed": {
+  "effective_cluster_size_m_A": 4.024042742653607,
+  "label": "realised-primary-contrast",
+  "mean_cluster_size": 3.4133738601823707,
+  "n_anchors": 1123,
+  "n_clusters": 329,
+  "size_histogram": {
+   "1": 10,
+   "10": 2,
+   "11": 1,
+   "12": 1,
+   "2": 11,
+   "3": 258,
+   "4": 3,
+   "5": 6,
+   "6": 33,
+   "7": 1,
+   "9": 3
+  }
+ },
+ "cluster_profile_bank": {
+  "effective_cluster_size_m_A": 4.022182786157941,
+  "label": "anchor-bank:hc_v0_6_anchor_bank.json",
+  "mean_cluster_size": 3.415151515151515,
+  "n_anchors": 1127,
+  "n_clusters": 330,
+  "size_histogram": {
+   "1": 10,
+   "10": 2,
+   "11": 1,
+   "12": 1,
+   "2": 10,
+   "3": 260,
+   "4": 3,
+   "5": 6,
+   "6": 33,
+   "7": 1,
+   "9": 3
+  }
+ },
+ "clusters": 330,
+ "delta_min": 0.05,
+ "effects": {
+  "C1B_WHITESPACE": {
+   "arm_a": "R_A",
+   "arm_b": "R_A_PRIME",
+   "comparison": "C1B_WHITESPACE",
+   "delta": 0.0008904719501335708,
+   "delta_ci95": [
+    -0.01855287569573284,
+    0.020390070921985817
+   ],
+   "delta_ci95_anchor_naive": [
+    -0.017809439002671415,
+    0.020480854853072127
+   ],
+   "marginal_a": {
+    "anchor_averaged_rate": 0.3861209964412811,
+    "arm": "R_A",
+    "clopper_pearson95": [
+     0.3575437436690265,
+     0.41529601769846636
+    ],
+    "clopper_pearson_note": "exact under independent Bernoulli cells; too narrow here because replicates and same-file anchors are dependent -- descriptive only",
+    "cluster_bootstrap95": [
+     0.354337899543379,
+     0.41796200345423146
+    ],
+    "n_anchors": 1124,
+    "n_cells": 1124,
+    "n_clusters": 329,
+    "n_events": 434,
+    "rate": 0.3861209964412811
+   },
+   "marginal_b": {
+    "anchor_averaged_rate": 0.3873552983081033,
+    "arm": "R_A_PRIME",
+    "clopper_pearson95": [
+     0.3587452928368009,
+     0.41655711737288925
+    ],
+    "clopper_pearson_note": "exact under independent Bernoulli cells; too narrow here because replicates and same-file anchors are dependent -- descriptive only",
+    "cluster_bootstrap95": [
+     0.35448776065276516,
+     0.4198943661971831
+    ],
+    "n_anchors": 1123,
+    "n_cells": 1123,
+    "n_clusters": 329,
+    "n_events": 435,
+    "rate": 0.3873552983081033
+   },
+   "mcnemar": {
+    "collapse": "FIRST_REPLICATE",
+    "n01": 61,
+    "n10": 60,
+    "n_discordant": 121,
+    "n_pairs": 1123,
+    "note": "nominal: treats anchors as independent, so anti-conservative under file clustering",
+    "p_value": 1.0,
+    "reportable": true
+   },
+   "n_anchors": 1123,
+   "n_clusters": 329,
+   "p_value_preregistered": 1.0,
+   "permutation": {
+    "delta": 0.0008904719501335708,
+    "note": "cluster sign-flip: exact under the sharp null for arbitrary within-file dependence",
+    "null_mean": 1.433659839715048e-05,
+    "null_quantiles_2p5_97p5": [
+     -0.018699910952804988,
+     0.018699910952804988
+    ],
+    "null_sd": 0.009998840058211483,
+    "p_value": 1.0,
+    "permutations": 20000,
+    "reportable": true,
+    "unit": "CLUSTER"
+   },
+   "permutation_anchor_naive": {
+    "delta": 0.0008904719501335708,
+    "note": "anchor sign-flip: anti-conservative when anchors within a file are dependent",
+    "null_mean": -4.91540516473731e-05,
+    "null_quantiles_2p5_97p5": [
+     -0.018699910952804988,
+     0.018699910952804988
+    ],
+    "null_sd": 0.009850965313275444,
+    "p_value": 1.0,
+    "permutations": 20000,
+    "reportable": false,
+    "unit": "ANCHOR"
+   },
+   "rate_a": 0.38646482635796975,
+   "rate_b": 0.3873552983081033,
+   "replicates": 1
+  },
+  "PRIMARY_RB_VS_RA": {
+   "arm_a": "R_A",
+   "arm_b": "R_B",
+   "comparison": "PRIMARY_RB_VS_RA",
+   "delta": 0.0017809439002671415,
+   "delta_ci95": [
+    -0.02096069868995633,
+    0.024054982817869417
+   ],
+   "delta_ci95_anchor_naive": [
+    -0.017809439002671415,
+    0.02226179875333927
+   ],
+   "marginal_a": {
+    "anchor_averaged_rate": 0.3861209964412811,
+    "arm": "R_A",
+    "clopper_pearson95": [
+     0.3575437436690265,
+     0.41529601769846636
+    ],
+    "clopper_pearson_note": "exact under independent Bernoulli cells; too narrow here because replicates and same-file anchors are dependent -- descriptive only",
+    "cluster_bootstrap95": [
+     0.354337899543379,
+     0.41796200345423146
+    ],
+    "n_anchors": 1124,
+    "n_cells": 1124,
+    "n_clusters": 329,
+    "n_events": 434,
+    "rate": 0.3861209964412811
+   },
+   "marginal_b": {
+    "anchor_averaged_rate": 0.38824577025823687,
+    "arm": "R_B",
+    "clopper_pearson95": [
+     0.3596214575063357,
+     0.4174572133113372
+    ],
+    "clopper_pearson_note": "exact under independent Bernoulli cells; too narrow here because replicates and same-file anchors are dependent -- descriptive only",
+    "cluster_bootstrap95": [
+     0.3570175438596491,
+     0.419124218051832
+    ],
+    "n_anchors": 1123,
+    "n_cells": 1123,
+    "n_clusters": 329,
+    "n_events": 436,
+    "rate": 0.38824577025823687
+   },
+   "mcnemar": {
+    "collapse": "FIRST_REPLICATE",
+    "n01": 70,
+    "n10": 68,
+    "n_discordant": 138,
+    "n_pairs": 1123,
+    "note": "nominal: treats anchors as independent, so anti-conservative under file clustering",
+    "p_value": 0.9322024875049741,
+    "reportable": true
+   },
+   "n_anchors": 1123,
+   "n_clusters": 329,
+   "p_value_preregistered": 0.9405529723513825,
+   "permutation": {
+    "delta": 0.0017809439002671415,
+    "note": "cluster sign-flip: exact under the sharp null for arbitrary within-file dependence",
+    "null_mean": 7.15939447907391e-05,
+    "null_quantiles_2p5_97p5": [
+     -0.02141585040071234,
+     0.0213713268032057
+    ],
+    "null_sd": 0.011464916243454111,
+    "p_value": 0.9405529723513825,
+    "permutations": 20000,
+    "reportable": true,
+    "unit": "CLUSTER"
+   },
+   "permutation_anchor_naive": {
+    "delta": 0.0017809439002671415,
+    "note": "anchor sign-flip: anti-conservative when anchors within a file are dependent",
+    "null_mean": 7.230632235084594e-05,
+    "null_quantiles_2p5_97p5": [
+     -0.0213713268032057,
+     0.019590382902938557
+    ],
+    "null_sd": 0.010489031749677141,
+    "p_value": 0.9324033798310084,
+    "permutations": 20000,
+    "reportable": false,
+    "unit": "ANCHOR"
+   },
+   "rate_a": 0.38646482635796975,
+   "rate_b": 0.38824577025823687,
+   "replicates": 1
+  }
+ },
+ "equivalence_bound": 0.05,
+ "evaluation_universe_hash": "d896838de9131d6d21da8dd99d2e297a21c2cbc96145bbd0cc136f29a80c1ffe",
+ "harness_failures_by_arm": {
+  "R_A": 3,
+  "R_A_PRIME": 4,
+  "R_B": 4
+ },
+ "holm": {
+  "C1B_WHITESPACE": {
+   "comparison": "C1B_WHITESPACE",
+   "p_holm": 1.0,
+   "p_value": 1.0,
+   "reject": false
+  },
+  "C1_IDENTITY": {
+   "comparison": "C1_IDENTITY",
+   "p_holm": 1.0,
+   "p_value": 1.0,
+   "reject": false
+  },
+  "C2_ABLATION": {
+   "comparison": "C2_ABLATION",
+   "p_holm": 1.0,
+   "p_value": 1.0,
+   "reject": false
+  },
+  "PRIMARY_RB_VS_RA": {
+   "comparison": "PRIMARY_RB_VS_RA",
+   "p_holm": 1.0,
+   "p_value": 0.9405529723513825,
+   "reject": false
+  }
+ },
+ "holm_family_size": 4,
+ "identity_control": "UNAVAILABLE_AT_K1 (spec 10b): R_A carries fewer than 2 replicates at 1124 anchor(s) (e.g. ['anchor:00042c957bb58d2551303a33', 'anchor:0035ad49827aa4b563fd0a57', 'anchor:007036d0c9f876a1421e14d4']), so the C1 identity control cannot be split out of it; under a deterministic Solver run C1 as explicit extra cells and report it as degenerate (preregistration \u00a74.3)",
+ "marginals": {
+  "R_A": {
+   "anchor_averaged_rate": 0.3861209964412811,
+   "arm": "R_A",
+   "clopper_pearson95": [
+    0.3575437436690265,
+    0.41529601769846636
+   ],
+   "clopper_pearson_note": "exact under independent Bernoulli cells; too narrow here because replicates and same-file anchors are dependent -- descriptive only",
+   "cluster_bootstrap95": [
+    0.354337899543379,
+    0.41796200345423146
+   ],
+   "n_anchors": 1124,
+   "n_cells": 1124,
+   "n_clusters": 329,
+   "n_events": 434,
+   "rate": 0.3861209964412811
+  },
+  "R_A_PRIME": {
+   "anchor_averaged_rate": 0.3873552983081033,
+   "arm": "R_A_PRIME",
+   "clopper_pearson95": [
+    0.3587452928368009,
+    0.41655711737288925
+   ],
+   "clopper_pearson_note": "exact under independent Bernoulli cells; too narrow here because replicates and same-file anchors are dependent -- descriptive only",
+   "cluster_bootstrap95": [
+    0.3556308213378493,
+    0.41858325666973323
+   ],
+   "n_anchors": 1123,
+   "n_cells": 1123,
+   "n_clusters": 329,
+   "n_events": 435,
+   "rate": 0.3873552983081033
+  },
+  "R_B": {
+   "anchor_averaged_rate": 0.38824577025823687,
+   "arm": "R_B",
+   "clopper_pearson95": [
+    0.3596214575063357,
+    0.4174572133113372
+   ],
+   "clopper_pearson_note": "exact under independent Bernoulli cells; too narrow here because replicates and same-file anchors are dependent -- descriptive only",
+   "cluster_bootstrap95": [
+    0.35783879539415414,
+    0.4200710479573712
+   ],
+   "n_anchors": 1123,
+   "n_cells": 1123,
+   "n_clusters": 329,
+   "n_events": 436,
+   "rate": 0.38824577025823687
+  }
+ },
+ "mde": {
+  "alpha": 0.05,
+  "baseline_rate": 0.3861209964412811,
+  "cluster_icc": 0.05653865454811874,
+  "design_effect": 1.1709753079656378,
+  "effective_cluster_size_m_A": 4.024042742653607,
+  "mde": 0.06296621438419743,
+  "mde_if_independent": 0.058157232524032786,
+  "mde_negative": -0.06111733139197278,
+  "mde_points": 6.296621438419743,
+  "mde_positive": 0.06296621438419743,
+  "n_anchors": 1123,
+  "n_clusters": 329,
+  "power_version": "hc-v0.6-power-v1.0.0",
+  "replicates": {
+   "deterministic_solver": true,
+   "effective_replicates": 1.0,
+   "replicate_icc": 1.0,
+   "replicates": 1,
+   "variance_factor": 1.0
+  },
+  "target_power": 0.8
+ },
+ "missingness_is_arm_dependent": true,
+ "model": "gemma4:31b",
+ "preflight_baseline_rate": 0.356,
+ "realised_icc": 0.0565,
+ "resolves_delta_min": false,
+ "schema": "arena-hc-v0.6-report-v1",
+ "step_result_counts": {
+  "R_A": {
+   "ACCEPTED_NO_OP": 12,
+   "ACCEPTED_TRANSITION": 434,
+   "ENVIRONMENT_ERROR": 3,
+   "NOT_ATTEMPTED": 0,
+   "PARSE_FAILURE": 3,
+   "REJECTED_INVALID_ACTION": 675,
+   "TOOL_TIMEOUT": 0,
+   "UNSUPPORTED": 0
+  },
+  "R_A_PRIME": {
+   "ACCEPTED_NO_OP": 8,
+   "ACCEPTED_TRANSITION": 435,
+   "ENVIRONMENT_ERROR": 4,
+   "NOT_ATTEMPTED": 0,
+   "PARSE_FAILURE": 1,
+   "REJECTED_INVALID_ACTION": 676,
+   "TOOL_TIMEOUT": 0,
+   "UNSUPPORTED": 3
+  },
+  "R_B": {
+   "ACCEPTED_NO_OP": 7,
+   "ACCEPTED_TRANSITION": 436,
+   "ENVIRONMENT_ERROR": 4,
+   "NOT_ATTEMPTED": 0,
+   "PARSE_FAILURE": 0,
+   "REJECTED_INVALID_ACTION": 676,
+   "TOOL_TIMEOUT": 0,
+   "UNSUPPORTED": 4
+  }
+ },
+ "t_ablate": 0.1,
+ "t_ablate_resolvable": true
+}

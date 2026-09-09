@@ -137,7 +137,7 @@ parameter for exactly this reason.
 The three honest options, and only these:
 
 1. Set `delta_min` at or above the MDE at the realised baseline and ICC — on current information
-   that is **7 points** at ICC 0.2 / baseline 0.25, **8.5** at ICC 0.5.
+   that is **6.7 points** at ICC 0.2 / baseline 0.25, **8.5** at ICC 0.5.
 2. Keep `delta_min = 0.05` and **grow the bank** to the size §3.3 costs it at — between 1.1× and
    2.8× the current bank depending on the ICC.
 3. Keep `delta_min = 0.05`, run anyway, and accept in advance that O3 is unreachable and every
@@ -236,9 +236,10 @@ lands, every cell above is conditional. The endpoint change of §1 can only move
 the `k = 1` number, and `test_replicates_cannot_rescue_five_points_under_a_deterministic_solver`
 asserts it. Replicates are not a route to 5 points.
 
-Reading this honestly: **the rebuilt bank resolves roughly 5–9 points, depending on the baseline
-and the ICC.** That is a real improvement on the 12–18 points the 223-anchor bank managed, and it
-is still not 5 points except in the low-baseline / low-ICC corner of §2.1.
+Reading this honestly: **the rebuilt bank resolves roughly 4–9 points across the grid — 5.3–8.5
+at a baseline of 0.25, and never below 5.3 at any baseline of 0.225 or above.** That is a real
+improvement on the 12–18 points the 223-anchor bank managed, and it is still not 5 points except in
+the low-baseline / low-ICC corner of §2.1.
 
 **Required sample for `delta_min = 0.05`** (baseline 0.25, `k = 1`, deterministic; anchors /
 files), against the 1127 / 330 that exist:

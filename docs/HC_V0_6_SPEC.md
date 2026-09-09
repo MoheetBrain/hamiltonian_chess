@@ -190,14 +190,65 @@ null **13.75%** of the time at a nominal 5%, where the clustered test held its l
 practical threshold for this development scout. Every null result is reported **beside the minimum
 detectable effect actually achieved**; a null without an MDE is not a result.
 
+### 8a. Achieved resolution — `δ_min = 0.05` is NOT reachable at every baseline
+
+Computed on the frozen bank's own cluster profile (1,127 anchors, 330 files, mean cluster 3.415,
+`m_A = 4.022`), α = 0.05 two-sided, power 0.80, `k = 1`. MDE in percentage points:
+
+| baseline | ICC 0 | 0.1 | 0.2 | 0.3 | 0.5 |
+|---|---|---|---|---|---|
+| 0.10 | 3.82 | 4.40 | 4.92 | 5.41 | 6.29 |
+| 0.15 | 4.45 | 5.11 | 5.71 | 6.26 | 7.25 |
+| 0.20 | 4.92 | 5.64 | 6.29 | 6.88 | 7.95 |
+| 0.25 | 5.27 | 6.03 | 6.72 | 7.35 | 8.47 |
+| 0.40 | 5.83 | 6.66 | 7.39 | 8.06 | 9.26 |
+
+**At any baseline ≥ 0.225, five points is out of reach at every ICC, including ICC = 0.** Below
+that the boundary is sharp — the largest ICC that still resolves five points is 0.215 at baseline
+0.10, 0.137 at 0.125, 0.082 at 0.15, 0.011 at 0.20. Replicates cannot rescue it: under a
+deterministic Solver `k = 5` gives exactly the `k = 1` number. Reaching `δ_min = 0.05` at baseline
+0.25 would need 366 to 918 clusters depending on ICC — 1.1× to 2.8× the frozen bank.
+
+The primary model's preflight baseline is **0.133**, which is the favourable corner of this table:
+its MDE runs roughly 4.2 points at ICC 0 to 6.8 at ICC 0.5. **`δ_min = 0.05` is therefore reachable
+for the primary only if the realised ICC is small**, and the realised ICC is estimated *from the
+data after the run* and reported with the result. It is not assumed here.
+
+This is worth stating plainly because it cuts the other way for the model this project has used
+before: at `qwen3.6:27b-mlx`'s baseline of 0.400 the MDE is 5.83–9.26 points and five points is
+unreachable at every ICC. The frozen information-rate rule happened to select the eligible model
+that makes the owner's threshold most nearly attainable — a consequence of the rule, not a reason
+for it.
+
+Two supporting measurements on the same 330-cluster profile: the preregistered cluster permutation
+test now holds its nominal level essentially exactly (0.033 / 0.050 / 0.047 at ICC 0 / 0.2 / 0.5),
+while a naive row-level bootstrap inflates to **0.187 at ICC 0.5** — 3.7× its nominal 5%. Analytic
+power runs 2–6 points high against brute-force simulation, so the true MDE is if anything slightly
+*larger* than tabulated and the "not reachable" verdict is the stricter reading.
+
 ## 9. Multiplicity — two separate problems, never mixed
 
-**(A) Assay certification gates.** Certification requires *every* required control to pass, so the
-global null is "at least one gate is unsafe" and certification means rejecting every component
-null. That is an **intersection–union test**, under which separate level-α component tests already
-control the false-certification rate; a Holm correction would make each gate *harder* to trip and
-would bias the procedure toward "the assay is fine". Governing philosophy: **false block ≫ false
-certification.**
+**(A) Assay certification gates.** Certification requires *every* required control to pass, so with
+component nulls `H_j` = "gate *j* is unsafe" the global null is the **union** `⋃H_j` and the
+decision is the **intersection of rejections** `⋂R_j` — an **intersection–union test**. For any `θ`
+in the global null there is some `j*` with `θ ∈ H_{j*}`, and certification requires `R_{j*}`, so
+`P_θ(certify) ≤ α_{j*} ≤ max_j α_j` using **separate, uncorrected, level-α component tests**
+(Berger 1982; Berger & Hsu 1996 — the same result that makes TOST valid from two uncorrected
+one-sided tests). Holm is not merely unnecessary here: it controls FWER for a *union* decision, so
+on an intersection decision it cannot lower an already-bounded rate, and on a non-rejection gate it
+actively *raises* false certification, because an inflated p-value is less likely to trip the block.
+Governing philosophy: **false block ≫ false certification.** Measured on 400 simulated four-arm
+tables through the real estimators and the real gate: **3/400 = 0.0075** false certifications
+against the 0.05 bound.
+
+**The bound's honest limit.** It covers only the gate written as *reject-to-certify* — the ablation
+control C2. C1 and C1b certify by **failing to reject**, which bounds nothing; they are governed by
+**power**, and that, not liberality, is why their α is 0.10. Turning them into genuine IUT
+components means replacing them with equivalence tests (TOST) against a declared `δ_eq`, which is
+not yet fixed. Measured for C1 against a true `Δ = −0.30`: caught 190/200, certified anyway 10/200
+— near α by coincidence, not by guarantee. The phrase "uncorrected liberal alpha" is withdrawn; it
+described the right procedure with the wrong justification for two of the three gates and no
+justification at all for the third.
 
 **(B) Representation effect claims.** Family-wise control across the contrasts inspected, by Holm,
 declared prospectively.
@@ -231,6 +282,29 @@ control **cannot be certified at this resolution**. That is reported as such —
 `INCONCLUSIVE` — and is never resolved by lowering the bar after the fact. The number is fixed by
 preflight data alone, which the owner directive explicitly admits for calibration (§8), and cannot
 be revisited once an `R_ABLATED` cell exists.
+
+### 10b. C1 is structurally unavailable at `k = 1` — stated before any outcome
+
+The identity control C1 (`R_A` against `R_A`) is constructed by splitting `R_A`'s own replicates
+(design brief §9.2). **`k = 1` forecloses it**: there is one draw per anchor, so there is nothing to
+split, and `split_half_identity` raises rather than fabricating a zero. That is a genuine tension
+inside the freeze and it is recorded here rather than discovered later.
+
+It is not a gap against the directive: the null control the owner specifies is
+"`R_A_PRIME` should be practically equivalent to `R_A`" — that is **C1b**, which is available and
+runs. C1 was an additional control of this project's own devising.
+
+The quantity C1 would have estimated — the runtime noise floor — is measured **directly and better**
+elsewhere: 1,566 calls over 56 prompts give a per-call tactic-flip rate of 1.02%
+(`docs/HC_V0_6_RUNTIME_NOISE.md`). Symmetric noise at that rate implies roughly 2% discordant pairs
+in an `R_A`-vs-`R_A` comparison and a standard error near **0.4 percentage points** at n = 1,127 —
+an order of magnitude below `δ_min`. A within-assay C1 would have been a weaker estimate of a
+quantity already pinned.
+
+Consequence, stated plainly: **the null control rests entirely on C1b**, and the certification gate
+set for this run is `{C1b, C2}`. Buying a real C1 would cost a second full `R_A` pass — 1,127 calls
+beyond the §12 ceiling — and is not done, because deciding to spend it *after* noticing a control is
+missing is the kind of adjustment this freeze exists to prevent.
 
 ## 11. Signal rule — frozen
 
@@ -289,3 +363,51 @@ mathlib4 is `HISTORICALLY_EXPOSED` and exposure is transitive, so the defensible
 **execution under kernel verification**. Nothing about language evolution, and no `RSTAR`/`LSTAR`
 claim. `Δ(R_A, R_B)` also mixes structural re-layout with the tokenizer priors of the added markup
 vocabulary; `R_A_PRIME` narrows that confound and does not eliminate it.
+
+---
+
+## 15. Preregistered sensitivity analysis: administrative state changes
+
+Declared **before any per-arm outcome was read**, in response to red-team finding RT-V06-07.
+
+`KERNEL_ACCEPTED_STATE_CHANGE` closed off `skip` (measured 0/36). The next cheapest fake is a
+tactic that is policy-allowed, changes the *printed* state, and does no mathematics: reordering the
+goal stack, renaming an inaccessible hypothesis, dropping a hypothesis. 13.5% of the bank's anchors
+carry two or more goals, so `rotate_left` alone has somewhere to act.
+
+These are not straightforwardly illegitimate — `clear` genuinely changes the proof state and can be
+a real step — so the endpoint is **not** redefined after the fact. Instead the result reports the
+primary contrast twice:
+
+* **as frozen** — every accepted state change counts; and
+* **excluding administrative events** — events whose tactic head is in
+
+```
+rotate_left  rotate_right  rename  rename_i  clear  swap  next  case  case'  pick_goal  on_goal
+```
+
+`proposed_tactic` is recorded on every cell, so this costs no extra call and no re-run. The frozen
+number remains the primary; the second is a bound on how much of it could be administrative. If the
+two differ by more than `δ_min`, the frozen endpoint is reported as **inflated by administrative
+moves** and that is stated in the headline, not in a footnote.
+
+The list was written from the Lean tactic vocabulary and the red-team's reproduction, not from
+inspecting which tactics the models actually emitted.
+
+---
+
+## 16. A structural property of `R_ABLATED`, recorded from the cells' shape alone
+
+The primary pass produced 4,508 cells carrying only **3,386 distinct prompts**. The 1,122-prompt
+shortfall is entirely `R_ABLATED` and is exactly right: withholding the goal text leaves a rendering
+that depends only on the goal *count*, and the bank has five distinct goal counts (1:975, 2:129,
+3:17, 4:5, 5:1). So `R_ABLATED` shows the model **five distinct prompts across 1,127 anchors**.
+
+Within every anchor all four arms still received four distinct prompts (checked: 0 exceptions), so
+nothing about the paired comparison is affected. But it means `R_ABLATED` is not merely a weaker
+representation — it is a **degenerate policy**: a near-deterministic Solver will answer the same
+prompt the same way, so its event rate is close to "how often does one fixed tactic happen to work
+here". That is a legitimate sensitivity floor and it is the correct behaviour for an ablation, but
+it must not be read as an estimate of how a *language* that withholds information would perform.
+
+Established from the shape of the prompts alone; no outcome was read to determine it.

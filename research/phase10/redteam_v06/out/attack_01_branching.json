@@ -1,0 +1,27 @@
+{
+ "attack": "A1 anchor branching: can two arms act on different Lean states?",
+ "findings": {
+  "A1_1_mutate_live_handle": "BLOCKED -- FrozenInstanceError: cannot assign to field 'live_state_id'",
+  "A1_2_all_arms_one_parent": true,
+  "A1_2_arm_order_played": [
+   "R_B",
+   "R_A_PRIME",
+   "R_A",
+   "R_ABLATED"
+  ],
+  "A1_2_children_created": 4,
+  "A1_2_parent_text_unchanged_after_every_step": true,
+  "A1_2_state_ids_stepped_from": [
+   "sid-parent",
+   "sid-parent",
+   "sid-parent",
+   "sid-parent"
+  ],
+  "A1_3_distinct_anchor_ids": false,
+  "A1_3_note": "open_anchor_session builds `wanted = {anchor.sampling.prefix_length: anchor}`. Two anchors of one theorem at the same prefix_length collapse to one; the loser appears in neither `live` nor `missing`, so it is dropped without a skip record.",
+  "A1_3_survivors_after_prefix_length_keying": 1,
+  "A1_4_parent_text_after_three_steps": "n : Nat\nh : 0 < n\n⊢ n ≠ 0",
+  "A1_4_parent_text_is_still_the_anchor": true
+ },
+ "verdict": "HELD"
+}

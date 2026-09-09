@@ -1,0 +1,596 @@
+{
+ "anchors": 1127,
+ "anchors_dropped_from_each_contrast": {
+  "R_A": 3,
+  "R_ABLATED": 2,
+  "R_A_PRIME": 3,
+  "R_B": 3
+ },
+ "arms": [
+  "R_A",
+  "R_ABLATED",
+  "R_A_PRIME",
+  "R_B"
+ ],
+ "balance": {
+  "balanced": true,
+  "replicates": 1
+ },
+ "calibration": {
+  "achieved_mde": 0.039394149338110904,
+  "alpha_byte_null": 0.1,
+  "alpha_identity": 0.1,
+  "alpha_sensitivity": 0.05,
+  "broken": false,
+  "byte_null_passes": true,
+  "certified": false,
+  "controls": {
+   "C1": {
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "comparison": "C1_IDENTITY",
+    "degenerate": true,
+    "delta": 0.0,
+    "measured": false,
+    "n_anchors": 0,
+    "n_clusters": 0,
+    "p_value_uncorrected": 1.0
+   },
+   "C1b": {
+    "ci95": [
+     -0.008333333333333333,
+     0.022429906542056073
+    ],
+    "comparison": "C1B_WHITESPACE",
+    "degenerate": false,
+    "delta": 0.0071174377224199285,
+    "measured": true,
+    "n_anchors": 1124,
+    "n_clusters": 329,
+    "p_value_uncorrected": 0.43732813359332035
+   },
+   "C2": {
+    "ci95": [
+     -0.08476104598737602,
+     -0.03389830508474576
+    ],
+    "comparison": "C2_ABLATION",
+    "degenerate": false,
+    "delta": -0.05871886120996441,
+    "measured": true,
+    "n_anchors": 1124,
+    "n_clusters": 329,
+    "p_value_uncorrected": 4.999750012499375e-05
+   }
+  },
+  "equivalence_bound": 0.05,
+  "false_certification_bound": 0.05,
+  "identity_informative": false,
+  "identity_measured": false,
+  "min_clusters": 30,
+  "multiplicity": "certification gates are an intersection-union test: separate uncorrected level-alpha component tests, no Holm. Holm applies only to the four-member effect-claim family in estimators.PREREGISTERED_FAMILY",
+  "reasons": [
+   "C1 identity control is UNAVAILABLE, not zero: k = 1 leaves nothing to split (spec 10b), so it decides no gate. The runtime noise floor it would have estimated is measured directly instead (1.02% per-call tactic flips over 1,566 calls; docs/HC_V0_6_RUNTIME_NOISE.md). The null control rests on C1b alone",
+   "arm-dependent missingness: unanalysable cells differ by arm (R_A=3, R_ABLATED=2, R_A_PRIME=3, R_B=3)"
+  ],
+  "sensitivity_floor": null,
+  "status": "ARM_DEPENDENT_MISSINGNESS",
+  "t_ablate": 0.0665,
+  "usable": false
+ },
+ "cell_table_content_hash": "666e25a843f3c901c77b3ddd0237c972bb88e599ed0acb48f9744c3fca60d491",
+ "cells": 4508,
+ "cluster_profile_analysed": {
+  "effective_cluster_size_m_A": 4.02491103202847,
+  "label": "realised-primary-contrast",
+  "mean_cluster_size": 3.4164133738601823,
+  "n_anchors": 1124,
+  "n_clusters": 329,
+  "size_histogram": {
+   "1": 10,
+   "10": 2,
+   "11": 1,
+   "12": 1,
+   "2": 10,
+   "3": 259,
+   "4": 3,
+   "5": 6,
+   "6": 33,
+   "7": 1,
+   "9": 3
+  }
+ },
+ "cluster_profile_bank": {
+  "effective_cluster_size_m_A": 4.022182786157941,
+  "label": "anchor-bank:hc_v0_6_anchor_bank.json",
+  "mean_cluster_size": 3.415151515151515,
+  "n_anchors": 1127,
+  "n_clusters": 330,
+  "size_histogram": {
+   "1": 10,
+   "10": 2,
+   "11": 1,
+   "12": 1,
+   "2": 10,
+   "3": 260,
+   "4": 3,
+   "5": 6,
+   "6": 33,
+   "7": 1,
+   "9": 3
+  }
+ },
+ "clusters": 330,
+ "delta_min": 0.05,
+ "effects": {
+  "C1B_WHITESPACE": {
+   "arm_a": "R_A",
+   "arm_b": "R_A_PRIME",
+   "comparison": "C1B_WHITESPACE",
+   "delta": 0.0071174377224199285,
+   "delta_ci95": [
+    -0.008333333333333333,
+    0.022429906542056073
+   ],
+   "delta_ci95_anchor_naive": [
+    -0.0071174377224199285,
+    0.021352313167259787
+   ],
+   "marginal_a": {
+    "anchor_averaged_rate": 0.10765124555160142,
+    "arm": "R_A",
+    "clopper_pearson95": [
+     0.09013240971532355,
+     0.12725287101019944
+    ],
+    "clopper_pearson_note": "exact under independent Bernoulli cells; too narrow here because replicates and same-file anchors are dependent -- descriptive only",
+    "cluster_bootstrap95": [
+     0.08771929824561403,
+     0.12917398945518455
+    ],
+    "n_anchors": 1124,
+    "n_cells": 1124,
+    "n_clusters": 329,
+    "n_events": 121,
+    "rate": 0.10765124555160142
+   },
+   "marginal_b": {
+    "anchor_averaged_rate": 0.11476868327402136,
+    "arm": "R_A_PRIME",
+    "clopper_pearson95": [
+     0.09671705203962233,
+     0.13486359340672038
+    ],
+    "clopper_pearson_note": "exact under independent Bernoulli cells; too narrow here because replicates and same-file anchors are dependent -- descriptive only",
+    "cluster_bootstrap95": [
+     0.09349955476402494,
+     0.13612565445026178
+    ],
+    "n_anchors": 1124,
+    "n_cells": 1124,
+    "n_clusters": 329,
+    "n_events": 129,
+    "rate": 0.11476868327402136
+   },
+   "mcnemar": {
+    "collapse": "FIRST_REPLICATE",
+    "n01": 39,
+    "n10": 31,
+    "n_discordant": 70,
+    "n_pairs": 1124,
+    "note": "nominal: treats anchors as independent, so anti-conservative under file clustering",
+    "p_value": 0.40296307504607976,
+    "reportable": true
+   },
+   "n_anchors": 1124,
+   "n_clusters": 329,
+   "p_value_preregistered": 0.43732813359332035,
+   "permutation": {
+    "delta": 0.0071174377224199285,
+    "note": "cluster sign-flip: exact under the sharp null for arbitrary within-file dependence",
+    "null_mean": 0.00010649466192170817,
+    "null_quantiles_2p5_97p5": [
+     -0.01601423487544484,
+     0.01601423487544484
+    ],
+    "null_sd": 0.007950265977667868,
+    "p_value": 0.43732813359332035,
+    "permutations": 20000,
+    "reportable": true,
+    "unit": "CLUSTER"
+   },
+   "permutation_anchor_naive": {
+    "delta": 0.0071174377224199285,
+    "note": "anchor sign-flip: anti-conservative when anchors within a file are dependent",
+    "null_mean": -3.033807829181494e-05,
+    "null_quantiles_2p5_97p5": [
+     -0.014234875444839857,
+     0.014234875444839857
+    ],
+    "null_sd": 0.007396962881285331,
+    "p_value": 0.3971301434928254,
+    "permutations": 20000,
+    "reportable": false,
+    "unit": "ANCHOR"
+   },
+   "rate_a": 0.10765124555160142,
+   "rate_b": 0.11476868327402136,
+   "replicates": 1
+  },
+  "C2_ABLATION": {
+   "arm_a": "R_A",
+   "arm_b": "R_ABLATED",
+   "comparison": "C2_ABLATION",
+   "delta": -0.05871886120996441,
+   "delta_ci95": [
+    -0.08476104598737602,
+    -0.03389830508474576
+   ],
+   "delta_ci95_anchor_naive": [
+    -0.0809608540925267,
+    -0.036476868327402136
+   ],
+   "marginal_a": {
+    "anchor_averaged_rate": 0.10765124555160142,
+    "arm": "R_A",
+    "clopper_pearson95": [
+     0.09013240971532355,
+     0.12725287101019944
+    ],
+    "clopper_pearson_note": "exact under independent Bernoulli cells; too narrow here because replicates and same-file anchors are dependent -- descriptive only",
+    "cluster_bootstrap95": [
+     0.08771929824561403,
+     0.12917398945518455
+    ],
+    "n_anchors": 1124,
+    "n_cells": 1124,
+    "n_clusters": 329,
+    "n_events": 121,
+    "rate": 0.10765124555160142
+   },
+   "marginal_b": {
+    "anchor_averaged_rate": 0.04888888888888889,
+    "arm": "R_ABLATED",
+    "clopper_pearson95": [
+     0.03703895209881125,
+     0.06316310977169337
+    ],
+    "clopper_pearson_note": "exact under independent Bernoulli cells; too narrow here because replicates and same-file anchors are dependent -- descriptive only",
+    "cluster_bootstrap95": [
+     0.03619909502262444,
+     0.062445793581960105
+    ],
+    "n_anchors": 1125,
+    "n_cells": 1125,
+    "n_clusters": 330,
+    "n_events": 55,
+    "rate": 0.04888888888888889
+   },
+   "mcnemar": {
+    "collapse": "FIRST_REPLICATE",
+    "n01": 49,
+    "n10": 115,
+    "n_discordant": 164,
+    "n_pairs": 1124,
+    "note": "nominal: treats anchors as independent, so anti-conservative under file clustering",
+    "p_value": 2.697285904576521e-07,
+    "reportable": true
+   },
+   "n_anchors": 1124,
+   "n_clusters": 329,
+   "p_value_preregistered": 4.999750012499375e-05,
+   "permutation": {
+    "delta": -0.05871886120996441,
+    "note": "cluster sign-flip: exact under the sharp null for arbitrary within-file dependence",
+    "null_mean": 0.00012268683274021353,
+    "null_quantiles_2p5_97p5": [
+     -0.026690391459074734,
+     0.026690391459074734
+    ],
+    "null_sd": 0.013725133785915233,
+    "p_value": 4.999750012499375e-05,
+    "permutations": 20000,
+    "reportable": true,
+    "unit": "CLUSTER"
+   },
+   "permutation_anchor_naive": {
+    "delta": -0.05871886120996441,
+    "note": "anchor sign-flip: anti-conservative when anchors within a file are dependent",
+    "null_mean": -3.354092526690391e-05,
+    "null_quantiles_2p5_97p5": [
+     -0.023131672597864767,
+     0.023131672597864767
+    ],
+    "null_sd": 0.011453335453062851,
+    "p_value": 4.999750012499375e-05,
+    "permutations": 20000,
+    "reportable": false,
+    "unit": "ANCHOR"
+   },
+   "rate_a": 0.10765124555160142,
+   "rate_b": 0.04893238434163701,
+   "replicates": 1
+  },
+  "PRIMARY_RB_VS_RA": {
+   "arm_a": "R_A",
+   "arm_b": "R_B",
+   "comparison": "PRIMARY_RB_VS_RA",
+   "delta": 0.010676156583629894,
+   "delta_ci95": [
+    -0.008857395925597875,
+    0.02943722943722944
+   ],
+   "delta_ci95_anchor_naive": [
+    -0.00800711743772242,
+    0.030249110320284697
+   ],
+   "marginal_a": {
+    "anchor_averaged_rate": 0.10765124555160142,
+    "arm": "R_A",
+    "clopper_pearson95": [
+     0.09013240971532355,
+     0.12725287101019944
+    ],
+    "clopper_pearson_note": "exact under independent Bernoulli cells; too narrow here because replicates and same-file anchors are dependent -- descriptive only",
+    "cluster_bootstrap95": [
+     0.08771929824561403,
+     0.12917398945518455
+    ],
+    "n_anchors": 1124,
+    "n_cells": 1124,
+    "n_clusters": 329,
+    "n_events": 121,
+    "rate": 0.10765124555160142
+   },
+   "marginal_b": {
+    "anchor_averaged_rate": 0.11832740213523131,
+    "arm": "R_B",
+    "clopper_pearson95": [
+     0.10001807066456081,
+     0.13866034284731654
+    ],
+    "clopper_pearson_note": "exact under independent Bernoulli cells; too narrow here because replicates and same-file anchors are dependent -- descriptive only",
+    "cluster_bootstrap95": [
+     0.09796999117387467,
+     0.13891362422083706
+    ],
+    "n_anchors": 1124,
+    "n_cells": 1124,
+    "n_clusters": 329,
+    "n_events": 133,
+    "rate": 0.11832740213523131
+   },
+   "mcnemar": {
+    "collapse": "FIRST_REPLICATE",
+    "n01": 64,
+    "n10": 52,
+    "n_discordant": 116,
+    "n_pairs": 1124,
+    "note": "nominal: treats anchors as independent, so anti-conservative under file clustering",
+    "p_value": 0.3070896636491835,
+    "reportable": true
+   },
+   "n_anchors": 1124,
+   "n_clusters": 329,
+   "p_value_preregistered": 0.3247837608119594,
+   "permutation": {
+    "delta": 0.010676156583629894,
+    "note": "cluster sign-flip: exact under the sharp null for arbitrary within-file dependence",
+    "null_mean": 0.0001307829181494662,
+    "null_quantiles_2p5_97p5": [
+     -0.019572953736654804,
+     0.019572953736654804
+    ],
+    "null_sd": 0.009874024044482399,
+    "p_value": 0.3247837608119594,
+    "permutations": 20000,
+    "reportable": true,
+    "unit": "CLUSTER"
+   },
+   "permutation_anchor_naive": {
+    "delta": 0.010676156583629894,
+    "note": "anchor sign-flip: anti-conservative when anchors within a file are dependent",
+    "null_mean": -2.108540925266903e-05,
+    "null_quantiles_2p5_97p5": [
+     -0.019572953736654804,
+     0.017793594306049824
+    ],
+    "null_sd": 0.00961275261193583,
+    "p_value": 0.3083845807709614,
+    "permutations": 20000,
+    "reportable": false,
+    "unit": "ANCHOR"
+   },
+   "rate_a": 0.10765124555160142,
+   "rate_b": 0.11832740213523131,
+   "replicates": 1
+  }
+ },
+ "equivalence_bound": 0.05,
+ "evaluation_universe_hash": "d896838de9131d6d21da8dd99d2e297a21c2cbc96145bbd0cc136f29a80c1ffe",
+ "harness_failures_by_arm": {
+  "R_A": 3,
+  "R_ABLATED": 2,
+  "R_A_PRIME": 3,
+  "R_B": 3
+ },
+ "holm": {
+  "C1B_WHITESPACE": {
+   "comparison": "C1B_WHITESPACE",
+   "p_holm": 0.9743512824358782,
+   "p_value": 0.43732813359332035,
+   "reject": false
+  },
+  "C1_IDENTITY": {
+   "comparison": "C1_IDENTITY",
+   "p_holm": 1.0,
+   "p_value": 1.0,
+   "reject": false
+  },
+  "C2_ABLATION": {
+   "comparison": "C2_ABLATION",
+   "p_holm": 0.000199990000499975,
+   "p_value": 4.999750012499375e-05,
+   "reject": true
+  },
+  "PRIMARY_RB_VS_RA": {
+   "comparison": "PRIMARY_RB_VS_RA",
+   "p_holm": 0.9743512824358782,
+   "p_value": 0.3247837608119594,
+   "reject": false
+  }
+ },
+ "holm_family_size": 4,
+ "identity_control": "UNAVAILABLE_AT_K1 (spec 10b): R_A carries fewer than 2 replicates at 1124 anchor(s) (e.g. ['anchor:00042c957bb58d2551303a33', 'anchor:0035ad49827aa4b563fd0a57', 'anchor:007036d0c9f876a1421e14d4']), so the C1 identity control cannot be split out of it; under a deterministic Solver run C1 as explicit extra cells and report it as degenerate (preregistration \u00a74.3)",
+ "marginals": {
+  "R_A": {
+   "anchor_averaged_rate": 0.10765124555160142,
+   "arm": "R_A",
+   "clopper_pearson95": [
+    0.09013240971532355,
+    0.12725287101019944
+   ],
+   "clopper_pearson_note": "exact under independent Bernoulli cells; too narrow here because replicates and same-file anchors are dependent -- descriptive only",
+   "cluster_bootstrap95": [
+    0.08771929824561403,
+    0.12917398945518455
+   ],
+   "n_anchors": 1124,
+   "n_cells": 1124,
+   "n_clusters": 329,
+   "n_events": 121,
+   "rate": 0.10765124555160142
+  },
+  "R_ABLATED": {
+   "anchor_averaged_rate": 0.04888888888888889,
+   "arm": "R_ABLATED",
+   "clopper_pearson95": [
+    0.03703895209881125,
+    0.06316310977169337
+   ],
+   "clopper_pearson_note": "exact under independent Bernoulli cells; too narrow here because replicates and same-file anchors are dependent -- descriptive only",
+   "cluster_bootstrap95": [
+    0.03646308113035551,
+    0.06255666364460562
+   ],
+   "n_anchors": 1125,
+   "n_cells": 1125,
+   "n_clusters": 330,
+   "n_events": 55,
+   "rate": 0.04888888888888889
+  },
+  "R_A_PRIME": {
+   "anchor_averaged_rate": 0.11476868327402136,
+   "arm": "R_A_PRIME",
+   "clopper_pearson95": [
+    0.09671705203962233,
+    0.13486359340672038
+   ],
+   "clopper_pearson_note": "exact under independent Bernoulli cells; too narrow here because replicates and same-file anchors are dependent -- descriptive only",
+   "cluster_bootstrap95": [
+    0.09437229437229437,
+    0.1356521739130435
+   ],
+   "n_anchors": 1124,
+   "n_cells": 1124,
+   "n_clusters": 329,
+   "n_events": 129,
+   "rate": 0.11476868327402136
+  },
+  "R_B": {
+   "anchor_averaged_rate": 0.11832740213523131,
+   "arm": "R_B",
+   "clopper_pearson95": [
+    0.10001807066456081,
+    0.13866034284731654
+   ],
+   "clopper_pearson_note": "exact under independent Bernoulli cells; too narrow here because replicates and same-file anchors are dependent -- descriptive only",
+   "cluster_bootstrap95": [
+    0.09911504424778761,
+    0.13883847549909256
+   ],
+   "n_anchors": 1124,
+   "n_cells": 1124,
+   "n_clusters": 329,
+   "n_events": 133,
+   "rate": 0.11832740213523131
+  }
+ },
+ "mde": {
+  "alpha": 0.05,
+  "baseline_rate": 0.10765124555160142,
+  "cluster_icc": 0.0011260554806414179,
+  "design_effect": 1.0034062176460683,
+  "effective_cluster_size_m_A": 4.02491103202847,
+  "mde": 0.039394149338110904,
+  "mde_if_independent": 0.03932275250793292,
+  "mde_negative": -0.03393420729421413,
+  "mde_points": 3.9394149338110904,
+  "mde_positive": 0.039394149338110904,
+  "n_anchors": 1124,
+  "n_clusters": 329,
+  "power_version": "hc-v0.6-power-v1.0.0",
+  "replicates": {
+   "deterministic_solver": true,
+   "effective_replicates": 1.0,
+   "replicate_icc": 1.0,
+   "replicates": 1,
+   "variance_factor": 1.0
+  },
+  "target_power": 0.8
+ },
+ "missingness_is_arm_dependent": true,
+ "model": "gemma4:e4b",
+ "preflight_baseline_rate": 0.133,
+ "realised_icc": 0.0011,
+ "release_refused": "AssayBroken: ARM_DEPENDENT_MISSINGNESS: no comparison may be reported. C1 identity control is UNAVAILABLE, not zero: k = 1 leaves nothing to split (spec 10b), so it decides no gate. The runtime noise floor it would have estimated is measured directly instead (1.02% per-call tactic flips over 1,566 calls; docs/HC_V0_6_RUNTIME_NOISE.md). The null control rests on C1b alone; arm-dependent missingness",
+ "released": null,
+ "resolves_delta_min": true,
+ "schema": "arena-hc-v0.6-report-v1",
+ "step_result_counts": {
+  "R_A": {
+   "ACCEPTED_NO_OP": 1,
+   "ACCEPTED_TRANSITION": 121,
+   "ENVIRONMENT_ERROR": 3,
+   "NOT_ATTEMPTED": 0,
+   "PARSE_FAILURE": 26,
+   "REJECTED_INVALID_ACTION": 970,
+   "TOOL_TIMEOUT": 0,
+   "UNSUPPORTED": 6
+  },
+  "R_ABLATED": {
+   "ACCEPTED_NO_OP": 0,
+   "ACCEPTED_TRANSITION": 55,
+   "ENVIRONMENT_ERROR": 2,
+   "NOT_ATTEMPTED": 0,
+   "PARSE_FAILURE": 0,
+   "REJECTED_INVALID_ACTION": 1070,
+   "TOOL_TIMEOUT": 0,
+   "UNSUPPORTED": 0
+  },
+  "R_A_PRIME": {
+   "ACCEPTED_NO_OP": 0,
+   "ACCEPTED_TRANSITION": 129,
+   "ENVIRONMENT_ERROR": 3,
+   "NOT_ATTEMPTED": 0,
+   "PARSE_FAILURE": 30,
+   "REJECTED_INVALID_ACTION": 957,
+   "TOOL_TIMEOUT": 0,
+   "UNSUPPORTED": 8
+  },
+  "R_B": {
+   "ACCEPTED_NO_OP": 0,
+   "ACCEPTED_TRANSITION": 133,
+   "ENVIRONMENT_ERROR": 3,
+   "NOT_ATTEMPTED": 0,
+   "PARSE_FAILURE": 16,
+   "REJECTED_INVALID_ACTION": 961,
+   "TOOL_TIMEOUT": 0,
+   "UNSUPPORTED": 14
+  }
+ },
+ "t_ablate": 0.0665,
+ "t_ablate_resolvable": true
+}

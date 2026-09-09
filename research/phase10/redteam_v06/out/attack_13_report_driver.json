@@ -1,0 +1,56 @@
+{
+ "attack": "A13 the post-freeze analysis driver hc_v0_6_report.py",
+ "defects": [
+  "D0",
+  "D1",
+  "D2",
+  "D3",
+  "D4"
+ ],
+ "findings": {
+  "D0_build_report_at_k1": "CRASHED -- IdentityControlUnavailable: R_A carries fewer than 2 replicates at 60 anchor(s) (e.g. ['a0', 'a1', 'a10']), so the C1 identity control cannot be split out of it; under a deterministic Solver run C1 as explicit extra cells and report it as degenerat",
+  "D0_note": "build_report puts C1_IDENTITY in `available` because set(_arms_of(C1)) == {R_A} is a subset of the played arms, then calls estimate_pair on it. At the frozen k = 1 that is exactly the call unavailable_identity_control exists to avoid, and it is never reached.",
+  "D1_benign_case": {
+   "p_value_the_C1_gate_will_read": 0.9,
+   "status": "USABLE"
+  },
+  "D1_c1_standin": {
+   "declared_delta": 0.0,
+   "declared_n_anchors": 0,
+   "degenerate_flag_set": true,
+   "p_value_of_the_C1b_effect_it_was_built_from": 0.004,
+   "p_value_the_C1_gate_will_read": 0.004,
+   "they_are_the_same_number": true
+  },
+  "D1_effect_on_the_verdict": {
+   "note": "a significant BYTE-PERTURBATION control is reported as a broken IDENTITY control. Conservative in the blocking direction, but the recorded reason names the wrong control and quotes Delta=+0.0000 beside a p-value that belongs to a different contrast.",
+   "reason": "C1 identity control is significant (Delta=+0.0000, p=0.0040 <= alpha_identity=0.1): the assay reports a difference where there is none, so no other comparison may be reported (design brief 4)",
+   "status": "BROKEN_IDENTITY_CONTROL",
+   "usable": false
+  },
+  "D2_O7_can_fire": false,
+  "D2_calibrate_called_with_missingness": false,
+  "D3_drop_harness_failures_called": false,
+  "D3_unbalanced_table_analysed": {
+   "anchors_in_table": 60,
+   "anchors_in_the_primary_contrast": 50,
+   "dropped": 10,
+   "report_flags_the_loss": false
+  },
+  "D3_validate_balanced_called": false,
+  "D4_mde_cluster_profile_source": true,
+  "D4_mde_reported": {
+   "n_anchors": 1127,
+   "n_clusters": 330,
+   "profile_matches_what_was_played": false,
+   "table_anchors": 60,
+   "table_clusters": 30
+  }
+ },
+ "provenance": {
+  "note": "created 2026-09-09 05:14; the primary pass started 04:59",
+  "tracked_in_git": false,
+  "written_after_the_primary_pass_began": true
+ },
+ "verdict": "BROKEN"
+}

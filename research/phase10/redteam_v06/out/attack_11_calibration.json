@@ -1,0 +1,81 @@
+{
+ "anchors": 1127,
+ "attack": "A11 statistical calibration on the frozen bank's real cluster profile",
+ "bootstrap_resamples": 500,
+ "cluster_size_histogram": {
+  "1": 10,
+  "2": 10,
+  "3": 260,
+  "4": 3,
+  "5": 6,
+  "6": 33,
+  "7": 1,
+  "9": 3,
+  "10": 2,
+  "11": 1,
+  "12": 1
+ },
+ "clusters": 330,
+ "grid": [
+  {
+   "baseline_p": 0.133,
+   "cluster_permutation_within_2se_of_nominal": true,
+   "icc": 0.0,
+   "monte_carlo_se_at_nominal_5pc": 0.0109,
+   "non_coverage_anchor_bootstrap": 0.0575,
+   "non_coverage_cluster_bootstrap": 0.05,
+   "sims": 400,
+   "type_I_anchor_permutation": 0.0425,
+   "type_I_cluster_permutation": 0.05
+  },
+  {
+   "baseline_p": 0.133,
+   "cluster_permutation_within_2se_of_nominal": true,
+   "icc": 0.2,
+   "monte_carlo_se_at_nominal_5pc": 0.0109,
+   "non_coverage_anchor_bootstrap": 0.0525,
+   "non_coverage_cluster_bootstrap": 0.0575,
+   "sims": 400,
+   "type_I_anchor_permutation": 0.0475,
+   "type_I_cluster_permutation": 0.045
+  },
+  {
+   "baseline_p": 0.133,
+   "cluster_permutation_within_2se_of_nominal": true,
+   "icc": 0.5,
+   "monte_carlo_se_at_nominal_5pc": 0.0109,
+   "non_coverage_anchor_bootstrap": 0.0425,
+   "non_coverage_cluster_bootstrap": 0.0575,
+   "sims": 400,
+   "type_I_anchor_permutation": 0.04,
+   "type_I_cluster_permutation": 0.0475
+  },
+  {
+   "baseline_p": 0.25,
+   "cluster_permutation_within_2se_of_nominal": true,
+   "icc": 0.2,
+   "monte_carlo_se_at_nominal_5pc": 0.0109,
+   "non_coverage_anchor_bootstrap": 0.0575,
+   "non_coverage_cluster_bootstrap": 0.0475,
+   "sims": 400,
+   "type_I_anchor_permutation": 0.0425,
+   "type_I_cluster_permutation": 0.0475
+  },
+  {
+   "baseline_p": 0.4,
+   "cluster_permutation_within_2se_of_nominal": true,
+   "icc": 0.5,
+   "monte_carlo_se_at_nominal_5pc": 0.0109,
+   "non_coverage_anchor_bootstrap": 0.0375,
+   "non_coverage_cluster_bootstrap": 0.04,
+   "sims": 400,
+   "type_I_anchor_permutation": 0.035,
+   "type_I_cluster_permutation": 0.035
+  }
+ ],
+ "nominal_alpha": 0.05,
+ "permutations_per_test": 2000,
+ "seconds": 257.1,
+ "verdict": "HELD",
+ "worst_cluster_permutation_type_I": 0.05
+}

@@ -1,0 +1,15 @@
+{
+ "attack": "A14 is ENVIRONMENT_ERROR really never a mathematical zero?",
+ "findings": {
+  "arm_marginal_counts_harness_failures_as_non_events": true,
+  "clean_delta": 0.0,
+  "environment_errors_injected_into_R_B": 20,
+  "estimators_call_drop_harness_failures": true,
+  "extract_pair_filters_on_analysable": false,
+  "lossy_delta_after_drop_harness_failures": 0.0,
+  "lossy_delta_as_analysed": -0.3333333333333333,
+  "report_driver_calls_drop_harness_failures": false
+ },
+ "note": "CellOutcome.analysable and CellTable.drop_harness_failures exist and are correct; nothing on the analysis path calls them, so every harness-decided cell is scored as a 0 on the primary endpoint -- and, being arm-attached, it moves Delta directly.",
+ "verdict": "BROKEN"
+}

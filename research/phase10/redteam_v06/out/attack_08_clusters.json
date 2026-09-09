@@ -1,0 +1,117 @@
+{
+ "anchor_naive_marked_not_reportable": true,
+ "anchor_unit_available_as": {
+  "bootstrap": [
+   "CLUSTER",
+   "ANCHOR"
+  ],
+  "permutation": [
+   "CLUSTER",
+   "ANCHOR"
+  ]
+ },
+ "anchors_with_a_bad_cluster_path": [],
+ "attack": "A8 theorem clustering: is the cluster unit the mathlib file?",
+ "bank": {
+  "anchors": 1127,
+  "anchors_per_file_histogram": {
+   "1": 10,
+   "2": 10,
+   "3": 260,
+   "4": 3,
+   "5": 6,
+   "6": 33,
+   "7": 1,
+   "9": 3,
+   "10": 2,
+   "11": 1,
+   "12": 1
+  },
+  "declared_stats": {
+   "anchors": 1127,
+   "anchors_per_theorem_histogram": {
+    "1": 16,
+    "2": 20,
+    "3": 357
+   },
+   "depth_class_counts": {
+    "INITIAL": 393,
+    "MID_PROOF": 734
+   },
+   "distinct_files": 330,
+   "distinct_theorems": 393,
+   "n_goals_histogram": {
+    "1": 975,
+    "2": 129,
+    "3": 17,
+    "4": 5,
+    "5": 1
+   },
+   "note": "prefix_length and observed_trace_length are SAMPLING PROXIES, never reasoning difficulty. MinimalProofLength is UNKNOWN and nothing in this arena could establish it; a shorter proof may always exist. EpisodeLength is 0 at an anchor because an anchor is a state, not an episode. DependencyDepth is UNKNOWN for this backend. KernelStepCount is not measured at derivation time.",
+   "observed_trace_length_histogram": {
+    "10": 20,
+    "11": 31,
+    "12": 21,
+    "13": 10,
+    "14": 3,
+    "15": 7,
+    "16": 3,
+    "17": 3,
+    "18": 6,
+    "20": 3,
+    "22": 2,
+    "23": 3,
+    "3": 360,
+    "4": 217,
+    "5": 169,
+    "6": 96,
+    "7": 73,
+    "8": 72,
+    "9": 28
+   },
+   "prefix_length_histogram": {
+    "0": 393,
+    "1": 377,
+    "10": 8,
+    "11": 5,
+    "12": 9,
+    "2": 134,
+    "3": 71,
+    "4": 57,
+    "5": 29,
+    "6": 15,
+    "7": 18,
+    "8": 7,
+    "9": 4
+   }
+  },
+  "distinct_files": 330,
+  "distinct_theorems": 393,
+  "files_carrying_more_than_one_theorem": 51,
+  "largest_cluster": [
+   [
+    "Mathlib/Combinatorics/SimpleGraph/Connectivity.lean",
+    12
+   ],
+   [
+    "Mathlib/SetTheory/Cardinal/Basic.lean",
+    11
+   ],
+   [
+    ".lake/packages/batteries/Batteries/Data/List/Lemmas.lean",
+    10
+   ]
+  ],
+  "mean_cluster_size": 3.4152
+ },
+ "n_clusters_reported_by_the_contrast": 10,
+ "partially_played_anchor": {
+  "anchors_in_table": 40,
+  "anchors_in_the_R_A_vs_R_B_pair": 39,
+  "dropped_without_a_record": 1,
+  "note": "extract_pair drops half-populated anchors silently; run_assay's per-theorem `except Exception` is exactly what creates them, and it records only the problem_id in theorem_errors -- not which anchors or which arms were lost."
+ },
+ "preregistered_p_is_cluster_level": true,
+ "theorems_with_duplicate_prefix_lengths": [],
+ "verdict": "HELD"
+}

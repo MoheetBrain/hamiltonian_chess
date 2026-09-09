@@ -10,14 +10,23 @@ the denominator instead of counting against it.
 
 from __future__ import annotations
 
+import json
 from dataclasses import dataclass, replace
+from pathlib import Path
 from types import SimpleNamespace
 from typing import Any
 
 import pytest
 
 from arena.evolution.record import InterventionClass
-from arena.experiments.hc_v0_6.schema import Arm, ParseStatus, StepResult
+from arena.experiments.hc_v0_6.schema import (
+    NON_REPRODUCIBLE_CELL_FIELDS,
+    Arm,
+    CellOutcome,
+    CellTable,
+    ParseStatus,
+    StepResult,
+)
 from arena.experiments.hc_v0_6_assay import (
     _OUTCOME_TO_RESULT,
     _PROPOSAL_TO_PARSE,
@@ -225,18 +234,97 @@ def test_an_unparseable_proposal_never_reaches_lean() -> None:
 # --- the manifest ----------------------------------------------------------------------------
 
 
-def test_the_result_hash_ignores_wall_clock() -> None:
-    """Two runs that differed only in how long they took must hash identically."""
+def _row(arm: Arm, *, latency_ms: int = 7, step_result: StepResult | None = None) -> CellOutcome:
+    """One populated cell.  ``latency_ms`` is the field the hash must not see."""
 
-    bank = make_bank([_anchor()])
-    solver = ScriptedSolver(default="skip")
-    fast = AssayRun(rows=[], wall_clock_s=1.0, solver_seconds=1.0)
-    slow = AssayRun(rows=[], wall_clock_s=900.0, solver_seconds=900.0)
-    kwargs = {"bank": bank, "solver": solver, "arms": tuple(Arm), "replicates": 1, "seed": 1}
-    assert (
-        build_manifest(fast, **kwargs)["result_hash"]
-        == build_manifest(slow, **kwargs)["result_hash"]
+    return CellOutcome(
+        anchor_id="anchor-0",
+        cluster_id="Mathlib/Order/Basic.lean",
+        theorem="thm",
+        reelaboration_key="key",
+        arm=arm,
+        renderer_id=arm.renderer_id,
+        intervention_class=arm.intervention_class,
+        replicate_index=0,
+        step_result=StepResult.ACCEPTED_TRANSITION if step_result is None else step_result,
+        parse_status=ParseStatus.OK,
+        closed_all_goals=False,
+        prompt_sha256="a" * 64,
+        prompt_tokens=11,
+        response_tokens=3,
+        latency_ms=latency_ms,
+        solver_digest="digest",
+        proposed_tactic="simp",
     )
+
+
+def _manifest_hash(rows: list[CellOutcome]) -> str:
+    return build_manifest(
+        AssayRun(rows=rows, wall_clock_s=1.0, solver_seconds=1.0),
+        bank=make_bank([_anchor()]),
+        solver=ScriptedSolver(default="skip"),
+        arms=tuple(Arm),
+        replicates=1,
+        seed=1,
+    )["result_hash"]
+
+
+def test_the_result_hash_ignores_wall_clock_and_per_cell_latency() -> None:
+    """Two runs that differed only in how long they took must hash identically.
+
+    **This test used to hash an empty table** (``AssayRun(rows=[])``), so it exercised only the
+    manifest's own ``cost`` block -- which ``_strip`` already removed -- and could not fail.  The
+    route that was actually open ran underneath it: ``latency_ms`` is carried on every *row*, the
+    table reaches the manifest as one opaque ``cell_table_content_hash``, and by the time
+    ``_strip`` runs there is nothing left for it to strip.  Two manifests differing only in one
+    row's ``latency_ms`` (7 vs 9001) produced two different ``result_hash`` values
+    (``docs/HC_V0_6_REDTEAM.md`` RT-V06-08).  Every row below is therefore populated, and the
+    latency assertion is checked against a NON-empty table.
+    """
+
+    fast = [_row(arm) for arm in Arm]
+    slow = [_row(arm, latency_ms=9001) for arm in Arm]
+    assert _manifest_hash([]) == _manifest_hash([]), "the hash must at least be deterministic"
+    assert _manifest_hash(fast) == _manifest_hash(slow), (
+        "per-cell latency reached result_hash through cell_table_content_hash"
+    )
+    # ...and the hash must still MOVE when the mathematics does, or it is not a result hash.
+    moved = [_row(arm) for arm in Arm]
+    moved[0] = _row(Arm.R_A, step_result=StepResult.ACCEPTED_NO_OP)
+    assert _manifest_hash(moved) != _manifest_hash(fast)
+    assert _manifest_hash([]) != _manifest_hash(fast)
+
+
+def test_the_cell_content_hash_covers_the_mathematics_and_nothing_else() -> None:
+    """``CellTable.content_hash`` is where the exclusion has to happen, so it is pinned here.
+
+    The old ``content_hash`` hashed ``to_dict()`` whole.  Nothing caught it because the only
+    regression test hashed an empty table; the fields are asserted individually here so a future
+    edit that puts a volatile field back has to delete an assertion to do it.
+    """
+
+    base = CellTable([_row(Arm.R_A)])
+    assert base.content_hash == CellTable([_row(Arm.R_A)]).content_hash
+    for field, value in (("latency_ms", 9001), ("prompt_tokens", 999), ("response_tokens", 999)):
+        moved = CellTable([replace(_row(Arm.R_A), **{field: value})])
+        assert moved.content_hash == base.content_hash, f"{field} must not move the content hash"
+    assert set(NON_REPRODUCIBLE_CELL_FIELDS) == {"latency_ms", "prompt_tokens", "response_tokens"}
+    moves: tuple[tuple[str, dict[str, Any]], ...] = (
+        ("step_result", {"step_result": StepResult.ACCEPTED_NO_OP}),
+        (
+            "parse_status",
+            {
+                "parse_status": ParseStatus.PARSE_FAILURE,
+                "step_result": StepResult.PARSE_FAILURE,
+            },
+        ),
+        ("proposed_tactic", {"proposed_tactic": "rfl"}),
+        ("prompt_sha256", {"prompt_sha256": "b" * 64}),
+        ("solver_digest", {"solver_digest": "other-model"}),
+    )
+    for field, patch in moves:
+        row = replace(_row(Arm.R_A), **patch)
+        assert CellTable([row]).content_hash != base.content_hash, f"{field} must move it"
 
 
 # --- the primary endpoint: KERNEL_ACCEPTED_STATE_CHANGE ---------------------------------------
@@ -299,3 +387,79 @@ def test_the_no_op_check_falls_back_to_the_bank_when_the_session_is_silent() -> 
         live, anchor, CellPlan(Arm.R_A, 0), solver=ScriptedSolver(default="skip"), run=AssayRun()
     )
     assert cell.step_result is StepResult.ACCEPTED_NO_OP
+
+
+@pytest.mark.slow
+def test_rows_are_streamed_as_they_are_produced(tmp_path: Path) -> None:
+    """A pass is thousands of live calls over hours; a crash must not cost the work already done.
+
+    This test exists because the streaming was once wired in the docstring and not in the loop: the
+    runner reported 72 cells while the file it was supposedly streaming to was 0 bytes. A claim
+    about durability that nothing checks is worse than no durability at all. It drives the real
+    Lean path with a scripted Solver -- the bug was in the loop, so a fake loop would not have
+    caught it.
+    """
+
+    from arena.experiments.hc_v0_6.schema import CellTable
+    from arena.experiments.hc_v0_6_assay import run_assay
+    from arena.trajectory.anchor import AnchorBank
+
+    bank_path = Path("artifacts/trajectory/hc_v0_6_anchor_bank.json")
+    if not bank_path.exists():
+        pytest.skip("the anchored bank has not been built on this machine")
+    out = tmp_path / "cells.jsonl"
+    run = run_assay(
+        AnchorBank.load(bank_path),
+        ScriptedSolver(default="skip"),
+        arms=(Arm.R_A, Arm.R_B),
+        replicates=1,
+        seed=1,
+        theorem_limit=1,
+        stream_to=out,
+        progress=False,
+    )
+    assert out.exists() and out.stat().st_size > 0, "nothing was streamed"
+    streamed = CellTable.read_jsonl(out)
+    assert len(streamed) == len(run.table), "the streamed file lost rows"
+    assert {r.cell_key for r in streamed} == {r.cell_key for r in run.table}
+
+
+def test_a_scratch_path_in_a_skipped_reason_does_not_change_the_result_hash() -> None:
+    """RT-V06-08's second route: free text is inside ``result_hash``, and Lean writes paths into it.
+
+    The first route (``latency_ms``) was closed in the cell content hash. This one runs through
+    ``skipped[].reason`` and ``theorem_errors[].error``, which carry Lean's per-session scratch
+    directory verbatim. Left raw, two runs of identical mathematics produce different manifests --
+    the exact defect that made HC-V0.5 conclude the runtime was not reproducible.
+    """
+
+    from arena.experiments.hc_v0_6_assay import AssayRun, SkippedAnchor, build_manifest
+
+    def manifest(scratch: str) -> dict[str, Any]:
+        run = AssayRun()
+        run.skipped.append(
+            SkippedAnchor(
+                "anchor:1",
+                f"/var/folders/w9/x/T/hamiltonian-lean-{scratch}/probe_Foo.lean: not reached",
+            )
+        )
+        run.theorem_errors.append(
+            (
+                "Mathlib/T.lean::t",
+                f"/var/folders/w9/x/T/hamiltonian-lean-{scratch}/probe.lean: boom",
+            )
+        )
+        return build_manifest(
+            run,
+            bank=make_bank([_anchor()]),
+            solver=ScriptedSolver(default="skip"),
+            arms=tuple(Arm),
+            replicates=1,
+            seed=1,
+        )
+
+    first, second = manifest("aaa111"), manifest("bbb222")
+    assert first["result_hash"] == second["result_hash"]
+    assert "hamiltonian-lean-aaa111" not in json.dumps(first)
+    assert "probe_Foo.lean" in json.dumps(first), "the diagnostic itself must survive"
+    assert "not reached" in json.dumps(first)

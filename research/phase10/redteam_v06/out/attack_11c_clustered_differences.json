@@ -1,0 +1,72 @@
+{
+ "anchors": 1127,
+ "attack": "A11c level of the clustered test when the PAIRED DIFFERENCES are clustered",
+ "clusters": 330,
+ "grid": [
+  {
+   "baseline_p": 0.133,
+   "monte_carlo_se_at_nominal_5pc": 0.0109,
+   "non_coverage_anchor_bootstrap": 0.03,
+   "non_coverage_cluster_bootstrap": 0.025,
+   "sims": 400,
+   "type_I_anchor_permutation": 0.02,
+   "type_I_cluster_permutation": 0.02,
+   "within_cluster_discordance": 0.02
+  },
+  {
+   "baseline_p": 0.133,
+   "monte_carlo_se_at_nominal_5pc": 0.0109,
+   "non_coverage_anchor_bootstrap": 0.0275,
+   "non_coverage_cluster_bootstrap": 0.02,
+   "sims": 400,
+   "type_I_anchor_permutation": 0.02,
+   "type_I_cluster_permutation": 0.015,
+   "within_cluster_discordance": 0.05
+  },
+  {
+   "baseline_p": 0.133,
+   "monte_carlo_se_at_nominal_5pc": 0.0109,
+   "non_coverage_anchor_bootstrap": 0.0825,
+   "non_coverage_cluster_bootstrap": 0.045,
+   "sims": 400,
+   "type_I_anchor_permutation": 0.075,
+   "type_I_cluster_permutation": 0.035,
+   "within_cluster_discordance": 0.1
+  },
+  {
+   "baseline_p": 0.25,
+   "monte_carlo_se_at_nominal_5pc": 0.0109,
+   "non_coverage_anchor_bootstrap": 0.0825,
+   "non_coverage_cluster_bootstrap": 0.045,
+   "sims": 400,
+   "type_I_anchor_permutation": 0.075,
+   "type_I_cluster_permutation": 0.035,
+   "within_cluster_discordance": 0.1
+  },
+  {
+   "baseline_p": 0.133,
+   "monte_carlo_se_at_nominal_5pc": 0.0109,
+   "non_coverage_anchor_bootstrap": 0.2275,
+   "non_coverage_cluster_bootstrap": 0.06,
+   "sims": 400,
+   "type_I_anchor_permutation": 0.2225,
+   "type_I_cluster_permutation": 0.0525,
+   "within_cluster_discordance": 0.5
+  },
+  {
+   "baseline_p": 0.133,
+   "monte_carlo_se_at_nominal_5pc": 0.0109,
+   "non_coverage_anchor_bootstrap": 0.3625,
+   "non_coverage_cluster_bootstrap": 0.0675,
+   "sims": 400,
+   "type_I_anchor_permutation": 0.345,
+   "type_I_cluster_permutation": 0.0675,
+   "within_cluster_discordance": 1.0
+  }
+ ],
+ "nominal_alpha": 0.05,
+ "seconds": 304.7,
+ "verdict": "HELD",
+ "worst_anchor_permutation_type_I": 0.345,
+ "worst_cluster_permutation_type_I": 0.0675
+}

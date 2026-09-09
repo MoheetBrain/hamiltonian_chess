@@ -1,0 +1,32 @@
+{
+ "attack": "A9 result-hash stability: does the hash move when the mathematics did not?",
+ "findings": {
+  "D1_cell_table_content_hash_changes_with_latency_only": true,
+  "D1_hashes": {
+   "fast": "422f6bb0076271be",
+   "slow": "2b7ccc86285ae34e"
+  },
+  "D1_latency_is_in_NON_DETERMINISTIC_FIELDS": true,
+  "D1_result_hash_changes_with_latency_only": true,
+  "D2_result_hash_changes_with_a_scratch_path_in_a_skip_reason": true,
+  "D2_result_hash_changes_with_a_scratch_path_in_a_theorem_error": true,
+  "D3_result_hash_is_stable_under_pure_timing": true,
+  "control_a_changed_outcome_moves_the_hash": true
+ },
+ "non_deterministic_fields": [
+  "cost",
+  "generated_utc",
+  "latency_ms",
+  "lean_seconds",
+  "seconds_per_solver_call",
+  "solver_seconds",
+  "wall_clock_s"
+ ],
+ "note": "_strip removes keys by name at every level of the manifest dict, but cell_table_content_hash is already a digest by then, and skipped/theorem_errors carry free text from the backend. Both are the same class as the two defects already fixed.",
+ "unstable_routes": [
+  "D1_result_hash_changes_with_latency_only",
+  "D2_result_hash_changes_with_a_scratch_path_in_a_skip_reason",
+  "D2_result_hash_changes_with_a_scratch_path_in_a_theorem_error"
+ ],
+ "verdict": "BROKEN"
+}

@@ -2107,3 +2107,83 @@ is created, retired or reinterpreted by this commit; `HC_V0_5_REAL_PLAYER_EXECUT
 
 **Next intended step.** Run the four-arm assay on `gemma4:e4b` across the frozen bank, check the
 control gates, then the three secondary models on three arms each. Stop and report.
+
+---
+
+## 2026-09-09 — HC-V0.6 result: a one-step tight null across four models
+
+**Branch.** `claude/hamiltonian-phase-8-experiment-691d22` (worktree), previous commit `2624be5`.
+
+**Project stage.** `HC_V0_6_ASSAY_FROZEN` → **`HC_V0_6_ONE_STEP_TIGHT_NULL`**.
+
+**Objective of the change.** Execute the assay frozen at `2624be5` and answer the owner's question:
+does changing the machine-facing representation of the same real Lean state causally change
+*verified* Solver behaviour, and does any effect survive across more than one local model.
+
+**Files and systems changed.**
+- `arena/experiments/hc_v0_6_report.py` (new): contrasts, gates, realised ICC and MDE, Holm.
+- `arena/experiments/hc_v0_6/{schema,estimators,calibration,__init__}.py`: the eight HIGH red-team
+  findings in the analysis layer.
+- `arena/experiments/hc_v0_6_assay.py`: rows streamed per cell; scratch paths normalised out of the
+  manifest's free-text fields.
+- Docs: `HC_V0_6_RESULT.md`, `HC_V0_6_HANDOFF.md`, `HC_V0_6_REDTEAM.md`, `HC_V0_6_MODEL_INVENTORY.md`,
+  `HC_V0_6_SPEC.md` (§7a applied selection, §8a achieved resolution, §9 IUT, §10a `T_ablate`,
+  §10b C1 unavailable, §13a, §15 administrative sensitivity, §16 ablation degeneracy),
+  `HC_V0_6_PREREGISTRATION.md` (§5 amendment), `PROJECT_STATUS.md`.
+- Artefacts: four cell tables (14,651 cells), four manifests, four reports, five preflight manifests.
+
+**What was completed.**
+- **Four full assay passes**, all on universe hash `f13ffee5…`, all identities verified against the
+  live runtime: `gemma4:e4b` (4 arms, 4,508 cells), `gemma4:12b`, `qwen3.6:27b-mlx`, `gemma4:31b`
+  (3 arms, 3,381 cells each). Zero skipped anchors, zero theorem errors in every pass.
+- **Result.** `Δ(R_B − R_A)` = +0.0107 / −0.0089 / +0.0027 / +0.0018 across the four models. Every
+  95% cluster interval lies inside ±5 points; the widest bound in either direction is +0.0294 /
+  −0.0261. No sign agreement, and the disagreement is *within* the gemma4 family. Null controls
+  +0.0071 / +0.0009 / +0.0044 / +0.0009. Ablation on the primary −0.0587, CI [−0.0848, −0.0339],
+  p = 5×10⁻⁵.
+- **Policy divergence replicates in every model**: `R_B` changes the proposed tactic on 43–64% of
+  states, against a **30–46%** whitespace-only floor. Structure adds 7.5–19.2 points beyond that
+  floor, consistently, and none of it reaches verified success.
+- **Red team**: 0 CRITICAL, 8 HIGH, 7 MEDIUM, 7 LOW. All eight HIGH closed before any number was
+  read. Verdict on the data: sound, no re-run needed.
+
+**Decisions made and why.**
+- **No threshold moved after exposure.** `T_ablate` stayed at 0.0665 though half the *realised*
+  baseline (0.0539) would have passed; the missingness gate stayed at exact equality though it fired
+  as a false block. Formal certification and scientific information are reported separately.
+- **Policy divergence is recorded as a mechanistic diagnostic and may never be fitness.** It has a
+  30–46% noise floor and is uncorrelated with kernel-verified outcome in all four models.
+- **`gemma3:4b` excluded before any contrast** by the pre-declared floor test (0/45), after being
+  smoke-checked to confirm it was incapable rather than mis-wired.
+- **Language evolution does not begin.** Under the owner's decision rule this is RED.
+
+**Tests and verification actually executed.**
+- `.venv/bin/python -m pytest` → **4073 passed, 1 skipped** in 203.69 s.
+- `ruff check .` → All checks passed. `ruff format --check .` → 388 files already formatted.
+- `mypy arena` → Success, 155 source files.
+- 14,651 live model calls and live Lean throughout; ~4.5 h of local compute for the sprint.
+
+**Failures or unresolved uncertainty.**
+- **Two frozen gates did not certify**, and `release()` refused. The missingness failure is a false
+  block (11 environment errors on 3 anchors; all contrasts ran on identical samples). The
+  sensitivity failure is a real miss of a threshold set from a 45-anchor preflight baseline that
+  turned out high.
+- **The preflight was too small to rank models.** At n=45 the baselines were 0.133/0.156/0.400; at
+  n=1,127 they were 0.108/0.272/0.296. The frozen information-rate rule selected `gemma4:e4b` on
+  noise; with full-bank rates it would have selected `gemma4:12b`. It cost nothing because every
+  eligible model was run, and would have cost a great deal in a design where only the primary runs.
+- **Only two independent architecture families.** `gemma4:{e4b,12b,31b}` are correlated readers.
+- `C1` was structurally unavailable at `k = 1` and is reported UNAVAILABLE, never zero.
+- Nothing here is a long-horizon result, and nothing separates a solved goal from a recalled one:
+  mathlib4 is `HISTORICALLY_EXPOSED` transitively.
+
+**Effect on the overall project.** One specific hypothesis is refuted at this resolution: that an
+information-preserving change to the surface form of a Lean goal materially changes the probability
+that the next machine-proposed tactic is accepted. No sentinel is retired or reinterpreted;
+`HC_V0_5_REAL_PLAYER_EXECUTABLE` stands. No language ranked, no candidate promoted, no `RSTAR`
+/`LSTAR` claim.
+
+**Next intended step.** One compact long-horizon kill/continue experiment. Its binding constraint
+is already measured: at these acceptance rates a no-retry episode reaches depth 4 with probability
+0.013–0.77%, so horizon must be created by an **attempt budget**, and choosing that budget is the
+design (`docs/HC_V0_6_HANDOFF.md` §6). Do **not** begin `HC-V0.7 MORPHOGENESIS_V0`.

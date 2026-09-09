@@ -162,7 +162,9 @@ primary endpoint            p_accept(R_B) - p_accept(R_A), paired by anchor
 minimum practical effect    delta_min  (justified, not conventional)
 sample size / precision     n anchors, k replicates, from the power analysis
 paired method               exact McNemar on discordant pairs + paired cluster bootstrap CI
-multiplicity policy         Holm across {R_B vs R_A, C1, C2}
+multiplicity policy         effect claims: Holm across the FOUR of §9.6
+                            {R_B vs R_A, C1, C1b, C2}; certification gates: intersection-union,
+                            separate uncorrected level-alpha components (see HC_V0_6_SPEC.md §9)
 cluster / grouping unit     theorem file (theorems in one mathlib file are not independent)
 stopping rule               fixed n; no interim looks; no extension after seeing the result
 allowed outcomes            the exhaustive list, each with what it licenses and forbids

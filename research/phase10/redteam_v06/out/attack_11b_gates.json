@@ -1,0 +1,108 @@
+{
+ "attack": "A11b intersection-union gate logic, and gate-vs-spec agreement",
+ "findings": {
+  "G0_all_gates_pass": {
+   "certified": true,
+   "false_certification_bound": 0.05,
+   "status": "USABLE"
+  },
+  "G1_C1_fires": {
+   "certified": false,
+   "release": "BLOCKED -- BROKEN_IDENTITY_CONTROL: no comparison may be reported. C1 identity control is significant (Delta=+0.0400, p=0.0100 <= a",
+   "status": "BROKEN_IDENTITY_CONTROL",
+   "usable": false
+  },
+  "G2_C1b_fires": {
+   "certified": false,
+   "release": {
+    "attribution": "BYTE_PERTURBATION",
+    "headline": "O4_FAVOURS_R_B: Delta = +0.0900 (95% CI +0.0700 to +0.1100, p_holm = 0.0010); MDE at n=1127 anchors / 330 clusters, k=1 is 5.0 points; attribution = BYTE_PERTURBATION",
+    "may_claim_structure": false,
+    "outcome": "O4_FAVOURS_R_B"
+   },
+   "status": "USABLE_ATTRIBUTION_BLOCKED",
+   "usable": true
+  },
+  "G3_C2_not_significant": {
+   "certified": false,
+   "release": {
+    "attribution": "UNDETERMINED",
+    "headline": "O4_FAVOURS_R_B: Delta = +0.0900 (95% CI +0.0700 to +0.1100, p_holm = 0.0010); MDE at n=1127 anchors / 330 clusters, k=1 is 5.0 points; attribution = UNDETERMINED",
+    "may_claim_structure": false,
+    "outcome": "O4_FAVOURS_R_B"
+   },
+   "status": "INSENSITIVE",
+   "usable": true
+  },
+  "G4_C2_wrong_direction": {
+   "certified": false,
+   "release": {
+    "attribution": "UNDETERMINED",
+    "headline": "O4_FAVOURS_R_B: Delta = +0.0900 (95% CI +0.0700 to +0.1100, p_holm = 0.0010); MDE at n=1127 anchors / 330 clusters, k=1 is 5.0 points; attribution = UNDETERMINED",
+    "may_claim_structure": false,
+    "outcome": "O4_FAVOURS_R_B"
+   },
+   "status": "INSENSITIVE",
+   "usable": true
+  },
+  "G5_too_few_clusters": {
+   "certified": false,
+   "release": "BLOCKED -- INSUFFICIENT_CLUSTERS: no comparison may be reported. only 12 clusters contribute (< 30): cluster-robust inference is no",
+   "status": "INSUFFICIENT_CLUSTERS",
+   "usable": false
+  },
+  "G6_arm_dependent_missingness": {
+   "outcome_ladder_entry": "O7_ARM_DEPENDENT_MISSINGNESS",
+   "status": "ARM_DEPENDENT_MISSINGNESS",
+   "usable": false
+  },
+  "S1_spec_T_ablate_vs_code": {
+   "T_ablate_appears_anywhere_in_arena": false,
+   "an_ablation_of_only_0.8_points_certifies": true,
+   "code_condition": "p <= ALPHA_SENSITIVITY and delta < 0 (no magnitude term)",
+   "its_status": "USABLE",
+   "spec_requires_delta_at_most": -0.0665
+  },
+  "S2_spec_equivalence_band_vs_code": {
+   "a_null_control_with_CI_[-0.15,0.19]_certifies": true,
+   "code_condition": "cluster permutation p > 0.1 (a failure to reject)",
+   "equivalent_within_0.05": true,
+   "note": "PairedEffect.equivalent_within exists and is used ONLY for the primary's O3 decision; no gate calls it, so the frozen equivalence band is never tested.",
+   "spec_requires": "Delta(R_A,R_A') INSIDE the equivalence band +/-0.05",
+   "wide_case_equivalent_within_0.05": false
+  },
+  "S3_alphas": {
+   "byte_null": 0.1,
+   "identity": 0.1,
+   "sensitivity": 0.05
+  },
+  "S3_false_certification_bound": 0.05,
+  "S3_gate_roster": [
+   {
+    "alpha": 0.05,
+    "bounded_by_alpha": true,
+    "comparison": "C2_ABLATION",
+    "direction": "REJECT_TO_CERTIFY",
+    "name": "C2"
+   },
+   {
+    "alpha": 0.1,
+    "bounded_by_alpha": false,
+    "comparison": "C1_IDENTITY",
+    "direction": "BLOCK_ON_REJECTION",
+    "name": "C1"
+   },
+   {
+    "alpha": 0.1,
+    "bounded_by_alpha": false,
+    "comparison": "C1B_WHITESPACE",
+    "direction": "BLOCK_ON_REJECTION",
+    "name": "C1b"
+   }
+  ],
+  "S4_C1_at_k1": "UNAVAILABLE -- IdentityControlUnavailable: R_A carries fewer than 2 replicates at 5 anchor(s) (e.g. ['a0', 'a1', 'a2']), so the C1 identity control cannot be split out of it; under a deterministic Solver",
+  "S4_holm_without_C1": "REFUSED -- FamilyWidened: the Holm family is frozen at ['PRIMARY_RB_VS_RA', 'C1_IDENTITY', 'C1B_WHITESPACE', 'C2_ABLATION']; missing=['C1_IDENTITY'] extra=[]"
+ },
+ "gates_block_when_they_should": true,
+ "verdict": "MIXED"
+}

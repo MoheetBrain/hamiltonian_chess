@@ -1,0 +1,73 @@
+{
+ "arms_share_one_non_prompt_payload": true,
+ "attack": "A4 model condition equality across arms and models",
+ "budget_can_differ_by_arm": false,
+ "default_budget": {
+  "max_output_tokens": null,
+  "max_prompt_tokens": null,
+  "timeout_seconds": 900.0
+ },
+ "frozen_decoding": {
+  "min_p": 0.0,
+  "num_ctx": 32768,
+  "num_predict": 128,
+  "presence_penalty": 0.0,
+  "repeat_penalty": 1.0,
+  "seed": 20260908,
+  "temperature": 0.0,
+  "top_k": 20,
+  "top_p": 0.95
+ },
+ "longest_prompt_chars_by_arm": {
+  "R_A": 2531,
+  "R_ABLATED": 190,
+  "R_A_PRIME": 2610,
+  "R_B": 2953
+ },
+ "models_share_one_non_model_payload": true,
+ "notes": [
+  "OllamaTacticSolver.payload() reads only module constants plus the prompt, so no arm and no model can carry a different option, wire flag or grammar.",
+  "budget.timeout_seconds is recorded in provenance but never passed to the transport: urllib_transport is called positionally and keeps its own 900 s default. Harmless here (the values agree) but the recorded value is not the value in force.",
+  "The longest R_B prompt in the whole bank is far below num_ctx even at one token per character, so context truncation cannot differ by arm on this bank."
+ ],
+ "num_ctx": 32768,
+ "output_schema_sha256": "9b25cba2450affa8cae91c864b059aeadc3bb0ed5ab2766a962495e2ed4f3e0b",
+ "prompt_template_has_one_substitution": true,
+ "prompt_template_sha256": "95a4e049fca802876995f8b235573ddaa22e55964d74f4efb14579f4f5cee6ef",
+ "shared_payload_minus_prompt": {
+  "format": {
+   "additionalProperties": false,
+   "properties": {
+    "tactic": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "tactic"
+   ],
+   "type": "object"
+  },
+  "model": "qwen3.6:27b-mlx",
+  "options": {
+   "min_p": 0.0,
+   "num_ctx": 32768,
+   "num_predict": 128,
+   "presence_penalty": 0.0,
+   "repeat_penalty": 1.0,
+   "seed": 20260908,
+   "temperature": 0.0,
+   "top_k": 20,
+   "top_p": 0.95
+  },
+  "raw": false,
+  "stream": false,
+  "think": false
+ },
+ "verdict": "HELD",
+ "wire_flags": {
+  "raw": false,
+  "stream": false,
+  "think": false
+ },
+ "worst_case_chars_per_ctx_token_needed_to_overflow": 0.0901
+}

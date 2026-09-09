@@ -1,0 +1,35 @@
+{
+ "attack": "A2 projection bijection: pass the checks while showing more or less",
+ "findings": {
+  "R_HALF": {
+   "bijection_holds_everywhere": true,
+   "chars_shown_arm": 17,
+   "chars_shown_baseline": 25,
+   "derived_intervention_class": "R_ONLY",
+   "n_checked": 3,
+   "n_holds": 3,
+   "observed_field": "goals_pp",
+   "sample_shown_to_model": "h : 0 < n\n⊢ n ≠ 0",
+   "satisfies_BijectiveRenderer_protocol": true,
+   "typed_R_ONLY": true
+  },
+  "R_HINT": {
+   "bijection_holds_everywhere": true,
+   "chars_shown_arm": 49,
+   "chars_shown_baseline": 25,
+   "derived_intervention_class": "R_ONLY",
+   "n_checked": 3,
+   "n_holds": 3,
+   "observed_field": "goals_pp",
+   "sample_shown_to_model": "n : Nat\nh : 0 < n\n⊢ n ≠ 0\n[SUGGESTED TACTIC] simp",
+   "satisfies_BijectiveRenderer_protocol": true,
+   "typed_R_ONLY": true
+  }
+ },
+ "note": "check_bijection tests invert(render(s)) == R_A.render(s) over the WHOLE rendered mapping, and derive_intervention_class reads only the DECLARATION. Neither constrains the single key the Solver actually reads (solver.OBSERVED_FIELD = 'goals_pp'), and neither notices content that is a deterministic FUNCTION of the declaration rather than new information.",
+ "renderers_that_passed_every_check": [
+  "R_HINT",
+  "R_HALF"
+ ],
+ "verdict": "BROKEN"
+}

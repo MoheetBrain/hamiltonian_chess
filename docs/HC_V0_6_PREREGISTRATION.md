@@ -307,6 +307,30 @@ Both branches are preregistered here so that neither is invented after the fact.
 
 ## 5. Multiplicity policy
 
+> ### Amendment, 2026-09-09 — the justification below is superseded; the procedure is not
+>
+> Everything §5 *does* stands: Holm over the four-member family for effect claims, and separate
+> uncorrected level-α component tests for the certification gates. What was wrong was the reason
+> given for it. "Uncorrected, deliberately liberal α" described the procedure as a considered
+> relaxation, when in fact **no relaxation is involved**: certification requires every gate to pass,
+> so the decision is an intersection of rejections against a union null — an **intersection–union
+> test** — and under IUT separate level-α component tests already bound the false-certification rate
+> by `max_j α_j` with no correction (Berger 1982; Berger & Hsu 1996). Holm on an intersection
+> decision cannot lower an already-bounded rate, and on a non-rejection gate it *raises* false
+> certification. Measured through the real estimators and the real gate: **3/400 = 0.0075** false
+> certifications against the 0.05 bound.
+>
+> **And one honest limit that the old framing hid.** That bound covers only the gate written as
+> *reject-to-certify* — **C2**. **C1 and C1b certify by failing to reject, which bounds nothing.**
+> They are governed by **power**, and that — not liberality — is why their α is 0.10. The row below
+> justifying C2 by "its failure is conservative" is the wrong shape; C2 is the one gate the IUT
+> bound actually covers. Turning C1 and C1b into genuine IUT components means replacing them with
+> TOST against a declared `δ_eq`, which remains `PENDING`. Measured for C1 against a true
+> `Δ = −0.30`: caught 190/200, certified anyway 10/200 — near α by coincidence, not by guarantee.
+>
+> Authoritative statement: `docs/HC_V0_6_SPEC.md` §9 and `docs/HC_V0_6_ANALYSIS_PLAN.md` §6.
+
+
 The policy has **two layers**, and conflating them is the error this section exists to prevent.
 
 **Layer 1 — the Holm family, for effect claims.** The four comparisons of design brief §9.6:

@@ -63,6 +63,7 @@ from arena.evolution.record import InterventionClass
 __all__ = [
     "ACCEPTING_RESULTS",
     "ENDPOINT_EVENT_RESULTS",
+    "NON_REPRODUCIBLE_CELL_FIELDS",
     "PRIMARY_ENDPOINT",
     "Arm",
     "CellOutcome",
@@ -84,6 +85,16 @@ SCHEMA_VERSION: Final = "hc-v0.6-cell-outcome-v1.1.0"
 
 #: The name of the primary endpoint, so that reports quote it rather than paraphrase it.
 PRIMARY_ENDPOINT: Final = "KERNEL_ACCEPTED_STATE_CHANGE"
+
+#: Row fields that vary between two replays of the *same* cell without changing what happened
+#: mathematically, and are therefore outside :attr:`CellOutcome.content_core` and outside every
+#: hash built from it.  They are excluded at the ROW level on purpose: the run manifest strips
+#: non-deterministic keys from its own payload, but the cell table reaches it as a single digest,
+#: so a field left in here is a field the manifest can no longer remove
+#: (``docs/HC_V0_6_REDTEAM.md`` RT-V06-08).
+NON_REPRODUCIBLE_CELL_FIELDS: Final[frozenset[str]] = frozenset(
+    {"latency_ms", "prompt_tokens", "response_tokens"}
+)
 
 
 class Arm(StrEnum):
@@ -363,8 +374,28 @@ class CellOutcome:
         return row
 
     @property
+    def content_core(self) -> dict[str, Any]:
+        """:meth:`to_dict` minus the fields that vary run to run without changing the outcome.
+
+        ``latency_ms`` and the two token counts are machine load and tokeniser bookkeeping: two
+        replays of one cell that produced the same tactic and the same Lean verdict differ in
+        them and in nothing that matters.  The manifest's own ``_strip`` cannot reach them,
+        because by the time it runs the whole table has already been reduced to one opaque
+        digest -- so the exclusion has to happen **here**, before the digest is taken, or it does
+        not happen at all (``docs/HC_V0_6_REDTEAM.md`` RT-V06-08).
+
+        Everything that decides an endpoint stays in: ``step_result``, ``parse_status``,
+        ``closed_all_goals``, ``proposed_tactic``, the prompt hash and the solver digest.
+        """
+
+        volatile = frozenset(NON_REPRODUCIBLE_CELL_FIELDS)
+        return {key: value for key, value in self.to_dict().items() if key not in volatile}
+
+    @property
     def content_hash(self) -> str:
-        return stable_hash(self.to_dict())
+        """The reproducible identity of this cell: :attr:`content_core`, not :meth:`to_dict`."""
+
+        return stable_hash(self.content_core)
 
 
 @dataclass(frozen=True, slots=True)
@@ -455,9 +486,18 @@ class CellTable:
 
     @property
     def content_hash(self) -> str:
-        """Hash of every raw outcome.  Changes if a single cell changes."""
+        """Hash of every raw outcome's :attr:`CellOutcome.content_core`.
 
-        return stable_hash({"schema": SCHEMA_VERSION, "rows": [row.to_dict() for row in self.rows]})
+        Changes if a single cell's *mathematics* changes -- its Lean verdict, its parse status,
+        the tactic proposed, the prompt it was shown, the model that answered.  Does **not**
+        change when only latency or token counts differ, because two runs that produced the same
+        outcomes are the same result and must hash the same
+        (``docs/HC_V0_6_REDTEAM.md`` RT-V06-08).
+        """
+
+        return stable_hash(
+            {"schema": SCHEMA_VERSION, "rows": [row.content_core for row in self.rows]}
+        )
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -521,6 +561,41 @@ class CellTable:
         """A table with harness-decided cells removed (§14.4: never a mathematical failure)."""
 
         return CellTable(row for row in self.rows if row.analysable)
+
+    def harness_failures_by_arm(self) -> dict[Arm, int]:
+        """Per arm, how many rows the harness decided -- the count :func:`extract_pair` drops.
+
+        Reported beside every contrast so that a reader can see what was excluded rather than
+        having to infer it from a shrunken ``n_anchors``.
+        """
+
+        counts = dict.fromkeys(self.arms, 0)
+        for row in self.rows:
+            if not row.analysable:
+                counts[row.arm] += 1
+        return counts
+
+    def unanalysable_by_arm(self, arms: Sequence[Arm] | None = None) -> dict[Arm, int]:
+        """Per arm, how many of this table's anchors carry **no** analysable cell for that arm.
+
+        This is the quantity the missingness gate is about (spec §10, §13), and it is deliberately
+        anchor-counted rather than row-counted: an anchor loses its pairing whether the arm's cell
+        came back ``ENVIRONMENT_ERROR`` or never appeared in the table at all.  Both routes are
+        real -- the runner records harness failures as rows, and a theorem that died mid-anchor
+        leaves the remaining arms absent -- and only the anchor count sees both.
+
+        Equal counts across arms mean the loss was arm-independent, which is what the gate
+        requires; any difference is outcome O7 and invalidates the run.
+        """
+
+        wanted = tuple(self.arms if arms is None else arms)
+        analysable: set[tuple[str, Arm]] = {
+            (row.anchor_id, row.arm) for row in self.rows if row.analysable
+        }
+        anchors = self.anchor_ids
+        return {
+            arm: sum(1 for anchor in anchors if (anchor, arm) not in analysable) for arm in wanted
+        }
 
 
 @dataclass(frozen=True, slots=True)
@@ -612,13 +687,23 @@ def extract_pair(table: CellTable, arm_a: Arm, arm_b: Arm) -> PairedCells:
     Dropping half-populated anchors is the only defensible pairing rule: an anchor observed under
     one arm only carries no paired information, and imputing it would invent one.  The number
     dropped is recoverable by comparing ``PairedCells.n_anchors`` with ``len(table.anchor_ids)``.
+
+    **Harness-decided cells are excluded here**, not by the caller.  Spec §4 says
+    ``ENVIRONMENT_ERROR`` is separately typed and is *never* a mathematical zero, and this is the
+    single place every contrast passes through, so it is the only place the rule can be made
+    structural rather than optional.  It used to live in
+    :meth:`CellTable.drop_harness_failures`, which nothing called: 20 injected
+    ``ENVIRONMENT_ERROR``s on one arm moved a true ``Delta`` of 0.000 to -0.333
+    (``docs/HC_V0_6_REDTEAM.md`` RT-V06-01).  An anchor whose cell for one arm was decided by the
+    harness therefore loses its *pair* -- it becomes missing, which the missingness gate counts
+    (:meth:`CellTable.unanalysable_by_arm`) -- rather than scoring a zero for that arm.
     """
 
     if arm_a is arm_b:
         raise DesignViolation("a comparison needs two distinct arms")
     by_anchor: dict[str, dict[Arm, list[CellOutcome]]] = defaultdict(lambda: defaultdict(list))
     for row in table.rows:
-        if row.arm in (arm_a, arm_b):
+        if row.arm in (arm_a, arm_b) and row.analysable:
             by_anchor[row.anchor_id][row.arm].append(row)
     cluster_of = table.cluster_of
     anchors: list[str] = []

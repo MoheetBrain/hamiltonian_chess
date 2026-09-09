@@ -1,0 +1,28 @@
+{
+ "attack": "A15 manifest guarantees and freeze integrity",
+ "findings": {
+  "M1_any_status_flag_saying_invalid": [],
+  "M1_field_is_truncated_to": 200,
+  "M1_manifest_built_despite_digest_mismatch": true,
+  "M1_scientific_status": "PREREGISTERED_ASSAY_RESULT_SET (no analysis in this file)",
+  "M1_served_verification_field": "SolverIdentityMismatch: the served model does not match the recorded solver identity; refusing to run (model_digest: recorded='aaa' served='bbb')",
+  "M2_note": "main() calls build_manifest(run, ...) and then run.table.write_jsonl(). Both go through AssayRun.table = CellTable(rows), which raises DesignViolation on a duplicate cell or an anchor carrying two identities. The streamed file survives (it is written per row), but the manifest is never written, so a structurally invalid run leaves cells with no manifest and no result_hash.",
+  "M3_lines_changed_since_the_freeze": {
+   "arena/experiments/hc_v0_6/calibration.py": 0,
+   "arena/experiments/hc_v0_6/estimators.py": 0,
+   "arena/experiments/hc_v0_6/power.py": 0,
+   "arena/experiments/hc_v0_6/schema.py": 0,
+   "arena/experiments/hc_v0_6_assay.py": 9,
+   "arena/trajectory/anchor.py": 0,
+   "arena/trajectory/representation.py": 0,
+   "arena/trajectory/solver.py": 0,
+   "docs/HC_V0_6_SPEC.md": 86
+  },
+  "M3_running_process": "Wed Sep  9 04:59:35 2026     /opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -m arena.experiments.hc_v0_6_assay --live --model gemma4:e4b --seed 20260909 --out trajectory/hc_v0_6_primary_gemma4_e4b",
+  "M3_untracked_modules_under_arena_or_docs": [
+   "arena/experiments/hc_v0_6_report.py"
+  ]
+ },
+ "note": "A digest mismatch is recorded as a 200-character string in a field named solver_served_verification and nothing reads it; the manifest still carries scientific_status PREREGISTERED_ASSAY_RESULT_SET and a result_hash. Spec §13 makes that condition RESULT_INVALID, and no code enforces it.",
+ "verdict": "BROKEN"
+}

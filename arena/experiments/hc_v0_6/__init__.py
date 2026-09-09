@@ -41,15 +41,20 @@ from arena.experiments.hc_v0_6.calibration import (
     ALPHA_BYTE_NULL,
     ALPHA_IDENTITY,
     ALPHA_SENSITIVITY,
+    CERTIFICATION_GATES,
+    EQUIVALENCE_BOUND,
     MIN_CLUSTERS,
     AssayBroken,
     AssayStatus,
     Attribution,
     CalibrationVerdict,
     ControlReading,
+    GateDirection,
     Outcome,
     ReportableResult,
     calibrate,
+    false_certification_bound,
+    t_ablate_from_preflight_baseline,
 )
 from arena.experiments.hc_v0_6.estimators import (
     ALPHA,
@@ -102,6 +107,9 @@ from arena.experiments.hc_v0_6.power import (
 )
 from arena.experiments.hc_v0_6.schema import (
     ACCEPTING_RESULTS,
+    ENDPOINT_EVENT_RESULTS,
+    NON_REPRODUCIBLE_CELL_FIELDS,
+    PRIMARY_ENDPOINT,
     SCHEMA_VERSION,
     Arm,
     CellOutcome,
@@ -114,6 +122,11 @@ from arena.experiments.hc_v0_6.schema import (
 )
 
 __all__ = [
+    "CERTIFICATION_GATES",
+    "ENDPOINT_EVENT_RESULTS",
+    "GateDirection",
+    "PRIMARY_ENDPOINT",
+    "false_certification_bound",
     "ACCEPTING_RESULTS",
     "ALPHA",
     "ALPHA_BYTE_NULL",
@@ -122,9 +135,11 @@ __all__ = [
     "BOOTSTRAP_RESAMPLES",
     "DEFAULT_TARGET_POWER",
     "DETERMINISTIC_SOLVER",
+    "EQUIVALENCE_BOUND",
     "FAMILY_ARMS",
     "HC_V0_6_BANK_RELPATH",
     "MIN_CLUSTERS",
+    "NON_REPRODUCIBLE_CELL_FIELDS",
     "PERMUTATIONS",
     "POWER_VERSION",
     "PREREGISTERED_FAMILY",
@@ -181,4 +196,5 @@ __all__ = [
     "simulate_power",
     "simulate_type_i",
     "split_half_identity",
+    "t_ablate_from_preflight_baseline",
 ]

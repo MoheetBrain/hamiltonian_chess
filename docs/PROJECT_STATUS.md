@@ -1,8 +1,19 @@
 # Project Status
 
-> ## CURRENT STATE — HC-V0.6 SIGNAL SPRINT, ASSAY FROZEN (2026-09-09)
+> ## CURRENT STATE — HC-V0.6 COMPLETE: ONE-STEP TIGHT NULL (2026-09-09)
 >
-> **Stage: `HC_V0_6_ASSAY_FROZEN`.** The four-arm anchored representation assay is specified and
+> **Stage: `HC_V0_6_ONE_STEP_TIGHT_NULL`.** The first cross-model representation result is in.
+> Four eligible local models on one frozen bank of 1,127 anchored Lean states give
+> `Δ(R_B − R_A) ∈ [−0.009, +0.011]`, every 95% cluster interval inside ±5 points, no sign agreement,
+> null controls ≤ +0.7 points, and an ablation detected at −5.9 points (p = 5×10⁻⁵).
+> **Representation strongly changes the policy — 43–64% of states, against a 30–46% whitespace noise
+> floor — and does not change verified success.** Full numbers: `docs/HC_V0_6_RESULT.md`.
+>
+> **Consequence: language evolution does NOT begin.** `HC-V0.7 MORPHOGENESIS_V0` is not authorised.
+> The next milestone is one compact long-horizon kill/continue experiment; its binding design
+> constraint is already measured (`docs/HC_V0_6_HANDOFF.md` §6).
+>
+> **Stage (historical): `HC_V0_6_ASSAY_FROZEN`.** The four-arm anchored representation assay is specified and
 > frozen in `docs/HC_V0_6_SPEC.md`, written and committed **before any `R_B` outcome exists**.
 > No Δ has been computed. No representation has been compared. No language has been ranked.
 >
@@ -49,7 +60,7 @@ first controlled game. No language is assumed to win; a negative result is valid
 
 ## Current Stage
 
-**`HC_V0_6_ASSAY_FROZEN`** (see the banner). Superseded stages, newest first:
+**`HC_V0_6_ONE_STEP_TIGHT_NULL`** (see the banner). Superseded stages, newest first:
 `HC_V0_5_REAL_PLAYER_EXECUTABLE` → `META_GAME_V0_EXECUTABLE` → `PHASE8_DIAGNOSTIC_INFRASTRUCTURE`.
 
 ### Historical: `PHASE8_DIAGNOSTIC_INFRASTRUCTURE`

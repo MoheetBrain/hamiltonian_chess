@@ -1,0 +1,120 @@
+{
+ "anchors_scanned": 1127,
+ "attack": "A3 no reference leakage: what does the 6-character floor let through?",
+ "distinct_strings_below_the_floor": {
+  "aesop": 6,
+  "congr": 32,
+  "dsimp": 18,
+  "ext": 29,
+  "ext P": 3,
+  "ext U": 3,
+  "ext d": 3,
+  "ext h": 3,
+  "ext i": 6,
+  "ext j": 3,
+  "ext m": 3,
+  "ext n": 2,
+  "ext p": 3,
+  "ext u": 3,
+  "ext x": 21,
+  "ext y": 6,
+  "ext z": 3,
+  "ext1": 3,
+  "intro": 14,
+  "left": 9,
+  "omega": 4,
+  "rfl": 85,
+  "right": 14,
+  "ring": 12,
+  "simp": 135,
+  "simpa": 3,
+  "split": 2,
+  "swap": 2,
+  "symm": 6,
+  "tauto": 8,
+  "use i": 2,
+  "use m": 3,
+  "use w": 3,
+  "use x": 3,
+  "use z": 3
+ },
+ "markup_strings_colliding_with_a_sub_floor_tactic": [],
+ "max_rendered_goals_pp_chars_by_arm": {
+  "R_A": 2394,
+  "R_ABLATED": 53,
+  "R_A_PRIME": 2473,
+  "R_B": 2816
+ },
+ "model_visible_examples": {},
+ "note": "A verbatim match is the only thing either tripwire can detect. The floor is a false-positive guard, and this measures what it costs: every sub-floor tactic string, and whether any of them actually reaches a rendered payload.",
+ "occurrences_below_the_floor": 458,
+ "payload_only_examples": {
+  "R_ABLATED": [
+   {
+    "anchor_id": "anchor:f7be66f9ab9dd8391dec5465",
+    "caught_by_floor": false,
+    "in_model_visible_goals_pp": false,
+    "len": 3,
+    "tactic": "ext"
+   },
+   {
+    "anchor_id": "anchor:ced6cac94230bd5f749aa17d",
+    "caught_by_floor": false,
+    "in_model_visible_goals_pp": false,
+    "len": 3,
+    "tactic": "ext"
+   },
+   {
+    "anchor_id": "anchor:1df2dfc015528ca5332aa668",
+    "caught_by_floor": false,
+    "in_model_visible_goals_pp": false,
+    "len": 3,
+    "tactic": "ext"
+   }
+  ],
+  "R_B": [
+   {
+    "anchor_id": "anchor:f7be66f9ab9dd8391dec5465",
+    "caught_by_floor": false,
+    "in_model_visible_goals_pp": false,
+    "len": 3,
+    "tactic": "ext"
+   },
+   {
+    "anchor_id": "anchor:ced6cac94230bd5f749aa17d",
+    "caught_by_floor": false,
+    "in_model_visible_goals_pp": false,
+    "len": 3,
+    "tactic": "ext"
+   },
+   {
+    "anchor_id": "anchor:1df2dfc015528ca5332aa668",
+    "caught_by_floor": false,
+    "in_model_visible_goals_pp": false,
+    "len": 3,
+    "tactic": "ext"
+   }
+  ]
+ },
+ "reference_tactic_occurrences": 6158,
+ "renderer_refusals": {},
+ "verbatim_matches_in_MODEL_VISIBLE_goals_pp_by_arm": {
+  "R_A": 0,
+  "R_ABLATED": 0,
+  "R_A_PRIME": 0,
+  "R_B": 0
+ },
+ "verbatim_matches_in_rendered_payload_by_arm": {
+  "R_A": 0,
+  "R_ABLATED": 29,
+  "R_A_PRIME": 0,
+  "R_B": 29
+ },
+ "verbatim_matches_that_the_floor_would_NOT_catch": {
+  "R_A": 0,
+  "R_ABLATED": 29,
+  "R_A_PRIME": 0,
+  "R_B": 29
+ },
+ "verdict": "HELD"
+}

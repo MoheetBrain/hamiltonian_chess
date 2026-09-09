@@ -1,0 +1,28 @@
+{
+ "attack": "A7 no free redraws: is k=1 structural?",
+ "findings": {
+  "R1_solver_calls_for_one_failed_cell": 1,
+  "R2_lean_steps_for_a_rejected_tactic": 1,
+  "R2_solver_calls_for_a_rejected_tactic": 1,
+  "R3_R5_retry_constructs_found": {
+   "hc_v0_6_assay": [
+    "for index in range(",
+    "retries"
+   ],
+   "lean_backend.LeanReplSession.step": [
+    "retry"
+   ],
+   "ollama_live.urllib_transport": [],
+   "solver.OllamaTacticSolver.propose": []
+  },
+  "R3_session_restart_in_step": false,
+  "R4_transport_has_no_retry": true,
+  "R6_duplicate_cell": "REJECTED -- duplicate cells: [\"('a', <Arm.R_A: 'R_A'>, 0)\"]",
+  "R7_reruns_truncate_not_append": true,
+  "R7_stream_open_mode": [
+   "sink = stream_to.open(\"w\", encoding=\"utf-8\")"
+  ]
+ },
+ "note": "The only loop in run_assay is over plans; a CellPlan is consumed once and there is no path from a failure back to the solver. A per-theorem `except Exception` abandons the REST of the theorem -- it never replays what was already played, so it cannot create a second draw, but it does leave a partially played anchor in the table (see A8).",
+ "verdict": "HELD"
+}

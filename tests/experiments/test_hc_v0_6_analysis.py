@@ -86,6 +86,13 @@ from arena.experiments.hc_v0_6.schema import (
 # Reduced inference budgets: enough resolution for every assertion below, fast enough to run in CI.
 FAST_RESAMPLES = 400
 FAST_PERMUTATIONS = 999
+
+#: Spec §10a's ``T_ablate`` for the primary model: 0.5 x the 0.133 R_A-only preflight baseline.
+#: ``calibrate`` has no default for it on purpose, so every call site names it.
+T_ABLATE_PRIMARY = 0.0665
+#: An achieved MDE below ``T_ablate``, so the §10a resolution clause is satisfied and these tests
+#: exercise the gate they are about rather than that one.  Tests of the clause pass their own.
+RESOLVED_MDE = 0.05
 TRIALS = 300
 SIM_PERMUTATIONS = 399
 
@@ -732,6 +739,8 @@ def test_c1_broken_rule_fires_and_forecloses_every_other_comparison() -> None:
         effects[Comparison.C1_IDENTITY],
         effects[Comparison.C1B_WHITESPACE],
         effects[Comparison.C2_ABLATION],
+        t_ablate=T_ABLATE_PRIMARY,
+        achieved_mde=RESOLVED_MDE,
     )
     assert verdict.status is AssayStatus.BROKEN_IDENTITY_CONTROL
     assert verdict.broken and not verdict.usable
@@ -755,6 +764,8 @@ def test_a_healthy_assay_releases_an_informative_null_with_its_mde_attached() ->
         effects[Comparison.C1_IDENTITY],
         effects[Comparison.C1B_WHITESPACE],
         effects[Comparison.C2_ABLATION],
+        t_ablate=T_ABLATE_PRIMARY,
+        achieved_mde=RESOLVED_MDE,
     )
     assert verdict.status is AssayStatus.USABLE
     assert verdict.usable and not verdict.broken
@@ -791,6 +802,8 @@ def test_a_weak_positive_control_makes_a_null_uninformative() -> None:
         effects[Comparison.C1_IDENTITY],
         effects[Comparison.C1B_WHITESPACE],
         effects[Comparison.C2_ABLATION],
+        t_ablate=T_ABLATE_PRIMARY,
+        achieved_mde=RESOLVED_MDE,
     )
     assert verdict.status is AssayStatus.INSENSITIVE
     assert verdict.sensitivity_floor is None
@@ -823,6 +836,8 @@ def test_byte_sensitivity_blocks_a_structure_claim_without_breaking_the_assay() 
         effects[Comparison.C1_IDENTITY],
         effects[Comparison.C1B_WHITESPACE],
         effects[Comparison.C2_ABLATION],
+        t_ablate=T_ABLATE_PRIMARY,
+        achieved_mde=RESOLVED_MDE,
     )
     assert verdict.status is AssayStatus.USABLE_ATTRIBUTION_BLOCKED
     assert verdict.usable
@@ -851,6 +866,8 @@ def test_too_few_clusters_is_outcome_o6_not_a_result() -> None:
         effects[Comparison.C1_IDENTITY],
         effects[Comparison.C1B_WHITESPACE],
         effects[Comparison.C2_ABLATION],
+        t_ablate=T_ABLATE_PRIMARY,
+        achieved_mde=RESOLVED_MDE,
     )
     assert verdict.status is AssayStatus.INSUFFICIENT_CLUSTERS
     with pytest.raises(AssayBroken, match="INSUFFICIENT_CLUSTERS"):
@@ -870,6 +887,8 @@ def test_release_rechecks_the_primary_comparisons_own_cluster_count() -> None:
         effects[Comparison.C1_IDENTITY],
         effects[Comparison.C1B_WHITESPACE],
         effects[Comparison.C2_ABLATION],
+        t_ablate=T_ABLATE_PRIMARY,
+        achieved_mde=RESOLVED_MDE,
     )
     assert verdict.status is AssayStatus.USABLE
     thin = _effects(_four_arm_table(n_clusters=10, per_cluster=3))[Comparison.PRIMARY_RB_VS_RA]
@@ -888,6 +907,8 @@ def test_arm_dependent_missingness_is_outcome_o7() -> None:
         effects[Comparison.C1_IDENTITY],
         effects[Comparison.C1B_WHITESPACE],
         effects[Comparison.C2_ABLATION],
+        t_ablate=T_ABLATE_PRIMARY,
+        achieved_mde=RESOLVED_MDE,
         missingness={Arm.R_A: 0, Arm.R_B: 7, Arm.R_A_PRIME: 0, Arm.R_ABLATED: 0},
     )
     assert verdict.status is AssayStatus.ARM_DEPENDENT_MISSINGNESS
@@ -900,6 +921,8 @@ def test_release_refuses_a_control_in_the_primary_slot() -> None:
         effects[Comparison.C1_IDENTITY],
         effects[Comparison.C1B_WHITESPACE],
         effects[Comparison.C2_ABLATION],
+        t_ablate=T_ABLATE_PRIMARY,
+        achieved_mde=RESOLVED_MDE,
     )
     with pytest.raises(DesignViolation, match="primary comparison"):
         verdict.release(
@@ -913,6 +936,8 @@ def test_release_refuses_a_control_in_the_primary_slot() -> None:
             effects[Comparison.C2_ABLATION],
             effects[Comparison.C1B_WHITESPACE],
             effects[Comparison.C2_ABLATION],
+            t_ablate=T_ABLATE_PRIMARY,
+            achieved_mde=RESOLVED_MDE,
         )
 
 
@@ -922,6 +947,8 @@ def test_verdict_and_result_serialise_without_losing_the_gate() -> None:
         effects[Comparison.C1_IDENTITY],
         effects[Comparison.C1B_WHITESPACE],
         effects[Comparison.C2_ABLATION],
+        t_ablate=T_ABLATE_PRIMARY,
+        achieved_mde=RESOLVED_MDE,
     )
     payload = verdict.to_dict()
     assert payload["status"] == "USABLE"
@@ -1140,9 +1167,21 @@ def _random_four_arm_table(
 
 
 def _certifications(
-    rates: dict[Arm, Sequence[float]], *, trials: int, seed: int
+    rates: dict[Arm, Sequence[float]],
+    *,
+    trials: int,
+    seed: int,
+    equivalence_bound: float = 0.30,
 ) -> tuple[int, list[AssayStatus]]:
-    """Run the REAL calibrate() over ``trials`` simulated tables; count full certifications."""
+    """Run the REAL calibrate() over ``trials`` simulated tables; count full certifications.
+
+    ``equivalence_bound`` defaults **wider than the frozen ±0.05** here and only here.  These
+    simulations run 60 anchors at rates near 0.30, where the paired CI is roughly ±0.12 wide: at
+    the frozen band no C1b reading could ever be shown equivalent, every trial would stop at
+    USABLE_ATTRIBUTION_BLOCKED, and the measurements below -- which are about the C2 and C1 gates
+    -- would become vacuous rather than informative.  Widening it isolates the gate under test.
+    The report driver never overrides the band; ``EQUIVALENCE_BOUND`` is what it uses.
+    """
 
     rng = np.random.default_rng(seed)
     certified = 0
@@ -1163,6 +1202,9 @@ def _certifications(
             effects[Comparison.C1_IDENTITY],
             effects[Comparison.C1B_WHITESPACE],
             effects[Comparison.C2_ABLATION],
+            t_ablate=T_ABLATE_PRIMARY,
+            achieved_mde=RESOLVED_MDE,
+            equivalence_bound=equivalence_bound,
         )
         statuses.append(verdict.status)
         certified += int(verdict.certified)
@@ -1173,10 +1215,18 @@ def test_certification_gates_are_the_ones_calibrate_actually_uses() -> None:
     """The declared roster may not drift away from the thresholds the gate code reads."""
 
     by_name = {gate.name: gate for gate in CERTIFICATION_GATES}
-    assert set(by_name) == {"C1", "C1b", "C2"}
+    assert set(by_name) == {"C1", "C1b", "C1b_EQUIVALENCE", "C2"}
     assert by_name["C1"].alpha == ALPHA_IDENTITY
     assert by_name["C1b"].alpha == ALPHA_BYTE_NULL
     assert by_name["C2"].alpha == ALPHA_SENSITIVITY
+    # C1b is TWO components, because spec §10 states it as an equivalence band and the code now
+    # tests both halves: the blocking significance test and the reject-to-certify equivalence
+    # test at 0.025 per side.  The second is a genuine IUT component and enters the bound, but
+    # its alpha is below ALPHA_SENSITIVITY, so the bound is unchanged -- adding a real component
+    # may only tighten a max, never loosen it.
+    assert by_name["C1b_EQUIVALENCE"].direction is GateDirection.REJECT_TO_CERTIFY
+    assert by_name["C1b_EQUIVALENCE"].alpha == ALPHA / 2.0 < ALPHA_SENSITIVITY
+    assert by_name["C1b_EQUIVALENCE"].comparison is Comparison.C1B_WHITESPACE
     assert {gate.comparison for gate in CERTIFICATION_GATES} == set(PREREGISTERED_FAMILY) - {
         Comparison.PRIMARY_RB_VS_RA
     }

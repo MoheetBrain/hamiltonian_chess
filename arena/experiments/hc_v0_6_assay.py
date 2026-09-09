@@ -44,6 +44,7 @@ from arena.trajectory.anchor import (
     LiveAnchorSet,
     open_anchor_session,
 )
+from arena.trajectory.arena_v0 import normalise_backend_diagnostic
 from arena.trajectory.episode import SolverObservation
 from arena.trajectory.lean_backend import StepOutcome
 from arena.trajectory.representation import ARMS, project_arm
@@ -306,7 +307,14 @@ def run_assay(
                     for plan in plan_cells(
                         arms, replicates=replicates, seed=seed, anchor_id=item.anchor_id
                     ):
-                        run.rows.append(_play_cell(live, item.anchor, plan, solver=solver, run=run))
+                        cell = _play_cell(live, item.anchor, plan, solver=solver, run=run)
+                        run.rows.append(cell)
+                        if sink is not None:
+                            sink.write(
+                                json.dumps(cell.to_dict(), sort_keys=True, ensure_ascii=False)
+                                + "\n"
+                            )
+                            sink.flush()
         except Exception as error:  # pragma: no cover - live backend
             run.theorem_errors.append((problem_id, f"{type(error).__name__}: {error}"[:300]))
         if progress:
@@ -404,8 +412,19 @@ def build_manifest(
             "theorem_errors": len(run.theorem_errors),
             "solver_calls": run.calls,
         },
-        "skipped": [{"anchor_id": s.anchor_id, "reason": s.reason} for s in run.skipped],
-        "theorem_errors": [{"problem_id": p, "error": e} for p, e in run.theorem_errors],
+        # RT-V06-08, second route: Lean writes its per-session scratch directory into these two
+        # free-text fields, and they are inside `result_hash`.  Left raw, a manifest would differ
+        # between two runs of identical mathematics -- the same defect that made HC-V0.5 conclude
+        # the runtime was not reproducible.  The message and the probe name survive; only the
+        # directory that changes per run is replaced.
+        "skipped": [
+            {"anchor_id": s.anchor_id, "reason": normalise_backend_diagnostic(s.reason)}
+            for s in run.skipped
+        ],
+        "theorem_errors": [
+            {"problem_id": p, "error": normalise_backend_diagnostic(e)}
+            for p, e in run.theorem_errors
+        ],
         "cost": {
             "solver_seconds": round(run.solver_seconds, 1),
             "lean_seconds": round(run.lean_seconds, 1),

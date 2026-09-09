@@ -81,16 +81,23 @@ component null is the *unsafe* state, and which must **reject** to certify, is a
   text", i.e. :math:`\Delta_{C2} = 0`.  Certifying requires rejecting it at
   :data:`ALPHA_SENSITIVITY`, so its contribution to the false-certification rate is
   :math:`\le \alpha`.  :func:`false_certification_bound` is exactly this maximum.
-* **C1** (identity) and **C1b** (byte null) are **not**.  Their safe state is :math:`\Delta = 0`,
-  so as written they *block* on a rejection and certify on a **failure to reject** -- which is not
-  a level-α statement about anything.  What governs them is **power**: the probability of catching
-  a broken instrument.  That is why :data:`ALPHA_IDENTITY` and :data:`ALPHA_BYTE_NULL` are set
-  *above* the primary α (0.10): raising a blocking gate's α raises its power, which is the only
-  knob that lowers false certification through C1.  Turning them into IUT components would mean
-  replacing them with equivalence tests (TOST against :math:`\delta_{eq}`), which the design
-  already provides for C1b's *licensing* direction and which a later manifest version may adopt
-  for the blocking direction as well.  Until it does, C1's contribution to false certification is
-  bounded by its power, not by its α, and no report may claim otherwise.
+* **C1b** (byte null) is **half** of one.  Spec §10 states it as an equivalence band of
+  :math:`\pm 0.05`, and :meth:`ControlReading.equivalent_within` now decides it: certifying
+  requires *rejecting* :math:`|\Delta_{C1b}| \ge` :data:`EQUIVALENCE_BOUND`, which is an IUT
+  component at 0.025 per side (the two-sided 95% interval inside the band).  It is listed in
+  :data:`CERTIFICATION_GATES` as ``C1b_EQUIVALENCE`` alongside the blocking half.  Its α is
+  *below* :data:`ALPHA_SENSITIVITY`, so :func:`false_certification_bound` -- a maximum over the
+  reject-to-certify gates -- is unchanged at α: adding a genuine component may tighten the bound,
+  never loosen it.  The significance test is kept as an **additional** blocker, not an
+  alternative, so both halves must pass.
+* **C1** (identity) is **not**, and neither is C1b's blocking half.  Their safe state is
+  :math:`\Delta = 0`, so they certify on a **failure to reject**, which is not a level-α statement
+  about anything.  What governs them is **power**: the probability of catching a broken
+  instrument.  That is why :data:`ALPHA_IDENTITY` and :data:`ALPHA_BYTE_NULL` are set *above* the
+  primary α (0.10): raising a blocking gate's α raises its power, which is the only knob that
+  lowers false certification through C1.  C1's contribution to false certification is bounded by
+  its power, not by its α, and no report may claim otherwise -- and at ``k = 1`` it is not
+  measured at all (see below), so it bounds nothing whatsoever.
 
 So: the effect claims are Holm-corrected across the four-member family of design brief §9.4
 (:data:`~arena.experiments.hc_v0_6.estimators.PREREGISTERED_FAMILY`); the certification gates are
@@ -107,6 +114,13 @@ A degenerate C1 is **not** evidence that the analysis pipeline is calibrated —
 the Solver is a function.  The verdict says so in :attr:`CalibrationVerdict.reasons` and
 :attr:`CalibrationVerdict.identity_informative` is ``False``, which is exactly the situation in
 which C1b carries the whole weight of the null control.
+
+At ``k = 1`` -- the frozen design (spec §5, §10b) -- C1 is a step further gone: it is not
+*degenerate*, it is **unmeasured**, because there is no second draw to split.  The reading built
+for that case carries zero anchors, :attr:`ControlReading.measured` is ``False``, and
+:func:`calibrate` routes round the C1 branch entirely rather than reading a p-value that would
+have to have come from somewhere else.  ``UNAVAILABLE`` and ``Δ = 0`` are different claims and
+this module never confuses them.
 """
 
 from __future__ import annotations
@@ -152,6 +166,39 @@ ALPHA_SENSITIVITY: Final = ALPHA
 #: Below this many contributing clusters, cluster-robust inference is not trustworthy at any α and
 #: the run is outcome O6 rather than a result.  The rebuilt bank has 330 files.
 MIN_CLUSTERS: Final = 30
+#: The null control's equivalence band (spec §10): ``Delta(R_A, R_A')`` must lie **inside** ±0.05,
+#: not merely fail to be significant.  Equivalence is not the complement of significance, and the
+#: gate that reads it is the one that licenses the word *structure*
+#: (``docs/HC_V0_6_REDTEAM.md`` RT-V06-03).
+EQUIVALENCE_BOUND: Final = 0.05
+#: The baseline below which spec §10a switches ``T_ablate`` from a flat ten points to half the
+#: baseline.  Frozen with the rest of §10a, before any ``R_ABLATED`` call.
+T_ABLATE_FLAT_BASELINE: Final = 0.20
+#: The flat threshold that applies at or above that baseline.
+T_ABLATE_FLAT: Final = 0.10
+
+
+def t_ablate_from_preflight_baseline(preflight_baseline: float) -> float:
+    """Spec §10a's ``T_ablate``, as a function of the **preflight** ``R_A`` event rate.
+
+    ``T_ablate = 0.10`` at ``p_A >= 0.20``, and ``0.5 * p_A`` below it -- because a flat ten-point
+    threshold at a baseline near 0.10 would require the ablation to reach exactly zero, which is a
+    badly chosen number rather than a failed control.
+
+    The argument is the rate measured on the ``R_A``-**only** preflight (§7a: 0.133 for
+    ``gemma4:e4b``, giving ``T_ablate = 0.067``).  It is emphatically **not** the ``R_A`` marginal
+    of the assay itself: §10a fixes the number "before any ``R_B`` or ``R_ABLATED`` outcome exists
+    anywhere" and forbids revisiting it once an ``R_ABLATED`` cell exists, so deriving it from the
+    run would be setting the threshold from the data it judges.
+    """
+
+    if not 0.0 < preflight_baseline < 1.0:
+        raise DesignViolation(
+            f"the preflight baseline must lie in (0, 1), got {preflight_baseline!r}"
+        )
+    if preflight_baseline >= T_ABLATE_FLAT_BASELINE:
+        return T_ABLATE_FLAT
+    return 0.5 * preflight_baseline
 
 
 class GateDirection(StrEnum):
@@ -217,6 +264,23 @@ CERTIFICATION_GATES: Final[tuple[CertificationGate, ...]] = (
         direction=GateDirection.BLOCK_ON_REJECTION,
         alpha=ALPHA_BYTE_NULL,
         component_null="a whitespace-only change does not move the outcome (Delta_C1b = 0)",
+    ),
+    # The equivalence half of the SAME control, and a genuine IUT component: to certify, the
+    # preregistered two-sided 95% CI must be shown to lie inside ±EQUIVALENCE_BOUND, which is a
+    # rejection of "the byte perturbation matters by at least the band" at 0.025 per side.  It is
+    # listed separately from the blocking half because the two directions cannot be collapsed into
+    # one row without misdescribing one of them, and its alpha is BELOW ALPHA_SENSITIVITY, so
+    # false_certification_bound() -- a max over the reject-to-certify gates -- is unchanged at
+    # ALPHA.  Adding a real IUT component may only tighten the bound; here it leaves it alone.
+    CertificationGate(
+        name="C1b_EQUIVALENCE",
+        comparison=Comparison.C1B_WHITESPACE,
+        direction=GateDirection.REJECT_TO_CERTIFY,
+        alpha=ALPHA / 2.0,
+        component_null=(
+            f"a whitespace-only change moves the outcome by at least the equivalence band "
+            f"(|Delta_C1b| >= {EQUIVALENCE_BOUND})"
+        ),
     ),
 )
 
@@ -287,6 +351,12 @@ class AssayStatus(StrEnum):
     #: C2 failed: no demonstrated sensitivity.  A non-null Δ may still be reported; a null may not
     #: be read as evidence of absence (outcome O2).
     INSENSITIVE = "INSENSITIVE"
+    #: Spec §10a: ``T_ablate`` sits **below** the resolution this design achieved, so the degraded
+    #: control cannot be certified at this resolution no matter what it returned.  Decided from
+    #: the preflight threshold and the MDE alone -- never from the observed C2 -- so it cannot be
+    #: resolved by lowering the bar after the fact.  Contributes to INCONCLUSIVE, i.e. outcome O2
+    #: for a null.
+    SENSITIVITY_UNRESOLVABLE = "SENSITIVITY_UNRESOLVABLE"
     #: C1 passed, C2 passed, but C1b is significant: the Solver responds to byte perturbation as
     #: such, so an effect cannot be attributed to structure (design brief §9.4).
     USABLE_ATTRIBUTION_BLOCKED = "USABLE_ATTRIBUTION_BLOCKED"
@@ -361,6 +431,37 @@ class ControlReading:
     def significant(self, alpha: float) -> bool:
         return self.p_value <= alpha
 
+    def equivalent_within(self, bound: float) -> bool:
+        """Whether the preregistered CI lies **entirely inside** ``±bound`` (spec §10).
+
+        This is the equivalence decision, and it is not the complement of :meth:`significant`.
+        A control with ``Delta = +0.02``, ``p = 0.55`` and a 95% CI of ``[-0.15, +0.19]`` fails to
+        reject and is nevertheless uninformative: the data are consistent with a nineteen-point
+        effect.  The gate that reads this is the one that licenses the word *structure*, and it
+        used to pass on absence of evidence (``docs/HC_V0_6_REDTEAM.md`` RT-V06-03).
+
+        Requiring the **two-sided 95%** interval inside the band is TOST at 0.025 per side, i.e.
+        the conservative form of the frozen ±0.05 test.  Conservative here means harder to
+        certify, which is the direction the governing philosophy ("false block >> false
+        certification", spec §9) demands.
+        """
+
+        if bound <= 0.0:
+            raise DesignViolation("an equivalence bound must be positive")
+        low, high = self.ci95
+        return -bound <= low and high <= bound
+
+    @property
+    def measured(self) -> bool:
+        """False for a control that was not run at all, and so may decide nothing.
+
+        ``k = 1`` forecloses C1 (spec §10b); the stand-in built for it carries zero anchors.  A
+        reading with no anchors has no p-value of its own, and a gate that consulted one would be
+        deciding on some other contrast's number (``docs/HC_V0_6_REDTEAM.md`` RT-V06-05).
+        """
+
+        return self.n_anchors > 0
+
     def to_dict(self) -> dict[str, Any]:
         return {
             "comparison": str(self.comparison.value),
@@ -370,6 +471,7 @@ class ControlReading:
             "n_anchors": self.n_anchors,
             "n_clusters": self.n_clusters,
             "degenerate": self.degenerate,
+            "measured": self.measured,
         }
 
 
@@ -467,6 +569,15 @@ class CalibrationVerdict:
     sensitivity_floor: float | None
     #: False when C1 is degenerate: a zero C1 then shows determinism, not calibration.
     identity_informative: bool
+    #: Spec §10a's magnitude requirement on C2, fixed from the preflight baseline alone.
+    t_ablate: float
+    #: The MDE the realised design achieved, against which ``t_ablate`` is checked (§10a).
+    achieved_mde: float
+    #: Spec §10's null-control equivalence band.
+    equivalence_bound: float
+    #: False when C1 was never measured at all (``k = 1``, spec §10b), as opposed to measured and
+    #: found degenerate.  An unmeasured control decides nothing.
+    identity_measured: bool
 
     # -------------------------------------------------------------------- predicates
 
@@ -560,6 +671,11 @@ class CalibrationVerdict:
                 "C2 did not establish sensitivity, so this null is uninformative rather than "
                 "evidence of no effect (design brief 4)"
             )
+        if not self.identity_measured:
+            caveats.append(
+                "C1 was not measured at all: k = 1 forecloses the identity control (spec 10b). "
+                "It is reported UNAVAILABLE, decides no gate, and is not a zero"
+            )
         return ReportableResult(
             outcome=outcome,
             delta=primary.delta,
@@ -577,12 +693,25 @@ class CalibrationVerdict:
 
     # -------------------------------------------------------------------- internals
 
+    @property
+    def byte_null_passes(self) -> bool:
+        """Spec §10's null control, in full: inside the band **and** not significant.
+
+        Both halves are required and neither is a substitute for the other.  Equivalence is what
+        the spec declares; the significance test is kept as an *additional* blocker so a control
+        that is both tight and reliably non-zero cannot slip through on interval width alone.
+        """
+
+        return self.byte_null.equivalent_within(
+            self.equivalence_bound
+        ) and not self.byte_null.significant(self.alpha_byte_null)
+
     def _attribution(self, significant: bool) -> Attribution:
         if not self.status.sensitivity_established:
             return Attribution.UNDETERMINED
         if not significant:
             return Attribution.NO_EFFECT_TO_ATTRIBUTE
-        if self.byte_null.significant(self.alpha_byte_null):
+        if not self.byte_null_passes:
             return Attribution.BYTE_PERTURBATION
         return Attribution.STRUCTURE
 
@@ -595,7 +724,7 @@ class CalibrationVerdict:
     ) -> Outcome:
         if significant:
             return Outcome.O4_FAVOURS_R_B if primary.delta > 0.0 else Outcome.O5_FAVOURS_R_A
-        if self.status is AssayStatus.INSENSITIVE:
+        if not self.status.sensitivity_established:
             return Outcome.O2_NULL_WITHOUT_SENSITIVITY
         if primary.equivalent_within(equivalence_bound):
             return Outcome.O3_INFORMATIVE_NULL
@@ -607,7 +736,12 @@ class CalibrationVerdict:
             "usable": self.usable,
             "broken": self.broken,
             "identity_informative": self.identity_informative,
+            "identity_measured": self.identity_measured,
             "sensitivity_floor": self.sensitivity_floor,
+            "t_ablate": self.t_ablate,
+            "achieved_mde": self.achieved_mde,
+            "equivalence_bound": self.equivalence_bound,
+            "byte_null_passes": self.byte_null_passes,
             "alpha_identity": self.alpha_identity,
             "alpha_byte_null": self.alpha_byte_null,
             "alpha_sensitivity": self.alpha_sensitivity,
@@ -645,9 +779,12 @@ def calibrate(
     byte_null: PairedEffect,
     sensitivity: PairedEffect,
     *,
+    t_ablate: float,
+    achieved_mde: float,
     alpha_identity: float = ALPHA_IDENTITY,
     alpha_byte_null: float = ALPHA_BYTE_NULL,
     alpha_sensitivity: float = ALPHA_SENSITIVITY,
+    equivalence_bound: float = EQUIVALENCE_BOUND,
     min_clusters: int = MIN_CLUSTERS,
     missingness: Mapping[Arm, int] | None = None,
 ) -> CalibrationVerdict:
@@ -656,11 +793,29 @@ def calibrate(
     The order is the §8 ladder's order and it is not negotiable: C1 first, because C1 forecloses
     everything; then the structural preconditions (missingness, clusters); then C2, which decides
     whether a null can mean anything; then C1b, which decides what a non-null may be attributed to.
+
+    ``t_ablate`` and ``achieved_mde`` have **no defaults**.  ``T_ablate`` is spec §10a's magnitude
+    requirement on C2, and the gate used to be a bare significance-and-sign test with no magnitude
+    term at all: an ablation costing 0.8 points certified against a frozen floor of 6.7
+    (``docs/HC_V0_6_REDTEAM.md`` RT-V06-02).  A default would let the magnitude be omitted again by
+    saying nothing, which is precisely how it went missing.  Pass
+    :func:`t_ablate_from_preflight_baseline` of the **preflight** ``R_A`` rate, never of this run's.
+
+    ``missingness`` is the per-arm count of anchors with no analysable cell
+    (:meth:`~arena.experiments.hc_v0_6.schema.CellTable.unanalysable_by_arm`).  Passing ``None``
+    means "no missingness information", which short-circuits the gate; the report driver always
+    passes it (RT-V06-06).
     """
 
     _require(identity, Comparison.C1_IDENTITY)
     _require(byte_null, Comparison.C1B_WHITESPACE)
     _require(sensitivity, Comparison.C2_ABLATION)
+    if t_ablate <= 0.0:
+        raise DesignViolation(f"T_ablate must be positive, got {t_ablate!r}")
+    if achieved_mde <= 0.0:
+        raise DesignViolation(f"the achieved MDE must be positive, got {achieved_mde!r}")
+    if equivalence_bound <= 0.0:
+        raise DesignViolation("the equivalence bound must be positive")
     c1 = ControlReading.from_effect(identity)
     c1b = ControlReading.from_effect(byte_null)
     c2 = ControlReading.from_effect(sensitivity)
@@ -678,11 +833,27 @@ def calibrate(
             min_clusters=min_clusters,
             reasons=tuple(reasons),
             sensitivity_floor=floor,
-            identity_informative=not c1.degenerate,
+            identity_informative=c1.measured and not c1.degenerate,
+            t_ablate=t_ablate,
+            achieved_mde=achieved_mde,
+            equivalence_bound=equivalence_bound,
+            identity_measured=c1.measured,
         )
 
-    # 1. C1 forecloses everything (design brief §4).
-    if c1.significant(alpha_identity):
+    # 1. C1 forecloses everything (design brief §4) -- WHEN IT WAS MEASURED.  At k = 1 it was not
+    #    (spec §10b), and the stand-in built for it carries zero anchors.  Consulting its p-value
+    #    would be consulting some other contrast's: the stand-in used to inherit C1b's permutation
+    #    object wholesale and could publish "C1 identity control is significant (Delta=+0.0000,
+    #    p=0.0040)" -- a sentence in which the number and the control named do not belong to each
+    #    other (``docs/HC_V0_6_REDTEAM.md`` RT-V06-05).
+    if not c1.measured:
+        reasons.append(
+            "C1 identity control is UNAVAILABLE, not zero: k = 1 leaves nothing to split (spec "
+            "10b), so it decides no gate. The runtime noise floor it would have estimated is "
+            "measured directly instead (1.02% per-call tactic flips over 1,566 calls; "
+            "docs/HC_V0_6_RUNTIME_NOISE.md). The null control rests on C1b alone"
+        )
+    elif c1.significant(alpha_identity):
         reasons.append(
             f"C1 identity control is significant (Delta={c1.delta:+.4f}, p={c1.p_value:.4f} "
             f"<= alpha_identity={alpha_identity}): the assay reports a difference where there is "
@@ -705,23 +876,58 @@ def calibrate(
         )
         return decide(AssayStatus.INSUFFICIENT_CLUSTERS)
 
-    # 3. C2 decides whether a null can mean anything at all.
-    if not (c2.significant(alpha_sensitivity) and c2.delta < 0.0):
-        direction = "in the wrong direction" if c2.delta >= 0.0 else "not significant"
+    # 3a. Spec §10a's resolution clause, decided from the FROZEN threshold and the design's own
+    #     MDE -- never from what C2 returned, so it cannot be argued away once the number is in.
+    if t_ablate < achieved_mde:
         reasons.append(
-            f"C2 ablation control is {direction} (Delta={c2.delta:+.4f}, p={c2.p_value:.4f}): the "
-            "assay has not been shown to detect the removal of the goal text, so a null primary "
-            "Delta is uninformative rather than evidence of no effect (design brief 4)"
+            f"the degraded control cannot be certified at this resolution: T_ablate={t_ablate:.4f} "
+            f"is below the achieved MDE of {achieved_mde:.4f}, so an ablation cost of exactly the "
+            "required size is not something this design can resolve. Spec 10a: reported as such, "
+            "contributing to INCONCLUSIVE, and never resolved by lowering the bar after the fact"
+        )
+        return decide(AssayStatus.SENSITIVITY_UNRESOLVABLE)
+
+    # 3b. C2 decides whether a null can mean anything at all.  Significance is not enough: with
+    #     n = 1,127 anchors a one-point ablation effect is easily significant, and the gate as it
+    #     stood certified "the assay is sensitive" on an effect an order of magnitude below the
+    #     declared floor (``docs/HC_V0_6_REDTEAM.md`` RT-V06-02).  Spec §10 states the gate as
+    #     ``Delta(R_A, R_ABLATED) <= -T_ablate``, so the magnitude is required, not implied.
+    if not (c2.delta <= -t_ablate and c2.significant(alpha_sensitivity)):
+        if c2.delta >= 0.0:
+            direction = "in the wrong direction"
+        elif c2.delta > -t_ablate:
+            direction = f"smaller than T_ablate={t_ablate:.4f}"
+        else:
+            direction = "not significant"
+        reasons.append(
+            f"C2 ablation control is {direction} (Delta={c2.delta:+.4f}, p={c2.p_value:.4f}, "
+            f"required Delta <= {-t_ablate:+.4f} at alpha={alpha_sensitivity}): the assay has not "
+            "been shown to detect the removal of the goal text at the frozen magnitude, so a null "
+            "primary Delta is uninformative rather than evidence of no effect (design brief 4)"
         )
         return decide(AssayStatus.INSENSITIVE)
 
-    # 4. C1b decides what a non-null may be attributed to (design brief §9.4).
+    # 4. C1b decides what a non-null may be attributed to (design brief §9.4).  Spec §10 states
+    #    this control as an EQUIVALENCE band of ±0.05, not as a failure to reject: a null control
+    #    with a 95% CI of [-0.15, +0.19] is uninformative, not "practically small", and used to
+    #    certify and license the word *structure* (RT-V06-03).  Both halves are required.
     floor = abs(c2.delta)
-    if c1b.significant(alpha_byte_null):
+    equivalent = c1b.equivalent_within(equivalence_bound)
+    if not equivalent or c1b.significant(alpha_byte_null):
+        if not equivalent:
+            why = (
+                f"its 95% CI [{c1b.ci95[0]:+.4f}, {c1b.ci95[1]:+.4f}] is not inside the frozen "
+                f"equivalence band +/-{equivalence_bound}, so a whitespace-only change has not "
+                "been shown to be practically inert"
+            )
+        else:
+            why = (
+                f"it is significant (p={c1b.p_value:.4f} <= alpha_byte_null={alpha_byte_null}), so "
+                "a whitespace-only change moves the outcome"
+            )
         reasons.append(
-            f"C1b byte-perturbation control is significant (Delta={c1b.delta:+.4f}, "
-            f"p={c1b.p_value:.4f}): a whitespace-only change moves the outcome, so an effect "
-            "cannot be attributed to structure (design brief 9.4)"
+            f"C1b byte-perturbation control does not pass (Delta={c1b.delta:+.4f}): {why}; an "
+            "effect cannot be attributed to structure (design brief 9.4, spec 10)"
         )
         return decide(AssayStatus.USABLE_ATTRIBUTION_BLOCKED, floor)
     return decide(AssayStatus.USABLE, floor)

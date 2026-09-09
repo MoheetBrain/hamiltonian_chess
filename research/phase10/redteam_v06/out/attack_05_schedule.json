@@ -1,0 +1,56 @@
+{
+ "anchors": 1127,
+ "attack": "A5 arm interleaving: pure function of (seed, anchor_id), arm-independent",
+ "chi_square_0p05_critical_df9": 16.919,
+ "chi_square_16_cells": 13.86,
+ "chi_square_df": 9,
+ "deterministic_across_PYTHONHASHSEED": true,
+ "deterministic_within_process": true,
+ "distinct_orders_possible": 24,
+ "distinct_orders_used": 24,
+ "note": "plan_cells shuffles a list built from `arms`, so the schedule is a pure function of (seed, anchor_id, arms-tuple). The primary runs four arms and each secondary runs three, so a secondary's order is NOT the primary's order restricted -- declared behaviour, but it means cross-model position effects are not paired.",
+ "observed_subprocess_orders": [
+  "['R_ABLATED', 'R_B', 'R_A_PRIME', 'R_A']"
+ ],
+ "pearson_position_vs_execution_index": {
+  "R_A": -0.0499,
+  "R_ABLATED": 0.0044,
+  "R_A_PRIME": 0.0414,
+  "R_B": 0.0034
+ },
+ "pearson_position_vs_prefix_depth": {
+  "R_A": -0.0138,
+  "R_ABLATED": 0.0134,
+  "R_A_PRIME": 0.0136,
+  "R_B": -0.0138
+ },
+ "position_by_arm": {
+  "R_A": {
+   "0": 272,
+   "1": 280,
+   "2": 276,
+   "3": 299
+  },
+  "R_ABLATED": {
+   "0": 282,
+   "1": 291,
+   "2": 271,
+   "3": 283
+  },
+  "R_A_PRIME": {
+   "0": 305,
+   "1": 260,
+   "2": 270,
+   "3": 292
+  },
+  "R_B": {
+   "0": 268,
+   "1": 296,
+   "2": 310,
+   "3": 253
+  }
+ },
+ "unaffected_by_global_random_state": true,
+ "verdict": "HELD",
+ "worst_per_cluster_mean_position_deviation": 1.167
+}
